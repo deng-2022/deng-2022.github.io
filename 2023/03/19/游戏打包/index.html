@@ -146,7 +146,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -418,133 +418,133 @@
 <p>傻瓜式安装，直接下一步即可，但是要记住安装路径。</p>
 <h1 id="代码改写："><a href="#代码改写：" class="headerlink" title="代码改写："></a>代码改写：</h1><p>代码中所有图片用到的路径需要把模块名删除，改写之后如下：</p>
 <p>在不同的情况下，相对路径的相对位置是不一样的。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
 <h1 id="打包步骤："><a href="#打包步骤：" class="headerlink" title="打包步骤："></a>打包步骤：</h1><h2 id="第一步：代码打包成jar包"><a href="#第一步：代码打包成jar包" class="headerlink" title="第一步：代码打包成jar包"></a>第一步：代码打包成jar包</h2><p>1，   点击File，再点Project Structure。</p>
 <p>2，   点击Artifaces。</p>
 <p>3，   下方图片箭头指向位置应为空白，如果有其他内容，可以选中之后，点击减号删除。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png" alt="img"></p>
 <p>4，   选中左侧的Artifacts ，</p>
 <p>点击中间上方位置的+ </p>
 <p>点击JAR</p>
 <p>点击From modules with dependencies…</p>
 <p>如下图所示：</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png" alt="img"></p>
 <p>5，   Module：选择要打包的项目。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image005.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image005.png" alt="img"></p>
 <p>6，Main Class：点击红框最后的那个小图标，项目中是哪个main方法所在的类去启动项目，这里就选择哪个类。我的项目是由app里面的main方法启动的，所以我就选择App</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png" alt="img"></p>
 <p>7，设置 META-INF/MANIFEST.MF。</p>
 <p>点击箭头指向的图标进行设置。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image007.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image007.png" alt="img"></p>
 <p>8，选择当前模块</p>
 <p>点击OK</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png" alt="img"></p>
 <p>9，   此时这里的路径就是模块所在路径，点击OK。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image009.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image009.png" alt="img"></p>
 <p>10， 如果没有弹框报错，第十步可以跳过，直接看十一步。</p>
 <p>如果出现弹框报错，表示当前模块下已存在META-INF文件夹了。可以在本地找到已存在的META-INF文件夹，右键点击DELETE删除即可。</p>
 <p>查找方式如下：</p>
 <p>右键模块点击open in</p>
 <p>点击Explorer</p>
 <p>在模块里面找到META-INF文件删除即可。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image011.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image011.jpg" alt="img"></p>
 <p>11， 如果没有报错，就出现一个puzzlegame：jar的提示。</p>
 <p>点击右下角的OK。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image013.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image013.jpg" alt="img"></p>
 <p>12， 在idea主界面上方，点击Build里面的Build Artifacts。</p>
 <p>如果是灰色的不能按，请确定在上面第一步~第九步有没有配置好jar包的信息。</p>
 <p>如果已经配置好了jar的信息，此处就可以正常点击。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image014.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image014.png" alt="img"></p>
 <p>13， 在主界面正中央。</p>
 <p>选择puzzlegame:jar。</p>
 <p>再选择Build。</p>
 <p>idea会帮我们生成jar包。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image015.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image015.png" alt="img"></p>
 <p>14， 等页面右下角的进度条结束，jar就已经生成完毕。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image017.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image017.jpg" alt="img"></p>
 <p>15， 点击File，再点Project Structure。</p>
 <p>点击Artifaces。</p>
 <p>在下图红色框中的路径下，可以找到生成好的jar包。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image019.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image019.jpg" alt="img"></p>
 <h2 id="第二步：整合资源文件"><a href="#第二步：整合资源文件" class="headerlink" title="第二步：整合资源文件"></a>第二步：整合资源文件</h2><p>1，   将第一步创建好的jar包拷贝到桌面上。</p>
 <p>2，   在桌面上新建一个文件夹resource。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image020.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image020.png" alt="img"></p>
 <p>3，   将《拼图游戏》中的image文件夹粘贴到resource文件夹当中。</p>
 <p>此时在桌面中的resource文件夹下的image文件夹下，就会看到游戏里面用到的所有图片。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image021.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image021.png" alt="img"></p>
 <h2 id="第三步：将jar包打包成exe"><a href="#第三步：将jar包打包成exe" class="headerlink" title="第三步：将jar包打包成exe"></a>第三步：将jar包打包成exe</h2><p>1，   双击打开安装好的exe4j.exe，注册软件。</p>
 <p>点击下面的Enter License</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image023.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image023.jpg" alt="img"></p>
 <p>2，   输入用户名，公司名和注册码后点击ok</p>
 <p>用户名，公司名随便填，最好都是小写字母。</p>
 <p>注册码：L-g782dn2d-1f1yqxx1rv1sqd</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image024.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image024.png" alt="img"></p>
 <p>3，   注册完毕之后点击右下角的next</p>
 <p>备注：exe4j.exe只识别JDK8到JDK11，如果安装时出现弹框报错，请检查JDK版本，资料文件夹中给大家提供了JDK11，有需要可以安装。（黑马程序员阿玮老师出品）</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image026.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image026.jpg" alt="img"></p>
 <p>4，   选择JAVA转EXE。</p>
 <p>点击右下角的next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image028.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image028.jpg" alt="img"></p>
 <p>5，   输入名称puzzlegame</p>
 <p>输出保存exe的路径，建议选择到桌面上。</p>
 <p>点击右下角的next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image030.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image030.jpg" alt="img"></p>
 <p>6，   选择以图形界面的形式启动游戏</p>
 <p>输入应用名称，puzzlegame</p>
 <p>点击高级设置Advanced Options，选择32-bit or 64-bit</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image032.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image032.jpg" alt="img"></p>
 <p>7，   勾选Generate 64-bit executable</p>
 <p>表示要生成64位的exe安装包，如果未勾选默认生成32位的安装包。</p>
 <p>点击右下角next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image034.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image034.jpg" alt="img"></p>
 <p>8，    然后一直下一步，一直出现如下界面</p>
 <p>在本界面开始jar包并以及配置启动类。（黑马程序员阿玮老师出品）</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image036.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image036.jpg" alt="img"></p>
 <p>9，    第一行，VM参数配置的地方加上：-Dfile.encoding=utf-8</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image037.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image037.png" alt="img"></p>
 <p>10， 点击右侧绿色的+，添加jar包</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image039.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image039.jpg" alt="img"></p>
 <p>11， 添加jar包</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image040.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image040.png" alt="img"></p>
 <p>12， 选择桌面上的puzzlegame.jar。</p>
 <p>点击下面的打开。（黑马程序员阿玮老师出品）</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image042.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image042.jpg" alt="img"></p>
 <p>13， 检查路径，如果无误点击右下角的OK</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image044.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image044.jpg" alt="img"></p>
 <p>14， 选择项目启动类</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image046.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image046.jpg" alt="img"></p>
 <p>15， 因为程序主入口main方法写在App类中，所有选择app，并点击OK。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image048.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image048.jpg" alt="img"></p>
 <p>16， 本页面中，一共修改了三处。</p>
 <p>三处全部操作完毕。点击右下角的next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image050.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image050.jpg" alt="img"></p>
 <p>17， 填写最小启动的JDK版本。输入1.8</p>
 <p>配置exe加载的JDK，选择第一个。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image052.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image052.jpg" alt="img"></p>
 <p>18， 点击+</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image054.png" srcset="/blog/img/loading.gif" lazyload alt="https://img-blog.csdnimg.cn/20200204003959383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NzAxMzgx,size_16,color_FFFFFF,t_70"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image054.png" alt="https://img-blog.csdnimg.cn/20200204003959383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NzAxMzgx,size_16,color_FFFFFF,t_70"></p>
 <p>19， 选择Directory</p>
 <p>下面输入.\jdk</p>
 <p><strong>（注意：输入点杠jdk，都要是英文状态下输入）</strong></p>
 <p>点击OK</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image055.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image055.png" alt="img"></p>
 <p>20， 再次点击+</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image057.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image057.jpg" alt="img"></p>
 <p>21， 选择Directory</p>
 <p>下面输入.\image</p>
 <p><strong>（输入点杠image，都要是英文状态下输入）</strong></p>
 <p>点击OK</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image058.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image058.png" alt="img"></p>
 <p>22， 点击右下角的next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image060.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image060.jpg" alt="img"></p>
 <p>23， 选择Client VM</p>
 <p>点击右下角的next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image062.png" srcset="/blog/img/loading.gif" lazyload alt="https://img-blog.csdnimg.cn/20200204004404491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NzAxMzgx,size_16,color_FFFFFF,t_70"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image062.png" alt="https://img-blog.csdnimg.cn/20200204004404491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NzAxMzgx,size_16,color_FFFFFF,t_70"></p>
 <p>24， 然后一直下一步，最终出现如下界面</p>
 <p>点击右下角的Exit退出。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image064.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image064.jpg" alt="img"></p>
 <p>25， 点击Exit后，会提升是否需要保存刚刚的配置信息，可以点击Yes，并选择一个路径进行保存。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image066.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image066.jpg" alt="img"></p>
 <p>26， 如果第三步选择的exe保存的路径是桌面，那么在桌面上</p>
 <p>就能看到生成的puzzlegame.exe文件了。</p>
 <p>四个文件分别为：</p>
@@ -552,97 +552,97 @@
 <p>左二：idea生成的jar包</p>
 <p>左三：游戏用到的资源图片</p>
 <p>左四：刚刚用exe4J设置完毕之后保存的信息。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image067.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image067.png" alt="img"></p>
 <h2 id="第四步：将jdk、资源文件、jar包转换后的exe三者再次打包成最终的exe。"><a href="#第四步：将jdk、资源文件、jar包转换后的exe三者再次打包成最终的exe。" class="headerlink" title="第四步：将jdk、资源文件、jar包转换后的exe三者再次打包成最终的exe。"></a>第四步：将jdk、资源文件、jar包转换后的exe三者再次打包成最终的exe。</h2><p>刚刚，我们仅仅是把java代码变成了exe。下面我们要把游戏中依赖的资源文件，也就是使用到的所有图片，还有JDK三者再次打包成最终的exe，这样在没有jdk电脑环境下也能运行。</p>
 <p>1，打开inno setup</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image069.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image069.jpg" alt="img"></p>
 <p>2，在欢迎页面点击右下角的关闭</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image070.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image070.png" alt="img"></p>
 <p>4，   点击左上角的File</p>
 <p>再点击NEW</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image071.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image071.png" alt="img"></p>
 <p>5，   点击next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image072.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image072.png" alt="img"></p>
 <p>6，   输入应用名称puzzlegame</p>
 <p>点击next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image073.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image073.png" alt="img"></p>
 <p>7，   不修改任何东西，直接点击next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image074.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image074.png" alt="img"></p>
 <p>8，   点击这里，选择桌面上已经生成好的puzzlegame.exe</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image075.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image075.png" alt="img"></p>
 <p>9，   点击Add folder</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image076.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image076.png" alt="img"></p>
 <p>10， 选择桌面的resource，再点击确定。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image077.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image077.png" alt="img"></p>
 <p>11， 如果出现下面弹框，则点击是。</p>
 <p>如果没有出现也没有任何关系。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image078.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image078.png" alt="img"></p>
 <p>12， 再点击 Add file(s)…</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image079.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image079.png" alt="img"></p>
 <p>13， 选中桌面的puzzlegame.exe，再次添加一次。</p>
 <p>点击下面的打开。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image081.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image081.jpg" alt="img"></p>
 <p>14， 在本页面中一共设置了三处地方。</p>
 <p>全部设置完毕，点击next。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image082.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image082.png" alt="img"></p>
 <p>15， 默认不用选择，点击next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image083.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image083.png" alt="img"></p>
 <p>16， 默认不用选择，点击next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image084.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image084.png" alt="img"></p>
 <p>17， 选择语言，还是默认，点击next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image085.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image085.png" alt="img"></p>
 <p>18， 选择输出路径，还是选择桌面。</p>
 <p>输入最终安装包的名字，不能跟已有的puzzlegame重名。</p>
 <p>所以我写setup，再点击右下角next</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image086.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image086.png" alt="img"></p>
 <p>19， 默认点击next</p>
 <p>有部分同学电脑不显示这一步，也没有关系。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image087.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image087.png" alt="img"></p>
 <p>20， 完成，点击finish</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image088.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image088.png" alt="img"></p>
 <p>21， 配置到最后一步了，脚本文件，到这里会弹出问你是否马</p>
 <p>上编译，选择否，先把脚本写好再自己编译。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image089.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image089.png" alt="img"></p>
 <p>22， 上面红色箭头处添加一行脚本。</p>
 <p>#define MyJdkName “jdk”</p>
-<p>添加前：<img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image090.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p>添加前：<img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image090.png" alt="img"></p>
 <p>23， 添加完毕之后，如下图所示</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image092.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image092.jpg" alt="img"></p>
 <p>24， 往下拉，把有红色框起来的这一行删掉</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image094.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image094.jpg" alt="img"></p>
 <p>25， 在上一步删除位置添加一段行的文字</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">Source: <span class="hljs-string">&quot;自己本地JDK路径\*&quot;</span>; DestDir: <span class="hljs-string">&quot;&#123;app&#125;\&#123;#MyJdkName&#125;&quot;</span>; Flags: ignoreversion recursesubdirs createallsubdirs<br></code></pre></td></tr></table></figure>
 
 <p><strong>千万注意：这段文字不要直接复制。根据自己电脑中JDK的安装位置进行修改，添加完毕之后如下图</strong></p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image096.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image096.jpg" alt="img"></p>
 <p>26， 点击上方的绿色按钮开始编译。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image097.png" srcset="/blog/img/loading.gif" lazyload alt="https://img-blog.csdnimg.cn/20200204010100205.png"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image097.png" alt="https://img-blog.csdnimg.cn/20200204010100205.png"></p>
 <p>27， 此时会询问，是否需要保存。</p>
 <p>可以点击是，选择一个位置保存一下刚刚修改之后的结果。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image098.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image098.png" alt="img"></p>
 <p>28，  然后等待绿色滚动条结束</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image100.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image100.jpg" alt="img"></p>
 <p>29， 当绿色滚动条结束后，会自动安装setup.exe文件。</p>
 <p>此时可以点击否，先不安装。</p>
 <p>在桌面上，会多了一个setup.exe文件和一个后缀名为iss的文件</p>
 <p>setup.exe：打包成功的游戏安装包。</p>
 <p>iss文件：就是刚刚设置的脚本文件。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image101.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image101.png" alt="img"></p>
 <p>30， 现在就可以把这个exe文件发给你的好基友了，他的电脑</p>
 <p>上不需要安装JDK，直接双击这个安装包就可以玩游戏了。</p>
 <p>在安装的时候可以选择安装路径。</p>
 <p>还可以在桌面生成快捷方式。</p>
 <h1 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h1><p>1，   安装完毕之后，可以到安装目录去找puzzlegame.exe</p>
 <p>双击就可以玩游戏了。刚刚桌面上的5个文件可以全部删除。以后双击puzzlegame.exe就可以玩游戏了。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image102.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image102.png" alt="img"></p>
 <p>2，   如果游戏运行之后，有效果但是无图片，或者部分图片无</p>
 <p>法加载。如下图所示：此时背景图片无法加载。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image103.png" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image103.png" alt="img"></p>
 <p>3，   修改步骤一：</p>
 <p>检查安装目录下image文件夹中是否有该图片。如果没有将缺少的图片粘贴进去重新运行游戏。（黑马程序员阿玮老师出品）</p>
 <p>修改步骤二：</p>
 <p>检查代码，图片的路径需要把模块名删掉。</p>
-<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image104.jpg" srcset="/blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/Lenovo/AppData/Local/Temp/msohtmlclip1/01/clip_image104.jpg" alt="img"></p>
 <p>4，代码修改后，需要重新生成exe安装包，重新安装游戏。</p>
 
                 
@@ -765,7 +765,7 @@
             
   
   
-    <article id="comments" lazyload>
+    <article id="comments">
       
 
     </article>
@@ -911,10 +911,6 @@
 
 
 
-
-  
-    <script  src="/blog/js/img-lazyload.js" ></script>
-  
 
 
 
