@@ -23,12 +23,15 @@
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="用户中心开发基本流程">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230324211359229.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230324211329077.png">
 <meta property="article:published_time" content="2023-03-17T02:05:47.000Z">
-<meta property="article:modified_time" content="2023-03-23T13:17:34.000Z">
+<meta property="article:modified_time" content="2023-03-24T13:47:34.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230324211359229.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -250,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          35k 字
+          37k 字
         
       </span>
     
@@ -261,7 +264,7 @@
         
         
         
-          88 分钟
+          93 分钟
         
       </span>
     
@@ -312,7 +315,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年3月23日 晚上
+                    本文最后更新于：2023年3月24日 晚上
                   
                 
               </p>
@@ -320,7 +323,60 @@
             
               <div class="markdown-body">
                 
-                <h3 id="本文档记录了用户中心开发的基本流程，-包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）"><a href="#本文档记录了用户中心开发的基本流程，-包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）" class="headerlink" title="本文档记录了用户中心开发的基本流程， 包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）"></a><code>本文档记录了用户中心开发的基本流程， 包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）</code></h3><h1 id="框架搭建"><a href="#框架搭建" class="headerlink" title="框架搭建"></a>框架搭建</h1><h3 id="前端框架搭建"><a href="#前端框架搭建" class="headerlink" title="前端框架搭建"></a>前端框架搭建</h3><h3 id="后端框架搭建"><a href="#后端框架搭建" class="headerlink" title="后端框架搭建"></a>后端框架搭建</h3><h1 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h1><h1 id="后端开发"><a href="#后端开发" class="headerlink" title="后端开发"></a>后端开发</h1><h5 id="Service层"><a href="#Service层" class="headerlink" title="Service层"></a>Service层</h5><h2 id="登录-校验"><a href="#登录-校验" class="headerlink" title="登录+校验"></a>登录+校验</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">User</span> <span class="hljs-title">userLogin</span>(<span class="hljs-keyword">String</span> userAccount, <span class="hljs-keyword">String</span> userPassword, HttpServletRequest request);<br></code></pre></td></tr></table></figure>
+                <h3 id="本文档记录了用户中心开发的基本流程，-包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）"><a href="#本文档记录了用户中心开发的基本流程，-包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）" class="headerlink" title="本文档记录了用户中心开发的基本流程， 包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）"></a><code>本文档记录了用户中心开发的基本流程， 包含了前期的框架搭建、数据库设计，以及后期的后端接口实现、前端页面开发，实现了基础的登录注册功能，以及查看在线用户状态和删除用户的功能（管理员）</code></h3><h1 id="开发项目前的分析"><a href="#开发项目前的分析" class="headerlink" title="开发项目前的分析"></a>开发项目前的分析</h1><h2 id="企业做项目流程"><a href="#企业做项目流程" class="headerlink" title="企业做项目流程"></a>企业做项目流程</h2><h4 id="需求分析-gt-设计（概要设计、详细设计）-gt-技术选型-gt"><a href="#需求分析-gt-设计（概要设计、详细设计）-gt-技术选型-gt" class="headerlink" title="需求分析 =&gt; 设计（概要设计、详细设计）=&gt; 技术选型 =&gt; "></a><code>需求分析 =&gt; 设计（概要设计、详细设计）=&gt; 技术选型 =&gt; </code></h4><h4 id="初始化-引⼊需要的技术-gt-写-Demo-gt-写代码（实现业务逻辑）-gt"><a href="#初始化-引⼊需要的技术-gt-写-Demo-gt-写代码（实现业务逻辑）-gt" class="headerlink" title="初始化 / 引⼊需要的技术 =&gt; 写 Demo =&gt; 写代码（实现业务逻辑） =&gt;"></a><code>初始化 / 引⼊需要的技术 =&gt; 写 Demo =&gt; 写代码（实现业务逻辑） =&gt;</code></h4><h4 id="测试（单元测试）-gt-代码提-交-代码评审-gt-部署-gt-发布"><a href="#测试（单元测试）-gt-代码提-交-代码评审-gt-部署-gt-发布" class="headerlink" title=" 测试（单元测试）=&gt; 代码提 交 / 代码评审 =&gt; 部署=&gt; 发布"></a><code> 测试（单元测试）=&gt; 代码提 交 / 代码评审 =&gt; 部署=&gt; 发布</code></h4><h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><ol>
+<li>登录 / 注册  </li>
+<li>⽤户管理（仅管理员可⻅）对⽤户的查询或者修改</li>
+<li> ⽤户校验（ 仅星球⽤户 ）</li>
+</ol>
+<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><h5 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h5><p>三件套 + React + 组件库 Ant Design + Umi + Ant Design Pro（现成的管理系统）</p>
+<h5 id="后端："><a href="#后端：" class="headerlink" title="后端："></a>后端：</h5><ul>
+<li> java </li>
+<li>spring（依赖注⼊框架，帮助你管理 Java 对象，集成⼀些其他的内容） </li>
+<li>springmvc（web 框架，提供接⼝访问、restful接⼝等能⼒） </li>
+<li>mybatis（Java 操作数据库的框架，持久层框架，对 jdbc 的封装）</li>
+<li>mybatis-plus（对 mybatis 的增强，不⽤写 sql 也能实现增删改查）</li>
+<li> springboot（快速启动 / 快速集成项⽬。不⽤⾃⼰管理 spring 配置，不⽤⾃⼰整合各种框架）</li>
+<li> junit 单元测试库 </li>
+<li>mysql</li>
+</ul>
+<h2 id="部署：服务器-容器（平台）"><a href="#部署：服务器-容器（平台）" class="headerlink" title="部署：服务器 / 容器（平台）"></a>部署：服务器 / 容器（平台）</h2><h1 id="框架搭建"><a href="#框架搭建" class="headerlink" title="框架搭建"></a>框架搭建</h1><h3 id="前端框架搭建"><a href="#前端框架搭建" class="headerlink" title="前端框架搭建"></a>前端框架搭建</h3><h5 id="搭建AntDesignPro脚手架"><a href="#搭建AntDesignPro脚手架" class="headerlink" title="搭建AntDesignPro脚手架"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Lcq_best/article/details/125569667">搭建AntDesignPro脚手架</a></h5><h3 id="后端框架搭建"><a href="#后端框架搭建" class="headerlink" title="后端框架搭建"></a>后端框架搭建</h3><h1 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span><br>(<br>    id            <span class="hljs-type">bigint</span>                                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;id&#x27;</span> <span class="hljs-keyword">primary</span> key,<br>    user_account  <span class="hljs-type">varchar</span>(<span class="hljs-number">256</span>)                           <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;账号&#x27;</span>,<br>    username      <span class="hljs-type">varchar</span>(<span class="hljs-number">256</span>)                           <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;昵称&#x27;</span>,<br>    user_password <span class="hljs-type">varchar</span>(<span class="hljs-number">128</span>)                           <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;密码&#x27;</span>,<br>    avatar_url    <span class="hljs-type">varchar</span>(<span class="hljs-number">512</span>)                           <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;头像&#x27;</span>,<br>    gender        <span class="hljs-type">varchar</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;0&#x27;</span>               <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;邮箱&#x27;</span>,<br>    phone         <span class="hljs-type">varchar</span>(<span class="hljs-number">128</span>)                           <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;电话&#x27;</span>,<br>    email         <span class="hljs-type">varchar</span>(<span class="hljs-number">128</span>)                           <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;邮箱&#x27;</span>,<br>    user_status   <span class="hljs-type">int</span>          <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;状态 0 - 正常&#x27;</span>,<br>    create_time   datetime     <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>    update_time   datetime     <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;更新时间&#x27;</span>,<br>    is_delete     tinyint      <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;是否删除 0 - 正常&#x27;</span>,<br>    user_role     <span class="hljs-type">int</span>(<span class="hljs-number">1</span>)       <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;用户权限 0 - 管理员 1 - 普通用户&#x27;</span>,<br>    planet_code   <span class="hljs-type">varchar</span>(<span class="hljs-number">512</span>)                           <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;星球编号&#x27;</span><br>)<br>    comment <span class="hljs-string">&#x27;用户&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="MybatisX插件快速生成domain-entity-service-以及-serviceImpl"><a href="#MybatisX插件快速生成domain-entity-service-以及-serviceImpl" class="headerlink" title="MybatisX插件快速生成domain entity service 以及 serviceImpl"></a>MybatisX插件快速生成domain entity service 以及 serviceImpl</h5><ul>
+<li>选择生成目录</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230324211359229.png" alt="image-20230324211359229"></p>
+<ul>
+<li>生成选项</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230324211329077.png" alt="image-20230324211329077"></p>
+</li>
+<li><h5 id="application-yaml-项目配置文件"><a href="#application-yaml-项目配置文件" class="headerlink" title="application.yaml 项目配置文件"></a>application.yaml 项目配置文件</h5><ul>
+<li><h5 id="连接到数据库"><a href="#连接到数据库" class="headerlink" title="连接到数据库"></a>连接到数据库</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"># DataSource Config<br>datasource:<br>  driver-class-name: com.mysql.cj.jdbc.Driver<br>  url: jdbc:mysql:<span class="hljs-comment">//localhost:3306/memory</span><br>  username: root<br>  password: Dw990831<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="项目名称"><a href="#项目名称" class="headerlink" title="项目名称"></a>项目名称</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">spring:<br>  # Project name<br>  application:<br>    name: user-center<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="项目端口-项目所有API路径上下文"><a href="#项目端口-项目所有API路径上下文" class="headerlink" title="项目端口 | 项目所有API路径上下文"></a>项目端口 | 项目所有API路径上下文</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"># 端口<br>server:<br>  port: <span class="hljs-number">8081</span><br>  servlet:<br>    context-path: /api<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="逻辑删除-MybatisPlus提供"><a href="#逻辑删除-MybatisPlus提供" class="headerlink" title="逻辑删除(MybatisPlus提供)"></a>逻辑删除(MybatisPlus提供)</h5></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 逻辑删除</span><br><span class="hljs-attr">mybatis-plus:</span><br>  <span class="hljs-attr">global-config:</span><br>    <span class="hljs-attr">db-config:</span><br>      <span class="hljs-attr">logic-delete-field:</span> <span class="hljs-string">isDelete</span> <span class="hljs-comment"># 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)</span><br>      <span class="hljs-attr">logic-delete-value:</span> <span class="hljs-number">1</span> <span class="hljs-comment"># 逻辑已删除值(默认为 1)</span><br>      <span class="hljs-attr">logic-not-delete-value:</span> <span class="hljs-number">0</span> <span class="hljs-comment"># 逻辑未删除值(默认为 0)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="session"><a href="#session" class="headerlink" title="session"></a>session</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">  # session存活时间 一天<br>session:<br>  timeout: <span class="hljs-number">86640</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="后端开发"><a href="#后端开发" class="headerlink" title="后端开发"></a>后端开发</h1><h5 id="Service层"><a href="#Service层" class="headerlink" title="Service层"></a>Service层</h5><h2 id="登录-校验"><a href="#登录-校验" class="headerlink" title="登录+校验"></a>登录+校验</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">User</span> <span class="hljs-title">userLogin</span>(<span class="hljs-keyword">String</span> userAccount, <span class="hljs-keyword">String</span> userPassword, HttpServletRequest request);<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">@Override<br>public User user<span class="hljs-constructor">Login(String <span class="hljs-params">userAccount</span>, String <span class="hljs-params">userPassword</span>, HttpServletRequest <span class="hljs-params">request</span>)</span> &#123;<br>    <span class="hljs-comment">// 1.校验</span><br>    <span class="hljs-comment">// 1.1.账户, 密码不能为空</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">StringUtils</span>.</span></span>is<span class="hljs-constructor">AnyBlank(<span class="hljs-params">userAccount</span>, <span class="hljs-params">userPassword</span>)</span>)<br>        return null;<br><br>    <span class="hljs-comment">// 1.2.账户不小于4位</span><br>    <span class="hljs-keyword">if</span> (userAccount.length<span class="hljs-literal">()</span> &lt; <span class="hljs-number">4</span>)<br>        return null;<br><br>    <span class="hljs-comment">// 1.3.用户密码不小于8位</span><br>    <span class="hljs-keyword">if</span> (userPassword.length<span class="hljs-literal">()</span> &lt; <span class="hljs-number">8</span>)<br>        return null;<br><br>    <span class="hljs-comment">// 1.4.账户不包含特殊字符</span><br>    String pattern = <span class="hljs-string">&quot;.*[\\s`~!@#$%^&amp;*()+=|&#123;&#125;&#x27;:;&#x27;,\\[\\].&lt;&gt;/?~！@#￥%……&amp;*（）——+|&#123;&#125;【】‘；：”“’。，、？\\\\]+.*&quot;</span>;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Pattern</span>.</span></span>matches(pattern, userAccount))<br>        return null;<br><br>    <span class="hljs-comment">// 1.5.检验该用户是否注册</span><br>    User user = <span class="hljs-keyword">new</span> <span class="hljs-constructor">User()</span>;<br><br>    user.set<span class="hljs-constructor">UserAccount(<span class="hljs-params">userAccount</span>)</span>;<br><br>    String encryptPassword = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DigestUtils</span>.</span></span>md5<span class="hljs-constructor">DigestAsHex((SALT + <span class="hljs-params">userPassword</span>)</span>.get<span class="hljs-constructor">Bytes()</span>);<br>    user.set<span class="hljs-constructor">UserPassword(<span class="hljs-params">encryptPassword</span>)</span>;<br><br>    QueryWrapper&lt;User&gt; qw = <span class="hljs-keyword">new</span> QueryWrapper&lt;&gt;<span class="hljs-literal">()</span>;<br>    qw.eq(<span class="hljs-string">&quot;user_account&quot;</span>, userAccount).eq(<span class="hljs-string">&quot;user_password&quot;</span>, encryptPassword);<br>    User one = this.get<span class="hljs-constructor">One(<span class="hljs-params">qw</span>)</span>;<br><br>    <span class="hljs-comment">// 1.5.1.用户未注册(包含了MP自带的逻辑删除校验)</span><br>    <span class="hljs-keyword">if</span> (one<span class="hljs-operator"> == </span>null)<br>        return null;<br><br>    <span class="hljs-comment">// 2.脱敏用户信息</span><br>    User safetyUser = get<span class="hljs-constructor">SafetyUser(<span class="hljs-params">one</span>)</span>;<br><br>    <span class="hljs-comment">// 3.记录用户登录态</span><br>    request.get<span class="hljs-constructor">Session()</span>.set<span class="hljs-constructor">Attribute(USER_LOGIN_STATE, <span class="hljs-params">safetyUser</span>)</span>;<br><br>    <span class="hljs-comment">// 4.返回用户信息</span><br>    return safetyUser;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -846,7 +902,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年3月23日</div>
+          <div>2023年3月24日</div>
         </div>
       
       
