@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="12345final修饰的方法，不允许被子类覆盖。final修饰的类，不能被继承。final修饰的变量，不能改变值。final修饰的引用类型，不能再指向别的东西，但是可以改变其中的内容。final修饰的成员变量在赋值时可以有三种方式。1、在声明时直接赋值。2、在构造器中赋值。3、在初始代码块中进行赋值。  12345678关于抽象类 JDK 1.8以前，抽象类的方法默认访问权限为protected">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memory&#39;s blog">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/04/07/%E7%89%9B%E5%AE%A2MK/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="12345final修饰的方法，不允许被子类覆盖。final修饰的类，不能被继承。final修饰的变量，不能改变值。final修饰的引用类型，不能再指向别的东西，但是可以改变其中的内容。final修饰的成员变量在赋值时可以有三种方式。1、在声明时直接赋值。2、在构造器中赋值。3、在初始代码块中进行赋值。  12345678关于抽象类 JDK 1.8以前，抽象类的方法默认访问权限为protected">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180322/4846014_1521723853172_FF523AF3E7DA7B365BEA995386A30039">
+<meta property="article:published_time" content="2023-04-07T14:54:13.779Z">
+<meta property="article:modified_time" content="2023-04-09T13:31:28.115Z">
+<meta property="article:author" content="Memory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://uploadfiles.nowcoder.com/images/20180322/4846014_1521723853172_FF523AF3E7DA7B365BEA995386A30039">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-07 22:54" pubdate>
+          2023年4月7日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年4月9日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">final</span>修饰的方法，不允许被子类覆盖。<br><span class="hljs-keyword">final</span>修饰的类，不能被继承。<br><span class="hljs-keyword">final</span>修饰的变量，不能改变值。<br><span class="hljs-keyword">final</span>修饰的引用类型，不能再指向别的东西，但是可以改变其中的内容。<br><span class="hljs-keyword">final</span>修饰的成员变量在赋值时可以有三种方式。<span class="hljs-number">1</span>、在声明时直接赋值。<span class="hljs-number">2</span>、在构造器中赋值。<span class="hljs-number">3</span>、在初始代码块中进行赋值。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">关于抽象类 <br>JDK <span class="hljs-number">1.8</span>以前，抽象类的方法默认访问权限为<span class="hljs-keyword">protected</span> <br>JDK <span class="hljs-number">1.8</span>时，抽象类的方法默认访问权限变为<span class="hljs-keyword">default</span> <br><br>关于接口 <br>JDK <span class="hljs-number">1.8</span>以前，接口中的方法必须是<span class="hljs-keyword">public</span>的 <br>JDK <span class="hljs-number">1.8</span>时，接口中的方法可以是<span class="hljs-keyword">public</span>的，也可以是<span class="hljs-keyword">default</span>的 <br>JDK <span class="hljs-number">1.9</span>时，接口中的方法可以是<span class="hljs-keyword">private</span>的<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">写法顺序：<span class="hljs-keyword">select</span>--<span class="hljs-keyword">from</span>--<span class="hljs-keyword">where</span>--<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span>--<span class="hljs-keyword">having</span>--<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <br><br>执行顺序：<span class="hljs-keyword">from</span>--<span class="hljs-keyword">where</span>--<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span>--<span class="hljs-keyword">having</span>--<span class="hljs-keyword">select</span>--<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <br>就是<span class="hljs-keyword">select</span>要放后面，如果有<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span>，则<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span>放最后，因为<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> 是对结果进行排序<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">可串行化调度：所有的事物依次逐个执行，这样事物之间就完全不可能有干扰，防止脏读、不可重复读、幻读。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">客户端对象:Socket s = new <span class="hljs-built_in">Socket</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>,<span class="hljs-number">6666</span>); <br>服务端对象:ServerSocket ss = new <span class="hljs-built_in">ServerSocket</span>(<span class="hljs-number">6666</span>); <br>监听服务器的连接: <br>    s=ss.<span class="hljs-built_in">accept</span>()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">s</span>.getBytes(<span class="hljs-string">&quot;GBK&quot;</span>).length就是求的字节数。如果是GBK，一个中文字符占<span class="hljs-number">2</span>字节，如果是UTF-<span class="hljs-number">8</span>则是<span class="hljs-number">3</span>个字节，<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ocaml"><span class="hljs-type">Java</span>一维数组有两种初始化方法 <br><span class="hljs-number">1</span>、静态初始化 <br><span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span><span class="hljs-literal">[]</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span><span class="hljs-literal">[]</span>&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;<br>或者<br><span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span><span class="hljs-literal">[]</span> = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;<br>需要注意的是，写成如下形式也是错误的<br><span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span><span class="hljs-literal">[]</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[<span class="hljs-number">5</span>]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;<br><span class="hljs-number">2</span>、动态初始化 <br><span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span><span class="hljs-literal">[]</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[<span class="hljs-number">5</span>];<br><span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">array</span>[<span class="hljs-number">1</span>] = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">array</span>[<span class="hljs-number">2</span>] = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">array</span>[<span class="hljs-number">3</span>] = <span class="hljs-number">4</span>;<br><span class="hljs-built_in">array</span>[<span class="hljs-number">4</span>] = <span class="hljs-number">5</span>;<br>静态与动态初始化的区别就在于，前者是声明的时候就初始化，后者是先声明，再动态初始化<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">小到大算自动类型转换<br>就是隐式转换（自动类型转换）：<br>数值型数据的转换：<span class="hljs-type">byte</span>→<span class="hljs-type">short</span>→<span class="hljs-type">int</span>→<span class="hljs-type">long</span>→<span class="hljs-type">float</span>→<span class="hljs-type">double</span>。<br>字符型转换为整型：<span class="hljs-type">char</span>→<span class="hljs-type">int</span>。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">Java一个源程序只能有一个<span class="hljs-keyword">public</span>类存在，且类名与文件名相同。Java程序是从main方法开始执行的，<span class="hljs-keyword">public</span>为类加载器提供入口，然后找到<span class="hljs-keyword">public</span>类中的main方法开始执行。如果存在多个<span class="hljs-keyword">public</span>类，程序将不知道该从哪里执行。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">ava分为基本数据据类型和引用数据类型，基本数据类型又分为数值型（整数类型（<span class="hljs-keyword">byte</span>、<span class="hljs-keyword">short</span>、<span class="hljs-keyword">int</span>、<span class="hljs-keyword">long</span>）和浮点型（<span class="hljs-keyword">float</span>、<span class="hljs-keyword">double</span>））、字符型（<span class="hljs-keyword">char</span>）和布尔型（<span class="hljs-keyword">boolean</span>），引用数据类型包括类（<span class="hljs-keyword">class</span>）、接口（<span class="hljs-keyword">interface</span>）、数组和一些特殊的<span class="hljs-keyword">null</span>类型。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">JDK</span>=JRE+编译、运行等命令工具<br>      <span class="hljs-attr">JRE</span>=JVM+Java系统类库<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Servlet</span>的生命周期分为<span class="hljs-number">5</span>个阶段：加载、创建、初始化、处理客户请求、卸载。 (<span class="hljs-number">1</span>)加载：容器通过类加载器使用servlet类对应的文件加载servlet (<span class="hljs-number">2</span>)创建：通过调用servlet构造函数创建一个servlet对象 (<span class="hljs-number">3</span>)初始化：调用init方法初始化 (<span class="hljs-number">4</span>)处理客户请求：每当有一个客户请求，容器会创建一个线程来处理客户请求 (<span class="hljs-number">5</span>)卸载：调用destroy方法让servlet自己释放其占用的资源<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cos">Spring 框架是一个分层架构，由 <span class="hljs-number">7</span> 个定义良好的模块组成。 <br><br>核心容器，Spring上下文，Spring AOP， Spring DAO， Spring ORM， Spring Web， Spring <span class="hljs-keyword">MV</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs delphi">方法重载（<span class="hljs-keyword">overload</span>）： <br><span class="hljs-number">1</span>.必须是同一个类 <br><span class="hljs-number">2</span>方法名（也可以叫函数）一样 <br><span class="hljs-number">3</span>参数类型不一样或参数数量不一样 <br><br>方法的重写（<span class="hljs-keyword">override</span>）两同两小一大原则： <br>方法名相同，参数类型相同 <br>子类返回类型小于等于父类方法返回类型， <br>子类抛出异常小于等于父类方法抛出异常， <br>子类访问权限大于等于父类方法访问权限<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Jdbc</span>六大步骤: <span class="hljs-number">1</span>.注册驱动 <span class="hljs-number">2</span>.获取连接 <span class="hljs-number">3</span>.创建语句对象 <span class="hljs-number">4</span>.执行sql <span class="hljs-number">5</span>.处理语句集 <span class="hljs-number">6</span>关闭连接<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">按照流是否直接与特定的地方（如磁盘、内存、设备等）相连，分为节点流和处理流两类。 <br>节点流：可以从或向一个特定的地方（节点）读写数据。如FileReader. <br>处理流：是对一个已存在的流的连接和封装，通过所封装的流的功能调用实现数据读写。如<span class="hljs-keyword">BufferedReader.处理流的构造方法总是要带一个其他的流对象做参数。一个流对象经过其他流的多次包装，称为流的链接。 </span><br><span class="hljs-keyword">JAVA常用的节点流： </span><br>文 件 FileInputStream FileOutputStrean FileReader FileWriter 文件进行处理的节点流。 <br>字符串 StringReader StringWriter 对字符串进行处理的节点流。 <br>数 组 <span class="hljs-keyword">ByteArrayInputStream </span><span class="hljs-keyword">ByteArrayOutputStreamCharArrayReader </span>CharArrayWriter 对数组进行处理的节点流（对应的不再是文件，而是内存中的一个数组）。 <br>管 道 PipedInputStream PipedOutputStream PipedReaderPipedWriter对管道进行处理的节点流。 <br>常用处理流（关闭处理流使用关闭里面的节点流） <br>缓冲流：<span class="hljs-keyword">BufferedInputStrean </span><span class="hljs-keyword">BufferedOutputStream </span><span class="hljs-keyword">BufferedReader </span><span class="hljs-keyword">BufferedWriter </span> 增加缓冲功能，避免频繁读写硬盘。 <br>转换流：InputStreamReader OutputStreamReader 实现字节流和字符流之间的转换。 <br>数据流 DataInputStream DataOutputStream  等-提供将基础数据类型写入到文件中，或者读取出来. <br>流的关闭顺序 <br>一般情况下是：先打开的后关闭，后打开的先关闭 <br>另一种情况：看依赖关系，如果流a依赖流<span class="hljs-keyword">b，应该先关闭流a，再关闭流b。例如，处理流a依赖节点流b，应该先关闭处理流a，再关闭节点流b </span><br>可以只关闭处理流，不用关闭节点流。处理流关闭的时候，会调用其处理的节点流的关闭方法。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Integer对象的方法 <br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Integer</span>.</span></span>parse<span class="hljs-constructor">Int(<span class="hljs-string">&quot;&quot;</span>)</span>;是将字符串类型转换为<span class="hljs-built_in">int</span>的基础数据类型 <br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Integer</span>.</span></span>value<span class="hljs-constructor">Of(<span class="hljs-string">&quot;&quot;</span>)</span>是将字符串类型数据转换为Integer对象 <br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Integer</span>.</span></span><span class="hljs-built_in">int</span><span class="hljs-constructor">Value()</span>;是将Integer对象中的数据取出，返回一个基础数据类型<span class="hljs-built_in">int</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">在这里帮大家总结一下hashMap和hashtable方面的知识点吧： <span class="hljs-number">1.</span>  关于HashMap的一些说法： a)  HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。HashMap的底层结构是一个数组，数组中的每一项是一条链表。 b)  HashMap的实例有俩个参数影响其性能： “初始容量” 和 装填因子。 c)  HashMap实现不同步，线程不安全。  HashTable线程安全 d)  HashMap中的key-value都是存储在Entry中的。 e)  HashMap可以存<span class="hljs-literal">null</span>键和<span class="hljs-literal">null</span>值，不保证元素的顺序恒久不变，它的底层使用的是数组和链表，通过hashCode()方法和equals方法保证键的唯一性 f)  解决冲突主要有三种方法：定址法，拉链法，再散列法。HashMap是采用拉链法解决哈希冲突的。 注：链表法是将相同hash值的对象组成一个链表放在hash值对应的槽位；    用开放定址法解决冲突的做法是：当冲突发生时，使用某种探查(亦称探测)技术在散列表中形成一个探查(测)序列。沿此序列逐个单元地查找，直到找到给定的关键字，或者碰到一个开放的地址(即该地址单元为空)为止（若要插入，在探查到开放的地址，则可将待插入的新结点存人该地址单元）。   拉链法解决冲突的做法是： 将所有关键字为同义词的结点链接在同一个单链表中。若选定的散列表长度为m，则可将散列表定义为一个由m个头指针组成的指针数组T[<span class="hljs-number">0.</span>.m<span class="hljs-number">-1</span>]。凡是散列地址为i的结点，均插入到以T[i]为头指针的单链表中。T中各分量的初值均应为空指针。在拉链法中，装填因子α可以大于<span class="hljs-number">1</span>，但一般均取α≤<span class="hljs-number">1</span>。拉链法适合未规定元素的大小。     <span class="hljs-number">2.</span>  Hashtable和HashMap的区别： a)   继承不同。  <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Hashtable</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Dictionary</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Map</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">class</span> <span class="hljs-symbol">HashMap</span> <span class="hljs-symbol">extends</span>  <span class="hljs-symbol">AbstractMap</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Map</span> <span class="hljs-symbol">b</span>)  <span class="hljs-symbol">Hashtable</span>中的方法是同步的，而<span class="hljs-symbol">HashMap</span>中的方法在缺省情况下是非同步的。在多线程并发的环境下，可以直接使用<span class="hljs-symbol">Hashtable</span>，但是要使用<span class="hljs-symbol">HashMap</span>的话就要自己增加同步处理了。 <span class="hljs-symbol">c</span>)  <span class="hljs-symbol">Hashtable</span> 中， <span class="hljs-symbol">key</span> 和 <span class="hljs-symbol">value</span> 都不允许出现 <span class="hljs-symbol">null</span> 值。 在 <span class="hljs-symbol">HashMap</span> 中， <span class="hljs-symbol">null</span> 可以作为键，这样的键只有一个；可以有一个或多个键所对应的值为 <span class="hljs-symbol">null</span> 。当 <span class="hljs-symbol">get</span>() 方法返回 <span class="hljs-symbol">null</span> 值时，即可以表示 <span class="hljs-symbol">HashMap</span> 中没有该键，也可以表示该键所对应的值为 <span class="hljs-symbol">null</span> 。因此，在 <span class="hljs-symbol">HashMap</span> 中不能由 <span class="hljs-symbol">get</span>() 方法来判断 <span class="hljs-symbol">HashMap</span> 中是否存在某个键， 而应该用 <span class="hljs-symbol">containsKey</span>() 方法来判断。 <span class="hljs-symbol">d</span>)  两个遍历方式的内部实现上不同。<span class="hljs-symbol">Hashtable</span>、<span class="hljs-symbol">HashMap</span>都使用了<span class="hljs-symbol">Iterator</span>。而由于历史原因，<span class="hljs-symbol">Hashtable</span>还使用了<span class="hljs-symbol">Enumeration</span>的方式。 <span class="hljs-symbol">e</span>)  哈希值的使用不同，<span class="hljs-symbol">HashTable</span>直接使用对象的<span class="hljs-symbol">hashCode</span>。而<span class="hljs-symbol">HashMap</span>重新计算<span class="hljs-symbol">hash</span>值。 <span class="hljs-symbol">f</span>)  <span class="hljs-symbol">Hashtable</span>和<span class="hljs-symbol">HashMap</span>它们两个内部实现方式的数组的初始大小和扩容的方式。<span class="hljs-symbol">HashTable</span>中<span class="hljs-symbol">hash</span>数组默认大小是<span class="hljs-symbol">11</span>，增加的方式是<span class="hljs-symbol">old</span>*<span class="hljs-symbol">2</span>+<span class="hljs-symbol">1</span>。<span class="hljs-symbol">HashMap</span>中<span class="hljs-symbol">hash</span>数组的默认大小是<span class="hljs-symbol">16</span>，而且一定是<span class="hljs-symbol">2</span>的指数。   注：  <span class="hljs-symbol">HashSet</span>子类依靠<span class="hljs-symbol">hashCode</span>()和<span class="hljs-symbol">equal</span>()方法来区分重复元素。      <span class="hljs-symbol">HashSet</span>内部使用<span class="hljs-symbol">Map</span>保存数据，即将<span class="hljs-symbol">HashSet</span>的数据作为<span class="hljs-symbol">Map</span>的<span class="hljs-symbol">key</span>值保存，这也是<span class="hljs-symbol">HashSet</span>中元素不能重复的原因。而<span class="hljs-symbol">Map</span>中保存<span class="hljs-symbol">key</span>值的,会去判断当前<span class="hljs-symbol">Map</span>中是否含有该<span class="hljs-symbol">Key</span>对象，内部是先通过<span class="hljs-symbol">key</span>的<span class="hljs-symbol">hashCode,</span>确定有相同的<span class="hljs-symbol">hashCode</span>之后，再通过<span class="hljs-symbol">equals</span>方法判断是否相同。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">重写 要求两同两小一大原则， 方法名相同，参数类型相同，子类返回类型小于等于父类方法返回类型， 子类抛出异常小于等于父类方法抛出异常， 子类访问权限大于等于父类方法访问权限。［注意：这里的返回类型必须要在有继承关系的前提下比较］ <br>重载 方法名必须相同，参数类型必须不同，包括但不限于一项，参数数目，参数类型，参数顺序<br>再来说说这道题 <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">B</span> 都是方法名和参数相同，是重写，但是返回类型没与父类返回类型有继承关系，错误 D 返回一个类错误 c的参数类型与父类不同，所以不是重写，可以理解为广义上的重载访问权限小于父类，都会显示错误<br>虽然题目没点明一定要重载或者重写，但是当你的方法名与参数类型与父类相同时，已经是重写了，这时候如果返回类型或者异常类型比父类大，或者访问权限比父类小都会编译错误<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp">难道我们只能单纯的背java的那个类是线程安全的，那个类不是线程安全的么？<br>这和授人以鱼有何区别呢？难道就没有一种方法授人以渔？直接教我们如何去判断一个类是否是线程安全的？<br>java中的线程安全是什么：<br>就是线程同步的意思，就是当一个程序对一个线程安全的方法或者语句进行访问的时候，其他的不能再对他进行操作了，必须等到这次访问结束以后才能对这个线程安全的方法进行访问<br>什么叫线程安全：<br>如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。 <br>或者说:一个类或者程序所提供的接口对于线程来说是原子操作或者多个线程之间的切换不会导致该接口的执行结果存在二义性,也就是说我们不用考虑同步的问题。<br>线程安全问题都是由全局变量及静态变量引起的。<br>若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说，这个全局变量是线程安全的；若有多个线程同时执行写操作，一般都需要考虑线程同步，否则就可能影响线程安全。<br>看过vector源码的同学就会知道他的许多操作都是加了<span class="hljs-keyword">synchronized</span>修饰的比如他的添加元素。(不知道<span class="hljs-keyword">synchronized</span>是什么意思的自行百度！)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">只要是被子类重写的方法，不被<span class="hljs-keyword">super</span>调用都是调用子类方法<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">一旦在<span class="hljs-keyword">finally</span>块中使用了<span class="hljs-keyword">return</span>或<span class="hljs-keyword">throw</span>语句，将会导致<span class="hljs-keyword">try</span>块，<span class="hljs-keyword">catch</span>块中的<span class="hljs-keyword">return</span>，<span class="hljs-keyword">throw</span>语句失效<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">链接：https:<span class="hljs-regexp">//</span>www.nowcoder.com<span class="hljs-regexp">/questionTerminal/</span><span class="hljs-number">073</span>fe9f1e5c84a689bcdb9ea899d295e?<br>来源：牛客网<br><br>对于管道，有下面这几种类型：<br>①普通管道（PIPE）：通常有两种限制，一是单工，即只能单向传输；二是血缘，即常用于父子进程间（或有血缘关系的进程间）。<br>②流管道（s_pipe）：去除了上述的第一种限制，实现了双向传输。<br><br>③命名管道（name_pipe）：去除了上述的第二种限制，实现了无血缘关系的不同进程间通信。<br>显然，要求是对于不同的服务器之间的通信，是要要求全双工形式的，而管道只能是半双工，虽然可以双向，但是同一时间只能有一个方向传输，全双工和半双工的区别可以如下图示理解：<br></code></pre></td></tr></table></figure>
+
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/073fe9f1e5c84a689bcdb9ea899d295e">https://www.nowcoder.com/questionTerminal/073fe9f1e5c84a689bcdb9ea899d295e</a>?<br>来源：牛客网<img src="https://uploadfiles.nowcoder.com/images/20180322/4846014_1521723853172_FF523AF3E7DA7B365BEA995386A30039" alt="img">**</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">is-<span class="hljs-keyword">a</span>:继承关系 has-<span class="hljs-keyword">a</span>:从属关系 like-<span class="hljs-keyword">a</span>:组合关系<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus">链接：https:<span class="hljs-comment">//www.nowcoder.com/questionTerminal/049085c1e4204b20b6171a0c13dfbfe7?</span><br>来源：牛客网<br><br>java<span class="hljs-selector-class">.lang</span>.NullPoninterException：变量未被初始化、对象未赋值、对象为空（俗称的空指针异常）<br>java<span class="hljs-selector-class">.lang</span>.NumberFormatException：数据格式转换失败（integer的取值范围为：-<span class="hljs-number">128</span>~<span class="hljs-number">127</span>，超过范围都会访问false）<br>java<span class="hljs-selector-class">.lang</span>.RuntimeException：运行时异常<br>java<span class="hljs-selector-class">.lang</span>.ArrayindexOutOfBoundsException：数组下标越界<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs gradle">链接：https:<span class="hljs-comment">//www.nowcoder.com/questionTerminal/22a7fd3328124530be8ced520a9eaceb?</span><br>来源：牛客网<br><br>接口是一种特殊的抽象类，先说明抽象类中的抽象方法，再说明接口<br><br>抽象类中的抽象方法(其前有 abstract1修饰)不能用 <span class="hljs-keyword">private</span>、 <span class="hljs-keyword">static</span>、 <span class="hljs-keyword">synchronized</span>、na<br>tive访回修饰符修饰。原因如下:<br><span class="hljs-number">1</span>. <span class="hljs-keyword">private</span><br>抽象方法没有方法体,是用来被继承的,所以不能用 <span class="hljs-keyword">private</span>修饰;<br><span class="hljs-number">2</span>.<span class="hljs-keyword">static</span><br><span class="hljs-keyword">static</span>修饰的方法可以通过类名来访间该方法(即该方法的方法体),抽象方法用sttic修饰没有意义;<br><span class="hljs-number">3</span>. <span class="hljs-keyword">synchronized</span><br>该关键字是为该方法加一个锁。而如果该关键字修饰的方法是 <span class="hljs-keyword">static</span>方法。则使用的锁就是<span class="hljs-keyword">class</span>变量的锁。如果是修饰类方法。则用<span class="hljs-keyword">this</span>变量锁。<br>但是抽象类不能实例化对象,因为该方法不是在该抽象类中实现的。是在其子类实现的。所以，锁应该归其子类所有。所以，抽象方法也就不能用 <span class="hljs-keyword">synchronized</span>关键字修饰了;<br><span class="hljs-number">3</span>. <span class="hljs-keyword">native</span><br><span class="hljs-keyword">native</span>这个东西本身就和 <span class="hljs-keyword">abstract</span>冲突,他们都是方法的声明,只是一个把方法实现移交给子类,另一个是移交给本地操作系统。如果同时出现,就相当于即把实现移交给子类,又把实现移交给本地操作系统,那到底谁来实现具体方法呢<br><br>终于说到了接口！<br>接口是一种特殊的抽象类,接口中的方法全部是抽象方法(但其前的 <span class="hljs-keyword">abstract</span>可以省略),所以抽象类中的抽象方法不能用的访间修饰符这里也不能用。同时额外说明一下protect关键词<br><span class="hljs-number">4</span>. protect<br><span class="hljs-keyword">protected</span>访同修饰符也不能使用,因为接口可以让所有的类去实现(非继承),不只是其子类,但是要用<span class="hljs-keyword">public</span>去修饰。接口可以去继承一个已有的接口。<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://deng-2022.gitee.io/blog/2023/04/07/牛客MK/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年4月9日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/04/08/%E7%AE%97%E6%B3%95%E9%A2%98%E8%B7%AF%E7%BA%BF/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/04/01/%E5%89%8D%E7%AB%AF-Vue3%E7%AF%87/" title="前端-Vue3篇">
+                        <span class="hidden-mobile">前端-Vue3篇</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南|Hexo Fluid 用户手册</span> </a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -24,7 +24,7 @@
 <meta property="og:description" content="MySQL安装配置一条龙教程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-19T03:59:19.000Z">
-<meta property="article:modified_time" content="2023-03-25T08:07:51.443Z">
+<meta property="article:modified_time" content="2023-04-02T14:10:15.285Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="MySQL">
@@ -312,7 +312,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年3月25日 下午
+                    本文最后更新于：2023年4月2日 晚上
                   
                 
               </p>
@@ -333,7 +333,7 @@
 
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">2.2</span>.新建配置文件<br>在路径D:\softWare\mysql\mysql<span class="hljs-number">-5.7</span><span class="hljs-number">.19</span>-winx64下创建my.ini,配置如下内容:<br>[mysql]<br><span class="hljs-keyword">default</span>-<span class="hljs-type">character</span>-<span class="hljs-keyword">set</span>=utf8<br>[mysqld]<br><span class="hljs-type">character</span>-<span class="hljs-keyword">set</span>-<span class="hljs-keyword">server</span>=utf8<br><span class="hljs-keyword">default</span>-<span class="hljs-keyword">storage</span>-engine=INNODB<br>sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>.<span class="hljs-number">3</span>.初始化MySQL，生成date<br><span class="hljs-attribute">mysqld</span> –initialize-insecure <br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>.<span class="hljs-number">3</span>.初始化MySQL，生成date<br><span class="hljs-attribute">mysqld</span> -–initialize-insecure <br></code></pre></td></tr></table></figure>
 
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>.<span class="hljs-number">4</span>.注册MySQL服务<br><span class="hljs-attribute">mysqld</span> -install<br></code></pre></td></tr></table></figure>
 
@@ -443,7 +443,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年3月25日</div>
+          <div>2023年4月2日</div>
         </div>
       
       
