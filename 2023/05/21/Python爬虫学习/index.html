@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230526151919628.png">
 <meta property="article:published_time" content="2023-05-21T12:35:01.000Z">
-<meta property="article:modified_time" content="2023-05-21T12:35:01.000Z">
+<meta property="article:modified_time" content="2023-05-30T16:00:04.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="爬虫">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.5k 字
+          7.9k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          17 分钟
+          20 分钟
         
       </span>
     
@@ -311,6 +311,14 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">Python爬虫学习</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年5月31日 凌晨
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
@@ -361,11 +369,19 @@
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230526151919628.png" alt="image-20230526151919628"></p>
 <ul>
 <li><h5 id="照猫画虎写了个贪婪匹配（学过都忘了，非常滴不熟练）"><a href="#照猫画虎写了个贪婪匹配（学过都忘了，非常滴不熟练）" class="headerlink" title="照猫画虎写了个贪婪匹配（学过都忘了，非常滴不熟练）"></a>照猫画虎写了个贪婪匹配（学过都忘了，非常滴不熟练）</h5></li>
-<li><p>可以爬取多个页面了</p>
-</li>
+<li><h5 id="可以爬取多个页面了"><a href="#可以爬取多个页面了" class="headerlink" title="可以爬取多个页面了"></a>可以爬取多个页面了</h5></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os.path<br><span class="hljs-keyword">import</span> re<br><br><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-comment"># 创建文件夹</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">&#x27;./imgs&#x27;</span>):<br>        os.mkdir(<span class="hljs-string">&#x27;./imgs&#x27;</span>)<br>    <span class="hljs-comment"># 请求路径</span><br>    url = <span class="hljs-string">&#x27;https://www.woyaogexing.com/tupian/index_%d.html&#x27;</span><br>    <span class="hljs-comment"># UA伪装</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, &#x27;</span><br>                      <span class="hljs-string">&#x27;like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/113.0.0.0&#x27;</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> page_num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>):<br>        new_url = <span class="hljs-built_in">format</span>(url % page_num)<br>        <span class="hljs-comment"># 爬取对应的网页内容</span><br>        page_text = requests.get(url=new_url, headers=headers).text<br>        <span class="hljs-comment"># print(page_text)</span><br>        <span class="hljs-comment"># 爬取对应网页上的图片(正则表达式)</span><br>        <span class="hljs-comment"># 编写正则表达式</span><br>        ex = <span class="hljs-string">&#x27;&lt;div class=&quot;txList &quot;&gt;.*?&lt;img.*?src=&quot;(.*?)&quot;.*?&gt;.*?&lt;/div&gt;&#x27;</span><br>        <span class="hljs-comment"># 获取所需字符串</span><br>        img_src_list = re.findall(ex, page_text, re.S)<br>        <span class="hljs-built_in">print</span>(img_src_list)<br>        <span class="hljs-keyword">for</span> img_src <span class="hljs-keyword">in</span> img_src_list:<br>            <span class="hljs-comment"># 拼接完整的图片路径</span><br>            img_src = <span class="hljs-string">&#x27;http:&#x27;</span> + img_src<br>            <span class="hljs-built_in">print</span>(img_src)<br>            <span class="hljs-comment"># 请求图片</span><br>            img = requests.get(url=img_src, headers=headers).content<br>            <span class="hljs-comment"># 图片名</span><br>            img_name = img_src.split(<span class="hljs-string">&#x27;/&#x27;</span>)[-<span class="hljs-number">1</span>]<br>            <span class="hljs-comment"># 图片保存路径</span><br>            img_path = <span class="hljs-string">&#x27;./imgs/&#x27;</span> + img_name<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;img_path = &#x27;</span> + img_path)<br>            <span class="hljs-comment"># 保存图片</span><br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(img_path, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> fp:<br>                fp.write(img)<br>            <span class="hljs-built_in">print</span>(img_name + <span class="hljs-string">&#x27;下载完成！&#x27;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;over!!!&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
+<h2 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h2><ul>
+<li><h5 id="数据分析，爬取页面中标签中的数据"><a href="#数据分析，爬取页面中标签中的数据" class="headerlink" title="数据分析，爬取页面中标签中的数据"></a>数据分析，爬取页面中标签中的数据</h5></li>
+<li><h5 id="这边做完几个课堂练习后，自行找了个网页，练习了下："><a href="#这边做完几个课堂练习后，自行找了个网页，练习了下：" class="headerlink" title="这边做完几个课堂练习后，自行找了个网页，练习了下："></a>这边做完几个课堂练习后，自行找了个网页，练习了下：</h5></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os.path<br><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-comment"># url路径</span><br>    url = <span class="hljs-string">&#x27;https://bobopic.com/4kbizhi.html&#x27;</span><br>    <span class="hljs-comment"># UA伪装</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) &#x27;</span><br>                      <span class="hljs-string">&#x27;Chrome/72.0.3626.121 Safari/537.36&#x27;</span><br>    &#125;<br>    <span class="hljs-comment"># 请求页面</span><br>    page_text = requests.get(url=url, headers=headers).text<br>    <span class="hljs-comment"># 封装页面对象</span><br>    tree = etree.HTML(page_text)<br>    <span class="hljs-comment"># 获取a标签</span><br>    a_list = tree.xpath(<span class="hljs-string">&#x27;//div[@class=&quot;related&quot;]/ul/li/a&#x27;</span>)<br>    <span class="hljs-comment"># 遍历a_list</span><br>    <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> a_list:<br>        <span class="hljs-comment"># 拿取每个a的href</span><br>        a_href = a.xpath(<span class="hljs-string">&#x27;./@href&#x27;</span>)[<span class="hljs-number">0</span>]<br>        <span class="hljs-comment"># 请求新页面</span><br>        new_page_text = requests.get(url=a_href + <span class="hljs-string">&#x27;&#x27;</span>, headers=headers).content<br>        <span class="hljs-comment"># 封装页面对象</span><br>        tree = etree.HTML(new_page_text)<br>        img_list = tree.xpath(<span class="hljs-string">&#x27;//div[@class=&quot;entry-content u-clearfix&quot;]//img&#x27;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">&#x27;./二次元风景4k&#x27;</span>):<br>            os.mkdir(<span class="hljs-string">&#x27;./二次元风景4k&#x27;</span>)<br>        <span class="hljs-comment"># 获取新页面下的图片</span><br>        <span class="hljs-keyword">for</span> img <span class="hljs-keyword">in</span> img_list:<br>            <span class="hljs-comment"># 图片名</span><br>            img_name = img.xpath(<span class="hljs-string">&#x27;./@alt&#x27;</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;.jpg&#x27;</span><br>            <span class="hljs-comment"># 图片路径</span><br>            img_src = img.xpath(<span class="hljs-string">&#x27;./@src&#x27;</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;&#x27;</span><br>            <span class="hljs-comment"># 爬取图片</span><br>            img_data = requests.get(url=img_src, headers=headers).content<br>            <span class="hljs-comment"># 图片存放路径</span><br>            img_path = <span class="hljs-string">&#x27;二次元风景4k/&#x27;</span> + img_name<br>            <span class="hljs-comment"># 存放图片</span><br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;二次元风景4k/&#x27;</span> + img_name, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> fp:<br>                fp.write(img_data)<br>            <span class="hljs-built_in">print</span>(img_name + <span class="hljs-string">&#x27;下载成功！&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="以alt内容作为图片名，里面含有”-”符号，不能在文件名中出现，搞了老半天（2023-05-30）"><a href="#以alt内容作为图片名，里面含有”-”符号，不能在文件名中出现，搞了老半天（2023-05-30）" class="headerlink" title="以alt内容作为图片名，里面含有”|”符号，不能在文件名中出现，搞了老半天（2023/05/30）"></a>以alt内容作为图片名，里面含有”|”符号，不能在文件名中出现，搞了老半天（2023/05/30）</h5></li>
+</ul>
 
                 
               </div>
@@ -438,6 +454,11 @@
           <div>2023年5月21日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年5月31日</div>
+        </div>
       
       
         <div class="license-meta-item">
