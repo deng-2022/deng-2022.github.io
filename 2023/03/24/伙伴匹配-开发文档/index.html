@@ -45,11 +45,12 @@
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230526233636359.png">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230529233029591.png">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230529233050906.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230602162748112.png">
 <meta property="article:published_time" content="2023-03-24T04:13:32.000Z">
 <meta property="article:modified_time" content="2023-05-28T14:05:43.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230326091433304.png">
   
@@ -273,7 +274,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          142k 字
+          145k 字
         
       </span>
     
@@ -284,7 +285,7 @@
         
         
         
-          355 分钟
+          363 分钟
         
       </span>
     
@@ -1708,12 +1709,12 @@
 <li><h5 id="记得队伍卡片上左上角的状态显示吧，我们优化一下用户卡片上的性别显示"><a href="#记得队伍卡片上左上角的状态显示吧，我们优化一下用户卡片上的性别显示" class="headerlink" title="记得队伍卡片上左上角的状态显示吧，我们优化一下用户卡片上的性别显示"></a>记得队伍卡片上左上角的状态显示吧，我们优化一下用户卡片上的性别显示</h5></li>
 <li><h5 id="service-function-getUserGender-ts下："><a href="#service-function-getUserGender-ts下：" class="headerlink" title="service/function/getUserGender.ts下："></a>service/function/getUserGender.ts下：</h5></li>
 </ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 转换stasus</span><br>export <span class="hljs-keyword">const</span> getUserGender = (gender: string) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (gender === <span class="hljs-string">&quot;0&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;女&quot;</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (gender === <span class="hljs-string">&quot;1&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;男&quot;</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;人妖&quot;</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 转换stasus</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getUserGender</span> = (<span class="hljs-params">gender: <span class="hljs-built_in">string</span></span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (gender === <span class="hljs-string">&quot;0&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;女&quot;</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (gender === <span class="hljs-string">&quot;1&quot;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;男&quot;</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;人妖&quot;</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="然后在用户列表页和匹配用户页调用一下就行"><a href="#然后在用户列表页和匹配用户页调用一下就行" class="headerlink" title="然后在用户列表页和匹配用户页调用一下就行"></a>然后在用户列表页和匹配用户页调用一下就行</h5></li>
 </ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;van-card<br>     <span class="hljs-attribute">v-for</span>=<span class="hljs-string">&quot;user in userList&quot;</span><br>     :<span class="hljs-attribute">tag</span>=<span class="hljs-string">&quot;getUserGender(user.gender)&quot;</span><br>     :<span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;`<span class="hljs-variable">$&#123;user.userAccount&#125;</span> <span class="hljs-variable">$&#123;user.username&#125;</span> <span class="hljs-variable">$&#123;user.planetCode&#125;</span>`&quot;</span><br>     :<span class="hljs-attribute">desc</span>=<span class="hljs-string">&quot;user.profile&quot;</span><br>     :<span class="hljs-attribute">thumb</span>=<span class="hljs-string">&quot;`<span class="hljs-variable">$&#123;user.avatarUrl&#125;</span>`&quot;</span><br>   &gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;van-card<br>     v-<span class="hljs-keyword">for</span>=<span class="hljs-string">&quot;user in userList&quot;</span><br>     :tag=<span class="hljs-string">&quot;getUserGender(user.gender)&quot;</span><br>     :title=<span class="hljs-string">&quot;`$&#123;user.userAccount&#125; $&#123;user.username&#125; $&#123;user.planetCode&#125;`&quot;</span><br>     :desc=<span class="hljs-string">&quot;user.profile&quot;</span><br>     :thumb=<span class="hljs-string">&quot;`$&#123;user.avatarUrl&#125;`&quot;</span><br>   &gt;<br></code></pre></td></tr></table></figure>
 
 <h2 id="阶段性问题-10"><a href="#阶段性问题-10" class="headerlink" title="阶段性问题"></a>阶段性问题</h2><ul>
 <li><h5 id="这里把getTeamStatus-ts也优化了下，结果给网页整空白了，卡了半天发现TeamListPage和TeamPage都调用了这个方法而前者我忘记改过来了，要注意一下"><a href="#这里把getTeamStatus-ts也优化了下，结果给网页整空白了，卡了半天发现TeamListPage和TeamPage都调用了这个方法而前者我忘记改过来了，要注意一下" class="headerlink" title="这里把getTeamStatus.ts也优化了下，结果给网页整空白了，卡了半天发现TeamListPage和TeamPage都调用了这个方法而前者我忘记改过来了，要注意一下"></a>这里把getTeamStatus.ts也优化了下，结果给网页整空白了，卡了半天发现TeamListPage和TeamPage都调用了这个方法而前者我忘记改过来了，要注意一下</h5></li>
@@ -1763,7 +1764,7 @@
 <li><h5 id="在判断退出后不为空后没有删除user-team记录，导致调试时出现问题了"><a href="#在判断退出后不为空后没有删除user-team记录，导致调试时出现问题了" class="headerlink" title="在判断退出后不为空后没有删除user_team记录，导致调试时出现问题了"></a>在判断退出后不为空后没有删除user_team记录，导致调试时出现问题了</h5></li>
 <li><h5 id="优化完成"><a href="#优化完成" class="headerlink" title="优化完成"></a>优化完成</h5></li>
 </ul>
-<h3 id="搜索队伍持续优化2-0"><a href="#搜索队伍持续优化2-0" class="headerlink" title="搜索队伍持续优化2.0"></a>搜索队伍持续优化2.0</h3><ul>
+<h3 id="搜索队伍优化2-0"><a href="#搜索队伍优化2-0" class="headerlink" title="搜索队伍优化2.0"></a>搜索队伍优化2.0</h3><ul>
 <li><h5 id="我们要在搜索页面根据公开-加密分页展示两类队伍，再从中筛选所需队伍"><a href="#我们要在搜索页面根据公开-加密分页展示两类队伍，再从中筛选所需队伍" class="headerlink" title="我们要在搜索页面根据公开/加密分页展示两类队伍，再从中筛选所需队伍"></a>我们要在搜索页面根据公开/加密分页展示两类队伍，再从中筛选所需队伍</h5></li>
 <li><h5 id="首先我们使用-Tab标签页-组件，把队伍列表表单分为公开和加密两页"><a href="#首先我们使用-Tab标签页-组件，把队伍列表表单分为公开和加密两页" class="headerlink" title="首先我们使用 Tab标签页 组件，把队伍列表表单分为公开和加密两页"></a>首先我们使用 Tab标签页 组件，把队伍列表表单分为公开和加密两页</h5></li>
 </ul>
@@ -1802,14 +1803,60 @@
 <ul>
 <li><h5 id="今天就做到这里，明天继续！（2023-05-29晚）"><a href="#今天就做到这里，明天继续！（2023-05-29晚）" class="headerlink" title="今天就做到这里，明天继续！（2023/05/29晚）"></a>今天就做到这里，明天继续！（2023/05/29晚）</h5></li>
 </ul>
-<h3 id="加入队伍优化"><a href="#加入队伍优化" class="headerlink" title="加入队伍优化"></a>加入队伍优化</h3><ul>
-<li><h5 id="实现申请加入加密队伍时，需要填写密码"><a href="#实现申请加入加密队伍时，需要填写密码" class="headerlink" title="实现申请加入加密队伍时，需要填写密码"></a>实现申请加入加密队伍时，需要填写密码</h5></li>
-<li><h5 id="他妈的好多东西，明天再做吧嘿嘿嘿"><a href="#他妈的好多东西，明天再做吧嘿嘿嘿" class="headerlink" title="他妈的好多东西，明天再做吧嘿嘿嘿"></a>他妈的好多东西，明天再做吧嘿嘿嘿</h5></li>
+<h3 id="搜索队伍优化3-0"><a href="#搜索队伍优化3-0" class="headerlink" title="搜索队伍优化3.0"></a>搜索队伍优化3.0</h3><ul>
+<li><h5 id="搜索到的队伍不包含用户已加入的队伍（当然如果重复加入队伍，我们也是有逻辑校验的）"><a href="#搜索到的队伍不包含用户已加入的队伍（当然如果重复加入队伍，我们也是有逻辑校验的）" class="headerlink" title="搜索到的队伍不包含用户已加入的队伍（当然如果重复加入队伍，我们也是有逻辑校验的）"></a>搜索到的队伍不包含用户已加入的队伍（当然如果重复加入队伍，我们也是有逻辑校验的）</h5></li>
+<li><h5 id="添加后端逻辑即可，代码如下："><a href="#添加后端逻辑即可，代码如下：" class="headerlink" title="添加后端逻辑即可，代码如下："></a>添加后端逻辑即可，代码如下：</h5></li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 6.排除当前用户已加入的队伍</span><br>QueryWrapper&lt;UserTeam&gt; utqw = <span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();<br><span class="hljs-comment">// 6.1.查询当前用户已加入的队伍信息(为提高性能, 仅拿取需要的team_id字段即可)</span><br>utqw.select(<span class="hljs-string">&quot;team_id&quot;</span>).eq(<span class="hljs-string">&quot;user_id&quot;</span>, loginUser.getId());<br>List&lt;UserTeam&gt; userTeamList = userTeamService.list(utqw);<br><span class="hljs-comment">// 6.2.队伍列表排除掉用户已加入的队伍</span><br>List&lt;Long&gt; teamIdList = userTeamList.stream().map(UserTeam::getTeamId).collect(Collectors.toList());<br>tqw.notIn(<span class="hljs-string">&quot;id&quot;</span>, teamIdList);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="现在大厅中就bu显示用户已加入的队伍了，美滋滋-（2023-05-31下午）"><a href="#现在大厅中就bu显示用户已加入的队伍了，美滋滋-（2023-05-31下午）" class="headerlink" title="现在大厅中就bu显示用户已加入的队伍了，美滋滋~（2023/05/31下午）"></a>现在大厅中就bu显示用户已加入的队伍了，美滋滋~（2023/05/31下午）</h5></li>
+</ul>
+<h3 id="加入队伍优化"><a href="#加入队伍优化" class="headerlink" title="加入队伍优化"></a>加入队伍优化</h3><ul>
+<li><h5 id="他妈的好多东西，明天再做吧嘿嘿嘿"><a href="#他妈的好多东西，明天再做吧嘿嘿嘿" class="headerlink" title="他妈的好多东西，明天再做吧嘿嘿嘿"></a>他妈的好多东西，明天再做吧嘿嘿嘿</h5></li>
+<li><h5 id="实现申请加入加密队伍时，需要填写密码"><a href="#实现申请加入加密队伍时，需要填写密码" class="headerlink" title="实现申请加入加密队伍时，需要填写密码"></a>实现申请加入加密队伍时，需要填写密码</h5></li>
+<li><h5 id="这个功能基本实现了，但发现目前后端仅校验password的格式，并没有校验其正确与否，待明日优化完毕这个逻辑后再作记录吧（2023-05-31晚）"><a href="#这个功能基本实现了，但发现目前后端仅校验password的格式，并没有校验其正确与否，待明日优化完毕这个逻辑后再作记录吧（2023-05-31晚）" class="headerlink" title="这个功能基本实现了，但发现目前后端仅校验password的格式，并没有校验其正确与否，待明日优化完毕这个逻辑后再作记录吧（2023/05/31晚）"></a>这个功能基本实现了，但发现目前后端仅校验password的格式，并没有校验其正确与否，待明日优化完毕这个逻辑后再作记录吧（2023/05/31晚）</h5></li>
+</ul>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs fortran">const joinTeam = await myAxios<br>   .post(<span class="hljs-string">&quot;/team/join&quot;</span>, &#123;<br>     id: <span class="hljs-built_in">team</span>.id,<br>     userId: <span class="hljs-built_in">team</span>.userId,<br>     maxNum: <span class="hljs-built_in">team</span>.maxNum,<br>     password: <span class="hljs-built_in">team</span>.password,<br>     joinNum: <span class="hljs-built_in">team</span>.joinNum,<br>     <span class="hljs-keyword">status</span>: <span class="hljs-built_in">team</span>.<span class="hljs-keyword">status</span>,<br>   &#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="我们边分析逻辑，边作相应的代码展示："><a href="#我们边分析逻辑，边作相应的代码展示：" class="headerlink" title="我们边分析逻辑，边作相应的代码展示："></a>我们边分析逻辑，边作相应的代码展示：</h5></li>
+<li><h5 id="在加密队伍列表下，点击申请加入后，首先弹出对话框，并要求填写队伍密码"><a href="#在加密队伍列表下，点击申请加入后，首先弹出对话框，并要求填写队伍密码" class="headerlink" title="在加密队伍列表下，点击申请加入后，首先弹出对话框，并要求填写队伍密码"></a>在加密队伍列表下，点击申请加入后，首先弹出对话框，并要求填写队伍密码</h5></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template #footer&gt;<br>          &lt;van-button size=&quot;mini&quot; type=&quot;success&quot; @click=&quot;preJoinTeam(team)&quot;&gt;<br>            申请加入<br>          &lt;/van-button&gt;<br>          &lt;van-button size=&quot;mini&quot; type=&quot;primary&quot; @click=&quot;&quot;&gt;<br>            详细信息<br>          &lt;/van-button&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!-- 密码对话框 --&gt;<br>  &lt;van-dialog<br>    v-model:show=&quot;show&quot;<br>    title=&quot;提示&quot;<br>    show-cancel-button<br>    @confirm=&quot;toJoinTeam(joinTeamParam, password)&quot;<br>    @cancel=&quot;cancelJoin&quot;<br>  &gt;<br>    &lt;van-field v-model=&quot;password&quot; placeholder=&quot;请输入密码&quot;&gt; &lt;/van-field&gt;<br>  &lt;/van-dialog&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 加入队伍参数</span><br><span class="hljs-keyword">const</span> joinTeamParam = <span class="hljs-title function_">ref</span>(&#123;&#125;);<br><span class="hljs-comment">// 队伍密码</span><br><span class="hljs-keyword">const</span> password = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;&quot;</span>);<br><span class="hljs-comment">// 密码对话框</span><br><span class="hljs-keyword">const</span> show = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 弹出对话框 封装队伍信息</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">preJoinTeam</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">team: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  show.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span>;<br>  joinTeamParam.<span class="hljs-property">value</span> = team;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 确定 申请加入队伍</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">toJoinTeam</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">team: <span class="hljs-built_in">any</span>, password: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  <span class="hljs-comment">// on confirm</span><br>  <span class="hljs-comment">// 发送请求, 获取用户数据列表</span><br>  <span class="hljs-keyword">const</span> joinTeam = <span class="hljs-keyword">await</span> myAxios<br>    .<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/team/join&quot;</span>, &#123;<br>      <span class="hljs-attr">id</span>: team.<span class="hljs-property">id</span>,<br>      <span class="hljs-attr">userId</span>: team.<span class="hljs-property">userId</span>,<br>      <span class="hljs-attr">maxNum</span>: team.<span class="hljs-property">maxNum</span>,<br>      <span class="hljs-attr">joinNum</span>: team.<span class="hljs-property">joinNum</span>,<br>      <span class="hljs-attr">status</span>: team.<span class="hljs-property">status</span>,<br>      <span class="hljs-attr">password</span>: password,<br>    &#125;)<br>    <span class="hljs-comment">// 响应</span><br>    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;<br>      <span class="hljs-comment">// 返回响应数据（用户列表）</span><br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;加入队伍: = &quot;</span> + response.<span class="hljs-property">data</span>);<br>      <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>;<br>    &#125;)<br>    <span class="hljs-comment">// 抛异常</span><br>    .<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(error);<br>    &#125;);<br>  <span class="hljs-comment">// 成功加入队伍</span><br>  <span class="hljs-keyword">if</span> (joinTeam) &#123;<br>    <span class="hljs-title function_">showSuccessToast</span>(<span class="hljs-string">`joinTeam`</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(joinTeam);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 取消 清空密码槽 关闭对话框</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">cancelJoin</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;<br>  password.<span class="hljs-property">value</span> = <span class="hljs-string">&quot;&quot;</span>;<br>  show.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="前端就是这样，这边优化一下后端的密码校验"><a href="#前端就是这样，这边优化一下后端的密码校验" class="headerlink" title="前端就是这样，这边优化一下后端的密码校验"></a>前端就是这样，这边优化一下后端的密码校验</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 4.加入加密队伍必须输入密码且必须是正确的密码</span><br>        <span class="hljs-keyword">if</span> (TeamStatusEnum.SECRET.equals(statusEnum)) &#123;<br>            <span class="hljs-comment">// 4.1.查询所加队伍的password, 并判断输入的密码是否正确</span><br>            QueryWrapper&lt;Team&gt; tqw = <span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();<br>            tqw.select(<span class="hljs-string">&quot;password&quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">password</span> <span class="hljs-operator">=</span> team.getPassword();<br><br>            <span class="hljs-keyword">if</span> (StringUtils.isBlank(password) || password.length() &gt; <span class="hljs-number">32</span>)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BusinessException</span>(ErrorCode.PARMS_ERROR, <span class="hljs-string">&quot;加入加密队伍要提供正确的密码&quot;</span>);<br><br>            <span class="hljs-keyword">if</span> (!password.equals(<span class="hljs-built_in">this</span>.getById(teamId).getPassword()))<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BusinessException</span>(ErrorCode.UPDATE_ERROR, <span class="hljs-string">&quot;输入的密码不正确&quot;</span>);<br>        &#125;     <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="ok，优化完毕，加密队伍必须正确输入密码才能加入了。看一下效果：（2023-06-02）"><a href="#ok，优化完毕，加密队伍必须正确输入密码才能加入了。看一下效果：（2023-06-02）" class="headerlink" title="ok，优化完毕，加密队伍必须正确输入密码才能加入了。看一下效果：（2023/06/02）"></a>ok，优化完毕，加密队伍必须正确输入密码才能加入了。看一下效果：（2023/06/02）</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230602162748112.png" alt="image-20230602162748112"></p>
 <h3 id="分页查询队伍优化"><a href="#分页查询队伍优化" class="headerlink" title="分页查询队伍优化"></a>分页查询队伍优化</h3><ul>
 <li><h5 id="拿到加入队伍的所有队员的信息（2023-05-28）"><a href="#拿到加入队伍的所有队员的信息（2023-05-28）" class="headerlink" title="拿到加入队伍的所有队员的信息（2023/05/28）"></a>拿到加入队伍的所有队员的信息（2023/05/28）</h5></li>
 </ul>
-<h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><ul>
+<h3 id="主页优化"><a href="#主页优化" class="headerlink" title="主页优化"></a>主页优化</h3><ul>
+<li><h5 id="之前写匹配用户时，请求-user-match是粘贴请求-user-recommend的，导致把这些代码也粘进来了："><a href="#之前写匹配用户时，请求-user-match是粘贴请求-user-recommend的，导致把这些代码也粘进来了：" class="headerlink" title="之前写匹配用户时，请求/user/match是粘贴请求/user/recommend的，导致把这些代码也粘进来了："></a>之前写匹配用户时，请求/user/match是粘贴请求/user/recommend的，导致把这些代码也粘进来了：</h5></li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 响应</span><br>   .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;<br>     <span class="hljs-comment">// 返回响应数据（用户列表）</span><br>     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(response.<span class="hljs-property">data</span>);<br>     total = response.<span class="hljs-property">data</span>.<span class="hljs-property">total</span>;<br>     pageSize = response.<span class="hljs-property">data</span>.<span class="hljs-property">size</span>;<br>     <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">records</span>;<br>   &#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="怪不得每次开启匹配用户后，底边的分页条出问题了"><a href="#怪不得每次开启匹配用户后，底边的分页条出问题了" class="headerlink" title="怪不得每次开启匹配用户后，底边的分页条出问题了"></a>怪不得每次开启匹配用户后，底边的分页条出问题了</h5></li>
+<li><h5 id="完美解决！"><a href="#完美解决！" class="headerlink" title="完美解决！"></a>完美解决！</h5></li>
+</ul>
+<h3 id="查询用户优化"><a href="#查询用户优化" class="headerlink" title="查询用户优化"></a>查询用户优化</h3><h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><ul>
 <li><h5 id="新老值一样，无需修改-减少查询数据库"><a href="#新老值一样，无需修改-减少查询数据库" class="headerlink" title="新老值一样，无需修改(减少查询数据库)"></a>新老值一样，无需修改(减少查询数据库)</h5></li>
 <li><h5 id="根据队长id查询队伍——-gt-根据队长姓名？（这个也可以不改的，可以把用户星球编号设置为队员id编号）"><a href="#根据队长id查询队伍——-gt-根据队长姓名？（这个也可以不改的，可以把用户星球编号设置为队员id编号）" class="headerlink" title="根据队长id查询队伍——&gt;根据队长姓名？（这个也可以不改的，可以把用户星球编号设置为队员id编号）"></a>根据队长id查询队伍——&gt;根据队长姓名？（这个也可以不改的，可以把用户星球编号设置为队员id编号）</h5></li>
 <li><h5 id="校验老三样：校验登录、校验用户（存在？权限？封号？）、校验队伍（存在？状态？）（√）"><a href="#校验老三样：校验登录、校验用户（存在？权限？封号？）、校验队伍（存在？状态？）（√）" class="headerlink" title="校验老三样：校验登录、校验用户（存在？权限？封号？）、校验队伍（存在？状态？）（√）"></a>校验老三样：校验登录、校验用户（存在？权限？封号？）、校验队伍（存在？状态？）（√）</h5></li>
@@ -1835,6 +1882,7 @@
 <li><h5 id="加入队伍功能，加入加密队伍需要输入密码"><a href="#加入队伍功能，加入加密队伍需要输入密码" class="headerlink" title="加入队伍功能，加入加密队伍需要输入密码"></a>加入队伍功能，加入加密队伍需要输入密码</h5></li>
 <li><h5 id="分布式锁防止单用户加入两次队伍"><a href="#分布式锁防止单用户加入两次队伍" class="headerlink" title="分布式锁防止单用户加入两次队伍"></a>分布式锁防止单用户加入两次队伍</h5></li>
 <li><h5 id="项目打包上线"><a href="#项目打包上线" class="headerlink" title="项目打包上线"></a>项目打包上线</h5></li>
+<li><h5 id="拿到加入队伍的所有队员的信息"><a href="#拿到加入队伍的所有队员的信息" class="headerlink" title="拿到加入队伍的所有队员的信息"></a>拿到加入队伍的所有队员的信息</h5></li>
 </ul>
 
                 
@@ -1869,9 +1917,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
-      
         <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+      
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
     </div>
   
