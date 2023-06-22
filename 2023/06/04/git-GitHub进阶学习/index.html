@@ -24,7 +24,7 @@
 <meta property="og:description" content="熟练掌握git操作，尝试在GitHub中为开源项目作贡献">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-04T14:23:54.000Z">
-<meta property="article:modified_time" content="2023-06-05T14:38:23.206Z">
+<meta property="article:modified_time" content="2023-06-22T03:03:17.064Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="GitHUb">
@@ -312,7 +312,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年6月5日 晚上
+                    本文最后更新于：2023年6月22日 上午
                   
                 
               </p>
@@ -330,58 +330,58 @@
 <li><h5 id="以下操作均可在VS-Code中操作（已集成git基础命令）"><a href="#以下操作均可在VS-Code中操作（已集成git基础命令）" class="headerlink" title="以下操作均可在VS Code中操作（已集成git基础命令）"></a>以下操作均可在VS Code中操作（已集成git基础命令）</h5></li>
 <li><h5 id="初始化用户和邮箱"><a href="#初始化用户和邮箱" class="headerlink" title="初始化用户和邮箱"></a>初始化用户和邮箱</h5></li>
 </ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;用户名&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;用户邮箱&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">git config --global user.name <span class="hljs-string">&quot;用户名&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;用户邮箱&quot;</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="本地初始化一个仓库"><a href="#本地初始化一个仓库" class="headerlink" title="本地初始化一个仓库"></a>本地初始化一个仓库</h5></li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">git <span class="hljs-keyword">init</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git init<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="将文件修改添加至暂存区"><a href="#将文件修改添加至暂存区" class="headerlink" title="将文件修改添加至暂存区"></a>将文件修改添加至暂存区</h5></li>
 </ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-built_in">add</span> .<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git add .c<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="提交暂存区内的修改记录"><a href="#提交暂存区内的修改记录" class="headerlink" title="提交暂存区内的修改记录"></a>提交暂存区内的修改记录</h5></li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;fix(member):memory&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git commit -m <span class="hljs-string">&quot;fix(member):memory&quot;</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h5></li>
 </ul>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">git <span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git <span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="硬回退至某一次提交版本"><a href="#硬回退至某一次提交版本" class="headerlink" title="硬回退至某一次提交版本"></a>硬回退至某一次提交版本</h5></li>
 </ul>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard 提交记录id</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git reset --hard 提交记录id<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h5></li>
 </ul>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">git <span class="hljs-keyword">branch </span>分支名<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git branch 分支名<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="选择分支"><a href="#选择分支" class="headerlink" title="选择分支"></a>选择分支</h5></li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> checkout 分支名<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git checkout 分支名<br></code></pre></td></tr></table></figure>
 
 <h2 id="git链接远程仓库"><a href="#git链接远程仓库" class="headerlink" title="git链接远程仓库"></a>git链接远程仓库</h2><ul>
 <li><h5 id="注册并登录GitHub就不多说了，新建一个仓库test"><a href="#注册并登录GitHub就不多说了，新建一个仓库test" class="headerlink" title="注册并登录GitHub就不多说了，新建一个仓库test"></a>注册并登录GitHub就不多说了，新建一个仓库test</h5></li>
 <li><h5 id="链接至远程仓库（注：origin仅为仓库名，可自定义）"><a href="#链接至远程仓库（注：origin仅为仓库名，可自定义）" class="headerlink" title="链接至远程仓库（注：origin仅为仓库名，可自定义）"></a>链接至远程仓库（注：origin仅为仓库名，可自定义）</h5></li>
 </ul>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">git remote <span class="hljs-keyword">add </span><span class="hljs-keyword">origin </span>仓库地址<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git remote add origin 仓库地址<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="设置主分支（默认分支）"><a href="#设置主分支（默认分支）" class="headerlink" title="设置主分支（默认分支）"></a>设置主分支（默认分支）</h5></li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git branch -M <span class="hljs-selector-tag">main</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git branch -M main<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="执行更新，并提交至远程仓库"><a href="#执行更新，并提交至远程仓库" class="headerlink" title="执行更新，并提交至远程仓库"></a>执行更新，并提交至远程仓库</h5></li>
 </ul>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">git</span> <span class="hljs-keyword">add</span> .<br><span class="hljs-symbol">git</span> commit -m <span class="hljs-string">&quot;fix(member):memory&quot;</span><br><span class="hljs-symbol">git</span> <span class="hljs-keyword">push</span> origin <br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">git add .<br>git commit -m <span class="hljs-string">&quot;fix(member):memory&quot;</span><br>git push origin <br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="注：这里可能会出现以下几个问题："><a href="#注：这里可能会出现以下几个问题：" class="headerlink" title="注：这里可能会出现以下几个问题："></a>注：这里可能会出现以下几个问题：</h5></li>
@@ -391,30 +391,30 @@
 <ul>
 <li><h5 id="总结原因以及解决办法如下："><a href="#总结原因以及解决办法如下：" class="headerlink" title="总结原因以及解决办法如下："></a>总结原因以及解决办法如下：</h5></li>
 </ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">报错的原因是因为，每个仓库都有一个分支，也可以理解为大仓库里的小仓库，我们只是跟线上远程仓库有了关联，但没有跟线上远程仓库的某个分支关联，所以我们没法提交<br><br>在终端输入 git pull --rebase origin master 即可跟刚创建的线上远程仓库的默认分支master关联<br>这时再执行一下 git push -u origin master 即可将我们的项目文件上传到关联的线上远程文件中<br>————————————————<br>原文链接：https:<span class="hljs-regexp">//</span>blog.csdn.net<span class="hljs-regexp">/weixin_52641692/</span>article<span class="hljs-regexp">/details/</span><span class="hljs-number">130230537</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">报错的原因是因为，每个仓库都有一个分支，也可以理解为大仓库里的小仓库，我们只是跟线上远程仓库有了关联，但没有跟线上远程仓库的某个分支关联，所以我们没法提交<br><br>在终端输入 git pull --rebase origin master 即可跟刚创建的线上远程仓库的默认分支master关联<br>这时再执行一下 git push -u origin master 即可将我们的项目文件上传到关联的线上远程文件中<br>————————————————<br>原文链接：https://blog.csdn.net/weixin<span class="hljs-emphasis">_52641692/article/details/130230537</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="关联线上远程仓库默认分支"><a href="#关联线上远程仓库默认分支" class="headerlink" title="关联线上远程仓库默认分支"></a>关联线上远程仓库默认分支</h5></li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git pull <span class="hljs-attr">--rebase</span> origin <span class="hljs-selector-tag">main</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git pull --rebase origin main<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="提交项目文件至相关联的远程仓库分支中"><a href="#提交项目文件至相关联的远程仓库分支中" class="headerlink" title="提交项目文件至相关联的远程仓库分支中"></a>提交项目文件至相关联的远程仓库分支中</h5></li>
 </ul>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> -u <span class="hljs-built_in">origin</span> main<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git push -u origin main<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">问题二：<br>————————————————<br>这个我目前没遇到过，但问题描述是SSL证书过期之类的，总之就是本地的SSL证书有问题<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="执行以下命令即可："><a href="#执行以下命令即可：" class="headerlink" title="执行以下命令即可："></a>执行以下命令即可：</h5></li>
 </ul>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">git config --global http.sslverify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">git config --global http.sslverify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="参与GitHub开源项目"><a href="#参与GitHub开源项目" class="headerlink" title="参与GitHub开源项目"></a>参与GitHub开源项目</h3><ul>
 <li><h5 id="这个我在此简述一下吧，操作的多了就会熟练的："><a href="#这个我在此简述一下吧，操作的多了就会熟练的：" class="headerlink" title="这个我在此简述一下吧，操作的多了就会熟练的："></a>这个我在此简述一下吧，操作的多了就会熟练的：</h5></li>
 <li><h5 id="在开源项目中点击点击Fork，把项目拉取到自己的仓库中，执行修改并提交至自己的远程仓库分支中，再远程链接到开源项目仓库地址，回到开源项目中点击Pull-requests-gt-new-pull-request-gt-compare-across-forks，选择自己对应的仓库分支，create-pull-request即可提交修改，恭喜你，已经完成了第一次向开源项目贡献代码"><a href="#在开源项目中点击点击Fork，把项目拉取到自己的仓库中，执行修改并提交至自己的远程仓库分支中，再远程链接到开源项目仓库地址，回到开源项目中点击Pull-requests-gt-new-pull-request-gt-compare-across-forks，选择自己对应的仓库分支，create-pull-request即可提交修改，恭喜你，已经完成了第一次向开源项目贡献代码" class="headerlink" title="在开源项目中点击点击Fork，把项目拉取到自己的仓库中，执行修改并提交至自己的远程仓库分支中，再远程链接到开源项目仓库地址，回到开源项目中点击Pull requests -&gt; new pull request -&gt; compare across forks，选择自己对应的仓库分支，create pull request即可提交修改，恭喜你，已经完成了第一次向开源项目贡献代码"></a>在开源项目中点击点击Fork，把项目拉取到自己的仓库中，执行修改并提交至自己的远程仓库分支中，再远程链接到开源项目仓库地址，回到开源项目中点击Pull requests -&gt; new pull request -&gt; compare across forks，选择自己对应的仓库分支，create pull request即可提交修改，恭喜你，已经完成了第一次向开源项目贡献代码</h5></li>
 </ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/deng-2022/</span>re01.git .<br>git remote add upstream https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/midorg-com/</span>re01.git<br>git checkout -b memory<br>git add .<br>git commit -m <span class="hljs-string">&quot;add(momber): memory&quot;</span><br>git push -u origin memory<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">git clone https:<span class="hljs-comment">//github.com/deng-2022/re01.git .</span><br>git remote add upstream https:<span class="hljs-comment">//github.com/midorg-com/re01.git</span><br>git checkout -b memory<br>git add .<br>git commit -m <span class="hljs-string">&quot;add(momber): memory&quot;</span><br>git push -u origin memory<br></code></pre></td></tr></table></figure>
 
 
 
@@ -463,7 +463,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年6月5日</div>
+          <div>2023年6月22日</div>
         </div>
       
       
