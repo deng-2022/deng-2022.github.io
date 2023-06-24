@@ -16,31 +16,33 @@
   <meta name="author" content="Memory">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于自身实践，总结Nginx安装配置过程中的经验">
+    <meta name="description" content="Gitee托管博客站点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nginx安装配置详解">
-<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/06/22/Nginx%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:title" content="快速搭建博客站点">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/05/27/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%AB%99%E7%82%B9/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
-<meta property="og:description" content="基于自身实践，总结Nginx安装配置过程中的经验">
+<meta property="og:description" content="Gitee托管博客站点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622143528026.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622154436897.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622154707468.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622154920109.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622155144376.png">
-<meta property="article:published_time" content="2023-06-22T02:04:32.000Z">
-<meta property="article:modified_time" content="2023-06-23T05:42:53.406Z">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000510407.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000543197.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230527235802901.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230527235830531.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230527235851110.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230528000012337.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000031027.png">
+<meta property="article:published_time" content="2023-05-27T11:14:48.000Z">
+<meta property="article:modified_time" content="2023-05-27T15:59:59.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
-<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Blog">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622143528026.png">
+<meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000510407.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Nginx安装配置详解 - Memory&#39;s blog</title>
+  <title>快速搭建博客站点 - Memory&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Nginx安装配置详解"></span>
+            <span id="subtitle" data-typed-text="快速搭建博客站点"></span>
           
         </div>
 
@@ -244,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-06-22 10:04" pubdate>
-          2023年6月22日 上午
+        <time datetime="2023-05-27 19:14" pubdate>
+          2023年5月27日 晚上
         </time>
       </span>
     
@@ -256,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          975 字
         
       </span>
     
@@ -313,12 +315,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Nginx安装配置详解</h1>
+            <h1 style="display: none">快速搭建博客站点</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年6月23日 下午
+                    本文最后更新于：2023年5月27日 晚上
                   
                 
               </p>
@@ -326,63 +328,81 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Nginx安装配置详解"><a href="#Nginx安装配置详解" class="headerlink" title="Nginx安装配置详解"></a>Nginx安装配置详解</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li><h5 id="这篇关于Nginx的介绍是我看过最详细的了：Nginx-学习-KuangStudy-文章"><a href="#这篇关于Nginx的介绍是我看过最详细的了：Nginx-学习-KuangStudy-文章" class="headerlink" title="这篇关于Nginx的介绍是我看过最详细的了：Nginx 学习-KuangStudy-文章"></a>这篇关于Nginx的介绍是我看过最详细的了：<a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1483987971375263745">Nginx 学习-KuangStudy-文章</a></h5></li>
-<li><h5 id="这里我就不详细展开说了，网上的资料对Nginx都有着详尽的介绍，我仅依照自己的理解，给出我对Nginx的认识："><a href="#这里我就不详细展开说了，网上的资料对Nginx都有着详尽的介绍，我仅依照自己的理解，给出我对Nginx的认识：" class="headerlink" title="这里我就不详细展开说了，网上的资料对Nginx都有着详尽的介绍，我仅依照自己的理解，给出我对Nginx的认识："></a>这里我就不详细展开说了，网上的资料对Nginx都有着详尽的介绍，我仅依照自己的理解，给出我对Nginx的认识：</h5></li>
-<li><h5 id="Nginx是一个高性能的HTTP和反向代理web服务器，它的特点是反向代理、负载均衡"><a href="#Nginx是一个高性能的HTTP和反向代理web服务器，它的特点是反向代理、负载均衡" class="headerlink" title="Nginx是一个高性能的HTTP和反向代理web服务器，它的特点是反向代理、负载均衡"></a>Nginx是一个高性能的HTTP和反向代理web服务器，它的特点是反向代理、负载均衡</h5></li>
+                <h2 id="我们演示使用Hexo来搭建个人博客，并使用Gitee-GitHub托管"><a href="#我们演示使用Hexo来搭建个人博客，并使用Gitee-GitHub托管" class="headerlink" title="我们演示使用Hexo来搭建个人博客，并使用Gitee/GitHub托管"></a>我们演示使用Hexo来搭建个人博客，并使用Gitee/GitHub托管</h2><h2 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><h5 id="常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo"><a href="#常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo" class="headerlink" title="常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo"></a>常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo</h5></li>
+<li><h5 id="那我们就先使用Hexo来搭建了"><a href="#那我们就先使用Hexo来搭建了" class="headerlink" title="那我们就先使用Hexo来搭建了"></a>那我们就先使用Hexo来搭建了</h5></li>
+<li><h5 id="其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建"><a href="#其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建" class="headerlink" title="其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建"></a>其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建</h5></li>
+<li><h5 id="先放几个辅助资源："><a href="#先放几个辅助资源：" class="headerlink" title="先放几个辅助资源："></a>先放几个辅助资源：</h5></li>
+<li><h5 id="各站点生成器的入口：Static-Site-Generators-Top-Open-Source-SSGs-Jamstack"><a href="#各站点生成器的入口：Static-Site-Generators-Top-Open-Source-SSGs-Jamstack" class="headerlink" title="各站点生成器的入口：Static Site Generators - Top Open Source SSGs | Jamstack"></a>各站点生成器的入口：<a target="_blank" rel="noopener" href="https://jamstack.org/generators/">Static Site Generators - Top Open Source SSGs | Jamstack</a></h5></li>
+<li><h5 id="Hexo官网：建站-Hexo"><a href="#Hexo官网：建站-Hexo" class="headerlink" title="Hexo官网：建站 | Hexo"></a>Hexo官网：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup">建站 | Hexo</a></h5></li>
 </ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="本地Linux原始安装"><a href="#本地Linux原始安装" class="headerlink" title="本地Linux原始安装"></a>本地Linux原始安装</h3><ul>
-<li><h5 id="手动安装并手动配置是很繁琐的，不过操作一遍确实很能巩固Linux命令，这里给出详细的安装教程："><a href="#手动安装并手动配置是很繁琐的，不过操作一遍确实很能巩固Linux命令，这里给出详细的安装教程：" class="headerlink" title="手动安装并手动配置是很繁琐的，不过操作一遍确实很能巩固Linux命令，这里给出详细的安装教程："></a>手动安装并手动配置是很繁琐的，不过操作一遍确实很能巩固Linux命令，这里给出详细的安装教程：</h5></li>
-<li><h5 id="Nginx官网下载：nginx-download"><a href="#Nginx官网下载：nginx-download" class="headerlink" title="Nginx官网下载：nginx: download"></a>Nginx官网下载：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">nginx: download</a></h5></li>
-<li><h5 id="教程一：Nginx安装下载-KuangStudy-文章"><a href="#教程一：Nginx安装下载-KuangStudy-文章" class="headerlink" title="教程一：Nginx安装下载-KuangStudy-文章"></a>教程一：<a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1511610238649233410">Nginx安装下载-KuangStudy-文章</a></h5></li>
-<li><h5 id="教程二：-67条消息-Nginx安装及其常用命令（实操版）-nginx安装命令-叫我-默语的博客-CSDN博客"><a href="#教程二：-67条消息-Nginx安装及其常用命令（实操版）-nginx安装命令-叫我-默语的博客-CSDN博客" class="headerlink" title="教程二：(67条消息) Nginx安装及其常用命令（实操版）_nginx安装命令_叫我 默语的博客-CSDN博客"></a>教程二：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42055933/article/details/130734077">(67条消息) Nginx安装及其常用命令（实操版）_nginx安装命令_叫我 默语的博客-CSDN博客</a></h5></li>
-<li><h5 id="教程三：-67条消息-yum安装nginx-yum-安装nginx-q495673918的博客-CSDN博客"><a href="#教程三：-67条消息-yum安装nginx-yum-安装nginx-q495673918的博客-CSDN博客" class="headerlink" title="教程三：(67条消息) yum安装nginx_yum 安装nginx_q495673918的博客-CSDN博客"></a>教程三：<a target="_blank" rel="noopener" href="https://blog.csdn.net/q495673918/article/details/124477891">(67条消息) yum安装nginx_yum 安装nginx_q495673918的博客-CSDN博客</a></h5></li>
-<li><h5 id="将来有空的话，我会补充这里的手动安装实操流程（宝塔一键安装真的太便捷了）"><a href="#将来有空的话，我会补充这里的手动安装实操流程（宝塔一键安装真的太便捷了）" class="headerlink" title="将来有空的话，我会补充这里的手动安装实操流程（宝塔一键安装真的太便捷了）"></a>将来有空的话，我会补充这里的手动安装实操流程（宝塔一键安装真的太便捷了）</h5></li>
+<h3 id="建站前"><a href="#建站前" class="headerlink" title="建站前"></a>建站前</h3><ul>
+<li><h5 id="使用Hexo搭建博客前要做的准备（这里不细讲）"><a href="#使用Hexo搭建博客前要做的准备（这里不细讲）" class="headerlink" title="使用Hexo搭建博客前要做的准备（这里不细讲）"></a>使用Hexo搭建博客前要做的准备（这里不细讲）</h5></li>
+<li><h5 id="也没别的，就两点：Node-js和Git"><a href="#也没别的，就两点：Node-js和Git" class="headerlink" title="也没别的，就两点：Node.js和Git"></a>也没别的，就两点：Node.js和Git</h5></li>
 </ul>
-<h3 id="宝塔Linux一键安装"><a href="#宝塔Linux一键安装" class="headerlink" title="宝塔Linux一键安装"></a>宝塔Linux一键安装</h3><ul>
-<li><h5 id="不论是云服务器还是本地服务器，宝塔Linux都是一键安装的，省去了大部分繁琐的配置"><a href="#不论是云服务器还是本地服务器，宝塔Linux都是一键安装的，省去了大部分繁琐的配置" class="headerlink" title="不论是云服务器还是本地服务器，宝塔Linux都是一键安装的，省去了大部分繁琐的配置"></a>不论是云服务器还是本地服务器，宝塔Linux都是一键安装的，省去了大部分繁琐的配置</h5></li>
-<li><h5 id="你可以在登录宝塔面板之后，在软件商店里下载安装："><a href="#你可以在登录宝塔面板之后，在软件商店里下载安装：" class="headerlink" title="你可以在登录宝塔面板之后，在软件商店里下载安装："></a>你可以在登录宝塔面板之后，在软件商店里下载安装：</h5></li>
+<h3 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h3><ul>
+<li><h5 id="全局安装hexo-cli（这玩意儿是个构建工具，就是用来安装hexo的）"><a href="#全局安装hexo-cli（这玩意儿是个构建工具，就是用来安装hexo的）" class="headerlink" title="全局安装hexo-cli（这玩意儿是个构建工具，就是用来安装hexo的）"></a>全局安装hexo-cli（这玩意儿是个构建工具，就是用来安装hexo的）</h5></li>
 </ul>
-<img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622143528026.png" alt="image-20230622143528026" style="zoom:150%;" />
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><h5 id="也可以在终端里，像本地Linux服务器一样，使用命令安装配置Nginx"><a href="#也可以在终端里，像本地Linux服务器一样，使用命令安装配置Nginx" class="headerlink" title="也可以在终端里，像本地Linux服务器一样，使用命令安装配置Nginx"></a>也可以在终端里，像本地Linux服务器一样，使用命令安装配置Nginx</h5></li>
+<li><h5 id="在指定文件路径下初始化hexo"><a href="#在指定文件路径下初始化hexo" class="headerlink" title="在指定文件路径下初始化hexo"></a>在指定文件路径下初始化hexo</h5></li>
 </ul>
-<h2 id="配置介绍"><a href="#配置介绍" class="headerlink" title="配置介绍"></a>配置介绍</h2><ul>
-<li><h5 id="介绍下Nginx目录结构和配置文件的内容："><a href="#介绍下Nginx目录结构和配置文件的内容：" class="headerlink" title="介绍下Nginx目录结构和配置文件的内容："></a>介绍下Nginx目录结构和配置文件的内容：</h5></li>
-<li><h5 id="67条消息-Nginx-目录结构与配置文件详解-nginx目录-不会调制解调的猫的博客-CSDN博客"><a href="#67条消息-Nginx-目录结构与配置文件详解-nginx目录-不会调制解调的猫的博客-CSDN博客" class="headerlink" title="(67条消息) Nginx - 目录结构与配置文件详解_nginx目录_不会调制解调的猫的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Trollz/article/details/126525238">(67条消息) Nginx - 目录结构与配置文件详解_nginx目录_不会调制解调的猫的博客-CSDN博客</a></h5></li>
-<li><h5 id="Nginx的配置文件详解-KuangStudy-文章"><a href="#Nginx的配置文件详解-KuangStudy-文章" class="headerlink" title="Nginx的配置文件详解-KuangStudy-文章"></a><a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1619965646882693121">Nginx的配置文件详解-KuangStudy-文章</a></h5></li>
-</ul>
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><h3 id="访问Nginx403错误"><a href="#访问Nginx403错误" class="headerlink" title="访问Nginx403错误"></a>访问Nginx403错误</h3><ul>
-<li><h5 id="运维排查篇-访问nginx出现403错误-知乎-zhihu-com"><a href="#运维排查篇-访问nginx出现403错误-知乎-zhihu-com" class="headerlink" title="运维排查篇 | 访问nginx出现403错误 - 知乎 (zhihu.com)"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/381967653">运维排查篇 | 访问nginx出现403错误 - 知乎 (zhihu.com)</a></h5></li>
-<li><h5 id="详解Nginx出现403Forbidden的解决办法-第一PHP社区-php1-cn"><a href="#详解Nginx出现403Forbidden的解决办法-第一PHP社区-php1-cn" class="headerlink" title="详解Nginx出现403Forbidden的解决办法 - 第一PHP社区 (php1.cn)"></a><a target="_blank" rel="noopener" href="https://www.php1.cn/detail/XiangJie_Nginx_C_5d37dae4.html">详解Nginx出现403Forbidden的解决办法 - 第一PHP社区 (php1.cn)</a></h5></li>
-<li><h5 id="四种解决Nginx出现403-forbidden-报错的方法-baidu-com"><a href="#四种解决Nginx出现403-forbidden-报错的方法-baidu-com" class="headerlink" title="四种解决Nginx出现403 forbidden 报错的方法 (baidu.com)"></a><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1614533633678689239&wfr=spider&for=pc">四种解决Nginx出现403 forbidden 报错的方法 (baidu.com)</a></h5></li>
-<li><h5 id="先是看了很多解决办法（以上），虽然没有解决，但丰富了我对Nginx配置的理解"><a href="#先是看了很多解决办法（以上），虽然没有解决，但丰富了我对Nginx配置的理解" class="headerlink" title="先是看了很多解决办法（以上），虽然没有解决，但丰富了我对Nginx配置的理解"></a>先是看了很多解决办法（以上），虽然没有解决，但丰富了我对Nginx配置的理解</h5></li>
-<li><h5 id="然后我想到看错误日志，但查看配置发现默认没开启，那就开启错误日志："><a href="#然后我想到看错误日志，但查看配置发现默认没开启，那就开启错误日志：" class="headerlink" title="然后我想到看错误日志，但查看配置发现默认没开启，那就开启错误日志："></a>然后我想到看错误日志，但查看配置发现默认没开启，那就开启错误日志：</h5></li>
-<li><h5 id="错误日志路径："><a href="#错误日志路径：" class="headerlink" title="错误日志路径："></a>错误日志路径：</h5></li>
-</ul>
-<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622154436897.png"></p>
-<ul>
-<li><h5 id="开启错误日志："><a href="#开启错误日志：" class="headerlink" title="开启错误日志："></a>开启错误日志：</h5></li>
-</ul>
-<img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622154707468.png" alt="image-20230622154707468" style="zoom:150%;" />
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">hexo init<br>npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><h5 id="查看错误日志，发现问题所在："><a href="#查看错误日志，发现问题所在：" class="headerlink" title="查看错误日志，发现问题所在："></a>查看错误日志，发现问题所在：</h5></li>
+<li><h5 id="如你所见，-config-yml就是全局配置文件，我们建议复制一个-config-fluid-yml拷贝初始配置，然后在-config-yml里大刀阔斧地修改"><a href="#如你所见，-config-yml就是全局配置文件，我们建议复制一个-config-fluid-yml拷贝初始配置，然后在-config-yml里大刀阔斧地修改" class="headerlink" title="如你所见，_config.yml就是全局配置文件，我们建议复制一个_config.fluid.yml拷贝初始配置，然后在_config.yml里大刀阔斧地修改"></a>如你所见，_config.yml就是全局配置文件，我们建议复制一个_config.fluid.yml拷贝初始配置，然后在_config.yml里大刀阔斧地修改</h5></li>
 </ul>
-<img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622154920109.png" alt="image-20230622154920109" style="zoom:150%;" />
+<img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000510407.png" alt="image-20230528000510407" style="zoom:150%;" />
 
 <ul>
-<li><h5 id="接着看这个解决思路：-67条消息-报错：directory-index-of-“xxx“-is-forbidden-directory-index-of-is-forbidden-AI人工智能与大数据的博客-CSDN博客"><a href="#接着看这个解决思路：-67条消息-报错：directory-index-of-“xxx“-is-forbidden-directory-index-of-is-forbidden-AI人工智能与大数据的博客-CSDN博客" class="headerlink" title="接着看这个解决思路：(67条消息) 报错：directory index of “xxx“ is forbidden_directory index of is forbidden_AI人工智能与大数据的博客-CSDN博客"></a>接着看这个解决思路：<a target="_blank" rel="noopener" href="https://blog.csdn.net/guanxs/article/details/107901101">(67条消息) 报错：directory index of “xxx“ is forbidden_directory index of is forbidden_AI人工智能与大数据的博客-CSDN博客</a></h5></li>
-<li><h5 id="添加这行配置："><a href="#添加这行配置：" class="headerlink" title="添加这行配置："></a>添加这行配置：</h5></li>
+<li><h5 id="至此基本的hexo博客站点搭建完成（简单吧！）"><a href="#至此基本的hexo博客站点搭建完成（简单吧！）" class="headerlink" title="至此基本的hexo博客站点搭建完成（简单吧！）"></a>至此基本的hexo博客站点搭建完成（简单吧！）</h5></li>
+<li><h5 id="主题不好看，接下来我们配置主题"><a href="#主题不好看，接下来我们配置主题" class="headerlink" title="主题不好看，接下来我们配置主题"></a>主题不好看，接下来我们配置主题</h5></li>
 </ul>
-<img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230622155144376.png" alt="image-20230622155144376" style="zoom:150%;" />
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><ul>
+<li><h5 id="找上面那个网站，进入Hexo主题选择（都是人家写好的，会拉下来，拿来用就行），这里拿fluid主题举例"><a href="#找上面那个网站，进入Hexo主题选择（都是人家写好的，会拉下来，拿来用就行），这里拿fluid主题举例" class="headerlink" title="找上面那个网站，进入Hexo主题选择（都是人家写好的，会拉下来，拿来用就行），这里拿fluid主题举例"></a>找上面那个网站，进入Hexo主题选择（都是人家写好的，会拉下来，拿来用就行），这里拿fluid主题举例</h5></li>
+<li><h5 id="进去看人家文档，按部就班地走就行："><a href="#进去看人家文档，按部就班地走就行：" class="headerlink" title="进去看人家文档，按部就班地走就行："></a>进去看人家文档，按部就班地走就行：</h5></li>
+<li><h5 id="安装fluid主题"><a href="#安装fluid主题" class="headerlink" title="安装fluid主题"></a>安装fluid主题</h5></li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><h5 id="然后访问Nginx（记得nginx-s-reload），访问成功，大功告成"><a href="#然后访问Nginx（记得nginx-s-reload），访问成功，大功告成" class="headerlink" title="然后访问Nginx（记得nginx -s reload），访问成功，大功告成"></a>然后访问Nginx（记得nginx -s reload），访问成功，大功告成</h5></li>
-<li><h5 id="这就是访问Nginx发生403错误的具体解决办法了，很有收获"><a href="#这就是访问Nginx发生403错误的具体解决办法了，很有收获" class="headerlink" title="这就是访问Nginx发生403错误的具体解决办法了，很有收获"></a>这就是访问Nginx发生403错误的具体解决办法了，很有收获</h5></li>
+<li><h5 id="修改-config-yml下的theme"><a href="#修改-config-yml下的theme" class="headerlink" title="修改_config.yml下的theme"></a>修改_config.yml下的theme</h5></li>
 </ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">theme:</span> fluid  <span class="hljs-meta"># 指定主题</span><br></code></pre></td></tr></table></figure>
 
+<ul>
+<li><h5 id="按人家意思来，新建个关于页about吧"><a href="#按人家意思来，新建个关于页about吧" class="headerlink" title="按人家意思来，新建个关于页about吧"></a>按人家意思来，新建个关于页about吧</h5></li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">hexo <span class="hljs-keyword">new</span> <span class="hljs-type">page</span> about<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="那这时执行下以下命令，就可以访问到带有主题的博客页面了，效果如下："><a href="#那这时执行下以下命令，就可以访问到带有主题的博客页面了，效果如下：" class="headerlink" title="那这时执行下以下命令，就可以访问到带有主题的博客页面了，效果如下："></a>那这时执行下以下命令，就可以访问到带有主题的博客页面了，效果如下：</h5></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hexo</span> g	<span class="hljs-comment"># 生成站点内容</span><br>hexo s<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000543197.png" alt="image-20230528000543197"></p>
+<ul>
+<li><h5 id="每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令："><a href="#每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令：" class="headerlink" title="每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令："></a>每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令：</h5></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">npm <span class="hljs-keyword">update</span> <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这时theme文件夹下找到一个-config-yml文件（往下找几层），这里我们就能自由配置、定制主题了"><a href="#这时theme文件夹下找到一个-config-yml文件（往下找几层），这里我们就能自由配置、定制主题了" class="headerlink" title="这时theme文件夹下找到一个_config.yml文件（往下找几层），这里我们就能自由配置、定制主题了"></a>这时theme文件夹下找到一个_config.yml文件（往下找几层），这里我们就能自由配置、定制主题了</h5></li>
+<li><h5 id="其他页面配置、主题配置就不过多介绍了，下面放上我的博客访问地址吧："><a href="#其他页面配置、主题配置就不过多介绍了，下面放上我的博客访问地址吧：" class="headerlink" title="其他页面配置、主题配置就不过多介绍了，下面放上我的博客访问地址吧："></a>其他页面配置、主题配置就不过多介绍了，下面放上我的博客访问地址吧：</h5></li>
+<li><p><a href="https://deng-2022.gitee.io/blog/">Memory’s blog (gitee.io)</a></p>
+</li>
+<li><h5 id="再放几张图片："><a href="#再放几张图片：" class="headerlink" title="再放几张图片："></a>再放几张图片：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230527235802901.png" alt="image-20230527235802901"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230527235830531.png" alt="image-20230527235830531"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230527235851110.png" alt="image-20230527235851110"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230528000012337.png" alt="image-20230528000012337"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000031027.png" alt="image-20230528000031027"></p>
+<ul>
+<li><h5 id="使用Hexo搭建个人博客站点就结束了，改天补充下Gitee如何托管个人博客（2023-05-27晚）"><a href="#使用Hexo搭建个人博客站点就结束了，改天补充下Gitee如何托管个人博客（2023-05-27晚）" class="headerlink" title="使用Hexo搭建个人博客站点就结束了，改天补充下Gitee如何托管个人博客（2023/05/27晚）"></a>使用Hexo搭建个人博客站点就结束了，改天补充下Gitee如何托管个人博客（2023/05/27晚）</h5></li>
+</ul>
+<h2 id="Gitee托管"><a href="#Gitee托管" class="headerlink" title="Gitee托管"></a>Gitee托管</h2>
                 
               </div>
             
@@ -400,12 +420,12 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/Nginx/" class="category-chain-item">Nginx</a>
+  <a href="/blog/categories/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
   
   
     <span>></span>
     
-  <a href="/blog/categories/Nginx/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  <a href="/blog/categories/%E7%BB%8F%E9%AA%8C/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="category-chain-item">个人博客搭建</a>
   
   
 
@@ -424,7 +444,7 @@
       
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
-        <a href="/blog/tags/Nginx/">#Nginx</a>
+        <a href="/blog/tags/Blog/">#Blog</a>
       
     </div>
   
@@ -436,8 +456,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Nginx安装配置详解</div>
-      <div>https://deng-2022.gitee.io/blog/2023/06/22/Nginx快速入门到实战/</div>
+      <div>快速搭建博客站点</div>
+      <div>https://deng-2022.gitee.io/blog/2023/05/27/快速搭建博客站点/</div>
     </div>
     <div class="license-meta">
       
@@ -449,13 +469,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年6月22日</div>
+          <div>2023年5月27日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年6月23日</div>
+          <div>2023年5月27日</div>
         </div>
       
       
@@ -486,9 +506,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2023/06/22/AI%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84%E6%B4%9E%E8%A7%81%EF%BC%9A%E6%88%91%E7%9A%84AI%E4%B9%8B%E6%97%85/" title="AI实践中的洞见：我的AI之旅">
+                      <a href="/blog/2023/06/03/%E6%88%91%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/" title="我的编程之路">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AI实践中的洞见：我的AI之旅</span>
+                        <span class="hidden-mobile">我的编程之路</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -496,8 +516,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2023/06/20/Typora%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="Typora操作技巧">
-                        <span class="hidden-mobile">Typora操作技巧</span>
+                      <a href="/blog/2023/05/21/Python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/" title="Python爬虫学习">
+                        <span class="hidden-mobile">Python爬虫学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
