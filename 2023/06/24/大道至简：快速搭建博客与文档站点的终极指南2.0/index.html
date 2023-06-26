@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="从零开始，带你快速入门，生成精美文档站点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大道至简：快速搭建博客与文档站点的终极指南2.0">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/06/24/%E5%A4%A7%E9%81%93%E8%87%B3%E7%AE%80%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%8E%E6%96%87%E6%A1%A3%E7%AB%99%E7%82%B9%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%972.0/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="从零开始，带你快速入门，生成精美文档站点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624230135176.png">
+<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230624211723443.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624221026328.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624220751165.png">
+<meta property="article:published_time" content="2023-06-24T04:59:24.000Z">
+<meta property="article:modified_time" content="2023-06-24T04:59:24.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624230135176.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>大道至简：快速搭建博客与文档站点的终极指南2.0 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="大道至简：快速搭建博客与文档站点的终极指南2.0"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-24 12:59" pubdate>
+          2023年6月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大道至简：快速搭建博客与文档站点的终极指南2.0</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="我们演示使用Vuepress来生成文档站点，并使用Gitee-GitHub托管"><a href="#我们演示使用Vuepress来生成文档站点，并使用Gitee-GitHub托管" class="headerlink" title="我们演示使用Vuepress来生成文档站点，并使用Gitee/GitHub托管"></a>我们演示使用Vuepress来生成文档站点，并使用Gitee/GitHub托管</h2><h2 id="站点生成"><a href="#站点生成" class="headerlink" title="站点生成"></a>站点生成</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><h5 id="常见的文档站点生成器有很多，最主要的有：VitePress、Vuepress和Docsify等"><a href="#常见的文档站点生成器有很多，最主要的有：VitePress、Vuepress和Docsify等" class="headerlink" title="常见的文档站点生成器有很多，最主要的有：VitePress、Vuepress和Docsify等"></a>常见的文档站点生成器有很多，最主要的有：VitePress、Vuepress和Docsify等</h5></li>
+<li><h5 id="那我们就先使用Vuepress来生成文档站点了"><a href="#那我们就先使用Vuepress来生成文档站点了" class="headerlink" title="那我们就先使用Vuepress来生成文档站点了"></a>那我们就先使用Vuepress来生成文档站点了</h5></li>
+<li><h5 id="其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建"><a href="#其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建" class="headerlink" title="其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建"></a>其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建</h5></li>
+<li><h5 id="先放几个辅助资源："><a href="#先放几个辅助资源：" class="headerlink" title="先放几个辅助资源："></a>先放几个辅助资源：</h5></li>
+<li><h5 id="各站点生成器的入口：Static-Site-Generators-Top-Open-Source-SSGs-Jamstack"><a href="#各站点生成器的入口：Static-Site-Generators-Top-Open-Source-SSGs-Jamstack" class="headerlink" title="各站点生成器的入口：Static Site Generators - Top Open Source SSGs | Jamstack"></a>各站点生成器的入口：<a target="_blank" rel="noopener" href="https://jamstack.org/generators/">Static Site Generators - Top Open Source SSGs | Jamstack</a></h5></li>
+<li><h5 id="Vitepress官网：Getting-Started-VitePress"><a href="#Vitepress官网：Getting-Started-VitePress" class="headerlink" title="Vitepress官网：Getting Started | VitePress"></a>Vitepress官网：<a target="_blank" rel="noopener" href="https://vitepress.dev/guide/getting-started">Getting Started | VitePress</a></h5></li>
+<li><h5 id="Vuepress官网：VuePress-vuejs-org"><a href="#Vuepress官网：VuePress-vuejs-org" class="headerlink" title="Vuepress官网：VuePress (vuejs.org)"></a>Vuepress官网：<a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/">VuePress (vuejs.org)</a></h5></li>
+<li><h5 id="Docsify官网："><a href="#Docsify官网：" class="headerlink" title="Docsify官网："></a>Docsify官网：</h5></li>
+</ul>
+<h3 id="建站前"><a href="#建站前" class="headerlink" title="建站前"></a>建站前</h3><ul>
+<li><h5 id="那必然是提前配置好Node-js环境了，这里不详细阐述，如有需请移步至文章：《配置指南-掌握Node-js配置》"><a href="#那必然是提前配置好Node-js环境了，这里不详细阐述，如有需请移步至文章：《配置指南-掌握Node-js配置》" class="headerlink" title="那必然是提前配置好Node.js环境了，这里不详细阐述，如有需请移步至文章：《配置指南-掌握Node.js配置》"></a>那必然是提前配置好Node.js环境了，这里不详细阐述，如有需请移步至文章：《配置指南-掌握Node.js配置》</h5></li>
+</ul>
+<h3 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h3><ul>
+<li><h5 id="跟着官网操作，简简单单（手动安装和快速安装二选一即可，前者能更好的清楚执行每一条命令的目的，后者则是一键安装）："><a href="#跟着官网操作，简简单单（手动安装和快速安装二选一即可，前者能更好的清楚执行每一条命令的目的，后者则是一键安装）：" class="headerlink" title="跟着官网操作，简简单单（手动安装和快速安装二选一即可，前者能更好的清楚执行每一条命令的目的，后者则是一键安装）："></a>跟着官网操作，简简单单（手动安装和快速安装二选一即可，前者能更好的清楚执行每一条命令的目的，后者则是一键安装）：</h5></li>
+<li><h5 id="快速安装在指定目录下，执行一条命令"><a href="#快速安装在指定目录下，执行一条命令" class="headerlink" title="快速安装在指定目录下，执行一条命令"></a>快速安装在指定目录下，执行一条命令</h5></li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">yarn</span> create vuepress-site<span class="hljs-meta"> [optionalDirectoryName]</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行这条语句后，会报错："><a href="#执行这条语句后，会报错：" class="headerlink" title="执行这条语句后，会报错："></a>执行这条语句后，会报错：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624230135176.png" alt="image-20230624230135176"></p>
+<ul>
+<li><h5 id="目前还没有解决，待解决。。。"><a href="#目前还没有解决，待解决。。。" class="headerlink" title="目前还没有解决，待解决。。。"></a>目前还没有解决，待解决。。。</h5></li>
+<li><h5 id="67条消息-success-Installed-“create-umi-0-19-0”-with-binaries-create-umi-文件名、目录名或卷标语法不正确。-CodeDevMaster的博客-CSDN博客"><a href="#67条消息-success-Installed-“create-umi-0-19-0”-with-binaries-create-umi-文件名、目录名或卷标语法不正确。-CodeDevMaster的博客-CSDN博客" class="headerlink" title="(67条消息) success Installed “create-umi@0.19.0” with binaries: - create-umi 文件名、目录名或卷标语法不正确。_CodeDevMaster的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38628046/article/details/103276577">(67条消息) success Installed “create-umi@0.19.0” with binaries: - create-umi 文件名、目录名或卷标语法不正确。_CodeDevMaster的博客-CSDN博客</a></h5></li>
+<li><h5 id="手动安装，跟着官网一步步操作："><a href="#手动安装，跟着官网一步步操作：" class="headerlink" title="手动安装，跟着官网一步步操作："></a>手动安装，跟着官网一步步操作：</h5></li>
+<li><h5 id="创建并更改为新目录"><a href="#创建并更改为新目录" class="headerlink" title="创建并更改为新目录"></a>创建并更改为新目录</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> vuepress-starter &amp;&amp; <span class="hljs-built_in">cd</span> vuepress-starter<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="使用首选包管理器初始化"><a href="#使用首选包管理器初始化" class="headerlink" title="使用首选包管理器初始化"></a>使用首选包管理器初始化</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yarn init<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="在本地安装-VuePress"><a href="#在本地安装-VuePress" class="headerlink" title="在本地安装 VuePress"></a>在本地安装 VuePress</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yarn add -D vuepress<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="创建您的第一个文档"><a href="#创建您的第一个文档" class="headerlink" title="创建您的第一个文档"></a>创建您的第一个文档</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> docs &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;# Hello VuePress&#x27;</span> &gt; docs/README.md<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="在package-json下添加如下配置"><a href="#在package-json下添加如下配置" class="headerlink" title="在package.json下添加如下配置"></a>在package.json下添加如下配置</h5></li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;docs:dev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vuepress dev docs&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;docs:build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vuepress build docs&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="本地开启文档站点"><a href="#本地开启文档站点" class="headerlink" title="本地开启文档站点"></a>本地开启文档站点</h5></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">yarn</span> docs:dev<br></code></pre></td></tr></table></figure>
+
+<h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><ul>
+<li><h5 id="注意，这里开启文档站点我出现了这样的问题："><a href="#注意，这里开启文档站点我出现了这样的问题：" class="headerlink" title="注意，这里开启文档站点我出现了这样的问题："></a>注意，这里开启文档站点我出现了这样的问题：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230624211723443.png" alt="image-20230624211723443"></p>
+<ul>
+<li><h5 id="问题原因及解决办法：解决方法-胡八一-的博客-CSDN博客"><a href="#问题原因及解决办法：解决方法-胡八一-的博客-CSDN博客" class="headerlink" title="问题原因及解决办法：解决方法_胡八一 的博客-CSDN博客"></a>问题原因及解决办法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44732146/article/details/129041176">解决方法_胡八一 的博客-CSDN博客</a></h5></li>
+<li><h5 id="这就是此时的node版本过高，导致的兼容性问题（此时我用的是v18-16-1），转换node为低版本v16-19-0后，问题解决"><a href="#这就是此时的node版本过高，导致的兼容性问题（此时我用的是v18-16-1），转换node为低版本v16-19-0后，问题解决" class="headerlink" title="这就是此时的node版本过高，导致的兼容性问题（此时我用的是v18.16.1），转换node为低版本v16.19.0后，问题解决"></a>这就是此时的node版本过高，导致的兼容性问题（此时我用的是v18.16.1），转换node为低版本v16.19.0后，问题解决</h5></li>
+<li><h5 id="成功在本地开启文档站点！效果如下："><a href="#成功在本地开启文档站点！效果如下：" class="headerlink" title="成功在本地开启文档站点！效果如下："></a>成功在本地开启文档站点！效果如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624221026328.png" alt="image-20230624221026328"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624220751165.png" alt="image-20230624220751165"></p>
+<ul>
+<li><h5 id="快速生成文档站点教程完毕！"><a href="#快速生成文档站点教程完毕！" class="headerlink" title="快速生成文档站点教程完毕！"></a>快速生成文档站点教程完毕！</h5></li>
+<li><h5 id="样式有点儿丑，哦不，是完全没有样式"><a href="#样式有点儿丑，哦不，是完全没有样式" class="headerlink" title="样式有点儿丑，哦不，是完全没有样式"></a>样式有点儿丑，哦不，是完全没有样式</h5></li>
+<li><h5 id="接下来就是配置主题了，我也在持续学习中，有时间的话，会继续更新文档站点的主题配置"><a href="#接下来就是配置主题了，我也在持续学习中，有时间的话，会继续更新文档站点的主题配置" class="headerlink" title="接下来就是配置主题了，我也在持续学习中，有时间的话，会继续更新文档站点的主题配置"></a>接下来就是配置主题了，我也在持续学习中，有时间的话，会继续更新文档站点的主题配置</h5></li>
+</ul>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><h2 id="Gitee托管"><a href="#Gitee托管" class="headerlink" title="Gitee托管"></a>Gitee托管</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E7%BB%8F%E9%AA%8C/%E6%96%87%E6%A1%A3%E7%AB%99%E7%82%B9%E7%94%9F%E6%88%90/" class="category-chain-item">文档站点生成</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E7%BB%8F%E9%AA%8C/%E6%96%87%E6%A1%A3%E7%AB%99%E7%82%B9%E7%94%9F%E6%88%90/Blog/" class="category-chain-item">Blog</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/Blog/">#Blog</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>大道至简：快速搭建博客与文档站点的终极指南2.0</div>
+      <div>https://deng-2022.gitee.io/blog/2023/06/24/大道至简：快速搭建博客与文档站点的终极指南2.0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/06/24/%E4%BD%BF%E7%94%A8JSP%E6%9E%84%E5%BB%BAJavaWeb%E9%A1%B9%E7%9B%AE-%E4%BB%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%A7%E4%BD%9C%E4%B8%9A%E4%B8%BA%E4%BE%8B/" title="使用JSP构建JavaWeb项目--以数据库大作业为例">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用JSP构建JavaWeb项目--以数据库大作业为例</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/06/24/%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-%E6%8E%8C%E6%8F%A1Node-js%E9%85%8D%E7%BD%AE/" title="配置指南-掌握Node.js配置">
+                        <span class="hidden-mobile">配置指南-掌握Node.js配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南|Hexo Fluid 用户手册</span> </a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
