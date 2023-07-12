@@ -277,7 +277,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4.7k 字
         
       </span>
     
@@ -353,6 +353,7 @@
 <h1 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
 <li><h5 id="常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo"><a href="#常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo" class="headerlink" title="常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo"></a>常见的博客站点生成器有很多，最主要的有俩：Hexo和Hugo</h5></li>
 <li><h5 id="那我们就先使用Hexo来搭建了"><a href="#那我们就先使用Hexo来搭建了" class="headerlink" title="那我们就先使用Hexo来搭建了"></a>那我们就先使用Hexo来搭建了</h5></li>
+<li><h5 id="Hexo是一个静态博客站点生成工具，可以把Markdown格式的文档转换成静态页面，非常适合用来作个人技术博客"><a href="#Hexo是一个静态博客站点生成工具，可以把Markdown格式的文档转换成静态页面，非常适合用来作个人技术博客" class="headerlink" title="Hexo是一个静态博客站点生成工具，可以把Markdown格式的文档转换成静态页面，非常适合用来作个人技术博客"></a>Hexo是一个静态博客站点生成工具，可以把Markdown格式的文档转换成静态页面，非常适合用来作个人技术博客</h5></li>
 <li><h5 id="其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建"><a href="#其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建" class="headerlink" title="其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建"></a>其实所有的搭建流程上官网就能找到，跟着文档一步一步来也能完成，那我们这个笔记就是要教会你快速完成初始搭建</h5></li>
 <li><h5 id="先放几个辅助资源："><a href="#先放几个辅助资源：" class="headerlink" title="先放几个辅助资源："></a>先放几个辅助资源：</h5></li>
 <li><h5 id="各站点生成器的入口：Static-Site-Generators-Top-Open-Source-SSGs-Jamstack"><a href="#各站点生成器的入口：Static-Site-Generators-Top-Open-Source-SSGs-Jamstack" class="headerlink" title="各站点生成器的入口：Static Site Generators - Top Open Source SSGs | Jamstack"></a>各站点生成器的入口：<a target="_blank" rel="noopener" href="https://jamstack.org/generators/">Static Site Generators - Top Open Source SSGs | Jamstack</a></h5></li>
@@ -409,10 +410,12 @@
 <ul>
 <li><h5 id="执行下以下命令，成功访问到fluid主题的博客页面了，效果如下："><a href="#执行下以下命令，成功访问到fluid主题的博客页面了，效果如下：" class="headerlink" title="执行下以下命令，成功访问到fluid主题的博客页面了，效果如下："></a>执行下以下命令，成功访问到fluid主题的博客页面了，效果如下：</h5></li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hexo</span> g	<span class="hljs-comment"># 生成站点内容</span><br>hexo s<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hexo</span> g			<span class="hljs-comment"># 生成静态站点</span><br>hexo s			<span class="hljs-comment"># 本地开启服务</span><br></code></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230528000543197.png" alt="image-20230528000543197"></p>
 <ul>
+<li><h5 id="这个静态页面是由Hexo帮我们在本地搭建了一个Web服务，来支持我们访问的，适用于开发环境下的调试"><a href="#这个静态页面是由Hexo帮我们在本地搭建了一个Web服务，来支持我们访问的，适用于开发环境下的调试" class="headerlink" title="这个静态页面是由Hexo帮我们在本地搭建了一个Web服务，来支持我们访问的，适用于开发环境下的调试"></a>这个静态页面是由Hexo帮我们在本地搭建了一个Web服务，来支持我们访问的，适用于开发环境下的调试</h5></li>
+<li><h5 id="实际生产过程中，我们需要把它部署到Nginx服务器上，方法也非常简单，"><a href="#实际生产过程中，我们需要把它部署到Nginx服务器上，方法也非常简单，" class="headerlink" title="实际生产过程中，我们需要把它部署到Nginx服务器上，方法也非常简单，"></a>实际生产过程中，我们需要把它部署到Nginx服务器上，方法也非常简单，</h5></li>
 <li><h5 id="每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令："><a href="#每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令：" class="headerlink" title="每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令："></a>每个主题都有好多配置，那我们总要配置自己的特色主题吧？改成我们自己喜欢的，那就执行下面这行命令：</h5></li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">npm <span class="hljs-keyword">update</span> <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure>

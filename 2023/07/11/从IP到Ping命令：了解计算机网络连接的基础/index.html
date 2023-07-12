@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="揭秘IP的奥秘：概念、类型及Ping命令的实际应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从IP到Ping命令：了解计算机网络连接的基础">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/07/11/%E4%BB%8EIP%E5%88%B0Ping%E5%91%BD%E4%BB%A4%EF%BC%9A%E4%BA%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="揭秘IP的奥秘：概念、类型及Ping命令的实际应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711115126654.png">
+<meta property="article:published_time" content="2023-07-11T01:47:09.000Z">
+<meta property="article:modified_time" content="2023-07-11T01:47:09.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="IP">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711115126654.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>从IP到Ping命令：了解计算机网络连接的基础 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="从IP到Ping命令：了解计算机网络连接的基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-11 09:47" pubdate>
+          2023年7月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从IP到Ping命令：了解计算机网络连接的基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h1><ul>
+<li><h5 id="当今世界已经变得日益连接，而在这个连接的网络中，IP（Internet-Protocol）扮演着至关重要的角色。无论是浏览网页、发送电子邮件，还是进行网络游戏，我们都要依赖IP地址来建立和维持网络连接。在这篇博客中，我们将深入探讨IP的概念，并重点介绍公网IP和内网IP的区别及其在网络通信中的作用。"><a href="#当今世界已经变得日益连接，而在这个连接的网络中，IP（Internet-Protocol）扮演着至关重要的角色。无论是浏览网页、发送电子邮件，还是进行网络游戏，我们都要依赖IP地址来建立和维持网络连接。在这篇博客中，我们将深入探讨IP的概念，并重点介绍公网IP和内网IP的区别及其在网络通信中的作用。" class="headerlink" title="当今世界已经变得日益连接，而在这个连接的网络中，IP（Internet Protocol）扮演着至关重要的角色。无论是浏览网页、发送电子邮件，还是进行网络游戏，我们都要依赖IP地址来建立和维持网络连接。在这篇博客中，我们将深入探讨IP的概念，并重点介绍公网IP和内网IP的区别及其在网络通信中的作用。"></a>当今世界已经变得日益连接，而在这个连接的网络中，IP（Internet Protocol）扮演着至关重要的角色。无论是浏览网页、发送电子邮件，还是进行网络游戏，我们都要依赖IP地址来建立和维持网络连接。在这篇博客中，我们将深入探讨IP的概念，并重点介绍公网IP和内网IP的区别及其在网络通信中的作用。</h5></li>
+<li><h5 id="首先，我们将从IP的基础知识开始，探索什么是IP地址以及它们的结构和分类方式。我们将了解IP地址包含的信息，以及如何将其分配给计算机和设备来实现通信。不仅如此，我们还将深入了解网络连接中的公网IP和内网IP的区别，以及它们在不同网络环境中的应用。"><a href="#首先，我们将从IP的基础知识开始，探索什么是IP地址以及它们的结构和分类方式。我们将了解IP地址包含的信息，以及如何将其分配给计算机和设备来实现通信。不仅如此，我们还将深入了解网络连接中的公网IP和内网IP的区别，以及它们在不同网络环境中的应用。" class="headerlink" title="首先，我们将从IP的基础知识开始，探索什么是IP地址以及它们的结构和分类方式。我们将了解IP地址包含的信息，以及如何将其分配给计算机和设备来实现通信。不仅如此，我们还将深入了解网络连接中的公网IP和内网IP的区别，以及它们在不同网络环境中的应用。"></a>首先，我们将从IP的基础知识开始，探索什么是IP地址以及它们的结构和分类方式。我们将了解IP地址包含的信息，以及如何将其分配给计算机和设备来实现通信。不仅如此，我们还将深入了解网络连接中的公网IP和内网IP的区别，以及它们在不同网络环境中的应用。</h5></li>
+<li><h5 id="在接下来的部分，我们将带您一起了解Ping命令的重要性和用途。Ping命令作为一种网络诊断工具，可以帮助我们测试网络连接的可靠性和性能。我们将探究Ping命令的出处和使用方式，了解如何通过Ping命令来检测网络的故障和延迟问题。"><a href="#在接下来的部分，我们将带您一起了解Ping命令的重要性和用途。Ping命令作为一种网络诊断工具，可以帮助我们测试网络连接的可靠性和性能。我们将探究Ping命令的出处和使用方式，了解如何通过Ping命令来检测网络的故障和延迟问题。" class="headerlink" title="在接下来的部分，我们将带您一起了解Ping命令的重要性和用途。Ping命令作为一种网络诊断工具，可以帮助我们测试网络连接的可靠性和性能。我们将探究Ping命令的出处和使用方式，了解如何通过Ping命令来检测网络的故障和延迟问题。"></a>在接下来的部分，我们将带您一起了解Ping命令的重要性和用途。Ping命令作为一种网络诊断工具，可以帮助我们测试网络连接的可靠性和性能。我们将探究Ping命令的出处和使用方式，了解如何通过Ping命令来检测网络的故障和延迟问题。</h5></li>
+<li><h5 id="作为这篇博客的第一部分，我们希望通过介绍IP的概念、公网IP和内网IP，以及Ping命令的出处和使用，为读者提供计算机网络基础知识。未来，我们还将分享更多类似的计算机网络方面的内容，以帮助读者深入了解和掌握网络连接的要点。"><a href="#作为这篇博客的第一部分，我们希望通过介绍IP的概念、公网IP和内网IP，以及Ping命令的出处和使用，为读者提供计算机网络基础知识。未来，我们还将分享更多类似的计算机网络方面的内容，以帮助读者深入了解和掌握网络连接的要点。" class="headerlink" title="作为这篇博客的第一部分，我们希望通过介绍IP的概念、公网IP和内网IP，以及Ping命令的出处和使用，为读者提供计算机网络基础知识。未来，我们还将分享更多类似的计算机网络方面的内容，以帮助读者深入了解和掌握网络连接的要点。"></a>作为这篇博客的第一部分，我们希望通过介绍IP的概念、公网IP和内网IP，以及Ping命令的出处和使用，为读者提供计算机网络基础知识。未来，我们还将分享更多类似的计算机网络方面的内容，以帮助读者深入了解和掌握网络连接的要点。</h5></li>
+<li><h5 id="随着技术的不断进步和网络的不断发展，了解IP的基础知识和掌握Ping命令的使用变得愈发重要。我们相信通过这篇博客，读者将能够更好地理解网络连接的基本原理，并能够自信地使用Ping命令进行网络诊断。让我们一起探索计算机网络的奥秘吧！"><a href="#随着技术的不断进步和网络的不断发展，了解IP的基础知识和掌握Ping命令的使用变得愈发重要。我们相信通过这篇博客，读者将能够更好地理解网络连接的基本原理，并能够自信地使用Ping命令进行网络诊断。让我们一起探索计算机网络的奥秘吧！" class="headerlink" title="随着技术的不断进步和网络的不断发展，了解IP的基础知识和掌握Ping命令的使用变得愈发重要。我们相信通过这篇博客，读者将能够更好地理解网络连接的基本原理，并能够自信地使用Ping命令进行网络诊断。让我们一起探索计算机网络的奥秘吧！"></a>随着技术的不断进步和网络的不断发展，了解IP的基础知识和掌握Ping命令的使用变得愈发重要。我们相信通过这篇博客，读者将能够更好地理解网络连接的基本原理，并能够自信地使用Ping命令进行网络诊断。让我们一起探索计算机网络的奥秘吧！</h5></li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="什么是-IP-？"><a href="#什么是-IP-？" class="headerlink" title="什么是 IP ？"></a>什么是 IP ？</h4><ul>
+<li><h5 id="在庞大的计算机网络当中，每一台计算机都需要一个唯一标识来确定自己在网络中的位置，这个标识就叫-IP"><a href="#在庞大的计算机网络当中，每一台计算机都需要一个唯一标识来确定自己在网络中的位置，这个标识就叫-IP" class="headerlink" title="在庞大的计算机网络当中，每一台计算机都需要一个唯一标识来确定自己在网络中的位置，这个标识就叫 IP"></a>在庞大的计算机网络当中，每一台计算机都需要一个唯一标识来确定自己在网络中的位置，这个标识就叫 IP</h5></li>
+<li><h5 id="以上是我对-IP-的理解，下面给出-IP-标准定义："><a href="#以上是我对-IP-的理解，下面给出-IP-标准定义：" class="headerlink" title="以上是我对 IP 的理解，下面给出 IP 标准定义："></a>以上是我对 IP 的理解，下面给出 IP 标准定义：</h5></li>
+</ul>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-built_in">IP</span>地址，全称（Internet Protocol Address）翻译成中文就是指互联网协议地址，所有的计算机分配一个统一格式的、唯一的虚拟地址编号。就像每个人都有一个身份证一样，<span class="hljs-built_in">IP</span>地址就是每台计算机都有自己上网用的身份编号，在网络上交互时，不管是发送数据还是接收数据，通过<span class="hljs-built_in">IP</span>地址互相访问。<br></code></pre></td></tr></table></figure>
+
+<h4 id="IP-查询"><a href="#IP-查询" class="headerlink" title="IP 查询"></a>IP 查询</h4><ul>
+<li><h5 id="我们直接百度“-IP-”关键词，页面显示-IP-如下："><a href="#我们直接百度“-IP-”关键词，页面显示-IP-如下：" class="headerlink" title="我们直接百度“ IP ”关键词，页面显示 IP 如下："></a>我们直接百度“ IP ”关键词，页面显示 IP 如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711115126654.png" alt="image-20230711115126654"></p>
+<ul>
+<li><h5 id="注意，该-IP-为该计算机所连接的网络IP地址，并非本机-IP-，可以简单理解为路由器-IP"><a href="#注意，该-IP-为该计算机所连接的网络IP地址，并非本机-IP-，可以简单理解为路由器-IP" class="headerlink" title="注意，该 IP 为该计算机所连接的网络IP地址，并非本机 IP ，可以简单理解为路由器 IP"></a>注意，该 IP 为该计算机所连接的网络IP地址，并非本机 IP ，可以简单理解为路由器 IP</h5></li>
+<li><h5 id="查询本机-IP-，只需在命令行下执行以下命令-Windows-："><a href="#查询本机-IP-，只需在命令行下执行以下命令-Windows-：" class="headerlink" title="查询本机 IP ，只需在命令行下执行以下命令(Windows)："></a>查询本机 IP ，只需在命令行下执行以下命令(Windows)：</h5></li>
+</ul>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dos"><span class="hljs-built_in">ipconfig</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="查询结果如下："><a href="#查询结果如下：" class="headerlink" title="查询结果如下："></a>查询结果如下：</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext">C:\WINDOWS\system32&gt;ipconfig<br><br><span class="hljs-attribute">Windows IP 配置</span><br><span class="hljs-attribute"></span><br><span class="hljs-attribute">未知适配器 本地连接</span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br>   <span class="hljs-attribute">媒体状态  . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">媒体已断开连接</span><br>   <span class="hljs-attribute">连接特定的 DNS 后缀 . . . . . . . </span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br><span class="hljs-attribute">无线局域网适配器 本地连接* 9</span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br>   <span class="hljs-attribute">媒体状态  . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">媒体已断开连接</span><br>   <span class="hljs-attribute">连接特定的 DNS 后缀 . . . . . . . </span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br><span class="hljs-attribute">无线局域网适配器 本地连接* 10</span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br>   <span class="hljs-attribute">媒体状态  . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">媒体已断开连接</span><br>   <span class="hljs-attribute">连接特定的 DNS 后缀 . . . . . . . </span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br><span class="hljs-attribute">以太网适配器 VMware Network Adapter VMnet1</span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br>   <span class="hljs-attribute">连接特定的 DNS 后缀 . . . . . . . </span><span class="hljs-punctuation">:</span><br>   <span class="hljs-attribute">本地链接 IPv6 地址. . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">fe80::7f58:5e0:a3cf:b38%4</span><br>   <span class="hljs-attribute">IPv4 地址 . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">192.168.152.1</span><br>   <span class="hljs-attribute">子网掩码  . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">255.255.255.0</span><br>   <span class="hljs-attribute">默认网关. . . . . . . . . . . . . </span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br><span class="hljs-attribute">以太网适配器 VMware Network Adapter VMnet8</span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br>   <span class="hljs-attribute">连接特定的 DNS 后缀 . . . . . . . </span><span class="hljs-punctuation">:</span><br>   <span class="hljs-attribute">本地链接 IPv6 地址. . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">fe80::261:257a:b98e:6653%14</span><br>   <span class="hljs-attribute">IPv4 地址 . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">192.168.88.1</span><br>   <span class="hljs-attribute">子网掩码  . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">255.255.255.0</span><br>   <span class="hljs-attribute">默认网关. . . . . . . . . . . . . </span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br><span class="hljs-attribute">无线局域网适配器 WLAN</span><span class="hljs-punctuation">:</span><br><span class="hljs-punctuation"></span><br>   <span class="hljs-attribute">连接特定的 DNS 后缀 . . . . . . . </span><span class="hljs-punctuation">:</span><br>   <span class="hljs-attribute">本地链接 IPv6 地址. . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">fe80::e579:8da4:ddea:b21d%12</span><br>   <span class="hljs-attribute">IPv4 地址 . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">192.168.0.102</span><br>   <span class="hljs-attribute">子网掩码  . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">255.255.255.0</span><br>   <span class="hljs-attribute">默认网关. . . . . . . . . . . . .</span><span class="hljs-punctuation"> :</span> <span class="hljs-string">192.168.0.1</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="很显然，查询到的本机-IP-地址为："><a href="#很显然，查询到的本机-IP-地址为：" class="headerlink" title="很显然，查询到的本机 IP 地址为："></a>很显然，查询到的本机 IP 地址为：</h5></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">IPv4</span> 地址 . . . . . . . . . . . . : <span class="hljs-number">192.168.0.102</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="注意这个-IP-是在动态变化着的"><a href="#注意这个-IP-是在动态变化着的" class="headerlink" title="注意这个 IP 是在动态变化着的"></a>注意这个 IP 是在动态变化着的</h5></li>
+</ul>
+<h3 id="公网-IP-和内网-IP"><a href="#公网-IP-和内网-IP" class="headerlink" title="公网 IP 和内网 IP"></a>公网 IP 和内网 IP</h3><ul>
+<li><h5 id="有关这部分内容的介绍，可以先看下面几篇文章："><a href="#有关这部分内容的介绍，可以先看下面几篇文章：" class="headerlink" title="有关这部分内容的介绍，可以先看下面几篇文章："></a>有关这部分内容的介绍，可以先看下面几篇文章：</h5></li>
+<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5MzY0MzYwMA==&mid=2649600872&idx=1&sn=643117bd7e4f1362ca485a75f5593104&chksm=be8afe5789fd77418f7334949d69981a3e66080393d17667bea2489edcc47b3fd926c2661142&scene=27">什么是公网ip？什么是内网ip？为什么ip地址通常以192.168开头？ (qq.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://product.pconline.com.cn/itbk/top/1353/13530428.html">公网ip和内网ip的区别-太平洋IT百科 (pconline.com.cn)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1769954307351702568&wfr=spider&for=pc">什么是公网IP和内网IP？ (baidu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1741477061003871360&wfr=spider&for=pc">什么是公网IP？公网IP和内网IP的区别 (baidu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1729343971973857666&wfr=spider&for=pc">网络常识：公网、私网、内网等 (baidu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/588101251">什么是内网IP，公网IP？他们有什么区别？ - 知乎 (zhihu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zacji/article/details/121904386">(74条消息) 公网IP和内网IP如何分辨?_如何判断公网ip内网ip_聚名网的博客-CSDN博客</a></p>
+</li>
+</ul>
+<h4 id="公网-内网"><a href="#公网-内网" class="headerlink" title="公网/内网"></a>公网/内网</h4><ul>
+<li><h5 id="在解释公网-IP-和内网-IP-之前，我们首先要了解两个概念：公网-内网"><a href="#在解释公网-IP-和内网-IP-之前，我们首先要了解两个概念：公网-内网" class="headerlink" title="在解释公网 IP 和内网 IP 之前，我们首先要了解两个概念：公网/内网"></a>在解释公网 IP 和内网 IP 之前，我们首先要了解两个概念：公网/内网</h5></li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">公网：又名外网、广域网(Wide <span class="hljs-built_in">Area</span> Network，WAN)，是连接不同地区局域网或城域网计算机通信的远程网。它能连接多个地区、城市和国家，或横跨几个州并能提供远距离通信，形成国际性的远程网络。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">内网：又名私网、局域网（Local <span class="hljs-built_in">Area</span> Network，LAN）是指在某一区域内由多台计算机互联成的计算机组。一般是方圆几千米以内。局域网可以实现文件管理、应用软件共享、打印机共享、工作组内的日程安排、电子邮件和传真通信服务等功能。局域网是封闭型的，可以由办公室内的两台计算机组成，也可以由一个公司内的上千台计算机组成。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="简单来讲，公网就是大范围的网络，内网就是小区域内的网络"><a href="#简单来讲，公网就是大范围的网络，内网就是小区域内的网络" class="headerlink" title="简单来讲，公网就是大范围的网络，内网就是小区域内的网络"></a>简单来讲，公网就是大范围的网络，内网就是小区域内的网络</h5></li>
+<li><h5 id="内、外网是相对于防火墙而言的，在防火墙内部叫做内网，反之就是外网"><a href="#内、外网是相对于防火墙而言的，在防火墙内部叫做内网，反之就是外网" class="headerlink" title="内、外网是相对于防火墙而言的，在防火墙内部叫做内网，反之就是外网"></a>内、外网是相对于防火墙而言的，在防火墙内部叫做内网，反之就是外网</h5></li>
+</ul>
+<h4 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h4><ul>
+<li><h5 id="当今时代，我们每天无时不刻都在上网：玩网络游戏、刷短视频、视频聊天、点外卖等等，这些都属于网络通信的范畴"><a href="#当今时代，我们每天无时不刻都在上网：玩网络游戏、刷短视频、视频聊天、点外卖等等，这些都属于网络通信的范畴" class="headerlink" title="当今时代，我们每天无时不刻都在上网：玩网络游戏、刷短视频、视频聊天、点外卖等等，这些都属于网络通信的范畴"></a>当今时代，我们每天无时不刻都在上网：玩网络游戏、刷短视频、视频聊天、点外卖等等，这些都属于网络通信的范畴</h5></li>
+<li><h5 id="不论是浏览玩网络游戏，还是刷视频，本质上我们都是在对后台的服务器发送请求，获取资源，也就是访问服务器"><a href="#不论是浏览玩网络游戏，还是刷视频，本质上我们都是在对后台的服务器发送请求，获取资源，也就是访问服务器" class="headerlink" title="不论是浏览玩网络游戏，还是刷视频，本质上我们都是在对后台的服务器发送请求，获取资源，也就是访问服务器"></a>不论是浏览玩网络游戏，还是刷视频，本质上我们都是在对后台的服务器发送请求，获取资源，也就是访问服务器</h5></li>
+<li><h5 id="而网络之间通信是以公网-IP-地址进行识别，所以联网必须使用公网-IP-地址，也就是说，我们要上网，必须要使用公网-IP-去访问服务器"><a href="#而网络之间通信是以公网-IP-地址进行识别，所以联网必须使用公网-IP-地址，也就是说，我们要上网，必须要使用公网-IP-去访问服务器" class="headerlink" title="而网络之间通信是以公网 IP 地址进行识别，所以联网必须使用公网 IP 地址，也就是说，我们要上网，必须要使用公网 IP 去访问服务器"></a>而网络之间通信是以公网 IP 地址进行识别，所以联网必须使用公网 IP 地址，也就是说，我们要上网，必须要使用公网 IP 去访问服务器</h5></li>
+</ul>
+<h4 id="内网-IP"><a href="#内网-IP" class="headerlink" title="内网 IP"></a>内网 IP</h4><ul>
+<li><h5 id="我们使用手机、电脑等电子设备来上网，那我们为什么能联网呢？"><a href="#我们使用手机、电脑等电子设备来上网，那我们为什么能联网呢？" class="headerlink" title="我们使用手机、电脑等电子设备来上网，那我们为什么能联网呢？"></a>我们使用手机、电脑等电子设备来上网，那我们为什么能联网呢？</h5></li>
+<li><h5 id="简单的回答当然是家里有路由器了！有了路由器，我们的电脑手机就能联网，就能上网了"><a href="#简单的回答当然是家里有路由器了！有了路由器，我们的电脑手机就能联网，就能上网了" class="headerlink" title="简单的回答当然是家里有路由器了！有了路由器，我们的电脑手机就能联网，就能上网了"></a>简单的回答当然是家里有路由器了！有了路由器，我们的电脑手机就能联网，就能上网了</h5></li>
+<li><h5 id="这样的回答没有问题，路由器确实给我们提供了网络环境，但是路由器给我们我们使用的是局域网，即内网，那分配给我们的电子设备的-IP-就是内网-IP"><a href="#这样的回答没有问题，路由器确实给我们提供了网络环境，但是路由器给我们我们使用的是局域网，即内网，那分配给我们的电子设备的-IP-就是内网-IP" class="headerlink" title="这样的回答没有问题，路由器确实给我们提供了网络环境，但是路由器给我们我们使用的是局域网，即内网，那分配给我们的电子设备的 IP 就是内网 IP"></a>这样的回答没有问题，路由器确实给我们提供了网络环境，但是路由器给我们我们使用的是局域网，即内网，那分配给我们的电子设备的 IP 就是内网 IP</h5></li>
+<li><h5 id="前面谈到，要进行网络通信，必须使用公网-IP-，那这中间必然存在一个内网-IP-转公网-IP-的过程"><a href="#前面谈到，要进行网络通信，必须使用公网-IP-，那这中间必然存在一个内网-IP-转公网-IP-的过程" class="headerlink" title="前面谈到，要进行网络通信，必须使用公网 IP ，那这中间必然存在一个内网 IP 转公网 IP 的过程"></a>前面谈到，要进行网络通信，必须使用公网 IP ，那这中间必然存在一个内网 IP 转公网 IP 的过程</h5></li>
+<li><h5 id="我们在使用内网-IP-进行网络通信时，通过NAT-Network-Address-Translation-网络地址转换-技术，将内网-IP-地址修改为公网-IP-地址，如此一来，内网计算机就可以向-Internet-请求数据了"><a href="#我们在使用内网-IP-进行网络通信时，通过NAT-Network-Address-Translation-网络地址转换-技术，将内网-IP-地址修改为公网-IP-地址，如此一来，内网计算机就可以向-Internet-请求数据了" class="headerlink" title="我们在使用内网 IP 进行网络通信时，通过NAT(Network Address Translation 网络地址转换)技术，将内网 IP 地址修改为公网 IP 地址，如此一来，内网计算机就可以向 Internet 请求数据了"></a>我们在使用内网 IP 进行网络通信时，通过NAT(Network Address Translation 网络地址转换)技术，将内网 IP 地址修改为公网 IP 地址，如此一来，内网计算机就可以向 Internet 请求数据了</h5></li>
+<li><h5 id="这个转换过程，我们称为端口映射"><a href="#这个转换过程，我们称为端口映射" class="headerlink" title="这个转换过程，我们称为端口映射"></a>这个转换过程，我们称为端口映射</h5></li>
+</ul>
+<h4 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h4><ul>
+<li><h5 id="什么是端口映射？下面给出定义："><a href="#什么是端口映射？下面给出定义：" class="headerlink" title="什么是端口映射？下面给出定义："></a>什么是端口映射？下面给出定义：</h5></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">端口映射是<span class="hljs-built_in"> NAT </span>的一种，它将外网主机的<span class="hljs-built_in"> IP </span>地址的一个端口映射到内网中的一台机器，提供相应的服务。当用户访问该<span class="hljs-built_in"> IP </span>的这个端口时，服务器自动将请求映射到对应局域网内部的机器上。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="现在市场上的家庭路由器都具备-NAT-功能，也可以实现端口映射，这就是我们使用内网-IP-也能联网的原因"><a href="#现在市场上的家庭路由器都具备-NAT-功能，也可以实现端口映射，这就是我们使用内网-IP-也能联网的原因" class="headerlink" title="现在市场上的家庭路由器都具备 NAT 功能，也可以实现端口映射，这就是我们使用内网 IP 也能联网的原因"></a>现在市场上的家庭路由器都具备 NAT 功能，也可以实现端口映射，这就是我们使用内网 IP 也能联网的原因</h5></li>
+</ul>
+<h4 id="公网-IP"><a href="#公网-IP" class="headerlink" title="公网 IP"></a>公网 IP</h4><ul>
+<li><h5 id="上面反复提到，任何设备只有使用公网-IP-地址，才能进行网络通信，那究竟什么是公网-IP-呢"><a href="#上面反复提到，任何设备只有使用公网-IP-地址，才能进行网络通信，那究竟什么是公网-IP-呢" class="headerlink" title="上面反复提到，任何设备只有使用公网 IP 地址，才能进行网络通信，那究竟什么是公网 IP 呢"></a>上面反复提到，任何设备只有使用公网 IP 地址，才能进行网络通信，那究竟什么是公网 IP 呢</h5></li>
+<li><h5 id="首先了解下公网-IP-内网-IP-地址是怎么分配的："><a href="#首先了解下公网-IP-内网-IP-地址是怎么分配的：" class="headerlink" title="首先了解下公网 IP /内网 IP 地址是怎么分配的："></a>首先了解下公网 IP /内网 IP 地址是怎么分配的：</h5></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">公有地址（Public address）：由 Inter NIC（Internet<span class="hljs-built_in"> Network </span>Information Center 因特网信息中心）负责。这些<span class="hljs-built_in"> IP </span>地址分配给注册并向Inter NIC提出申请的组织机构，公有<span class="hljs-built_in"> IP </span>全球唯一，通过它直接访问因特网<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">私有地址（<span class="hljs-keyword">Private</span> address）：属于非注册地址，专门为组织机构内部使用，说白了，私有 IP 不能直接上网。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="总的来说，公网-IP-是运营商分配的，是唯一的，使用公网-IP-可直接进行网络通信"><a href="#总的来说，公网-IP-是运营商分配的，是唯一的，使用公网-IP-可直接进行网络通信" class="headerlink" title="总的来说，公网 IP 是运营商分配的，是唯一的，使用公网 IP 可直接进行网络通信"></a>总的来说，公网 IP 是运营商分配的，是唯一的，使用公网 IP 可直接进行网络通信</h5></li>
+<li><h5 id="内网-IP-是由路由器-交换机分配的，内网的所有-IP-地址都是通过同一个公网-IP-进行上网的"><a href="#内网-IP-是由路由器-交换机分配的，内网的所有-IP-地址都是通过同一个公网-IP-进行上网的" class="headerlink" title="内网 IP 是由路由器/交换机分配的，内网的所有 IP 地址都是通过同一个公网 IP 进行上网的"></a>内网 IP 是由路由器/交换机分配的，内网的所有 IP 地址都是通过同一个公网 IP 进行上网的</h5></li>
+<li><h5 id="内网-IP-只在局域网中有效，互联网上无法直接访问到内网的-IP-地址用户，即我们在自己电脑上查到的都是私有IP"><a href="#内网-IP-只在局域网中有效，互联网上无法直接访问到内网的-IP-地址用户，即我们在自己电脑上查到的都是私有IP" class="headerlink" title="内网 IP 只在局域网中有效，互联网上无法直接访问到内网的 IP 地址用户，即我们在自己电脑上查到的都是私有IP"></a>内网 IP 只在局域网中有效，互联网上无法直接访问到内网的 IP 地址用户，即我们在自己电脑上查到的都是私有IP</h5></li>
+<li><h5 id="两个-IP-同时存在，一个对内，一个对外"><a href="#两个-IP-同时存在，一个对内，一个对外" class="headerlink" title="两个 IP 同时存在，一个对内，一个对外"></a>两个 IP 同时存在，一个对内，一个对外</h5></li>
+<li><h5 id="那有人可能会问，如何判断一个-IP-是公网-IP-还是内网-IP-呢？当然，公网-IP-和内网-IP-也很好分辨："><a href="#那有人可能会问，如何判断一个-IP-是公网-IP-还是内网-IP-呢？当然，公网-IP-和内网-IP-也很好分辨：" class="headerlink" title="那有人可能会问，如何判断一个 IP 是公网 IP 还是内网 IP 呢？当然，公网 IP 和内网 IP 也很好分辨："></a>那有人可能会问，如何判断一个 IP 是公网 IP 还是内网 IP 呢？当然，公网 IP 和内网 IP 也很好分辨：</h5></li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">如下3个区域就是处于私网：<br>1：10.<span class="hljs-strong">*.*</span>.*<br>2：172.16.<span class="hljs-strong">*.*</span>至172.31.<span class="hljs-strong">*.*</span><br>3：192.168.<span class="hljs-strong">*.*</span> （*为0到255之间的任意数字）<br>以上3个区域外的就是处于公网之中了<br></code></pre></td></tr></table></figure>
+
+<h4 id="公网IP申请"><a href="#公网IP申请" class="headerlink" title="公网IP申请"></a>公网IP申请</h4><ul>
+<li><h5 id="国内有很多厂商提供云服务，如阿里云、腾讯云、百度云、华为云、亚马逊云等等"><a href="#国内有很多厂商提供云服务，如阿里云、腾讯云、百度云、华为云、亚马逊云等等" class="headerlink" title="国内有很多厂商提供云服务，如阿里云、腾讯云、百度云、华为云、亚马逊云等等"></a>国内有很多厂商提供云服务，如阿里云、腾讯云、百度云、华为云、亚马逊云等等</h5></li>
+<li><h5 id="我们在购买云服务器后，能够注意到该服务器已经被分配了一个公网-IP-，并且是唯一的"><a href="#我们在购买云服务器后，能够注意到该服务器已经被分配了一个公网-IP-，并且是唯一的" class="headerlink" title="我们在购买云服务器后，能够注意到该服务器已经被分配了一个公网 IP ，并且是唯一的"></a>我们在购买云服务器后，能够注意到该服务器已经被分配了一个公网 IP ，并且是唯一的</h5></li>
+<li><h5 id="即购买相关服务或者租用服务器后，即可向服务提供商申请独立-IP-地址，所申请的-IP-地址为“公网-IP-”"><a href="#即购买相关服务或者租用服务器后，即可向服务提供商申请独立-IP-地址，所申请的-IP-地址为“公网-IP-”" class="headerlink" title="即购买相关服务或者租用服务器后，即可向服务提供商申请独立 IP 地址，所申请的 IP 地址为“公网 IP ”"></a>即购买相关服务或者租用服务器后，即可向服务提供商申请独立 IP 地址，所申请的 IP 地址为“公网 IP ”</h5></li>
+</ul>
+<h4 id="运营商"><a href="#运营商" class="headerlink" title="运营商"></a>运营商</h4><ul>
+<li><h5 id="国内三大运营商：移动、电信、联通"><a href="#国内三大运营商：移动、电信、联通" class="headerlink" title="国内三大运营商：移动、电信、联通"></a>国内三大运营商：移动、电信、联通</h5></li>
+<li><h5 id="我们之前提到过，通过-NAT-技术，可以将我们的内网-IP-转换成公网-IP-来进行网络通信，这个过程的详细流程是这样的："><a href="#我们之前提到过，通过-NAT-技术，可以将我们的内网-IP-转换成公网-IP-来进行网络通信，这个过程的详细流程是这样的：" class="headerlink" title="我们之前提到过，通过 NAT 技术，可以将我们的内网 IP 转换成公网 IP 来进行网络通信，这个过程的详细流程是这样的："></a>我们之前提到过，通过 NAT 技术，可以将我们的内网 IP 转换成公网 IP 来进行网络通信，这个过程的详细流程是这样的：</h5></li>
+<li><h5 id="国内的三大运营商向-Inter-NIC-申请并购买了一些公网-IP，然后通过这些公网-IP-，再分给国内用户使用"><a href="#国内的三大运营商向-Inter-NIC-申请并购买了一些公网-IP，然后通过这些公网-IP-，再分给国内用户使用" class="headerlink" title="国内的三大运营商向 Inter NIC 申请并购买了一些公网 IP，然后通过这些公网 IP ，再分给国内用户使用"></a>国内的三大运营商向 Inter NIC 申请并购买了一些公网 IP，然后通过这些公网 IP ，再分给国内用户使用</h5></li>
+<li><h5 id="我们在家里安装了宽带，在局域网下，通过路由器分出几个-IP-，让家里的手机、电脑都能联网"><a href="#我们在家里安装了宽带，在局域网下，通过路由器分出几个-IP-，让家里的手机、电脑都能联网" class="headerlink" title="我们在家里安装了宽带，在局域网下，通过路由器分出几个 IP ，让家里的手机、电脑都能联网"></a>我们在家里安装了宽带，在局域网下，通过路由器分出几个 IP ，让家里的手机、电脑都能联网</h5></li>
+<li><h5 id="只不过我们平时上网用的都是内网-IP-，或者说是私有-IP-，真正拥有公网-IP-的是运营商（当然，我们可以租用一个公网-IP-，就是上面提到的购买云服务器方法）"><a href="#只不过我们平时上网用的都是内网-IP-，或者说是私有-IP-，真正拥有公网-IP-的是运营商（当然，我们可以租用一个公网-IP-，就是上面提到的购买云服务器方法）" class="headerlink" title="只不过我们平时上网用的都是内网 IP ，或者说是私有 IP ，真正拥有公网 IP 的是运营商（当然，我们可以租用一个公网 IP ，就是上面提到的购买云服务器方法）"></a>只不过我们平时上网用的都是内网 IP ，或者说是私有 IP ，真正拥有公网 IP 的是运营商（当然，我们可以租用一个公网 IP ，就是上面提到的购买云服务器方法）</h5></li>
+<li><h5 id="这里注意到，两个家庭的局域网-IP-相同是有可能的也很正常，因为这两个家庭上网还是通过运营商的公网-IP-，而公网-IP-是唯一的"><a href="#这里注意到，两个家庭的局域网-IP-相同是有可能的也很正常，因为这两个家庭上网还是通过运营商的公网-IP-，而公网-IP-是唯一的" class="headerlink" title="这里注意到，两个家庭的局域网 IP 相同是有可能的也很正常，因为这两个家庭上网还是通过运营商的公网 IP ，而公网 IP 是唯一的"></a>这里注意到，两个家庭的局域网 IP 相同是有可能的也很正常，因为这两个家庭上网还是通过运营商的公网 IP ，而公网 IP 是唯一的</h5></li>
+<li><h5 id="那么我们的上网过程就是这样的：我们平时经过路由器，通过宽带，最终去到运营商那边，数据是从运营商出去，最终数据是回到运营商那边，运营商再把数据发送到用户的电脑"><a href="#那么我们的上网过程就是这样的：我们平时经过路由器，通过宽带，最终去到运营商那边，数据是从运营商出去，最终数据是回到运营商那边，运营商再把数据发送到用户的电脑" class="headerlink" title="那么我们的上网过程就是这样的：我们平时经过路由器，通过宽带，最终去到运营商那边，数据是从运营商出去，最终数据是回到运营商那边，运营商再把数据发送到用户的电脑"></a>那么我们的上网过程就是这样的：我们平时经过路由器，通过宽带，最终去到运营商那边，数据是从运营商出去，最终数据是回到运营商那边，运营商再把数据发送到用户的电脑</h5></li>
+</ul>
+<h2 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h2><h3 id="出处"><a href="#出处" class="headerlink" title="出处"></a>出处</h3><ul>
+<li><h5 id="众所周知，声纳音是是各国海军进行水下监视使用的主要技术，它利用声波在水中的传播和反射来进行导航和测距"><a href="#众所周知，声纳音是是各国海军进行水下监视使用的主要技术，它利用声波在水中的传播和反射来进行导航和测距" class="headerlink" title="众所周知，声纳音是是各国海军进行水下监视使用的主要技术，它利用声波在水中的传播和反射来进行导航和测距"></a>众所周知，声纳音是是各国海军进行水下监视使用的主要技术，它利用声波在水中的传播和反射来进行导航和测距</h5></li>
+<li><h5 id="我们现在使用的Ping命令，就是以声纳音“ping”来命名的"><a href="#我们现在使用的Ping命令，就是以声纳音“ping”来命名的" class="headerlink" title="我们现在使用的Ping命令，就是以声纳音“ping”来命名的"></a>我们现在使用的Ping命令，就是以声纳音“ping”来命名的</h5></li>
+</ul>
+<h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li><h5 id="Ping命令的原理及多种用法-哔哩哔哩-bilibili"><a href="#Ping命令的原理及多种用法-哔哩哔哩-bilibili" class="headerlink" title="Ping命令的原理及多种用法_哔哩哔哩_bilibili"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1WZ4y187ak/?p=2&spm_id_from=pageDriver">Ping命令的原理及多种用法_哔哩哔哩_bilibili</a></h5></li>
+<li><h5 id="Ping命令是网络管理命令中的一种常见命令，基于ICMP协议，用于测试网络的连通性"><a href="#Ping命令是网络管理命令中的一种常见命令，基于ICMP协议，用于测试网络的连通性" class="headerlink" title="Ping命令是网络管理命令中的一种常见命令，基于ICMP协议，用于测试网络的连通性"></a>Ping命令是网络管理命令中的一种常见命令，基于ICMP协议，用于测试网络的连通性</h5></li>
+<li><h5 id="互联网中的Ping命令包含两个过程："><a href="#互联网中的Ping命令包含两个过程：" class="headerlink" title="互联网中的Ping命令包含两个过程："></a>互联网中的Ping命令包含两个过程：</h5></li>
+<li><h5 id="Ping-请求和Ping-响应"><a href="#Ping-请求和Ping-响应" class="headerlink" title="Ping 请求和Ping 响应"></a>Ping 请求和Ping 响应</h5></li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">Ping</span>命令就是发送数据包到目标端，然后等待<span class="hljs-built_in">Ping</span>返回数据<br>根据<span class="hljs-built_in">Ping</span>返回的数据来判断是否可以抵达目标端<br>并分析出数据返回时间、与目标端的距离等等信息<br></code></pre></td></tr></table></figure>
+
+<h3 id="Ping的五步法"><a href="#Ping的五步法" class="headerlink" title="Ping的五步法"></a>Ping的五步法</h3><ul>
+<li><h5 id="我们需要进行以下五个步骤来验证电脑上的Ping工具是否正常使用："><a href="#我们需要进行以下五个步骤来验证电脑上的Ping工具是否正常使用：" class="headerlink" title="我们需要进行以下五个步骤来验证电脑上的Ping工具是否正常使用："></a>我们需要进行以下五个步骤来验证电脑上的Ping工具是否正常使用：</h5></li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">ping</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>/localhost<br><span class="hljs-built_in">ping</span> 本机IP地址<br><span class="hljs-built_in">ping</span> 默认网关<br><span class="hljs-built_in">ping</span> 目标IP地址<br><span class="hljs-built_in">ping</span> 目标主机名<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="ping-127-0-0-1：检测自己主机的网络配置是否正常，无需联网"><a href="#ping-127-0-0-1：检测自己主机的网络配置是否正常，无需联网" class="headerlink" title="ping 127.0.0.1：检测自己主机的网络配置是否正常，无需联网"></a>ping 127.0.0.1：检测自己主机的网络配置是否正常，无需联网</h5></li>
+<li><h5 id="ping-本机IP地址：ping本机的内网IP，检测本机网线及WIFI连接是否有问题"><a href="#ping-本机IP地址：ping本机的内网IP，检测本机网线及WIFI连接是否有问题" class="headerlink" title="ping 本机IP地址：ping本机的内网IP，检测本机网线及WIFI连接是否有问题"></a>ping 本机IP地址：ping本机的内网IP，检测本机网线及WIFI连接是否有问题</h5></li>
+<li><h5 id="ping-默认网关：即ping路由器，检测路由器是否出现故障"><a href="#ping-默认网关：即ping路由器，检测路由器是否出现故障" class="headerlink" title="ping 默认网关：即ping路由器，检测路由器是否出现故障"></a>ping 默认网关：即ping路由器，检测路由器是否出现故障</h5></li>
+<li><h5 id="ping-目标IP地址：这一步不成功的原因有很多，排除掉本机的网络连接问题，很可能是对方主机未联网、防火墙屏蔽了ping请求、数据包丢失等等，多是外部原因"><a href="#ping-目标IP地址：这一步不成功的原因有很多，排除掉本机的网络连接问题，很可能是对方主机未联网、防火墙屏蔽了ping请求、数据包丢失等等，多是外部原因" class="headerlink" title="ping 目标IP地址：这一步不成功的原因有很多，排除掉本机的网络连接问题，很可能是对方主机未联网、防火墙屏蔽了ping请求、数据包丢失等等，多是外部原因"></a>ping 目标IP地址：这一步不成功的原因有很多，排除掉本机的网络连接问题，很可能是对方主机未联网、防火墙屏蔽了ping请求、数据包丢失等等，多是外部原因</h5></li>
+<li><h5 id="ping-目标主机名：即ping一个域名，域名会在DNS里解析成IP地址，其原理同上"><a href="#ping-目标主机名：即ping一个域名，域名会在DNS里解析成IP地址，其原理同上" class="headerlink" title="ping 目标主机名：即ping一个域名，域名会在DNS里解析成IP地址，其原理同上"></a>ping 目标主机名：即ping一个域名，域名会在DNS里解析成IP地址，其原理同上</h5></li>
+</ul>
+<h3 id="Ping数据包"><a href="#Ping数据包" class="headerlink" title="Ping数据包"></a>Ping数据包</h3><ul>
+<li><h5 id="我们在执行ping命令后，控制台上会不断地跳出提示消息，这些就是ping成功发送以后得到的消息"><a href="#我们在执行ping命令后，控制台上会不断地跳出提示消息，这些就是ping成功发送以后得到的消息" class="headerlink" title="我们在执行ping命令后，控制台上会不断地跳出提示消息，这些就是ping成功发送以后得到的消息"></a>我们在执行ping命令后，控制台上会不断地跳出提示消息，这些就是ping成功发送以后得到的消息</h5></li>
+<li><h5 id="这些消息包括：目标IP地址、数据包传输时间、数据包生命周期、数据字节等等，如下："><a href="#这些消息包括：目标IP地址、数据包传输时间、数据包生命周期、数据字节等等，如下：" class="headerlink" title="这些消息包括：目标IP地址、数据包传输时间、数据包生命周期、数据字节等等，如下："></a>这些消息包括：目标IP地址、数据包传输时间、数据包生命周期、数据字节等等，如下：</h5></li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs markdown">C:\WINDOWS\system32&gt;ping -n 20 www.baidu.com<br><br>正在 Ping www.baidu.com [39.156.66.18] 具有 32 字节的数据:<br>来自 39.156.66.18 的回复: 字节=32 时间=22ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=18ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=129ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=361ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=50ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=42ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=20ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=19ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=17ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=17ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=15ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=17ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=19ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=21ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=37ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=53ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=50ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=23ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=30ms TTL=52<br>来自 39.156.66.18 的回复: 字节=32 时间=23ms TTL=52<br><br>39.156.66.18 的 Ping 统计信息:<br><span class="hljs-code">    数据包: 已发送 = 20，已接收 = 20，丢失 = 0 (0% 丢失)，</span><br><span class="hljs-code">往返行程的估计时间(以毫秒为单位):</span><br><span class="hljs-code">    最短 = 15ms，最长 = 361ms，平均 = 49ms</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="常用Ping命令"><a href="#常用Ping命令" class="headerlink" title="常用Ping命令"></a>常用Ping命令</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs markdown">C:\WINDOWS\system32&gt;ping<br><br>用法: ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL] [-v TOS]<br><span class="hljs-code">            [-r count] [-s count] [[-j host-list] | [-k host-list]]</span><br><span class="hljs-code">            [-w timeout] [-R] [-S srcaddr] [-c compartment] [-p]</span><br><span class="hljs-code">            [-4] [-6] target_name</span><br><span class="hljs-code"></span><br>选项:<br><span class="hljs-code">    -t             Ping 指定的主机，直到停止。</span><br><span class="hljs-code">                   若要查看统计信息并继续操作，请键入 Ctrl+Break；</span><br><span class="hljs-code">                   若要停止，请键入 Ctrl+C。</span><br><span class="hljs-code">    -a             将地址解析为主机名。</span><br><span class="hljs-code">    -n count       要发送的回显请求数。</span><br><span class="hljs-code">    -l size        发送缓冲区大小。</span><br><span class="hljs-code">    -f             在数据包中设置“不分段”标记(仅适用于 IPv4)。</span><br><span class="hljs-code">    -i TTL         生存时间。</span><br><span class="hljs-code">    -v TOS         服务类型(仅适用于 IPv4。该设置已被弃用，</span><br><span class="hljs-code">                   对 IP 标头中的服务类型字段没有任何</span><br><span class="hljs-code">                   影响)。</span><br><span class="hljs-code">    -r count       记录计数跃点的路由(仅适用于 IPv4)。</span><br><span class="hljs-code">    -s count       计数跃点的时间戳(仅适用于 IPv4)。</span><br><span class="hljs-code">    -j host-list   与主机列表一起使用的松散源路由(仅适用于 IPv4)。</span><br><span class="hljs-code">    -k host-list    与主机列表一起使用的严格源路由(仅适用于 IPv4)。</span><br><span class="hljs-code">    -w timeout     等待每次回复的超时时间(毫秒)。</span><br><span class="hljs-code">    -R             同样使用路由标头测试反向路由(仅适用于 IPv6)。</span><br><span class="hljs-code">                   根据 RFC 5095，已弃用此路由标头。</span><br><span class="hljs-code">                   如果使用此标头，某些系统可能丢弃</span><br><span class="hljs-code">                   回显请求。</span><br><span class="hljs-code">    -S srcaddr     要使用的源地址。</span><br><span class="hljs-code">    -c compartment 路由隔离舱标识符。</span><br><span class="hljs-code">    -p             Ping Hyper-V 网络虚拟化提供程序地址。</span><br><span class="hljs-code">    -4             强制使用 IPv4。</span><br><span class="hljs-code">    -6             强制使用 IPv6。</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="常见错误信息"><a href="#常见错误信息" class="headerlink" title="常见错误信息"></a>常见错误信息</h3><ul>
+<li><h5 id="这里简单提一下常见的错误信息，具体的内容，日后有实操经验后再另作介绍"><a href="#这里简单提一下常见的错误信息，具体的内容，日后有实操经验后再另作介绍" class="headerlink" title="这里简单提一下常见的错误信息，具体的内容，日后有实操经验后再另作介绍"></a>这里简单提一下常见的错误信息，具体的内容，日后有实操经验后再另作介绍</h5></li>
+<li><h5 id="请求超时、无法连接到目标IP、硬件错误"><a href="#请求超时、无法连接到目标IP、硬件错误" class="headerlink" title="请求超时、无法连接到目标IP、硬件错误"></a>请求超时、无法连接到目标IP、硬件错误</h5></li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><h5 id="在这篇博客中，我们深入探讨了IP的概念，重点介绍了公网IP和内网IP的区别以及Ping命令的基本原理和用途。"><a href="#在这篇博客中，我们深入探讨了IP的概念，重点介绍了公网IP和内网IP的区别以及Ping命令的基本原理和用途。" class="headerlink" title="在这篇博客中，我们深入探讨了IP的概念，重点介绍了公网IP和内网IP的区别以及Ping命令的基本原理和用途。"></a>在这篇博客中，我们深入探讨了IP的概念，重点介绍了公网IP和内网IP的区别以及Ping命令的基本原理和用途。</h5></li>
+<li><h5 id="通过了解IP地址的结构和分类，我们能够更好地理解网络连接的基础知识。同时，通过掌握Ping命令的使用，我们可以有效地测试和诊断网络连接的可靠性和性能。"><a href="#通过了解IP地址的结构和分类，我们能够更好地理解网络连接的基础知识。同时，通过掌握Ping命令的使用，我们可以有效地测试和诊断网络连接的可靠性和性能。" class="headerlink" title="通过了解IP地址的结构和分类，我们能够更好地理解网络连接的基础知识。同时，通过掌握Ping命令的使用，我们可以有效地测试和诊断网络连接的可靠性和性能。"></a>通过了解IP地址的结构和分类，我们能够更好地理解网络连接的基础知识。同时，通过掌握Ping命令的使用，我们可以有效地测试和诊断网络连接的可靠性和性能。</h5></li>
+<li><h5 id="希望这篇博客为读者提供了有益的计算机网络基础知识，让您能够更加自信地掌握网络连接和故障排查的要点。继续关注我们的博客，将会有更多有趣的计算机网络相关内容与大家分享。谢谢阅读！"><a href="#希望这篇博客为读者提供了有益的计算机网络基础知识，让您能够更加自信地掌握网络连接和故障排查的要点。继续关注我们的博客，将会有更多有趣的计算机网络相关内容与大家分享。谢谢阅读！" class="headerlink" title="希望这篇博客为读者提供了有益的计算机网络基础知识，让您能够更加自信地掌握网络连接和故障排查的要点。继续关注我们的博客，将会有更多有趣的计算机网络相关内容与大家分享。谢谢阅读！"></a>希望这篇博客为读者提供了有益的计算机网络基础知识，让您能够更加自信地掌握网络连接和故障排查的要点。继续关注我们的博客，将会有更多有趣的计算机网络相关内容与大家分享。谢谢阅读！</h5></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/IP/" class="category-chain-item">IP</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/IP/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="category-chain-item">计算机网络</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/IP/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/IP/">#IP</a>
+      
+        <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>从IP到Ping命令：了解计算机网络连接的基础</div>
+      <div>https://deng-2022.gitee.io/blog/2023/07/11/从IP到Ping命令：了解计算机网络连接的基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/07/11/docker/" title="docker">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">docker</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/07/06/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%EF%BC%9A%E5%BC%80%E5%8F%91%E8%87%AA%E5%B7%B1%E7%9A%84%E5%AE%9A%E5%88%B6%E5%8C%96-Spring-Boot-%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF/" title="快速启动：开发自己的定制化 Spring Boot 项目模板">
+                        <span class="hidden-mobile">快速启动：开发自己的定制化 Spring Boot 项目模板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南|Hexo Fluid 用户手册</span> </a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
