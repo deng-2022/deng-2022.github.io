@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="揭秘跨域产生的机制与解决方案探索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度解析Web开发中的跨域问题">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/07/15/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90Web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="揭秘跨域产生的机制与解决方案探索">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-15T02:57:36.000Z">
+<meta property="article:modified_time" content="2023-04-13T07:57:09.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>深度解析Web开发中的跨域问题 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="深度解析Web开发中的跨域问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-15 10:57" pubdate>
+          2023年7月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
+        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
+        aria-expanded="true"
+      >
+        Web
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-c6e190b284633c48e39e55049da3cce8"
+           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="true"
+      >
+        经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/07/15/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90Web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" title="深度解析Web开发中的跨域问题"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">深度解析Web开发中的跨域问题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">深度解析Web开发中的跨域问题</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：3 个月前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h1><ul>
+<li><h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><h3 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h3><ul>
+<li><h5 id="以下是跨域的标准定义："><a href="#以下是跨域的标准定义：" class="headerlink" title="以下是跨域的标准定义："></a>以下是跨域的标准定义：</h5></li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">跨域指的是在浏览器中，当一个网页（或者Web应用）尝试访问不同域名、不同端口或不同协议的资源时，浏览器会限制该行为，防止潜在的安全风险。跨域问题是由浏览器的同源策略（Same-Origin <span class="hljs-keyword">Policy</span>）所引起的。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">同源策略是一种安全策略，是浏览器的一项重要基础安全机制。它要求网页只能与同一域名、协议和端口的资源进行交互。同源策略的存在是为了防止恶意网站获取用户的敏感信息或进行中间人攻击等安全问题。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="很显然，跨域就是在浏览器请求资源的过程中发生的"><a href="#很显然，跨域就是在浏览器请求资源的过程中发生的" class="headerlink" title="很显然，跨域就是在浏览器请求资源的过程中发生的"></a>很显然，跨域就是在浏览器请求资源的过程中发生的</h5></li>
+<li><h5 id="浏览器请求资源时，如果请求的目标和当前页面的域名、端口或协议不一致，就会触发跨域问题"><a href="#浏览器请求资源时，如果请求的目标和当前页面的域名、端口或协议不一致，就会触发跨域问题" class="headerlink" title="浏览器请求资源时，如果请求的目标和当前页面的域名、端口或协议不一致，就会触发跨域问题"></a>浏览器请求资源时，如果请求的目标和当前页面的域名、端口或协议不一致，就会触发跨域问题</h5></li>
+<li><h5 id="具体来说，以下情况被认为是跨域访问："><a href="#具体来说，以下情况被认为是跨域访问：" class="headerlink" title="具体来说，以下情况被认为是跨域访问："></a>具体来说，以下情况被认为是跨域访问：</h5><ol>
+<li><h5 id="不同域名：例如，www-example-com-和-api-example-com。"><a href="#不同域名：例如，www-example-com-和-api-example-com。" class="headerlink" title="不同域名：例如，www.example.com 和 api.example.com。"></a>不同域名：例如，<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 和 api.example.com。</h5></li>
+<li><h5 id="不同端口：例如，www-example-com-和-www-example-com-8080。"><a href="#不同端口：例如，www-example-com-和-www-example-com-8080。" class="headerlink" title="不同端口：例如，www.example.com 和 www.example.com:8080。"></a>不同端口：例如，<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> 和 <a href="http://www.example.com:8080。/">www.example.com:8080。</a></h5></li>
+<li><h5 id="不同协议：例如，http-example-com-和-https-example-com。"><a href="#不同协议：例如，http-example-com-和-https-example-com。" class="headerlink" title="不同协议：例如，http://example.com 和 https://example.com。"></a>不同协议：例如，<a target="_blank" rel="noopener" href="http://example.com/">http://example.com</a> 和 <a target="_blank" rel="noopener" href="https://example.com./">https://example.com。</a></h5></li>
+</ol>
+</li>
+<li><h5 id="现在的Web开发中都是前后端分离的开发模式，数据的获取并非同源，所以跨域的问题在我们日常开发中特别常见"><a href="#现在的Web开发中都是前后端分离的开发模式，数据的获取并非同源，所以跨域的问题在我们日常开发中特别常见" class="headerlink" title="现在的Web开发中都是前后端分离的开发模式，数据的获取并非同源，所以跨域的问题在我们日常开发中特别常见"></a>现在的Web开发中都是前后端分离的开发模式，数据的获取并非同源，所以跨域的问题在我们日常开发中特别常见</h5></li>
+<li><h5 id="一般而言，跨域问题是在以下情况下产生的："><a href="#一般而言，跨域问题是在以下情况下产生的：" class="headerlink" title="一般而言，跨域问题是在以下情况下产生的："></a>一般而言，跨域问题是在以下情况下产生的：</h5></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">AJAX请求：当通过XMLHttpRequest对象发送异步请求时，如果请求的目标和当前页面的域名、端口或协议不一致，就会触发跨域问题。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">资源加载：在网页中引入了来自不同域的外部资源，比如CSS、JavaScript、图片等文件时，如果资源服务器不允许跨域访问，也会产生跨域问题<br></code></pre></td></tr></table></figure>
+
+<h3 id="广义的跨域"><a href="#广义的跨域" class="headerlink" title="广义的跨域"></a>广义的跨域</h3><ul>
+<li><h5 id="其实浏览器加载的资源很多都是跨域的，只是有些资源的加载浏览器是允许的"><a href="#其实浏览器加载的资源很多都是跨域的，只是有些资源的加载浏览器是允许的" class="headerlink" title="其实浏览器加载的资源很多都是跨域的，只是有些资源的加载浏览器是允许的"></a>其实浏览器加载的资源很多都是跨域的，只是有些资源的加载浏览器是允许的</h5></li>
+<li><h5 id="图片、CSS、Script等资源是不受同源策略限制的，一般不会触发跨域跨问题"><a href="#图片、CSS、Script等资源是不受同源策略限制的，一般不会触发跨域跨问题" class="headerlink" title="图片、CSS、Script等资源是不受同源策略限制的，一般不会触发跨域跨问题"></a>图片、CSS、Script等资源是不受同源策略限制的，一般不会触发跨域跨问题</h5></li>
+</ul>
+<h3 id="狭义的跨域"><a href="#狭义的跨域" class="headerlink" title="狭义的跨域"></a>狭义的跨域</h3><ul>
+<li><h5 id="这里的跨域主要说的是-ajax-请求无法完成"><a href="#这里的跨域主要说的是-ajax-请求无法完成" class="headerlink" title="这里的跨域主要说的是 ajax 请求无法完成"></a>这里的跨域主要说的是 ajax 请求无法完成</h5></li>
+<li><h5 id="跨域问题主要是在浏览器环境下出现的，当浏览器发现请求跨域时，会在请求头中加上一个Origin字段，目标服务器会返回一个Access-Control-Allow-Origin的响应头，确定是否允许跨域访问"><a href="#跨域问题主要是在浏览器环境下出现的，当浏览器发现请求跨域时，会在请求头中加上一个Origin字段，目标服务器会返回一个Access-Control-Allow-Origin的响应头，确定是否允许跨域访问" class="headerlink" title="跨域问题主要是在浏览器环境下出现的，当浏览器发现请求跨域时，会在请求头中加上一个Origin字段，目标服务器会返回一个Access-Control-Allow-Origin的响应头，确定是否允许跨域访问"></a>跨域问题主要是在浏览器环境下出现的，当浏览器发现请求跨域时，会在请求头中加上一个Origin字段，目标服务器会返回一个Access-Control-Allow-Origin的响应头，确定是否允许跨域访问</h5></li>
+</ul>
+<h2 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h2><h3 id="古老的JSONP"><a href="#古老的JSONP" class="headerlink" title="古老的JSONP"></a>古老的JSONP</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li><h5 id="JSONP（JSON-with-Padding）"><a href="#JSONP（JSON-with-Padding）" class="headerlink" title="JSONP（JSON with Padding）"></a>JSONP（JSON with Padding）</h5></li>
+</ul>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ul>
+<li><h5 id="JSONP的优点就是因为他够老，能兼容各种浏览器，无兼容问题，众生平等"><a href="#JSONP的优点就是因为他够老，能兼容各种浏览器，无兼容问题，众生平等" class="headerlink" title="JSONP的优点就是因为他够老，能兼容各种浏览器，无兼容问题，众生平等"></a>JSONP的优点就是因为他够老，能兼容各种浏览器，无兼容问题，众生平等</h5></li>
+<li><h5 id="他发送的不是ajax请求，而是利用了script标签加载机制。他发送的不是ajax请求"><a href="#他发送的不是ajax请求，而是利用了script标签加载机制。他发送的不是ajax请求" class="headerlink" title="他发送的不是ajax请求，而是利用了script标签加载机制。他发送的不是ajax请求"></a>他发送的不是ajax请求，而是利用了script标签加载机制。他发送的不是ajax请求</h5></li>
+<li><h5 id="了解了相关机制，我们看一下具体实现："><a href="#了解了相关机制，我们看一下具体实现：" class="headerlink" title="了解了相关机制，我们看一下具体实现："></a>了解了相关机制，我们看一下具体实现：</h5></li>
+<li><h5 id="客户端代码"><a href="#客户端代码" class="headerlink" title="客户端代码"></a>客户端代码</h5></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">jsonp</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> script = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;script&#x27;</span>);<br>    script.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27;text/javascript&#x27;</span>;<br><br>    <span class="hljs-comment">// 传参并指定回调执行函数为backFn</span><br>    script.<span class="hljs-property">src</span> = <span class="hljs-string">&#x27;http://localhost:8100/getUserInfo?uid=100&amp;callback=backFn&#x27;</span>;<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(script);<br>&#125;<br><br><span class="hljs-comment">// 回调执行函数</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">backFn</span>(<span class="hljs-params">res</span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res));<br>&#125;<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;btn_get_data&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-title function_">jsonp</span>();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="服务端代码"><a href="#服务端代码" class="headerlink" title="服务端代码"></a>服务端代码</h5></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> uid = ctx.<span class="hljs-property">query</span>.<span class="hljs-property">uid</span>;<br><span class="hljs-keyword">let</span> callback=ctx.<span class="hljs-property">query</span>.<span class="hljs-property">callback</span>;<br>ctx.<span class="hljs-property">body</span> = <span class="hljs-string">&#x27;backFn(&#123;&quot;code&quot;: 0, &quot;user&quot;: &quot;admin&quot;&#125;)&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这种跨域解决方法只支持get，而且存在安全问题，技术发展至今，jsonp这种前后端耦合的方式肯定要被代替"><a href="#这种跨域解决方法只支持get，而且存在安全问题，技术发展至今，jsonp这种前后端耦合的方式肯定要被代替" class="headerlink" title="这种跨域解决方法只支持get，而且存在安全问题，技术发展至今，jsonp这种前后端耦合的方式肯定要被代替"></a>这种跨域解决方法只支持get，而且存在安全问题，技术发展至今，jsonp这种前后端耦合的方式肯定要被代替</h5></li>
+<li><h5 id="有关JSONP跨域解决方案的具体介绍，可以看这篇博客："><a href="#有关JSONP跨域解决方案的具体介绍，可以看这篇博客：" class="headerlink" title="有关JSONP跨域解决方案的具体介绍，可以看这篇博客："></a>有关JSONP跨域解决方案的具体介绍，可以看这篇博客：</h5></li>
+<li><h5 id="77条消息-jsonp原理详解——终于搞清楚jsonp是啥了-哪-吒的博客-CSDN博客"><a href="#77条消息-jsonp原理详解——终于搞清楚jsonp是啥了-哪-吒的博客-CSDN博客" class="headerlink" title="(77条消息) jsonp原理详解——终于搞清楚jsonp是啥了_哪 吒的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/guorui_java/article/details/107345499">(77条消息) jsonp原理详解——终于搞清楚jsonp是啥了_哪 吒的博客-CSDN博客</a></h5></li>
+</ul>
+<h3 id="CORS跨域解决方案"><a href="#CORS跨域解决方案" class="headerlink" title="CORS跨域解决方案"></a>CORS跨域解决方案</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><ul>
+<li><h5 id="CORS（Cross-origin-resource-sharing）即“跨域资源共享“"><a href="#CORS（Cross-origin-resource-sharing）即“跨域资源共享“" class="headerlink" title="CORS（Cross-origin resource sharing）即“跨域资源共享“"></a>CORS（Cross-origin resource sharing）即“跨域资源共享“</h5></li>
+<li><h5 id="在出现CORS标准之前，-我们还只能通过jsonp（jsonp跨域请求详解）的形式去向“跨源”服务器去发送-XMLHttpRequest-请求，这种方式吃力不讨好，在请求方与接收方都需要做处理，而且请求的方式仅仅局限于GET。所以-，CORS标准必然是大势所趋，并且市场上绝大多数浏览器都已经支持CORS。"><a href="#在出现CORS标准之前，-我们还只能通过jsonp（jsonp跨域请求详解）的形式去向“跨源”服务器去发送-XMLHttpRequest-请求，这种方式吃力不讨好，在请求方与接收方都需要做处理，而且请求的方式仅仅局限于GET。所以-，CORS标准必然是大势所趋，并且市场上绝大多数浏览器都已经支持CORS。" class="headerlink" title="在出现CORS标准之前， 我们还只能通过jsonp（jsonp跨域请求详解）的形式去向“跨源”服务器去发送 XMLHttpRequest 请求，这种方式吃力不讨好，在请求方与接收方都需要做处理，而且请求的方式仅仅局限于GET。所以 ，CORS标准必然是大势所趋，并且市场上绝大多数浏览器都已经支持CORS。"></a>在出现CORS标准之前， 我们还只能通过<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24390509">jsonp（jsonp跨域请求详解）</a>的形式去向“跨源”服务器去发送 XMLHttpRequest 请求，这种方式吃力不讨好，在请求方与接收方都需要做处理，而且请求的方式仅仅局限于GET。所以 ，CORS标准必然是大势所趋，并且市场上绝大多数浏览器都已经支持CORS。</h5></li>
+</ul>
+<h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><ul>
+<li><h5 id="支持CORS请求的浏览器一旦发现-ajax-请求跨域，会对请求做一些特殊处理，对于已经实现CORS接口的服务端，接受请求，并做出回应"><a href="#支持CORS请求的浏览器一旦发现-ajax-请求跨域，会对请求做一些特殊处理，对于已经实现CORS接口的服务端，接受请求，并做出回应" class="headerlink" title="支持CORS请求的浏览器一旦发现 ajax 请求跨域，会对请求做一些特殊处理，对于已经实现CORS接口的服务端，接受请求，并做出回应"></a>支持CORS请求的浏览器一旦发现 ajax 请求跨域，会对请求做一些特殊处理，对于已经实现CORS接口的服务端，接受请求，并做出回应</h5></li>
+<li><h5 id="有一种情况比较特殊，如果我们发送的跨域请求为“非简单请求”，浏览器会在发出此请求之前首先发送一个请求类型为OPTIONS的“预检请求”，验证请求源是否为服务端允许源，这些对于开发这来说是感觉不到的，由浏览器代理"><a href="#有一种情况比较特殊，如果我们发送的跨域请求为“非简单请求”，浏览器会在发出此请求之前首先发送一个请求类型为OPTIONS的“预检请求”，验证请求源是否为服务端允许源，这些对于开发这来说是感觉不到的，由浏览器代理" class="headerlink" title="有一种情况比较特殊，如果我们发送的跨域请求为“非简单请求”，浏览器会在发出此请求之前首先发送一个请求类型为OPTIONS的“预检请求”，验证请求源是否为服务端允许源，这些对于开发这来说是感觉不到的，由浏览器代理"></a>有一种情况比较特殊，如果我们发送的跨域请求为“非简单请求”，浏览器会在发出此请求之前首先发送一个请求类型为OPTIONS的“预检请求”，验证请求源是否为服务端允许源，这些对于开发这来说是感觉不到的，由浏览器代理</h5></li>
+<li><h5 id="总而言之，客户端不需要对跨域请求做任何特殊处理"><a href="#总而言之，客户端不需要对跨域请求做任何特殊处理" class="headerlink" title="总而言之，客户端不需要对跨域请求做任何特殊处理"></a>总而言之，客户端不需要对跨域请求做任何特殊处理</h5></li>
+<li><h5 id="有关CORS跨域解决方案的具体介绍，可以看这篇博客："><a href="#有关CORS跨域解决方案的具体介绍，可以看这篇博客：" class="headerlink" title="有关CORS跨域解决方案的具体介绍，可以看这篇博客："></a>有关CORS跨域解决方案的具体介绍，可以看这篇博客：</h5></li>
+<li><h5 id="彻底理解CORS跨域原理-喵小Q-博客园-cnblogs-com"><a href="#彻底理解CORS跨域原理-喵小Q-博客园-cnblogs-com" class="headerlink" title="彻底理解CORS跨域原理 - 喵小Q - 博客园 (cnblogs.com)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiujianmei/p/11649905.html">彻底理解CORS跨域原理 - 喵小Q - 博客园 (cnblogs.com)</a></h5></li>
+<li><h5 id="我们在开发过程中，只需作这两个步骤，即可解决跨域问题："><a href="#我们在开发过程中，只需作这两个步骤，即可解决跨域问题：" class="headerlink" title="我们在开发过程中，只需作这两个步骤，即可解决跨域问题："></a>我们在开发过程中，只需作这两个步骤，即可解决跨域问题：</h5></li>
+</ul>
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><h5 id="总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难"><a href="#总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难" class="headerlink" title="总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难"></a>总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难</h5></li>
+<li><h5 id="这里补充几种常见的跨域解决方法："><a href="#这里补充几种常见的跨域解决方法：" class="headerlink" title="这里补充几种常见的跨域解决方法："></a>这里补充几种常见的跨域解决方法：</h5></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml">要解决跨域问题，可以采取以下常见方法：<br><br>JSONP（JSON with Padding）：通过动态创建<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml">标签，利用<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">标签没有跨域限制的特性，实现跨域请求。</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="language-handlebars"><span class="hljs-variable constant_">CORS</span>（<span class="hljs-title class_">Cross</span>-<span class="hljs-title class_">Origin</span> <span class="hljs-title class_">Resource</span> <span class="hljs-title class_">Sharing</span>）：在服务器端设置响应头，允许指定的域名或所有域名进行跨域访问。</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="language-handlebars">代理（<span class="hljs-title class_">Proxy</span>）：在自己的服务器上设置一个代理接口，将跨域请求转发到目标服务器上。</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="language-handlebars"><span class="hljs-title class_">WebSocket</span>：使用<span class="hljs-title class_">WebSocket</span>协议进行双向通信，不受同源策略限制。</span></span></span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Web/" class="category-chain-item">Web</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/Web/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/Web/">#Web</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>深度解析Web开发中的跨域问题</div>
+      <div>https://deng-2022.gitee.io/blog/2023/07/15/深度解析Web开发中的跨域问题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月15日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年4月13日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/07/15/SpringBoo%E9%85%8D%E7%BD%AE/" title="SpringBoo配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoo配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/07/11/API%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="API开放平台-开发文档">
+                        <span class="hidden-mobile">API开放平台-开发文档</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
