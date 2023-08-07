@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/newBG/girl3.jpg">
 <meta property="article:published_time" content="2023-05-27T11:14:48.000Z">
-<meta property="article:modified_time" content="2023-07-04T12:18:59.000Z">
+<meta property="article:modified_time" content="2023-08-07T12:18:59.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Blog">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          8.6k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          12 分钟
+          22 分钟
         
       </span>
     
@@ -614,7 +614,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：9 小时后
                   
                 
               </p>
@@ -903,9 +903,36 @@
 <ul>
 <li><h5 id="很显然，node版本过低，于是我修改node版本为18-16-1，问题成功解决"><a href="#很显然，node版本过低，于是我修改node版本为18-16-1，问题成功解决" class="headerlink" title="很显然，node版本过低，于是我修改node版本为18.16.1，问题成功解决"></a>很显然，node版本过低，于是我修改node版本为18.16.1，问题成功解决</h5></li>
 <li><h5 id="有关node版本的修改可以在《配置指南-掌握Node-js配置》一文中详细了解"><a href="#有关node版本的修改可以在《配置指南-掌握Node-js配置》一文中详细了解" class="headerlink" title="有关node版本的修改可以在《配置指南-掌握Node.js配置》一文中详细了解"></a>有关node版本的修改可以在《配置指南-掌握Node.js配置》一文中详细了解</h5></li>
-<li><h5 id="成功安装hope主题，开启文档站点服务，效果如下："><a href="#成功安装hope主题，开启文档站点服务，效果如下：" class="headerlink" title="成功安装hope主题，开启文档站点服务，效果如下："></a>成功安装hope主题，开启文档站点服务，效果如下：</h5></li>
+<li><h5 id="成功安装hope主题，开启文档站点服务，效果如下：-2023-07-04晚"><a href="#成功安装hope主题，开启文档站点服务，效果如下：-2023-07-04晚" class="headerlink" title="成功安装hope主题，开启文档站点服务，效果如下：(2023/07/04晚)"></a>成功安装hope主题，开启文档站点服务，效果如下：(2023/07/04晚)</h5></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230704190155270.png" alt="image-20230704190155270"></p>
+<h3 id="模板文件格式不规范"><a href="#模板文件格式不规范" class="headerlink" title="模板文件格式不规范"></a>模板文件格式不规范</h3><ul>
+<li><h5 id="今天部署博客时，出现了这样的错误："><a href="#今天部署博客时，出现了这样的错误：" class="headerlink" title="今天部署博客时，出现了这样的错误："></a>今天部署博客时，出现了这样的错误：</h5></li>
+</ul>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">FATAL &#123;<br>  <span class="hljs-name">err</span>: Template render <span class="hljs-name">error</span>: (unknown path)<br>    <span class="hljs-name">Error</span>: expected end of comment, got end of file<br>      at Object._prettifyError (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\lib.<span class="hljs-name">js</span>:<span class="hljs-number">36</span>:<span class="hljs-number">11</span>)<br>      ... <span class="hljs-number">17</span> lines matching cause stack trace ...<br>      at process.processImmediate (<span class="hljs-name">node</span>:internal/<span class="hljs-name">timers</span>:<span class="hljs-number">476</span>:<span class="hljs-number">21</span>) &#123;<br>    <span class="hljs-name">cause</span>: Template render <span class="hljs-name">error</span>: (unknown path)<br>      <span class="hljs-name">Error</span>: expected end of comment, got end of file<br>        at Object._prettifyError (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\lib.<span class="hljs-name">js</span>:<span class="hljs-number">36</span>:<span class="hljs-number">11</span>)<br>        at Template.render (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\environment.<span class="hljs-name">js</span>:<span class="hljs-number">538</span>:<span class="hljs-number">21</span>)<br>        at Environment.renderString (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\environment.<span class="hljs-name">js</span>:<span class="hljs-number">380</span>:<span class="hljs-number">17</span>)<br>        at <span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\extend\tag.<span class="hljs-name">js</span>:<span class="hljs-number">236</span>:<span class="hljs-number">16</span><br>        at tryCatcher (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\util.<span class="hljs-name">js</span>:<span class="hljs-number">16</span>:<span class="hljs-number">23</span>)<br>        at Promise.fromNode.Promise.fromCallback (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">209</span>:<span class="hljs-number">30</span>)<br>        at Tag.render (<span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\extend\tag.<span class="hljs-name">js</span>:<span class="hljs-number">235</span>:<span class="hljs-number">20</span>)<br>        at Object.onRenderEnd (<span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\hexo\post.<span class="hljs-name">js</span>:<span class="hljs-number">297</span>:<span class="hljs-number">22</span>)<br>        at <span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\hexo\render.<span class="hljs-name">js</span>:<span class="hljs-number">79</span>:<span class="hljs-number">21</span><br>        at tryCatcher (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\util.<span class="hljs-name">js</span>:<span class="hljs-number">16</span>:<span class="hljs-number">23</span>)<br>        at Promise._settlePromiseFromHandler (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">547</span>:<span class="hljs-number">31</span>)<br>        at Promise._settlePromise (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">604</span>:<span class="hljs-number">18</span>)<br>        at Promise._settlePromise0 (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">649</span>:<span class="hljs-number">10</span>)<br>        at Promise._settlePromises (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">729</span>:<span class="hljs-number">18</span>)<br>        at _drainQueueStep (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\async.<span class="hljs-name">js</span>:<span class="hljs-number">93</span>:<span class="hljs-number">12</span>)<br>        at _drainQueue (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\async.<span class="hljs-name">js</span>:<span class="hljs-number">86</span>:<span class="hljs-number">9</span>)<br>        at Async._drainQueues (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\async.<span class="hljs-name">js</span>:<span class="hljs-number">102</span>:<span class="hljs-number">5</span>)<br>        at Async.drainQueues (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\relea<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="出现这样的很正常，检查一下哪篇-md文章里的格式出错了："><a href="#出现这样的很正常，检查一下哪篇-md文章里的格式出错了：" class="headerlink" title="出现这样的很正常，检查一下哪篇.md文章里的格式出错了："></a>出现这样的很正常，检查一下哪篇.md文章里的格式出错了：</h5><ul>
+<li>标题栏</li>
+<li>正文内容</li>
+</ul>
+</li>
+<li><h5 id="如果无法准确定位到是哪篇文章出问题了，可以这样执行命令："><a href="#如果无法准确定位到是哪篇文章出问题了，可以这样执行命令：" class="headerlink" title="如果无法准确定位到是哪篇文章出问题了，可以这样执行命令："></a>如果无法准确定位到是哪篇文章出问题了，可以这样执行命令：</h5></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hexo</span> g --<span class="hljs-literal">debug</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这样就能准确定位到出错的文章了："><a href="#这样就能准确定位到出错的文章了：" class="headerlink" title="这样就能准确定位到出错的文章了："></a>这样就能准确定位到出错的文章了：</h5></li>
+</ul>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-number">03</span>:<span class="hljs-number">10</span>:<span class="hljs-number">55.161</span> DEBUG Rendering <span class="hljs-name">post</span>: <span class="hljs-name">D</span>:\blog\blog\source\_posts\解决前端框架使用中的常见问题.md<br><span class="hljs-number">03</span>:<span class="hljs-number">10</span>:<span class="hljs-number">55.185</span> FATAL &#123;<br>  <span class="hljs-name">err</span>: Template render <span class="hljs-name">error</span>: (unknown path)<br>    <span class="hljs-name">Error</span>: expected end of comment, got end of file<br>      at Object._prettifyError (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\lib.<span class="hljs-name">js</span>:<span class="hljs-number">36</span>:<span class="hljs-number">11</span>)<br>      ... <span class="hljs-number">17</span> lines matching cause stack trace ...<br>      at process.processImmediate (<span class="hljs-name">node</span>:internal/<span class="hljs-name">timers</span>:<span class="hljs-number">476</span>:<span class="hljs-number">21</span>) &#123;<br>    <span class="hljs-name">cause</span>: Template render <span class="hljs-name">error</span>: (unknown path)<br>      <span class="hljs-name">Error</span>: expected end of comment, got end of file<br>        at Object._prettifyError (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\lib.<span class="hljs-name">js</span>:<span class="hljs-number">36</span>:<span class="hljs-number">11</span>)<br>        at Template.render (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\environment.<span class="hljs-name">js</span>:<span class="hljs-number">538</span>:<span class="hljs-number">21</span>)<br>        at Environment.renderString (<span class="hljs-name">D</span>:\blog\blog\node_modules\nunjucks\src\environment.<span class="hljs-name">js</span>:<span class="hljs-number">380</span>:<span class="hljs-number">17</span>)<br>        at <span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\extend\tag.<span class="hljs-name">js</span>:<span class="hljs-number">236</span>:<span class="hljs-number">16</span><br>        at tryCatcher (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\util.<span class="hljs-name">js</span>:<span class="hljs-number">16</span>:<span class="hljs-number">23</span>)<br>        at Promise.fromNode.Promise.fromCallback (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">209</span>:<span class="hljs-number">30</span>)<br>        at Tag.render (<span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\extend\tag.<span class="hljs-name">js</span>:<span class="hljs-number">235</span>:<span class="hljs-number">20</span>)<br>        at Object.onRenderEnd (<span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\hexo\post.<span class="hljs-name">js</span>:<span class="hljs-number">297</span>:<span class="hljs-number">22</span>)<br>        at <span class="hljs-name">D</span>:\blog\blog\node_modules\hexo\lib\hexo\render.<span class="hljs-name">js</span>:<span class="hljs-number">79</span>:<span class="hljs-number">21</span><br>        at tryCatcher (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\util.<span class="hljs-name">js</span>:<span class="hljs-number">16</span>:<span class="hljs-number">23</span>)<br>        at Promise._settlePromiseFromHandler (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">547</span>:<span class="hljs-number">31</span>)<br>        at Promise._settlePromise (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">604</span>:<span class="hljs-number">18</span>)<br>        at Promise._settlePromise0 (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">649</span>:<span class="hljs-number">10</span>)<br>        at Promise._settlePromises (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\promise.<span class="hljs-name">js</span>:<span class="hljs-number">729</span>:<span class="hljs-number">18</span>)<br>        at _drainQueueStep (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\async.<span class="hljs-name">js</span>:<span class="hljs-number">93</span>:<span class="hljs-number">12</span>)<br>        at _drainQueue (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\release\async.<span class="hljs-name">js</span>:<span class="hljs-number">86</span>:<span class="hljs-number">9</span>)<br>        at Async._drainQueues (<span class="hljs-name">D</span>:\blog\blog\node_modules\bluebird\js\r<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="找了半天才发现是这个问题："><a href="#找了半天才发现是这个问题：" class="headerlink" title="找了半天才发现是这个问题："></a>找了半天才发现是这个问题：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230807112357395.png" alt="image-20230807112357395"></p>
+<ul>
+<li><h5 id="超链接出现-特殊符号了，导致编译失败，删除就行了（2023-08-07早）"><a href="#超链接出现-特殊符号了，导致编译失败，删除就行了（2023-08-07早）" class="headerlink" title="超链接出现 # 特殊符号了，导致编译失败，删除就行了（2023/08/07早）"></a>超链接出现 # 特殊符号了，导致编译失败，删除就行了（2023/08/07早）</h5></li>
+</ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li><h5 id="至此，快速搭建博客站点和快速生成文档站点已经完毕"><a href="#至此，快速搭建博客站点和快速生成文档站点已经完毕" class="headerlink" title="至此，快速搭建博客站点和快速生成文档站点已经完毕"></a>至此，快速搭建博客站点和快速生成文档站点已经完毕</h5></li>
 <li><h5 id="在接下来的内容中，我们会继续分享如何使用Gitee-GitHub的Page服务来托管静态网站，详见《大道至简：快速搭建博客与文档站点的终极指南2-0》"><a href="#在接下来的内容中，我们会继续分享如何使用Gitee-GitHub的Page服务来托管静态网站，详见《大道至简：快速搭建博客与文档站点的终极指南2-0》" class="headerlink" title="在接下来的内容中，我们会继续分享如何使用Gitee/GitHub的Page服务来托管静态网站，详见《大道至简：快速搭建博客与文档站点的终极指南2.0》"></a>在接下来的内容中，我们会继续分享如何使用Gitee/GitHub的Page服务来托管静态网站，详见《大道至简：快速搭建博客与文档站点的终极指南2.0》</h5></li>
@@ -994,7 +1021,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年7月4日</div>
+          <div>2023年8月7日</div>
         </div>
       
       
