@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.1k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -398,7 +398,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：13 天前
+                    本文最后更新于：23 天前
                   
                 
               </p>
@@ -473,9 +473,13 @@
 <li><h5 id="彻底理解CORS跨域原理-喵小Q-博客园-cnblogs-com"><a href="#彻底理解CORS跨域原理-喵小Q-博客园-cnblogs-com" class="headerlink" title="彻底理解CORS跨域原理 - 喵小Q - 博客园 (cnblogs.com)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiujianmei/p/11649905.html">彻底理解CORS跨域原理 - 喵小Q - 博客园 (cnblogs.com)</a></h5></li>
 <li><h5 id="我们在开发过程中，只需作这两个步骤，即可解决跨域问题："><a href="#我们在开发过程中，只需作这两个步骤，即可解决跨域问题：" class="headerlink" title="我们在开发过程中，只需作这两个步骤，即可解决跨域问题："></a>我们在开发过程中，只需作这两个步骤，即可解决跨域问题：</h5></li>
 </ul>
-<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// 创建 Axios 实例</span><br><span class="hljs-keyword">const</span> myAxios = axios.<span class="hljs-title function_">create</span>(&#123;<br>  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&quot;http://localhost:8083/api&quot;</span>, <span class="hljs-comment">// 设置请求的基础URL（后端请求地址）</span><br>  <span class="hljs-attr">withCredentials</span>: <span class="hljs-literal">true</span>,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 允许跨域请求</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> registry registry</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addCorsMappings</span><span class="hljs-params">(CorsRegistry registry)</span> &#123;<br>      registry.addMapping(<span class="hljs-string">&quot;/**&quot;</span>)<br>              .allowCredentials(<span class="hljs-literal">true</span>)<br>              .allowedOrigins(<span class="hljs-string">&quot;http://localhost:7070&quot;</span>, <span class="hljs-string">&quot;http://localhost:3000&quot;</span>,<span class="hljs-string">&quot;http://120.55.62.195:7071&quot;</span>)  <span class="hljs-comment">// 前端请求地址</span><br>              .allowedMethods(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;DELETE&quot;</span>, <span class="hljs-string">&quot;PUT&quot;</span>)<br>              .maxAge(<span class="hljs-number">3600</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li><h5 id="总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难"><a href="#总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难" class="headerlink" title="总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难"></a>总之，跨域问题在Web开发过程中很常见，只要搞清楚跨域产生的原因，解决跨域问题并不困难</h5></li>
-<li><h5 id="这里补充几种常见的跨域解决方法："><a href="#这里补充几种常见的跨域解决方法：" class="headerlink" title="这里补充几种常见的跨域解决方法："></a>这里补充几种常见的跨域解决方法：</h5></li>
+<li><h5 id="这里另外补充几种常见的跨域解决方法，稍作了解："><a href="#这里另外补充几种常见的跨域解决方法，稍作了解：" class="headerlink" title="这里另外补充几种常见的跨域解决方法，稍作了解："></a>这里另外补充几种常见的跨域解决方法，稍作了解：</h5></li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml">要解决跨域问题，可以采取以下常见方法：<br><br>JSONP（JSON with Padding）：通过动态创建<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml">标签，利用<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">标签没有跨域限制的特性，实现跨域请求。</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="language-handlebars"><span class="hljs-variable constant_">CORS</span>（<span class="hljs-title class_">Cross</span>-<span class="hljs-title class_">Origin</span> <span class="hljs-title class_">Resource</span> <span class="hljs-title class_">Sharing</span>）：在服务器端设置响应头，允许指定的域名或所有域名进行跨域访问。</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="language-handlebars">代理（<span class="hljs-title class_">Proxy</span>）：在自己的服务器上设置一个代理接口，将跨域请求转发到目标服务器上。</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="language-handlebars"><span class="hljs-title class_">WebSocket</span>：使用<span class="hljs-title class_">WebSocket</span>协议进行双向通信，不受同源策略限制。</span></span></span><br></code></pre></td></tr></table></figure>
 

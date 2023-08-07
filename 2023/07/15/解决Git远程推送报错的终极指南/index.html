@@ -24,6 +24,7 @@
 <meta property="og:description" content="解决Git远程推送过程中的常见错误，保障顺利推送代码">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230723160919462.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230728143850131.png">
 <meta property="article:published_time" content="2023-07-15T15:27:06.000Z">
 <meta property="article:modified_time" content="2023-07-23T08:15:06.000Z">
 <meta property="article:author" content="Memory">
@@ -255,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2k 字
         
       </span>
     
@@ -266,7 +267,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -409,7 +410,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：5 天前
+                    本文最后更新于：15 天前
                   
                 
               </p>
@@ -432,8 +433,7 @@
 </ul>
 <h3 id="Git是干什么的"><a href="#Git是干什么的" class="headerlink" title="Git是干什么的"></a>Git是干什么的</h3><h2 id="远程推送报错"><a href="#远程推送报错" class="headerlink" title="远程推送报错"></a>远程推送报错</h2><ul>
 <li><h5 id="我们在本地向远程仓库推送代码时，总会不可避免地出现报错"><a href="#我们在本地向远程仓库推送代码时，总会不可避免地出现报错" class="headerlink" title="我们在本地向远程仓库推送代码时，总会不可避免地出现报错"></a>我们在本地向远程仓库推送代码时，总会不可避免地出现报错</h5></li>
-<li><h5 id="我们必须要明确的一点是：推送代码，是本地向远程仓库推送"><a href="#我们必须要明确的一点是：推送代码，是本地向远程仓库推送" class="headerlink" title="我们必须要明确的一点是：推送代码，是本地向远程仓库推送"></a>我们必须要明确的一点是：推送代码，是本地向远程仓库推送</h5></li>
-<li><h5 id="远程推送代码，就是把本地的代码同步更新到远程仓库中，使远程代码与本地代码保持一致"><a href="#远程推送代码，就是把本地的代码同步更新到远程仓库中，使远程代码与本地代码保持一致" class="headerlink" title="远程推送代码，就是把本地的代码同步更新到远程仓库中，使远程代码与本地代码保持一致"></a>远程推送代码，就是把本地的代码同步更新到远程仓库中，使远程代码与本地代码保持一致</h5></li>
+<li><h5 id="我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程"><a href="#我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程" class="headerlink" title="我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程"></a>我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程</h5></li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">大白话讲，就是允许本地代码比远程代码多一部分，<br>即远程仓库有的代码，本地仓库必须有；远程仓库没有的，本地仓库也可以有<br></code></pre></td></tr></table></figure>
 
@@ -443,15 +443,18 @@
 </ul>
 <h3 id="远程仓库未同步"><a href="#远程仓库未同步" class="headerlink" title="远程仓库未同步"></a>远程仓库未同步</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><ul>
 <li><h5 id="情景："><a href="#情景：" class="headerlink" title="情景："></a>情景：</h5></li>
+<li><h5 id="如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错"><a href="#如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错" class="headerlink" title="如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错"></a>如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错</h5></li>
 </ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">（fatal：refusing <span class="hljs-built_in">to</span> <span class="hljs-built_in">merge</span> unrelated histories）<br></code></pre></td></tr></table></figure>
+
 <h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ul>
-<li><h5 id="在-push-之前执行下面的代码："><a href="#在-push-之前执行下面的代码：" class="headerlink" title="在 push 之前执行下面的代码："></a>在 push 之前执行下面的代码：</h5></li>
+<li><h5 id="如此拉取："><a href="#如此拉取：" class="headerlink" title="如此拉取："></a>如此拉取：</h5></li>
 </ul>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git pull origin <span class="hljs-keyword">master</span> <span class="hljs-title">--allow-unrelated-histories</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="本地仓库未同步"><a href="#本地仓库未同步" class="headerlink" title="本地仓库未同步"></a>本地仓库未同步</h3><h4 id="原因-1"><a href="#原因-1" class="headerlink" title="原因"></a>原因</h4><ul>
 <li><h5 id="情景：我们希望将本地已经写好的代码，推送到远程仓库托管"><a href="#情景：我们希望将本地已经写好的代码，推送到远程仓库托管" class="headerlink" title="情景：我们希望将本地已经写好的代码，推送到远程仓库托管"></a>情景：我们希望将本地已经写好的代码，推送到远程仓库托管</h5></li>
-<li><h5 id="那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加-readMe-md文件"><a href="#那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加-readMe-md文件" class="headerlink" title="那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加 readMe.md文件"></a>那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加 readMe.md文件</h5></li>
+<li><h5 id="那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加-README-md文件"><a href="#那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加-README-md文件" class="headerlink" title="那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加 README.md文件"></a>那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加 README.md文件</h5></li>
 <li><h5 id="这时，我们在本地当然是这样操作了："><a href="#这时，我们在本地当然是这样操作了：" class="headerlink" title="这时，我们在本地当然是这样操作了："></a>这时，我们在本地当然是这样操作了：</h5></li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">git <span class="hljs-keyword">init</span><br></code></pre></td></tr></table></figure>
@@ -470,18 +473,83 @@
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">! [rejected] master -&gt; master (fetch <span class="hljs-built_in">first</span>) <span class="hljs-built_in">error</span>: fail to <span class="hljs-built_in">push</span> <span class="hljs-built_in">some</span> refs<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><h5 id="导致问题出现的原因是因为：远程代码里存在readMe-md文件"><a href="#导致问题出现的原因是因为：远程代码里存在readMe-md文件" class="headerlink" title="导致问题出现的原因是因为：远程代码里存在readMe.md文件"></a>导致问题出现的原因是因为：远程代码里存在readMe.md文件</h5></li>
-<li><h5 id="什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在readMe-md文件，但本地没有"><a href="#什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在readMe-md文件，但本地没有" class="headerlink" title="什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在readMe.md文件，但本地没有"></a>什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在readMe.md文件，但本地没有</h5></li>
-<li><h5 id="此时，我们把远程仓库的readMe-md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步"><a href="#此时，我们把远程仓库的readMe-md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步" class="headerlink" title="此时，我们把远程仓库的readMe.md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步"></a>此时，我们把远程仓库的readMe.md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步</h5></li>
+<li><h5 id="导致问题出现的原因是因为：远程代码里存在README-md文件"><a href="#导致问题出现的原因是因为：远程代码里存在README-md文件" class="headerlink" title="导致问题出现的原因是因为：远程代码里存在README.md文件"></a>导致问题出现的原因是因为：远程代码里存在README.md文件</h5></li>
+<li><h5 id="什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README-md文件，但本地没有"><a href="#什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README-md文件，但本地没有" class="headerlink" title="什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README.md文件，但本地没有"></a>什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README.md文件，但本地没有</h5></li>
+<li><h5 id="此时，我们把远程仓库的README-md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步"><a href="#此时，我们把远程仓库的README-md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步" class="headerlink" title="此时，我们把远程仓库的README.md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步"></a>此时，我们把远程仓库的README.md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步</h5></li>
 <li><h5 id="我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库"><a href="#我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库" class="headerlink" title="我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库"></a>我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库</h5></li>
 </ul>
 <h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h4><ul>
 <li><h5 id="在执行-push-之前，执行以下代码即可："><a href="#在执行-push-之前，执行以下代码即可：" class="headerlink" title="在执行 push 之前，执行以下代码即可："></a>在执行 push 之前，执行以下代码即可：</h5></li>
-<li><h5 id="在-push-之前执行下面的代码：-1"><a href="#在-push-之前执行下面的代码：-1" class="headerlink" title="在 push 之前执行下面的代码："></a>在 push 之前执行下面的代码：</h5></li>
+<li><h5 id="在-push-之前执行下面的代码："><a href="#在-push-之前执行下面的代码：" class="headerlink" title="在 push 之前执行下面的代码："></a>在 push 之前执行下面的代码：</h5></li>
 </ul>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git pull <span class="hljs-comment">--rebase origin master</span><br></code></pre></td></tr></table></figure>
 
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230723160919462.png" alt="image-20230723160919462"></p>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
+<li><h5 id="这两天在推送-Memory-API-项目代码到-Gitee-仓库的过程中，遇到了很多问题"><a href="#这两天在推送-Memory-API-项目代码到-Gitee-仓库的过程中，遇到了很多问题" class="headerlink" title="这两天在推送 Memory API 项目代码到 Gitee 仓库的过程中，遇到了很多问题"></a>这两天在推送 Memory API 项目代码到 Gitee 仓库的过程中，遇到了很多问题</h5></li>
+<li><h5 id="花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法"><a href="#花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法" class="headerlink" title="花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法"></a>花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法</h5></li>
+<li><h5 id="将文件的修改加入暂存区："><a href="#将文件的修改加入暂存区：" class="headerlink" title="将文件的修改加入暂存区："></a>将文件的修改加入暂存区：</h5></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-built_in">add</span> .<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这一步操作，是将该本地分支内的所有文件都添加至暂存区"><a href="#这一步操作，是将该本地分支内的所有文件都添加至暂存区" class="headerlink" title="这一步操作，是将该本地分支内的所有文件都添加至暂存区"></a>这一步操作，是将该本地分支内的所有文件都添加至暂存区</h5></li>
+<li><h5 id="将暂存区的文件提交修改到版本库："><a href="#将暂存区的文件提交修改到版本库：" class="headerlink" title="将暂存区的文件提交修改到版本库："></a>将暂存区的文件提交修改到版本库：</h5></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> commit -m <span class="hljs-string">&quot;提交信息&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="注意这里的提交信息不能为空，否则该提交操作会被驳回："><a href="#注意这里的提交信息不能为空，否则该提交操作会被驳回：" class="headerlink" title="注意这里的提交信息不能为空，否则该提交操作会被驳回："></a>注意这里的提交信息不能为空，否则该提交操作会被驳回：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230728143850131.png" alt="image-20230728143850131"></p>
+<ul>
+<li><h5 id="推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交："><a href="#推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交：" class="headerlink" title="推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交："></a>推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交：</h5></li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git pull origin <span class="hljs-literal">master</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git pull origin <span class="hljs-literal">master</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这时，推送代码可能会报这种错误："><a href="#这时，推送代码可能会报这种错误：" class="headerlink" title="这时，推送代码可能会报这种错误："></a>这时，推送代码可能会报这种错误：</h5></li>
+</ul>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">! [rejected] master -&gt; master (fetch <span class="hljs-built_in">first</span>) <span class="hljs-built_in">error</span>: fail to <span class="hljs-built_in">push</span> <span class="hljs-built_in">some</span> refs<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取："><a href="#说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取：" class="headerlink" title="说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取："></a>说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取：</h5></li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git pull <span class="hljs-comment">--rebase origin master</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="发生冲突意味着-Git-无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突"><a href="#发生冲突意味着-Git-无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突" class="headerlink" title="发生冲突意味着 Git 无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突"></a>发生冲突意味着 Git 无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突</h5></li>
+<li><h5 id="如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果："><a href="#如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果：" class="headerlink" title="如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果："></a>如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果：</h5></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">git rebase --<span class="hljs-keyword">continue</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这时，如果还有未合并的冲突文件，就执行以下命令，手动合并："><a href="#这时，如果还有未合并的冲突文件，就执行以下命令，手动合并：" class="headerlink" title="这时，如果还有未合并的冲突文件，就执行以下命令，手动合并："></a>这时，如果还有未合并的冲突文件，就执行以下命令，手动合并：</h5></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-built_in">add</span> 冲突文件名<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="完成这步操作，就可以推送代码了"><a href="#完成这步操作，就可以推送代码了" class="headerlink" title="完成这步操作，就可以推送代码了"></a>完成这步操作，就可以推送代码了</h5></li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><h5 id="在执行这段代码时："><a href="#在执行这段代码时：" class="headerlink" title="在执行这段代码时："></a>在执行这段代码时：</h5></li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git pull <span class="hljs-comment">--rebase origin master</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="网上有的教程可能会跟你讲，执行以下代码来退出-rebase-过程："><a href="#网上有的教程可能会跟你讲，执行以下代码来退出-rebase-过程：" class="headerlink" title="网上有的教程可能会跟你讲，执行以下代码来退出 rebase 过程："></a>网上有的教程可能会跟你讲，执行以下代码来退出 rebase 过程：</h5></li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git stash / git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard HEAD</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖"><a href="#千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖" class="headerlink" title="千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖"></a>千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖</h5></li>
+<li><h5 id="正确的做法就是上面提到的，正常合并冲突文件，最后提交"><a href="#正确的做法就是上面提到的，正常合并冲突文件，最后提交" class="headerlink" title="正确的做法就是上面提到的，正常合并冲突文件，最后提交"></a>正确的做法就是上面提到的，正常合并冲突文件，最后提交</h5></li>
+<li><h5 id="或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码："><a href="#或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码：" class="headerlink" title="或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码："></a>或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码：</h5></li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git rebase <span class="hljs-comment">--abort</span><br></code></pre></td></tr></table></figure>
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
