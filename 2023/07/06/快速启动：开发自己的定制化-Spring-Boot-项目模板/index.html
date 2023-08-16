@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/SDK.jpg">
 <meta property="article:published_time" content="2023-07-06T10:04:25.000Z">
-<meta property="article:modified_time" content="2023-08-07T02:09:25.000Z">
+<meta property="article:modified_time" content="2023-08-15T07:30:25.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Project">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k 字
+          18k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          35 分钟
+          45 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：20 小时前
                   
                 
               </p>
@@ -438,7 +438,55 @@
 </ul>
 </li>
 </ul>
-<h2 id="着手开发"><a href="#着手开发" class="headerlink" title="着手开发"></a>着手开发</h2><h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
+<h2 id="着手开发"><a href="#着手开发" class="headerlink" title="着手开发"></a>着手开发</h2><h3 id="快速编写Controller层"><a href="#快速编写Controller层" class="headerlink" title="快速编写Controller层"></a>快速编写Controller层</h3><ul>
+<li><h5 id="什么是Controller层？（2023-08-14早）"><a href="#什么是Controller层？（2023-08-14早）" class="headerlink" title="什么是Controller层？（2023/08/14早）"></a>什么是Controller层？（2023/08/14早）</h5></li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">在Web开发中，Controller层是MVC（模型-视图-控制器）架构的一部分，用于接收并处理前端请求。<br>具体来说，Controller层负责以下几个任务：<br>	<span class="hljs-number">1.</span>接收HTTP请求：Controller通过定义特定的路由（<span class="hljs-built_in">URL</span>映射）来接收前端发送的HTTP请求。<br>	<span class="hljs-number">2.</span>处理请求：Controller中的方法将根据请求的类型、路径以及请求参数等信息，执行相应的逻辑操作。<br>	<span class="hljs-number">3.</span>调用服务层：在Controller中，可以调用服务层（Service层、业务层）的方法来实现相关业务逻辑。<br>	<span class="hljs-number">4.</span>返回响应：在完成对请求的处理后，Controller负责将数据或者视图响应返回给前端。<br>Controller层的目标是实现请求-响应的流程控制，将请求按照业务逻辑分配给对应的服务层处理，并将执行结果返回给前端。同时，Controller层还可以处理一些与业务逻辑相关的验证或者数据转换等操作。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>引入依赖：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.7.14<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这里贴个小技巧，alt-insert-快速添加依赖模板："><a href="#这里贴个小技巧，alt-insert-快速添加依赖模板：" class="headerlink" title="这里贴个小技巧，alt + insert 快速添加依赖模板："></a>这里贴个小技巧，alt + insert 快速添加依赖模板：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230814130719252.png" alt="image-20230814130719252"></p>
+<ul>
+<li><h5 id="新增controller层，编写响应请求的逻辑："><a href="#新增controller层，编写响应请求的逻辑：" class="headerlink" title="新增controller层，编写响应请求的逻辑："></a>新增controller层，编写响应请求的逻辑：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓哈哈</span><br><span class="hljs-comment"> * 2023/8/14 12:06</span><br><span class="hljs-comment"> * Function:</span><br><span class="hljs-comment"> * Version 1.0</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/test&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestController</span> &#123;<br>    <span class="hljs-meta">@GetMapping(&quot;/name&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-keyword">return</span> String.format(<span class="hljs-string">&quot;我的名字是: %s&quot;</span>, name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="编辑-application-yaml-配置文件："><a href="#编辑-application-yaml-配置文件：" class="headerlink" title="编辑 application.yaml 配置文件："></a>编辑 application.yaml 配置文件：</h5></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8088</span><br>  <span class="hljs-attr">servlet:</span><br>    <span class="hljs-attr">context-path:</span> <span class="hljs-string">/api</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="发送请求，测试接口"><a href="#发送请求，测试接口" class="headerlink" title="发送请求，测试接口"></a>发送请求，测试接口</h5></li>
+<li><p>这一步的操作方法有很多：</p>
+<ul>
+<li>Postman工具</li>
+<li>Swagger + Knif4j 接口文档</li>
+<li>浏览器</li>
+<li>IDEA模拟浏览器</li>
+</ul>
+</li>
+<li><h5 id="有关Postman工具的使用，这里不再详述"><a href="#有关Postman工具的使用，这里不再详述" class="headerlink" title="有关Postman工具的使用，这里不再详述"></a>有关Postman工具的使用，这里不再详述</h5></li>
+<li><h5 id="有关快速生成-Swagger-Knif4j-接口文档的教程，可以在下面👇的《快速生成-Swagger-Knif4j接口文档》栏目中了解到"><a href="#有关快速生成-Swagger-Knif4j-接口文档的教程，可以在下面👇的《快速生成-Swagger-Knif4j接口文档》栏目中了解到" class="headerlink" title="有关快速生成 Swagger + Knif4j 接口文档的教程，可以在下面👇的《快速生成 Swagger + Knif4j接口文档》栏目中了解到"></a>有关快速生成 Swagger + Knif4j 接口文档的教程，可以在下面👇的《快速生成 Swagger + Knif4j接口文档》栏目中了解到</h5></li>
+<li><h5 id="有关IDEA如何模拟浏览器，发送HTTP请求，可以在《掌握-JetBrains-IntelliJ-IDEA：使用心得与技巧》一文中的《模拟浏览器发送请求》栏目中找到答案"><a href="#有关IDEA如何模拟浏览器，发送HTTP请求，可以在《掌握-JetBrains-IntelliJ-IDEA：使用心得与技巧》一文中的《模拟浏览器发送请求》栏目中找到答案" class="headerlink" title="有关IDEA如何模拟浏览器，发送HTTP请求，可以在《掌握-JetBrains-IntelliJ-IDEA：使用心得与技巧》一文中的《模拟浏览器发送请求》栏目中找到答案"></a>有关IDEA如何模拟浏览器，发送HTTP请求，可以在《掌握-JetBrains-IntelliJ-IDEA：使用心得与技巧》一文中的《模拟浏览器发送请求》栏目中找到答案</h5></li>
+<li><h5 id="有关SpringMVC处理HTTP请求参数的方式，可以在《SpringBoot配置》一文中的-《SpringMVC-请求参数的处理》栏目中找到答案"><a href="#有关SpringMVC处理HTTP请求参数的方式，可以在《SpringBoot配置》一文中的-《SpringMVC-请求参数的处理》栏目中找到答案" class="headerlink" title="有关SpringMVC处理HTTP请求参数的方式，可以在《SpringBoot配置》一文中的 《SpringMVC 请求参数的处理》栏目中找到答案"></a>有关SpringMVC处理HTTP请求参数的方式，可以在《SpringBoot配置》一文中的 《SpringMVC 请求参数的处理》栏目中找到答案</h5></li>
+<li><p>浏览器发送请求，结果如下图所示：（2023/08/14午）</p>
+</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230814132007439.png" alt="image-20230814132007439"></p>
+<ul>
+<li>IDEA模拟浏览器发送请求，结果如下图所示：</li>
+</ul>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs http">GET http://localhost:8088/api/test/name?name=邓啊呀<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230814132051083.png" alt="image-20230814132051083"></p>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
 <li><h5 id="每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息"><a href="#每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息" class="headerlink" title="每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息"></a>每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息</h5></li>
 <li><h5 id="这里列举了：我遇到过的所有启动项目报错的解决办法"><a href="#这里列举了：我遇到过的所有启动项目报错的解决办法" class="headerlink" title="这里列举了：我遇到过的所有启动项目报错的解决办法"></a>这里列举了：我遇到过的所有启动项目报错的解决办法</h5></li>
 </ul>
@@ -551,15 +599,15 @@
 <ul>
 <li><h5 id="为什么会出现这样的错误呢？是因为我在构建项目时，选择导入以下依赖中，发生了错误："><a href="#为什么会出现这样的错误呢？是因为我在构建项目时，选择导入以下依赖中，发生了错误：" class="headerlink" title="为什么会出现这样的错误呢？是因为我在构建项目时，选择导入以下依赖中，发生了错误："></a>为什么会出现这样的错误呢？是因为我在构建项目时，选择导入以下依赖中，发生了错误：</h5></li>
 </ul>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230802183420381.png" alt="image-20230802183420381"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230802183420381.png" alt="image-20230802183420381"></p>
 <ul>
 <li><h5 id="这里一定要选择MySQL-Driver，而不是MySQL-Server-Driver，否则就会导入错误的依赖而引发报错（2023-08-02午）"><a href="#这里一定要选择MySQL-Driver，而不是MySQL-Server-Driver，否则就会导入错误的依赖而引发报错（2023-08-02午）" class="headerlink" title="这里一定要选择MySQL Driver，而不是MySQL Server Driver，否则就会导入错误的依赖而引发报错（2023/08/02午）"></a>这里一定要选择MySQL Driver，而不是MySQL Server Driver，否则就会导入错误的依赖而引发报错（2023/08/02午）</h5></li>
 </ul>
-<h3 id="Knif4j接口文档访问失败"><a href="#Knif4j接口文档访问失败" class="headerlink" title="Knif4j接口文档访问失败"></a>Knif4j接口文档访问失败</h3><ul>
+<h3 id="快速生成Swagger-Knif4j接口文档"><a href="#快速生成Swagger-Knif4j接口文档" class="headerlink" title="快速生成Swagger + Knif4j接口文档"></a>快速生成Swagger + Knif4j接口文档</h3><ul>
 <li><h5 id="昨天遇到的问题，今天总算解决了，废话少说，上案例："><a href="#昨天遇到的问题，今天总算解决了，废话少说，上案例：" class="headerlink" title="昨天遇到的问题，今天总算解决了，废话少说，上案例："></a>昨天遇到的问题，今天总算解决了，废话少说，上案例：</h5></li>
 <li><h5 id="在开发-Memory-icon-和-PicMemories-项目时，都遇到了这个问题：明明Knif4j配置无误，接口文档访问却报404错误："><a href="#在开发-Memory-icon-和-PicMemories-项目时，都遇到了这个问题：明明Knif4j配置无误，接口文档访问却报404错误：" class="headerlink" title="在开发 Memory-icon 和 PicMemories 项目时，都遇到了这个问题：明明Knif4j配置无误，接口文档访问却报404错误："></a>在开发 Memory-icon 和 PicMemories 项目时，都遇到了这个问题：明明Knif4j配置无误，接口文档访问却报404错误：</h5></li>
 </ul>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230802184955677.png" alt="image-20230802184955677"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230802184955677.png" alt="image-20230802184955677"></p>
 <ul>
 <li><h5 id="Knif4j官方文档：快速开始-Knife4j-xiaominfo-com"><a href="#Knif4j官方文档：快速开始-Knife4j-xiaominfo-com" class="headerlink" title="Knif4j官方文档：快速开始 | Knife4j (xiaominfo.com)"></a>Knif4j官方文档：<a target="_blank" rel="noopener" href="https://doc.xiaominfo.com/docs/quick-start">快速开始 | Knife4j (xiaominfo.com)</a></h5></li>
 <li><h5 id="按照官方文档，我们可以清楚地看到不同版本的-SpringBoot-导入Swagger-Knif4j接口文档的方式是不一样的"><a href="#按照官方文档，我们可以清楚地看到不同版本的-SpringBoot-导入Swagger-Knif4j接口文档的方式是不一样的" class="headerlink" title="按照官方文档，我们可以清楚地看到不同版本的 SpringBoot 导入Swagger + Knif4j接口文档的方式是不一样的"></a>按照官方文档，我们可以清楚地看到不同版本的 SpringBoot 导入Swagger + Knif4j接口文档的方式是不一样的</h5></li>
@@ -682,6 +730,53 @@
 <ul>
 <li><h5 id="解决-RedisTemplate-存入的序列化后的value值成为乱码的问题（2023-08-07早）"><a href="#解决-RedisTemplate-存入的序列化后的value值成为乱码的问题（2023-08-07早）" class="headerlink" title="解决 RedisTemplate 存入的序列化后的value值成为乱码的问题（2023/08/07早）"></a>解决 RedisTemplate 存入的序列化后的value值成为乱码的问题（2023/08/07早）</h5></li>
 </ul>
+<h3 id="接入阿里云对象存储服务"><a href="#接入阿里云对象存储服务" class="headerlink" title="接入阿里云对象存储服务"></a>接入阿里云对象存储服务</h3><ul>
+<li><h5 id="直接看官方文档，写的很全，傻子都会：（2023-08-09午）"><a href="#直接看官方文档，写的很全，傻子都会：（2023-08-09午）" class="headerlink" title="直接看官方文档，写的很全，傻子都会：（2023/08/09午）"></a>直接看官方文档，写的很全，傻子都会：（2023/08/09午）</h5></li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1227235">【案例实战】SpringBoot整合阿里云文件上传OSS-阿里云开发者社区 (aliyun.com)</a></p>
+</li>
+<li><h5 id="注意以下几点即可："><a href="#注意以下几点即可：" class="headerlink" title="注意以下几点即可："></a>注意以下几点即可：</h5><ul>
+<li>yaml配置信息保证无误：</li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-comment"># 阿里云OSS配置</span><br><span class="hljs-attribute">aliyun</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">oss</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">end-point</span><span class="hljs-punctuation">:</span> <span class="hljs-string">oss-cn-beijing.aliyuncs.com</span><br>    <span class="hljs-attribute">access-key-id</span><span class="hljs-punctuation">:</span> <span class="hljs-string">LTAI5t9bAnh9zthSmzTPARM4</span><br>    <span class="hljs-attribute">access-key-secret</span><span class="hljs-punctuation">:</span> <span class="hljs-string">BwV3YKjHp4W2Hk6hYXx1FLbDMO3Qnz</span><br>    <span class="hljs-attribute">bucket-name</span><span class="hljs-punctuation">:</span> <span class="hljs-string">pic-memories</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>记得开启对应Bucket的公共读写权限：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230809182044631.png" alt="image-20230809182044631"></p>
+</li>
+</ul>
+<h3 id="自定义Banner"><a href="#自定义Banner" class="headerlink" title="自定义Banner"></a>自定义Banner</h3><ul>
+<li><p>这是IDEA一个很有意思的玩法，自定义项目启动时的banner，详情可以看这篇文章：</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7259965990960201787">Spring Boot 自定义启动画面 - 掘金 (juejin.cn)</a></p>
+</li>
+<li><h5 id="我在-banner-txt-添加的文本如下："><a href="#我在-banner-txt-添加的文本如下：" class="headerlink" title="我在 banner.txt 添加的文本如下："></a>我在 banner.txt 添加的文本如下：</h5></li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs txt">启动成功！<br>$&#123;AnsiColor.BRIGHT_GREEN&#125;<br>   *<br> (  `<br> )\))(    (    )       (   (<br>((_)()\  ))\  (     (  )(  )\ )<br>(_()((_)/((_) )\  &#x27; )\(()\(()/(<br>|  \/  (_)) _((_)) ((_)((_))(_))<br>| |\/| / -_) &#x27;  \() _ \ &#x27;_| || |<br>|_|  |_\___|_|_|_|\___/_|  \_, |<br>                           |__/<br>$&#123;AnsiColor.BRIGHT_WHITE&#125;<br>欢迎使用～<br>spring boot 版本为 $&#123;spring-boot.version&#125;<br>作者：@Memory<br>项目名：PicMemories<br>线上访问地址: 未完成<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="获取艺术字：-Text-to-ASCII-Art-Generator-TAAG-patorjk-com-http-patorjk-com-software-taag-p-testall-amp-f-Fire-Font-k-amp-t-Memory"><a href="#获取艺术字：-Text-to-ASCII-Art-Generator-TAAG-patorjk-com-http-patorjk-com-software-taag-p-testall-amp-f-Fire-Font-k-amp-t-Memory" class="headerlink" title="获取艺术字：[Text to ASCII Art Generator (TAAG) (patorjk.com)](http://patorjk.com/software/taag/#p=testall&amp;f=Fire Font-k&amp;t=Memory)"></a>获取艺术字：[Text to ASCII Art Generator (TAAG) (patorjk.com)](<a target="_blank" rel="noopener" href="http://patorjk.com/software/taag/#p=testall&amp;f=Fire">http://patorjk.com/software/taag/#p=testall&amp;f=Fire</a> Font-k&amp;t=Memory)</h5></li>
+<li><h5 id="项目启动类处，可以控制是否选择加载-banner-txt-文件：（2023-08-12早）"><a href="#项目启动类处，可以控制是否选择加载-banner-txt-文件：（2023-08-12早）" class="headerlink" title="项目启动类处，可以控制是否选择加载 banner.txt 文件：（2023/08/12早）"></a>项目启动类处，可以控制是否选择加载 banner.txt 文件：（2023/08/12早）</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.boot.Banner;<br><span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;<br><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;<br><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LaunchApplication</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">SpringApplication</span> <span class="hljs-variable">app</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SpringApplication</span>(LaunchApplication.class);<br>        app.setBannerMode(Banner.Mode.OFF); <span class="hljs-comment">// 设置 Banner 模式为关闭</span><br>        app.run(args);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="主键自增长"><a href="#主键自增长" class="headerlink" title="主键自增长"></a>主键自增长</h3><ul>
+<li><h5 id="今天使用MybatisPlus执行插入数据时，发现了这样的报错：（2023-08-15午）"><a href="#今天使用MybatisPlus执行插入数据时，发现了这样的报错：（2023-08-15午）" class="headerlink" title="今天使用MybatisPlus执行插入数据时，发现了这样的报错：（2023/08/15午）"></a>今天使用MybatisPlus执行插入数据时，发现了这样的报错：（2023/08/15午）</h5></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">org.springframework.jdbc.BadSqlGrammarException: <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">## Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;like  ( id,</span></span><br>user_id,<br>wallpaper_id )  VALUES  ( 1691349539878477825,<br>168799521293&#x27; at line 1<br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">## The error may exist in com/memory/picmemories/mapper/LikeMapper.java (best guess)</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">## The error may involve com.memory.picmemories.mapper.LikeMapper.insert-Inline</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">## The error occurred while setting parameters</span></span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在上面的栏目《表记录/实体类ID自增长》中，已经实现了如何使记录中的id自增长，这次我就犯了这个错误：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">create table `like`<br>(<br>    id           bigint primary key comment <span class="hljs-string">&#x27;点赞id&#x27;</span>,<br>    user_id      bigint                                 not <span class="hljs-literal">null</span> comment <span class="hljs-string">&#x27;点赞用户id&#x27;</span>,<br>    wallpaper_id bigint                                 not <span class="hljs-literal">null</span> comment <span class="hljs-string">&#x27;被点赞的壁纸id&#x27;</span>,<br>    create_time  datetime     <span class="hljs-keyword">default</span> CURRENT_TIMESTAMP not <span class="hljs-literal">null</span> comment <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>    update_time  datetime     <span class="hljs-keyword">default</span> CURRENT_TIMESTAMP not <span class="hljs-literal">null</span> comment <span class="hljs-string">&#x27;更新时间&#x27;</span>,<br>    is_delete    <span class="hljs-title function_">varchar</span><span class="hljs-params">(<span class="hljs-number">256</span>)</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;0&#x27;</span>               not <span class="hljs-literal">null</span> comment <span class="hljs-string">&#x27;是否删除&#x27;</span><br>)<br>    comment <span class="hljs-string">&#x27;点赞信息&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 点赞id</span><br><span class="hljs-comment">  */</span><br> <span class="hljs-meta">@TableId(type = IdType.ASSIGN_ID)</span><br> <span class="hljs-keyword">private</span> Long id;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 4.新增记录</span><br> <span class="hljs-type">Like</span> <span class="hljs-variable">like</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Like</span>();<br> like.setUserId(userId);<br> like.setWallpaperId(wallpaperId);<br><br> <span class="hljs-type">boolean</span> <span class="hljs-variable">save</span> <span class="hljs-operator">=</span> likeService.save(like);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="如上，很显然，我没有将id字段设置为自增长，所以才会出现这样的报错（2023-08-15午）"><a href="#如上，很显然，我没有将id字段设置为自增长，所以才会出现这样的报错（2023-08-15午）" class="headerlink" title="如上，很显然，我没有将id字段设置为自增长，所以才会出现这样的报错（2023/08/15午）"></a>如上，很显然，我没有将id字段设置为自增长，所以才会出现这样的报错（2023/08/15午）</h5></li>
+</ul>
 <h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
@@ -755,7 +850,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月7日</div>
+          <div>2023年8月15日</div>
         </div>
       
       
