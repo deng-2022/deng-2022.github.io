@@ -36,8 +36,14 @@
 <meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230814105457520.png">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230814115941831.png">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230814120251967.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820220508484.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820220640005.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820220815784.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820221142630.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820221240754.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820221655077.png">
 <meta property="article:published_time" content="2023-07-06T09:56:20.000Z">
-<meta property="article:modified_time" content="2023-08-14T05:25:43.000Z">
+<meta property="article:modified_time" content="2023-08-20T14:17:43.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="IDEA">
@@ -267,7 +273,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          5.9k 字
         
       </span>
     
@@ -278,7 +284,7 @@
         
         
         
-          8 分钟
+          15 分钟
         
       </span>
     
@@ -412,7 +418,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：5 天前
                   
                 
               </p>
@@ -548,6 +554,73 @@
 <ul>
 <li>有时间总结下 SpringBoot 中的定时任务：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7158851405531316254">我终于会写 Java 的定时任务了！ - 掘金 (juejin.cn)</a></li>
 </ul>
+<h3 id="Date-Time-API"><a href="#Date-Time-API" class="headerlink" title="Date/Time API"></a>Date/Time API</h3><ul>
+<li><h5 id="学习以下内容可以参考这篇博客：8个你必须知道的Java8新特性，让你的代码变得优雅！-掘金-juejin-cn"><a href="#学习以下内容可以参考这篇博客：8个你必须知道的Java8新特性，让你的代码变得优雅！-掘金-juejin-cn" class="headerlink" title="学习以下内容可以参考这篇博客：8个你必须知道的Java8新特性，让你的代码变得优雅！ - 掘金 (juejin.cn)"></a>学习以下内容可以参考这篇博客：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7240697872160833596">8个你必须知道的Java8新特性，让你的代码变得优雅！ - 掘金 (juejin.cn)</a></h5></li>
+<li><p>在 Java 8 中引入了全新的日期时间处理类库，使得处理日期时间变得更加方便和易于理解</p>
+</li>
+<li><h5 id="以下是-java-time-包中最重要的一些类：（2023-08-18午）"><a href="#以下是-java-time-包中最重要的一些类：（2023-08-18午）" class="headerlink" title="以下是 java.time 包中最重要的一些类：（2023/08/18午）"></a>以下是 <code>java.time</code> 包中最重要的一些类：（2023/08/18午）</h5><ul>
+<li>LocalDate：表示日期，如 2022 年 5 月 15 日。</li>
+<li><code>LocalTime</code>：表示时间，如 13:45:30。</li>
+<li><code>LocalDateTime</code>：代表日期和时间，比如 2022 年 5 月 15 日 13:45:30。</li>
+<li><code>ZonedDateTime</code>：代表带有时区的日期时间，在上述所有日期时间类型的基础上，还提供了时区信息。</li>
+<li><code>Duration</code>：在两个时间点之间表示时间量。</li>
+<li><code>Period</code>：在两个日期之间表示天、周、月或年的数量。</li>
+<li><code>DateTimeFormatter</code>：可以将日期时间对象按照指定的格式进行格式化或者解析。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 获取日期</span><br>    <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">dateTime</span> <span class="hljs-operator">=</span> LocalDateTime.now();<br>    System.out.println(dateTime);<br>    <span class="hljs-comment">// 日期格式</span><br>    <span class="hljs-type">DateTimeFormatter</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">format</span> <span class="hljs-operator">=</span> dateTime.format(pattern);<br>    System.out.println(format);<br><br>    <span class="hljs-type">String</span> <span class="hljs-variable">now</span> <span class="hljs-operator">=</span> LocalDateTime.now().format(DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;</span>));<br>    System.out.println(now);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test2</span><span class="hljs-params">()</span> &#123;<br>     <span class="hljs-comment">// 获取日期</span><br>     <span class="hljs-type">Duration</span> <span class="hljs-variable">between</span> <span class="hljs-operator">=</span> Duration.between(LocalDate.of(<span class="hljs-number">2022</span>, Month.JULY, <span class="hljs-number">10</span>), LocalDate.now());<br>     System.out.println(between);<br>     <span class="hljs-type">Duration</span> <span class="hljs-variable">between1</span> <span class="hljs-operator">=</span> Duration.between(LocalTime.of(<span class="hljs-number">12</span>, <span class="hljs-number">29</span>, <span class="hljs-number">10</span>), LocalDate.now());<br>     System.out.println(between1);<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Optional-容器类型"><a href="#Optional-容器类型" class="headerlink" title="Optional 容器类型"></a>Optional 容器类型</h3><ul>
+<li><h5 id="ofNullable-方法：创建一个可能包含-null-值的-Optional-对象（2023-08-18午）"><a href="#ofNullable-方法：创建一个可能包含-null-值的-Optional-对象（2023-08-18午）" class="headerlink" title="ofNullable() 方法：创建一个可能包含 null 值的 Optional 对象（2023/08/18午）"></a>ofNullable() 方法：创建一个可能包含 null 值的 Optional 对象（2023/08/18午）</h5></li>
+<li><h5 id="isPresent-方法：判断-Optional-中是否存在值。返回ture表示存在值-返回false表示为null"><a href="#isPresent-方法：判断-Optional-中是否存在值。返回ture表示存在值-返回false表示为null" class="headerlink" title="isPresent() 方法：判断 Optional 中是否存在值。返回ture表示存在值 返回false表示为null"></a>isPresent() 方法：判断 Optional 中是否存在值。返回ture表示存在值 返回false表示为null</h5></li>
+<li><h5 id="get-方法：如果-Optional-的值存在则返回该值，否则抛出-NoSuchElementException-异常。"><a href="#get-方法：如果-Optional-的值存在则返回该值，否则抛出-NoSuchElementException-异常。" class="headerlink" title="get() 方法：如果 Optional 的值存在则返回该值，否则抛出 NoSuchElementException 异常。"></a>get() 方法：如果 Optional 的值存在则返回该值，否则抛出 NoSuchElementException 异常。</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test3</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 判断值是否为空</span><br>    Optional&lt;String&gt; optional = Optional.of(<span class="hljs-string">&quot;hhh&quot;</span>);<br>    <span class="hljs-keyword">if</span> (optional.isPresent()) &#123;<br>        System.out.println(optional.get());<br>    &#125;<br><br>    Optional.of(<span class="hljs-string">&quot;hhh&quot;</span>).ifPresent(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test4</span><span class="hljs-params">(User user)</span> &#123;<br>    Optional.ofNullable(user).map(User::getName).ifPresentOrElse(out::println, user != <span class="hljs-literal">null</span> ?      user.setName(<span class="hljs-string">&quot;ccc&quot;</span>) : <span class="hljs-literal">null</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="BigDecimal"><a href="#BigDecimal" class="headerlink" title="BigDecimal"></a>BigDecimal</h3><ul>
+<li><h5 id="使用BigDecimal需要注意的6点：（2023-08-19早）"><a href="#使用BigDecimal需要注意的6点：（2023-08-19早）" class="headerlink" title="使用BigDecimal需要注意的6点：（2023/08/19早）"></a>使用BigDecimal需要注意的6点：（2023/08/19早）</h5><ul>
+<li>构造初始化</li>
+<li>加减乘除</li>
+<li>设置精度</li>
+<li>去掉末尾的0</li>
+<li>转换为Double</li>
+<li>比较大小</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7207617774633320504#comment">BigDecimal不可触碰的6个坑 - 掘金 (juejin.cn)</a></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test5</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// 1.两个BigDecimal对象</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">dec1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;1.3&quot;</span>);<br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">dec2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;1.3&quot;</span>);<br>      <br>      <span class="hljs-comment">// 2.加减乘除</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">add</span> <span class="hljs-operator">=</span> dec1.add(dec2);<br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">subtract</span> <span class="hljs-operator">=</span> dec1.subtract(dec2);<br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">multiply</span> <span class="hljs-operator">=</span> dec1.multiply(dec2);<br>      <br>      <span class="hljs-comment">// 3.设置精度</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">divide</span> <span class="hljs-operator">=</span> dec1.divide(dec2).setScale(<span class="hljs-number">3</span>, RoundingMode.HALF_DOWN);<br>      <br>      out.println(add);<br>      out.println(subtract);<br>      out.println(multiply);<br>      System.out.println(divide);<br>      <br>      <span class="hljs-comment">// 4.去掉末尾的0</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">bigDecimal</span> <span class="hljs-operator">=</span> divide.stripTrailingZeros();<br>      out.println(bigDecimal);<br>      <br>      <span class="hljs-comment">// 5.转换为Double</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;1888977466432.1241341341413414&quot;</span>);<br>      <span class="hljs-type">double</span> <span class="hljs-variable">doubleValue</span> <span class="hljs-operator">=</span> value.doubleValue();<br>      out.println(doubleValue);<br>      <span class="hljs-type">double</span> <span class="hljs-variable">doubleValue1</span> <span class="hljs-operator">=</span> value.toBigInteger().doubleValue();<br>      out.println(doubleValue1);<br>      <br>      <span class="hljs-comment">// 6.比较大小</span><br>      out.println(add.compareTo(subtract) &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;add大于sub&quot;</span> : <span class="hljs-string">&quot;add小于sub&quot;</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="良心插件"><a href="#良心插件" class="headerlink" title="良心插件"></a>良心插件</h2><h3 id="carbon-now-sh"><a href="#carbon-now-sh" class="headerlink" title="carbon-now-sh"></a>carbon-now-sh</h3><ul>
+<li><h5 id="carbon-now-sh：代码贴图工具（2023-08-20晚）"><a href="#carbon-now-sh：代码贴图工具（2023-08-20晚）" class="headerlink" title="carbon-now-sh：代码贴图工具（2023/08/20晚）"></a>carbon-now-sh：代码贴图工具（2023/08/20晚）</h5></li>
+<li><p>选择一段代码，右键菜单点击 Open in carbon.now.sh：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820220508484.png" alt="image-20230820220508484"></p>
+<ul>
+<li><h5 id="在弹出的网页页面中，可以调整代码风格，点击导出就下载成功了"><a href="#在弹出的网页页面中，可以调整代码风格，点击导出就下载成功了" class="headerlink" title="在弹出的网页页面中，可以调整代码风格，点击导出就下载成功了~"></a>在弹出的网页页面中，可以调整代码风格，点击导出就下载成功了~</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820220640005.png" alt="image-20230820220640005"></p>
+<h3 id="MybatisX-Genetator"><a href="#MybatisX-Genetator" class="headerlink" title="MybatisX-Genetator"></a>MybatisX-Genetator</h3><ul>
+<li><h5 id="MybatisX-Genetator：代码自动生成器"><a href="#MybatisX-Genetator：代码自动生成器" class="headerlink" title="MybatisX-Genetator：代码自动生成器"></a>MybatisX-Genetator：代码自动生成器</h5></li>
+<li><h5 id="连接到数据库后，在一个表右键菜单点击-MybatisX-Genetator：（2023-08-20晚）"><a href="#连接到数据库后，在一个表右键菜单点击-MybatisX-Genetator：（2023-08-20晚）" class="headerlink" title="连接到数据库后，在一个表右键菜单点击 MybatisX-Genetator：（2023/08/20晚）"></a>连接到数据库后，在一个表右键菜单点击 MybatisX-Genetator：（2023/08/20晚）</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820220815784.png" alt="image-20230820220815784"></p>
+<ul>
+<li>选择代码生成位置、编码格式、包名等信息：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820221142630.png" alt="image-20230820221142630"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820221240754.png" alt="image-20230820221240754"></p>
+<ul>
+<li><h5 id="点击Finish，直接生成domain、service、serviceImpl、mapper、mapperXml："><a href="#点击Finish，直接生成domain、service、serviceImpl、mapper、mapperXml：" class="headerlink" title="点击Finish，直接生成domain、service、serviceImpl、mapper、mapperXml："></a>点击Finish，直接生成domain、service、serviceImpl、mapper、mapperXml：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230820221655077.png" alt="image-20230820221655077"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
@@ -621,7 +694,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月14日</div>
+          <div>2023年8月20日</div>
         </div>
       
       

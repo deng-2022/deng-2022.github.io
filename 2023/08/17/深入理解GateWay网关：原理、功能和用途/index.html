@@ -1,0 +1,1178 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="GateWay网关入门指南：从基础到应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解GateWay网关：原理、功能和用途">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3GateWay%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="GateWay网关入门指南：从基础到应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818103912848.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818103909751.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818133658686.png">
+<meta property="article:published_time" content="2023-08-17T11:08:56.000Z">
+<meta property="article:modified_time" content="2023-08-18T06:05:14.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="微服务">
+<meta property="article:tag" content="GateWay">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818103912848.png">
+  
+  
+  
+  <title>深入理解GateWay网关：原理、功能和用途 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="深入理解GateWay网关：原理、功能和用途"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-17 19:08" pubdate>
+          2023年8月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="微服务"
+        id="heading-79c287218d34050f6bd19986cd05b499" role="tab" data-toggle="collapse" href="#collapse-79c287218d34050f6bd19986cd05b499"
+        aria-expanded="true"
+      >
+        微服务
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-79c287218d34050f6bd19986cd05b499"
+           role="tabpanel" aria-labelledby="heading-79c287218d34050f6bd19986cd05b499">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="GateWay"
+        id="heading-9e762110dafecbf948bda865475c096a" role="tab" data-toggle="collapse" href="#collapse-9e762110dafecbf948bda865475c096a"
+        aria-expanded="true"
+      >
+        GateWay
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9e762110dafecbf948bda865475c096a"
+           role="tabpanel" aria-labelledby="heading-9e762110dafecbf948bda865475c096a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3GateWay%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解GateWay网关：原理、功能和用途"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">深入理解GateWay网关：原理、功能和用途</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringCloud"
+        id="heading-cfb5f1b5888a24efc43a5f3a4b37d137" role="tab" data-toggle="collapse" href="#collapse-cfb5f1b5888a24efc43a5f3a4b37d137"
+        aria-expanded="false"
+      >
+        SpringCloud
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cfb5f1b5888a24efc43a5f3a4b37d137"
+           role="tabpanel" aria-labelledby="heading-cfb5f1b5888a24efc43a5f3a4b37d137">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="false"
+      >
+        经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">深入理解GateWay网关：原理、功能和用途</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：7 天前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li><h5 id="这篇博客将会介绍什么是网关、为什么要使用网关以及如何使用网关等相关知识"><a href="#这篇博客将会介绍什么是网关、为什么要使用网关以及如何使用网关等相关知识" class="headerlink" title="这篇博客将会介绍什么是网关、为什么要使用网关以及如何使用网关等相关知识"></a>这篇博客将会介绍什么是网关、为什么要使用网关以及如何使用网关等相关知识</h5></li>
+<li><p>在日益数字化和互联互通的时代，网关（GateWay）已经成为网络架构中不可或缺的一环。无论是企业网络还是个人用户，使用网关都能带来众多的好处和优势。</p>
+</li>
+</ul>
+<h3 id="为什么要使用网关"><a href="#为什么要使用网关" class="headerlink" title="为什么要使用网关"></a>为什么要使用网关</h3><ul>
+<li>为什么要使用网关呢？</li>
+<li><strong>首先，网关能够提供强大的网络安全保护。</strong>当今的网络环境充满了各种威胁和攻击，如病毒、恶意软件、黑客入侵等等。网关作为网络的前沿守卫，能够监控、过滤和阻止来自外部网络的恶意流量，确保内部网络的安全。它能够识别和阻止潜在的风险，保护机密数据和敏感信息免受损失。</li>
+<li><strong>其次，网关能够管理和优化网络流量</strong>。在庞大的网络环境中，流量管理和控制变得至关重要。网关可以实施流量限制、负载均衡和优先级管理等策略，确保网络资源的合理利用和高效分配。它能够减轻网络拥塞、提高网络性能，提供更优质的网络体验。</li>
+<li><strong>此外，网关还可以连接不同类型的网络。</strong>无论是公共云服务提供商、私有网络还是远程办公场景，网关都能搭建起桥梁连接不同的网络环境。通过网关的中转，用户可以访问不同网络中的资源和服务，实现远程访问和协作。</li>
+<li>总而言之，无论是<strong>保护网络安全</strong>、<strong>管理网络流量</strong>，还是<strong>连接不同网络环境</strong>，网关都发挥着至关重要的作用。通过使用网关，我们能够打造更安全、高效和灵活的网络架构，满足各种实际需求。</li>
+<li>希望这个简单的介绍能帮助你理解为什么需要使用网关，以及在何种情景下使用。如有任何疑问，请随时向我提问。祝你写作顺利！</li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="网关的分类"><a href="#网关的分类" class="headerlink" title="网关的分类"></a>网关的分类</h2><ul>
+<li><h5 id="我们之前学习过-Nginx，它以其优秀的负载均衡和反向代理功能而闻名，这两个特点恰巧也赋予了-Nginx-作为网关的能力"><a href="#我们之前学习过-Nginx，它以其优秀的负载均衡和反向代理功能而闻名，这两个特点恰巧也赋予了-Nginx-作为网关的能力" class="headerlink" title="我们之前学习过 Nginx，它以其优秀的负载均衡和反向代理功能而闻名，这两个特点恰巧也赋予了 Nginx 作为网关的能力"></a>我们之前学习过 Nginx，它以其优秀的负载均衡和反向代理功能而闻名，这两个特点恰巧也赋予了 Nginx 作为网关的能力</h5></li>
+<li><p>有关 Nginx的相关知识，可以在《》一文中学习了解</p>
+</li>
+<li><p>我们可以按照<strong>是否与具体的业务逻辑相绑定</strong>，对网关的类别进行划分：</p>
+</li>
+<li><h5 id="网关的分类："><a href="#网关的分类：" class="headerlink" title="网关的分类："></a>网关的分类：</h5><ul>
+<li>全局网关（接入层网关）： 作用是负载均衡、请求日志等，不和业务逻辑绑定</li>
+<li>业务网关（微服务网关）： 存在一些业务逻辑，作用是将请求转发到不同的业务/项目/接口/服务</li>
+</ul>
+</li>
+<li><h5 id="参考文章：https-blog-csdn-net-qq-21040559-article-details-122961395"><a href="#参考文章：https-blog-csdn-net-qq-21040559-article-details-122961395" class="headerlink" title="参考文章：https://blog.csdn.net/qq_21040559/article/details/122961395"></a>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21040559/article/details/122961395">https://blog.csdn.net/qq_21040559/article/details/122961395</a></h5></li>
+</ul>
+<h2 id="实现网关"><a href="#实现网关" class="headerlink" title="实现网关"></a>实现网关</h2><ul>
+<li><h5 id="Nginx-（全局网关）、Kong-网关-（API-网关，-Kong-https-github-com-Kong-kong-，编程成本相对高点"><a href="#Nginx-（全局网关）、Kong-网关-（API-网关，-Kong-https-github-com-Kong-kong-，编程成本相对高点" class="headerlink" title="Nginx （全局网关）、Kong 网关 （API 网关， Kong: https://github.com/Kong/kong)，编程成本相对高点"></a>Nginx （全局网关）、Kong 网关 （API 网关， Kong: <a target="_blank" rel="noopener" href="https://github.com/Kong/kong)%EF%BC%8C%E7%BC%96%E7%A8%8B%E6%88%90%E6%9C%AC%E7%9B%B8%E5%AF%B9%E9%AB%98%E7%82%B9">https://github.com/Kong/kong)，编程成本相对高点</a></h5></li>
+<li><h5 id="Spring-Cloud-GateWay-取代了-Zuul-，性能高、可以用-Java-代码来写逻辑，适合学习"><a href="#Spring-Cloud-GateWay-取代了-Zuul-，性能高、可以用-Java-代码来写逻辑，适合学习" class="headerlink" title="Spring Cloud GateWay (取代了 Zuul ) ，性能高、可以用 Java 代码来写逻辑，适合学习"></a>Spring Cloud GateWay (取代了 Zuul ) ，性能高、可以用 Java 代码来写逻辑，适合学习</h5></li>
+<li><h5 id="有关API网关的功能、API网关技术选型以及各类网关的比较：https-zhuanlan-zhihu-com-p-500587132"><a href="#有关API网关的功能、API网关技术选型以及各类网关的比较：https-zhuanlan-zhihu-com-p-500587132" class="headerlink" title="有关API网关的功能、API网关技术选型以及各类网关的比较：https://zhuanlan.zhihu.com/p/500587132"></a>有关API网关的功能、API网关技术选型以及各类网关的比较：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/500587132">https://zhuanlan.zhihu.com/p/500587132</a></h5></li>
+<li><p>那么我们就深入学习下Spring Cloud GateWay网关👇</p>
+</li>
+</ul>
+<h2 id="Spring-Cloud-GateWay"><a href="#Spring-Cloud-GateWay" class="headerlink" title="Spring Cloud GateWay"></a>Spring Cloud GateWay</h2><ul>
+<li><h5 id="官网：https-spring-io-projects-spring-cloud-gateway"><a href="#官网：https-spring-io-projects-spring-cloud-gateway" class="headerlink" title="官网：https://spring.io/projects/spring-cloud-gateway/"></a>官网：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-gateway/">https://spring.io/projects/spring-cloud-gateway/</a></h5></li>
+<li><h5 id="官方文档：https-docs-spring-io-spring-cloud-gateway-docs-current-reference-html"><a href="#官方文档：https-docs-spring-io-spring-cloud-gateway-docs-current-reference-html" class="headerlink" title="官方文档：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/"></a>官方文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/</a></h5></li>
+</ul>
+<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li>路由：根据什么条件，转发到哪里去</li>
+</ul>
+<ul>
+<li>断言：定制一套规则、条件， 用来确定<strong>如何转发路由</strong></li>
+</ul>
+<ul>
+<li>过滤器： 对请求进行一系列的处理， 比如<strong>添加请求头</strong>、添加请求参数</li>
+</ul>
+<h3 id="请求流程："><a href="#请求流程：" class="headerlink" title="请求流程："></a>请求流程：</h3><ol>
+<li>客户端发起请求</li>
+<li>Handler Mapping: 根据断言，将请求转发到对应的路由</li>
+<li>Web Handler： 处理请求（一层层经过过滤器）</li>
+<li> 实际调用服务</li>
+</ol>
+<h3 id="两种配置方式"><a href="#两种配置方式" class="headerlink" title="两种配置方式"></a>两种配置方式</h3><ol>
+<li><h5 id="编程式（灵活、相对麻烦）"><a href="#编程式（灵活、相对麻烦）" class="headerlink" title="编程式（灵活、相对麻烦）"></a>编程式（灵活、相对麻烦）</h5></li>
+<li><h5 id="配置式（方便、规范）"><a href="#配置式（方便、规范）" class="headerlink" title="配置式（方便、规范）"></a>配置式（方便、规范）</h5><ul>
+<li><p>简化版</p>
+</li>
+<li><p>全称版</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="快速测试"><a href="#快速测试" class="headerlink" title="快速测试"></a>快速测试</h2><ul>
+<li>在IDEA中新建工程，导入以下依赖，如图所示：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"> <br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818103912848.png" alt="image-20230818103912848"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818103909751.png" alt="image-20230818103909751"></p>
+<ul>
+<li><strong>编程式</strong>，编写GateWay配置信息：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓哈哈</span><br><span class="hljs-comment"> * 2023/8/18 11:41</span><br><span class="hljs-comment"> * Function:</span><br><span class="hljs-comment"> * Version 1.0</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GateWayConfig</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RouteLocator <span class="hljs-title function_">customRouteLocator</span><span class="hljs-params">(RouteLocatorBuilder builder)</span> &#123;<br>        <span class="hljs-keyword">return</span> builder.routes()<br>                .route(<span class="hljs-string">&quot;blog&quot;</span>, r -&gt; r.path(<span class="hljs-string">&quot;/blog/**&quot;</span>)<br>                        .uri(<span class="hljs-string">&quot;https://deng-2022.gitee.io/blog/&quot;</span>))<br>                .route(<span class="hljs-string">&quot;baidu&quot;</span>, r -&gt; r.host(<span class="hljs-string">&quot;/baidu/**&quot;</span>)<br>                        .uri(<span class="hljs-string">&quot;https://www.baidu.com&quot;</span>))<br>                .build();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>配置式</strong>，编写GateWay配置信息：</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">gateway:</span><br>      <span class="hljs-attr">routes:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">memory-api</span><br>          <span class="hljs-attr">uri:</span> <span class="hljs-string">http://localhost:8000/user/login</span><br>          <span class="hljs-attr">predicates:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">Path=/api/**</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">baidu</span><br>          <span class="hljs-attr">uri:</span> <span class="hljs-string">https://www.baidu.com</span><br>          <span class="hljs-attr">predicates:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">Path=/baidu/**</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">blog</span><br>          <span class="hljs-attr">uri:</span> <span class="hljs-string">https://deng-2022.gitee.io/blog/</span><br>          <span class="hljs-attr">predicates:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">Path=/blog/**</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这两种配置作用是一样的，转发路由</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8090</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这样，当我们访问-localhost-8090-blog-时，GateWay会将路由转发到-https-deng-2022-gitee-io-blog-，看下效果："><a href="#这样，当我们访问-localhost-8090-blog-时，GateWay会将路由转发到-https-deng-2022-gitee-io-blog-，看下效果：" class="headerlink" title="这样，当我们访问 localhost:8090/blog/时，GateWay会将路由转发到 https://deng-2022.gitee.io/blog/，看下效果："></a>这样，当我们访问 localhost:8090/blog/时，GateWay会将路由转发到 <a href="https://deng-2022.gitee.io/blog/%EF%BC%8C%E7%9C%8B%E4%B8%8B%E6%95%88%E6%9E%9C%EF%BC%9A">https://deng-2022.gitee.io/blog/，看下效果：</a></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230818133658686.png" alt="image-20230818133658686"></p>
+<h2 id="网关的作用"><a href="#网关的作用" class="headerlink" title="网关的作用"></a>网关的作用</h2><ul>
+<li><h5 id="网关的作用包括："><a href="#网关的作用包括：" class="headerlink" title="网关的作用包括："></a>网关的作用包括：</h5></li>
+</ul>
+<ol>
+<li>路由</li>
+<li>负载均衡</li>
+<li>统一鉴权</li>
+<li>跨域</li>
+<li>统一业务处理（缓存）</li>
+<li>访问控制</li>
+<li>发布控制</li>
+<li>流量染色</li>
+<li>接口保护<ol>
+<li>限制请求</li>
+<li>信息脱敏</li>
+<li>降级（熔断）</li>
+<li>限流：学习令牌桶算法、学习漏桶算法，学习一下 RedisLimitHandler</li>
+<li>超时时间</li>
+</ol>
+</li>
+<li>统一日志</li>
+<li>统一文档</li>
+</ol>
+<ul>
+<li><h5 id="详细的配置内容，我们可以在GateWay官方文档中查阅学习：Spring-Cloud-Gateway"><a href="#详细的配置内容，我们可以在GateWay官方文档中查阅学习：Spring-Cloud-Gateway" class="headerlink" title="详细的配置内容，我们可以在GateWay官方文档中查阅学习：Spring Cloud Gateway"></a>详细的配置内容，我们可以在GateWay官方文档中查阅学习：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/">Spring Cloud Gateway</a></h5></li>
+</ul>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><ul>
+<li><h5 id="起到转发的作用"><a href="#起到转发的作用" class="headerlink" title="起到转发的作用"></a>起到转发的作用</h5></li>
+<li><h5 id="比如有接口-A-和接口-B，-网关会记录这些信息，根据用户访问的地址和参数，转发请求到对应的接口（服务器-集群）"><a href="#比如有接口-A-和接口-B，-网关会记录这些信息，根据用户访问的地址和参数，转发请求到对应的接口（服务器-集群）" class="headerlink" title="比如有接口 A 和接口 B， 网关会记录这些信息，根据用户访问的地址和参数，转发请求到对应的接口（服务器/集群）"></a>比如有接口 A 和接口 B， 网关会记录这些信息，根据用户访问的地址和参数，转发请求到对应的接口（服务器/集群）</h5><ul>
+<li>/a =&gt; 接口 A</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>/b =&gt; 接口 B</li>
+</ul>
+<ul>
+<li><h5 id="Gateway-路由：https-docs-spring-io-spring-cloud-gateway-docs-current-reference-html-gateway-request-predicates-factories"><a href="#Gateway-路由：https-docs-spring-io-spring-cloud-gateway-docs-current-reference-html-gateway-request-predicates-factories" class="headerlink" title="Gateway 路由：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories"></a>Gateway 路由：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories</a></h5></li>
+</ul>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><ul>
+<li>在路由的基础上</li>
+</ul>
+<ul>
+<li>/c =&gt; 服务 A / 集群 A （随机转发到其中的某一个机器）</li>
+</ul>
+<ul>
+<li>uri 从固定地址改成 lb:xxxx</li>
+</ul>
+<h3 id="统一处理跨域"><a href="#统一处理跨域" class="headerlink" title="统一处理跨域"></a>统一处理跨域</h3><ul>
+<li>网关统一处理跨域，不用在每个项目里单独处理</li>
+</ul>
+<ul>
+<li>GateWay 处理跨域：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#cors-configuration">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#cors-configuration</a></li>
+</ul>
+<h3 id="发布控制"><a href="#发布控制" class="headerlink" title="发布控制"></a>发布控制</h3><ul>
+<li>灰度发布，比如上线新接口，先给新接口分配 20% 的流量，老接口 80%， 再慢慢调整比例</li>
+</ul>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-weight-route-predicate-factory">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-weight-route-predicate-factory</a></li>
+</ul>
+<h3 id="流量染色"><a href="#流量染色" class="headerlink" title="流量染色"></a>流量染色</h3><ul>
+<li>给请求（流量）添加一些标识，一般是设置请求头中，添加新的请求头</li>
+</ul>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-addrequestheader-gatewayfilter-factory">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-addrequestheader-gatewayfilter-factory</a></li>
+<li>全局染色：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#default-filters">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#default-filters</a></li>
+</ul>
+<h3 id="统一接口保护"><a href="#统一接口保护" class="headerlink" title="统一接口保护"></a>统一接口保护</h3><ol>
+<li>限制请求：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#requestheadersize-gatewayfilter-factory">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#requestheadersize-gatewayfilter-factory</a></li>
+<li>信息脱敏：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-removerequestheader-gatewayfilter-factory">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-removerequestheader-gatewayfilter-factory</a></li>
+<li>降级（熔断）：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#fallback-headers">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#fallback-headers</a></li>
+<li>限流：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-requestratelimiter-gatewayfilter-factory">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-requestratelimiter-gatewayfilter-factory</a></li>
+<li>超时时间：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#http-timeouts-configuration">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#http-timeouts-configuration</a></li>
+<li>重试（业务保护）：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-retry-gatewayfilter-factory">https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-retry-gatewayfilter-factory</a></li>
+</ol>
+<h3 id="统一业务处理"><a href="#统一业务处理" class="headerlink" title="统一业务处理"></a>统一业务处理</h3><ul>
+<li>把每个项目中都要做的通用逻辑放到上层（网关），统一处理，比如本项目的次数统计</li>
+</ul>
+<h3 id="统一鉴权"><a href="#统一鉴权" class="headerlink" title="统一鉴权"></a>统一鉴权</h3><ul>
+<li>判断用户是否有权限进行操作，无论访问什么接口，都统一验证权限，避免重复写验证权限操作。</li>
+</ul>
+<h3 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h3><ul>
+<li>黑白名单，比如限制 DDOS IP</li>
+</ul>
+<h3 id="统一日志"><a href="#统一日志" class="headerlink" title="统一日志"></a>统一日志</h3><ul>
+<li>统一的请求、响应信息记录</li>
+</ul>
+<h3 id="统一文档"><a href="#统一文档" class="headerlink" title="统一文档"></a>统一文档</h3><ul>
+<li>将下游项目的文档进行聚合，在一个页面统一查看</li>
+</ul>
+<ul>
+<li><h5 id="这里我们还是建议使用-Swagger-Knif4j-快速生成接口文档："><a href="#这里我们还是建议使用-Swagger-Knif4j-快速生成接口文档：" class="headerlink" title="这里我们还是建议使用 Swagger + Knif4j 快速生成接口文档："></a>这里我们还是建议使用 Swagger + Knif4j 快速生成接口文档：</h5></li>
+<li><h5 id="https-doc-xiaominfo-com-docs-middleware-sources-aggregation-introduction"><a href="#https-doc-xiaominfo-com-docs-middleware-sources-aggregation-introduction" class="headerlink" title="https://doc.xiaominfo.com/docs/middleware-sources/aggregation-introduction"></a><a target="_blank" rel="noopener" href="https://doc.xiaominfo.com/docs/middleware-sources/aggregation-introduction">https://doc.xiaominfo.com/docs/middleware-sources/aggregation-introduction</a></h5></li>
+</ul>
+<h3 id="开启日志"><a href="#开启日志" class="headerlink" title="开启日志"></a>开启日志</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">logging:</span><br>  <span class="hljs-attr">level:</span><br>    <span class="hljs-attr">org:</span><br>      <span class="hljs-attr">springframework:</span><br>        <span class="hljs-attr">cloud:</span><br>          <span class="hljs-attr">gateway:</span> <span class="hljs-string">trace</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><ul>
+<li><h5 id="After-在-xx-时间之后"><a href="#After-在-xx-时间之后" class="headerlink" title="After 在 xx 时间之后"></a>After 在 xx 时间之后</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: after_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">After=2017-01-20T17:42:47.789-07:00[America/Denver]</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="Before-在-xx-时间之前"><a href="#Before-在-xx-时间之前" class="headerlink" title="Before 在 xx 时间之前"></a>Before 在 xx 时间之前</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: before_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Before=2017-01-20T17:42:47.789-07:00[America/Denver]</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="Between-在-xx-时间之间"><a href="#Between-在-xx-时间之间" class="headerlink" title="Between 在 xx 时间之间"></a>Between 在 xx 时间之间</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: between_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Between=2017-01-20T17:42:47.789-07:00[America/Denver], 2017-01-21T17:42:47.789-07:00[America/Denver]</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="请求类别"><a href="#请求类别" class="headerlink" title="请求类别"></a>请求类别</h5></li>
+</ul>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">spring:<br>  cloud:<br>    gateway:<br>      routes:<br>      - id: method_route<br>        uri: https:<span class="hljs-comment">//example.org</span><br>        predicates:<br>        - <span class="hljs-keyword">Method</span>=<span class="hljs-title function_">GET</span>,<span class="hljs-title function_">POST</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="请求头（包含-cookie）"><a href="#请求头（包含-cookie）" class="headerlink" title="请求头（包含 cookie）"></a>请求头（包含 cookie）</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: header_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Header=X-Request-Id, \d+</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: cookie_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Cookie=chocolate, ch.p</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="路由转发"><a href="#路由转发" class="headerlink" title="路由转发"></a>路由转发</h5></li>
+</ul>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">spring:</span><br><span class="hljs-symbol">  cloud:</span><br><span class="hljs-symbol">    gateway:</span><br><span class="hljs-symbol">      routes:</span><br>      - id: path_route<br><span class="hljs-symbol">        uri:</span> https:<span class="hljs-comment">//example.org</span><br><span class="hljs-symbol">        predicates:</span><br>        - P<span class="hljs-attr">ath</span><span class="hljs-operator">=</span><span class="hljs-keyword">/red/</span><span class="hljs-punctuation">&#123;</span>segment<span class="hljs-punctuation">&#125;</span>,<span class="hljs-keyword">/blue/</span><span class="hljs-punctuation">&#123;</span>segment<span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: query_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Query=green</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="客户端地址"><a href="#客户端地址" class="headerlink" title="客户端地址"></a>客户端地址</h5></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: remoteaddr_route</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://example.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">RemoteAddr=192.168.1.1/24</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>权重</strong></li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">cloud</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">gateway</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">routes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: weight_high</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://weighthigh.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Weight=group1, 8</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">id: weight_low</span><br>        <span class="hljs-attribute">uri</span><span class="hljs-punctuation">:</span> <span class="hljs-string">https://weightlow.org</span><br>        <span class="hljs-attribute">predicates</span><span class="hljs-punctuation">:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-string">Weight=group1, 2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><ul>
+<li>基本功能：对请求头、请求参数、响应头的增删改查</li>
+</ul>
+<ol>
+<li>添加请求头</li>
+<li>添加请求参数</li>
+<li>添加响应头</li>
+<li>降级</li>
+<li>限流</li>
+<li>重试</li>
+</ol>
+<ul>
+<li><h5 id="这里就不引入具体配置了，详细配置可在官网文档查看："><a href="#这里就不引入具体配置了，详细配置可在官网文档查看：" class="headerlink" title="这里就不引入具体配置了，详细配置可在官网文档查看："></a>这里就不引入具体配置了，详细配置可在官网文档查看：</h5></li>
+<li><h5 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories">Spring Cloud Gateway</a></h5></li>
+<li><h5 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;dependency&gt;<br>    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;<br>    &lt;artifactId&gt;spring-cloud-starter-circuitbreaker-reactor-resilience4j&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="category-chain-item">微服务</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/GateWay/" class="category-chain-item">GateWay</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">#微服务</a>
+      
+        <a href="/blog/tags/GateWay/">#GateWay</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>深入理解GateWay网关：原理、功能和用途</div>
+      <div>https://deng-2022.gitee.io/blog/2023/08/17/深入理解GateWay网关：原理、功能和用途/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月17日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年8月18日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/08/17/Win10%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" title="Win10生活笔记">
+                        <span class="hidden-mobile">Win10生活笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

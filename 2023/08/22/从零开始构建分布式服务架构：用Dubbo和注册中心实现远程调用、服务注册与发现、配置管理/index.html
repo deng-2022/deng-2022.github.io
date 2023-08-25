@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="分布式协作：探索服务注册与发现的最佳实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="分布式协作：探索服务注册与发现的最佳实践">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/network.jpeg">
+<meta property="article:published_time" content="2023-08-22T03:45:17.000Z">
+<meta property="article:modified_time" content="2023-08-24T05:50:17.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="微服务">
+<meta property="article:tag" content="SpringCloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/network.jpeg">
+  
+  
+  
+  <title>从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-22 11:45" pubdate>
+          2023年8月22日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="微服务"
+        id="heading-79c287218d34050f6bd19986cd05b499" role="tab" data-toggle="collapse" href="#collapse-79c287218d34050f6bd19986cd05b499"
+        aria-expanded="true"
+      >
+        微服务
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-79c287218d34050f6bd19986cd05b499"
+           role="tabpanel" aria-labelledby="heading-79c287218d34050f6bd19986cd05b499">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="GateWay"
+        id="heading-9e762110dafecbf948bda865475c096a" role="tab" data-toggle="collapse" href="#collapse-9e762110dafecbf948bda865475c096a"
+        aria-expanded="false"
+      >
+        GateWay
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-9e762110dafecbf948bda865475c096a"
+           role="tabpanel" aria-labelledby="heading-9e762110dafecbf948bda865475c096a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3GateWay%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解GateWay网关：原理、功能和用途"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">深入理解GateWay网关：原理、功能和用途</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringCloud"
+        id="heading-cfb5f1b5888a24efc43a5f3a4b37d137" role="tab" data-toggle="collapse" href="#collapse-cfb5f1b5888a24efc43a5f3a4b37d137"
+        aria-expanded="true"
+      >
+        SpringCloud
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-cfb5f1b5888a24efc43a5f3a4b37d137"
+           role="tabpanel" aria-labelledby="heading-cfb5f1b5888a24efc43a5f3a4b37d137">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="true"
+      >
+        经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：1 天前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li><p>欢迎阅读本篇博客！在当前大规模分布式系统的开发中，构建可靠的服务架构是至关重要的一环。为了实现远程方法调用、服务注册与发现以及配置管理等功能，使用Dubbo和注册中心（ZooKeeper、Nacos）成为了主流选择</p>
+</li>
+<li><p>本文将带领您一步步搭建一个强大的分布式服务架构，通过深入探索Dubbo和注册中心的使用方式，帮助您轻松实现高效的远程调用和服务管理。我们将详尽介绍如何安装、配置和集成Nacos和ZooKeeper作为注册中心，并结合Dubbo框架搭建完整的微服务架构</p>
+</li>
+<li><p>无论您是刚开始接触分布式架构，还是已经有一定经验，本文都将为您提供实用的技巧和最佳实践，以确保您的服务架构在性能、可靠性和扩展性方面都达到最佳状态</p>
+</li>
+<li><p>一起来构建强大而灵活的分布式服务架构吧！让我们从安装配置开始，逐步探索Dubbo与注册中心的集成，实现高效远程调用和服务管理的愉悦体验</p>
+</li>
+<li><h5 id="Dubbo架构实现了什么？"><a href="#Dubbo架构实现了什么？" class="headerlink" title="Dubbo架构实现了什么？"></a>Dubbo架构实现了什么？</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230824134934927.png" alt="image-20230824134934927"></p>
+<ul>
+<li><h5 id="像调用本地方法一样，调用远程方法（2023-08-24午）"><a href="#像调用本地方法一样，调用远程方法（2023-08-24午）" class="headerlink" title="像调用本地方法一样，调用远程方法（2023/08/24午）"></a>像调用本地方法一样，调用远程方法（2023/08/24午）</h5></li>
+<li><h5 id="以下是本文的行文思路："><a href="#以下是本文的行文思路：" class="headerlink" title="以下是本文的行文思路："></a>以下是本文的行文思路：</h5><ul>
+<li>详细指南：使用ZooKeeper和Nacos搭建注册中心</li>
+<li>架构实践：结合Dubbo实现灵活的远程方法调用</li>
+<li>分布式协作：探索服务注册与发现的最佳实践</li>
+<li>高效管理：利用注册中心进行配置管理的技巧与策略</li>
+</ul>
+</li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="搭建注册中心"><a href="#搭建注册中心" class="headerlink" title="搭建注册中心"></a>搭建注册中心</h2><ul>
+<li><h5 id="我们接下来谈论的下载安装以及配置管理，都是在windows系统下进行的（2023-08-22晚）"><a href="#我们接下来谈论的下载安装以及配置管理，都是在windows系统下进行的（2023-08-22晚）" class="headerlink" title="我们接下来谈论的下载安装以及配置管理，都是在windows系统下进行的（2023/08/22晚）"></a>我们接下来谈论的下载安装以及配置管理，都是在windows系统下进行的（2023/08/22晚）</h5></li>
+</ul>
+<h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><ul>
+<li><h5 id="ZooKeeper：Apache-ZooKeeper"><a href="#ZooKeeper：Apache-ZooKeeper" class="headerlink" title="ZooKeeper：Apache ZooKeeper"></a>ZooKeeper：<a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">Apache ZooKeeper</a></h5></li>
+<li><h5 id="Nacos：github-com"><a href="#Nacos：github-com" class="headerlink" title="Nacos：github.com"></a>Nacos：<a target="_blank" rel="noopener" href="https://github.com/alibaba/nacos/tags">github.com</a></h5></li>
+<li><p>这里我们提供了ZeeKeeper和Nacos的下载方式，还有其他的下载方式，这里就不展示了</p>
+</li>
+<li><h5 id="ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇："><a href="#ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇：" class="headerlink" title="ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇："></a>ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇：</h5></li>
+<li><p><a target="_blank" rel="noopener" href="https://dgrt.cn/a/1604886.html?action=onClick">Windows 安装 Zookeeper 详细步骤 (dgrt.cn)</a></p>
+</li>
+<li><h5 id="Nacos的下载则更加简单，直接拉取GitHub源代码就可以，参考官方文档👇："><a href="#Nacos的下载则更加简单，直接拉取GitHub源代码就可以，参考官方文档👇：" class="headerlink" title="Nacos的下载则更加简单，直接拉取GitHub源代码就可以，参考官方文档👇："></a>Nacos的下载则更加简单，直接拉取GitHub源代码就可以，参考官方文档👇：</h5></li>
+<li><p><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/docs/quick-start.html">Nacos 快速开始</a></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230823205911004.png" alt="image-20230823205911004"></p>
+<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><ul>
+<li><h5 id="在ZooKeeper的bin目录下，双击zkServer-cmd即可快速启动注册中心："><a href="#在ZooKeeper的bin目录下，双击zkServer-cmd即可快速启动注册中心：" class="headerlink" title="在ZooKeeper的bin目录下，双击zkServer.cmd即可快速启动注册中心："></a>在ZooKeeper的bin目录下，双击zkServer.cmd即可快速启动注册中心：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230822121439364.png" alt="image-20230822121439364"></p>
+<ul>
+<li><h5 id="同理，在Nacos的bin目录下，双击startup-cmd即可快速启动注册中心："><a href="#同理，在Nacos的bin目录下，双击startup-cmd即可快速启动注册中心：" class="headerlink" title="同理，在Nacos的bin目录下，双击startup.cmd即可快速启动注册中心："></a>同理，在Nacos的bin目录下，双击startup.cmd即可快速启动注册中心：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230822121744746.png" alt="image-20230822121744746"></p>
+<ul>
+<li><h5 id="或者，在bin目录下，执行以下命令（单机运行）："><a href="#或者，在bin目录下，执行以下命令（单机运行）：" class="headerlink" title="或者，在bin目录下，执行以下命令（单机运行）："></a>或者，在bin目录下，执行以下命令（单机运行）：</h5></li>
+</ul>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dos">startup.<span class="hljs-built_in">cmd</span> -m standalone<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230823210003483.png" alt="image-20230823210003483"></p>
+<h2 id="远程方法调用"><a href="#远程方法调用" class="headerlink" title="远程方法调用"></a>远程方法调用</h2><ul>
+<li><h5 id="Dubbo官网：3-基于-Spring-Boot-Starter-开发微服务应用-Apache-Dubbo"><a href="#Dubbo官网：3-基于-Spring-Boot-Starter-开发微服务应用-Apache-Dubbo" class="headerlink" title="Dubbo官网：3 - 基于 Spring Boot Starter 开发微服务应用 | Apache Dubbo"></a>Dubbo官网：<a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/quick-start/spring-boot/">3 - 基于 Spring Boot Starter 开发微服务应用 | Apache Dubbo</a></h5></li>
+<li><p>我们要基于Dubbo实现远程调用服务，实现很简单，参考官网文档就可以，这里简单说一下调用流程：</p>
+<ul>
+<li>启动注册中心</li>
+<li>服务提供者 -&gt; 服务注册</li>
+<li>消费者调用服务 -&gt; 服务发现</li>
+<li>服务调用成功</li>
+</ul>
+</li>
+<li><h5 id="这里，我们使用官网文档给出的示例代码，简单梳理下Dubbo实现服务远程调用的流程：（2023-08-22晚）"><a href="#这里，我们使用官网文档给出的示例代码，简单梳理下Dubbo实现服务远程调用的流程：（2023-08-22晚）" class="headerlink" title="这里，我们使用官网文档给出的示例代码，简单梳理下Dubbo实现服务远程调用的流程：（2023/08/22晚）"></a>这里，我们使用官网文档给出的示例代码，简单梳理下Dubbo实现服务远程调用的流程：（2023/08/22晚）</h5></li>
+<li><h5 id="如上，ZooKeeper注册中心已经启动成功了"><a href="#如上，ZooKeeper注册中心已经启动成功了" class="headerlink" title="如上，ZooKeeper注册中心已经启动成功了"></a>如上，ZooKeeper注册中心已经启动成功了</h5></li>
+<li><h5 id="服务提供者-gt-服务注册："><a href="#服务提供者-gt-服务注册：" class="headerlink" title="服务提供者 -&gt; 服务注册："></a>服务提供者 -&gt; 服务注册：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@DubboService</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">DemoService</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">sayHello</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello &quot;</span> + name;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230822131312100.png" alt="image-20230822131312100"></p>
+<ul>
+<li><h5 id="消费者调用服务-gt-服务发现："><a href="#消费者调用服务-gt-服务发现：" class="headerlink" title="消费者调用服务 -&gt; 服务发现："></a>消费者调用服务 -&gt; 服务发现：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Task</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CommandLineRunner</span> &#123;<br>    <span class="hljs-meta">@DubboReference</span><br>    <span class="hljs-keyword">private</span> DemoService demoService;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">(String... args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> demoService.sayHello(<span class="hljs-string">&quot;world&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;Receive result ======&gt; &quot;</span> + result);<br><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(()-&gt; &#123;<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    Thread.sleep(<span class="hljs-number">1000</span>);<br>                    System.out.println(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>() + <span class="hljs-string">&quot; Receive result ======&gt; &quot;</span> + demoService.sayHello(<span class="hljs-string">&quot;world&quot;</span>));<br>                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    e.printStackTrace();<br>                    Thread.currentThread().interrupt();<br>                &#125;<br>            &#125;<br>        &#125;).start();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230822131141978.png" alt="image-20230822131141978"></p>
+<ul>
+<li><h5 id="服务调用成功："><a href="#服务调用成功：" class="headerlink" title="服务调用成功："></a>服务调用成功：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230822130943864.png" alt="image-20230822130943864"></p>
+<h2 id="服务注册与发现"><a href="#服务注册与发现" class="headerlink" title="服务注册与发现"></a>服务注册与发现</h2><ul>
+<li><p>在拉取到官方文档中的示例代码并成功运行之后，我们需要在自己的项目中使用 <strong>Dubbo+Nacos 实现远程服务调用</strong></p>
+</li>
+<li><h5 id="成功下载安装Nacos注册中心，启动运行：（2023-08-24午）"><a href="#成功下载安装Nacos注册中心，启动运行：（2023-08-24午）" class="headerlink" title="成功下载安装Nacos注册中心，启动运行：（2023/08/24午）"></a>成功下载安装Nacos注册中心，启动运行：（2023/08/24午）</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230824133939409.png" alt="image-20230824133939409"></p>
+<ul>
+<li><h5 id="如下，在项目中引入相关依赖包："><a href="#如下，在项目中引入相关依赖包：" class="headerlink" title="如下，在项目中引入相关依赖包："></a>如下，在项目中引入相关依赖包：</h5></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.dubbo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>dubbo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.8<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.nacos<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>nacos-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在服务提供者和消费者中，分别添加如下配置：</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dubbo:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo-springboot-demo-provider</span><br>  <span class="hljs-attr">protocol:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">-1</span><br>  <span class="hljs-attr">registry:</span><br>    <span class="hljs-attr">id:</span> <span class="hljs-string">nacos-registry</span><br>    <span class="hljs-attr">address:</span> <span class="hljs-string">nacos://localhost:8848</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dubbo:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo-springboot-demo-client</span><br>  <span class="hljs-attr">protocol:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">-1</span><br>  <span class="hljs-attr">registry:</span><br>    <span class="hljs-attr">id:</span> <span class="hljs-string">nacos-registry</span><br>    <span class="hljs-attr">address:</span> <span class="hljs-string">nacos://localhost:8848</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="添加-DubboService注解，作为服务提供者，将该service方法注册到注册中心："><a href="#添加-DubboService注解，作为服务提供者，将该service方法注册到注册中心：" class="headerlink" title="添加@DubboService注解，作为服务提供者，将该service方法注册到注册中心："></a>添加@DubboService注解，作为服务提供者，将该service方法注册到注册中心：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 内部接口服务实现类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> memory</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@DubboService</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">InnerInterfaceInfoServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">InnerInterfaceInfoService</span> &#123;<br>	........................<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="添加-DubboReference注解，作为消费者，从注册中心拉取对应服务，并成功调用："><a href="#添加-DubboReference注解，作为消费者，从注册中心拉取对应服务，并成功调用：" class="headerlink" title="添加@DubboReference注解，作为消费者，从注册中心拉取对应服务，并成功调用："></a>添加@DubboReference注解，作为消费者，从注册中心拉取对应服务，并成功调用：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@DubboReference</span><br> <span class="hljs-keyword">private</span> InnerUserService innerUserService;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 4.1.校验accessKey</span><br>  <span class="hljs-comment">// todo 从数据库中查询, accessKey是否分配给该用户</span><br>  <span class="hljs-keyword">if</span> (accessKey == <span class="hljs-literal">null</span> || !accessKey.equals(<span class="hljs-string">&quot;memory&quot;</span>)) &#123;<br>      <span class="hljs-keyword">return</span> handleNoAuth(response);<br>  &#125;<br>  <span class="hljs-comment">// accessKey是否分配给该用户</span><br>  <span class="hljs-type">User</span> <span class="hljs-variable">invokeUser</span> <span class="hljs-operator">=</span> innerUserService.getInvokeUser(accessKey);<br>  <span class="hljs-keyword">if</span> (invokeUser == <span class="hljs-literal">null</span>) &#123;<br>      <span class="hljs-keyword">return</span> handleNoAuth(response);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h2><ul>
+<li><h5 id="在服务提供者和消费者中，分别添加如下配置：（2023-08-24午）"><a href="#在服务提供者和消费者中，分别添加如下配置：（2023-08-24午）" class="headerlink" title="在服务提供者和消费者中，分别添加如下配置：（2023/08/24午）"></a>在服务提供者和消费者中，分别添加如下配置：（2023/08/24午）</h5></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dubbo:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo-springboot-demo-provider</span><br>  <span class="hljs-attr">protocol:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">-1</span><br>  <span class="hljs-attr">registry:</span><br>    <span class="hljs-attr">id:</span> <span class="hljs-string">nacos-registry</span><br>    <span class="hljs-attr">address:</span> <span class="hljs-string">nacos://localhost:8848</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">dubbo:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo-springboot-demo-client</span><br>  <span class="hljs-attr">protocol:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">dubbo</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">-1</span><br>  <span class="hljs-attr">registry:</span><br>    <span class="hljs-attr">id:</span> <span class="hljs-string">nacos-registry</span><br>    <span class="hljs-attr">address:</span> <span class="hljs-string">nacos://localhost:8848</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="category-chain-item">微服务</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud/" class="category-chain-item">SpringCloud</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">#微服务</a>
+      
+        <a href="/blog/tags/SpringCloud/">#SpringCloud</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理</div>
+      <div>https://deng-2022.gitee.io/blog/2023/08/22/从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月22日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年8月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/08/23/SpringBoot%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%92%8C%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/" title="SpringBoot第三方服务开发实践：版本兼容性和依赖管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoot第三方服务开发实践：版本兼容性和依赖管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3GateWay%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解GateWay网关：原理、功能和用途">
+                        <span class="hidden-mobile">深入理解GateWay网关：原理、功能和用途</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
