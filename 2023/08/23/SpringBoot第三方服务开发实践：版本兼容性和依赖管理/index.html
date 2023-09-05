@@ -25,11 +25,13 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230824131844391.png">
 <meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230824132539814.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230901124032605.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230901124037675.png">
 <meta property="article:published_time" content="2023-08-23T13:21:59.000Z">
-<meta property="article:modified_time" content="2023-08-24T05:26:45.000Z">
+<meta property="article:modified_time" content="2023-09-01T04:41:45.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
+<meta property="article:tag" content="经验">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230824131844391.png">
@@ -257,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2.7k 字
         
       </span>
     
@@ -268,7 +270,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -618,7 +620,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -660,7 +662,10 @@
 
 <ul>
 <li><h5 id="但直到此时，项目依旧报错，服务注册失败"><a href="#但直到此时，项目依旧报错，服务注册失败" class="headerlink" title="但直到此时，项目依旧报错，服务注册失败"></a>但直到此时，项目依旧报错，服务注册失败</h5></li>
-<li><p>那既然修改服务提供者的依赖版本无效，会不会是注册中心的问题呢？我下载了<strong>最新版本的Nacos注册中心</strong>，重新启动Nacos：</p>
+<li><p>那既然修改服务提供者的依赖版本无效，会不会是注册中心的问题呢？</p>
+</li>
+<li><h5 id="Nacos-快速开始"><a href="#Nacos-快速开始" class="headerlink" title="Nacos 快速开始"></a><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/docs/quick-start.html">Nacos 快速开始</a></h5></li>
+<li><p>我下载了<strong>最新版本的Nacos注册中心</strong>，重新启动Nacos：</p>
 </li>
 </ul>
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230824131844391.png" alt="image-20230824131844391"></p>
@@ -668,6 +673,41 @@
 <li><h5 id="再次启动项目，服务注册成功：（2023-08-24午）"><a href="#再次启动项目，服务注册成功：（2023-08-24午）" class="headerlink" title="再次启动项目，服务注册成功：（2023/08/24午）"></a>再次启动项目，服务注册成功：（2023/08/24午）</h5></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230824132539814.png" alt="image-20230824132539814"></p>
+<h2 id="整合第三方服务"><a href="#整合第三方服务" class="headerlink" title="整合第三方服务"></a>整合第三方服务</h2><h3 id="SpringBoot整合Mybatis"><a href="#SpringBoot整合Mybatis" class="headerlink" title="SpringBoot整合Mybatis"></a>SpringBoot整合Mybatis</h3><ul>
+<li><h5 id="SpringBoot整合Mybatis后，如何实现手写SQL语句，执行数据库操作？（2023-09-01早）"><a href="#SpringBoot整合Mybatis后，如何实现手写SQL语句，执行数据库操作？（2023-09-01早）" class="headerlink" title="SpringBoot整合Mybatis后，如何实现手写SQL语句，执行数据库操作？（2023/09/01早）"></a>SpringBoot整合Mybatis后，如何实现手写SQL语句，执行数据库操作？（2023/09/01早）</h5></li>
+<li><h5 id="在项目中导入依赖："><a href="#在项目中导入依赖：" class="headerlink" title="在项目中导入依赖："></a>在项目中导入依赖：</h5></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="application-yaml中编写配置："><a href="#application-yaml中编写配置：" class="headerlink" title="application.yaml中编写配置："></a>application.yaml中编写配置：</h5></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-comment"># 数据库配置</span><br>  <span class="hljs-comment"># todo 需替换配置</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://localhost:3306/memory_api</span><br>    <span class="hljs-attr">username:</span> <span class="hljs-string">*******</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-string">*******</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="第一种方法：在mapper包下添加注解，自主编写SQL（注解法）："><a href="#第一种方法：在mapper包下添加注解，自主编写SQL（注解法）：" class="headerlink" title="第一种方法：在mapper包下添加注解，自主编写SQL（注解法）："></a>第一种方法：在mapper包下添加注解，自主编写SQL（注解法）：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Select(value = &quot;select * from user where userRole = &#x27;admin&#x27;&quot;)</span><br>  List&lt;User&gt; <span class="hljs-title function_">userList</span><span class="hljs-params">()</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="第二种方法：在mapper-xml下编写SQL，通过id映射至mapper包下的方法（配置法）："><a href="#第二种方法：在mapper-xml下编写SQL，通过id映射至mapper包下的方法（配置法）：" class="headerlink" title="第二种方法：在mapper.xml下编写SQL，通过id映射至mapper包下的方法（配置法）："></a>第二种方法：在mapper.xml下编写SQL，通过id映射至mapper包下的方法（配置法）：</h5></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;userList2&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.example.memorycommen.model.entity.User&quot;</span>&gt;</span><br>       select * from user where userRole = #&#123;role&#125;;<br>   <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;User&gt; <span class="hljs-title function_">userList2</span><span class="hljs-params">(String role)</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="测试：在controller下编写两个接口，开启接口文档发送请求："><a href="#测试：在controller下编写两个接口，开启接口文档发送请求：" class="headerlink" title="测试：在controller下编写两个接口，开启接口文档发送请求："></a>测试：在controller下编写两个接口，开启接口文档发送请求：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-meta">@GetMapping(&quot;/list&quot;)</span><br><span class="hljs-keyword">public</span> BaseResponse&lt;List&lt;User&gt;&gt; <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span> &#123;<br>    List&lt;User&gt; users = userMapper.userList();<br>    <span class="hljs-keyword">return</span> ResultUtils.success(users);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-meta">@GetMapping(&quot;/list2&quot;)</span><br><span class="hljs-keyword">public</span> BaseResponse&lt;List&lt;User&gt;&gt; <span class="hljs-title function_">getUser2</span><span class="hljs-params">()</span> &#123;<br>    List&lt;User&gt; users = userMapper.userList2(<span class="hljs-string">&quot;admin&quot;</span>);<br>    <span class="hljs-keyword">return</span> ResultUtils.success(users);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="测试结果完美，都查询出了userRole为管理员的用户：（2023-09-01早）"><a href="#测试结果完美，都查询出了userRole为管理员的用户：（2023-09-01早）" class="headerlink" title="测试结果完美，都查询出了userRole为管理员的用户：（2023/09/01早）"></a>测试结果完美，都查询出了userRole为管理员的用户：（2023/09/01早）</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230901124032605.png" alt="image-20230901124032605"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230901124037675.png" alt="image-20230901124037675"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li></li>
 </ul>
@@ -718,9 +758,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
-      
         <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
         <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
       
@@ -753,7 +793,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月24日</div>
+          <div>2023年9月1日</div>
         </div>
       
       

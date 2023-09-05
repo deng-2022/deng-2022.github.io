@@ -27,11 +27,14 @@
 <meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230809132710999.png">
 <meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230825204907577.png">
 <meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230825205146265.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230826202427695.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230826202435390.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230826215450284.png">
 <meta property="article:published_time" content="2023-07-21T06:12:12.000Z">
 <meta property="article:modified_time" content="2023-08-25T12:54:12.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
+<meta property="article:tag" content="经验">
 <meta property="article:tag" content="Ant Design Pro">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.2k 字
+          11k 字
         
       </span>
     
@@ -271,7 +274,7 @@
         
         
         
-          21 分钟
+          27 分钟
         
       </span>
     
@@ -467,7 +470,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 小时前
+                    本文最后更新于：11 天前
                   
                 
               </p>
@@ -680,29 +683,85 @@
 <li><h5 id="有时间就学学React框架语法了，挺有意思的，到时候总结点东西再记录下react的页面开发技巧（2023-08-25晚）"><a href="#有时间就学学React框架语法了，挺有意思的，到时候总结点东西再记录下react的页面开发技巧（2023-08-25晚）" class="headerlink" title="有时间就学学React框架语法了，挺有意思的，到时候总结点东西再记录下react的页面开发技巧（2023/08/25晚）"></a>有时间就学学React框架语法了，挺有意思的，到时候总结点东西再记录下react的页面开发技巧（2023/08/25晚）</h5></li>
 </ul>
 <h2 id="Ant-Design-Vue-1"><a href="#Ant-Design-Vue-1" class="headerlink" title="Ant Design Vue"></a>Ant Design Vue</h2><ul>
-<li><p>官网：</p>
+<li><p>官网：<a target="_blank" rel="noopener" href="https://2x.antdv.com/docs/vue/getting-started-cn">Ant Design Vue (antdv.com)</a></p>
 </li>
-<li><h5 id="安装脚手架工具"><a href="#安装脚手架工具" class="headerlink" title="安装脚手架工具"></a>安装脚手架工具</h5></li>
+<li><h5 id="以下仅为开发过程中的个人经验总结，不具备教学价值，本人主Java后端，前端框架使用很不熟练-（2023-08-27早）"><a href="#以下仅为开发过程中的个人经验总结，不具备教学价值，本人主Java后端，前端框架使用很不熟练-（2023-08-27早）" class="headerlink" title="以下仅为开发过程中的个人经验总结，不具备教学价值，本人主Java后端，前端框架使用很不熟练~（2023/08/27早）"></a>以下仅为开发过程中的个人经验总结，不具备教学价值，本人主Java后端，前端框架使用很不熟练~（2023/08/27早）</h5></li>
+</ul>
+<h3 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h3><ul>
+<li><h5 id="安装脚手架工具（2023-08-05午）"><a href="#安装脚手架工具（2023-08-05午）" class="headerlink" title="安装脚手架工具（2023/08/05午）"></a>安装脚手架工具（2023/08/05午）</h5></li>
 </ul>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs llvm">npm install -g <span class="hljs-title">@vue</span>/cli<br>OR<br>yarn <span class="hljs-keyword">global</span> <span class="hljs-keyword">add</span> <span class="hljs-title">@vue</span>/cli<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="使用命令行进行初始化："><a href="#使用命令行进行初始化：" class="headerlink" title="使用命令行进行初始化："></a>使用命令行进行初始化：</h5></li>
 </ul>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss">vue <span class="hljs-keyword">create</span> antd-demo	<span class="hljs-meta">#设置环境变量</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss">vue <span class="hljs-keyword">create</span> antd-demo  <span class="hljs-meta">#项目名	</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">npx <span class="hljs-variable">@vue</span>/cli create antd-demo	<span class="hljs-comment">#在临时目录中执行 <span class="hljs-doctag">@vue</span>/cli 命令，而不依赖于全局路径设置</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230826202427695.png" alt="image-20230826202427695"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230826202435390.png" alt="image-20230826202435390"></p>
+<ul>
+<li><h5 id="按需选择，按我那样的设置就行，引入TS、Router等"><a href="#按需选择，按我那样的设置就行，引入TS、Router等" class="headerlink" title="按需选择，按我那样的设置就行，引入TS、Router等"></a>按需选择，按我那样的设置就行，引入TS、Router等</h5></li>
+<li><p>注意这里同意保存预设的话，之后构建项目就会按照这次的配置直接构建了，如果要修改项目构建配置，则需执行以下代码：</p>
+</li>
+</ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall -g @vue/cli<br></code></pre></td></tr></table></figure>
 
 <ul>
+<li><h5 id="然后重新构建（2023-08-26晚）"><a href="#然后重新构建（2023-08-26晚）" class="headerlink" title="然后重新构建（2023/08/26晚）"></a>然后重新构建（2023/08/26晚）</h5></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">npx <span class="hljs-variable">@vue</span>/cli create antd-demo	<span class="hljs-comment">#在临时目录中执行 <span class="hljs-doctag">@vue</span>/cli 命令，而不依赖于全局路径设置</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="引入Ant-Design组件"><a href="#引入Ant-Design组件" class="headerlink" title="引入Ant Design组件"></a>引入Ant Design组件</h3><ul>
 <li><h5 id="引入组件："><a href="#引入组件：" class="headerlink" title="引入组件："></a>引入组件：</h5></li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm <span class="hljs-selector-tag">i</span> <span class="hljs-attr">--save</span> ant-design-vue<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="在main-ts中如此配置，引入Ant-Design组件："><a href="#在main-ts中如此配置，引入Ant-Design组件：" class="headerlink" title="在main.ts中如此配置，引入Ant Design组件："></a>在main.ts中如此配置，引入Ant Design组件：</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123;createApp&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Antd</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ant-design-vue&#x27;</span>;<br><br><span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>).<span class="hljs-title function_">use</span>(router).<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Antd</span>).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="启动项目：（2023-08-05午）"><a href="#启动项目：（2023-08-05午）" class="headerlink" title="启动项目：（2023/08/05午）"></a>启动项目：（2023/08/05午）</h5></li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm <span class="hljs-built_in">run</span> serve<br></code></pre></td></tr></table></figure>
 
+<h3 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h3><ul>
+<li><h5 id="route-ts中如此初始化："><a href="#route-ts中如此初始化：" class="headerlink" title="route.ts中如此初始化："></a>route.ts中如此初始化：</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-attr">routes</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">RouteRecordRaw</span>&gt; = [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;index&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">IndexPage</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/about&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;about&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-comment">/* webpackChunkName: &quot;about&quot; */</span> <span class="hljs-string">&#x27;../views/AboutView.vue&#x27;</span>)<br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<h3 id="封装全局axios"><a href="#封装全局axios" class="headerlink" title="封装全局axios"></a>封装全局axios</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;<br><br><span class="hljs-keyword">const</span> instance = axios.<span class="hljs-title function_">create</span>(&#123;<br>  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&quot;http://localhost:8102/api&quot;</span>,<br>  <span class="hljs-attr">timeout</span>: <span class="hljs-number">10000</span>,<br>  <span class="hljs-attr">headers</span>: &#123;&#125;,<br>&#125;);<br><br><span class="hljs-comment">// 添加响应拦截器</span><br>instance.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<br>  <span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;<br>    <span class="hljs-comment">// 2xx 范围内的状态码都会触发该函数。</span><br>    <span class="hljs-comment">// 对响应数据做点什么</span><br>    <span class="hljs-keyword">const</span> data = response.<span class="hljs-property">data</span>;<br>    <span class="hljs-keyword">if</span> (data.<span class="hljs-property">code</span> === <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-keyword">return</span> data.<span class="hljs-property">data</span>;<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;request error&quot;</span>, data);<br>    <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>;<br>  &#125;,<br>  <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>    <span class="hljs-comment">// 超出 2xx 范围的状态码都会触发该函数。</span><br>    <span class="hljs-comment">// 对响应错误做点什么</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);<br>  &#125;<br>);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> instance;<br></code></pre></td></tr></table></figure>
+
+<h3 id="路由嵌套"><a href="#路由嵌套" class="headerlink" title="路由嵌套"></a>路由嵌套</h3><ul>
+<li><h5 id="app-vue中如此配置：（2023-08-27早）"><a href="#app-vue中如此配置：（2023-08-27早）" class="headerlink" title="app.vue中如此配置：（2023/08/27早）"></a>app.vue中如此配置：（2023/08/27早）</h5></li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-section">&lt;template&gt;</span><br>  <span class="hljs-section">&lt;router-view/&gt;</span><br><span class="hljs-section">&lt;/template&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这里解释一下：</li>
+</ul>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">在Ant Design Vue中，App.vue是项目的根组件，是所有页面组件的父容器。在这段代码中，`&lt;router-view/&gt;`是一个特殊的组件标签，它用于显示路由器（router）根据当前路由匹配的页面组件。<br><br>`&lt;router-view/&gt;`是Vue Router提供的一个占位符标签，它会根据当前的URL路径匹配到的路由，动态地渲染对应的组件内容。<br><br>具体来说，当用户访问不同的URL路径时，Vue Router会根据定义的路由规则来确定显示哪个组件。然后，这个组件会被动态地渲染到App.vue中的`&lt;router-view/&gt;`标签中。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="比如说当前URL中的path路径为：-about"><a href="#比如说当前URL中的path路径为：-about" class="headerlink" title="比如说当前URL中的path路径为：/about"></a>比如说当前URL中的path路径为：/about</h5></li>
+<li><p>而我们配置的路由中：</p>
+</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&#123;<br>  <span class="hljs-type">path</span>: <span class="hljs-string">&#x27;/about&#x27;</span>,<br>  <span class="hljs-type">name</span>: <span class="hljs-string">&#x27;about&#x27;</span>,<br>  component: () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-comment">/* webpackChunkName: &quot;about&quot; */</span> <span class="hljs-string">&#x27;../views/AboutView.vue&#x27;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="那么就会展示-about下的组件内容了"><a href="#那么就会展示-about下的组件内容了" class="headerlink" title="那么就会展示/about下的组件内容了"></a>那么就会展示/about下的组件内容了</h5></li>
+<li><p>我在主页面中引入了标签页组件：</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--标签页--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a-tabs</span> <span class="hljs-attr">v-model:activeKey</span>=<span class="hljs-string">&quot;activeKey&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">a-tab-pane</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;文章&quot;</span> <span class="hljs-attr">tab</span>=<span class="hljs-string">&quot;文章&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">PostList</span> <span class="hljs-attr">:post-list</span>=<span class="hljs-string">&quot;postList&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">a-tab-pane</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">a-tab-pane</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;图片&quot;</span> <span class="hljs-attr">tab</span>=<span class="hljs-string">&quot;图片&quot;</span>&gt;</span><br>    图片<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">a-tab-pane</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">a-tab-pane</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;用户&quot;</span> <span class="hljs-attr">tab</span>=<span class="hljs-string">&quot;用户&quot;</span>&gt;</span><br>    用户<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">a-tab-pane</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">a-tabs</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="可以看到在tab栏下，我引入了PostList组件，并传入了postList参数"><a href="#可以看到在tab栏下，我引入了PostList组件，并传入了postList参数" class="headerlink" title="可以看到在tab栏下，我引入了PostList组件，并传入了postList参数"></a>可以看到在tab栏下，我引入了PostList组件，并传入了postList参数</h5></li>
+<li><h5 id="那么PostList组件就会展示在该标签栏下，效果如下：（2023-08-27早）"><a href="#那么PostList组件就会展示在该标签栏下，效果如下：（2023-08-27早）" class="headerlink" title="那么PostList组件就会展示在该标签栏下，效果如下：（2023/08/27早）"></a>那么PostList组件就会展示在该标签栏下，效果如下：（2023/08/27早）</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230826215450284.png" alt="image-20230826215450284"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
@@ -757,9 +816,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
-      
         <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
         <a href="/blog/tags/Ant-Design-Pro/">#Ant Design Pro</a>
       
