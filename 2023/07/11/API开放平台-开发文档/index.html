@@ -23,33 +23,14 @@
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="API开放平台开发基本流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711232614130.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711232655300.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711232732396.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230719101803347.png">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230720104434926.png">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230720232106758.png">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230720232255418.png">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230720232623522.png">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230723143312368.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230723120419634.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230726180123695.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230727130821670.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230727133607574.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230728234735474.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230816152844795.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230816173416646.png">
-<meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20230817105054929.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230819203736592.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230819205032864.png">
-<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230825191153348.png">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/house2.jpg">
 <meta property="article:published_time" content="2023-07-11T15:09:22.000Z">
 <meta property="article:modified_time" content="2023-08-23T13:04:22.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230711232614130.png">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/house2.jpg">
   
   
   
@@ -274,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          53k 字
+          55k 字
         
       </span>
     
@@ -285,7 +266,7 @@
         
         
         
-          134 分钟
+          138 分钟
         
       </span>
     
@@ -563,7 +544,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：13 天前
+                    本文最后更新于：17 天前
                   
                 
               </p>
@@ -1145,7 +1126,30 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PostMapping(&quot;/user&quot;)</span><br>   <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUserNameByPost</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> User user, HttpServletRequest request)</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;POST 我的名字是: &quot;</span> + user.getName();<br>   &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="随机显示一条名言"><a href="#随机显示一条名言" class="headerlink" title="随机显示一条名言"></a>随机显示一条名言</h3><h3 id="根据不同url请求不同接口"><a href="#根据不同url请求不同接口" class="headerlink" title="根据不同url请求不同接口"></a>根据不同url请求不同接口</h3><h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><ul>
+<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="接口添加"><a href="#接口添加" class="headerlink" title="接口添加"></a>接口添加</h3><h4 id="随机显示一条名言"><a href="#随机显示一条名言" class="headerlink" title="随机显示一条名言"></a>随机显示一条名言</h4><h4 id="根据不同url请求不同接口"><a href="#根据不同url请求不同接口" class="headerlink" title="根据不同url请求不同接口"></a>根据不同url请求不同接口</h4><ul>
+<li>每条接口的信息有：接口名、接口url、请求参数等等</li>
+<li>当前情况是：用户调用接口时，前端传回了调用者的id，且仅实现了对后台一个接口的调用</li>
+<li>问题是，当实现调用多个接口时，我们该如何保证用户对不同接口的调用，后台能够正确转发？<ul>
+<li>每个接口调用都写一个controller</li>
+<li>统一controller接收接口调用请求，再分情况调用相应接口</li>
+</ul>
+</li>
+<li>我比较倾向于第二种方法，但如何根据用户调用情况来调用不同的接口呢？我还没想好，目前计划使用switch枚举接口id来确定调用的接口</li>
+<li>因为现在开放的接口数量很少嘛，暂时这样也可行</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyFilter</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title class_">FilterRegistrationBean</span>&lt;<span class="hljs-title class_">CharacterEncodingFilter</span>&gt; <span class="hljs-title function_">myCharacterEncodingFilter</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title class_">FilterRegistrationBean</span>&lt;<span class="hljs-title class_">CharacterEncodingFilter</span>&gt; registrationBean = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FilterRegistrationBean</span>&lt;&gt;();<br>        registrationBean.<span class="hljs-title function_">setFilter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CharacterEncodingFilter</span>(<span class="hljs-string">&quot;UTF-8&quot;</span>, <span class="hljs-literal">true</span>));<br>        registrationBean.<span class="hljs-title function_">addUrlPatterns</span>(<span class="hljs-string">&quot;/*&quot;</span>);<br>        <span class="hljs-keyword">return</span> registrationBean;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-comment">#  #</span><br>    <span class="hljs-attribute">main</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">web-application-type</span><span class="hljs-punctuation">:</span> <span class="hljs-string">reactive</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><br><span class="hljs-comment">// 设置请求编码</span><br>MediaType requestContentType = requestHeaders.get<span class="hljs-constructor">ContentType()</span>;<br><span class="hljs-keyword">if</span> (requestContentType != null<span class="hljs-operator"> &amp;&amp; </span>requestContentType.get<span class="hljs-constructor">Charset()</span><span class="hljs-operator"> == </span>null) &#123;<br>    requestHeaders.set<span class="hljs-constructor">ContentType(<span class="hljs-params">new</span> MediaType(<span class="hljs-params">requestContentType</span>.<span class="hljs-params">getType</span>()</span>, requestContentType.get<span class="hljs-constructor">Subtype()</span>, <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Charset</span>.</span></span><span class="hljs-keyword">for</span><span class="hljs-constructor">Name(<span class="hljs-string">&quot;UTF-8&quot;</span>)</span>));<br>&#125;<br><br><span class="hljs-comment">// 设置响应编码</span><br>MediaType responseContentType = responseHeaders.get<span class="hljs-constructor">ContentType()</span>;<br><span class="hljs-keyword">if</span> (responseContentType != null<span class="hljs-operator"> &amp;&amp; </span>responseContentType.get<span class="hljs-constructor">Charset()</span><span class="hljs-operator"> == </span>null) &#123;<br>    responseHeaders.set<span class="hljs-constructor">ContentType(<span class="hljs-params">new</span> MediaType(<span class="hljs-params">responseContentType</span>.<span class="hljs-params">getType</span>()</span>, responseContentType.get<span class="hljs-constructor">Subtype()</span>, <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Charset</span>.</span></span><span class="hljs-keyword">for</span><span class="hljs-constructor">Name(<span class="hljs-string">&quot;UTF-8&quot;</span>)</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><ul>
 <li><h5 id="Dubbo、Nacos依赖包的导入以及相关服务的正确使用"><a href="#Dubbo、Nacos依赖包的导入以及相关服务的正确使用" class="headerlink" title="Dubbo、Nacos依赖包的导入以及相关服务的正确使用"></a>Dubbo、Nacos依赖包的导入以及相关服务的正确使用</h5></li>
 <li><h5 id="Maven实现抽取公共服务（2023-08-24午）"><a href="#Maven实现抽取公共服务（2023-08-24午）" class="headerlink" title="Maven实现抽取公共服务（2023/08/24午）"></a>Maven实现抽取公共服务（2023/08/24午）</h5></li>
 </ul>
