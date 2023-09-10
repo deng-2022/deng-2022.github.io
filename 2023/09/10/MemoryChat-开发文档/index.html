@@ -1,0 +1,1166 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="MemoryChat开发基本流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MemoryChat-开发文档">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/09/10/MemoryChat-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="MemoryChat开发基本流程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
+<meta property="article:published_time" content="2023-09-10T06:39:03.000Z">
+<meta property="article:modified_time" content="2023-09-10T06:41:22.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="项目">
+<meta property="article:tag" content="开发经验">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
+  
+  
+  
+  <title>MemoryChat-开发文档 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MemoryChat-开发文档"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 14:39" pubdate>
+          2023年9月10日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
+        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
+        aria-expanded="true"
+      >
+        项目
+        <span class="list-group-count">(9)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
+           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="开发经验"
+        id="heading-bfd19ce0478d81a44ceb5a9a1aa94202" role="tab" data-toggle="collapse" href="#collapse-bfd19ce0478d81a44ceb5a9a1aa94202"
+        aria-expanded="true"
+      >
+        开发经验
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-bfd19ce0478d81a44ceb5a9a1aa94202"
+           role="tabpanel" aria-labelledby="heading-bfd19ce0478d81a44ceb5a9a1aa94202">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/03/17/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="用户中心-开发文档"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">用户中心-开发文档</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/03/24/%E4%BC%99%E4%BC%B4%E5%8C%B9%E9%85%8D-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="伙伴匹配-开发文档"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">伙伴匹配-开发文档</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/06/20/Typora%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="美轮美奂的文档艺术：Typora的使用技巧和实践"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">美轮美奂的文档艺术：Typora的使用技巧和实践</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/07/11/API%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="API开放平台-开发文档"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">API开放平台-开发文档</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/08/02/PicMemories%20-%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="PicMemories-开发文档"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">PicMemories-开发文档</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/08/07/TaskMemories%20-%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="TaskMemories-开发文档"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TaskMemories-开发文档</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/08/26/Memory%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Memory聚合搜索平台-开发文档</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/09/10/MemoryChat-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemoryChat-开发文档"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">MemoryChat-开发文档</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目部署"
+        id="heading-50be5e3b1697e929a38352262896962e" role="tab" data-toggle="collapse" href="#collapse-50be5e3b1697e929a38352262896962e"
+        aria-expanded="false"
+      >
+        项目部署
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-50be5e3b1697e929a38352262896962e"
+           role="tabpanel" aria-labelledby="heading-50be5e3b1697e929a38352262896962e">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="开发经验"
+        id="heading-bfd19ce0478d81a44ceb5a9a1aa94202" role="tab" data-toggle="collapse" href="#collapse-bfd19ce0478d81a44ceb5a9a1aa94202"
+        aria-expanded="false"
+      >
+        开发经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-bfd19ce0478d81a44ceb5a9a1aa94202"
+           role="tabpanel" aria-labelledby="heading-bfd19ce0478d81a44ceb5a9a1aa94202">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网站"
+        id="heading-beb6c0bd8a66cea600c8ce40167eeb57" role="tab" data-toggle="collapse" href="#collapse-beb6c0bd8a66cea600c8ce40167eeb57"
+        aria-expanded="false"
+      >
+        网站
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-beb6c0bd8a66cea600c8ce40167eeb57"
+           role="tabpanel" aria-labelledby="heading-beb6c0bd8a66cea600c8ce40167eeb57">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/06/04/%E6%8F%AD%E7%A7%98%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8A%E7%BA%BF%E4%B9%8B%E8%B7%AF%EF%BC%9A%E6%B5%81%E7%A8%8B%E3%80%81%E6%8C%91%E6%88%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="揭秘项目部署上线之路：流程、挑战与解决方案"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">揭秘项目部署上线之路：流程、挑战与解决方案</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MemoryChat-开发文档</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：8 小时前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>项目概述：对项目的整体简介，包括项目的目的、背景和主要功能。</li>
+<li>目标受众：定义项目的受众群体，如用户、开发人员、测试人员等。</li>
+</ul>
+<h2 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h2><ul>
+<li>用户认证模块<ul>
+<li>用户注册功能：包括用户的基本信息和账户创建。</li>
+<li>用户登录功能：验证用户提供的用户名和密码。</li>
+<li>用户权限管理：根据用户角色和权限限制用户的操作范围。</li>
+</ul>
+</li>
+<li>队伍管理模块<ul>
+<li>创建队伍功能：允许用户创建新的队伍，并添加队伍的相关信息。</li>
+<li>加入队伍功能：允许用户查找并加入现有的队伍。</li>
+</ul>
+</li>
+<li>好友管理模块<ul>
+<li>查找好友功能：用户可以查找其他用户并添加为好友。</li>
+<li>好友聊天功能：提供好友之间的即时文本聊天功能。</li>
+</ul>
+</li>
+<li>队内聊天模块<ul>
+<li>队伍内部聊天功能：允许队伍成员之间进行实时文本交流。</li>
+</ul>
+</li>
+<li>用户推荐模块<ul>
+<li>标签匹配功能：根据用户的标签来为用户推荐与他相似度最高的其他用户。</li>
+</ul>
+</li>
+<li>博客模块（日后增加）<ul>
+<li>发布博客功能：用户可以发布自己的博客。</li>
+<li>点赞、收藏功能：用户可以对博客进行点赞和收藏。</li>
+<li>博客评论功能：用户可以对博客进行评论。</li>
+</ul>
+</li>
+</ul>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li><h5 id="前端技术栈："><a href="#前端技术栈：" class="headerlink" title="前端技术栈："></a>前端技术栈：</h5><ul>
+<li><p>Ant Design Vue </p>
+</li>
+<li><p>@vue/cli 脚手架</p>
+</li>
+<li><p>Vant UI 组件库</p>
+</li>
+<li><p>TypeScript</p>
+</li>
+<li><p>Axios 请求库</p>
+</li>
+</ul>
+</li>
+<li><h5 id="后端技术栈："><a href="#后端技术栈：" class="headerlink" title="后端技术栈："></a>后端技术栈：</h5><ul>
+<li>Java SpringBoot 2.7.x 框架</li>
+<li>MySQL 数据库</li>
+<li>MyBatis-Plus</li>
+<li>MyBatis X 自动生成</li>
+<li>Redis 缓存（Spring Data Redis 等多种实现方式）</li>
+<li>Redisson 分布式锁</li>
+<li>Easy Excel 数据导入</li>
+<li>Spring Scheduler 定时任务</li>
+<li>Swagger + Knife4j 接口文档</li>
+<li>Gson：JSON 序列化库</li>
+<li>相似度匹配算法</li>
+</ul>
+</li>
+<li><p>数据库：列出用于存储用户数据、队伍数据和博客数据的数据库系统，如MySQL、MongoDB等。</p>
+</li>
+<li><p>通信技术：列出用于实现即时聊天功能的通信技术，如WebSocket、Socket.io等。</p>
+</li>
+</ul>
+<h2 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h2><ul>
+<li>用于展示项目各个功能模块的界面设计，包括页面布局、交互流程和UI元素等。</li>
+<li>主页</li>
+<li>用户注册页：实现用户注册</li>
+<li>用户登录页：实现用户登录</li>
+<li>用户列表页：展示在线用户列表</li>
+<li>用户信息页：展示用户信息</li>
+<li>队伍列表页：展示队伍列表</li>
+<li>队内聊天</li>
+<li>好友聊天</li>
+<li>博客列表页：展示已发布的博客</li>
+<li>个人博客页：个人发布的博客展示</li>
+</ul>
+<h2 id="开发计划"><a href="#开发计划" class="headerlink" title="开发计划"></a>开发计划</h2><ul>
+<li>列出项目开发的计划和里程碑，包括每个功能模块的开发时间和测试时间。</li>
+</ul>
+<h3 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h3><ul>
+<li>实现主页页面的简单开发</li>
+<li>在线用户列表页、队伍信息页</li>
+</ul>
+<h3 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h3><ul>
+<li><p>用户登录页</p>
+<ul>
+<li>简单的实现了登录页的开发，用户需输入账户密码进行登录，这样作双向绑定：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-form-item label=&quot;用户名&quot; name=&quot;username&quot;<br>                   :rules=&quot;[&#123; required: true, message: &#x27;请输入用户名&#x27; &#125;]&quot;&gt;<br>        &lt;a-input :placeholder=&quot;&#x27;请输入用户名&#x27;&quot; v-model:value=&quot;userAccount&quot;/&gt;<br>      &lt;/a-form-item&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> userAccount = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>登录成功之后跳转至主页</strong></li>
+</ul>
+</li>
+<li><p>优化了主页页面显示</p>
+<ul>
+<li>通过监听tab标签页的变化，发起相应的请求</li>
+<li>用户登录后，展示头像、昵称；</li>
+<li>用户未登录，提示登录，可点击按钮跳转至登录页面</li>
+</ul>
+</li>
+<li><p>新增展示所有队伍功能，展示队伍列表</p>
+<ul>
+<li>默认仅展示公开队伍，可开启展示加密队伍</li>
+<li>前端监听开关状态，发送<strong>带参（isSecret）请求</strong>，是否需要获取加密队伍：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 开关 队伍状态改变</span><br><span class="hljs-keyword">const</span> checked = ref&lt;<span class="hljs-built_in">boolean</span>&gt;(<span class="hljs-literal">false</span>);<br><span class="hljs-comment">// 监听开关状态变化</span><br><span class="hljs-title function_">watchEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (checked.<span class="hljs-property">value</span>) &#123;<br>    <span class="hljs-title function_">getTeamList</span>(<span class="hljs-literal">true</span>);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-title function_">getTeamList</span>(<span class="hljs-literal">false</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>后台校验逻辑</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (!teamList.getIsSecret()) &#123;<br>           tqw.eq(<span class="hljs-string">&quot;status&quot;</span>, TeamStatusEnum.PUBLIC.getValue());<br>       &#125; <span class="hljs-keyword">else</span> &#123;<br>           tqw.eq(<span class="hljs-string">&quot;status&quot;</span>, TeamStatusEnum.PUBLIC.getValue())<br>                   .or().eq(<span class="hljs-string">&quot;status&quot;</span>, TeamStatusEnum.SECRET.getValue());<br>       &#125;<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="队伍列表页面应该展示的信息有："><a href="#队伍列表页面应该展示的信息有：" class="headerlink" title="队伍列表页面应该展示的信息有："></a>队伍列表页面应该展示的信息有：</h5><ul>
+<li>队伍名、队伍描述、队伍名片（牌面）</li>
+<li>队伍已加入人数，可供用户判断是否满员（使用进度条实现），若满员，则显示已满员（爆红）✂</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;div&gt;<br>      &lt;a-slider id=&quot;test&quot; v-model:value=&quot;item.joinNum&quot; :max=&quot;item.maxNum&quot; disabled/&gt;<br>      &lt;span&gt;&#123;&#123;item.joinNum&#125;&#125;/&#123;&#123;item.maxNum&#125;&#125;&lt;/span&gt;<br> &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>加标签，显示该用户是否已加入该队伍；<ul>
+<li>没加入，<strong>可加入</strong></li>
+<li>已加入，<strong>可进入队伍聊天</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）"><a href="#队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）" class="headerlink" title="队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）"></a>队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://2x.antdv.com/components/drawer-cn">Ant Design Vue (antdv.com)</a></li>
+<li>队伍名、队伍描述</li>
+<li>队伍已加入成员的头像排列（使用头像组件实现）、队伍已加入人数</li>
+</ul>
+</li>
+</ul>
+<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><ul>
+<li>如何实现：点击队伍卡片，从右侧弹出抽屉，展示该队伍的详细信息</li>
+<li>进行如下绑定（<strong>每个card绑定一个drawer</strong>）<strong>（2023/9/10晚）</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-list-item&gt;<br>      &lt;a-card hoverable class=&quot;teamInfoCard&quot; @click=&quot;showDrawer(item.id)&quot;&gt;<br>        &lt;template #cover&gt;<br>          &lt;img alt=&quot;example&quot; :src=&quot;item.imgUrl&quot;/&gt;<br>        &lt;/template&gt;<br><br>        &lt;a-card-meta :title=&quot;item.name&quot;&gt;<br>          &lt;template #description&gt;&#123;&#123; item.description &#125;&#125;&lt;/template&gt;<br>        &lt;/a-card-meta&gt;<br>      &lt;/a-card&gt;<br><br>      &lt;a-drawer<br>          :key=&quot;item.id&quot;<br>          :title=&quot;item.name&quot;<br>          placement=&quot;right&quot;<br>          :closable=&quot;false&quot;<br>          v-model:visible=&quot;visible[item.id]&quot;<br>          :after-visible-change=&quot;afterVisibleChange&quot;<br>      &gt;<br>      &lt;/a-drawer&gt;<br>    &lt;/a-list-item&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 抽屉展示</span><br><span class="hljs-keyword">const</span> visible = <span class="hljs-title function_">ref</span>(&#123;&#125;);<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">showDrawer</span> = (<span class="hljs-params">itemId: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  visible.<span class="hljs-property">value</span>[itemId] = <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="部署和维护"><a href="#部署和维护" class="headerlink" title="部署和维护"></a>部署和维护</h3><ul>
+<li>列出将项目部署到生产环境所需的步骤和配置信息，包括服务器环境要求和数据库设置。</li>
+<li>提供项目的维护和支持方式，如bug提交、技术支持联系方式等。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+      
+        <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MemoryChat-开发文档</div>
+      <div>https://deng-2022.gitee.io/blog/2023/09/10/MemoryChat-开发文档/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年9月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/08/26/Memory%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档">
+                        <span class="hidden-mobile">Memory聚合搜索平台-开发文档</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
