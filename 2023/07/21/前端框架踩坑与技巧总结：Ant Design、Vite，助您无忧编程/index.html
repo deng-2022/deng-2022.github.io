@@ -268,7 +268,7 @@
         
         
         
-          32 分钟
+          33 分钟
         
       </span>
     
@@ -464,7 +464,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：16 天前
+                    本文最后更新于：18 天前
                   
                 
               </p>
@@ -760,17 +760,24 @@
 <li>纠正以下上面说明的页面组件的嵌套方法，正确的嵌套方法应该是这样的：</li>
 <li>在index页面下引入子组件：</li>
 </ul>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lasso">&lt;script lang=<span class="hljs-string">&quot;ts&quot;</span> setup=<span class="hljs-string">&quot;ts&quot;</span>&gt;<br><span class="hljs-keyword">import</span> UserListPage from <span class="hljs-string">&quot;@/components/userListPage.vue&quot;</span>;<br><br><span class="hljs-params">...</span><span class="hljs-params">...</span><span class="hljs-params">...</span><span class="hljs-params">...</span><span class="hljs-params">...</span><span class="hljs-params">...</span><span class="hljs-params">...</span>..<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts">&lt;script lang=<span class="hljs-string">&quot;ts&quot;</span> setup=<span class="hljs-string">&quot;ts&quot;</span>&gt;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">UserListPage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/userListPage.vue&quot;</span>;<br><br>.......................<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>子组件编写如下（<strong>注意导出参数name</strong>）：</li>
 </ul>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    嘿嘿嘿</span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> </span></span><span class="language-xquery">&#123;</span><br><span class="language-xquery"> <span class="hljs-built_in"> name</span>: <span class="hljs-string">&quot;UserListPage&quot;</span></span><br><span class="language-xquery">&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    嘿嘿嘿<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>export default &#123;<br>  name: &quot;UserListPage&quot;<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>直接如此引用子组件（<strong>还可传递参数</strong>，可参考上面 <strong>路由嵌套</strong> 的实现方法）</li>
 </ul>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">&lt;<span class="hljs-keyword">a</span>-<span class="hljs-literal">tab</span>-pane key=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-literal">tab</span>=<span class="hljs-string">&quot;用户列表&quot;</span>&gt;<br>             在线用户列表<br>             &lt;UserListPage/&gt;<br>           &lt;/<span class="hljs-keyword">a</span>-<span class="hljs-literal">tab</span>-pane&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-tab-pane key=&quot;1&quot; tab=&quot;用户列表&quot;&gt;<br>             在线用户列表<br>             &lt;UserListPage/&gt;<br>           &lt;/a-tab-pane&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>那么子页面如何获取传递的参数呢？</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-list<br>          item-layout=&quot;horizontal&quot;<br>          :grid=&quot;&#123; gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 6 &#125;&quot;<br>          :data-source=&quot;props.userInfoList&quot;<br>      &gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts">&lt;script setup lang=<span class="hljs-string">&quot;ts&quot;</span>&gt;<br><span class="hljs-keyword">import</span> &#123;withDefaults, defineProps&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Props</span> &#123;<br>  <span class="hljs-attr">userInfoList</span>: <span class="hljs-built_in">any</span>[];<br>&#125;<br><br><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">withDefaults</span>(defineProps&lt;<span class="hljs-title class_">Props</span>&gt;(), &#123;<br>  <span class="hljs-attr">userInfoList</span>: <span class="hljs-function">() =&gt;</span> [],<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;UserListPage&quot;</span><br>&#125;)<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="完成，页面显示如下，子组件已成功显示在index页面中："><a href="#完成，页面显示如下，子组件已成功显示在index页面中：" class="headerlink" title="完成，页面显示如下，子组件已成功显示在index页面中："></a>完成，页面显示如下，子组件已成功显示在index页面中：</h5></li>

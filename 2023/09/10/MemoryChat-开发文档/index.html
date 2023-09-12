@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k 字
+          9k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          9 分钟
+          23 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：9 小时前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -570,11 +570,38 @@
             
               <div class="markdown-body">
                 
-                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+                <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><ul>
 <li>项目概述：对项目的整体简介，包括项目的目的、背景和主要功能。</li>
 <li>目标受众：定义项目的受众群体，如用户、开发人员、测试人员等。</li>
 </ul>
-<h2 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h2><ul>
+<h1 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h1><h2 id="前端技术栈"><a href="#前端技术栈" class="headerlink" title="前端技术栈"></a>前端技术栈</h2><ul>
+<li><p>Ant Design Vue </p>
+</li>
+<li><p>@vue/cli 脚手架</p>
+</li>
+<li><p>Vant UI 组件库</p>
+</li>
+<li><p>TypeScript</p>
+</li>
+<li><p>Axios 请求库</p>
+</li>
+</ul>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><ul>
+<li>Java SpringBoot 2.7.x 框架</li>
+<li>MySQL 数据库</li>
+<li>MyBatis-Plus</li>
+<li>MyBatis X 自动生成</li>
+<li>Redis 缓存（Spring Data Redis 等多种实现方式）</li>
+<li>Redisson 分布式锁</li>
+<li>Easy Excel 数据导入</li>
+<li>Spring Scheduler 定时任务</li>
+<li>Swagger + Knife4j 接口文档</li>
+<li>Gson：JSON 序列化库</li>
+<li>相似度匹配算法</li>
+</ul>
+<p>数据库：列出用于存储用户数据、队伍数据和博客数据的数据库系统，如MySQL、MongoDB等。</p>
+<p>通信技术：列出用于实现即时聊天功能的通信技术，如WebSocket、Socket.io等。</p>
+<h1 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h1><ul>
 <li>用户认证模块<ul>
 <li>用户注册功能：包括用户的基本信息和账户创建。</li>
 <li>用户登录功能：验证用户提供的用户名和密码。</li>
@@ -606,38 +633,70 @@
 </ul>
 </li>
 </ul>
-<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
-<li><h5 id="前端技术栈："><a href="#前端技术栈：" class="headerlink" title="前端技术栈："></a>前端技术栈：</h5><ul>
-<li><p>Ant Design Vue </p>
+<h2 id="用户模块"><a href="#用户模块" class="headerlink" title="用户模块"></a>用户模块</h2><h3 id="用户登录-注册"><a href="#用户登录-注册" class="headerlink" title="用户登录/注册"></a>用户登录/注册</h3><h3 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h3><h3 id="添加好友"><a href="#添加好友" class="headerlink" title="添加好友"></a>添加好友</h3><ul>
+<li>添加好友后，数据库应该同时保存两条记录：我是你的好友，你是我的好友</li>
+</ul>
+<h3 id="查看在线好友信息"><a href="#查看在线好友信息" class="headerlink" title="查看在线好友信息"></a>查看在线好友信息</h3><ul>
+<li>查看在线好友列表<ul>
+<li>列表展示在线好友信息：昵称、头像、是否在线</li>
+<li>如果不在线，显示最近在线时间（或显示多久前在线：X天前、X小时前、X个月前）</li>
+<li>可点击私聊</li>
+<li>提供修改好友备注功能</li>
+</ul>
 </li>
-<li><p>@vue/cli 脚手架</p>
+</ul>
+<h3 id="好友私聊"><a href="#好友私聊" class="headerlink" title="好友私聊"></a>好友私聊</h3><h3 id="用户列表展示"><a href="#用户列表展示" class="headerlink" title="用户列表展示"></a>用户列表展示</h3><ul>
+<li>用户不应该直接看到用户列表，用户可以添加好友，而添加好友的途径有三个：<ul>
+<li>通过每日推荐，相似度匹配算法，每周给用户推荐兴趣爱好相似的用户，可以添加为好友畅聊</li>
+<li>通过博文，在博客中，用户可以自由发表博文，对博主感兴趣即可申请添加好友</li>
+<li>在搜索界面，根据不同的搜索参数：userAccoount，tags（用户标签），搜索到条件匹配的匹配用户</li>
+</ul>
 </li>
-<li><p>Vant UI 组件库</p>
-</li>
-<li><p>TypeScript</p>
-</li>
-<li><p>Axios 请求库</p>
+</ul>
+<h2 id="队伍模块"><a href="#队伍模块" class="headerlink" title="队伍模块"></a>队伍模块</h2><h3 id="队伍创建问题"><a href="#队伍创建问题" class="headerlink" title="队伍创建问题"></a>队伍创建问题</h3><ul>
+<li>用户如何创建队伍，应该有以下场景：<ul>
+<li>在大厅发起组队，用户即可在组队大厅搜索到组队队伍（目前只想到这个方式）</li>
+<li>创建队伍后，队长可以进行的操作：<ul>
+<li>修改队伍信息</li>
+<li>退出队伍、解散队伍</li>
+<li>分享队伍，可以向好友发送组队邀请</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><h5 id="后端技术栈："><a href="#后端技术栈：" class="headerlink" title="后端技术栈："></a>后端技术栈：</h5><ul>
-<li>Java SpringBoot 2.7.x 框架</li>
-<li>MySQL 数据库</li>
-<li>MyBatis-Plus</li>
-<li>MyBatis X 自动生成</li>
-<li>Redis 缓存（Spring Data Redis 等多种实现方式）</li>
-<li>Redisson 分布式锁</li>
-<li>Easy Excel 数据导入</li>
-<li>Spring Scheduler 定时任务</li>
-<li>Swagger + Knife4j 接口文档</li>
-<li>Gson：JSON 序列化库</li>
-<li>相似度匹配算法</li>
+</ul>
+<h3 id="队伍加入问题"><a href="#队伍加入问题" class="headerlink" title="队伍加入问题"></a>队伍加入问题</h3><h4 id="私密队伍如何加入？目前想到的场景："><a href="#私密队伍如何加入？目前想到的场景：" class="headerlink" title="私密队伍如何加入？目前想到的场景："></a>私密队伍如何加入？目前想到的场景：</h4><ul>
+<li><p>当用户创建私密队伍后，其他用户将无法直接在大厅中看到该队伍，并申请加入。私密队伍的加入场景可以设计如下：</p>
+<ul>
+<li><p>邀请制加入：队长可以通过私信、邮件或其他方式向指定的用户发送邀请，邀请他们加入私密队伍。通过邀请链接或者邀请码，被邀请用户可以直接加入队伍。</p>
+</li>
+<li><p>好友推荐：队长可以在队伍详情中选择通过好友推荐的方式，将私密队伍信息分享给指定好友。被推荐用户可以看到私密队伍，并有选项选择是否加入。</p>
+</li>
+<li><p>特殊条件加入：队长可以设置一些特殊的条件，供用户满足后才能加入私密队伍。例如，要求用户达到一定的等级、完成特定任务或通过一定的测试等。</p>
+</li>
 </ul>
 </li>
-<li><p>数据库：列出用于存储用户数据、队伍数据和博客数据的数据库系统，如MySQL、MongoDB等。</p>
+<li><p>在这些场景下，你可以使用数据库来存储队伍的私密信息，例如邀请码或特殊条件。当用户申请加入私密队伍时，你可以将用户输入的邀请码或满足的特殊条件与数据库中存储的信息进行匹配验证。如果验证通过，用户就可以成功加入私密队伍。</p>
 </li>
-<li><p>通信技术：列出用于实现即时聊天功能的通信技术，如WebSocket、Socket.io等。</p>
+</ul>
+<ul>
+<li>申请加入队伍：<ul>
+<li>点击队伍标签，可展示更多信息（抽屉实现），可申请加入队伍</li>
+<li>传入参数未：该队伍信息，后台处理申请请求，处理逻辑如下<ul>
+<li>该队伍未满员</li>
+<li>该成员不再该队伍中</li>
+<li>更新队伍已加入人数</li>
+<li>更新user-team表关系，添加记录</li>
+</ul>
 </li>
+</ul>
+</li>
+</ul>
+<h3 id="队伍退出"><a href="#队伍退出" class="headerlink" title="队伍退出"></a>队伍退出</h3><h3 id="队内私聊"><a href="#队内私聊" class="headerlink" title="队内私聊"></a>队内私聊</h3><h3 id="队伍推荐"><a href="#队伍推荐" class="headerlink" title="队伍推荐"></a>队伍推荐</h3><ul>
+<li>即队伍成员可分享该队伍的信息，加大队伍曝光率</li>
+</ul>
+<h2 id="博客模块"><a href="#博客模块" class="headerlink" title="博客模块"></a>博客模块</h2><h3 id="发表博文"><a href="#发表博文" class="headerlink" title="发表博文"></a>发表博文</h3><h3 id="点赞博文"><a href="#点赞博文" class="headerlink" title="点赞博文"></a>点赞博文</h3><h3 id="收藏博文"><a href="#收藏博文" class="headerlink" title="收藏博文"></a>收藏博文</h3><h3 id="评论博文"><a href="#评论博文" class="headerlink" title="评论博文"></a>评论博文</h3><ul>
+<li></li>
 </ul>
 <h2 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h2><ul>
 <li>用于展示项目各个功能模块的界面设计，包括页面布局、交互流程和UI元素等。</li>
@@ -656,13 +715,13 @@
 <li>列出项目开发的计划和里程碑，包括每个功能模块的开发时间和测试时间。</li>
 </ul>
 <h3 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h3><ul>
-<li>实现主页页面的简单开发</li>
-<li>在线用户列表页、队伍信息页</li>
+<li>实现主页页面的简单开发 的 ✔ </li>
+<li>在线用户列表页、队伍信息页 ✔</li>
 </ul>
 <h3 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h3><ul>
 <li><p>用户登录页</p>
 <ul>
-<li>简单的实现了登录页的开发，用户需输入账户密码进行登录，这样作双向绑定：</li>
+<li>简单的实现了登录页的开发，用户需输入账户密码进行登录，这样作双向绑定：✔</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-form-item label=&quot;用户名&quot; name=&quot;username&quot;<br>                   :rules=&quot;[&#123; required: true, message: &#x27;请输入用户名&#x27; &#125;]&quot;&gt;<br>        &lt;a-input :placeholder=&quot;&#x27;请输入用户名&#x27;&quot; v-model:value=&quot;userAccount&quot;/&gt;<br>      &lt;/a-form-item&gt;<br></code></pre></td></tr></table></figure>
 
@@ -672,17 +731,17 @@
 <li><strong>登录成功之后跳转至主页</strong></li>
 </ul>
 </li>
-<li><p>优化了主页页面显示</p>
+<li><p>优化了主页页面显示 </p>
 <ul>
-<li>通过监听tab标签页的变化，发起相应的请求</li>
-<li>用户登录后，展示头像、昵称；</li>
-<li>用户未登录，提示登录，可点击按钮跳转至登录页面</li>
+<li>通过监听tab标签页的变化，发起相应的请求 ✔</li>
+<li>用户登录后，展示头像、昵称； ✔</li>
+<li>用户未登录，提示登录，可点击按钮跳转至登录页面 ✔</li>
 </ul>
 </li>
-<li><p>新增展示所有队伍功能，展示队伍列表</p>
+<li><p>新增展示所有队伍功能，展示队伍列表 ✔</p>
 <ul>
-<li>默认仅展示公开队伍，可开启展示加密队伍</li>
-<li>前端监听开关状态，发送<strong>带参（isSecret）请求</strong>，是否需要获取加密队伍：</li>
+<li>默认仅展示公开队伍，可开启展示加密队伍 ✔</li>
+<li>前端监听开关状态，发送<strong>带参（isSecret）请求</strong>，是否需要获取加密队伍： ✔</li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 开关 队伍状态改变</span><br><span class="hljs-keyword">const</span> checked = ref&lt;<span class="hljs-built_in">boolean</span>&gt;(<span class="hljs-literal">false</span>);<br><span class="hljs-comment">// 监听开关状态变化</span><br><span class="hljs-title function_">watchEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (checked.<span class="hljs-property">value</span>) &#123;<br>    <span class="hljs-title function_">getTeamList</span>(<span class="hljs-literal">true</span>);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-title function_">getTeamList</span>(<span class="hljs-literal">false</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
@@ -691,7 +750,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (!teamList.getIsSecret()) &#123;<br>           tqw.eq(<span class="hljs-string">&quot;status&quot;</span>, TeamStatusEnum.PUBLIC.getValue());<br>       &#125; <span class="hljs-keyword">else</span> &#123;<br>           tqw.eq(<span class="hljs-string">&quot;status&quot;</span>, TeamStatusEnum.PUBLIC.getValue())<br>                   .or().eq(<span class="hljs-string">&quot;status&quot;</span>, TeamStatusEnum.SECRET.getValue());<br>       &#125;<br></code></pre></td></tr></table></figure></li>
 <li><h5 id="队伍列表页面应该展示的信息有："><a href="#队伍列表页面应该展示的信息有：" class="headerlink" title="队伍列表页面应该展示的信息有："></a>队伍列表页面应该展示的信息有：</h5><ul>
-<li>队伍名、队伍描述、队伍名片（牌面）</li>
+<li>队伍名、队伍描述、队伍名片（牌面）✔</li>
 <li>队伍已加入人数，可供用户判断是否满员（使用进度条实现），若满员，则显示已满员（爆红）✂</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;div&gt;<br>      &lt;a-slider id=&quot;test&quot; v-model:value=&quot;item.joinNum&quot; :max=&quot;item.maxNum&quot; disabled/&gt;<br>      &lt;span&gt;&#123;&#123;item.joinNum&#125;&#125;/&#123;&#123;item.maxNum&#125;&#125;&lt;/span&gt;<br> &lt;/div&gt;<br></code></pre></td></tr></table></figure>
@@ -708,8 +767,8 @@
 <ul>
 <li><h5 id="队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）"><a href="#队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）" class="headerlink" title="队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）"></a>队伍卡片可点击进入，队伍信息展示页：（使用抽屉组件实现）</h5><ul>
 <li><a target="_blank" rel="noopener" href="https://2x.antdv.com/components/drawer-cn">Ant Design Vue (antdv.com)</a></li>
-<li>队伍名、队伍描述</li>
-<li>队伍已加入成员的头像排列（使用头像组件实现）、队伍已加入人数</li>
+<li>队伍名、队伍描述 ✔</li>
+<li>队伍已加入成员的头像排列（使用头像组件实现）、队伍已加入人数 ✔</li>
 </ul>
 </li>
 </ul>
@@ -721,9 +780,162 @@
 
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 抽屉展示</span><br><span class="hljs-keyword">const</span> visible = <span class="hljs-title function_">ref</span>(&#123;&#125;);<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">showDrawer</span> = (<span class="hljs-params">itemId: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  visible.<span class="hljs-property">value</span>[itemId] = <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+
+
+<h3 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h3><ul>
+<li>实现用户间互相添加好友，可在“我的好友”中查看 </li>
+<li>用户申请加入队伍，可在“我的队伍”中查看</li>
+<li>用户创建队伍、退出队伍</li>
+<li>在线用户列表中，排除当前用户：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">QueryWrapper&lt;User&gt; lqw = <span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();<br>      lqw.ne(<span class="hljs-string">&quot;id&quot;</span>, loginUser.getId());<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>添加用户信息标签展示<ul>
+<li>点击可展示更多信息（抽屉组件实现）</li>
+<li>可申请添加为好友<ul>
+<li>申请添加好友时，请求参数为该好友的id，传回后端将登录用户和好友id，好友表新增一条记录</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 申请添加好友</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">addFriends</span> = (<span class="hljs-params">friend: userInfo</span>) =&gt; &#123;<br>  myAxios.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/friends/add&quot;</span>, &#123;<br>    <span class="hljs-attr">id</span>: friend.<span class="hljs-property">id</span><br>  &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>    message.<span class="hljs-title function_">success</span>(<span class="hljs-string">&quot;成功发送好友申请&quot;</span>)<br>  &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;加入失败&quot;</span>)<br>  &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="可与该队友聊天"><a href="#可与该队友聊天" class="headerlink" title="可与该队友聊天"></a>可与该队友聊天</h5></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>展示我的好友列表</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">fqw.select(<span class="hljs-string">&quot;friend_id&quot;</span>);<br>List&lt;Friends&gt; friendsList = list(fqw);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">根据id查询道好友信息<br>   <span class="hljs-keyword">for</span> (Friends friends : friendsList) &#123;<br>            <span class="hljs-type">Long</span> <span class="hljs-variable">friendId</span> <span class="hljs-operator">=</span> friends.getFriendId();<br>            uqw.eq(<span class="hljs-string">&quot;id&quot;</span>, friendId);<br><br>            <span class="hljs-type">User</span> <span class="hljs-variable">one</span> <span class="hljs-operator">=</span> userService.getOne(uqw);<br>            userList.add(one);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这里添加-fqw-select-“friend-id”-后，friend为null，待解决"><a href="#这里添加-fqw-select-“friend-id”-后，friend为null，待解决" class="headerlink" title="这里添加 fqw.select(“friend_id”); 后，friend为null，待解决"></a>这里添加 fqw.select(“friend_id”); 后，friend为null，待解决</h5></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> friends<br>(<br>    id          <span class="hljs-type">bigint</span> auto_increment comment <span class="hljs-string">&#x27;id&#x27;</span><br>        <span class="hljs-keyword">primary</span> key,<br>    user_id     <span class="hljs-type">bigint</span>                               <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;用户id&#x27;</span>,<br>    friend_id   <span class="hljs-type">bigint</span>                               <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;好友id&#x27;</span>,<br>    note        <span class="hljs-type">varchar</span>(<span class="hljs-number">8</span>)                           <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;好友备注&#x27;</span>,<br>    create_time datetime   <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>    update_time datetime   <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">update</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>,<br>    is_delete   tinyint(<span class="hljs-number">1</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;是否删除&#x27;</span><br>)<br>    comment <span class="hljs-string">&#x27;好友表&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>添加好友信息逻辑：<ul>
+<li>传递参数：该好友信息、申请用户信息</li>
+<li>该用户好友数未上限（<strong>目前没有上限，日后优化</strong>）</li>
+<li>更新好友表，添加一条记录</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>优化队伍列表展示<ul>
+<li>目前还没有实现搜索队伍、搜索用户功能，展示队伍列表逻辑如下：<ul>
+<li>默认展示公开队伍，可选择展示加密队伍，大厅不支持用户直接加入私密队伍</li>
+<li>显示已加入的队伍，排列顺序考前，不允许用户加入该队伍</li>
+<li>加入加密队伍需要输入密码，加入公开队伍则无</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Day4"><a href="#Day4" class="headerlink" title="Day4"></a>Day4</h3><ul>
+<li>在博客系统开发前，可以考虑将后端代码分模块</li>
+</ul>
+<ul>
+<li><h5 id="添加用户登录状态字段"><a href="#添加用户登录状态字段" class="headerlink" title="添加用户登录状态字段"></a>添加用户登录状态字段</h5></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">is_online     <span class="hljs-type">int</span>                                    <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;是否在线&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="优化登录-退出登录体验"><a href="#优化登录-退出登录体验" class="headerlink" title="优化登录/退出登录体验"></a>优化登录/退出登录体验</h5><ul>
+<li><p>登录后</p>
+<ul>
+<li>后端，存储用户信息到session中，设置用户状态为在线（<strong>ONLINE</strong>），并返回该信息到前端</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">request.getSession().setAttribute(USER_LOGIN_STATE, safetyUser);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>前端：前端存储登录用户信息到变量currentUser中，用于其他业务逻辑中的校验当前登录用户权限</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> currentUser = <span class="hljs-title function_">ref</span>(&#123;&#125;);<br></code></pre></td></tr></table></figure></li>
+<li><p>登出后</p>
+<ul>
+<li>后端，删除session中的登录用户信息，设置用户状态为在线（<strong>OFFLINE</strong>）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">request.getSession().removeAttribute(USER_LOGIN_STATE);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>前端，currentUser置为空</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>好友在线列表，展示好友的在线状况</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;div v-if=&quot;item.isOnline === 1&quot;&gt;<br>                &lt;a-tag color=&quot;processing&quot; &gt;<br>                  在线<br>                &lt;/a-tag&gt;<br>              &lt;/div&gt;<br><br>              &lt;div v-if=&quot;item.isOnline === 0&quot;&gt;<br>                &lt;a-tag color=&quot;default&quot; &gt;<br>                  下线<br>                &lt;/a-tag&gt;<br>              &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>想解决同一个浏览器只能登录一个账号的问题，但这个问题解决不了的，看看AI的解释：</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><br>存储登录用户信息在 <span class="hljs-keyword">session</span> 中，通常是基于会话的状态管理机制。而一个浏览器不能同时登录两个用户的主要原因是浏览器的 Cookie 机制和同一域名下的会话管理。<br>当一个用户登录后，服务器会在浏览器中设置一个名为 <span class="hljs-keyword">Session</span> ID 的 Cookie，用于识别会话。浏览器每次发送请求时，会自动将该 Cookie 值包括在请求头中，服务器会根据该 Cookie 值找到对应的会话信息。<br>由于浏览器默认只能存储一个名为 <span class="hljs-keyword">Session</span> ID 的 Cookie，所以同一浏览器只能保持一个登录会话。当再次登录另一个用户时，服务器会更新 <span class="hljs-keyword">Session</span> ID，并将新的 Cookie 值响应给浏览器，导致之前的会话信息失效。<br>即使使用 Redis 存储会话数据，也无法解决一个浏览器不能同时登录两个用户的问题。因为是浏览器自身的限制，无论使用什么方式存储会话数据，都无法绕过浏览器同一域名同一时刻只能持有一个 Cookie 的特性。<br>如果需要在同一浏览器中同时登录多个用户，可以考虑使用不同的浏览器或使用浏览器的隐私模式或使用不同的域名或端口。或者可以使用多个浏览器会话、多个标签页或多个窗口的方式，在同一浏览器中模拟多个用户。<br>希望能够解答你的疑问，如果还有其他问题，请随时提问。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="解决方案：使用不同的浏览器或者使用浏览器的隐私模式"><a href="#解决方案：使用不同的浏览器或者使用浏览器的隐私模式" class="headerlink" title="解决方案：使用不同的浏览器或者使用浏览器的隐私模式"></a>解决方案：使用不同的浏览器或者使用浏览器的隐私模式</h5></li>
+</ul>
+<ul>
+<li>添加好友，同时添加两条记录：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-comment">// 他成为我的好友</span><br><span class="hljs-type">Friends</span> <span class="hljs-variable">friends</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Friends</span>();<br>friends.setUserId(userId);<br>friends.setFriendId(friend.getId());<br>friends.setNote(<span class="hljs-string">&quot;我的好友&quot;</span>);<br>friends.setCreateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>friends.setUpdateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>friends.setIsDelete(<span class="hljs-number">0</span>);<br><span class="hljs-type">boolean</span> <span class="hljs-variable">save1</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.save(friends);<br><br><span class="hljs-comment">// 我成为他的好友</span><br>friends = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Friends</span>();<br>friends.setUserId(friend.getId());<br>friends.setFriendId(userId);<br>friends.setNote(<span class="hljs-string">&quot;我的好友&quot;</span>);<br>friends.setCreateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>friends.setUpdateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>friends.setIsDelete(<span class="hljs-number">0</span>);<br><span class="hljs-type">boolean</span> <span class="hljs-variable">save2</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.save(friends);<br><br><span class="hljs-comment">// 保证原子操作</span><br><span class="hljs-keyword">if</span> (!save1 || !save2) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BusinessException</span>(ErrorCode.UPDATE_ERROR, <span class="hljs-string">&quot;建立好友关系失败&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="较冗长，待优化"><a href="#较冗长，待优化" class="headerlink" title="较冗长，待优化"></a>较冗长，待优化</h5></li>
+</ul>
+<ul>
+<li>完成加入队伍逻辑实现</li>
+</ul>
+<ul>
+<li>展示我创建的队伍、我加入的队伍<ul>
+<li>要明确，我创建的队伍，team表中保存有队长userId字段，仅需在team表中，根据userId字段，直接查询出对应记录的team信息    </li>
+<li>我加入的队伍，在user_team表中，根据userId，查询到对应的teamId，在team表中，根据teamId获取到team信息</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>后台返回的队伍信息，应该包括<strong>队长信息</strong>，而不是<strong>队长id</strong>（待完成）</p>
+<ul>
+<li>创建teamVO，封装参数userName，即队长昵称</li>
+<li>我封装了一个方法，传入一个teamList，将所有的team转换为teamVO，最后返回：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 转换teamList为teamVOList</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> teamList teamList</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> teamVOList</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">public</span> List&lt;TeamVO&gt; <span class="hljs-title function_">getTeamVOByTeam</span><span class="hljs-params">(List&lt;Team&gt; teamList)</span> &#123;<br>      List&lt;TeamVO&gt; teamVOList = teamList.stream().map(team -&gt; &#123;<br>          <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> team.getUserId();<br>          <span class="hljs-type">String</span> <span class="hljs-variable">userName</span> <span class="hljs-operator">=</span> userService.getById(userId).getUsername();<br>          <span class="hljs-type">TeamVO</span> <span class="hljs-variable">teamVO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TeamVO</span>();<br>  <br>          teamVO.setId(team.getId());<br>          teamVO.setName(team.getName());<br>          teamVO.setDescription(team.getDescription());<br>          teamVO.setMaxNum(team.getMaxNum());<br>          teamVO.setUserName(userName);<br>          teamVO.setImgUrl(team.getImgUrl());<br>          teamVO.setJoinNum(team.getJoinNum());<br>          teamVO.setStatus(team.getStatus());<br>          teamVO.setExpireTime(team.getExpireTime());<br>          teamVO.setCreateTime(team.getCreateTime());<br>          teamVO.setUpdateTime(team.getUpdateTime());<br>          teamVO.setIsDelete(team.getIsDelete());<br>  <br>          <span class="hljs-keyword">return</span> teamVO;<br>      &#125;).collect(Collectors.toList());<br>  <br>      <span class="hljs-keyword">return</span> teamVOList;<br>  &#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
 <h3 id="部署和维护"><a href="#部署和维护" class="headerlink" title="部署和维护"></a>部署和维护</h3><ul>
 <li>列出将项目部署到生产环境所需的步骤和配置信息，包括服务器环境要求和数据库设置。</li>
 <li>提供项目的维护和支持方式，如bug提交、技术支持联系方式等。</li>
+</ul>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h3 id="添加好友-1"><a href="#添加好友-1" class="headerlink" title="添加好友"></a>添加好友</h3><ul>
+<li>用户添加好友上限字段</li>
+<li>用户不应该直接添加好友，应该发送好友申请，待对方同意后，二者成为好友关系（<strong>如何判断？</strong>）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">QueryWrapper&lt;Friends&gt; fqw = <span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();<br>   fqw.eq(<span class="hljs-string">&quot;user_id&quot;</span>, userId).eq(<span class="hljs-string">&quot;friend_id&quot;</span>, friend.getId());<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>添加成功/失败后的反馈</li>
+<li>添加好友后，可支持修改好友昵称</li>
+</ul>
+<h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><ul>
+<li>后台的分页查询未优化，分页参数写死为 <strong>currentPage：1，pageSize：20</strong> </li>
+</ul>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><ul>
+<li>抛出的异常可以设置独有的错误码，前端妥善解决，优化用户体验</li>
+</ul>
+<h3 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h3><ul>
+<li>发出添加好友、申请入队请求后，抽屉关闭（？）</li>
 </ul>
 
                 
