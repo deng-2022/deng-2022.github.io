@@ -27,9 +27,9 @@
 <meta property="article:published_time" content="2023-07-06T10:04:25.000Z">
 <meta property="article:modified_time" content="2023-09-12T07:38:25.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="SpringBoot">
-<meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/sky.jpg">
   
@@ -267,7 +267,7 @@
         
         
         
-          77 分钟
+          78 分钟
         
       </span>
     
@@ -617,7 +617,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：9 小时前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -1186,14 +1186,24 @@
 <h3 id="MybatisPlus踩坑记录"><a href="#MybatisPlus踩坑记录" class="headerlink" title="MybatisPlus踩坑记录"></a>MybatisPlus踩坑记录</h3><ul>
 <li>我在根据id查询用户时，写了如下代码：</li>
 </ul>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">for (Friends friends : friendsList) &#123;<br>           Long friendId = friends.getFriendId();<br>           uqw.<span class="hljs-keyword">eq</span>(<span class="hljs-string">&quot;id&quot;</span>, friendId);<br>           <span class="hljs-keyword">User</span> <span class="hljs-title">one</span> = userService.getOne(uqw);<br>           userList.add(one);<br>       &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (Friends friends : friendsList) &#123;<br>           <span class="hljs-type">Long</span> <span class="hljs-variable">friendId</span> <span class="hljs-operator">=</span> friends.getFriendId();<br>           uqw.eq(<span class="hljs-string">&quot;id&quot;</span>, friendId);<br>           <span class="hljs-type">User</span> <span class="hljs-variable">one</span> <span class="hljs-operator">=</span> userService.getOne(uqw);<br>           userList.add(one);<br>       &#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>结果，查出来的 one 对象均为 null，可能是因为 id 设置为了主键</p>
 </li>
 <li><h5 id="我们改写为MybatisPlus提供的的根据id查询方法，成功解决问题（2023-09-12午）"><a href="#我们改写为MybatisPlus提供的的根据id查询方法，成功解决问题（2023-09-12午）" class="headerlink" title="我们改写为MybatisPlus提供的的根据id查询方法，成功解决问题（2023/09/12午）"></a>我们改写为MybatisPlus提供的的根据id查询方法，成功解决问题（2023/09/12午）</h5></li>
 </ul>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">// 2.根据id查询道好友信息</span><br>     <span class="hljs-keyword">for</span> (Friends friends : friendsList) &#123;<br>         Long friendId = friends.get<span class="hljs-constructor">FriendId()</span>;<br>         User one = userService.get<span class="hljs-constructor">ById(<span class="hljs-params">friendId</span>)</span>;<br>         userList.add(one);<br>     &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 2.根据id查询道好友信息</span><br>     <span class="hljs-keyword">for</span> (Friends friends : friendsList) &#123;<br>         <span class="hljs-type">Long</span> <span class="hljs-variable">friendId</span> <span class="hljs-operator">=</span> friends.getFriendId();<br>         <span class="hljs-type">User</span> <span class="hljs-variable">one</span> <span class="hljs-operator">=</span> userService.getById(friendId);<br>         userList.add(one);<br>     &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="日常犯傻"><a href="#日常犯傻" class="headerlink" title="日常犯傻"></a>日常犯傻</h3><ul>
+<li>使用 Vue 的 ref() 语法时，容易忘记取.value</li>
+</ul>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">const currentUserId <span class="hljs-operator">=</span> currentUser.value.id<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>访问后端服务器路径，容易忘记写/api</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">const socketUrl = `ws:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8081</span><span class="hljs-regexp">/api/</span>websocket/<span class="hljs-variable">$&#123;currentUserId&#125;</span>`;<br></code></pre></td></tr></table></figure>
 
 <h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1>
                 
@@ -1242,11 +1252,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
-        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+        <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
       
     </div>
   

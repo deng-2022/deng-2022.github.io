@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9k 字
+          9.6k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          23 分钟
+          25 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -645,7 +645,21 @@
 </ul>
 </li>
 </ul>
-<h3 id="好友私聊"><a href="#好友私聊" class="headerlink" title="好友私聊"></a>好友私聊</h3><h3 id="用户列表展示"><a href="#用户列表展示" class="headerlink" title="用户列表展示"></a>用户列表展示</h3><ul>
+<h3 id="好友私聊"><a href="#好友私聊" class="headerlink" title="好友私聊"></a>好友私聊</h3><ul>
+<li><p>如何实现好友间私聊？</p>
+</li>
+<li><p>这其中要思考的场景有：发送消息、接收消息、查看消息</p>
+</li>
+<li><p>在前后端搭建好socket环境、<strong>前端能够发送消息，服务端能正常转发消息到指定用户id</strong>的前提下，我们考虑如何实现好友间私聊</p>
+</li>
+<li><h5 id="即：用户间通信"><a href="#即：用户间通信" class="headerlink" title="即：用户间通信"></a>即：用户间通信</h5><ul>
+<li>用户发送消息（<strong>message</strong>），消息中携带的内容：发送者id，目标id，消息内容，发送时间</li>
+<li>服务器收到消息，按以发送者id为key值，将 message 存储至Redis中，再转发 message 到目标用户</li>
+<li>目标用户在线时，可以立刻获取到发来的message，如若离线时，则需查看Redis中的存放的消息</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户列表展示"><a href="#用户列表展示" class="headerlink" title="用户列表展示"></a>用户列表展示</h3><ul>
 <li>用户不应该直接看到用户列表，用户可以添加好友，而添加好友的途径有三个：<ul>
 <li>通过每日推荐，相似度匹配算法，每周给用户推荐兴趣爱好相似的用户，可以添加为好友畅聊</li>
 <li>通过博文，在博客中，用户可以自由发表博文，对博主感兴趣即可申请添加好友</li>
@@ -914,6 +928,30 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 转换teamList为teamVOList</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> teamList teamList</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> teamVOList</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">public</span> List&lt;TeamVO&gt; <span class="hljs-title function_">getTeamVOByTeam</span><span class="hljs-params">(List&lt;Team&gt; teamList)</span> &#123;<br>      List&lt;TeamVO&gt; teamVOList = teamList.stream().map(team -&gt; &#123;<br>          <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> team.getUserId();<br>          <span class="hljs-type">String</span> <span class="hljs-variable">userName</span> <span class="hljs-operator">=</span> userService.getById(userId).getUsername();<br>          <span class="hljs-type">TeamVO</span> <span class="hljs-variable">teamVO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TeamVO</span>();<br>  <br>          teamVO.setId(team.getId());<br>          teamVO.setName(team.getName());<br>          teamVO.setDescription(team.getDescription());<br>          teamVO.setMaxNum(team.getMaxNum());<br>          teamVO.setUserName(userName);<br>          teamVO.setImgUrl(team.getImgUrl());<br>          teamVO.setJoinNum(team.getJoinNum());<br>          teamVO.setStatus(team.getStatus());<br>          teamVO.setExpireTime(team.getExpireTime());<br>          teamVO.setCreateTime(team.getCreateTime());<br>          teamVO.setUpdateTime(team.getUpdateTime());<br>          teamVO.setIsDelete(team.getIsDelete());<br>  <br>          <span class="hljs-keyword">return</span> teamVO;<br>      &#125;).collect(Collectors.toList());<br>  <br>      <span class="hljs-keyword">return</span> teamVOList;<br>  &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
+<h3 id="Day5"><a href="#Day5" class="headerlink" title="Day5"></a>Day5</h3><ul>
+<li>实现用户私聊，相关配置我已做好，详情可参考这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011974797/article/details/130055062">SpringBoot集成WebSocket进行前后端通信_谢小涛的博客-CSDN博客</a></li>
+<li>后续该功能完成后，会详细记录</li>
+</ul>
+<ul>
+<li><p>点击进入私聊，展示聊天信息</p>
+</li>
+<li><p>对于聊天信息的展示，还有几分疑惑：</p>
+<ul>
+<li>用户发送消息后，服务器转发给指定用户应该怎样实现？</li>
+<li>还是说存储到Redis中后，用户在私聊的聊天页面中，直接从Redis中查找自己与对方的消息，再展示出来呢？</li>
+<li>这些问题我还感到很迷惑，一时想不明白如何实现，待解决</li>
+</ul>
+</li>
+<li><p>现在待解决的问题还很多：</p>
+<ul>
+<li><p>用户点击聊天用户，进入聊天页面，这个页面下，能够获取到双方的聊天记录</p>
+</li>
+<li><p>发送消息，就是在添加记录，并实时展示的过程，</p>
+</li>
+<li><h5 id="页面的设计我有很多想法，通信功能实现，待解决"><a href="#页面的设计我有很多想法，通信功能实现，待解决" class="headerlink" title="页面的设计我有很多想法，通信功能实现，待解决"></a>页面的设计我有很多想法，通信功能实现，待解决</h5></li>
+</ul>
+</li>
+</ul>
 <h3 id="部署和维护"><a href="#部署和维护" class="headerlink" title="部署和维护"></a>部署和维护</h3><ul>
 <li>列出将项目部署到生产环境所需的步骤和配置信息，包括服务器环境要求和数据库设置。</li>
 <li>提供项目的维护和支持方式，如bug提交、技术支持联系方式等。</li>
@@ -936,6 +974,7 @@
 </ul>
 <h3 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h3><ul>
 <li>发出添加好友、申请入队请求后，抽屉关闭（？）</li>
+<li>用户在线问题需要优化，应该存放进Redis中，设置过期时间为 2hour</li>
 </ul>
 
                 
@@ -1040,6 +1079,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/blog/2023/09/13/%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BD%BF%E7%94%A8Spring-Boot%E9%9B%86%E6%88%90WebSocket%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E5%AE%9E%E6%97%B6%E9%80%9A%E4%BF%A1/" title="实战指南：使用Spring Boot集成WebSocket实现前后端实时通信">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">实战指南：使用Spring Boot集成WebSocket实现前后端实时通信</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
