@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.6k 字
+          14k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          25 分钟
+          34 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：3 天前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -658,6 +658,13 @@
 <li>目标用户在线时，可以立刻获取到发来的message，如若离线时，则需查看Redis中的存放的消息</li>
 </ul>
 </li>
+<li><p>本来想着服务器如何给指定用户sid转发消息，好像不太好实现</p>
+</li>
+<li><p>在客户端尝试连接服务端socket，并成功连接后，服务端的 webSocketSet 存放了 在线连接用户的信息</p>
+</li>
+<li><p>按现在的情况，服务端只能校验该消息是哪个用户所发的，即校验 webSocketSet中存放的sid，能否在已连接用户中找到发送消息的用户，并选择转发消息</p>
+</li>
+<li><h5 id="那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示"><a href="#那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示" class="headerlink" title="那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示"></a>那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示</h5></li>
 </ul>
 <h3 id="用户列表展示"><a href="#用户列表展示" class="headerlink" title="用户列表展示"></a>用户列表展示</h3><ul>
 <li>用户不应该直接看到用户列表，用户可以添加好友，而添加好友的途径有三个：<ul>
@@ -952,6 +959,77 @@
 </ul>
 </li>
 </ul>
+<h3 id="Day6"><a href="#Day6" class="headerlink" title="Day6"></a>Day6</h3><ul>
+<li><h5 id="成功获取到存储在Redis中的信息"><a href="#成功获取到存储在Redis中的信息" class="headerlink" title="成功获取到存储在Redis中的信息"></a>成功获取到存储在Redis中的信息</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">msgJson</span> <span class="hljs-operator">=</span> (String) redisTemplate.opsForValue().get(<span class="hljs-string">&quot;memory:user:message:&quot;</span> + loginUserId);<br>        <span class="hljs-type">Gson</span> <span class="hljs-variable">gson</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br>        <span class="hljs-type">Message</span> <span class="hljs-variable">message</span> <span class="hljs-operator">=</span> gson.fromJson(msgJson, Message.class);<br>        <span class="hljs-keyword">if</span> (message == <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br><br>        <span class="hljs-keyword">return</span> message;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="用户发送消息：以用户id为key，选用Hash数据结构，存储发出的各条消息："><a href="#用户发送消息：以用户id为key，选用Hash数据结构，存储发出的各条消息：" class="headerlink" title="用户发送消息：以用户id为key，选用Hash数据结构，存储发出的各条消息："></a>用户发送消息：以用户id为key，选用Hash数据结构，存储发出的各条消息：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">HashOperations&lt;String, Object, Object&gt; opsForHash = redisTemplate.opsForHash();<br>      opsForHash.put(senderMsgKey, generateMessageId(), message);<br>      opsForHash.put(receiverMsgKey, generateMessageId(), message);<br>      <span class="hljs-comment">// 3.3.设置键的过期时间，单位为h</span><br>      <span class="hljs-type">long</span> <span class="hljs-variable">expireTime</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; <span class="hljs-comment">// 设置为2hour</span><br>      redisTemplate.expire(senderMsgKey, expireTime, TimeUnit.HOURS);<br>      redisTemplate.expire(receiverMsgKey, expireTime, TimeUnit.HOURS);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="获取消息记录：以当前用户id为key，获取存储的消息列表，返回给前端"><a href="#获取消息记录：以当前用户id为key，获取存储的消息列表，返回给前端" class="headerlink" title="获取消息记录：以当前用户id为key，获取存储的消息列表，返回给前端"></a>获取消息记录：以当前用户id为key，获取存储的消息列表，返回给前端</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;Object, Object&gt; mesEntriesJson = redisTemplate.opsForHash().entries(USER_CHAT_MESSAGE + loginUserId);<br>      <span class="hljs-type">Gson</span> <span class="hljs-variable">gson</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br>      <span class="hljs-type">String</span> <span class="hljs-variable">jsonString</span> <span class="hljs-operator">=</span> gson.toJson(mesEntriesJson);<br>      Map&lt;Object, Object&gt; mesEntries = gson.fromJson(jsonString, <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeToken</span>&lt;Map&lt;Object, Object&gt;&gt;() &#123;<br>      &#125;.getType());<br><br>      <span class="hljs-keyword">if</span> (mesEntries == <span class="hljs-literal">null</span>)<br>          <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br><br>      ArrayList&lt;Message&gt; messageList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>      Collection&lt;Object&gt; mesValuesJson = mesEntries.values();<br>      <span class="hljs-keyword">for</span> (Object mesValueJson : mesValuesJson) &#123;<br>          <span class="hljs-type">String</span> <span class="hljs-variable">mesValuesJsonStr</span> <span class="hljs-operator">=</span> (String) mesValueJson;<br>          <span class="hljs-type">Message</span> <span class="hljs-variable">message</span> <span class="hljs-operator">=</span> gson.fromJson(mesValuesJsonStr, Message.class);<br>          messageList.add(message);<br>      &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如何实现在用户聊天过程中，实时更新聊天记录内容呢？需解决两个问题：<ul>
+<li>用户发送消息后，立刻展示在页面（发送消息给服务器，服务器存储信息到redis后，再立刻查询该消息，并返回到前台）</li>
+<li>对方发送消息后，立刻展示在页面<ul>
+<li>这个实现还在思考中，需要前端不断查询redis，消息发生被更新就立刻同步到前台吗？太不现实了，很浪费资源</li>
+<li>那就应该是服务器主动转发消息了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>本来想着服务器如何给指定用户sid转发消息，好像不太好实现</p>
+</li>
+<li><p>在客户端尝试连接服务端socket，并成功连接后，服务端的 webSocketSet 存放了 在线连接用户的信息</p>
+</li>
+<li><p>按现在的情况，服务端只能校验该消息是哪个用户所发的，即校验 webSocketSet中存放的sid，能否在已连接用户中找到发送消息的用户，并选择转发消息</p>
+</li>
+<li><h5 id="那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示-1"><a href="#那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示-1" class="headerlink" title="那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示"></a>那只好是服务器同意转发至客户端，客户端根据sendId和receiveId选择是否展示</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 接受客户端发来的消息</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> message 消息</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@throws</span> IOException IOException</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@OnMessage</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onMessage</span><span class="hljs-params">(String message)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    log.info(<span class="hljs-string">&quot;收到来自窗口&quot;</span> + sid + <span class="hljs-string">&quot;的信息:&quot;</span> + message);<br>    <span class="hljs-comment">// 1.消息存放Redis</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">saveMessage</span> <span class="hljs-operator">=</span> saveMessage(message);<br>    <span class="hljs-comment">// 2.校验存放</span><br>    <span class="hljs-keyword">if</span> (!saveMessage) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BusinessException</span>(ErrorCode.UPDATE_ERROR_REDIS, <span class="hljs-string">&quot;用户信息存放失败&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">// 3.消息转发</span><br>    msgForward(message, webSocketSet, sid);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><ul>
+<li><h5 id="前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息"><a href="#前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息" class="headerlink" title="前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息"></a>前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//获得消息事件(获得服务端转发的消息)</span><br>    socket.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>        <span class="hljs-comment">// 封装返回消息</span><br>      receiveMsg.<span class="hljs-property">value</span> = msg.<span class="hljs-property">data</span>;<br>      <span class="hljs-comment">// 解构</span><br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;这条消息是发给: &quot;</span> + receiveMsg.<span class="hljs-property">value</span> + <span class="hljs-string">&quot; 的&quot;</span>)<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;这条消息是发给: &quot;</span> + receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">receiverId</span> + <span class="hljs-string">&quot; 的&quot;</span>)<br>      <span class="hljs-keyword">const</span> content = receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">content</span>;<br>      <span class="hljs-comment">// 是否属于我的消息</span><br>      <span class="hljs-keyword">if</span> (receiverId === currentUserId) &#123;<br>        <span class="hljs-title function_">setMessage</span>(<span class="hljs-string">&quot;服务端回应: &quot;</span> + content + <span class="hljs-string">&quot;发给: &quot;</span> + receiverId);<br>      &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>前端返回的 mes 是 JSON字符串，我看见控制台输出的内容是，以为<strong>是个对象</strong>，结果取到的属性值是undefined：</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;senderId&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1657284783190523906&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;receiverId&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;1657284893320364034&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;content&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;阿发&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;sendTime&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2023-09-14T13:29:11.309Z&quot;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>调试了半天，检查了下 mes 的类型，才发现是个<strong>JSON字符串</strong>，奶奶的</li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;type of &quot;</span> + <span class="hljs-built_in">typeof</span> (receiveMsg.value))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="所以要将msg-JSON字符串解析为对象后，才可以正常拿到属性值"><a href="#所以要将msg-JSON字符串解析为对象后，才可以正常拿到属性值" class="headerlink" title="所以要将msg JSON字符串解析为对象后，才可以正常拿到属性值"></a>所以要将msg JSON字符串解析为对象后，才可以正常拿到属性值</h5></li>
+</ul>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">receiveMsg.value</span> = JSON.parse(msg.data)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>但是连接服务器socket时，也会执行这里的代码，而<strong>服务器首次响应连接请求并传回的的参数类型</strong>却<strong>不是JSON字符串</strong></p>
+</li>
+<li><h5 id="解析失败，报以下错误："><a href="#解析失败，报以下错误：" class="headerlink" title="解析失败，报以下错误："></a>解析失败，报以下错误：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230914214515079.png" alt="image-20230914214515079"></p>
+<ul>
+<li>最后优化代码，同时处理两种情况：服务器首次连接成功后的响应（<strong>普通字符串</strong>） / 服务器转发的消息（<strong>JSON字符串</strong>）</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//获得消息事件(获得服务端转发的消息)</span><br>    socket.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>     <span class="hljs-comment">// 封装返回消息</span><br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> (msg) === <span class="hljs-title class_">String</span>) &#123;<br>        receiveMsg.<span class="hljs-property">value</span> = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        receiveMsg.<span class="hljs-property">value</span> = msg.<span class="hljs-property">data</span>;<br>      &#125;<br>      <span class="hljs-comment">// 解构</span><br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;这条消息是发给: &quot;</span> + receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">receiverId</span> + <span class="hljs-string">&quot; 的&quot;</span>)<br>      <span class="hljs-keyword">const</span> content = receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">content</span>;<br>      <span class="hljs-comment">// 是否属于我的消息</span><br>      <span class="hljs-keyword">if</span> (receiverId === currentUserId) &#123;<br>        <span class="hljs-title function_">setMessage</span>(<span class="hljs-string">&quot;服务端回应: &quot;</span> + content + <span class="hljs-string">&quot;发给: &quot;</span> + receiverId);<br>      &#125;<br>    &#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="各种坑都能踩到，不过好在花点时间排错，都能解决掉-👏👏👏（2023-09-14晚）"><a href="#各种坑都能踩到，不过好在花点时间排错，都能解决掉-👏👏👏（2023-09-14晚）" class="headerlink" title="各种坑都能踩到，不过好在花点时间排错，都能解决掉 👏👏👏（2023/09/14晚）"></a>各种坑都能踩到，不过好在花点时间排错，都能解决掉 👏👏👏（2023/09/14晚）</h5></li>
+</ul>
 <h3 id="部署和维护"><a href="#部署和维护" class="headerlink" title="部署和维护"></a>部署和维护</h3><ul>
 <li>列出将项目部署到生产环境所需的步骤和配置信息，包括服务器环境要求和数据库设置。</li>
 <li>提供项目的维护和支持方式，如bug提交、技术支持联系方式等。</li>
@@ -971,10 +1049,14 @@
 </ul>
 <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><ul>
 <li>抛出的异常可以设置独有的错误码，前端妥善解决，优化用户体验</li>
+<li>可以考虑封装一个简单的异常处理工具（ThrowUtils）</li>
 </ul>
 <h3 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h3><ul>
 <li>发出添加好友、申请入队请求后，抽屉关闭（？）</li>
 <li>用户在线问题需要优化，应该存放进Redis中，设置过期时间为 2hour</li>
+</ul>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
+<li>考虑封装一个RedisUtils，统一所有的Redis操作</li>
 </ul>
 
                 

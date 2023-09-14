@@ -27,9 +27,9 @@
 <meta property="article:published_time" content="2023-07-06T10:04:25.000Z">
 <meta property="article:modified_time" content="2023-09-12T07:38:25.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="项目">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/sky.jpg">
   
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          31k 字
+          33k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          78 分钟
+          82 分钟
         
       </span>
     
@@ -617,7 +617,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -793,6 +793,35 @@
 <h3 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h3><h3 id="commons-lang3"><a href="#commons-lang3" class="headerlink" title="commons-lang3"></a>commons-lang3</h3><h3 id="Gson"><a href="#Gson" class="headerlink" title="Gson"></a>Gson</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904154113146894?searchId=20230818150655BD9BB19565F023A9B0A5">求求你了，不要再自己实现这些逻辑了，开源工具类不香吗？ - 掘金 (juejin.cn)</a></li>
 </ul>
+<h3 id="基于基础类，开发一个VO类"><a href="#基于基础类，开发一个VO类" class="headerlink" title="基于基础类，开发一个VO类"></a>基于基础类，开发一个VO类</h3><ul>
+<li>在开发过程，我们经常中使用基础类来开发VO类，是因为：<strong>（2023/09/14晚）</strong></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">基础类可以作为扩展点，用于定义VO类的共同特性和行为。<br>你可以在基础类中定义一些通用的属性和方法，然后在VO类中添加自定义属性和方法，以实现更具体的功能<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>最近在开发 MemoryChat 项目的过程中，遇到了这样的业务问题：</p>
+</li>
+<li><p>查询用户<strong>已加入的队伍</strong> / <strong>已创建的队伍</strong>，我想要展示队伍的 username（队长昵称），在team表中只有 userId字段（队长Id）</p>
+</li>
+<li><p>这就需要多表联查，封装携带队伍信息以及队长username的对象，并返回给前端</p>
+</li>
+<li><h5 id="那我们就开发一个teamVO类，用username字段代替userId字段，作为封装返回的对象："><a href="#那我们就开发一个teamVO类，用username字段代替userId字段，作为封装返回的对象：" class="headerlink" title="那我们就开发一个teamVO类，用username字段代替userId字段，作为封装返回的对象："></a>那我们就开发一个teamVO类，用username字段代替userId字段，作为封装返回的对象：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓哈哈</span><br><span class="hljs-comment"> * 2023/9/12 23:28</span><br><span class="hljs-comment"> * Function:</span><br><span class="hljs-comment"> * Version 1.0</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TeamVO</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * id</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@TableId(type = IdType.ASSIGN_ID)</span><br>    <span class="hljs-keyword">private</span> Long id;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 队伍名称</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 描述</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String description;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 最大人数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Integer maxNum;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 队长昵称</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String userName;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 队伍图片</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String imgUrl;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 已加人数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Integer joinNum;<br>    <br>............................<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="根据相关查询条件，正确执行业务逻辑获取到teamList后，转换为teamVOList"><a href="#根据相关查询条件，正确执行业务逻辑获取到teamList后，转换为teamVOList" class="headerlink" title="根据相关查询条件，正确执行业务逻辑获取到teamList后，转换为teamVOList"></a>根据相关查询条件，正确执行业务逻辑获取到teamList后，转换为teamVOList</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 转换teamList为teamVOList</span><br>List&lt;TeamVO&gt; teamVOList = getTeamVOByTeam(teamList);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 转换teamList为teamVOList</span><br><span class="hljs-comment">  *</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> teamList teamList</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span> teamVOList</span><br><span class="hljs-comment">  */</span><br> <span class="hljs-keyword">public</span> List&lt;TeamVO&gt; <span class="hljs-title function_">getTeamVOByTeam</span><span class="hljs-params">(List&lt;Team&gt; teamList)</span> &#123;<br>     List&lt;TeamVO&gt; teamVOList = teamList.stream().map(team -&gt; &#123;<br>         <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> team.getUserId();<br>         <span class="hljs-type">String</span> <span class="hljs-variable">userName</span> <span class="hljs-operator">=</span> userService.getById(userId).getUsername();<br>         <span class="hljs-type">TeamVO</span> <span class="hljs-variable">teamVO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TeamVO</span>();<br><br>         teamVO.setId(team.getId());<br>         teamVO.setName(team.getName());<br>         teamVO.setDescription(team.getDescription());<br>         teamVO.setMaxNum(team.getMaxNum());<br>         teamVO.setUserName(userName);<br>         teamVO.setImgUrl(team.getImgUrl());<br>         teamVO.setJoinNum(team.getJoinNum());<br>         teamVO.setStatus(team.getStatus());<br>         teamVO.setExpireTime(team.getExpireTime());<br>         teamVO.setCreateTime(team.getCreateTime());<br>         teamVO.setUpdateTime(team.getUpdateTime());<br>         teamVO.setIsDelete(team.getIsDelete());<br><br>         <span class="hljs-keyword">return</span> teamVO;<br>     &#125;).collect(Collectors.toList());<br><br>     <span class="hljs-keyword">return</span> teamVOList;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="就这样，我们将队伍信息和队长-username-封装在了-teamVOList-对象中，成功返回到了前端"><a href="#就这样，我们将队伍信息和队长-username-封装在了-teamVOList-对象中，成功返回到了前端" class="headerlink" title="就这样，我们将队伍信息和队长 username 封装在了 teamVOList 对象中，成功返回到了前端"></a>就这样，我们将队伍信息和队长 username 封装在了 teamVOList 对象中，成功返回到了前端</h5></li>
+<li><p>现在，我们可以看到队伍的<strong>队长信息</strong>了：<strong>（2023/09/14晚）</strong></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230914222548059.png" alt="image-20230914222548059"></p>
 <h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
 <li><h5 id="每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息"><a href="#每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息" class="headerlink" title="每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息"></a>每当我兴致勃勃地启动项目，准备大展身手的时候，项目启动窗口总会弹出冰冷的报错信息</h5></li>
 <li><h5 id="这里列举了：我遇到过的所有启动项目报错的解决办法"><a href="#这里列举了：我遇到过的所有启动项目报错的解决办法" class="headerlink" title="这里列举了：我遇到过的所有启动项目报错的解决办法"></a>这里列举了：我遇到过的所有启动项目报错的解决办法</h5></li>
@@ -1252,11 +1281,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
-      
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
         <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
+      
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
     </div>
   
