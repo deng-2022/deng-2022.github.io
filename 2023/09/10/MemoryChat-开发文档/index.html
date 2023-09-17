@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k 字
+          17k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          34 分钟
+          42 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：4 天前
+                    本文最后更新于：7 天前
                   
                 
               </p>
@@ -996,7 +996,127 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 接受客户端发来的消息</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> message 消息</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@throws</span> IOException IOException</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@OnMessage</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onMessage</span><span class="hljs-params">(String message)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    log.info(<span class="hljs-string">&quot;收到来自窗口&quot;</span> + sid + <span class="hljs-string">&quot;的信息:&quot;</span> + message);<br>    <span class="hljs-comment">// 1.消息存放Redis</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">saveMessage</span> <span class="hljs-operator">=</span> saveMessage(message);<br>    <span class="hljs-comment">// 2.校验存放</span><br>    <span class="hljs-keyword">if</span> (!saveMessage) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BusinessException</span>(ErrorCode.UPDATE_ERROR_REDIS, <span class="hljs-string">&quot;用户信息存放失败&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">// 3.消息转发</span><br>    msgForward(message, webSocketSet, sid);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><ul>
+
+
+<h3 id="Day7"><a href="#Day7" class="headerlink" title="Day7"></a>Day7</h3><ul>
+<li><p>实时双向通信终于测试成功，详情可见 <strong>踩坑记录</strong> 栏目的 <strong>双向通信调试成功</strong></p>
+</li>
+<li><p>完成用户私聊功能、完善组队功能，开发队伍聊天功能</p>
+</li>
+<li><p>计划优化整个网站的页面效果</p>
+</li>
+</ul>
+<ul>
+<li>点击好友私聊，跳转至聊天页面    <ul>
+<li>首先要开发一个聊天页面：聊天窗口、可支持输入聊天内容、点击发送</li>
+<li>携带好友id进入聊天页面，确认消息的接收方</li>
+<li>用户登录以后，就应该连接到服务器的socket服务了，这样既可以实时接收消息，也可以在后台接收消息、标注为未读</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//获得消息事件(获得服务端转发的消息)</span><br>socket.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>  receiveMsg.<span class="hljs-property">value</span> = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>)<br>  <span class="hljs-comment">// 是发给自己的消息 更新聊天记录</span><br>  <span class="hljs-keyword">if</span> (currentUserId === receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">receiverId</span>) &#123;<br>    <span class="hljs-title function_">getMesList</span>();<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>用户能够发送消息给指定用户，实现了只有指定用户才能接收到该消息的功能</p>
+</li>
+<li><p>优化消息列表展示</p>
+</li>
+<li><p>Vue前端页面实现真麻烦，难倒我了，本来获取当前页面路由很简单的，搞了半天。。</p>
+</li>
+</ul>
+<h3 id="页面更新"><a href="#页面更新" class="headerlink" title="页面更新"></a>页面更新</h3><ul>
+<li><p>经过一周的沉淀，想明白了整个网站的页面布局</p>
+</li>
+<li><p>点击私聊，可跳转至聊天页面</p>
+<ul>
+<li>本来打算这个功能是在tab页之间跳转的，但是tab组件仅支持监听tab页变化，获取key值，不支持根据key值，跳转tab页</li>
+<li>索性直接把页面大改版，做成三个主页面：<ul>
+<li>用户功能页（找用户、找队伍）</li>
+<li>聊天页（<strong>私聊、队内聊天、大厅聊天</strong>）</li>
+<li>博客页（博客展示、<strong>评论</strong>、点赞、收藏）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230915183535885.png" alt="image-20230915183535885"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230915183544621.png" alt="image-20230915183544621"></p>
+<h3 id="Day8"><a href="#Day8" class="headerlink" title="Day8"></a>Day8</h3><h4 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h4><ul>
+<li>这个账户和昵称我一直认为不合理<ul>
+<li>统一为用户名 userAccount</li>
+<li>用户注册/登录后支持修改个人信息：绑定电话、邮箱，上传头像，修改用户名和密码</li>
+<li><h5 id="不过保留也可以，用户使用唯一账户登录后，如果没有取昵称，强制弹窗要求用户为自己取一个昵称，我真聪明"><a href="#不过保留也可以，用户使用唯一账户登录后，如果没有取昵称，强制弹窗要求用户为自己取一个昵称，我真聪明" class="headerlink" title="不过保留也可以，用户使用唯一账户登录后，如果没有取昵称，强制弹窗要求用户为自己取一个昵称，我真聪明"></a>不过保留也可以，用户使用唯一账户登录后，如果没有取昵称，强制弹窗要求用户为自己取一个昵称，我真聪明</h5></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>好友列表 点击 <strong>私聊</strong> 跳转至聊天大厅的特定聊天窗口处</p>
+<ul>
+<li>传递好友id，聊天大厅 tab页接收id参数</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 监听页面变化</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">goToTab</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  router.<span class="hljs-title function_">push</span>(&#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;chat&quot;</span>,<br>    <span class="hljs-attr">path</span>:<span class="hljs-string">&quot;/chat&quot;</span>,<br>    <span class="hljs-attr">query</span>: &#123;<br>      <span class="hljs-attr">chatUserId</span>:<span class="hljs-number">12345</span><br>    &#125;<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();<br><span class="hljs-keyword">const</span> chatTabName = <span class="hljs-title function_">ref</span>(&#123;&#125;);<br><span class="hljs-comment">// 钩子函数</span><br><span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  chatTabName.<span class="hljs-property">value</span> = route.<span class="hljs-property">query</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-tab-pane key=&quot;1&quot; :tab=&quot;chatTabName.chatUserId&quot;&gt;<br></code></pre></td></tr></table></figure></li>
+<li><p>原本打算做这样的实现：</p>
+<ul>
+<li>点击好友私聊后，能够跳转至聊天大厅，并创建一个<strong>特有的tab标签页</strong>，用来做与该好友的<strong>聊天页面</strong></li>
+<li>只要传递好友<strong>username作为参数</strong>，将tab页命名为username，即可<strong>创建特有的tab标签页</strong></li>
+<li>但是每次只能由一个好友聊天窗口，像这样：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230916131802853.png" alt="image-20230916131802853"></p>
+<ul>
+<li>这是因为每次只能追加一个tab页面，而退出该页面后，添加的tab页组件就没了，不能保存下来</li>
+<li>有关这样的问题，肯定是有解决办法的，好像有个 keep-alive 标签就是干这个的，不过不深究了</li>
+</ul>
+</li>
+<li><p>现在索性改为这样实现了：</p>
+<ul>
+<li><strong>直接罗列出所有的好友聊天列表</strong>，每次点击私聊后不是<strong>根据传递的参数新增一个tab页</strong>，而是<strong>定位到对应的标签页</strong></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>成功实现点击私聊后，跳转至聊天大厅中的对应聊天窗口</li>
+<li>正式着手开发双向实时通信，还有个小BUG，我自己的消息，会在每个聊天窗口显示</li>
+<li>查找聊天消息时，应该在每个聊天窗口发出请求，请求参数为当前用户id和聊天对象id，查询这些消息</li>
+</ul>
+<ul>
+<li><p>业务逻辑好像出问题了：</p>
+<ul>
+<li>现在用户给指定用户发送消息后，确实保证了只有该用户能收到消息</li>
+<li>但是收到消息如何持久化到聊天记录中呢？不能光打印一下就完事了对吧</li>
+<li>那就是要重新查询该聊天窗口的消息，并返回给前端</li>
+<li>怎么查询？根据两用户的id查询：<strong>你给我发的消息，我给你发的消息</strong></li>
+</ul>
+</li>
+<li><h5 id="成功解决核心问题，基本实现了实时双向聊天通信功能-🌞🌞🌞🌞🌞"><a href="#成功解决核心问题，基本实现了实时双向聊天通信功能-🌞🌞🌞🌞🌞" class="headerlink" title="成功解决核心问题，基本实现了实时双向聊天通信功能 🌞🌞🌞🌞🌞"></a>成功解决核心问题，基本实现了实时双向聊天通信功能 🌞🌞🌞🌞🌞</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230916212327320.png" alt="image-20230916212327320"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230916212506289.png" alt="image-20230916212506289"></p>
+<ul>
+<li><h5 id="添加用户昵称或头像，在聊天中能分辨收发双方"><a href="#添加用户昵称或头像，在聊天中能分辨收发双方" class="headerlink" title="添加用户昵称或头像，在聊天中能分辨收发双方"></a>添加用户昵称或头像，在聊天中能分辨收发双方</h5></li>
+</ul>
+<h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
+<li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
+<li>实现流程：<ul>
+<li>进入聊天大厅，直接查询<strong>我的所有好友信息</strong></li>
+<li>聊天大厅直接以<strong>tab标签页</strong>的形式，展示了<strong>所有好友的聊天窗口</strong>，其中，各个<strong>tab页的key值为好友的id</strong></li>
+<li>点击私聊，<strong>携带好友id</strong>作为参数，从我的好友列表跳转至聊天大厅</li>
+<li>跳转至聊天大厅，直接<strong>获取传递的id参数</strong>，并<strong>将其值赋给tab页的 activeKey</strong></li>
+<li>tabs标签页默认<strong>选中key值为 activeKey</strong> 的tab页</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230916141753064.png" alt="image-20230916141753064"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230916141758222.png" alt="image-20230916141758222"></p>
+<ul>
+<li>接下来就是在各个聊天窗口，实现双向实时通信了</li>
+</ul>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="JSON转换错误"><a href="#JSON转换错误" class="headerlink" title="JSON转换错误"></a>JSON转换错误</h3><ul>
 <li><h5 id="前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息"><a href="#前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息" class="headerlink" title="前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息"></a>前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息</h5></li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//获得消息事件(获得服务端转发的消息)</span><br>    socket.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>        <span class="hljs-comment">// 封装返回消息</span><br>      receiveMsg.<span class="hljs-property">value</span> = msg.<span class="hljs-property">data</span>;<br>      <span class="hljs-comment">// 解构</span><br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;这条消息是发给: &quot;</span> + receiveMsg.<span class="hljs-property">value</span> + <span class="hljs-string">&quot; 的&quot;</span>)<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;这条消息是发给: &quot;</span> + receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">receiverId</span> + <span class="hljs-string">&quot; 的&quot;</span>)<br>      <span class="hljs-keyword">const</span> content = receiveMsg.<span class="hljs-property">value</span>.<span class="hljs-property">content</span>;<br>      <span class="hljs-comment">// 是否属于我的消息</span><br>      <span class="hljs-keyword">if</span> (receiverId === currentUserId) &#123;<br>        <span class="hljs-title function_">setMessage</span>(<span class="hljs-string">&quot;服务端回应: &quot;</span> + content + <span class="hljs-string">&quot;发给: &quot;</span> + receiverId);<br>      &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
@@ -1030,12 +1150,32 @@
 <ul>
 <li><h5 id="各种坑都能踩到，不过好在花点时间排错，都能解决掉-👏👏👏（2023-09-14晚）"><a href="#各种坑都能踩到，不过好在花点时间排错，都能解决掉-👏👏👏（2023-09-14晚）" class="headerlink" title="各种坑都能踩到，不过好在花点时间排错，都能解决掉 👏👏👏（2023/09/14晚）"></a>各种坑都能踩到，不过好在花点时间排错，都能解决掉 👏👏👏（2023/09/14晚）</h5></li>
 </ul>
+<h3 id="双向通信调试成功"><a href="#双向通信调试成功" class="headerlink" title="双向通信调试成功"></a>双向通信调试成功</h3><ul>
+<li>首先解决上面小坑，那个代码写的还有点问题，前端还得分两次校验是否为JSON字符串</li>
+<li>于是我把后端服务器首次响应时的响应结果，转换成JSON字符串了</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230915145545165.png" alt="image-20230915145545165"></p>
+<ul>
+<li>又写了好多打印输出代码，好歹完成了核心功能：<strong>服务器向指定用户转发消息</strong>（<strong>2023/09/15午</strong>）</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//获得消息事件(获得服务端转发的消息)</span><br> socket.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;收到消息！消息为: &quot;</span> + msg.<span class="hljs-property">data</span>)<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;消息格式为: &quot;</span> + <span class="hljs-keyword">typeof</span> (msg.<span class="hljs-property">data</span>))<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;消息发送者为: &quot;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>).<span class="hljs-property">senderId</span>)<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;消息内容为: &quot;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>).<span class="hljs-property">content</span>)<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;消息接收者为: &quot;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>).<span class="hljs-property">receiverId</span>)<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;您是: &quot;</span> + currentUserId)<br>   <span class="hljs-keyword">if</span>(currentUserId === <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>).<span class="hljs-property">receiverId</span>)&#123;<br>     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;很好，您是这条消息的接收者！&quot;</span>)<br>     <span class="hljs-title function_">setMessage</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>).<span class="hljs-property">senderId</span> + <span class="hljs-string">&quot;给您发送了一条消息: &quot;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">data</span>).<span class="hljs-property">content</span>)<br>   &#125;<br> &#125;;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230915145835165.png" alt="image-20230915145835165"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230915150018962.png" alt="image-20230915150018962"></p>
+<ul>
+<li><h5 id="这里还有好多小坑：（2023-09-15午）"><a href="#这里还有好多小坑：（2023-09-15午）" class="headerlink" title="这里还有好多小坑：（2023/09/15午）"></a>这里还有好多小坑：（2023/09/15午）</h5><ul>
+<li>服务器根据在线人数（即连接的客户端数量），决定转发多少条消息，所以控制台输出了不止一条消息（重复的消息）</li>
+<li>在socket服务下修改了代码之后，有时需<strong>重启浏览器</strong>才生效，这种情况还是第一次遇到</li>
+<li>当然了，为了测试实时双向通信，我分别开启了<strong>Edge浏览器和Goole浏览器</strong>进行测试</li>
+</ul>
+</li>
+</ul>
 <h3 id="部署和维护"><a href="#部署和维护" class="headerlink" title="部署和维护"></a>部署和维护</h3><ul>
 <li>列出将项目部署到生产环境所需的步骤和配置信息，包括服务器环境要求和数据库设置。</li>
 <li>提供项目的维护和支持方式，如bug提交、技术支持联系方式等。</li>
 </ul>
 <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h3 id="添加好友-1"><a href="#添加好友-1" class="headerlink" title="添加好友"></a>添加好友</h3><ul>
-<li>用户添加好友上限字段</li>
+<li>用户添加好友上限字段，一个用户应该有好友上限</li>
 <li>用户不应该直接添加好友，应该发送好友申请，待对方同意后，二者成为好友关系（<strong>如何判断？</strong>）</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">QueryWrapper&lt;Friends&gt; fqw = <span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();<br>   fqw.eq(<span class="hljs-string">&quot;user_id&quot;</span>, userId).eq(<span class="hljs-string">&quot;friend_id&quot;</span>, friend.getId());<br></code></pre></td></tr></table></figure>
@@ -1053,10 +1193,23 @@
 </ul>
 <h3 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h3><ul>
 <li>发出添加好友、申请入队请求后，抽屉关闭（？）</li>
-<li>用户在线问题需要优化，应该存放进Redis中，设置过期时间为 2hour</li>
+<li><strong>用户在线问题需要优化</strong>，应该存放进Redis中，设置过期时间为 2hour ，现在是直接从数据库中取得</li>
+<li>而最大的问题是，<strong>用户登录后，修改用户状态为在线</strong>，仅用户<strong>执行登出操作</strong>后，才会<strong>修改用户状态为下线</strong></li>
+<li>用户进入聊天页面，保持聊天窗口滚动条保持在最底部</li>
+<li>私聊时，展示用户昵称</li>
+<li>聊天消息目前是设置2hour后过期，这其实比较不合理，但是处于测试阶段，测试的通信记录开销还蛮大的，删了挺好</li>
+<li>日后再考虑如何优化：<strong>定期删除（7天）</strong> + <strong>用户手动清空聊天记录</strong>，这个更加合理 </li>
+<li><h5 id="聊天页面刷新，会拿不到登录用户的信息，待修复"><a href="#聊天页面刷新，会拿不到登录用户的信息，待修复" class="headerlink" title="聊天页面刷新，会拿不到登录用户的信息，待修复"></a>聊天页面刷新，会拿不到登录用户的信息，待修复</h5></li>
 </ul>
 <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
-<li>考虑封装一个RedisUtils，统一所有的Redis操作</li>
+<li>考虑封装一个RedisUtils，统一所有的 Redis 操作</li>
+</ul>
+<h3 id="Tab标签页"><a href="#Tab标签页" class="headerlink" title="Tab标签页"></a>Tab标签页</h3><ul>
+<li><h5 id="遇到了BUG，tab标签页的图标显示不出来，还想着在聊天窗口添加好友头像呢"><a href="#遇到了BUG，tab标签页的图标显示不出来，还想着在聊天窗口添加好友头像呢" class="headerlink" title="遇到了BUG，tab标签页的图标显示不出来，还想着在聊天窗口添加好友头像呢"></a>遇到了BUG，tab标签页的图标显示不出来，还想着在聊天窗口添加好友头像呢</h5></li>
+</ul>
+<h3 id="好友私聊-1"><a href="#好友私聊-1" class="headerlink" title="好友私聊"></a>好友私聊</h3><ul>
+<li>区分聊天双方，可以在聊天窗口内添加用户昵称，也可以实现：双方的消息气泡在窗口的不同侧</li>
+<li>收到消息可以弹出消息提示，提示未读消息</li>
 </ul>
 
                 
