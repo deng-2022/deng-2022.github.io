@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
 <meta property="article:published_time" content="2023-09-10T06:39:03.000Z">
-<meta property="article:modified_time" content="2023-09-10T06:41:22.000Z">
+<meta property="article:modified_time" content="2023-09-17T15:30:22.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          18k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          42 分钟
+          45 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：7 天前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -716,8 +716,29 @@
 <h3 id="队伍退出"><a href="#队伍退出" class="headerlink" title="队伍退出"></a>队伍退出</h3><h3 id="队内私聊"><a href="#队内私聊" class="headerlink" title="队内私聊"></a>队内私聊</h3><h3 id="队伍推荐"><a href="#队伍推荐" class="headerlink" title="队伍推荐"></a>队伍推荐</h3><ul>
 <li>即队伍成员可分享该队伍的信息，加大队伍曝光率</li>
 </ul>
-<h2 id="博客模块"><a href="#博客模块" class="headerlink" title="博客模块"></a>博客模块</h2><h3 id="发表博文"><a href="#发表博文" class="headerlink" title="发表博文"></a>发表博文</h3><h3 id="点赞博文"><a href="#点赞博文" class="headerlink" title="点赞博文"></a>点赞博文</h3><h3 id="收藏博文"><a href="#收藏博文" class="headerlink" title="收藏博文"></a>收藏博文</h3><h3 id="评论博文"><a href="#评论博文" class="headerlink" title="评论博文"></a>评论博文</h3><ul>
-<li></li>
+<h2 id="博客模块"><a href="#博客模块" class="headerlink" title="博客模块"></a>博客模块</h2><ul>
+<li>这个网站首页就应该是<strong>博客模块</strong></li>
+<li>创建博文表</li>
+</ul>
+<h3 id="博文展示"><a href="#博文展示" class="headerlink" title="博文展示"></a>博文展示</h3><ul>
+<li><p>可筛选最新博文、最热门博文、</p>
+</li>
+<li><p>展示所有博文</p>
+<ul>
+<li>博文卡片展示信息：标题、简介、标签、发布时间、点赞量、收藏量、评论量、作者头像</li>
+<li>点击进入博文详情页：与博文卡片展示内容相同，另附博文详细内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="发表博文"><a href="#发表博文" class="headerlink" title="发表博文"></a>发表博文</h3><ul>
+<li>用户可在博文编辑页，编辑博文：<ul>
+<li>标题、简介、标签、内容</li>
+<li>点击发表，发表博文；点击存入草稿，存入草稿</li>
+</ul>
+</li>
+</ul>
+<h3 id="点赞博文"><a href="#点赞博文" class="headerlink" title="点赞博文"></a>点赞博文</h3><h3 id="收藏博文"><a href="#收藏博文" class="headerlink" title="收藏博文"></a>收藏博文</h3><h3 id="评论博文"><a href="#评论博文" class="headerlink" title="评论博文"></a>评论博文</h3><ul>
+<li>核心</li>
 </ul>
 <h2 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h2><ul>
 <li>用于展示项目各个功能模块的界面设计，包括页面布局、交互流程和UI元素等。</li>
@@ -736,13 +757,13 @@
 <li>列出项目开发的计划和里程碑，包括每个功能模块的开发时间和测试时间。</li>
 </ul>
 <h3 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h3><ul>
-<li>实现主页页面的简单开发 的 ✔ </li>
+<li>实现主页页面的简单开发 的 ✔  <strong>（2023/09/11晚）</strong></li>
 <li>在线用户列表页、队伍信息页 ✔</li>
 </ul>
 <h3 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h3><ul>
 <li><p>用户登录页</p>
 <ul>
-<li>简单的实现了登录页的开发，用户需输入账户密码进行登录，这样作双向绑定：✔</li>
+<li>简单的实现了登录页的开发，用户需输入账户密码进行登录，这样作双向绑定：✔ <strong>（2023/09/10早）</strong></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-form-item label=&quot;用户名&quot; name=&quot;username&quot;<br>                   :rules=&quot;[&#123; required: true, message: &#x27;请输入用户名&#x27; &#125;]&quot;&gt;<br>        &lt;a-input :placeholder=&quot;&#x27;请输入用户名&#x27;&quot; v-model:value=&quot;userAccount&quot;/&gt;<br>      &lt;/a-form-item&gt;<br></code></pre></td></tr></table></figure>
 
@@ -804,7 +825,7 @@
 
 
 <h3 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h3><ul>
-<li>实现用户间互相添加好友，可在“我的好友”中查看 </li>
+<li>实现用户间互相添加好友，可在“我的好友”中查看 <strong>（2023/09/11晚）</strong></li>
 <li>用户申请加入队伍，可在“我的队伍”中查看</li>
 <li>用户创建队伍、退出队伍</li>
 <li>在线用户列表中，排除当前用户：</li>
@@ -865,7 +886,7 @@
 <li>在博客系统开发前，可以考虑将后端代码分模块</li>
 </ul>
 <ul>
-<li><h5 id="添加用户登录状态字段"><a href="#添加用户登录状态字段" class="headerlink" title="添加用户登录状态字段"></a>添加用户登录状态字段</h5></li>
+<li><h5 id="添加用户登录状态字段（2023-09-12早）"><a href="#添加用户登录状态字段（2023-09-12早）" class="headerlink" title="添加用户登录状态字段（2023/09/12早）"></a>添加用户登录状态字段（2023/09/12早）</h5></li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">is_online     <span class="hljs-type">int</span>                                    <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;是否在线&#x27;</span><br></code></pre></td></tr></table></figure>
 
@@ -937,7 +958,7 @@
 </ul>
 <h3 id="Day5"><a href="#Day5" class="headerlink" title="Day5"></a>Day5</h3><ul>
 <li>实现用户私聊，相关配置我已做好，详情可参考这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011974797/article/details/130055062">SpringBoot集成WebSocket进行前后端通信_谢小涛的博客-CSDN博客</a></li>
-<li>后续该功能完成后，会详细记录</li>
+<li><h5 id="后续该功能完成后，会详细记录-（2023-09-13早）"><a href="#后续该功能完成后，会详细记录-（2023-09-13早）" class="headerlink" title="后续该功能完成后，会详细记录 （2023/09/13早）"></a>后续该功能完成后，会详细记录 （2023/09/13早）</h5></li>
 </ul>
 <ul>
 <li><p>点击进入私聊，展示聊天信息</p>
@@ -960,7 +981,7 @@
 </li>
 </ul>
 <h3 id="Day6"><a href="#Day6" class="headerlink" title="Day6"></a>Day6</h3><ul>
-<li><h5 id="成功获取到存储在Redis中的信息"><a href="#成功获取到存储在Redis中的信息" class="headerlink" title="成功获取到存储在Redis中的信息"></a>成功获取到存储在Redis中的信息</h5></li>
+<li><h5 id="成功获取到存储在Redis中的信息（2023-09-14早）"><a href="#成功获取到存储在Redis中的信息（2023-09-14早）" class="headerlink" title="成功获取到存储在Redis中的信息（2023/09/14早）"></a>成功获取到存储在Redis中的信息（2023/09/14早）</h5></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">msgJson</span> <span class="hljs-operator">=</span> (String) redisTemplate.opsForValue().get(<span class="hljs-string">&quot;memory:user:message:&quot;</span> + loginUserId);<br>        <span class="hljs-type">Gson</span> <span class="hljs-variable">gson</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br>        <span class="hljs-type">Message</span> <span class="hljs-variable">message</span> <span class="hljs-operator">=</span> gson.fromJson(msgJson, Message.class);<br>        <span class="hljs-keyword">if</span> (message == <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br><br>        <span class="hljs-keyword">return</span> message;<br></code></pre></td></tr></table></figure>
 
@@ -999,7 +1020,7 @@
 
 
 <h3 id="Day7"><a href="#Day7" class="headerlink" title="Day7"></a>Day7</h3><ul>
-<li><p>实时双向通信终于测试成功，详情可见 <strong>踩坑记录</strong> 栏目的 <strong>双向通信调试成功</strong></p>
+<li><p>实时双向通信终于测试成功，详情可见 <strong>踩坑记录</strong> 栏目的 **双向通信调试成功 ** <strong>（2023/09/15早）</strong></p>
 </li>
 <li><p>完成用户私聊功能、完善组队功能，开发队伍聊天功能</p>
 </li>
@@ -1052,7 +1073,7 @@
 </li>
 </ul>
 <ul>
-<li><p>好友列表 点击 <strong>私聊</strong> 跳转至聊天大厅的特定聊天窗口处</p>
+<li><p>好友列表 点击 <strong>私聊</strong> 跳转至聊天大厅的特定聊天窗口处<strong>（2023/09/16早）</strong></p>
 <ul>
 <li>传递好友id，聊天大厅 tab页接收id参数</li>
 </ul>
@@ -1099,6 +1120,79 @@
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230916212506289.png" alt="image-20230916212506289"></p>
 <ul>
 <li><h5 id="添加用户昵称或头像，在聊天中能分辨收发双方"><a href="#添加用户昵称或头像，在聊天中能分辨收发双方" class="headerlink" title="添加用户昵称或头像，在聊天中能分辨收发双方"></a>添加用户昵称或头像，在聊天中能分辨收发双方</h5></li>
+</ul>
+<h3 id="Day9"><a href="#Day9" class="headerlink" title="Day9"></a>Day9</h3><ul>
+<li><h5 id="了解Java并发编程，批量插入用户数据（2023-09-17晚）"><a href="#了解Java并发编程，批量插入用户数据（2023-09-17晚）" class="headerlink" title="了解Java并发编程，批量插入用户数据（2023/09/17晚）"></a>了解Java并发编程，批量插入用户数据（2023/09/17晚）</h5></li>
+<li><p>每周推荐用户：</p>
+<ul>
+<li>相似度匹配算法</li>
+<li>根据用户标签，对比标签的相似度，得出相似度降序排行，取出前5条数据，即每周推荐用户为5个</li>
+<li>如何实现每周推荐5个呢？写个定时任务，只要服务器开启，每隔一周查询一次相似用户，并更新到数据库中</li>
+</ul>
+</li>
+<li><p>实现用户推荐，改为了这样的实现：</p>
+<ul>
+<li><p>获取推荐用户列表</p>
+</li>
+<li><h5 id="如果成功从缓存中获取，则返回；否则查询数据库，更新缓存，设置7天过期"><a href="#如果成功从缓存中获取，则返回；否则查询数据库，更新缓存，设置7天过期" class="headerlink" title="如果成功从缓存中获取，则返回；否则查询数据库，更新缓存，设置7天过期"></a>如果成功从缓存中获取，则返回；否则查询数据库，更新缓存，设置7天过期</h5></li>
+<li><p>这样也巧妙的实现了每周推荐，不需要写定时任务了</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>解决刷新chatPage.vue页后，当前页登录用户获取失败的问题</p>
+</li>
+<li><p>进入聊天大厅，自动连接服务器，提供双向实时通信服务</p>
+</li>
+<li><h5 id="计划开发博文分享页了，参考这个："><a href="#计划开发博文分享页了，参考这个：" class="headerlink" title="计划开发博文分享页了，参考这个："></a>计划开发博文分享页了，参考这个：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230917230332243.png" alt="image-20230917230332243"></p>
+<ul>
+<li>思考设计博文表，同时优化通信功能<strong>（2023/09/17晚）</strong></li>
+</ul>
+<h3 id="优化页面计划："><a href="#优化页面计划：" class="headerlink" title="优化页面计划："></a>优化页面计划：</h3><ul>
+<li>页头，不使用 <strong>a-page-header 组件</strong>了，自己加个毛玻璃效果挺好看的</li>
+<li><a target="_blank" rel="noopener" href="http://zhongguose.com/#luanshizi">卵石紫 - 中国色 - 中国传统颜色 (zhongguose.com)</a></li>
+</ul>
+<h3 id="Day10："><a href="#Day10：" class="headerlink" title="Day10："></a>Day10：</h3><ul>
+<li><h5 id="博客表的创建：SQL之父"><a href="#博客表的创建：SQL之父" class="headerlink" title="博客表的创建：SQL之父"></a>博客表的创建：SQL之父</h5></li>
+<li><p>博客列表展示：</p>
+<ul>
+<li>添加测试数据，设计简单的博客页展示</li>
+</ul>
+</li>
+<li><p>优化每周推荐用户列表展示</p>
+</li>
+<li><p>优化实时双向通信体验</p>
+</li>
+</ul>
+<ul>
+<li><h5 id="用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功"><a href="#用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功" class="headerlink" title="用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功"></a>用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功</h5></li>
+</ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-regexp">//</span> 获取推荐用户<br>const getMatchUserList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>  myAxios.get(<span class="hljs-string">&quot;/user/match&quot;</span>, &#123;<br>    params: &#123;<br>      matchNum: matchNum.value<br>    &#125;<br>  &#125;).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(res.data !== <span class="hljs-literal">null</span>)&#123;<br>      matchUserList.value = res.data.records;<br>    &#125;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="未登录，获取的推荐用户即为空，设置下为空时的页面展示即可"><a href="#未登录，获取的推荐用户即为空，设置下为空时的页面展示即可" class="headerlink" title="未登录，获取的推荐用户即为空，设置下为空时的页面展示即可"></a>未登录，获取的推荐用户即为空，设置下为空时的页面展示即可</h5></li>
+<li><h5 id="测试成功，获取所有博文列表："><a href="#测试成功，获取所有博文列表：" class="headerlink" title="测试成功，获取所有博文列表："></a>测试成功，获取所有博文列表：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918134952276.png" alt="image-20230918134952276"></p>
+<ul>
+<li><h5 id="解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）"><a href="#解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）" class="headerlink" title="解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）"></a>解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）</h5></li>
+</ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> install --save @ant-design/icons-vue<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下："><a href="#成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下：" class="headerlink" title="成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下："></a>成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918195353981.png" alt="image-20230918195353981"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918195402432.png" alt="image-20230918195402432"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918195407229.png" alt="image-20230918195407229"></p>
+<ul>
+<li><h5 id="博文发布："><a href="#博文发布：" class="headerlink" title="博文发布："></a>博文发布：</h5><ul>
+<li>用户可以在博文编辑页，编写博文，并发布</li>
+</ul>
+</li>
 </ul>
 <h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
 <li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
@@ -1210,6 +1304,7 @@
 <h3 id="好友私聊-1"><a href="#好友私聊-1" class="headerlink" title="好友私聊"></a>好友私聊</h3><ul>
 <li>区分聊天双方，可以在聊天窗口内添加用户昵称，也可以实现：双方的消息气泡在窗口的不同侧</li>
 <li>收到消息可以弹出消息提示，提示未读消息</li>
+<li>刷新聊天大厅，与服务器的连接丢失</li>
 </ul>
 
                 
@@ -1284,7 +1379,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年9月10日</div>
+          <div>2023年9月17日</div>
         </div>
       
       
