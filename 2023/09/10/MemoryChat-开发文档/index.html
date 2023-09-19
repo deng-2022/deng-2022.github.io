@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          20k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          45 分钟
+          50 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -1170,13 +1170,13 @@
 <ul>
 <li><h5 id="用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功"><a href="#用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功" class="headerlink" title="用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功"></a>用户未登录时，拿取推荐列表报错，需校验当前用户是否登录成功</h5></li>
 </ul>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-regexp">//</span> 获取推荐用户<br>const getMatchUserList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>  myAxios.get(<span class="hljs-string">&quot;/user/match&quot;</span>, &#123;<br>    params: &#123;<br>      matchNum: matchNum.value<br>    &#125;<br>  &#125;).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(res.data !== <span class="hljs-literal">null</span>)&#123;<br>      matchUserList.value = res.data.records;<br>    &#125;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 获取推荐用户</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getMatchUserList</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  myAxios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/user/match&quot;</span>, &#123;<br>    <span class="hljs-attr">params</span>: &#123;<br>      <span class="hljs-attr">matchNum</span>: matchNum.<span class="hljs-property">value</span><br>    &#125;<br>  &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(res.<span class="hljs-property">data</span> !== <span class="hljs-literal">null</span>)&#123;<br>      matchUserList.<span class="hljs-property">value</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">records</span>;<br>    &#125;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="未登录，获取的推荐用户即为空，设置下为空时的页面展示即可"><a href="#未登录，获取的推荐用户即为空，设置下为空时的页面展示即可" class="headerlink" title="未登录，获取的推荐用户即为空，设置下为空时的页面展示即可"></a>未登录，获取的推荐用户即为空，设置下为空时的页面展示即可</h5></li>
 <li><h5 id="测试成功，获取所有博文列表："><a href="#测试成功，获取所有博文列表：" class="headerlink" title="测试成功，获取所有博文列表："></a>测试成功，获取所有博文列表：</h5></li>
 </ul>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918134952276.png" alt="image-20230918134952276"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230918134952276.png" alt="image-20230918134952276"></p>
 <ul>
 <li><h5 id="解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）"><a href="#解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）" class="headerlink" title="解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）"></a>解决了icon图标不显示的问题，原来还要安装相关依赖才可以（看官网）</h5></li>
 </ul>
@@ -1185,15 +1185,46 @@
 <ul>
 <li><h5 id="成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下："><a href="#成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下：" class="headerlink" title="成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下："></a>成功完成了页头的优化（导航栏透明、简洁、大方，且提供界面之间的来回跳转），还添加了渐变的背景色，效果如下：</h5></li>
 </ul>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918195353981.png" alt="image-20230918195353981"></p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918195402432.png" alt="image-20230918195402432"></p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230918195407229.png" alt="image-20230918195407229"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230918195353981.png" alt="image-20230918195353981"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230918195402432.png" alt="image-20230918195402432"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230918195407229.png" alt="image-20230918195407229"></p>
 <ul>
 <li><h5 id="博文发布："><a href="#博文发布：" class="headerlink" title="博文发布："></a>博文发布：</h5><ul>
 <li>用户可以在博文编辑页，编写博文，并发布</li>
 </ul>
 </li>
 </ul>
+<h3 id="Day11"><a href="#Day11" class="headerlink" title="Day11"></a>Day11</h3><ul>
+<li><p>实现计算<strong>每周匹配用户的匹配度</strong></p>
+<ul>
+<li><h5 id="编辑距离算法计算编辑距离"><a href="#编辑距离算法计算编辑距离" class="headerlink" title="编辑距离算法计算编辑距离"></a>编辑距离算法计算编辑距离</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 计算编辑距离</span><br><span class="hljs-type">long</span> <span class="hljs-variable">distance</span> <span class="hljs-operator">=</span> AlgorithmUtils.minDistance(tagList, userTagList)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="根据最大编辑距离和最小编辑距离，计算匹配度"><a href="#根据最大编辑距离和最小编辑距离，计算匹配度" class="headerlink" title="根据最大编辑距离和最小编辑距离，计算匹配度"></a>根据最大编辑距离和最小编辑距离，计算匹配度</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 计算匹配度</span><br><span class="hljs-type">double</span> <span class="hljs-variable">percentage</span> <span class="hljs-operator">=</span> getPercentage(distance);<br> <br> <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 计算匹配度</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> distance 编辑距离</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span> 匹配度</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getPercentage</span><span class="hljs-params">(<span class="hljs-type">long</span> distance)</span> &#123;<br>       <span class="hljs-comment">// 计算匹配度的百分比</span><br>       <span class="hljs-keyword">return</span> (<span class="hljs-number">1</span> - (distance - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE)) * <span class="hljs-number">100</span>;<br>   &#125;<br>  <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="封装-UserVO-类，添加匹配度percentage字段"><a href="#封装-UserVO-类，添加匹配度percentage字段" class="headerlink" title="封装 UserVO 类，添加匹配度percentage字段"></a>封装 UserVO 类，添加匹配度percentage字段</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserVO</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> percentage;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="userList-转换-userVOList"><a href="#userList-转换-userVOList" class="headerlink" title="userList 转换 userVOList"></a>userList 转换 userVOList</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 转换 userList 为 userVOList</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> userList userList</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> teamVOList</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">public</span> List&lt;UserVO&gt; <span class="hljs-title function_">getUserVOByUser</span><span class="hljs-params">(List&lt;User&gt; userList, List&lt;Double&gt; distanceList)</span> &#123;<br>      <span class="hljs-keyword">return</span> IntStream.range(<span class="hljs-number">0</span>, userList.size())<br>              .mapToObj(i -&gt; &#123;<br>                  <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> userList.get(i);<br>                  <span class="hljs-type">double</span> <span class="hljs-variable">distance</span> <span class="hljs-operator">=</span> distanceList.get(i);<br>  <br>                  <span class="hljs-type">UserVO</span> <span class="hljs-variable">userVO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserVO</span>();<br>                  userVO.setPercentage(distance);<br>                  userVO.setId(user.getId());<br>                  userVO.setUserAccount(user.getUserAccount());<br>                  userVO.setUsername(user.getUsername());<br>                  userVO.setUserPassword(user.getUserPassword());<br>                  userVO.setAvatarUrl(user.getAvatarUrl());<br>                  userVO.setGender(user.getGender());<br>                  userVO.setPhone(user.getPhone());<br>                  userVO.setEmail(user.getEmail());<br>                  userVO.setUserStatus(user.getUserStatus());<br>                  userVO.setIsOnline(user.getIsOnline());<br>                  userVO.setCreateTime(user.getCreateTime());<br>                  userVO.setUpdateTime(user.getUpdateTime());<br>                  userVO.setIsDelete(user.getIsDelete());<br>                  userVO.setUserRole(user.getUserRole());<br>                  userVO.setPlanetCode(user.getPlanetCode());<br>                  userVO.setTags(user.getTags());<br>                  userVO.setProfile(user.getProfile());<br>  <br>                  <span class="hljs-keyword">return</span> userVO;<br>              &#125;)<br>              .collect(Collectors.toList());<br>  &#125;<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="将匹配度百分比保留了小数点后两位："><a href="#将匹配度百分比保留了小数点后两位：" class="headerlink" title="将匹配度百分比保留了小数点后两位："></a>将匹配度百分比保留了小数点后两位：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 计算匹配度</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> distance 编辑距离</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span> 匹配度</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getPercentage</span><span class="hljs-params">(<span class="hljs-type">long</span> distance)</span> &#123;<br>       <span class="hljs-comment">// 计算匹配度的百分比</span><br>       <span class="hljs-type">double</span> <span class="hljs-variable">percentage</span> <span class="hljs-operator">=</span> (<span class="hljs-number">1</span> - (distance - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE)) * <span class="hljs-number">100</span>;<br>       <span class="hljs-comment">// 将 double 数据保留小数点后两位，并转换为字符串</span><br>       <span class="hljs-type">String</span> <span class="hljs-variable">formattedNumber</span> <span class="hljs-operator">=</span> String.format(<span class="hljs-string">&quot;%.2f&quot;</span>, percentage);<br>       System.out.println(formattedNumber);<br>       <span class="hljs-comment">// 将String转换为Double</span><br>       <span class="hljs-keyword">return</span> Double.parseDouble(formattedNumber);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 <h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
 <li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
 <li>实现流程：<ul>
@@ -1205,8 +1236,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230916141753064.png" alt="image-20230916141753064"></p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230916141758222.png" alt="image-20230916141758222"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230916141753064.png" alt="image-20230916141753064"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230916141758222.png" alt="image-20230916141758222"></p>
 <ul>
 <li>接下来就是在各个聊天窗口，实现双向实时通信了</li>
 </ul>

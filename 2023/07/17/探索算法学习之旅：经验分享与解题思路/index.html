@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          53k 字
+          54k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          134 分钟
+          136 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：3 天前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -1328,7 +1328,29 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 缺失数字</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> a</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">solve</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a)</span> &#123;<br>       <span class="hljs-comment">// write code here</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> a.length - <span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>           <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) / <span class="hljs-number">2</span>;<br>           <span class="hljs-keyword">if</span> (a[mid] == mid) &#123;<br>               left = mid + <span class="hljs-number">1</span>;<br>           &#125; <span class="hljs-keyword">else</span> &#123;<br>               right = mid;<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> left;<br>   &#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="优化求平方根"><a href="#优化求平方根" class="headerlink" title="优化求平方根"></a>优化求平方根</h4><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="基础知识（青铜挑战）-7"><a href="#基础知识（青铜挑战）-7" class="headerlink" title="基础知识（青铜挑战）"></a>基础知识（青铜挑战）</h3>
+<h4 id="优化求平方根"><a href="#优化求平方根" class="headerlink" title="优化求平方根"></a>优化求平方根</h4><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="基础知识（青铜挑战）-7"><a href="#基础知识（青铜挑战）-7" class="headerlink" title="基础知识（青铜挑战）"></a>基础知识（青铜挑战）</h3><ul>
+<li><p>快速排序通过多次比较与交换来完成排序。而这个过程又被分为了多次重复单趟排序，接下来我们先从每一趟的排序讲起。</p>
+</li>
+<li><p>快速排序思想很简单，也很重要：</p>
+</li>
+<li><p>在一个无序数组中取一个数key，每一趟排序的最终目的是：让key的左边的所有数小于key，key的右边都大于key（假设排升序）</p>
+</li>
+<li><p> 接下来，我们对key的左右区间进行单趟排序，可以预见的是，每次排序都固定好了一个数。而当我们对细分的左右区间进行单趟排序，最终整个数组都会化为有序</p>
+</li>
+<li><p>最常用的快排实现方法：<strong>快慢指针法</strong></p>
+<ul>
+<li>取最左边的数为key</li>
+<li>定义两个快慢指针，都从key的下一位往右走</li>
+<li>ast每走一步判断一下它指向的元素是否小于key，若小于则交换fast和slow位置的元素，并且让slow向前走</li>
+<li>直到fast走到底，结束循环</li>
+<li>最后让slow和key位置的值交换，再返回key的位置</li>
+</ul>
+</li>
+<li><h5 id="具体代码如下：（2023-09-19午）"><a href="#具体代码如下：（2023-09-19午）" class="headerlink" title="具体代码如下：（2023/09/19午）"></a>具体代码如下：（2023/09/19午）</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>        <span class="hljs-comment">// 判断递归结束的条件</span><br>        <span class="hljs-keyword">if</span> (start &gt;= end) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 选定最左边的元素作为基准值</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">pivot</span> <span class="hljs-operator">=</span> nums[start];<br>        <span class="hljs-comment">// 初始化快慢指针</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> start;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> start + <span class="hljs-number">1</span>;<br><br>        <span class="hljs-comment">// 快慢指针法进行划分</span><br>        <span class="hljs-keyword">while</span> (fast &lt;= end) &#123;<br>            <span class="hljs-keyword">if</span> (nums[fast] &lt; pivot) &#123;<br>                <span class="hljs-comment">// 如果当前元素小于基准值，将其交换到基准值的左侧</span><br>                slow++;<br>                swap(nums, slow, fast);<br>            &#125;<br>            fast++;<br>        &#125;<br>        <span class="hljs-comment">// 将基准值交换到正确的位置</span><br>        swap(nums, start, slow);<br><br>        <span class="hljs-comment">// 递归对基准值的左右两部分进行排序</span><br>        quickSort(nums, start, slow - <span class="hljs-number">1</span>);<br>        quickSort(nums, slow + <span class="hljs-number">1</span>, end);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> nums[i];<br>        nums[i] = nums[j];<br>        nums[j] = temp;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
