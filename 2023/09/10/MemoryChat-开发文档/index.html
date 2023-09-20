@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k 字
+          22k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          52 分钟
+          55 分钟
         
       </span>
     
@@ -1260,6 +1260,39 @@
 </ul>
 </li>
 </ul>
+<h3 id="Day12"><a href="#Day12" class="headerlink" title="Day12"></a>Day12</h3><ul>
+<li>彻底解决刷新页面后，连接丢失的问题</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 监听 activeKey 的变化，更新存储中的值</span><br><span class="hljs-title function_">watch</span>(currentUserId, <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;currentId&#x27;</span>, value);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如上，我将currentId存放进localStorage中，这样在页面刷新后，可以从localStorage中取到当前用户id，重新发起连接</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 钩子函数</span><br><span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  currentUserId = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;currentId&#x27;</span>)<br><span class="hljs-comment">// 主动连接</span><br>  <span class="hljs-title function_">openSocket</span>(currentUserId);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 连接服务器</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">openSocket</span>(<span class="hljs-params">Id</span>) &#123;<br> .......................<br><br>    <span class="hljs-comment">//指定要连接的服务器地址与端口</span><br>    <span class="hljs-keyword">const</span> socketUrl = <span class="hljs-string">`ws://localhost:8081/api/websocket/<span class="hljs-subst">$&#123;Id&#125;</span>`</span>;<br>    <span class="hljs-keyword">if</span> (socket != <span class="hljs-literal">null</span>) &#123;<br>      socket.<span class="hljs-title function_">close</span>();<br>      socket = <span class="hljs-literal">null</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 实例化WebSocket对象，建立连接</span><br>    socket = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebSocket</span>(socketUrl);<br>    <br> ................................<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>页面刷新之后，选中刚刚选中的tab页：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 监听 activeKey 的变化，更新存储中的值</span><br><span class="hljs-title function_">watch</span>(activeKey, <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;activeKey&#x27;</span>, value);<br>&#125;);<br><br>activeKey.<span class="hljs-property">value</span> = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;activeKey&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>回收前面的解决连接丢失的问题，因为直接这行代码就没问题：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 主动连接</span><br><span class="hljs-title function_">openSocket</span>(currentUserId);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="真奇了怪了，一直都是这样写的，一直有问题，现在倒好，突然没问题了，连接不丢失了"><a href="#真奇了怪了，一直都是这样写的，一直有问题，现在倒好，突然没问题了，连接不丢失了" class="headerlink" title="真奇了怪了，一直都是这样写的，一直有问题，现在倒好，突然没问题了，连接不丢失了"></a>真奇了怪了，一直都是这样写的，一直有问题，现在倒好，突然没问题了，连接不丢失了</h5></li>
+<li><p>难道是因为我之前多查询了下当前登录用户吗？</p>
+</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-title function_">getCurrentUser</span>();<br><span class="hljs-comment">// 主动连接</span><br><span class="hljs-title function_">openSocket</span>(currentUserId);<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
 <li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
 <li>实现流程：<ul>
