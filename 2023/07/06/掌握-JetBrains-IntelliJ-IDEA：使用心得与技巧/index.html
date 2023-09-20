@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/girl7.jpg">
 <meta property="article:published_time" content="2023-07-06T09:56:20.000Z">
-<meta property="article:modified_time" content="2023-08-20T14:17:43.000Z">
+<meta property="article:modified_time" content="2023-09-20T11:53:43.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="IDEA">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.3k 字
+          9.3k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          21 分钟
+          24 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -610,6 +610,34 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test5</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// 1.两个BigDecimal对象</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">dec1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;1.3&quot;</span>);<br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">dec2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;1.3&quot;</span>);<br>      <br>      <span class="hljs-comment">// 2.加减乘除</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">add</span> <span class="hljs-operator">=</span> dec1.add(dec2);<br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">subtract</span> <span class="hljs-operator">=</span> dec1.subtract(dec2);<br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">multiply</span> <span class="hljs-operator">=</span> dec1.multiply(dec2);<br>      <br>      <span class="hljs-comment">// 3.设置精度</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">divide</span> <span class="hljs-operator">=</span> dec1.divide(dec2).setScale(<span class="hljs-number">3</span>, RoundingMode.HALF_DOWN);<br>      <br>      out.println(add);<br>      out.println(subtract);<br>      out.println(multiply);<br>      System.out.println(divide);<br>      <br>      <span class="hljs-comment">// 4.去掉末尾的0</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">bigDecimal</span> <span class="hljs-operator">=</span> divide.stripTrailingZeros();<br>      out.println(bigDecimal);<br>      <br>      <span class="hljs-comment">// 5.转换为Double</span><br>      <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;1888977466432.1241341341413414&quot;</span>);<br>      <span class="hljs-type">double</span> <span class="hljs-variable">doubleValue</span> <span class="hljs-operator">=</span> value.doubleValue();<br>      out.println(doubleValue);<br>      <span class="hljs-type">double</span> <span class="hljs-variable">doubleValue1</span> <span class="hljs-operator">=</span> value.toBigInteger().doubleValue();<br>      out.println(doubleValue1);<br>      <br>      <span class="hljs-comment">// 6.比较大小</span><br>      out.println(add.compareTo(subtract) &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;add大于sub&quot;</span> : <span class="hljs-string">&quot;add小于sub&quot;</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
 
+<h3 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/haohaiyou/p/16806399.html">JAVA 数组转字符串 - 一只忙碌的蜗牛 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35939148/article/details/131495097">Java中数组转字符串的五种方式效率比较_java数组转字符串_likaistart的博客-CSDN博客</a></li>
+<li><h5 id="数组如何转字符串？我们有好多种方案"><a href="#数组如何转字符串？我们有好多种方案" class="headerlink" title="数组如何转字符串？我们有好多种方案"></a>数组如何转字符串？我们有好多种方案</h5></li>
+<li><h5 id="我们经常能遇到这样的情景："><a href="#我们经常能遇到这样的情景：" class="headerlink" title="我们经常能遇到这样的情景："></a>我们经常能遇到这样的情景：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建一个List</span><br>List&lt;String&gt; list = Arrays.asList(<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Cherry&quot;</span>, <span class="hljs-string">&quot;Date&quot;</span>, <span class="hljs-string">&quot;Elderberry&quot;</span>);<br><span class="hljs-comment">// 创建一个String数组</span><br>String[] arr = &#123;<span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;5&quot;</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="如果是List，则有如下转字符串的方法：（2023-09-20晚）"><a href="#如果是List，则有如下转字符串的方法：（2023-09-20晚）" class="headerlink" title="如果是List，则有如下转字符串的方法：（2023/09/20晚）"></a>如果是List，则有如下转字符串的方法：（2023/09/20晚）</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// stream流</span><br><span class="hljs-type">String</span> <span class="hljs-variable">collect</span> <span class="hljs-operator">=</span> list.stream().collect(Collectors.joining(<span class="hljs-string">&quot;,&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//org.apache.commons.lang3包</span><br><span class="hljs-type">String</span> <span class="hljs-variable">join</span> <span class="hljs-operator">=</span>  StringUtils.join(longList, <span class="hljs-string">&quot;,&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// StringBuilder</span><br><span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; list.size(); i++) &#123;<br>            sb.append(i);<br>            <span class="hljs-keyword">if</span> (i &lt; list.size() - <span class="hljs-number">1</span>) &#123;<br>                sb.append(<span class="hljs-string">&quot;,&quot;</span>);<br>         &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// String.join</span><br><span class="hljs-type">String</span> <span class="hljs-variable">join</span> <span class="hljs-operator">=</span> String.join(<span class="hljs-string">&quot;,&quot;</span>, list);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>以上方法，转换所消耗的<strong>时间越来越少</strong>，<strong>效率越来越高</strong></p>
+</li>
+<li><h5 id="如果是String-，则有如下转字符串的方法：（2023-09-20晚）"><a href="#如果是String-，则有如下转字符串的方法：（2023-09-20晚）" class="headerlink" title="如果是String[]，则有如下转字符串的方法：（2023/09/20晚）"></a>如果是String[]，则有如下转字符串的方法：（2023/09/20晚）</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//org.apache.commons.lang3包</span><br><span class="hljs-type">String</span> <span class="hljs-variable">join</span> <span class="hljs-operator">=</span>  StringUtils.join(longList, <span class="hljs-string">&quot;,&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// String.join</span><br><span class="hljs-type">String</span> <span class="hljs-variable">join</span> <span class="hljs-operator">=</span> String.join(<span class="hljs-string">&quot;,&quot;</span>, list);<br></code></pre></td></tr></table></figure>
+
 <h2 id="良心插件"><a href="#良心插件" class="headerlink" title="良心插件"></a>良心插件</h2><h3 id="carbon-now-sh"><a href="#carbon-now-sh" class="headerlink" title="carbon-now-sh"></a>carbon-now-sh</h3><ul>
 <li><h5 id="carbon-now-sh：代码贴图工具（2023-08-20晚）"><a href="#carbon-now-sh：代码贴图工具（2023-08-20晚）" class="headerlink" title="carbon-now-sh：代码贴图工具（2023/08/20晚）"></a>carbon-now-sh：代码贴图工具（2023/08/20晚）</h5></li>
 <li><p>选择一段代码，右键菜单点击 Open in carbon.now.sh：</p>
@@ -707,7 +735,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月20日</div>
+          <div>2023年9月20日</div>
         </div>
       
       

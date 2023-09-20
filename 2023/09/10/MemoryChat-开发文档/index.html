@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          20k 字
+          21k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          50 分钟
+          52 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -1221,10 +1221,45 @@
 
 
 
+<ul>
+<li>已成功定位到相关问题：<ul>
+<li>在聊天大厅刷新页面后，向后端发送获取聊天记录列表时，<strong>没有携带当前登录用户id</strong>，<strong>即senderId = null</strong></li>
+<li>这里发现一个问题：<ul>
+<li>之前的聊天页面，只能通过点击私聊才能跳转，而跳转时，路由中是携带了聊天对象的id</li>
+<li>在经过页面更新以后，可以直接从主页面或者博客页面跳转，这时候就没有聊天用户id了</li>
+<li>所以传获取消息时，receiverId参数总为undefined</li>
+</ul>
+</li>
+<li>解决办法：<ul>
+<li>对于私聊跳转，页面刷新，<strong>不能依赖于获取路由参数</strong>，而应该<strong>事先将变量保存</strong>，直接取到变量值即可</li>
+<li>而对于大厅跳转，则应该根据选中的tab标签页，获取对应key值</li>
+<li>应该做好<strong>tab标签页key值</strong>的<strong>初始化以及动态更新</strong>的工作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>根本解决不了，就应该在聊天大厅新增一个页面或窗口，<strong>大厅跳转进来是直接选中这个窗口的</strong>，</p>
+</li>
+<li><p>然后通过选中tab标签页，给activeKey赋值，这时候刷新页面就能停留在对应标签页上了</p>
+</li>
+<li><p>好极了，新增文件传输助手，页面跳转直接选中该tab标签页：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-tab-pane v-model:activeKey=&quot;activeKey&quot; :key=&quot;currentUserId&quot; tab=&quot;文件传输助手&quot;<br>                      @click=&quot;handleTabChange&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// tab页 key</span><br><span class="hljs-keyword">const</span> activeKey = <span class="hljs-title function_">ref</span>(currentUserId);<br></code></pre></td></tr></table></figure>
 
 
 
-
+<ul>
+<li>何时跳转文件传输助手页？<ul>
+<li>其他大厅首次跳转，进入聊天大厅页面，即 chatTabName.value.chatTabName === undefined</li>
+<li>刷新页面，仅当当前 activeId 为currentId时</li>
+</ul>
+</li>
+</ul>
 <h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
 <li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
 <li>实现流程：<ul>
@@ -1325,6 +1360,7 @@
 <li>聊天消息目前是设置2hour后过期，这其实比较不合理，但是处于测试阶段，测试的通信记录开销还蛮大的，删了挺好</li>
 <li>日后再考虑如何优化：<strong>定期删除（7天）</strong> + <strong>用户手动清空聊天记录</strong>，这个更加合理 </li>
 <li><h5 id="聊天页面刷新，会拿不到登录用户的信息，待修复"><a href="#聊天页面刷新，会拿不到登录用户的信息，待修复" class="headerlink" title="聊天页面刷新，会拿不到登录用户的信息，待修复"></a>聊天页面刷新，会拿不到登录用户的信息，待修复</h5></li>
+<li>私聊操作应该更加多元化，可以发送<strong>文本消息</strong>、<strong>表情</strong>、甚至是<strong>收发文件</strong></li>
 </ul>
 <h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
 <li>考虑封装一个RedisUtils，统一所有的 Redis 操作</li>

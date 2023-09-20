@@ -16,15 +16,22 @@
   <meta name="author" content="Memory">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="构建强大的搜索引擎,Elasticsearch入门到精通的完整学习指南">
+<meta property="og:type" content="article">
 <meta property="og:title" content="揭秘Elasticsearch的神奇能力：从数据搜索到实时分析的终极指南">
 <meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/09/19/%E6%8F%AD%E7%A7%98Elasticsearch%E7%9A%84%E7%A5%9E%E5%A5%87%E8%83%BD%E5%8A%9B%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%90%9C%E7%B4%A2%E5%88%B0%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="构建强大的搜索引擎,Elasticsearch入门到精通的完整学习指南">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/girl5.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
-<meta property="article:modified_time" content="2023-09-19T13:42:50.077Z">
+<meta property="article:modified_time" content="2023-09-20T04:10:50.000Z">
 <meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="Elasticsearch">
+<meta property="article:tag" content="Kibana">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/girl5.jpg">
   
   
   
@@ -249,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          29k 字
         
       </span>
     
@@ -260,7 +267,7 @@
         
         
         
-          1 分钟
+          72 分钟
         
       </span>
     
@@ -298,6 +305,120 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Elasticsearch"
+        id="heading-45e23a169652aaf95ce80da844f3df0d" role="tab" data-toggle="collapse" href="#collapse-45e23a169652aaf95ce80da844f3df0d"
+        aria-expanded="true"
+      >
+        Elasticsearch
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-45e23a169652aaf95ce80da844f3df0d"
+           role="tabpanel" aria-labelledby="heading-45e23a169652aaf95ce80da844f3df0d">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Kibana"
+        id="heading-5228fdd6f613af63fc73ee7c02ef8fb5" role="tab" data-toggle="collapse" href="#collapse-5228fdd6f613af63fc73ee7c02ef8fb5"
+        aria-expanded="true"
+      >
+        Kibana
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-5228fdd6f613af63fc73ee7c02ef8fb5"
+           role="tabpanel" aria-labelledby="heading-5228fdd6f613af63fc73ee7c02ef8fb5">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="true"
+      >
+        经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/09/19/%E6%8F%AD%E7%A7%98Elasticsearch%E7%9A%84%E7%A5%9E%E5%A5%87%E8%83%BD%E5%8A%9B%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%90%9C%E7%B4%A2%E5%88%B0%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="揭秘Elasticsearch的神奇能力：从数据搜索到实时分析的终极指南"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">揭秘Elasticsearch的神奇能力：从数据搜索到实时分析的终极指南</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -311,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：几秒前
+                    本文最后更新于：8 小时前
                   
                 
               </p>
@@ -319,7 +440,849 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><h3 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h3><ul>
+<li><h5 id="分词器是干啥用的？指定了分词的规则（2023-09-20午）"><a href="#分词器是干啥用的？指定了分词的规则（2023-09-20午）" class="headerlink" title="分词器是干啥用的？指定了分词的规则（2023/09/20午）"></a>分词器是干啥用的？指定了分词的规则（2023/09/20午）</h5></li>
+</ul>
+<h4 id="内置分词器"><a href="#内置分词器" class="headerlink" title="内置分词器"></a>内置分词器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html</a></li>
+<li>了解一下，丰富的分词规则</li>
+</ul>
+<h4 id="空格分词器"><a href="#空格分词器" class="headerlink" title="空格分词器"></a>空格分词器</h4><ul>
+<li>whitespace，按空格分词</li>
+</ul>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs fsharp">POST <span class="hljs-keyword">_analyze</span><br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span><span class="hljs-operator">:</span> <span class="hljs-string">&quot;whitespace&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span><span class="hljs-operator">:</span>     <span class="hljs-string">&quot;The quick brown fox.&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="关键词分词器"><a href="#关键词分词器" class="headerlink" title="关键词分词器"></a>关键词分词器</h4><ul>
+<li>就是不分词，整句话当作一个专业术语</li>
+</ul>
+<h4 id="标准分词规则"><a href="#标准分词规则" class="headerlink" title="标准分词规则"></a>标准分词规则</h4><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs fsharp">POST <span class="hljs-keyword">_analyze</span><br>&#123;<br>  <span class="hljs-string">&quot;tokenizer&quot;</span><span class="hljs-operator">:</span> <span class="hljs-string">&quot;standard&quot;</span>,<br>  <span class="hljs-string">&quot;filter&quot;</span><span class="hljs-operator">:</span>  [ <span class="hljs-string">&quot;lowercase&quot;</span>, <span class="hljs-string">&quot;asciifolding&quot;</span> ],<br>  <span class="hljs-string">&quot;text&quot;</span><span class="hljs-operator">:</span>      <span class="hljs-string">&quot;Is this déja vu?&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="分词器-analyze-和分词规则-tokenizer-有什么区别呢？"><a href="#分词器-analyze-和分词规则-tokenizer-有什么区别呢？" class="headerlink" title="分词器 analyze 和分词规则 tokenizer 有什么区别呢？"></a>分词器 analyze 和分词规则 tokenizer 有什么区别呢？</h5></li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs coq">在搜索引擎和文本分析领域中，分词器（Analyzer）和分词规则器（Tokenizer）是两个不同的概念。<br><br>分词器（Analyzer）是一种将文本转换为单词（<span class="hljs-keyword">Term</span>）序列的工具。它通常包含多个处理步骤，例如词法分析、去除停用词、小写转换、词干提取等。分词器的作用是将原始的文本输入转换为可供索引和搜索的标记流。例如，在Elasticsearch中，分词器被用于预处理文本数据并将其存储在倒排索引中，以支持全文搜索。<br><br>分词规则器（Tokenizer）是分词器的一个组成部分。它是文本分析的第一个处理步骤，将输入的文本按照指定的规则拆分为单词。常见的分词规则器有基于空格拆分的空格分词器、基于标点符号拆分的标点分词器等。分词规则器负责定义文本拆分的方式，决定了哪些字符会被视为词条的分隔。<br><br>总结来说，分词规则器（Tokenizer）是分词器（Analyzer）的组成部分，用于定义文本的拆分方式；而分词器（Analyzer）则包含多个处理步骤，用于将输入文本转换为标记流。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>了解到这些分词器对中文不友好，我们需要下载 <strong>IK 分词器</strong> 插件，对<strong>中文分词更加友好</strong>，内置两种分词器</p>
+<ul>
+<li><h5 id="ik-smart"><a href="#ik-smart" class="headerlink" title="ik_smart"></a>ik_smart</h5></li>
+<li><h5 id="ik-max-word"><a href="#ik-max-word" class="headerlink" title="ik_max_word"></a>ik_max_word</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="IK分词器（ES内置插件）"><a href="#IK分词器（ES内置插件）" class="headerlink" title="IK分词器（ES内置插件）"></a>IK分词器（ES内置插件）</h3><h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><ul>
+<li><h5 id="7-·-Releases-·-medcl-elasticsearch-analysis-ik-github-com"><a href="#7-·-Releases-·-medcl-elasticsearch-analysis-ik-github-com" class="headerlink" title="7. · Releases · medcl/elasticsearch-analysis-ik (github.com)"></a><a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik/releases/tag/v7.17.7">7. · Releases · medcl/elasticsearch-analysis-ik (github.com)</a></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920115244986.png" alt="image-20230920115244986"></p>
+<ul>
+<li>下载完成，将压缩包解压在 Elasticsearch 的 <strong>plugins / ik目录下即可</strong> </li>
+</ul>
+<h4 id="修改版本一致"><a href="#修改版本一致" class="headerlink" title="修改版本一致"></a>修改版本一致</h4><ul>
+<li><p>解压完成后，修改plugins / ik目录下的 <strong>plugin-descriptor.properties 文件</strong>，将 ik 版本<strong>修改为与 ES 版本一致</strong></p>
+<ul>
+<li><h5 id="注意：我使用的-ES-版本为-7-17-13，而-ik-版本为-7-17-7（2023-09-20午）"><a href="#注意：我使用的-ES-版本为-7-17-13，而-ik-版本为-7-17-7（2023-09-20午）" class="headerlink" title="注意：我使用的 ES 版本为 7.17.13，而 ik 版本为 7.17.7（2023/09/20午）"></a>注意：我使用的 ES 版本为 7.17.13，而 ik 版本为 7.17.7（2023/09/20午）</h5></li>
+<li><p>可能会由于<strong>版本不兼容</strong>，而造成 ES 启动失败，所以需要更改 ik 版本</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920115558421.png" alt="image-20230920115558421"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920113332061.png" alt="image-20230920113332061"></p>
+<h4 id="启动ES、Kibana"><a href="#启动ES、Kibana" class="headerlink" title="启动ES、Kibana"></a>启动ES、Kibana</h4><ul>
+<li><h5 id="启动成功："><a href="#启动成功：" class="headerlink" title="启动成功："></a>启动成功：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920120124225.png" alt="image-20230920120124225"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920120158428.png" alt="image-20230920120158428"></p>
+<h4 id="测试分词效果"><a href="#测试分词效果" class="headerlink" title="测试分词效果"></a>测试分词效果</h4><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920120416495.png" alt="image-20230920120416495"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920120422210.png" alt="image-20230920120422210"></p>
+<ul>
+<li><h5 id="测试成功，这里也能看出来-ik-smart-和-ik-max-word-这两种不同分词模式的区别了（2023-09-20午）"><a href="#测试成功，这里也能看出来-ik-smart-和-ik-max-word-这两种不同分词模式的区别了（2023-09-20午）" class="headerlink" title="测试成功，这里也能看出来 ik_smart 和 ik_max_word 这两种不同分词模式的区别了（2023/09/20午）"></a>测试成功，这里也能看出来 ik_smart 和 ik_max_word 这两种不同分词模式的区别了（2023/09/20午）</h5><ul>
+<li><code>ik_smart</code> 模式是 <strong>IK 分词器的简单模式</strong>，它会对文本进行<strong>较为粗粒度的切分</strong>，主要以将句子切分为一些较短的词语为目标，适用于<strong>快速搜索</strong>和一般文本处理场景。该模式下的分词结果倾向于保留短词</li>
+<li><code>ik_max_word</code> 模式是 <strong>IK 分词器的细粒度模式</strong>，它会尽可能多地将<strong>文本切分为更小的词语</strong>，包括一些更细致的切分，如<strong>拆分复合词和词组</strong>等。该模式下的分词结果倾向于将文本切分为更多的词</li>
+</ul>
+</li>
+</ul>
+<h2 id="ES-调用方式"><a href="#ES-调用方式" class="headerlink" title="ES 调用方式"></a>ES 调用方式</h2><ul>
+<li><h5 id="一般来讲，常见的有三种调用方式："><a href="#一般来讲，常见的有三种调用方式：" class="headerlink" title="一般来讲，常见的有三种调用方式："></a>一般来讲，常见的有三种调用方式：</h5><ul>
+<li><p>HTTP Restful 调用</p>
+</li>
+<li><p>Kibana（Dev tools），本质上还是HTTP Restful 调用</p>
+</li>
+<li><h5 id="客户端调用：Java客户端、Go客户端"><a href="#客户端调用：Java客户端、Go客户端" class="headerlink" title="客户端调用：Java客户端、Go客户端"></a>客户端调用：Java客户端、Go客户端</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="Java-操作-ES"><a href="#Java-操作-ES" class="headerlink" title="Java 操作 ES"></a>Java 操作 ES</h3><ul>
+<li><h5 id="一般来讲，也有三种方式："><a href="#一般来讲，也有三种方式：" class="headerlink" title="一般来讲，也有三种方式："></a>一般来讲，也有三种方式：</h5><ul>
+<li>ES 官方的API：**[Introduction | Elasticsearch Java API Client <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/7.17/introduction.html">7.17] | Elastic</a>**</li>
+<li>ES以前的官方API：（已废弃，不建议用）</li>
+<li><h5 id="Spring-Data-Elasticsearch（推荐）：Spring-Data-Elasticsearch-Reference-Documentation"><a href="#Spring-Data-Elasticsearch（推荐）：Spring-Data-Elasticsearch-Reference-Documentation" class="headerlink" title="Spring Data Elasticsearch（推荐）：Spring Data Elasticsearch - Reference Documentation"></a>Spring Data Elasticsearch（推荐）：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-data/elasticsearch/docs/4.4.10/reference/html/">Spring Data Elasticsearch - Reference Documentation</a></h5></li>
+</ul>
+</li>
+<li><p>Spring-data系列：Spring 提供的操作数据的框架</p>
+<ul>
+<li>Spring-data-redis：操作redis的一套方法</li>
+<li>Spring-data-mongodb：操作mongodb的一套方法</li>
+<li>Spring-data-elasticsearch：操作elasticsearch的一套方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="ES实现搜索接口"><a href="#ES实现搜索接口" class="headerlink" title="ES实现搜索接口"></a>ES实现搜索接口</h3><h4 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h4><ul>
+<li><h5 id="在ES中，也存在和-MySQL类似的表结构，这里可以将二者对比一下："><a href="#在ES中，也存在和-MySQL类似的表结构，这里可以将二者对比一下：" class="headerlink" title="在ES中，也存在和 MySQL类似的表结构，这里可以将二者对比一下："></a>在ES中，也存在和 MySQL类似的表结构，这里可以将二者对比一下：</h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>MySQL</strong></th>
+<th align="center"><strong>Elasticsearch</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table</td>
+<td align="center">Index</td>
+<td>索引(index)，就是文档的集合，类似数据库的表(table)</td>
+</tr>
+<tr>
+<td>Row</td>
+<td align="center">Document</td>
+<td>文档（Document），就是一条条的数据，类似数据库中的行（Row），文档都是JSON格式</td>
+</tr>
+<tr>
+<td>Column</td>
+<td align="center">Field</td>
+<td>字段（Field），就是JSON文档中的字段，类似数据库中的列（Column）</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td align="center">Mapping</td>
+<td>Mapping（映射）是索引中文档的约束，例如字段类型约束。类似数据库的表结构（Schema）</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td align="center">DSL</td>
+<td>DSL是elasticsearch提供的JSON风格的请求语句，用来操作elasticsearch，实现CRUD</td>
+</tr>
+</tbody></table>
+<ul>
+<li><h5 id="数据库表："><a href="#数据库表：" class="headerlink" title="数据库表："></a>数据库表：</h5></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> post<br>(<br>    id         <span class="hljs-type">bigint</span> auto_increment comment <span class="hljs-string">&#x27;id&#x27;</span><br>        <span class="hljs-keyword">primary</span> key,<br>    title      <span class="hljs-type">varchar</span>(<span class="hljs-number">512</span>)                       <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;标题&#x27;</span>,<br>    content    text                               <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;内容&#x27;</span>,<br>    tags       <span class="hljs-type">varchar</span>(<span class="hljs-number">1024</span>)                      <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;标签列表（json 数组）&#x27;</span>,<br>    thumbNum   <span class="hljs-type">int</span>      <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;点赞数&#x27;</span>,<br>    favourNum  <span class="hljs-type">int</span>      <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;收藏数&#x27;</span>,<br>    userId     <span class="hljs-type">bigint</span>                             <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;创建用户 id&#x27;</span>,<br>    createTime datetime <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>    updateTime datetime <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">update</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> comment <span class="hljs-string">&#x27;更新时间&#x27;</span>,<br>    isDelete   tinyint  <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;是否删除&#x27;</span><br>)<br>    comment <span class="hljs-string">&#x27;帖子&#x27;</span> <span class="hljs-keyword">collate</span> <span class="hljs-operator">=</span> utf8mb4_unicode_ci;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="建立索引语句："><a href="#建立索引语句：" class="headerlink" title="建立索引语句："></a>建立索引语句：</h5></li>
+<li><p>ES Mapping：</p>
+</li>
+<li><p>id（可以不放到字段设置里）</p>
+</li>
+<li><p>ES 中，尽量存放<strong>需要用户筛选</strong>（搜索）的数据</p>
+</li>
+<li><p><strong>aliases</strong>：别名（为了后续方便数据迁移）</p>
+</li>
+<li><p>字段类型是 text，这个字段是可被分词的、可模糊查询的；而如果是 keyword，只能完全匹配、精确查询。</p>
+</li>
+<li><p><strong>analyzer</strong>（存储时生效的分词器）：用 ik_max_word，拆的更碎、索引更多，更有可能被搜出来</p>
+</li>
+<li><p><strong>search_analyzer</strong>（查询时生效的分词器）：用 ik_smart，更偏向于用户想搜的分词</p>
+</li>
+<li><p>如果想要让 text 类型的分词字段也<strong>支持精确查询</strong>，可以创建 keyword 类型的子字段：</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs css">POST post_v1<br>&#123;<br>&quot;aliases&quot;: &#123;<br>&quot;post&quot;: &#123;&#125;<br>&#125;,<br>&quot;mappings&quot;: &#123;<br>&quot;properties&quot;: &#123;<br>&quot;title&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;text&quot;</span>,<br><span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;ik_max_word&quot;</span>,<br><span class="hljs-string">&quot;search_analyzer&quot;</span>: <span class="hljs-string">&quot;ik_smart&quot;</span>,<br><span class="hljs-string">&quot;fields&quot;</span>: &#123;<br>&quot;keyword&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;keyword&quot;</span>,<br><span class="hljs-string">&quot;ignore_above&quot;</span>: <span class="hljs-number">256</span><br>&#125;<br>&#125;<br>&#125;,<br>&quot;<span class="hljs-attribute">content</span>&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;text&quot;</span>,<br><span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;ik_max_word&quot;</span>,<br><span class="hljs-string">&quot;search_analyzer&quot;</span>: <span class="hljs-string">&quot;ik_smart&quot;</span>,<br><span class="hljs-string">&quot;fields&quot;</span>: &#123;<br>&quot;keyword&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;keyword&quot;</span>,<br><span class="hljs-string">&quot;ignore_above&quot;</span>: <span class="hljs-number">256</span><br>&#125;<br>&#125;<br>&#125;,<br>&quot;tags&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;keyword&quot;</span><br>&#125;,<br>&quot;userId&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;keyword&quot;</span><br>&#125;,<br>&quot;createTime&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;date&quot;</span><br>&#125;,<br>&quot;updateTime&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;date&quot;</span><br>&#125;,<br>&quot;isDelete&quot;: &#123;<br>&quot;type&quot;: <span class="hljs-string">&quot;keyword&quot;</span><br>  &#125;<br>  &#125;<br> &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="SpringBoot项目中引入依赖："><a href="#SpringBoot项目中引入依赖：" class="headerlink" title="SpringBoot项目中引入依赖："></a>SpringBoot项目中引入依赖：</h5></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-elasticsearch<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="开启ES相关配置："><a href="#开启ES相关配置：" class="headerlink" title="开启ES相关配置："></a>开启ES相关配置：</h5></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">elasticsearch:</span><br>   <span class="hljs-attr">uris:</span> <span class="hljs-string">http://localhost:9200</span><br>   <span class="hljs-attr">username:</span> <span class="hljs-string">root</span><br>   <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="索引结构映射："><a href="#索引结构映射：" class="headerlink" title="索引结构映射："></a>索引结构映射：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Document(indexName = &quot;post&quot;)</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PostEsDTO</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">DATE_TIME_PATTERN</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&quot;</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * id</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Id</span><br>    <span class="hljs-keyword">private</span> Long id;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 标题</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String title;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 内容</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String content;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 标签列表</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> List&lt;String&gt; tags;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 点赞数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Integer thumbNum;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 收藏数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Integer favourNum;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 创建用户 id</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Long userId;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 创建时间</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Field(index = false, store = true, type = FieldType.Date, format = &#123;&#125;, pattern = DATE_TIME_PATTERN)</span><br>    <span class="hljs-keyword">private</span> Date createTime;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 更新时间</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Field(index = false, store = true, type = FieldType.Date, format = &#123;&#125;, pattern = DATE_TIME_PATTERN)</span><br>    <span class="hljs-keyword">private</span> Date updateTime;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 是否删除</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Integer isDelete;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Gson</span> <span class="hljs-variable">GSON</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 对象转包装类</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> post</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> PostEsDTO <span class="hljs-title function_">objToDto</span><span class="hljs-params">(Post post)</span> &#123;<br>        <span class="hljs-keyword">if</span> (post == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br>        <span class="hljs-type">PostEsDTO</span> <span class="hljs-variable">postEsDTO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PostEsDTO</span>();<br>        BeanUtils.copyProperties(post, postEsDTO);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">tagsStr</span> <span class="hljs-operator">=</span> post.getTags();<br>        <span class="hljs-keyword">if</span> (StringUtils.isNotBlank(tagsStr)) &#123;<br>            postEsDTO.setTags(GSON.fromJson(tagsStr, <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeToken</span>&lt;List&lt;String&gt;&gt;() &#123;<br>            &#125;.getType()));<br>        &#125;<br>        <span class="hljs-keyword">return</span> postEsDTO;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 包装类转对象</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> postEsDTO</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Post <span class="hljs-title function_">dtoToObj</span><span class="hljs-params">(PostEsDTO postEsDTO)</span> &#123;<br>        <span class="hljs-keyword">if</span> (postEsDTO == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br>        <span class="hljs-type">Post</span> <span class="hljs-variable">post</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Post</span>();<br>        BeanUtils.copyProperties(postEsDTO, post);<br>        List&lt;String&gt; tagList = postEsDTO.getTags();<br>        <span class="hljs-keyword">if</span> (CollectionUtils.isNotEmpty(tagList)) &#123;<br>            post.setTags(GSON.toJson(tagList));<br>        &#125;<br>        <span class="hljs-keyword">return</span> post;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>编写 DAO 层：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PostEsDao</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ElasticsearchRepository</span>&lt;PostEsDTO, Long&gt; &#123;<br>    List&lt;PostEsDTO&gt; <span class="hljs-title function_">findByUserId</span><span class="hljs-params">(Long userId)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h4><ul>
+<li>测试增删改查：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Resource</span><br><span class="hljs-keyword">private</span> PostEsDao postEsDao;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 新增一条文档</span><br><span class="hljs-meta">@Test</span><br> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testAdd</span><span class="hljs-params">()</span> &#123;<br>     <span class="hljs-type">PostEsDTO</span> <span class="hljs-variable">postEsDTO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PostEsDTO</span>();<br>     postEsDTO.setId(<span class="hljs-number">5L</span>);<br>     postEsDTO.setTitle(<span class="hljs-string">&quot;test&quot;</span>);<br>     postEsDTO.setContent(<span class="hljs-string">&quot;test&quot;</span>);<br>     postEsDTO.setTags(Arrays.asList(<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-string">&quot;python&quot;</span>));<br>     postEsDTO.setThumbNum(<span class="hljs-number">1</span>);<br>     postEsDTO.setFavourNum(<span class="hljs-number">1</span>);<br>     postEsDTO.setUserId(<span class="hljs-number">1L</span>);<br>     postEsDTO.setCreateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>     postEsDTO.setUpdateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>     postEsDTO.setIsDelete(<span class="hljs-number">0</span>);<br>     postEsDao.save(postEsDTO);<br>     System.out.println(postEsDTO.getId());<br> &#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 查找文档</span><br><span class="hljs-meta">@Test</span><br>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">testFindById</span><span class="hljs-params">()</span> &#123;<br>      Optional&lt;PostEsDTO&gt; postEsDTO = postEsDao.findById(<span class="hljs-number">1L</span>);<br>      System.out.println(postEsDTO);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 查找所有文档</span><br><span class="hljs-meta">@Test</span><br>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSelect</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(postEsDao.count());<br>      Page&lt;PostEsDTO&gt; PostPage = postEsDao.findAll(<br>              PageRequest.of(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>, Sort.by(<span class="hljs-string">&quot;createTime&quot;</span>)));<br>      List&lt;PostEsDTO&gt; postList = PostPage.getContent();<br>      System.out.println(postList);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="简单的增、删、改、查测试通过：（2023-09-20晚）"><a href="#简单的增、删、改、查测试通过：（2023-09-20晚）" class="headerlink" title="简单的增、删、改、查测试通过：（2023/09/20晚）"></a>简单的增、删、改、查测试通过：（2023/09/20晚）</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230920172305509.png" alt="image-20230920172305509"></p>
+<h4 id="DSL查询"><a href="#DSL查询" class="headerlink" title="DSL查询"></a>DSL查询</h4><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="分布式搜索引擎01"><a href="#分布式搜索引擎01" class="headerlink" title="分布式搜索引擎01"></a>分布式搜索引擎01</h1><p>– elasticsearch基础</p>
+<h1 id="0-学习目标"><a href="#0-学习目标" class="headerlink" title="0.学习目标"></a>0.学习目标</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
+<p>例如：</p>
+<ul>
+<li><p>在GitHub搜索代码</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720193623245.png" alt="image-20210720193623245"></p>
+</li>
+<li><p>在电商网站搜索商品</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720193633483.png" alt="image-20210720193633483"></p>
+</li>
+<li><p>在百度搜索答案</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720193641907.png" alt="image-20210720193641907"></p>
+</li>
+<li><p>在打车软件搜索附近的车</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720193648044.png" alt="image-20210720193648044"></p>
+</li>
+</ul>
+<h3 id="1-1-2-ELK技术栈"><a href="#1-1-2-ELK技术栈" class="headerlink" title="1.1.2.ELK技术栈"></a>1.1.2.ELK技术栈</h3><p>elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720194008781.png" alt="image-20210720194008781"></p>
+<p>而elasticsearch是elastic stack的核心，负责存储、搜索、分析数据。</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720194230265.png" alt="image-20210720194230265"></p>
+<h3 id="1-1-3-elasticsearch和lucene"><a href="#1-1-3-elasticsearch和lucene" class="headerlink" title="1.1.3.elasticsearch和lucene"></a>1.1.3.elasticsearch和lucene</h3><p>elasticsearch底层是基于<strong>lucene</strong>来实现的。</p>
+<p><strong>Lucene</strong>是一个Java语言的搜索引擎类库，是Apache公司的顶级项目，由DougCutting于1999年研发。官网地址：<a target="_blank" rel="noopener" href="https://lucene.apache.org/">https://lucene.apache.org/</a> 。</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720194547780.png" alt="image-20210720194547780"></p>
+<p><strong>elasticsearch</strong>的发展历史：</p>
+<ul>
+<li>2004年Shay Banon基于Lucene开发了Compass</li>
+<li>2010年Shay Banon 重写了Compass，取名为Elasticsearch。</li>
+</ul>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720195001221.png" alt="image-20210720195001221"></p>
+<h3 id="1-1-4-为什么不是其他搜索技术？"><a href="#1-1-4-为什么不是其他搜索技术？" class="headerlink" title="1.1.4.为什么不是其他搜索技术？"></a>1.1.4.为什么不是其他搜索技术？</h3><p>目前比较知名的搜索引擎技术排名：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720195142535.png" alt="image-20210720195142535"></p>
+<p>虽然在早期，Apache Solr是最主要的搜索引擎技术，但随着发展elasticsearch已经渐渐超越了Solr，独占鳌头：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720195306484.png" alt="image-20210720195306484"></p>
+<h3 id="1-1-5-总结"><a href="#1-1-5-总结" class="headerlink" title="1.1.5.总结"></a>1.1.5.总结</h3><p>什么是elasticsearch？</p>
+<ul>
+<li>一个开源的分布式搜索引擎，可以用来实现搜索、日志统计、分析、系统监控等功能</li>
+</ul>
+<p>什么是elastic stack（ELK）？</p>
+<ul>
+<li>是以elasticsearch为核心的技术栈，包括beats、Logstash、kibana、elasticsearch</li>
+</ul>
+<p>什么是Lucene？</p>
+<ul>
+<li>是Apache的开源搜索引擎类库，提供了搜索引擎的核心API</li>
+</ul>
+<h2 id="1-2-倒排索引"><a href="#1-2-倒排索引" class="headerlink" title="1.2.倒排索引"></a>1.2.倒排索引</h2><p>倒排索引的概念是基于MySQL这样的正向索引而言的。</p>
+<h3 id="1-2-1-正向索引"><a href="#1-2-1-正向索引" class="headerlink" title="1.2.1.正向索引"></a>1.2.1.正向索引</h3><p>那么什么是正向索引呢？例如给下表（tb_goods）中的id创建索引：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720195531539.png" alt="image-20210720195531539"></p>
+<p>如果是根据id查询，那么直接走索引，查询速度非常快。</p>
+<p>但如果是基于title做模糊查询，只能是逐行扫描数据，流程如下：</p>
+<p>1）用户搜索数据，条件是title符合<code>&quot;%手机%&quot;</code></p>
+<p>2）逐行获取数据，比如id为1的数据</p>
+<p>3）判断数据中的title是否符合用户搜索条件</p>
+<p>4）如果符合则放入结果集，不符合则丢弃。回到步骤1</p>
+<p>逐行扫描，也就是全表扫描，随着数据量增加，其查询效率也会越来越低。当数据量达到数百万时，就是一场灾难。</p>
+<h3 id="1-2-2-倒排索引"><a href="#1-2-2-倒排索引" class="headerlink" title="1.2.2.倒排索引"></a>1.2.2.倒排索引</h3><p>倒排索引中有两个非常重要的概念：</p>
+<ul>
+<li>文档（<code>Document</code>）：用来搜索的数据，其中的每一条数据就是一个文档。例如一个网页、一个商品信息</li>
+<li>词条（<code>Term</code>）：对文档数据或用户搜索数据，利用某种算法分词，得到的具备含义的词语就是词条。例如：我是中国人，就可以分为：我、是、中国人、中国、国人这样的几个词条</li>
+</ul>
+<p><strong>创建倒排索引</strong>是对正向索引的一种特殊处理，流程如下：</p>
+<ul>
+<li>将每一个文档的数据利用算法分词，得到一个个词条</li>
+<li>创建表，每行数据包括词条、词条所在文档id、位置等信息</li>
+<li>因为词条唯一性，可以给词条创建索引，例如hash表结构索引</li>
+</ul>
+<p>如图：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720200457207.png" alt="image-20210720200457207"></p>
+<p>倒排索引的<strong>搜索流程</strong>如下（以搜索”华为手机”为例）：</p>
+<p>1）用户输入条件<code>&quot;华为手机&quot;</code>进行搜索。</p>
+<p>2）对用户输入内容<strong>分词</strong>，得到词条：<code>华为</code>、<code>手机</code>。</p>
+<p>3）拿着词条在倒排索引中查找，可以得到包含词条的文档id：1、2、3。</p>
+<p>4）拿着文档id到正向索引中查找具体文档。</p>
+<p>如图：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720201115192.png" alt="image-20210720201115192"></p>
+<p>虽然要先查询倒排索引，再查询倒排索引，但是无论是词条、还是文档id都建立了索引，查询速度非常快！无需全表扫描。</p>
+<h3 id="1-2-3-正向和倒排"><a href="#1-2-3-正向和倒排" class="headerlink" title="1.2.3.正向和倒排"></a>1.2.3.正向和倒排</h3><p>那么为什么一个叫做正向索引，一个叫做倒排索引呢？</p>
+<ul>
+<li><p><strong>正向索引</strong>是最传统的，根据id索引的方式。但根据词条查询时，必须先逐条获取每个文档，然后判断文档中是否包含所需要的词条，是<strong>根据文档找词条的过程</strong>。</p>
+</li>
+<li><p>而<strong>倒排索引</strong>则相反，是先找到用户要搜索的词条，根据词条得到保护词条的文档的id，然后根据id获取文档。是<strong>根据词条找文档的过程</strong>。</p>
+</li>
+</ul>
+<p>是不是恰好反过来了？</p>
+<p>那么两者方式的优缺点是什么呢？</p>
+<p><strong>正向索引</strong>：</p>
+<ul>
+<li>优点：<ul>
+<li>可以给多个字段创建索引</li>
+<li>根据索引字段搜索、排序速度非常快</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>根据非索引字段，或者索引字段中的部分词条查找时，只能全表扫描。</li>
+</ul>
+</li>
+</ul>
+<p><strong>倒排索引</strong>：</p>
+<ul>
+<li>优点：<ul>
+<li>根据词条搜索、模糊搜索时，速度非常快</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>只能给词条创建索引，而不是字段</li>
+<li>无法根据字段做排序</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-es的一些概念"><a href="#1-3-es的一些概念" class="headerlink" title="1.3.es的一些概念"></a>1.3.es的一些概念</h2><p>elasticsearch中有很多独有的概念，与mysql中略有差别，但也有相似之处。</p>
+<h3 id="1-3-1-文档和字段"><a href="#1-3-1-文档和字段" class="headerlink" title="1.3.1.文档和字段"></a>1.3.1.文档和字段</h3><p>elasticsearch是面向<strong>文档（Document）</strong>存储的，可以是数据库中的一条商品数据，一个订单信息。文档数据会被序列化为json格式后存储在elasticsearch中：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720202707797.png" alt="image-20210720202707797"></p>
+<p>而Json文档中往往包含很多的<strong>字段（Field）</strong>，类似于数据库中的列。</p>
+<h3 id="1-3-2-索引和映射"><a href="#1-3-2-索引和映射" class="headerlink" title="1.3.2.索引和映射"></a>1.3.2.索引和映射</h3><p><strong>索引（Index）</strong>，就是相同类型的文档的集合。</p>
+<p>例如：</p>
+<ul>
+<li>所有用户文档，就可以组织在一起，称为用户的索引；</li>
+<li>所有商品的文档，可以组织在一起，称为商品的索引；</li>
+<li>所有订单的文档，可以组织在一起，称为订单的索引；</li>
+</ul>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720203022172.png" alt="image-20210720203022172"></p>
+<p>因此，我们可以把索引当做是数据库中的表。</p>
+<p>数据库的表会有约束信息，用来定义表的结构、字段的名称、类型等信息。因此，索引库中就有<strong>映射（mapping）</strong>，是索引中文档的字段约束信息，类似表的结构约束。</p>
+<h3 id="1-3-3-mysql与elasticsearch"><a href="#1-3-3-mysql与elasticsearch" class="headerlink" title="1.3.3.mysql与elasticsearch"></a>1.3.3.mysql与elasticsearch</h3><p>我们统一的把mysql与elasticsearch的概念做一下对比：</p>
+<table>
+<thead>
+<tr>
+<th><strong>MySQL</strong></th>
+<th align="center"><strong>Elasticsearch</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table</td>
+<td align="center">Index</td>
+<td>索引(index)，就是文档的集合，类似数据库的表(table)</td>
+</tr>
+<tr>
+<td>Row</td>
+<td align="center">Document</td>
+<td>文档（Document），就是一条条的数据，类似数据库中的行（Row），文档都是JSON格式</td>
+</tr>
+<tr>
+<td>Column</td>
+<td align="center">Field</td>
+<td>字段（Field），就是JSON文档中的字段，类似数据库中的列（Column）</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td align="center">Mapping</td>
+<td>Mapping（映射）是索引中文档的约束，例如字段类型约束。类似数据库的表结构（Schema）</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td align="center">DSL</td>
+<td>DSL是elasticsearch提供的JSON风格的请求语句，用来操作elasticsearch，实现CRUD</td>
+</tr>
+</tbody></table>
+<p>是不是说，我们学习了elasticsearch就不再需要mysql了呢？</p>
+<p>并不是如此，两者各自有自己的擅长支出：</p>
+<ul>
+<li><h5 id="Mysql：擅长事务类型操作，可以确保数据的安全和一致性"><a href="#Mysql：擅长事务类型操作，可以确保数据的安全和一致性" class="headerlink" title="Mysql：擅长事务类型操作，可以确保数据的安全和一致性"></a>Mysql：擅长事务类型操作，可以确保数据的安全和一致性</h5></li>
+<li><h5 id="Elasticsearch：擅长海量数据的搜索、分析、计算"><a href="#Elasticsearch：擅长海量数据的搜索、分析、计算" class="headerlink" title="Elasticsearch：擅长海量数据的搜索、分析、计算"></a>Elasticsearch：擅长海量数据的搜索、分析、计算</h5></li>
+</ul>
+<p>因此在企业中，往往是两者结合使用：</p>
+<ul>
+<li>对安全性要求较高的写操作，使用mysql实现</li>
+<li>对查询性能要求较高的搜索需求，使用elasticsearch实现</li>
+<li>两者再基于某种方式，实现数据的同步，保证一致性</li>
+</ul>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720203534945.png" alt="image-20210720203534945"></p>
+<h2 id="1-4-安装es、kibana"><a href="#1-4-安装es、kibana" class="headerlink" title="1.4.安装es、kibana"></a>1.4.安装es、kibana</h2><h3 id="1-4-1-安装"><a href="#1-4-1-安装" class="headerlink" title="1.4.1.安装"></a>1.4.1.安装</h3><p>参考课前资料：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720203805350.png" alt="image-20210720203805350"> </p>
+<h3 id="1-4-2-分词器"><a href="#1-4-2-分词器" class="headerlink" title="1.4.2.分词器"></a>1.4.2.分词器</h3><p>参考课前资料：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720203805350.png" alt="image-20210720203805350"> </p>
+<h3 id="1-4-3-总结"><a href="#1-4-3-总结" class="headerlink" title="1.4.3.总结"></a>1.4.3.总结</h3><p>分词器的作用是什么？</p>
+<ul>
+<li>创建倒排索引时对文档分词</li>
+<li>用户搜索时，对输入的内容分词</li>
+</ul>
+<p>IK分词器有几种模式？</p>
+<ul>
+<li>ik_smart：智能切分，粗粒度</li>
+<li>ik_max_word：最细切分，细粒度</li>
+</ul>
+<p>IK分词器如何拓展词条？如何停用词条？</p>
+<ul>
+<li>利用config目录的IkAnalyzer.cfg.xml文件添加拓展词典和停用词典</li>
+<li>在词典中添加拓展词条或者停用词条</li>
+</ul>
+<h1 id="2-索引库操作"><a href="#2-索引库操作" class="headerlink" title="2.索引库操作"></a>2.索引库操作</h1><p>索引库就类似数据库表，mapping映射就类似表的结构。</p>
+<p>我们要向es中存储数据，必须先创建“库”和“表”。</p>
+<h2 id="2-1-mapping映射属性"><a href="#2-1-mapping映射属性" class="headerlink" title="2.1.mapping映射属性"></a>2.1.mapping映射属性</h2><p>mapping是对索引库中文档的约束，常见的mapping属性包括：</p>
+<ul>
+<li>type：字段数据类型，常见的简单类型有：<ul>
+<li>字符串：text（可分词的文本）、keyword（精确值，例如：品牌、国家、ip地址）</li>
+<li>数值：long、integer、short、byte、double、float、</li>
+<li>布尔：boolean</li>
+<li>日期：date</li>
+<li>对象：object</li>
+</ul>
+</li>
+<li>index：是否创建索引，默认为true</li>
+<li>analyzer：使用哪种分词器</li>
+<li>properties：该字段的子字段</li>
+</ul>
+<p>例如下面的json文档：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">21</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;weight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">52.1</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;isMarried&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;info&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;黑马程序员Java讲师&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zy@itcast.cn&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;score&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">99.1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">99.5</span><span class="hljs-punctuation">,</span> <span class="hljs-number">98.9</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;firstName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;云&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;lastName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;赵&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>对应的每个字段映射（mapping）：</p>
+<ul>
+<li>age：类型为 integer；参与搜索，因此需要index为true；无需分词器</li>
+<li>weight：类型为float；参与搜索，因此需要index为true；无需分词器</li>
+<li>isMarried：类型为boolean；参与搜索，因此需要index为true；无需分词器</li>
+<li>info：类型为字符串，需要分词，因此是text；参与搜索，因此需要index为true；分词器可以用ik_smart</li>
+<li>email：类型为字符串，但是不需要分词，因此是keyword；不参与搜索，因此需要index为false；无需分词器</li>
+<li>score：虽然是数组，但是我们只看元素的类型，类型为float；参与搜索，因此需要index为true；无需分词器</li>
+<li>name：类型为object，需要定义多个子属性<ul>
+<li>name.firstName；类型为字符串，但是不需要分词，因此是keyword；参与搜索，因此需要index为true；无需分词器</li>
+<li>name.lastName；类型为字符串，但是不需要分词，因此是keyword；参与搜索，因此需要index为true；无需分词器</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-索引库的CRUD"><a href="#2-2-索引库的CRUD" class="headerlink" title="2.2.索引库的CRUD"></a>2.2.索引库的CRUD</h2><p>这里我们统一使用Kibana编写DSL的方式来演示。</p>
+<h3 id="2-2-1-创建索引库和映射"><a href="#2-2-1-创建索引库和映射" class="headerlink" title="2.2.1.创建索引库和映射"></a>2.2.1.创建索引库和映射</h3><h4 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h4><ul>
+<li>请求方式：PUT</li>
+<li>请求路径：/索引库名，可以自定义</li>
+<li>请求参数：mapping映射</li>
+</ul>
+<p>格式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs json">PUT /索引库名称<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mappings&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;properties&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;字段名&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;text&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;analyzer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ik_smart&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;字段名2&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;false&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;字段名3&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;properties&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;子字段&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-comment">// ...略</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs sh">PUT /heima<br>&#123;<br>  <span class="hljs-string">&quot;mappings&quot;</span>: &#123;<br>    <span class="hljs-string">&quot;properties&quot;</span>: &#123;<br>      <span class="hljs-string">&quot;info&quot;</span>:&#123;<br>        <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;text&quot;</span>,<br>        <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;ik_smart&quot;</span><br>      &#125;,<br>      <span class="hljs-string">&quot;email&quot;</span>:&#123;<br>        <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;keyword&quot;</span>,<br>        <span class="hljs-string">&quot;index&quot;</span>: <span class="hljs-string">&quot;falsae&quot;</span><br>      &#125;,<br>      <span class="hljs-string">&quot;name&quot;</span>:&#123;<br>        <span class="hljs-string">&quot;properties&quot;</span>: &#123;<br>          <span class="hljs-string">&quot;firstName&quot;</span>: &#123;<br>            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;keyword&quot;</span><br>          &#125;<br>        &#125;<br>      &#125;,<br>      // ... 略<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-2-查询索引库"><a href="#2-2-2-查询索引库" class="headerlink" title="2.2.2.查询索引库"></a>2.2.2.查询索引库</h3><p><strong>基本语法</strong>：</p>
+<ul>
+<li><p>请求方式：GET</p>
+</li>
+<li><p>请求路径：/索引库名</p>
+</li>
+<li><p>请求参数：无</p>
+</li>
+</ul>
+<p><strong>格式</strong>：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">GET</span> /索引库名<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>示例</strong>：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720211019329.png" alt="image-20210720211019329"></p>
+<h3 id="2-2-3-修改索引库"><a href="#2-2-3-修改索引库" class="headerlink" title="2.2.3.修改索引库"></a>2.2.3.修改索引库</h3><p>倒排索引结构虽然不复杂，但是一旦数据结构改变（比如改变了分词器），就需要重新创建倒排索引，这简直是灾难。因此索引库<strong>一旦创建，无法修改mapping</strong>。</p>
+<p>虽然无法修改mapping中已有的字段，但是却允许添加新的字段到mapping中，因为不会对倒排索引产生影响。</p>
+<p><strong>语法说明</strong>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json">PUT /索引库名/_mapping<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;properties&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;新字段名&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;integer&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>示例</strong>：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720212357390.png" alt="image-20210720212357390"></p>
+<h3 id="2-2-4-删除索引库"><a href="#2-2-4-删除索引库" class="headerlink" title="2.2.4.删除索引库"></a>2.2.4.删除索引库</h3><p><strong>语法：</strong></p>
+<ul>
+<li><p>请求方式：DELETE</p>
+</li>
+<li><p>请求路径：/索引库名</p>
+</li>
+<li><p>请求参数：无</p>
+</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">DELETE</span> /索引库名<br></code></pre></td></tr></table></figure>
+
+<p>在kibana中测试：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720212123420.png" alt="image-20210720212123420"></p>
+<h3 id="2-2-5-总结"><a href="#2-2-5-总结" class="headerlink" title="2.2.5.总结"></a>2.2.5.总结</h3><p>索引库操作有哪些？</p>
+<ul>
+<li>创建索引库：PUT /索引库名</li>
+<li>查询索引库：GET /索引库名</li>
+<li>删除索引库：DELETE /索引库名</li>
+<li>添加字段：PUT /索引库名/_mapping</li>
+</ul>
+<h1 id="3-文档操作"><a href="#3-文档操作" class="headerlink" title="3.文档操作"></a>3.文档操作</h1><h2 id="3-1-新增文档"><a href="#3-1-新增文档" class="headerlink" title="3.1.新增文档"></a>3.1.新增文档</h2><p><strong>语法：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">POST /索引库名/_doc/文档id<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;字段1&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;值1&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;字段2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;值2&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;字段3&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;子属性1&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;值3&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;子属性2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;值4&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-comment">// ...</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">POST /heima/_doc/<span class="hljs-number">1</span><br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;info&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;黑马程序员Java讲师&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zy@itcast.cn&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;firstName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;云&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;lastName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;赵&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>响应：</strong></p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720212933362.png" alt="image-20210720212933362"></p>
+<h2 id="3-2-查询文档"><a href="#3-2-查询文档" class="headerlink" title="3.2.查询文档"></a>3.2.查询文档</h2><p>根据rest风格，新增是post，查询应该是get，不过查询一般都需要条件，这里我们把文档id带上。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /<span class="hljs-punctuation">&#123;</span>索引库名称<span class="hljs-punctuation">&#125;</span>/_doc/<span class="hljs-punctuation">&#123;</span>id<span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>通过kibana查看数据：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">GET</span> /heima/_doc/<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>查看结果：</strong></p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720213345003.png" alt="image-20210720213345003"></p>
+<h2 id="3-3-删除文档"><a href="#3-3-删除文档" class="headerlink" title="3.3.删除文档"></a>3.3.删除文档</h2><p>删除使用DELETE请求，同样，需要根据id进行删除：</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">DELETE</span> /&#123;索引库名&#125;/_doc/id值<br></code></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json"># 根据id删除数据<br>DELETE /heima/_doc/<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>结果：</strong></p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720213634918.png" alt="image-20210720213634918"></p>
+<h2 id="3-4-修改文档"><a href="#3-4-修改文档" class="headerlink" title="3.4.修改文档"></a>3.4.修改文档</h2><p>修改有两种方式：</p>
+<ul>
+<li>全量修改：直接覆盖原来的文档</li>
+<li>增量修改：修改文档中的部分字段</li>
+</ul>
+<h3 id="3-4-1-全量修改"><a href="#3-4-1-全量修改" class="headerlink" title="3.4.1.全量修改"></a>3.4.1.全量修改</h3><p>全量修改是覆盖原来的文档，其本质是：</p>
+<ul>
+<li>根据指定的id删除文档</li>
+<li>新增一个相同id的文档</li>
+</ul>
+<p><strong>注意</strong>：如果根据id删除时，id不存在，第二步的新增也会执行，也就从修改变成了新增操作了。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json">PUT /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_doc/文档id<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;字段1&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;值1&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;字段2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;值2&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-comment">// ... 略</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>示例：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">PUT /heima/_doc/<span class="hljs-number">1</span><br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;info&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;黑马程序员高级Java讲师&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zy@itcast.cn&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;firstName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;云&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;lastName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;赵&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-4-2-增量修改"><a href="#3-4-2-增量修改" class="headerlink" title="3.4.2.增量修改"></a>3.4.2.增量修改</h3><p>增量修改是只修改指定id匹配的文档中的部分字段。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">POST /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_update/文档id<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;doc&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>         <span class="hljs-attr">&quot;字段名&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;新的值&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>示例：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">POST /heima/_update/<span class="hljs-number">1</span><br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;doc&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ZhaoYun@itcast.cn&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-5-总结"><a href="#3-5-总结" class="headerlink" title="3.5.总结"></a>3.5.总结</h2><p>文档操作有哪些？</p>
+<ul>
+<li>创建文档：POST /{索引库名}/_doc/文档id   { json文档 }</li>
+<li>查询文档：GET /{索引库名}/_doc/文档id</li>
+<li>删除文档：DELETE /{索引库名}/_doc/文档id</li>
+<li>修改文档：<ul>
+<li>全量修改：PUT /{索引库名}/_doc/文档id { json文档 }</li>
+<li>增量修改：POST /{索引库名}/_update/文档id { “doc”: {字段}}</li>
+</ul>
+</li>
+</ul>
+<h1 id="4-RestAPI"><a href="#4-RestAPI" class="headerlink" title="4.RestAPI"></a>4.RestAPI</h1><p>ES官方提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是组装DSL语句，通过http请求发送给ES。官方文档地址：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/client/index.html">https://www.elastic.co/guide/en/elasticsearch/client/index.html</a></p>
+<p>其中的Java Rest Client又包括两种：</p>
+<ul>
+<li>Java Low Level Rest Client</li>
+<li>Java High Level Rest Client</li>
+</ul>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720214555863.png" alt="image-20210720214555863"></p>
+<p>我们学习的是Java HighLevel Rest Client客户端API</p>
+<h2 id="4-0-导入Demo工程"><a href="#4-0-导入Demo工程" class="headerlink" title="4.0.导入Demo工程"></a>4.0.导入Demo工程</h2><h3 id="4-0-1-导入数据"><a href="#4-0-1-导入数据" class="headerlink" title="4.0.1.导入数据"></a>4.0.1.导入数据</h3><p>首先导入课前资料提供的数据库数据：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720220400297.png" alt="image-20210720220400297"> </p>
+<p>数据结构如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `tb_hotel` (<br>  `id` <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店id&#x27;</span>,<br>  `name` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店名称；例：7天酒店&#x27;</span>,<br>  `address` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店地址；例：航头路&#x27;</span>,<br>  `price` <span class="hljs-type">int</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店价格；例：329&#x27;</span>,<br>  `score` <span class="hljs-type">int</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店评分；例：45，就是4.5分&#x27;</span>,<br>  `brand` <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店品牌；例：如家&#x27;</span>,<br>  `city` <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;所在城市；例：上海&#x27;</span>,<br>  `star_name` <span class="hljs-type">varchar</span>(<span class="hljs-number">16</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店星级，从低到高分别是：1星到5星，1钻到5钻&#x27;</span>,<br>  `business` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;商圈；例：虹桥&#x27;</span>,<br>  `latitude` <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;纬度；例：31.2497&#x27;</span>,<br>  `longitude` <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;经度；例：120.3925&#x27;</span>,<br>  `pic` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;酒店图片；例:/img/1.jpg&#x27;</span>,<br>  <span class="hljs-keyword">PRIMARY</span> KEY (`id`)<br>) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-0-2-导入项目"><a href="#4-0-2-导入项目" class="headerlink" title="4.0.2.导入项目"></a>4.0.2.导入项目</h3><p>然后导入课前资料提供的项目:</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720220503411.png" alt="image-20210720220503411"> </p>
+<p>项目结构如图：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720220647541.png" alt="image-20210720220647541"></p>
+<h3 id="4-0-3-mapping映射分析"><a href="#4-0-3-mapping映射分析" class="headerlink" title="4.0.3.mapping映射分析"></a>4.0.3.mapping映射分析</h3><p>创建索引库，最关键的是mapping映射，而mapping映射要考虑的信息包括：</p>
+<ul>
+<li>字段名</li>
+<li>字段数据类型</li>
+<li>是否参与搜索</li>
+<li>是否需要分词</li>
+<li>如果分词，分词器是什么？</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>字段名、字段数据类型，可以参考数据表结构的名称和类型</li>
+<li>是否参与搜索要分析业务来判断，例如图片地址，就无需参与搜索</li>
+<li>是否分词呢要看内容，内容如果是一个整体就无需分词，反之则要分词</li>
+<li>分词器，我们可以统一使用ik_max_word</li>
+</ul>
+<p>来看下酒店数据的索引库结构:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs json">PUT /hotel<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mappings&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;properties&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;text&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;analyzer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ik_max_word&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;copy_to&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;all&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;address&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;price&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;integer&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;score&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;integer&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;brand&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;copy_to&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;all&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;city&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;copy_to&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;all&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;starName&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;business&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;geo_point&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;pic&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keyword&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;all&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;text&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;analyzer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ik_max_word&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>几个特殊字段说明：</p>
+<ul>
+<li>location：地理坐标，里面包含精度、纬度</li>
+<li>all：一个组合字段，其目的是将多字段的值 利用copy_to合并，提供给用户搜索</li>
+</ul>
+<p>地理坐标说明：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720222110126.png" alt="image-20210720222110126"></p>
+<p>copy_to说明：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720222221516.png" alt="image-20210720222221516"></p>
+<h3 id="4-0-4-初始化RestClient"><a href="#4-0-4-初始化RestClient" class="headerlink" title="4.0.4.初始化RestClient"></a>4.0.4.初始化RestClient</h3><p>在elasticsearch提供的API中，与elasticsearch一切交互都封装在一个名为RestHighLevelClient的类中，必须先完成这个对象的初始化，建立与elasticsearch的连接。</p>
+<p>分为三步：</p>
+<p>1）引入es的RestHighLevelClient依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.elasticsearch.client<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>2）因为SpringBoot默认的ES版本是7.6.2，所以我们需要覆盖默认的ES版本：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">elasticsearch.version</span>&gt;</span>7.12.1<span class="hljs-tag">&lt;/<span class="hljs-name">elasticsearch.version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>3）初始化RestHighLevelClient：</p>
+<p>初始化的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">RestHighLevelClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestHighLevelClient</span>(RestClient.builder(<br>        HttpHost.create(<span class="hljs-string">&quot;http://192.168.150.101:9200&quot;</span>)<br>));<br></code></pre></td></tr></table></figure>
+
+
+
+<p>这里为了单元测试方便，我们创建一个测试类HotelIndexTest，然后将初始化的代码编写在@BeforeEach方法中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.itcast.hotel;<br><br><span class="hljs-keyword">import</span> org.apache.http.HttpHost;<br><span class="hljs-keyword">import</span> org.elasticsearch.client.RestHighLevelClient;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.AfterEach;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.BeforeEach;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HotelIndexTest</span> &#123;<br>    <span class="hljs-keyword">private</span> RestHighLevelClient client;<br><br>    <span class="hljs-meta">@BeforeEach</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">setUp</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">this</span>.client = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestHighLevelClient</span>(RestClient.builder(<br>                HttpHost.create(<span class="hljs-string">&quot;http://192.168.150.101:9200&quot;</span>)<br>        ));<br>    &#125;<br><br>    <span class="hljs-meta">@AfterEach</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">tearDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-built_in">this</span>.client.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-1-创建索引库"><a href="#4-1-创建索引库" class="headerlink" title="4.1.创建索引库"></a>4.1.创建索引库</h2><h3 id="4-1-1-代码解读"><a href="#4-1-1-代码解读" class="headerlink" title="4.1.1.代码解读"></a>4.1.1.代码解读</h3><p>创建索引库的API如下：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720223049408.png" alt="image-20210720223049408"></p>
+<p>代码分为三步：</p>
+<ul>
+<li>1）创建Request对象。因为是创建索引库的操作，因此Request是CreateIndexRequest。</li>
+<li>2）添加请求参数，其实就是DSL的JSON参数部分。因为json字符串很长，这里是定义了静态字符串常量MAPPING_TEMPLATE，让代码看起来更加优雅。</li>
+<li>3）发送请求，client.indices()方法的返回值是IndicesClient类型，封装了所有与索引库操作有关的方法。</li>
+</ul>
+<h3 id="4-1-2-完整示例"><a href="#4-1-2-完整示例" class="headerlink" title="4.1.2.完整示例"></a>4.1.2.完整示例</h3><p>在hotel-demo的cn.itcast.hotel.constants包下，创建一个类，定义mapping映射的JSON字符串常量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.itcast.hotel.constants;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HotelConstants</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">MAPPING_TEMPLATE</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;  \&quot;mappings\&quot;: &#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;    \&quot;properties\&quot;: &#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;id\&quot;: &#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;name\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;text\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;analyzer\&quot;: \&quot;ik_max_word\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;copy_to\&quot;: \&quot;all\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;address\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;index\&quot;: false\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;price\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;integer\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;score\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;integer\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;brand\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;copy_to\&quot;: \&quot;all\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;city\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;copy_to\&quot;: \&quot;all\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;starName\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;business\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;location\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;geo_point\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;pic\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;keyword\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;index\&quot;: false\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;      \&quot;all\&quot;:&#123;\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;type\&quot;: \&quot;text\&quot;,\n&quot;</span> +<br>            <span class="hljs-string">&quot;        \&quot;analyzer\&quot;: \&quot;ik_max_word\&quot;\n&quot;</span> +<br>            <span class="hljs-string">&quot;      &#125;\n&quot;</span> +<br>            <span class="hljs-string">&quot;    &#125;\n&quot;</span> +<br>            <span class="hljs-string">&quot;  &#125;\n&quot;</span> +<br>            <span class="hljs-string">&quot;&#125;&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在hotel-demo中的HotelIndexTest测试类中，编写单元测试，实现创建索引：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">createHotelIndex</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.创建Request对象</span><br>    <span class="hljs-type">CreateIndexRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CreateIndexRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>);<br>    <span class="hljs-comment">// 2.准备请求的参数：DSL语句</span><br>    request.source(MAPPING_TEMPLATE, XContentType.JSON);<br>    <span class="hljs-comment">// 3.发送请求</span><br>    client.indices().create(request, RequestOptions.DEFAULT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-2-删除索引库"><a href="#4-2-删除索引库" class="headerlink" title="4.2.删除索引库"></a>4.2.删除索引库</h2><p>删除索引库的DSL语句非常简单：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">DELETE /hotel<br></code></pre></td></tr></table></figure>
+
+<p>与创建索引库相比：</p>
+<ul>
+<li>请求方式从PUT变为DELTE</li>
+<li>请求路径不变</li>
+<li>无请求参数</li>
+</ul>
+<p>所以代码的差异，注意体现在Request对象上。依然是三步走：</p>
+<ul>
+<li>1）创建Request对象。这次是DeleteIndexRequest对象</li>
+<li>2）准备参数。这里是无参</li>
+<li>3）发送请求。改用delete方法</li>
+</ul>
+<p>在hotel-demo中的HotelIndexTest测试类中，编写单元测试，实现删除索引：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testDeleteHotelIndex</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.创建Request对象</span><br>    <span class="hljs-type">DeleteIndexRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeleteIndexRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>);<br>    <span class="hljs-comment">// 2.发送请求</span><br>    client.indices().delete(request, RequestOptions.DEFAULT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-3-判断索引库是否存在"><a href="#4-3-判断索引库是否存在" class="headerlink" title="4.3.判断索引库是否存在"></a>4.3.判断索引库是否存在</h2><p>判断索引库是否存在，本质就是查询，对应的DSL是：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /hotel<br></code></pre></td></tr></table></figure>
+
+
+
+<p>因此与删除的Java代码流程是类似的。依然是三步走：</p>
+<ul>
+<li>1）创建Request对象。这次是GetIndexRequest对象</li>
+<li>2）准备参数。这里是无参</li>
+<li>3）发送请求。改用exists方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testExistsHotelIndex</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.创建Request对象</span><br>    <span class="hljs-type">GetIndexRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GetIndexRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>);<br>    <span class="hljs-comment">// 2.发送请求</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">exists</span> <span class="hljs-operator">=</span> client.indices().exists(request, RequestOptions.DEFAULT);<br>    <span class="hljs-comment">// 3.输出</span><br>    System.err.println(exists ? <span class="hljs-string">&quot;索引库已经存在！&quot;</span> : <span class="hljs-string">&quot;索引库不存在！&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-4-总结"><a href="#4-4-总结" class="headerlink" title="4.4.总结"></a>4.4.总结</h2><p>JavaRestClient操作elasticsearch的流程基本类似。核心是client.indices()方法来获取索引库的操作对象。</p>
+<p>索引库操作的基本步骤：</p>
+<ul>
+<li>初始化RestHighLevelClient</li>
+<li>创建XxxIndexRequest。XXX是Create、Get、Delete</li>
+<li>准备DSL（ Create时需要，其它是无参）</li>
+<li>发送请求。调用RestHighLevelClient#indices().xxx()方法，xxx是create、exists、delete</li>
+</ul>
+<h1 id="5-RestClient操作文档"><a href="#5-RestClient操作文档" class="headerlink" title="5.RestClient操作文档"></a>5.RestClient操作文档</h1><p>为了与索引库操作分离，我们再次参加一个测试类，做两件事情：</p>
+<ul>
+<li>初始化RestHighLevelClient</li>
+<li>我们的酒店数据在数据库，需要利用IHotelService去查询，所以注入这个接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.itcast.hotel;<br><br><span class="hljs-keyword">import</span> cn.itcast.hotel.pojo.Hotel;<br><span class="hljs-keyword">import</span> cn.itcast.hotel.service.IHotelService;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.AfterEach;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.BeforeEach;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HotelDocumentTest</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IHotelService hotelService;<br><br>    <span class="hljs-keyword">private</span> RestHighLevelClient client;<br><br>    <span class="hljs-meta">@BeforeEach</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">setUp</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">this</span>.client = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestHighLevelClient</span>(RestClient.builder(<br>                HttpHost.create(<span class="hljs-string">&quot;http://192.168.150.101:9200&quot;</span>)<br>        ));<br>    &#125;<br><br>    <span class="hljs-meta">@AfterEach</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">tearDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-built_in">this</span>.client.close();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-1-新增文档"><a href="#5-1-新增文档" class="headerlink" title="5.1.新增文档"></a>5.1.新增文档</h2><p>我们要将数据库的酒店数据查询出来，写入elasticsearch中。</p>
+<h3 id="5-1-1-索引库实体类"><a href="#5-1-1-索引库实体类" class="headerlink" title="5.1.1.索引库实体类"></a>5.1.1.索引库实体类</h3><p>数据库查询后的结果是一个Hotel类型的对象。结构如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@TableName(&quot;tb_hotel&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hotel</span> &#123;<br>    <span class="hljs-meta">@TableId(type = IdType.INPUT)</span><br>    <span class="hljs-keyword">private</span> Long id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String address;<br>    <span class="hljs-keyword">private</span> Integer price;<br>    <span class="hljs-keyword">private</span> Integer score;<br>    <span class="hljs-keyword">private</span> String brand;<br>    <span class="hljs-keyword">private</span> String city;<br>    <span class="hljs-keyword">private</span> String starName;<br>    <span class="hljs-keyword">private</span> String business;<br>    <span class="hljs-keyword">private</span> String longitude;<br>    <span class="hljs-keyword">private</span> String latitude;<br>    <span class="hljs-keyword">private</span> String pic;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与我们的索引库结构存在差异：</p>
+<ul>
+<li>longitude和latitude需要合并为location</li>
+</ul>
+<p>因此，我们需要定义一个新的类型，与索引库结构吻合：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> cn.itcast.hotel.pojo;<br><br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> lombok.NoArgsConstructor;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HotelDoc</span> &#123;<br>    <span class="hljs-keyword">private</span> Long id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String address;<br>    <span class="hljs-keyword">private</span> Integer price;<br>    <span class="hljs-keyword">private</span> Integer score;<br>    <span class="hljs-keyword">private</span> String brand;<br>    <span class="hljs-keyword">private</span> String city;<br>    <span class="hljs-keyword">private</span> String starName;<br>    <span class="hljs-keyword">private</span> String business;<br>    <span class="hljs-keyword">private</span> String location;<br>    <span class="hljs-keyword">private</span> String pic;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">HotelDoc</span><span class="hljs-params">(Hotel hotel)</span> &#123;<br>        <span class="hljs-built_in">this</span>.id = hotel.getId();<br>        <span class="hljs-built_in">this</span>.name = hotel.getName();<br>        <span class="hljs-built_in">this</span>.address = hotel.getAddress();<br>        <span class="hljs-built_in">this</span>.price = hotel.getPrice();<br>        <span class="hljs-built_in">this</span>.score = hotel.getScore();<br>        <span class="hljs-built_in">this</span>.brand = hotel.getBrand();<br>        <span class="hljs-built_in">this</span>.city = hotel.getCity();<br>        <span class="hljs-built_in">this</span>.starName = hotel.getStarName();<br>        <span class="hljs-built_in">this</span>.business = hotel.getBusiness();<br>        <span class="hljs-built_in">this</span>.location = hotel.getLatitude() + <span class="hljs-string">&quot;, &quot;</span> + hotel.getLongitude();<br>        <span class="hljs-built_in">this</span>.pic = hotel.getPic();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-1-2-语法说明"><a href="#5-1-2-语法说明" class="headerlink" title="5.1.2.语法说明"></a>5.1.2.语法说明</h3><p>新增文档的DSL语句如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json">POST /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_doc/<span class="hljs-number">1</span><br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Jack&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">21</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>对应的java代码如图：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720230027240.png" alt="image-20210720230027240"></p>
+<p>可以看到与创建索引库类似，同样是三步走：</p>
+<ul>
+<li>1）创建Request对象</li>
+<li>2）准备请求参数，也就是DSL中的JSON文档</li>
+<li>3）发送请求</li>
+</ul>
+<p>变化的地方在于，这里直接使用client.xxx()的API，不再需要client.indices()了。</p>
+<h3 id="5-1-3-完整代码"><a href="#5-1-3-完整代码" class="headerlink" title="5.1.3.完整代码"></a>5.1.3.完整代码</h3><p>我们导入酒店数据，基本流程一致，但是需要考虑几点变化：</p>
+<ul>
+<li>酒店数据来自于数据库，我们需要先查询出来，得到hotel对象</li>
+<li>hotel对象需要转为HotelDoc对象</li>
+<li>HotelDoc需要序列化为json格式</li>
+</ul>
+<p>因此，代码整体步骤如下：</p>
+<ul>
+<li>1）根据id查询酒店数据Hotel</li>
+<li>2）将Hotel封装为HotelDoc</li>
+<li>3）将HotelDoc序列化为JSON</li>
+<li>4）创建IndexRequest，指定索引库名和id</li>
+<li>5）准备请求参数，也就是JSON文档</li>
+<li>6）发送请求</li>
+</ul>
+<p>在hotel-demo的HotelDocumentTest测试类中，编写单元测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testAddDocument</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.根据id查询酒店数据</span><br>    <span class="hljs-type">Hotel</span> <span class="hljs-variable">hotel</span> <span class="hljs-operator">=</span> hotelService.getById(<span class="hljs-number">61083L</span>);<br>    <span class="hljs-comment">// 2.转换为文档类型</span><br>    <span class="hljs-type">HotelDoc</span> <span class="hljs-variable">hotelDoc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HotelDoc</span>(hotel);<br>    <span class="hljs-comment">// 3.将HotelDoc转json</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> JSON.toJSONString(hotelDoc);<br><br>    <span class="hljs-comment">// 1.准备Request对象</span><br>    <span class="hljs-type">IndexRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IndexRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>).id(hotelDoc.getId().toString());<br>    <span class="hljs-comment">// 2.准备Json文档</span><br>    request.source(json, XContentType.JSON);<br>    <span class="hljs-comment">// 3.发送请求</span><br>    client.index(request, RequestOptions.DEFAULT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-2-查询文档"><a href="#5-2-查询文档" class="headerlink" title="5.2.查询文档"></a>5.2.查询文档</h2><h3 id="5-2-1-语法说明"><a href="#5-2-1-语法说明" class="headerlink" title="5.2.1.语法说明"></a>5.2.1.语法说明</h3><p>查询的DSL语句如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /hotel/_doc/<span class="hljs-punctuation">&#123;</span>id<span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>非常简单，因此代码大概分两步：</p>
+<ul>
+<li>准备Request对象</li>
+<li>发送请求</li>
+</ul>
+<p>不过查询的目的是得到结果，解析为HotelDoc，因此难点是结果的解析。完整代码如下：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720230811674.png" alt="image-20210720230811674"></p>
+<p>可以看到，结果是一个JSON，其中文档放在一个<code>_source</code>属性中，因此解析就是拿到<code>_source</code>，反序列化为Java对象即可。</p>
+<p>与之前类似，也是三步走：</p>
+<ul>
+<li>1）准备Request对象。这次是查询，所以是GetRequest</li>
+<li>2）发送请求，得到结果。因为是查询，这里调用client.get()方法</li>
+<li>3）解析结果，就是对JSON做反序列化</li>
+</ul>
+<h3 id="5-2-2-完整代码"><a href="#5-2-2-完整代码" class="headerlink" title="5.2.2.完整代码"></a>5.2.2.完整代码</h3><p>在hotel-demo的HotelDocumentTest测试类中，编写单元测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testGetDocumentById</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.准备Request</span><br>    <span class="hljs-type">GetRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GetRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>, <span class="hljs-string">&quot;61082&quot;</span>);<br>    <span class="hljs-comment">// 2.发送请求，得到响应</span><br>    <span class="hljs-type">GetResponse</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.get(request, RequestOptions.DEFAULT);<br>    <span class="hljs-comment">// 3.解析响应结果</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> response.getSourceAsString();<br><br>    <span class="hljs-type">HotelDoc</span> <span class="hljs-variable">hotelDoc</span> <span class="hljs-operator">=</span> JSON.parseObject(json, HotelDoc.class);<br>    System.out.println(hotelDoc);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-3-删除文档"><a href="#5-3-删除文档" class="headerlink" title="5.3.删除文档"></a>5.3.删除文档</h2><p>删除的DSL是这样的：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">DELETE /hotel/_doc/<span class="hljs-punctuation">&#123;</span>id<span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>与查询相比，仅仅是请求方式从DELETE变成GET，可以想象Java代码应该依然是三步走：</p>
+<ul>
+<li>1）准备Request对象，因为是删除，这次是DeleteRequest对象。要指定索引库名和id</li>
+<li>2）准备参数，无参</li>
+<li>3）发送请求。因为是删除，所以是client.delete()方法</li>
+</ul>
+<p>在hotel-demo的HotelDocumentTest测试类中，编写单元测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testDeleteDocument</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.准备Request</span><br>    <span class="hljs-type">DeleteRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeleteRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>, <span class="hljs-string">&quot;61083&quot;</span>);<br>    <span class="hljs-comment">// 2.发送请求</span><br>    client.delete(request, RequestOptions.DEFAULT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="5-4-修改文档"><a href="#5-4-修改文档" class="headerlink" title="5.4.修改文档"></a>5.4.修改文档</h2><h3 id="5-4-1-语法说明"><a href="#5-4-1-语法说明" class="headerlink" title="5.4.1.语法说明"></a>5.4.1.语法说明</h3><p>修改我们讲过两种方式：</p>
+<ul>
+<li>全量修改：本质是先根据id删除，再新增</li>
+<li>增量修改：修改文档中的指定字段值</li>
+</ul>
+<p>在RestClient的API中，全量修改与新增的API完全一致，判断依据是ID：</p>
+<ul>
+<li>如果新增时，ID已经存在，则修改</li>
+<li>如果新增时，ID不存在，则新增</li>
+</ul>
+<p>这里不再赘述，我们主要关注增量修改。</p>
+<p>代码示例如图：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720231040875.png" alt="image-20210720231040875"></p>
+<p>与之前类似，也是三步走：</p>
+<ul>
+<li>1）准备Request对象。这次是修改，所以是UpdateRequest</li>
+<li>2）准备参数。也就是JSON文档，里面包含要修改的字段</li>
+<li>3）更新文档。这里调用client.update()方法</li>
+</ul>
+<h3 id="5-4-2-完整代码"><a href="#5-4-2-完整代码" class="headerlink" title="5.4.2.完整代码"></a>5.4.2.完整代码</h3><p>在hotel-demo的HotelDocumentTest测试类中，编写单元测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testUpdateDocument</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 1.准备Request</span><br>    <span class="hljs-type">UpdateRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>, <span class="hljs-string">&quot;61083&quot;</span>);<br>    <span class="hljs-comment">// 2.准备请求参数</span><br>    request.doc(<br>        <span class="hljs-string">&quot;price&quot;</span>, <span class="hljs-string">&quot;952&quot;</span>,<br>        <span class="hljs-string">&quot;starName&quot;</span>, <span class="hljs-string">&quot;四钻&quot;</span><br>    );<br>    <span class="hljs-comment">// 3.发送请求</span><br>    client.update(request, RequestOptions.DEFAULT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-5-批量导入文档"><a href="#5-5-批量导入文档" class="headerlink" title="5.5.批量导入文档"></a>5.5.批量导入文档</h2><p>案例需求：利用BulkRequest批量将数据库数据导入到索引库中。</p>
+<p>步骤如下：</p>
+<ul>
+<li><p>利用mybatis-plus查询酒店数据</p>
+</li>
+<li><p>将查询到的酒店数据（Hotel）转换为文档类型数据（HotelDoc）</p>
+</li>
+<li><p>利用JavaRestClient中的BulkRequest批处理，实现批量新增文档</p>
+</li>
+</ul>
+<h3 id="5-5-1-语法说明"><a href="#5-5-1-语法说明" class="headerlink" title="5.5.1.语法说明"></a>5.5.1.语法说明</h3><p>批量处理BulkRequest，其本质就是将多个普通的CRUD请求组合在一起发送。</p>
+<p>其中提供了一个add方法，用来添加其他请求：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720232105943.png" alt="image-20210720232105943"></p>
+<p>可以看到，能添加的请求包括：</p>
+<ul>
+<li>IndexRequest，也就是新增</li>
+<li>UpdateRequest，也就是修改</li>
+<li>DeleteRequest，也就是删除</li>
+</ul>
+<p>因此Bulk中添加了多个IndexRequest，就是批量新增功能了。示例：</p>
+<p><img src="D:/文档/Java/SpringCloud/day05-Elasticsearch01/讲义/assets/image-20210720232431383.png" alt="image-20210720232431383"></p>
+<p>其实还是三步走：</p>
+<ul>
+<li>1）创建Request对象。这里是BulkRequest</li>
+<li>2）准备参数。批处理的参数，就是其它Request对象，这里就是多个IndexRequest</li>
+<li>3）发起请求。这里是批处理，调用的方法为client.bulk()方法</li>
+</ul>
+<p>我们在导入酒店数据时，将上述代码改造成for循环处理即可。</p>
+<h3 id="5-5-2-完整代码"><a href="#5-5-2-完整代码" class="headerlink" title="5.5.2.完整代码"></a>5.5.2.完整代码</h3><p>在hotel-demo的HotelDocumentTest测试类中，编写单元测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">testBulkRequest</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 批量查询酒店数据</span><br>    List&lt;Hotel&gt; hotels = hotelService.list();<br><br>    <span class="hljs-comment">// 1.创建Request</span><br>    <span class="hljs-type">BulkRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BulkRequest</span>();<br>    <span class="hljs-comment">// 2.准备参数，添加多个新增的Request</span><br>    <span class="hljs-keyword">for</span> (Hotel hotel : hotels) &#123;<br>        <span class="hljs-comment">// 2.1.转换为文档类型HotelDoc</span><br>        <span class="hljs-type">HotelDoc</span> <span class="hljs-variable">hotelDoc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HotelDoc</span>(hotel);<br>        <span class="hljs-comment">// 2.2.创建新增文档的Request对象</span><br>        request.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">IndexRequest</span>(<span class="hljs-string">&quot;hotel&quot;</span>)<br>                    .id(hotelDoc.getId().toString())<br>                    .source(JSON.toJSONString(hotelDoc), XContentType.JSON));<br>    &#125;<br>    <span class="hljs-comment">// 3.发送请求</span><br>    client.bulk(request, RequestOptions.DEFAULT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-6-小结"><a href="#5-6-小结" class="headerlink" title="5.6.小结"></a>5.6.小结</h2><p>文档操作的基本步骤：</p>
+<ul>
+<li>初始化RestHighLevelClient</li>
+<li>创建XxxRequest。XXX是Index、Get、Update、Delete、Bulk</li>
+<li>准备参数（Index、Update、Bulk时需要）</li>
+<li>发送请求。调用RestHighLevelClient#.xxx()方法，xxx是index、get、update、delete、bulk</li>
+<li>解析结果（Get时需要）</li>
+</ul>
+
                 
               </div>
             
@@ -327,6 +1290,52 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Elasticsearch/" class="category-chain-item">Elasticsearch</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/Elasticsearch/Kibana/" class="category-chain-item">Kibana</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/Elasticsearch/Kibana/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/Elasticsearch/">#Elasticsearch</a>
+      
+        <a href="/blog/tags/Kibana/">#Kibana</a>
+      
+    </div>
   
 </div>
 
@@ -355,7 +1364,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年9月19日</div>
+          <div>2023年9月20日</div>
         </div>
       
       
