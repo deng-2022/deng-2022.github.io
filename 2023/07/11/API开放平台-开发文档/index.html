@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/house2.jpg">
 <meta property="article:published_time" content="2023-07-11T15:09:22.000Z">
-<meta property="article:modified_time" content="2023-08-23T13:04:22.000Z">
+<meta property="article:modified_time" content="2023-09-21T06:10:25.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          55k 字
+          56k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          138 分钟
+          141 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：5 分钟前
                   
                 
               </p>
@@ -1135,6 +1135,8 @@
 <ul>
 <li>GateWay转发请求，调用后台接口：</li>
 </ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-comment"># 网关过滤</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">gateway:</span><br>      <span class="hljs-attr">routes:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">memory-api</span><br>          <span class="hljs-attr">uri:</span> <span class="hljs-string">http://localhost:8123</span><br>          <span class="hljs-attr">predicates:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">Path=/api/**</span><br></code></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 6.调用接口</span><br><span class="hljs-keyword">return</span> handleResponse(exchange, chain, interfaceInfo.getId(), invokeUser.getId());<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.writeWith(fluxBody.map(dataBuffer -&gt; &#123;<br>	<span class="hljs-comment">// todo 调用成功, 次数 + 1</span><br>	<span class="hljs-comment">// 7. 调用成功，接口调用次数 + 1 invokeCount</span><br>	<span class="hljs-keyword">try</span> &#123;<br>		innerUserInterfaceInfoService.invokeCount(interfaceInfoId, userId);<br>	&#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>		log.error(<span class="hljs-string">&quot;invokeCount error&quot;</span>, e);<br>	&#125;<br>    .....................<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -1144,29 +1146,76 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PostMapping(&quot;/user&quot;)</span><br>   <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUserNameByPost</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> User user, HttpServletRequest request)</span> &#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;POST 我的名字是: &quot;</span> + user.getName();<br>   &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="接口添加"><a href="#接口添加" class="headerlink" title="接口添加"></a>接口添加</h3><h4 id="随机显示一条名言"><a href="#随机显示一条名言" class="headerlink" title="随机显示一条名言"></a>随机显示一条名言</h4><h4 id="根据不同url请求不同接口"><a href="#根据不同url请求不同接口" class="headerlink" title="根据不同url请求不同接口"></a>根据不同url请求不同接口</h4><ul>
-<li>每条接口的信息有：接口名、接口url、请求参数等等</li>
-<li>当前情况是：用户调用接口时，前端传回了调用者的id，且仅实现了对后台一个接口的调用</li>
-<li>问题是，当实现调用多个接口时，我们该如何保证用户对不同接口的调用，后台能够正确转发？<ul>
+<h2 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h2><h3 id="接口添加"><a href="#接口添加" class="headerlink" title="接口添加"></a>接口添加</h3><h4 id="随机显示一条名言"><a href="#随机显示一条名言" class="headerlink" title="随机显示一条名言"></a>随机显示一条名言</h4><ul>
+<li>在Mappper中写自定义SQL查询语句</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getRandomWord&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;memory.cloud.memoryclient.domain.Words&quot;</span>&gt;</span><br>       select * from words where type = #&#123;type&#125; ORDER BY RAND() LIMIT 1;;<br>   <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="添加的时候还是有些许坎坷的，毕竟好长时间呢没看这个项目了，调用成功后，总算理清了整个接口调用的思路："><a href="#添加的时候还是有些许坎坷的，毕竟好长时间呢没看这个项目了，调用成功后，总算理清了整个接口调用的思路：" class="headerlink" title="添加的时候还是有些许坎坷的，毕竟好长时间呢没看这个项目了，调用成功后，总算理清了整个接口调用的思路："></a>添加的时候还是有些许坎坷的，毕竟好长时间呢没看这个项目了，调用成功后，总算理清了整个接口调用的思路：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230921135241899.png" alt="image-20230921135241899"></p>
+<ul>
+<li><h5 id="总结下简单的流程：（2023-09-21午）"><a href="#总结下简单的流程：（2023-09-21午）" class="headerlink" title="总结下简单的流程：（2023/09/21午）"></a>总结下简单的流程：（2023/09/21午）</h5><ul>
+<li>用户携带参数请求接口</li>
+<li>根据请求接口Id，校验判断该接口的可用性，借助sdk工具包调用该接口</li>
+<li>sdk发送的调用接口的请求，首先来到 GateWay 作<strong>统一鉴权、统一业务处理、路由转发</strong>等操作</li>
+<li>由<strong>网关转发接口请求到对应接口</strong>，处理完成后返回结果，完成接口调用</li>
+</ul>
+</li>
+<li><h5 id="后续将进行页面优化，并提供多个简单的接口实现，目前有想法的接口实现为：（2023-09-21午）"><a href="#后续将进行页面优化，并提供多个简单的接口实现，目前有想法的接口实现为：（2023-09-21午）" class="headerlink" title="后续将进行页面优化，并提供多个简单的接口实现，目前有想法的接口实现为：（2023/09/21午）"></a>后续将进行页面优化，并提供多个简单的接口实现，目前有想法的接口实现为：（2023/09/21午）</h5><ul>
+<li><strong>自动生成头像</strong></li>
+<li><strong>返回随即壁纸</strong>（这个计划使用Java爬虫爬取别的网页数据，正好复习下这方面的知识，巩固MemorySearch的学习经验）</li>
+<li><strong>在线翻译功能</strong>（暂时没有想法，接入别的在线翻译平台嘛）</li>
+</ul>
+</li>
+</ul>
+<h3 id="根据不同url请求不同接口"><a href="#根据不同url请求不同接口" class="headerlink" title="根据不同url请求不同接口"></a>根据不同url请求不同接口</h3><ul>
+<li><h5 id="每条接口的信息有：接口名、接口url、请求参数等等"><a href="#每条接口的信息有：接口名、接口url、请求参数等等" class="headerlink" title="每条接口的信息有：接口名、接口url、请求参数等等"></a>每条接口的信息有：接口名、接口url、请求参数等等</h5></li>
+<li><p>当前情况是：用户调用接口时，前端传回了调用者的id，且<strong>仅实现了对后台一个接口的调用</strong></p>
+</li>
+<li><h5 id="问题是，当实现调用多个接口时，我们该如何保证用户对不同接口的调用，后台能够正确转发？"><a href="#问题是，当实现调用多个接口时，我们该如何保证用户对不同接口的调用，后台能够正确转发？" class="headerlink" title="问题是，当实现调用多个接口时，我们该如何保证用户对不同接口的调用，后台能够正确转发？"></a>问题是，当实现调用多个接口时，我们该如何保证用户对不同接口的调用，后台能够正确转发？</h5><ul>
 <li>每个接口调用都写一个controller</li>
 <li>统一controller接收接口调用请求，再分情况调用相应接口</li>
 </ul>
 </li>
-<li>我比较倾向于第二种方法，但如何根据用户调用情况来调用不同的接口呢？我还没想好，目前计划使用switch枚举接口id来确定调用的接口</li>
-<li>因为现在开放的接口数量很少嘛，暂时这样也可行</li>
+<li><p>我比较倾向于第二种方法，但如何根据用户调用情况来调用不同的接口呢？我还没想好，目前计划使用switch枚举接口id来确定调用的接口</p>
+</li>
+<li><h5 id="因为现在开放的接口数量很少嘛，暂时这样也可行（2023-09-06午）"><a href="#因为现在开放的接口数量很少嘛，暂时这样也可行（2023-09-06午）" class="headerlink" title="因为现在开放的接口数量很少嘛，暂时这样也可行（2023/09/06午）"></a>因为现在开放的接口数量很少嘛，暂时这样也可行（2023/09/06午）</h5></li>
+<li><h5 id="半个月前的想法还是很正确的，当时已经完成这个功能了，只不过没有记录实现思路（被GateWay网关传递中文乱码整麻了）"><a href="#半个月前的想法还是很正确的，当时已经完成这个功能了，只不过没有记录实现思路（被GateWay网关传递中文乱码整麻了）" class="headerlink" title="半个月前的想法还是很正确的，当时已经完成这个功能了，只不过没有记录实现思路（被GateWay网关传递中文乱码整麻了）"></a>半个月前的想法还是很正确的，当时已经完成这个功能了，只不过没有记录实现思路（被GateWay网关传递中文乱码整麻了）</h5></li>
 </ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyFilter</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title class_">FilterRegistrationBean</span>&lt;<span class="hljs-title class_">CharacterEncodingFilter</span>&gt; <span class="hljs-title function_">myCharacterEncodingFilter</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title class_">FilterRegistrationBean</span>&lt;<span class="hljs-title class_">CharacterEncodingFilter</span>&gt; registrationBean = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FilterRegistrationBean</span>&lt;&gt;();<br>        registrationBean.<span class="hljs-title function_">setFilter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CharacterEncodingFilter</span>(<span class="hljs-string">&quot;UTF-8&quot;</span>, <span class="hljs-literal">true</span>));<br>        registrationBean.<span class="hljs-title function_">addUrlPatterns</span>(<span class="hljs-string">&quot;/*&quot;</span>);<br>        <span class="hljs-keyword">return</span> registrationBean;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//TODO 根据不同地址调用对应接口</span><br>       <span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> interfaceIdSource.invokeInterfaceById(id, userRequestParams, tempClient);<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">spring</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-comment">#  #</span><br>    <span class="hljs-attribute">main</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-attribute">web-application-type</span><span class="hljs-punctuation">:</span> <span class="hljs-string">reactive</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java">  <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 调用接口</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id 接口id</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">invokeInterfaceById</span><span class="hljs-params">(Long id, String userRequestParams, MemoryClient tempClient)</span> &#123;<br>        <span class="hljs-comment">// 初始化interfaceInfoIdList</span><br><span class="hljs-comment">//        this.doInit();</span><br>        List&lt;Long&gt; interfaceInfoIdList = interfaceInfoMapper.getInterfaceInfoIdList();<br>        <span class="hljs-comment">// 处理其他未匹配到的情况</span><br>        ThrowUtils.throwIf(!interfaceInfoIdList.contains(id), ErrorCode.NOT_FOUND_ERROR, <span class="hljs-string">&quot;该接口不存在或已被禁用&quot;</span>);<br>        <span class="hljs-comment">// 匹配成功，调用接口</span><br>        <span class="hljs-built_in">this</span>.userRequestParams = userRequestParams;<br>        <span class="hljs-type">Gson</span> <span class="hljs-variable">gson</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">if</span> (id == <span class="hljs-number">1646372563419L</span>) &#123;<br>            com.memory.clientsdk.model.<span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> gson.fromJson(userRequestParams, com.memory.clientsdk.model.User.class);<br>            result = tempClient.getUserByPost(user);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (id == <span class="hljs-number">1646335784547L</span>) &#123;<br>            com.memory.clientsdk.model.<span class="hljs-type">Words</span> <span class="hljs-variable">words</span> <span class="hljs-operator">=</span> gson.fromJson(userRequestParams, com.memory.clientsdk.model.Words.class);<br>            result = tempClient.getRandomWord(words);<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><h5 id="这里的实现方法还是挺丑陋的"><a href="#这里的实现方法还是挺丑陋的" class="headerlink" title="这里的实现方法还是挺丑陋的"></a>这里的实现方法还是挺丑陋的</h5><ul>
+<li>因为接口调用时，传递了<strong>调用接口的id</strong>，在多次斟酌后，还是选择使用<strong>简单的if-else分支实现对不同接口的调用</strong></li>
+</ul>
+</li>
+<li><h5 id="在这里当时还记录了一个踩坑经验：mapper注入为null，这次经历确实让我记忆犹新（2023-09-21午）"><a href="#在这里当时还记录了一个踩坑经验：mapper注入为null，这次经历确实让我记忆犹新（2023-09-21午）" class="headerlink" title="在这里当时还记录了一个踩坑经验：mapper注入为null，这次经历确实让我记忆犹新（2023/09/21午）"></a>在这里当时还记录了一个踩坑经验：mapper注入为null，这次经历确实让我记忆犹新（2023/09/21午）</h5></li>
+</ul>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
+<li>半个月前，我新增了一条接口：<strong>随机返回一条名言</strong></li>
+<li>当时是这样调用接口的：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230921132949167.png" alt="image-20230921132949167"></p>
+<ul>
+<li>当请求转发到 GateWay 网关时，<strong>接受到的参数就变成乱码</strong>了（可惜截不到原图了，这是现在的调用效果）：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230921133040857.png" alt="image-20230921133040857"></p>
+<ul>
+<li>这就是 <strong>GateWay 网关接收中文参数变成乱码</strong>的问题了，关于这个我尝试了各种配置去解决，<strong>但均无果</strong></li>
+<li>把我搜集到的这些：通过配置来<strong>解决中文乱码的解决方案</strong>（虽然没什么效果），简单的贴出来吧，有机会再研究：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 设置请求编码</span><br>       <span class="hljs-type">MediaType</span> <span class="hljs-variable">requestContentType</span> <span class="hljs-operator">=</span> requestHeaders.getContentType();<br>       <span class="hljs-keyword">if</span> (requestContentType != <span class="hljs-literal">null</span> &amp;&amp; requestContentType.getCharset() == <span class="hljs-literal">null</span>) &#123;<br>           requestHeaders.setContentType(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MediaType</span>(requestContentType.getType(), requestContentType.getSubtype(), Charset.forName(<span class="hljs-string">&quot;UTF-8&quot;</span>)));<br>       &#125;<br><br>       <span class="hljs-comment">// 设置响应编码</span><br>       <span class="hljs-type">MediaType</span> <span class="hljs-variable">responseContentType</span> <span class="hljs-operator">=</span> responseHeaders.getContentType();<br>       <span class="hljs-keyword">if</span> (responseContentType != <span class="hljs-literal">null</span> &amp;&amp; responseContentType.getCharset() == <span class="hljs-literal">null</span>) &#123;<br>           responseHeaders.setContentType(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MediaType</span>(responseContentType.getType(), responseContentType.getSubtype(), Charset.forName(<span class="hljs-string">&quot;UTF-8&quot;</span>)));<br>       &#125;        <br></code></pre></td></tr></table></figure>
 
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>    <span class="hljs-attr">main:</span><br>      <span class="hljs-attr">web-application-type:</span> <span class="hljs-string">reactive</span><br></code></pre></td></tr></table></figure>
 
-
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><br><span class="hljs-comment">// 设置请求编码</span><br>MediaType requestContentType = requestHeaders.get<span class="hljs-constructor">ContentType()</span>;<br><span class="hljs-keyword">if</span> (requestContentType != null<span class="hljs-operator"> &amp;&amp; </span>requestContentType.get<span class="hljs-constructor">Charset()</span><span class="hljs-operator"> == </span>null) &#123;<br>    requestHeaders.set<span class="hljs-constructor">ContentType(<span class="hljs-params">new</span> MediaType(<span class="hljs-params">requestContentType</span>.<span class="hljs-params">getType</span>()</span>, requestContentType.get<span class="hljs-constructor">Subtype()</span>, <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Charset</span>.</span></span><span class="hljs-keyword">for</span><span class="hljs-constructor">Name(<span class="hljs-string">&quot;UTF-8&quot;</span>)</span>));<br>&#125;<br><br><span class="hljs-comment">// 设置响应编码</span><br>MediaType responseContentType = responseHeaders.get<span class="hljs-constructor">ContentType()</span>;<br><span class="hljs-keyword">if</span> (responseContentType != null<span class="hljs-operator"> &amp;&amp; </span>responseContentType.get<span class="hljs-constructor">Charset()</span><span class="hljs-operator"> == </span>null) &#123;<br>    responseHeaders.set<span class="hljs-constructor">ContentType(<span class="hljs-params">new</span> MediaType(<span class="hljs-params">responseContentType</span>.<span class="hljs-params">getType</span>()</span>, responseContentType.get<span class="hljs-constructor">Subtype()</span>, <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Charset</span>.</span></span><span class="hljs-keyword">for</span><span class="hljs-constructor">Name(<span class="hljs-string">&quot;UTF-8&quot;</span>)</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
+<ul>
+<li>于是我就想，我为什么非得传中文呢？<strong>写个枚举类，把名言类型枚举，改为传递对应的整数</strong>不就行了嘛</li>
+<li>于是就有了现在的解决方案，详情可见上文中的 <strong>后续优化 -&gt; 随机显示一条名言</strong>一栏 <strong>（2023/09/21）</strong></li>
+</ul>
 <h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><ul>
 <li><h5 id="Dubbo、Nacos依赖包的导入以及相关服务的正确使用"><a href="#Dubbo、Nacos依赖包的导入以及相关服务的正确使用" class="headerlink" title="Dubbo、Nacos依赖包的导入以及相关服务的正确使用"></a>Dubbo、Nacos依赖包的导入以及相关服务的正确使用</h5></li>
 <li><h5 id="Maven实现抽取公共服务（2023-08-24午）"><a href="#Maven实现抽取公共服务（2023-08-24午）" class="headerlink" title="Maven实现抽取公共服务（2023/08/24午）"></a>Maven实现抽取公共服务（2023/08/24午）</h5></li>
@@ -1253,7 +1302,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月23日</div>
+          <div>2023年9月21日</div>
         </div>
       
       
