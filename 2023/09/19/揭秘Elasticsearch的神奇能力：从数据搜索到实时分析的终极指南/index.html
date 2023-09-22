@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
-<meta property="article:modified_time" content="2023-09-20T14:42:50.000Z">
+<meta property="article:modified_time" content="2023-09-22T15:10:50.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Elasticsearch">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          30k 字
+          33k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          76 分钟
+          84 分钟
         
       </span>
     
@@ -432,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：20 分钟前
                   
                 
               </p>
@@ -668,7 +668,7 @@
 </li>
 </ul>
 <h3 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h3><ul>
-<li><h5 id="Getting-Started-with-Logstash-Logstash-Reference-7-17-Elastic"><a href="#Getting-Started-with-Logstash-Logstash-Reference-7-17-Elastic" class="headerlink" title="[Getting Started with Logstash | Logstash Reference 7.17] | Elastic"></a>[Getting Started with Logstash | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/getting-started-with-logstash.html">7.17] | Elastic</a></h5></li>
+<li><h5 id="Getting-Started-with-Logstash-Logstash-Reference-7-17-Elastic（2023-09-22晚）"><a href="#Getting-Started-with-Logstash-Logstash-Reference-7-17-Elastic（2023-09-22晚）" class="headerlink" title="[Getting Started with Logstash | Logstash Reference 7.17] | Elastic（2023/09/22晚）"></a>[Getting Started with Logstash | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/getting-started-with-logstash.html">7.17] | Elastic</a>（2023/09/22晚）</h5></li>
 <li><h5 id="Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic"><a href="#Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic" class="headerlink" title="[Running Logstash on Windows | Logstash Reference 7.17] | Elastic"></a>[Running Logstash on Windows | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/running-logstash-windows.html">7.17] | Elastic</a></h5></li>
 <li><p><strong>传输</strong> 和 <strong>处理 数据</strong>的管道</p>
 <ul>
@@ -678,6 +678,129 @@
 </li>
 <li><p>本质上就是把<strong>编程式同步改为配置式同步</strong>，更加方便快捷</p>
 </li>
+</ul>
+<h4 id="下载安装-1"><a href="#下载安装-1" class="headerlink" title="下载安装"></a>下载安装</h4><ul>
+<li><h5 id="Download-Logstash-Free-Get-Started-Now-Elastic"><a href="#Download-Logstash-Free-Get-Started-Now-Elastic" class="headerlink" title="Download Logstash Free | Get Started Now | Elastic"></a><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/logstash">Download Logstash Free | Get Started Now | Elastic</a></h5></li>
+</ul>
+<h4 id="demo测试"><a href="#demo测试" class="headerlink" title="demo测试"></a>demo测试</h4><ul>
+<li><h5 id="Stashing-Your-First-Event-Logstash-Reference-7-17-Elastic"><a href="#Stashing-Your-First-Event-Logstash-Reference-7-17-Elastic" class="headerlink" title="[Stashing Your First Event | Logstash Reference 7.17] | Elastic"></a>[Stashing Your First Event | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/first-event.html">7.17] | Elastic</a></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922205535009.png" alt="image-20230922205535009"></p>
+<ul>
+<li><h5 id="我们根据官网指引，可以找到这么一段测试代码："><a href="#我们根据官网指引，可以找到这么一段测试代码：" class="headerlink" title="我们根据官网指引，可以找到这么一段测试代码："></a>我们根据官网指引，可以找到这么一段测试代码：</h5></li>
+</ul>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">logstash.bat -e &quot;input </span><span class="hljs-template-variable">&#123; stdin &#123; &#125;</span><span class="language-xml"> &#125; output </span><span class="hljs-template-variable">&#123; stdout &#123;&#125;</span><span class="language-xml"> &#125;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在<strong>bin目录下</strong>执行这段代码（可以理解为：指定输入输出<strong>配置均为默认</strong>，<strong>开启 Logstash</strong>）</p>
+</li>
+<li><h5 id="待启动完成后，随便输入内容，如果在命令行中有返回相同内容，则测试成功"><a href="#待启动完成后，随便输入内容，如果在命令行中有返回相同内容，则测试成功" class="headerlink" title="待启动完成后，随便输入内容，如果在命令行中有返回相同内容，则测试成功"></a>待启动完成后，随便输入内容，如果在命令行中有返回相同内容，则测试成功</h5></li>
+<li><p>如图所示：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922205958186.png" alt="image-20230922205958186"></p>
+<h4 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h4><ul>
+<li><h5 id="快速开始：-Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic（2023-09-22晚）"><a href="#快速开始：-Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic（2023-09-22晚）" class="headerlink" title="快速开始：[Running Logstash on Windows | Logstash Reference 7.17] | Elastic（2023/09/22晚）"></a>快速开始：[Running Logstash on Windows | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/running-logstash-windows.html">7.17] | Elastic</a>（2023/09/22晚）</h5></li>
+<li><p>在官方文档中，找到这一段简单的示例配置：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922210307761.png" alt="image-20230922210307761"></p>
+<ul>
+<li>将这段配置粘贴进 <strong>config 下</strong>的 <strong>logstash-sample.conf 配置文件（可以保留该原文件，复制一份重命名）</strong>中：</li>
+<li>这几行配置是干什么的呢？简单来讲就是<strong>定义了输入和输出</strong>：<strong>监听 UDP，并输出</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922210525309.png" alt="image-20230922210525309"></p>
+<ul>
+<li><p>按官方文档的操作来，尝试<strong>加载这个配置文件</strong> 并 <strong>启动 Logstash</strong></p>
+</li>
+<li><h5 id="Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic-1"><a href="#Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic-1" class="headerlink" title="[Running Logstash on Windows | Logstash Reference 7.17] | Elastic"></a>[Running Logstash on Windows | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/running-logstash-windows.html#running-logstash-windows-manual">7.17] | Elastic</a></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922211016754.png" alt="image-20230922211016754"></p>
+<ul>
+<li><h5 id="运行这行命令，可以看到-Logstash-成功启动运行了"><a href="#运行这行命令，可以看到-Logstash-成功启动运行了" class="headerlink" title="运行这行命令，可以看到 Logstash 成功启动运行了"></a>运行这行命令，可以看到 Logstash 成功启动运行了</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922211330283.png" alt="image-20230922211330283"></p>
+<h4 id="同步MySQL"><a href="#同步MySQL" class="headerlink" title="同步MySQL"></a>同步MySQL</h4><ul>
+<li><h5 id="Jdbc-input-plugin-Logstash-Reference-7-17-Elastic"><a href="#Jdbc-input-plugin-Logstash-Reference-7-17-Elastic" class="headerlink" title="[Jdbc input plugin | Logstash Reference 7.17] | Elastic"></a>[Jdbc input plugin | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/plugins-inputs-jdbc.html">7.17] | Elastic</a></h5></li>
+<li><h5 id="在官方文档中，找到这段配置，用来把-input输入与-MySQL数据库中的数据同步（2023-09-22晚）"><a href="#在官方文档中，找到这段配置，用来把-input输入与-MySQL数据库中的数据同步（2023-09-22晚）" class="headerlink" title="在官方文档中，找到这段配置，用来把 input输入与 MySQL数据库中的数据同步（2023/09/22晚）"></a>在官方文档中，找到这段配置，用来把 input输入与 MySQL数据库中的数据同步（2023/09/22晚）</h5></li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs puppet"><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;mysql-connector-java-5.1.36-bin.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/mydb&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;mysql&quot;</span><br>    <span class="hljs-attr">parameters</span> =&gt; &#123; <span class="hljs-string">&quot;favorite_artist&quot;</span> =&gt; <span class="hljs-string">&quot;Beethoven&quot;</span> &#125;<br>    <span class="hljs-keyword">schedule</span> =&gt; <span class="hljs-string">&quot;* * * * *&quot;</span><br>    statement =&gt; <span class="hljs-string">&quot;SELECT * from songs where artist = :favorite_artist&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>这些配置是不是很眼熟？我们简单说明一下：</p>
+<ul>
+<li><strong>jdbc_driver_library</strong>：就是加载 MySQL 数据库的 jar 包（依赖）</li>
+<li>接下来的四行配置不用多说，连接<strong>MySQL的驱动</strong>、<strong>对应数据库</strong>、<strong>用户名</strong>、<strong>密码</strong></li>
+<li><strong>statement</strong>：SQL表达式，用来从 MySQL 中获取数据</li>
+<li><strong>parameters</strong>：起到动态配置 SQL 语句中的参数的作用</li>
+<li><strong>schedule</strong>：Cron表达式，实现定时查询</li>
+</ul>
+</li>
+<li><h5 id="我们按自己实际的的需求，可以简单地修改配置，内容如下："><a href="#我们按自己实际的的需求，可以简单地修改配置，内容如下：" class="headerlink" title="我们按自己实际的的需求，可以简单地修改配置，内容如下："></a>我们按自己实际的的需求，可以简单地修改配置，内容如下：</h5></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>当然了，如果我们我们现在加载此配置、启动 Logstash，一定会报错，如图所示：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922213346119.png" alt="image-20230922213346119"></p>
+<ul>
+<li><h5 id="原因很简单，就是配置中的-mysql-jar包找不到，我们需要自己配置一个-mysql-jar包，并正确配置它的路径"><a href="#原因很简单，就是配置中的-mysql-jar包找不到，我们需要自己配置一个-mysql-jar包，并正确配置它的路径" class="headerlink" title="原因很简单，就是配置中的 mysql jar包找不到，我们需要自己配置一个 mysql jar包，并正确配置它的路径"></a>原因很简单，就是配置中的 mysql jar包找不到，我们需要自己配置一个 mysql jar包，并正确配置它的路径</h5></li>
+<li><h5 id="这里有个技巧：在-IDEA-中找到项目所依赖的-jar-包"><a href="#这里有个技巧：在-IDEA-中找到项目所依赖的-jar-包" class="headerlink" title="这里有个技巧：在 IDEA 中找到项目所依赖的 jar 包"></a>这里有个技巧：在 IDEA 中找到项目所依赖的 jar 包</h5><ul>
+<li>如图所示，选择对应的依赖后，可以直接在文件管理器中打开</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922213029171.png" alt="image-20230922213029171"></p>
+<ul>
+<li>然后直接在文件管理器中复制，粘贴到 Logstash 目录下即可</li>
+</ul>
+</li>
+<li><h5 id="加载配置、启动-Logstash，启动成功了："><a href="#加载配置、启动-Logstash，启动成功了：" class="headerlink" title="加载配置、启动 Logstash，启动成功了："></a>加载配置、启动 Logstash，启动成功了：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922215626868.png" alt="image-20230922215626868"></p>
+<ul>
+<li><h5 id="聊聊我在这段配置上踩过的坑吧："><a href="#聊聊我在这段配置上踩过的坑吧：" class="headerlink" title="聊聊我在这段配置上踩过的坑吧："></a>聊聊我在这段配置上踩过的坑吧：</h5><ul>
+<li>mysql jar 包路径外层多加了一层双引号</li>
+<li>用户名、密码配置错误</li>
+<li>SQL 语句中 where 多写了一个</li>
+</ul>
+</li>
+<li><h5 id="这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的："><a href="#这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的：" class="headerlink" title="这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的："></a>这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的：</h5></li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs puppet"><span class="hljs-comment"># Sample Logstash configuration for receiving</span><br><span class="hljs-comment"># UDP syslog messages over port 514</span><br><br><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/memory_search&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;root&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;Dw990831&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from post where 1 = 1&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * *&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">output</span> &#123;<br>  stdout &#123; <span class="hljs-attr">codec</span> =&gt; rubydebug &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>启动成功后，现在的 Logstash 是每5秒从数据库中同步所有数据（当然这是根据SQL语句来执行的），这数据量可能会很大</p>
+<ul>
+<li><h5 id="这就是全量同步了，我们不需要同步所有数据，我们可以选择同步最近更新的数据（2023-09-22晚）"><a href="#这就是全量同步了，我们不需要同步所有数据，我们可以选择同步最近更新的数据（2023-09-22晚）" class="headerlink" title="这就是全量同步了，我们不需要同步所有数据，我们可以选择同步最近更新的数据（2023/09/22晚）"></a>这就是全量同步了，我们不需要同步所有数据，我们可以选择同步最近更新的数据（2023/09/22晚）</h5></li>
+</ul>
+</li>
+<li><p>添加如下配置：</p>
+</li>
+</ul>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from post where updateTime &gt; :sql_last_value&quot;</span><br><span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-literal">true</span><br><span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br><span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;updateTime&quot;</span><br><span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br><span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这段配置就是根据-updateTime-字段的最新值，同步updateTime-大于最新值的数据："><a href="#这段配置就是根据-updateTime-字段的最新值，同步updateTime-大于最新值的数据：" class="headerlink" title="这段配置就是根据 updateTime 字段的最新值，同步updateTime 大于最新值的数据："></a>这段配置就是根据 updateTime 字段的最新值，同步updateTime 大于最新值的数据：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922224744313.png" alt="image-20230922224744313"></p>
+<ul>
+<li>所以说，<strong>sql_last_value 指定的是上次查到的数据的最后一行的指定字段</strong>，新的查询就是比较这个<strong>指定字段与sql_last_value的大小</strong></li>
+<li>但是经过多次查询发现，这里的 <strong>sql_last_value 始终不变</strong><ul>
+<li>我们可以在 data\plugins\inputs\jdbc\logstash_jdbc_last_run 看到 <strong>sql_last_value 指定的数据</strong>，确实没有变化：</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922230142159.png" alt="image-20230922230142159"></p>
+<ul>
+<li>将 tracking_column =&gt; “updateTime” 的 <strong>updateTime 修改为 updatetime</strong>，<strong>日期同步成功</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922225440159.png" alt="image-20230922225440159"></p>
+<ul>
+<li><h5 id="更新下数据库中的最新值，再看看效果，确实拿到了数据库中最新修改的值（参照上次修改后的最新值）："><a href="#更新下数据库中的最新值，再看看效果，确实拿到了数据库中最新修改的值（参照上次修改后的最新值）：" class="headerlink" title="更新下数据库中的最新值，再看看效果，确实拿到了数据库中最新修改的值（参照上次修改后的最新值）："></a>更新下数据库中的最新值，再看看效果，确实拿到了数据库中最新修改的值（参照上次修改后的最新值）：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922230720711.png" alt="image-20230922230720711"></p>
+<h4 id="同步ES"><a href="#同步ES" class="headerlink" title="同步ES"></a>同步ES</h4><ul>
+<li>调试这么久，Logstash 能够<strong>正常同步 MySQL</strong> 了，接下来就是把同步到 input 的数据，<strong>同步到 ES</strong> 中了<strong>（2023/09/22晚）</strong></li>
 </ul>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
 <p>例如：</p>
@@ -1417,7 +1540,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年9月20日</div>
+          <div>2023年9月22日</div>
         </div>
       
       
