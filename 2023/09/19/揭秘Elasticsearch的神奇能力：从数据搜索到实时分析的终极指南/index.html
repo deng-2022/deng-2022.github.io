@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="构建强大的搜索引擎,Elasticsearch入门到精通的完整学习指南">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/girl5.jpg">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
 <meta property="article:modified_time" content="2023-09-20T14:42:50.000Z">
 <meta property="article:author" content="Memory">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="Elasticsearch">
 <meta property="article:tag" content="Kibana">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/girl5.jpg">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
   
   
   
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          29k 字
+          30k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          73 分钟
+          76 分钟
         
       </span>
     
@@ -432,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：16 小时前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -629,8 +629,57 @@
 <li><h5 id="简单的增、删、改、查测试通过：（2023-09-20晚）"><a href="#简单的增、删、改、查测试通过：（2023-09-20晚）" class="headerlink" title="简单的增、删、改、查测试通过：（2023/09/20晚）"></a>简单的增、删、改、查测试通过：（2023/09/20晚）</h5></li>
 </ul>
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230920172305509.png" alt="image-20230920172305509"></p>
-<h4 id="DSL查询"><a href="#DSL查询" class="headerlink" title="DSL查询"></a>DSL查询</h4><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="分布式搜索引擎01"><a href="#分布式搜索引擎01" class="headerlink" title="分布式搜索引擎01"></a>分布式搜索引擎01</h1><p>– elasticsearch基础</p>
-<h1 id="0-学习目标"><a href="#0-学习目标" class="headerlink" title="0.学习目标"></a>0.学习目标</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
+<h4 id="DSL查询"><a href="#DSL查询" class="headerlink" title="DSL查询"></a>DSL查询</h4><ul>
+<li><h5 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h5></li>
+<li><h5 id="Query-and-filter-context-Elasticsearch-Guide-7-17-Elastic"><a href="#Query-and-filter-context-Elasticsearch-Guide-7-17-Elastic" class="headerlink" title="[Query and filter context | Elasticsearch Guide 7.17] | Elastic"></a>[Query and filter context | Elasticsearch Guide <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/query-filter-context.html">7.17] | Elastic</a></h5></li>
+<li><h5 id="Boolean-query-Elasticsearch-Guide-7-17-Elastic"><a href="#Boolean-query-Elasticsearch-Guide-7-17-Elastic" class="headerlink" title="[Boolean query | Elasticsearch Guide 7.17] | Elastic"></a>[Boolean query | Elasticsearch Guide <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/query-dsl-bool-query.html">7.17] | Elastic</a></h5></li>
+<li><h5 id="详细的DSL查询学习可以看官网学习，待我学成归来，就在此留下我的学习笔记（2023-09-21晚）"><a href="#详细的DSL查询学习可以看官网学习，待我学成归来，就在此留下我的学习笔记（2023-09-21晚）" class="headerlink" title="详细的DSL查询学习可以看官网学习，待我学成归来，就在此留下我的学习笔记（2023/09/21晚）"></a>详细的DSL查询学习可以看官网学习，待我学成归来，就在此留下我的学习笔记（2023/09/21晚）</h5></li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET post/_search<br>&#123;<br> <span class="hljs-string">&quot;query&quot;</span>: &#123;<br> <span class="hljs-string">&quot;bool&quot;</span>: &#123; <span class="hljs-regexp">//</span> 组合条件<br> <span class="hljs-string">&quot;must&quot;</span>: [ <span class="hljs-regexp">//</span> 必须都满足<br> &#123; <span class="hljs-string">&quot;match&quot;</span>: &#123; <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;鱼皮&quot;</span> &#125;&#125;, <span class="hljs-regexp">//</span> match 模糊查询<br> &#123; <span class="hljs-string">&quot;match&quot;</span>: &#123; <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;知识星球&quot;</span> &#125;&#125;<br> ],<br> <span class="hljs-string">&quot;filter&quot;</span>: [<br> &#123; <span class="hljs-string">&quot;term&quot;</span>: &#123; <span class="hljs-string">&quot;status&quot;</span>: <span class="hljs-string">&quot;published&quot;</span> &#125;&#125;, <span class="hljs-regexp">//</span> term 精确查询<br> &#123; <span class="hljs-string">&quot;range&quot;</span>: &#123; <span class="hljs-string">&quot;publish_date&quot;</span>: &#123; <span class="hljs-string">&quot;gte&quot;</span>: <span class="hljs-string">&quot;2015-01-01&quot;</span> &#125;&#125;&#125; <span class="hljs-regexp">//</span> range 范围<br> ]<br> &#125;<br> &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="建议先测试，再翻译为Java客户端操作"><a href="#建议先测试，再翻译为Java客户端操作" class="headerlink" title="建议先测试，再翻译为Java客户端操作"></a>建议先测试，再翻译为Java客户端操作</h5></li>
+</ul>
+<h2 id="数据同步"><a href="#数据同步" class="headerlink" title="数据同步"></a>数据同步</h2><ul>
+<li><p>一般情况下，如果做<strong>查询搜索</strong>功能，使用 ES 来<strong>模糊搜索</strong> <strong>（2023/09/21晚）</strong></p>
+</li>
+<li><p>但是数据是存放在数据库 <strong>MySQL</strong> 里 的，所以说我们需要把 <strong>MySQL 中的数据和 ES 进行同步</strong>，保证<strong>数据一致</strong>（以 MySQL 为主）</p>
+</li>
+<li><h5 id="MySQL-gt-ES-（单向）"><a href="#MySQL-gt-ES-（单向）" class="headerlink" title="MySQL =&gt; ES （单向）"></a>MySQL =&gt; ES （单向）</h5></li>
+<li><p>首次安装完 ES，把 MySQL 数据全量同步到 ES 里，写一个单次脚本 4 种方式，全量同步（首次）+ 增量同步（新数据）：</p>
+<ul>
+<li><p><strong>定时任务</strong>：比如 1 分钟 1 次，找到 MySQL 中过去几分钟内（至少是定时周期的 2 倍）发 生改变的数据，然后更新到 ES。 </p>
+<ul>
+<li>优点：简单易懂、占用资源少、不用引入第三方中间件 </li>
+<li>缺点：有时间差 应用场景：数据短时间内不同步影响不大、或者数据几乎不发生修改 </li>
+</ul>
+</li>
+<li><p><strong>双写</strong>：写数据的时候，必须也去写 ES；更新删除数据库同理。</p>
+<ul>
+<li>事务：建议先保证  MySQL 写成功</li>
+<li>如果 ES 写失败了，可以通过定时任务 + 日志 + 告警进行检测和修复 （补偿）</li>
+</ul>
+</li>
+<li><p><strong>Logstash 数据同步管道</strong>：（一般要配合 kafka 消息队列 + beats 采集器）</p>
+</li>
+<li><p><strong>Canal 监听 MySQL Binlog</strong>：实时同步 </p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h3><ul>
+<li><h5 id="Getting-Started-with-Logstash-Logstash-Reference-7-17-Elastic"><a href="#Getting-Started-with-Logstash-Logstash-Reference-7-17-Elastic" class="headerlink" title="[Getting Started with Logstash | Logstash Reference 7.17] | Elastic"></a>[Getting Started with Logstash | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/getting-started-with-logstash.html">7.17] | Elastic</a></h5></li>
+<li><h5 id="Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic"><a href="#Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic" class="headerlink" title="[Running Logstash on Windows | Logstash Reference 7.17] | Elastic"></a>[Running Logstash on Windows | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/running-logstash-windows.html">7.17] | Elastic</a></h5></li>
+<li><p><strong>传输</strong> 和 <strong>处理 数据</strong>的管道</p>
+<ul>
+<li>好处：用起来方便，插件多 </li>
+<li>缺点：成本更大、一般要配合其他组件使用（比如 kafka）</li>
+</ul>
+</li>
+<li><p>本质上就是把<strong>编程式同步改为配置式同步</strong>，更加方便快捷</p>
+</li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
 <p>例如：</p>
 <ul>
 <li><p>在GitHub搜索代码</p>
@@ -1398,6 +1447,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/blog/2023/09/22/%E6%8E%A2%E7%B4%A2GitHub%EF%BC%9A%E5%8F%82%E4%B8%8E%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A5%E9%AA%A4%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="探索GitHub：参与开源项目的步骤与技巧">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">探索GitHub：参与开源项目的步骤与技巧</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：15 小时前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -1293,6 +1293,25 @@
 
 
 
+<h3 id="Day13"><a href="#Day13" class="headerlink" title="Day13"></a>Day13</h3><ul>
+<li><p>未登录时，进入聊天大厅获取当前登录用户的id时，会报异常</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230921231210339.png" alt="image-20230921231210339"></p>
+<ul>
+<li><p>所以在跳转聊天大厅时，先校验是否登录</p>
+</li>
+<li><h5 id="如果未登录，则提醒用户先登录，才能享受实时通信服务"><a href="#如果未登录，则提醒用户先登录，才能享受实时通信服务" class="headerlink" title="如果未登录，则提醒用户先登录，才能享受实时通信服务"></a>如果未登录，则提醒用户先登录，才能享受实时通信服务</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 前往博客社区</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">goToChat</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (!currentUser.<span class="hljs-property">value</span>) &#123;<br>    message.<span class="hljs-title function_">warning</span>(<span class="hljs-string">&quot;请先登录&quot;</span>)<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    router.<span class="hljs-title function_">push</span>(<span class="hljs-string">&quot;/chat&quot;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="优化用户体验："><a href="#优化用户体验：" class="headerlink" title="优化用户体验："></a>优化用户体验：</h5><ul>
+<li>未登录时，不能跳转至聊天大厅</li>
+<li>未登录时，不能查看个人信息</li>
+</ul>
+</li>
+<li><h5 id="简单地优化了页面的表现张力：（2023-09-21晚）"><a href="#简单地优化了页面的表现张力：（2023-09-21晚）" class="headerlink" title="简单地优化了页面的表现张力：（2023/09/21晚）"></a>简单地优化了页面的表现张力：（2023/09/21晚）</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922003153503.png" alt="image-20230922003153503"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922003202984.png" alt="image-20230922003202984"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922003211385.png" alt="image-20230922003211385"></p>
 <h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
 <li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
 <li>实现流程：<ul>
