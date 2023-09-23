@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          33k 字
+          35k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          84 分钟
+          89 分钟
         
       </span>
     
@@ -432,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：20 分钟前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -711,8 +711,11 @@
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922210525309.png" alt="image-20230922210525309"></p>
 <ul>
-<li><p>按官方文档的操作来，尝试<strong>加载这个配置文件</strong> 并 <strong>启动 Logstash</strong></p>
-</li>
+<li>按官方文档的操作来，尝试<strong>加载这个配置文件</strong> 并 <strong>启动 Logstash</strong>：</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">.<span class="hljs-string">\bin\logstash.bat</span> -f .<span class="hljs-string">\config\myTask.conf</span><br></code></pre></td></tr></table></figure>
+
+<ul>
 <li><h5 id="Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic-1"><a href="#Running-Logstash-on-Windows-Logstash-Reference-7-17-Elastic-1" class="headerlink" title="[Running Logstash on Windows | Logstash Reference 7.17] | Elastic"></a>[Running Logstash on Windows | Logstash Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/7.17/running-logstash-windows.html#running-logstash-windows-manual">7.17] | Elastic</a></h5></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922211016754.png" alt="image-20230922211016754"></p>
@@ -736,12 +739,9 @@
 <li><strong>schedule</strong>：Cron表达式，实现定时查询</li>
 </ul>
 </li>
-<li><h5 id="我们按自己实际的的需求，可以简单地修改配置，内容如下："><a href="#我们按自己实际的的需求，可以简单地修改配置，内容如下：" class="headerlink" title="我们按自己实际的的需求，可以简单地修改配置，内容如下："></a>我们按自己实际的的需求，可以简单地修改配置，内容如下：</h5></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>当然了，如果我们我们现在加载此配置、启动 Logstash，一定会报错，如图所示：</li>
+<li><h5 id="我们按自己实际的的需求，可以简单地修改配置"><a href="#我们按自己实际的的需求，可以简单地修改配置" class="headerlink" title="我们按自己实际的的需求，可以简单地修改配置"></a>我们按自己实际的的需求，可以简单地修改配置</h5></li>
+<li><p>当然了，如果我们我们现在加载此配置、启动 Logstash，一定会报错，如图所示：</p>
+</li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922213346119.png" alt="image-20230922213346119"></p>
 <ul>
@@ -762,6 +762,7 @@
 <li>mysql jar 包路径外层多加了一层双引号</li>
 <li>用户名、密码配置错误</li>
 <li>SQL 语句中 where 多写了一个</li>
+<li>timestamp 写成 timestampe</li>
 </ul>
 </li>
 <li><h5 id="这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的："><a href="#这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的：" class="headerlink" title="这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的："></a>这段配置绝对不能出现任何问题，否则就会出现严重的报错。我的最终配置是这样的：</h5></li>
@@ -800,9 +801,51 @@
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230922230720711.png" alt="image-20230922230720711"></p>
 <h4 id="同步ES"><a href="#同步ES" class="headerlink" title="同步ES"></a>同步ES</h4><ul>
-<li>调试这么久，Logstash 能够<strong>正常同步 MySQL</strong> 了，接下来就是把同步到 input 的数据，<strong>同步到 ES</strong> 中了<strong>（2023/09/22晚）</strong></li>
+<li><p>调试这么久，Logstash 能够<strong>正常同步 MySQL</strong> 了，接下来就是把同步到 input 的数据，<strong>同步到 ES</strong> 中了<strong>（2023/09/22晚）</strong></p>
+</li>
+<li><p>直接在官方文档中，找到输出 output 的相关配置：</p>
+</li>
 </ul>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230923124744806.png" alt="image-20230923124744806"></p>
+<ul>
+<li>跟着官网简单的 demo 学就行，配置过一次就会了，这是我<strong>完成同步 ES 后的配置</strong>：（<strong>部分私密信息已做处理</strong>）</li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs puppet"><span class="hljs-comment"># Sample Logstash configuration for receiving</span><br><span class="hljs-comment"># UDP syslog messages over port 514</span><br><br><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/&quot;</span>******<span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;&quot;</span>******<span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from post where updateTime &gt; :sql_last_value&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;updatetime&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">output</span> &#123;<br>  stdout &#123; <span class="hljs-attr">codec</span> =&gt; rubydebug &#125;<br><br>  <span class="hljs-keyword">elasticsearch</span> &#123;<br>    <span class="hljs-attr">hosts</span> =&gt; <span class="hljs-string">&quot;127.0.0.1:9200&quot;</span><br>    <span class="hljs-attr">index</span> =&gt; <span class="hljs-string">&quot;post_v1&quot;</span><br>    <span class="hljs-attr">document_id</span> =&gt; <span class="hljs-string">&quot;%&#123;id&#125;&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这里简单介绍下这几个配置的作用："><a href="#这里简单介绍下这几个配置的作用：" class="headerlink" title="这里简单介绍下这几个配置的作用："></a>这里简单介绍下这几个配置的作用：</h5><ul>
+<li><strong>host</strong>：标识要进行同步的 ES 地址，即指定了：<strong>数据从 MySQL 中取出后，发送到哪</strong></li>
+<li><strong>index</strong>：目标索引</li>
+<li><strong>document_id</strong>：指定目标索引内，每一个文档的 id，就是<strong>从 SELECT * 中解构出 id 值</strong></li>
+<li><strong>data_stream</strong>：特殊的数据格式，我们从数据库中取到的都是<strong>普通类型</strong>，<strong>不需要这行配置</strong></li>
+</ul>
+</li>
+<li><p>其他的目前暂且不需要了解，日后再进一步学习</p>
+</li>
+<li><h5 id="加载配置，运行-Logstash，可以看到运行成功了，数据库中最新更新的数据也成功同步到了本地的-ES-上了："><a href="#加载配置，运行-Logstash，可以看到运行成功了，数据库中最新更新的数据也成功同步到了本地的-ES-上了：" class="headerlink" title="加载配置，运行 Logstash，可以看到运行成功了，数据库中最新更新的数据也成功同步到了本地的 ES 上了："></a>加载配置，运行 Logstash，可以看到运行成功了，数据库中最新更新的数据也成功同步到了本地的 ES 上了：</h5></li>
+</ul>
+<h5 id=""><a href="#" class="headerlink" title=""></a><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230923125842246.png" alt="image-20230923125842246"></h5><ul>
+<li><h5 id="从同步结果来看，我们还需要解决几个问题："><a href="#从同步结果来看，我们还需要解决几个问题：" class="headerlink" title="从同步结果来看，我们还需要解决几个问题："></a>从同步结果来看，我们还需要解决几个问题：</h5><ul>
+<li>排除某些不需要同步的字段</li>
+<li>ES 中同步过来的文档数据字段都是全小写，不是驼峰式</li>
+<li>查询结果按 updateTime 降序排列，避免重排序，导致多同步了不必要的数据，造成性能浪费</li>
+</ul>
+</li>
+<li><p>解决这三个问题当然很简单：</p>
+<ul>
+<li><h5 id="首先修改下-SQL-语句：（2023-09-23午）"><a href="#首先修改下-SQL-语句：（2023-09-23午）" class="headerlink" title="首先修改下 SQL 语句：（2023/09/23午）"></a>首先修改下 SQL 语句：（2023/09/23午）</h5></li>
+</ul>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">statement =&gt; &quot;<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">from</span> post <span class="hljs-keyword">where</span> updateTime &gt; :sql_last_value <span class="hljs-keyword">and</span> updateTime &lt; now() <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> updateTime <span class="hljs-keyword">desc</span><span class="hljs-string">&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="再写入如下过滤配置，将对应字段进行驼峰式转换，并排除不需要的字段："><a href="#再写入如下过滤配置，将对应字段进行驼峰式转换，并排除不需要的字段：" class="headerlink" title="再写入如下过滤配置，将对应字段进行驼峰式转换，并排除不需要的字段："></a>再写入如下过滤配置，将对应字段进行驼峰式转换，并排除不需要的字段：</h5></li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs coq">filter &#123;<br>  mutate &#123;<br>    <span class="hljs-built_in">rename</span> =&gt; &#123;<br>      <span class="hljs-string">&quot;updatetime&quot;</span> =&gt; <span class="hljs-string">&quot;updateTime&quot;</span><br>      <span class="hljs-string">&quot;userid&quot;</span> =&gt; <span class="hljs-string">&quot;userId&quot;</span><br>      <span class="hljs-string">&quot;createtime&quot;</span> =&gt; <span class="hljs-string">&quot;createTime&quot;</span><br>      <span class="hljs-string">&quot;isdelete&quot;</span> =&gt; <span class="hljs-string">&quot;isDelete&quot;</span><br>    &#125;<br>    remove_field =&gt; [<span class="hljs-string">&quot;thumbnum&quot;</span>, <span class="hljs-string">&quot;favournum&quot;</span>]<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>重新进行同步，结果完美，顺利完成：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230923144500259.png" alt="image-20230923144500259"></p>
+<h3 id="订阅数据库流水的同步方式-Canel"><a href="#订阅数据库流水的同步方式-Canel" class="headerlink" title="订阅数据库流水的同步方式 Canel"></a>订阅数据库流水的同步方式 Canel</h3><h4 id="下载、安装"><a href="#下载、安装" class="headerlink" title="下载、安装"></a>下载、安装</h4><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h4 id="项目导入Canel依赖"><a href="#项目导入Canel依赖" class="headerlink" title="项目导入Canel依赖"></a>项目导入Canel依赖</h4><h4 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h4><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
 <p>例如：</p>
 <ul>
 <li><p>在GitHub搜索代码</p>
