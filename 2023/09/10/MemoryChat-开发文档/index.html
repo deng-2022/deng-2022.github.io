@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          23k 字
+          24k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          59 分钟
+          62 分钟
         
       </span>
     
@@ -1406,14 +1406,35 @@
 <ul>
 <li><h4 id="博客页面优化计划"><a href="#博客页面优化计划" class="headerlink" title="博客页面优化计划"></a>博客页面优化计划</h4><ul>
 <li>需要封装一个DTO类，返回文章，以及文章作者的所有信息</li>
-<li>开发</li>
+<li>博客阅读页、博客收藏页、博客搜索页、博客编辑页</li>
 </ul>
 </li>
+<li><p>博客阅读页的排版：</p>
+<ul>
+<li>文章内容、作者信息、文章目录、相关推荐</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>完成点击不同的博文首页，跳转至不同的展示页面</li>
+<li>博文阅读页的优化展示</li>
+<li><h5 id="优化了博客阅读页，能够识别Markdown文档："><a href="#优化了博客阅读页，能够识别Markdown文档：" class="headerlink" title="优化了博客阅读页，能够识别Markdown文档："></a>优化了博客阅读页，能够识别Markdown文档：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230924234514376.png" alt="image-20230924234514376"></p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">a-list-item-meta</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">:description</span>=<span class="hljs-string">&quot;articleInfo.author.email&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">  &gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://www.antdv.com/&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">articleInfo.author.username</span>&#125;&#125;</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">a-list-item-meta</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<ul>
 <li><h5 id="今日待解决："><a href="#今日待解决：" class="headerlink" title="今日待解决："></a>今日待解决：</h5><ul>
 <li>私密队伍需输入密码才可申请加入 😈</li>
 <li>实时消息没有获取到发送人的详细信息 😈</li>
 <li>发布队内公告 😈</li>
 <li>首次进入页面时，聊天消息未渲染的成功 😈</li>
+<li>博文列表太长了，应该加个每页数量和延时加载效果</li>
+<li>识别Markdown格式</li>
+<li>博文收藏页、博文搜索页</li>
 </ul>
 </li>
 </ul>
@@ -1432,6 +1453,32 @@
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230916141758222.png" alt="image-20230916141758222"></p>
 <ul>
 <li>接下来就是在各个聊天窗口，实现双向实时通信了</li>
+</ul>
+<h3 id="网页中支持Markdown语法写博客"><a href="#网页中支持Markdown语法写博客" class="headerlink" title="网页中支持Markdown语法写博客"></a>网页中支持Markdown语法写博客</h3><ul>
+<li><p>要在博客网站中支持Markdown语法写博客并展示，你可以使用第三方的Markdown解析库来解析Markdown文本，并将解析后的内容展示在网页上</p>
+</li>
+<li><p>首先，你需要引入一个适用于Vue的Markdown解析库，例如<code>markdown-it</code>。可以通过NPM安装该库：</p>
+</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-built_in">npm</span> install markdown-<span class="hljs-literal">it</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>然后，在你的组件中，你可以导入并实例化<code>markdown-it</code>，将Markdown文本作为输入，使用<code>.render()</code>方法将其转换为HTML并展示在网页上</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MarkdownIt</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;markdown-it&#x27;</span>;<br><br><span class="hljs-comment">// Markdown语法</span><br><span class="hljs-keyword">const</span> parsedContent = <span class="hljs-title function_">ref</span>()<br><span class="hljs-keyword">const</span> md = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MarkdownIt</span>();<br><span class="hljs-comment">// 使用Markdown语法接收文章内容</span><br>parsedContent.<span class="hljs-property">value</span> = md.<span class="hljs-title function_">render</span>(articleInfo.<span class="hljs-property">value</span>.<span class="hljs-property">content</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;div v-html=&quot;parsedContent&quot;<br>      style=&quot;position: absolute; margin-left: 10px; margin-right: 10px; margin-top: 20px;&quot;&gt;<br> &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在上面的示例代码中，我们导入了<code>markdown-it</code>库</p>
+<ul>
+<li>然后在<code>mounted</code>钩子中实例化了<code>MarkdownIt</code>对象</li>
+<li>并将Markdown文本<code>this.articleInfo.content</code>传递给其<code>.render()</code>方法来解析为HTML并赋值给<code>parsedContent</code></li>
+<li>然后我们使用<code>v-html</code>指令将解析后的内容展示在网页上。</li>
+</ul>
+</li>
+<li><p>这样，无论用户使用Markdown语法还是普通的HTML编写博客内容，页面都会正确展示。</p>
+</li>
 </ul>
 <h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="JSON转换错误"><a href="#JSON转换错误" class="headerlink" title="JSON转换错误"></a>JSON转换错误</h3><ul>
 <li><h5 id="前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息"><a href="#前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息" class="headerlink" title="前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息"></a>前台获取服务器转发的消息后，需要解析出接收者，再判断接收者是否为当前用户，是则为该用户展示具体消息</h5></li>
