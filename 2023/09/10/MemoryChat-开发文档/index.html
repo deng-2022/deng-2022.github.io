@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          22k 字
+          23k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          57 分钟
+          59 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：3 天前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -1336,20 +1336,84 @@
 </li>
 <li><p>队伍功能优化：</p>
 <ul>
-<li>队长可以发布任务（或者说公告），在消息栏中显示</li>
-<li>待优化完成用户私聊的所有页面优化、通信体验之后，考虑开发队内聊天</li>
+<li><h5 id="队长可以发布任务（或者说公告），在消息栏中显示"><a href="#队长可以发布任务（或者说公告），在消息栏中显示" class="headerlink" title="队长可以发布任务（或者说公告），在消息栏中显示"></a>队长可以发布任务（或者说公告），在消息栏中显示</h5></li>
+<li><h5 id="待优化完成用户私聊的所有页面优化、通信体验之后，考虑开发队内聊天"><a href="#待优化完成用户私聊的所有页面优化、通信体验之后，考虑开发队内聊天" class="headerlink" title="待优化完成用户私聊的所有页面优化、通信体验之后，考虑开发队内聊天"></a>待优化完成用户私聊的所有页面优化、通信体验之后，考虑开发队内聊天</h5></li>
 </ul>
 </li>
 <li><p>私聊体验优化：</p>
 <ul>
 <li>当有聊天消息还未接收时，有消息提醒（可供开启或关闭这个功能）</li>
-<li>私聊双方的消息，不够有辨识度</li>
+<li><h5 id="私聊双方的消息，不够有辨识度"><a href="#私聊双方的消息，不够有辨识度" class="headerlink" title="私聊双方的消息，不够有辨识度"></a>私聊双方的消息，不够有辨识度</h5></li>
 </ul>
 </li>
 <li><p>用户中心大厅优化</p>
 <ul>
 <li>将来计划把博客社区搞为默认首页，那用户中心是用来干什么的呢？（稍等一下，我问问AI）</li>
 <li>可以展示什么内容呢？介绍下这个网站的内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="Day15"><a href="#Day15" class="headerlink" title="Day15"></a>Day15</h3><ul>
+<li><p>搜索队伍、搜索用户、搜索博客将来统一处理  </p>
+</li>
+<li><p>队伍状态（是否加密，显示） ✔</p>
+</li>
+<li><p>加密队伍，设置密码 ✔</p>
+</li>
+</ul>
+<ul>
+<li><h5 id="队伍状态区分，加密队伍有弹窗，提示输入密码"><a href="#队伍状态区分，加密队伍有弹窗，提示输入密码" class="headerlink" title="队伍状态区分，加密队伍有弹窗，提示输入密码"></a>队伍状态区分，加密队伍有弹窗，提示输入密码</h5></li>
+<li><h5 id="队长可以发布公告"><a href="#队长可以发布公告" class="headerlink" title="队长可以发布公告"></a>队长可以发布公告</h5></li>
+<li><p>解决了，几天前遗留下来的问题：</p>
+<ul>
+<li>其他大厅进入聊天大厅，默认文件传输助手</li>
+<li>点击私聊进入聊天大厅，默认选中私聊用户</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 获取接收者id</span><br>chatTabName.<span class="hljs-property">value</span> = route.<span class="hljs-property">query</span><br><span class="hljs-comment">// 记忆选中的Tab标签页</span><br><span class="hljs-keyword">if</span>(chatTabName.<span class="hljs-property">value</span> === <span class="hljs-literal">undefined</span>)&#123;<br>  activeKey.<span class="hljs-property">value</span> = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;activeKey&#x27;</span>)<br>&#125;<span class="hljs-keyword">else</span> &#123;<br>  activeKey.<span class="hljs-property">value</span> = chatTabName.<span class="hljs-property">value</span>.<span class="hljs-property">chatTabName</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><h4 id="实时双向通信优化："><a href="#实时双向通信优化：" class="headerlink" title="实时双向通信优化："></a>实时双向通信优化：</h4><ul>
+<li><h5 id="解决首次进入页面时，聊天消息未渲染的成功问题（这个好像很顽固）"><a href="#解决首次进入页面时，聊天消息未渲染的成功问题（这个好像很顽固）" class="headerlink" title="解决首次进入页面时，聊天消息未渲染的成功问题（这个好像很顽固）"></a>解决首次进入页面时，聊天消息未渲染的成功问题（这个好像很顽固）</h5></li>
+<li><p>聊天消息要有辨识度</p>
+<ul>
+<li><p>简单地优化了输入框的样式，和表现张力</p>
+</li>
+<li><p>简单优化了消息的表现形式，目前发现的问题是：消息中没有发送者头像</p>
+<ul>
+<li><p>我们应该在在消息中插入头像字段嘛？这样在表现上会非常方便，但是扩展性太差，还得改动所有已有逻辑</p>
+</li>
+<li><p>那我们就应该根据sendId来查询发送者的信息，再渲染到消息上</p>
+</li>
+<li><h5 id="只要获取到了发送者的详细信息，就可以更清楚地排列消息，让收发双方的消息更加具有辨识度"><a href="#只要获取到了发送者的详细信息，就可以更清楚地排列消息，让收发双方的消息更加具有辨识度" class="headerlink" title="只要获取到了发送者的详细信息，就可以更清楚地排列消息，让收发双方的消息更加具有辨识度"></a>只要获取到了发送者的详细信息，就可以更清楚地排列消息，让收发双方的消息更加具有辨识度</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不能发送空消息</p>
+<ul>
+<li>简单地作了字符串校验，给予了发送成功和发送失败的反馈，在消息发送成功后，清空编辑的消息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="优化过后的通信体验（2023-09-24午）"><a href="#优化过后的通信体验（2023-09-24午）" class="headerlink" title="优化过后的通信体验（2023/09/24午）"></a>优化过后的通信体验（2023/09/24午）</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230924131722543.png" alt="image-20230924131722543"></p>
+<ul>
+<li><h4 id="博客页面优化计划"><a href="#博客页面优化计划" class="headerlink" title="博客页面优化计划"></a>博客页面优化计划</h4><ul>
+<li>需要封装一个DTO类，返回文章，以及文章作者的所有信息</li>
+<li>开发</li>
+</ul>
+</li>
+<li><h5 id="今日待解决："><a href="#今日待解决：" class="headerlink" title="今日待解决："></a>今日待解决：</h5><ul>
+<li>私密队伍需输入密码才可申请加入 😈</li>
+<li>实时消息没有获取到发送人的详细信息 😈</li>
+<li>发布队内公告 😈</li>
+<li>首次进入页面时，聊天消息未渲染的成功 😈</li>
 </ul>
 </li>
 </ul>
