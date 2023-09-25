@@ -268,7 +268,7 @@
         
         
         
-          26 分钟
+          27 分钟
         
       </span>
     
@@ -714,7 +714,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：11 天前
+                    本文最后更新于：12 天前
                   
                 
               </p>
@@ -737,7 +737,7 @@
 <li><p>其中最为核心的，就是<strong>实现用户间的实时通信</strong></p>
 </li>
 </ul>
-<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ul>
+<h2 id="实现步骤（Version1-0）"><a href="#实现步骤（Version1-0）" class="headerlink" title="实现步骤（Version1.0）"></a>实现步骤（Version1.0）</h2><ul>
 <li><h5 id="这里仅展示核心业务代码，详细的业务流程会在后续讲解"><a href="#这里仅展示核心业务代码，详细的业务流程会在后续讲解" class="headerlink" title="这里仅展示核心业务代码，详细的业务流程会在后续讲解"></a>这里仅展示核心业务代码，详细的业务流程会在后续讲解</h5></li>
 </ul>
 <h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
@@ -778,7 +778,29 @@
 <ul>
 <li><h5 id="前端获取到服务器转发的消息，展示在页面（2023-09-13晚）"><a href="#前端获取到服务器转发的消息，展示在页面（2023-09-13晚）" class="headerlink" title="前端获取到服务器转发的消息，展示在页面（2023/09/13晚）"></a>前端获取到服务器转发的消息，展示在页面（2023/09/13晚）</h5></li>
 </ul>
-<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h4 id="RedisTemplate注入失败"><a href="#RedisTemplate注入失败" class="headerlink" title="RedisTemplate注入失败"></a>RedisTemplate注入失败</h4><ul>
+<h2 id="实时双向通信（Version2-0）"><a href="#实时双向通信（Version2-0）" class="headerlink" title="实时双向通信（Version2.0）"></a>实时双向通信（Version2.0）</h2><h3 id="业务流程梳理"><a href="#业务流程梳理" class="headerlink" title="业务流程梳理"></a>业务流程梳理</h3><ul>
+<li><p>实现双方实时通信的基础是什么？宏观的来讲，当然是通信双方之间建立一条连接，用来收发数据</p>
+<ul>
+<li>如何建立这条连接呢？客户端之间建立连接一定是要把服务器作为中转站，让服务器负责连接两端</li>
+</ul>
+</li>
+<li><p>建立连接之后，双方就可以发送消息了，服务器会帮我们搞定消息从哪里来、发送到哪里去</p>
+<ul>
+<li>这些消息的内容一定得包含这些字段：发送者、接收者、消息内容、发送时间等</li>
+<li>这样，服务器就能知晓这些消息的来源和目的地了，能够准确地将消息转发到接收者</li>
+</ul>
+</li>
+<li><p>收发过程中的这么多消息，应该存放在哪里呢？存放在数据库，我们这里建议使用Redis存储</p>
+<ul>
+<li>这样，聊天产生的消息都会存进Redis中</li>
+<li>当用户打开聊天界面时，加载双方的聊天记录</li>
+<li>当用户发送消息时，服务器负责精确转发给对方</li>
+<li>用户成功发送消息有反馈，用户接收到消息也有反馈</li>
+</ul>
+</li>
+<li><h5 id="这就是实时双向通信的整个业务流程（2023-09-25早）"><a href="#这就是实时双向通信的整个业务流程（2023-09-25早）" class="headerlink" title="这就是实时双向通信的整个业务流程（2023/09/25早）"></a>这就是实时双向通信的整个业务流程（2023/09/25早）</h5></li>
+</ul>
+<h4 id="向服务端发送消息"><a href="#向服务端发送消息" class="headerlink" title="向服务端发送消息"></a>向服务端发送消息</h4><h4 id="服务端转发消息"><a href="#服务端转发消息" class="headerlink" title="服务端转发消息"></a>服务端转发消息</h4><h4 id="精确转发"><a href="#精确转发" class="headerlink" title="精确转发"></a>精确转发</h4><h3 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h3><h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h4 id="RedisTemplate注入失败"><a href="#RedisTemplate注入失败" class="headerlink" title="RedisTemplate注入失败"></a>RedisTemplate注入失败</h4><ul>
 <li><p>这绝对是我踩过最令人抓狂的坑了，入上述代码所示，在@onMessage方法中获取到用户发来的消息后，服务器需要处理消息</p>
 </li>
 <li><p>我的处理方法是：<strong>以发送者 senderId 和接收者 receiverId 为key，分别将消息存储到 Redis 中，设置过期时间</strong></p>
@@ -804,12 +826,12 @@
 <li><h5 id="Springboot项目WebSocket服务中不能注入（-Autowired和-Resoure）报null错误-jeecgredisclient-localhostAND的博客-CSDN博客"><a href="#Springboot项目WebSocket服务中不能注入（-Autowired和-Resoure）报null错误-jeecgredisclient-localhostAND的博客-CSDN博客" class="headerlink" title="Springboot项目WebSocket服务中不能注入（@Autowired和@Resoure）报null错误_jeecgredisclient_localhostAND的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/blocalhost/article/details/125721825">Springboot项目WebSocket服务中不能注入（@Autowired和@Resoure）报null错误_jeecgredisclient_localhostAND的博客-CSDN博客</a></h5></li>
 <li><h5 id="原因我在这里写出："><a href="#原因我在这里写出：" class="headerlink" title="原因我在这里写出："></a>原因我在这里写出：</h5></li>
 </ul>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mel">本质原因：<span class="hljs-keyword">spring</span>管理的都是单例(singleton)，和 websocket(多对象)相冲突。<br>详细解释：项目启动时初始化，会初始化 websocket （非用户连接的），<span class="hljs-keyword">spring</span> 同时会为其注入 mapper，该对象的 mapper不是 null，被成功注入。但是，由于 <span class="hljs-keyword">spring</span> 默认管理的是单例，所以只会注入一次 mapper。当新用户进入聊天时，系统又会创建一个新的 websocket 对象，这时矛盾出现了：<span class="hljs-keyword">spring</span> 管理的都是单例，不会给第二个 websocket 对象注入 mapper，所以导致只要是用户连接创建的 websocket 对象，都不能再注入了。<br>像 controller 里面有 service， service 里面有 dao。因为 controller，service ，dao 都有是单例，所以注入时不会报 null。但是 websocket 不是单例，所以使用<span class="hljs-keyword">spring</span>注入一次后，后面的对象就不会再注入了，会报null。<br></code></pre></td></tr></table></figure>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mel">本质原因：<span class="hljs-keyword">spring</span>管理的都是单例(singleton)，和 websocket(多对象)相冲突。<br><br>详细解释：项目启动时初始化，会初始化 websocket （非用户连接的），<span class="hljs-keyword">spring</span> 同时会为其注入 mapper，该对象的 mapper不是 null，被成功注入。但是，由于 <span class="hljs-keyword">spring</span> 默认管理的是单例，所以只会注入一次 mapper。当新用户进入聊天时，系统又会创建一个新的 websocket 对象，这时矛盾出现了：<span class="hljs-keyword">spring</span> 管理的都是单例，不会给第二个 websocket 对象注入 mapper，所以导致只要是用户连接创建的 websocket 对象，都不能再注入了。<br><br>像 controller 里面有 service， service 里面有 dao。因为 controller，service ，dao 都有是单例，所以注入时不会报 null。但是 websocket 不是单例，所以使用<span class="hljs-keyword">spring</span>注入一次后，后面的对象就不会再注入了，会报null。<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>我修改了注入的方法，代码如下：</li>
 </ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// Redis 负责存储离线消息</span><br> <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-title class_">RedisTemplate</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt; redisTemplate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br><br> <span class="hljs-meta">@Resource</span><br> <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">setRedisTemplate</span>(<span class="hljs-params">RedisTemplate redisTemplate</span>) &#123;<br>     <span class="hljs-title class_">WebSocketServer</span>.<span class="hljs-property">redisTemplate</span> = redisTemplate;<br> &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Redis 负责存储离线消息</span><br> <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br><br> <span class="hljs-meta">@Resource</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setRedisTemplate</span><span class="hljs-params">(RedisTemplate redisTemplate)</span> &#123;<br>     WebSocketServer.redisTemplate = redisTemplate;<br> &#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="可以看到，本地-Redis-中已经成功地存储了用户消息，redisTemplate-注入成功，问题解决：（2023-09-13晚）"><a href="#可以看到，本地-Redis-中已经成功地存储了用户消息，redisTemplate-注入成功，问题解决：（2023-09-13晚）" class="headerlink" title="可以看到，本地 Redis 中已经成功地存储了用户消息，redisTemplate 注入成功，问题解决：（2023/09/13晚）"></a>可以看到，本地 Redis 中已经成功地存储了用户消息，redisTemplate 注入成功，问题解决：（2023/09/13晚）</h5></li>
