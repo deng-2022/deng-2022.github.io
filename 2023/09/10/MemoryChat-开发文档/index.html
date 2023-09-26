@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          26k 字
+          27k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          64 分钟
+          67 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：5 天前
+                    本文最后更新于：6 天前
                   
                 
               </p>
@@ -1465,6 +1465,41 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 点赞</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">toggleLike</span> = (<span class="hljs-params">item</span>) =&gt; &#123;<br>  item.<span class="hljs-property">isLiked</span> = !item.<span class="hljs-property">isLiked</span><br>&#125;<br><span class="hljs-comment">// 收藏</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">toggleCollect</span> = (<span class="hljs-params">item</span>) =&gt; &#123;<br>  item.<span class="hljs-property">isCollected</span> = !item.<span class="hljs-property">isCollected</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230925151826913.png" alt="image-20230925151826913"></p>
+<h3 id="Day17"><a href="#Day17" class="headerlink" title="Day17"></a>Day17</h3><ul>
+<li><p>封装消息的内容</p>
+<ul>
+<li><p>可以在后台封装</p>
+</li>
+<li><h5 id="也可以选择前端发出请求（这个简便）"><a href="#也可以选择前端发出请求（这个简便）" class="headerlink" title="也可以选择前端发出请求（这个简便）"></a>也可以选择前端发出请求（这个简便）</h5></li>
+</ul>
+</li>
+<li><p>搞没了，前端拿取每条消息的每个id再发送请求，简直做梦，还是搞后端吧</p>
+</li>
+<li><p>现在把头像换成登录用户的头像</p>
+</li>
+<li><p>简单地优化了双向通信的消息气泡展示：</p>
+<ul>
+<li><h5 id="标签中定义了动态的-class-属性：（2023-09-26午）"><a href="#标签中定义了动态的-class-属性：（2023-09-26午）" class="headerlink" title="标签中定义了动态的 class 属性：（2023/09/26午）"></a>标签中定义了动态的 class 属性：（2023/09/26午）</h5></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;div :class=&quot;messageClass(item.senderId)&quot;&gt;<br>          &lt;!--发送者--&gt;<br>       &lt;div style=&quot;position: absolute;top: 6px&quot;&gt;<br>             &lt;a-avatar size=&quot;large&quot; :src=&quot;currentUser.avatarUrl&quot;/&gt;<br>                 &lt;/div&gt;<br>                  &lt;div style=&quot;margin-left: 24px;font-size: medium&quot;&gt;<br>                    &lt;a-list-item&gt;<br>                       &lt;div style=&quot;font-size: smaller&quot;&gt;<br>                      &lt;!--发送时间--&gt;<br>                      &lt;a-list-item-meta :description=&quot;item.sendTime&quot;&gt;<br>                      &lt;/a-list-item-meta&gt;<br>                     &lt;/div&gt;<br>                 &lt;!--消息内容--&gt;<br>             &#123;&#123; item.content &#125;&#125;<br>                   &lt;/a-list-item&gt;<br>              &lt;/div&gt;<br>       &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.senderMsg</span> &#123;<br>  <span class="hljs-attribute">position</span>: relative;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">1150px</span><br>&#125;<br><br><span class="hljs-selector-class">.receiverMsg</span> &#123;<br>  <span class="hljs-attribute">position</span>: relative;<br>&#125;<br><br><span class="hljs-selector-class">.receiverMsg</span> &#123;<br>  <span class="hljs-attribute">position</span>: relative;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="动态改变-class"><a href="#动态改变-class" class="headerlink" title="动态改变 class"></a>动态改变 class</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 动态变换收发双方消息气泡</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">messageClass</span> = (<span class="hljs-params">senderId</span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (currentUserId === senderId) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;senderMsg&#x27;</span>;  <span class="hljs-comment">// 如果当前用户的ID等于消息发送者的ID，</span><br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;receiverMsg&#x27;</span>;  <span class="hljs-comment">// 其他情况返回空字符串</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>最终效果：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230926170307814.png" alt="image-20230926170307814"></p>
+<ul>
+<li><h5 id="关于通信双方的详细信息，还得在后端封装，暂时不改了"><a href="#关于通信双方的详细信息，还得在后端封装，暂时不改了" class="headerlink" title="关于通信双方的详细信息，还得在后端封装，暂时不改了"></a>关于通信双方的详细信息，还得在后端封装，暂时不改了</h5></li>
+</ul>
+<h4 id="MemoryChat开发计划："><a href="#MemoryChat开发计划：" class="headerlink" title="MemoryChat开发计划："></a>MemoryChat开发计划：</h4><ul>
+<li><h5 id="使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息"><a href="#使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息" class="headerlink" title="使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息"></a>使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息</h5></li>
+<li><h5 id="使用-ES-来大幅提升博文检索效率"><a href="#使用-ES-来大幅提升博文检索效率" class="headerlink" title="使用 ES 来大幅提升博文检索效率"></a>使用 ES 来大幅提升博文检索效率</h5></li>
+</ul>
 <h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><ul>
 <li>如何实现点击好友私聊后，跳转至聊天窗口的对应聊天窗口？</li>
 <li>实现流程：<ul>
