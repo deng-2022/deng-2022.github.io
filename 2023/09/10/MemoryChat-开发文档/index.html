@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          27k 字
+          28k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          67 分钟
+          71 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：6 天前
+                    本文最后更新于：7 天前
                   
                 
               </p>
@@ -1496,6 +1496,74 @@
 <ul>
 <li><h5 id="关于通信双方的详细信息，还得在后端封装，暂时不改了"><a href="#关于通信双方的详细信息，还得在后端封装，暂时不改了" class="headerlink" title="关于通信双方的详细信息，还得在后端封装，暂时不改了"></a>关于通信双方的详细信息，还得在后端封装，暂时不改了</h5></li>
 </ul>
+<ul>
+<li><h5 id="当文章高度不够全屏时，背景默认为整个屏幕高度；随着内容增多，背景高度会动态增加"><a href="#当文章高度不够全屏时，背景默认为整个屏幕高度；随着内容增多，背景高度会动态增加" class="headerlink" title="当文章高度不够全屏时，背景默认为整个屏幕高度；随着内容增多，背景高度会动态增加"></a>当文章高度不够全屏时，背景默认为整个屏幕高度；随着内容增多，背景高度会动态增加</h5></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!--文章信息--&gt;<br>     &lt;a-card style=&quot;width: 60%;margin-left: 15%;  min-height: 85vh;margin-bottom: 20px&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230926220346416.png" alt="image-20230926220346416"></p>
+<ul>
+<li>简单实现了申请加密队伍需要填写密码的功能：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 申请加入队伍</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">joinTeam</span> = (<span class="hljs-params">teamInfo: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (teamInfo.<span class="hljs-property">status</span> === <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-title function_">showModal</span>();<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    myAxios.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/team/join&quot;</span>, teamInfo).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>      message.<span class="hljs-title function_">success</span>(<span class="hljs-string">&quot;申请入队成功&quot;</span>)<br>    &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;加入失败&quot;</span>)<br>    &#125;);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 确认</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleOk</span> = (<span class="hljs-params">teamInfo: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  vis.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span>;<br><br>  myAxios.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/team/join&quot;</span>, teamInfo)<br>      .<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        message.<span class="hljs-title function_">success</span>(<span class="hljs-string">&quot;申请入队成功&quot;</span>)<br>      &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;加入失败&quot;</span>)<br>  &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230926235757172.png" alt="image-20230926235757172"></p>
+<ul>
+<li><h5 id="完成队伍公告的展示，再实现一个点击查看详细公告吧（2023-09-26晚）"><a href="#完成队伍公告的展示，再实现一个点击查看详细公告吧（2023-09-26晚）" class="headerlink" title="完成队伍公告的展示，再实现一个点击查看详细公告吧（2023/09/26晚）"></a>完成队伍公告的展示，再实现一个点击查看详细公告吧（2023/09/26晚）</h5></li>
+<li><p>查看队内公告完成</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230926235739393.png" alt="image-20230926235739393"></p>
+<ul>
+<li>申请添加好友/进入队伍之前，都应该有弹窗进行反复确认</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230927000836068.png" alt="image-20230927000836068"></p>
+<h2 id="Day17-1"><a href="#Day17-1" class="headerlink" title="Day17"></a>Day17</h2><ul>
+<li><h5 id="简单的评论展示："><a href="#简单的评论展示：" class="headerlink" title="简单的评论展示："></a>简单的评论展示：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230927112918187.png" alt="image-20230927112918187"></p>
+<ul>
+<li>简单的博文收藏页：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230927115337147.png" alt="image-20230927115337147"></p>
+<ul>
+<li><p>后端，博文表的字段添加</p>
+<ul>
+<li>收藏量（collects）</li>
+<li>封面图（articleUrl）</li>
+<li>标签（tags）</li>
+</ul>
+</li>
+<li><h5 id="点击评论图标也可以进入页面"><a href="#点击评论图标也可以进入页面" class="headerlink" title="点击评论图标也可以进入页面"></a>点击评论图标也可以进入页面</h5></li>
+<li><h5 id="优化下队伍人数的表现、每周推荐用户的匹配度表现"><a href="#优化下队伍人数的表现、每周推荐用户的匹配度表现" class="headerlink" title="优化下队伍人数的表现、每周推荐用户的匹配度表现"></a>优化下队伍人数的表现、每周推荐用户的匹配度表现</h5></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-progress type=&quot;circle&quot; :percent=&quot;item.percentage&quot; :width=&quot;50&quot; /&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这个圆形进度圈的大小，调整起来有点问题"><a href="#这个圆形进度圈的大小，调整起来有点问题" class="headerlink" title="这个圆形进度圈的大小，调整起来有点问题"></a>这个圆形进度圈的大小，调整起来有点问题</h5></li>
+<li><p>嗨嗨，这个进度条的百分比还让我自己算：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-progress :percent=&quot;(item.joinNum / item.maxNum * 100).toFixed(2)&quot; size=&quot;small&quot; status=&quot;active&quot;/&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>解决一下默认打开用户中心 -&gt; 我的页面时，没有渲染出已加入的队伍列表</li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-comment">// 默认选中已加入的队伍</span><br>const activeKey = ref(<span class="hljs-string">&#x27;1&#x27;</span>);<br><span class="hljs-comment">// 直接查询已加入的队伍</span><br>onMounted(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>  getJoinedTeam();<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="给队伍表添加队内公告字段"><a href="#给队伍表添加队内公告字段" class="headerlink" title="给队伍表添加队内公告字段"></a>给队伍表添加队内公告字段</h5></li>
+<li><h5 id="修改公告这个还需要考虑一下："><a href="#修改公告这个还需要考虑一下：" class="headerlink" title="修改公告这个还需要考虑一下："></a>修改公告这个还需要考虑一下：</h5><ul>
+<li>传入的参数：修改人、修改队伍、公告内容（只有队长才能修改/发布公告）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+
+
 <h4 id="MemoryChat开发计划："><a href="#MemoryChat开发计划：" class="headerlink" title="MemoryChat开发计划："></a>MemoryChat开发计划：</h4><ul>
 <li><h5 id="使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息"><a href="#使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息" class="headerlink" title="使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息"></a>使用Redis缓存热点消息（最近36h内的消息），数据库中存放所有消息</h5></li>
 <li><h5 id="使用-ES-来大幅提升博文检索效率"><a href="#使用-ES-来大幅提升博文检索效率" class="headerlink" title="使用 ES 来大幅提升博文检索效率"></a>使用 ES 来大幅提升博文检索效率</h5></li>
