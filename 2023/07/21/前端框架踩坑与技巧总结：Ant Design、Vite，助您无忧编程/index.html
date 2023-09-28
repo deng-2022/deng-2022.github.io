@@ -27,8 +27,8 @@
 <meta property="article:published_time" content="2023-07-21T06:12:12.000Z">
 <meta property="article:modified_time" content="2023-09-27T09:13:13.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="项目">
 <meta property="article:tag" content="经验">
+<meta property="article:tag" content="项目">
 <meta property="article:tag" content="Ant Design Pro">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary_large_image">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k 字
+          22k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          52 分钟
+          55 分钟
         
       </span>
     
@@ -464,7 +464,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -988,6 +988,35 @@
 </li>
 </ul>
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230924235124466.png" alt="image-20230924235124466"></p>
+<h3 id="子组件绑定自己独有的属性"><a href="#子组件绑定自己独有的属性" class="headerlink" title="子组件绑定自己独有的属性"></a>子组件绑定自己独有的属性</h3><ul>
+<li><p>鬼知道这个标题是什么意思，我简单介绍下：</p>
+<ul>
+<li>最近在实现<strong>点击队伍，编辑并发布公告的功能</strong>，要求点击队伍后，只有该队伍对应的窗口会弹窗</li>
+<li>这就需要每个队伍中，都封装一个控制弹窗出现的变量</li>
+<li>我们当然不能在后端封装这个字段了，所以需要在前端做处理</li>
+</ul>
+</li>
+<li><h5 id="完善昨晚的队伍发布公告，遇到了些许小问题："><a href="#完善昨晚的队伍发布公告，遇到了些许小问题：" class="headerlink" title="完善昨晚的队伍发布公告，遇到了些许小问题："></a>完善昨晚的队伍发布公告，遇到了些许小问题：</h5><ul>
+<li>由于编辑公告的弹窗是写在list列表中的，即每个team都有自己的公告弹窗，所以不应该使用一个变量来控制弹窗的出现/消失：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 弹窗</span><br><span class="hljs-keyword">const</span> visible = ref&lt;<span class="hljs-built_in">boolean</span>&gt;(<span class="hljs-literal">false</span>);<br><span class="hljs-comment">// 展示弹窗</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">showModal</span> = (<span class="hljs-params">team: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  visible.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>而应该为每个team，都分配独有的控制弹窗出现的变量（<strong>showEditWindow</strong>）：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts">myAxios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/team/created&quot;</span>, &#123;<br>    <span class="hljs-attr">params</span>: &#123;<br>      <span class="hljs-string">&quot;loginUserId&quot;</span>: userId<br>    &#125;<br>  &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>    createdTeamList.<span class="hljs-property">value</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">records</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">team: <span class="hljs-built_in">any</span></span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> &#123;<br>        ...team,<br>        <span class="hljs-attr">showEditWindow</span>: <span class="hljs-literal">false</span><br>      &#125;;<br>    &#125;);<br>  &#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>为每一个team绑定：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-button size=&quot;large&quot; danger @click=&quot;showModal(item)&quot;&gt;发布公告&lt;/a-button&gt;<br>                 &lt;div style=&quot;position: relative&quot;&gt;<br>                   &lt;a-modal v-model:visible=&quot;item.showEditWindow&quot; title=&quot;队伍公告&quot; @ok=&quot;updateAnnouncement(item)&quot;&gt;<br>                     &lt;p&gt;请编辑队伍公告&lt;/p&gt;<br>                     &lt;a-textarea v-model:value=&quot;announcement&quot; style=&quot;height: 100px&quot;/&gt;<br>                   &lt;/a-modal&gt;<br>                 &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 公告弹窗</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">showModal</span> = (<span class="hljs-params">team: <span class="hljs-built_in">any</span></span>) =&gt; &#123;<br>  team.<span class="hljs-property">showEditWindow</span> = <span class="hljs-literal">true</span>;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
+<li><p>这个思路是普适的，在获取后台传回的数组信息时，为数组内每一个元素都封装自己的独有的元素</p>
+</li>
+<li><p>在<strong>实现每篇文章的点赞、收藏</strong>，以及<strong>申请加入队伍</strong>中，都是这样的思路<strong>（2023/09/28午）</strong></p>
+</li>
+</ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
@@ -1042,9 +1071,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
-      
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
         <a href="/blog/tags/Ant-Design-Pro/">#Ant Design Pro</a>
       

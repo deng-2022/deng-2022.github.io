@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          54k 字
+          56k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          136 分钟
+          139 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：12 天前
+                    本文最后更新于：13 天前
                   
                 
               </p>
@@ -1350,7 +1350,36 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>        <span class="hljs-comment">// 判断递归结束的条件</span><br>        <span class="hljs-keyword">if</span> (start &gt;= end) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 选定最左边的元素作为基准值</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">pivot</span> <span class="hljs-operator">=</span> nums[start];<br>        <span class="hljs-comment">// 初始化快慢指针</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> start;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> start + <span class="hljs-number">1</span>;<br><br>        <span class="hljs-comment">// 快慢指针法进行划分</span><br>        <span class="hljs-keyword">while</span> (fast &lt;= end) &#123;<br>            <span class="hljs-keyword">if</span> (nums[fast] &lt; pivot) &#123;<br>                <span class="hljs-comment">// 如果当前元素小于基准值，将其交换到基准值的左侧</span><br>                slow++;<br>                swap(nums, slow, fast);<br>            &#125;<br>            fast++;<br>        &#125;<br>        <span class="hljs-comment">// 将基准值交换到正确的位置</span><br>        swap(nums, start, slow);<br><br>        <span class="hljs-comment">// 递归对基准值的左右两部分进行排序</span><br>        quickSort(nums, start, slow - <span class="hljs-number">1</span>);<br>        quickSort(nums, slow + <span class="hljs-number">1</span>, end);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> nums[i];<br>        nums[i] = nums[j];<br>        nums[j] = temp;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
+<h3 id="实战训练（白银挑战）-7"><a href="#实战训练（白银挑战）-7" class="headerlink" title="实战训练（白银挑战）"></a>实战训练（白银挑战）</h3><h4 id="数组中K大的数"><a href="#数组中K大的数" class="headerlink" title="数组中K大的数"></a>数组中K大的数</h4><ul>
+<li><h5 id="我们要找第K大的元素，如果我们能够将数组排好序，再取-nums-K-1-元素，就是目标值了"><a href="#我们要找第K大的元素，如果我们能够将数组排好序，再取-nums-K-1-元素，就是目标值了" class="headerlink" title="我们要找第K大的元素，如果我们能够将数组排好序，再取 nums[K - 1] 元素，就是目标值了"></a>我们要找第K大的元素，如果我们能够将数组排好序，再取 nums[K - 1] 元素，就是目标值了</h5></li>
+<li><p>试想一下，每一轮快排结束之后，我们能知晓基准值的位置，即我们知晓基准值的下标</p>
+<ul>
+<li><p>如果目标元素在基准元素的左侧，就对左侧进行递归快排</p>
+</li>
+<li><p>否则，对右侧进行递归快排</p>
+</li>
+<li><p>最后，在已经 ”排好序的“ 数组中，轻松就能找到第K大的元素</p>
+</li>
+<li><h5 id="其实就是快速排序对半砍，每次只快排一半元素，要么左侧，要么右侧（2023-09-27晚）"><a href="#其实就是快速排序对半砍，每次只快排一半元素，要么左侧，要么右侧（2023-09-27晚）" class="headerlink" title="其实就是快速排序对半砍，每次只快排一半元素，要么左侧，要么右侧（2023/09/27晚）"></a>其实就是快速排序对半砍，每次只快排一半元素，要么左侧，要么右侧（2023/09/27晚）</h5></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quicksort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> left;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> right;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">pivot</span> <span class="hljs-operator">=</span> nums[(end + start) / <span class="hljs-number">2</span>]; <span class="hljs-comment">//取中位值作左右参考对比</span><br><br>       <span class="hljs-comment">//每次循环都将大的放到左边，小的放到右边</span><br>       <span class="hljs-keyword">while</span> (start &lt; end) &#123;<br>           <span class="hljs-keyword">while</span> (nums[start] &gt; pivot) &#123;<br>               start++;<br>           &#125;<br><br>           <span class="hljs-keyword">while</span> (nums[end] &lt; pivot) &#123;<br>               end--;<br>           &#125;<br><br>           <span class="hljs-comment">//如果l&gt;=r说明mid左边的值全部大于等于mid的值，右边全是小的，退出</span><br>           <span class="hljs-keyword">if</span> (start &gt;= end) &#123;<br>               <span class="hljs-keyword">break</span>;<br>           &#125;<br>           <span class="hljs-comment">//交换</span><br>           <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> nums[start];<br>           nums[start] = nums[end];<br>           nums[end] = temp;<br><br>           <span class="hljs-comment">//解决值相同的情况，如果交换后发现左边的值等于mid目标值，则使右边指针向左移</span><br>           <span class="hljs-keyword">if</span> (nums[start] == pivot) &#123;<br>               end--;<br>           &#125;<br>           <span class="hljs-comment">//右边的值等于mid目标值，则使左边指针向左移</span><br>           <span class="hljs-keyword">if</span> (nums[end] == pivot) &#123;<br>               start++;<br>           &#125;<br>       &#125;<br><br>       <span class="hljs-keyword">if</span> (start == end) &#123; <span class="hljs-comment">//退出循环防止栈溢出</span><br>           start++;<br>           end--;<br>       &#125;<br>       <br>       <span class="hljs-keyword">if</span> (left &lt; end) &#123;<br>           quicksort(nums, left, end);   <span class="hljs-comment">//向左递归</span><br>       &#125;<br>       <br>       <span class="hljs-keyword">if</span> (right &gt; start) &#123;<br>           quicksort(nums, start, right); <span class="hljs-comment">//向右递归</span><br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
 
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><ul>
+<li>好难好难，需要先理解思路，再考虑编码实现：<ul>
+<li>归并排序简单来讲，就是将大的序列视为若干小的数组，利用归并思想实现排序的方法。</li>
+<li>分治策略（分：把问题分成小的问题分别求解；治：将分的阶段得到的各答案合在一起）</li>
+</ul>
+</li>
+</ul>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><h3 id="基础知识（青铜排序）"><a href="#基础知识（青铜排序）" class="headerlink" title="基础知识（青铜排序）"></a>基础知识（青铜排序）</h3><ul>
+<li>原码、反码、补码</li>
+<li>与运算 &amp;，或运算 |，异或运算 ^，取反运算 !</li>
+<li>移位运算：左移、算术右移、逻辑右移</li>
+<li>移位运算与乘除法的关系</li>
+</ul>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="基础知识（青铜挑战）-8"><a href="#基础知识（青铜挑战）-8" class="headerlink" title="基础知识（青铜挑战）"></a>基础知识（青铜挑战）</h3>
                 
               </div>
             
