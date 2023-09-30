@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          30k 字
+          32k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          77 分钟
+          79 分钟
         
       </span>
     
@@ -562,7 +562,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：8 天前
+                    本文最后更新于：10 天前
                   
                 
               </p>
@@ -1428,10 +1428,10 @@
 
 <ul>
 <li><h5 id="今日待解决："><a href="#今日待解决：" class="headerlink" title="今日待解决："></a>今日待解决：</h5><ul>
-<li>私密队伍需输入密码才可申请加入 😈</li>
+<li>私密队伍需输入密码才可申请加入 ✔😈</li>
 <li>实时消息没有获取到发送人的详细信息 😈</li>
-<li>发布队内公告 😈</li>
-<li>首次进入页面时，聊天消息未渲染的成功 😈</li>
+<li>发布队内公告  ✔😈</li>
+<li>首次进入页面时，聊天消息未渲染的成功 ✔😈</li>
 <li>博文列表太长了，应该加个每页数量和延时加载效果</li>
 <li>识别Markdown格式 ✔</li>
 <li>博文收藏页、博文搜索页</li>
@@ -1615,6 +1615,43 @@
 <li>设计一张文章/评论表（太庞大了，每篇文章与其评论的关系都要一一列举）</li>
 <li>文章添加字段：评论字段（comments），存储评论id，当然，仅存取<strong>一级评论id</strong></li>
 <li>二级评论id当然要从一级评论的字段中找了，子评论字段（comments）存储二级评论id</li>
+</ul>
+</li>
+</ul>
+<h3 id="Day20"><a href="#Day20" class="headerlink" title="Day20"></a>Day20</h3><ul>
+<li><h5 id="彻底优化实时双向通信的页面、消息气泡表现方式"><a href="#彻底优化实时双向通信的页面、消息气泡表现方式" class="headerlink" title="彻底优化实时双向通信的页面、消息气泡表现方式"></a>彻底优化实时双向通信的页面、消息气泡表现方式</h5></li>
+<li><h5 id="后端封装-MessageVO-类，在Message基础上扩展了两个字段（目前仅需要这两个字段，后续可以做扩展）："><a href="#后端封装-MessageVO-类，在Message基础上扩展了两个字段（目前仅需要这两个字段，后续可以做扩展）：" class="headerlink" title="后端封装 MessageVO 类，在Message基础上扩展了两个字段（目前仅需要这两个字段，后续可以做扩展）："></a>后端封装 MessageVO 类，在Message基础上扩展了两个字段（目前仅需要这两个字段，后续可以做扩展）：</h5></li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 发送者昵称</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">String</span> username;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 发送者头像</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">String</span> avatarUrl;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="提供了转换-messageList-为-MessageVOList的方法"><a href="#提供了转换-messageList-为-MessageVOList的方法" class="headerlink" title="提供了转换 messageList 为 MessageVOList的方法"></a>提供了转换 messageList 为 MessageVOList的方法</h5></li>
+</ul>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 转换 messageList 为 MessageVOList</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    * @param messageList messageList</span><br><span class="hljs-comment">    * @return MessageVO</span><br><span class="hljs-comment">    */</span><br>   public List&lt;MessageVO&gt; get<span class="hljs-constructor">MessageVOByMessage(List&lt;Message&gt; <span class="hljs-params">messageList</span>)</span> &#123;<br>       return messageList.stream<span class="hljs-literal">()</span>.map(message -&gt; &#123;<br>           Long senderId = message.get<span class="hljs-constructor">SenderId()</span>;<br>           User user = userService.get<span class="hljs-constructor">ById(<span class="hljs-params">senderId</span>)</span>;<br><br>           MessageVO messageVO = <span class="hljs-keyword">new</span> <span class="hljs-constructor">MessageVO()</span>;<br>           messageVO.set<span class="hljs-constructor">SenderId(<span class="hljs-params">message</span>.<span class="hljs-params">getSenderId</span>()</span>);<br>           messageVO.set<span class="hljs-constructor">ReceiverId(<span class="hljs-params">message</span>.<span class="hljs-params">getReceiverId</span>()</span>);<br>           messageVO.set<span class="hljs-constructor">Content(<span class="hljs-params">message</span>.<span class="hljs-params">getContent</span>()</span>);<br>           messageVO.set<span class="hljs-constructor">SendTime(<span class="hljs-params">message</span>.<span class="hljs-params">getSendTime</span>()</span>);<br>           messageVO.set<span class="hljs-constructor">Username(<span class="hljs-params">user</span>.<span class="hljs-params">getUsername</span>()</span>);<br>           messageVO.set<span class="hljs-constructor">AvatarUrl(<span class="hljs-params">user</span>.<span class="hljs-params">getAvatarUrl</span>()</span>);<br><br>           return messageVO;<br>       &#125;).collect(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Collectors</span>.</span></span><span class="hljs-keyword">to</span><span class="hljs-constructor">List()</span>);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="完全优化了实时双向通信的用户体验："><a href="#完全优化了实时双向通信的用户体验：" class="headerlink" title="完全优化了实时双向通信的用户体验："></a>完全优化了实时双向通信的用户体验：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230930220121786.png" alt="image-20230930220121786"></p>
+<ul>
+<li><p>申请入队：</p>
+<ul>
+<li><h5 id="想实现推动入队消息到队长的消息列表中，队长同意，方可入队"><a href="#想实现推动入队消息到队长的消息列表中，队长同意，方可入队" class="headerlink" title="想实现推动入队消息到队长的消息列表中，队长同意，方可入队"></a>想实现推动入队消息到队长的消息列表中，队长同意，方可入队</h5></li>
+<li><h5 id="学完消息队列之后再考虑"><a href="#学完消息队列之后再考虑" class="headerlink" title="学完消息队列之后再考虑"></a>学完消息队列之后再考虑</h5></li>
+</ul>
+</li>
+<li><p>点赞、收藏博文，</p>
+</li>
+<li><h5 id="后端接口开发："><a href="#后端接口开发：" class="headerlink" title="后端接口开发："></a>后端接口开发：</h5><ul>
+<li><p>点赞/收藏博文，应该传入的参数有：</p>
+</li>
+<li><p>userId、ArticleId</p>
+</li>
+<li><p>执行使该博文的likes + 1，并在article-like表中存放点赞记录</p>
+</li>
+<li><p>收藏博文也是如此</p>
+</li>
+<li><h5 id="慢慢实现吧，最近先把简历优化、算法拔高、项目优化、软考备考做好（2023-09-30晚）"><a href="#慢慢实现吧，最近先把简历优化、算法拔高、项目优化、软考备考做好（2023-09-30晚）" class="headerlink" title="慢慢实现吧，最近先把简历优化、算法拔高、项目优化、软考备考做好（2023/09/30晚）"></a>慢慢实现吧，最近先把简历优化、算法拔高、项目优化、软考备考做好（2023/09/30晚）</h5></li>
 </ul>
 </li>
 </ul>
