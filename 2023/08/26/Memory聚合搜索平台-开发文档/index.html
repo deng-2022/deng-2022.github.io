@@ -25,10 +25,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
-<meta property="article:modified_time" content="2023-08-26T15:12:22.000Z">
+<meta property="article:modified_time" content="2023-10-01T13:01:22.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
+<meta property="article:tag" content="Elasticsearch">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
   
@@ -255,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.4k 字
+          9.5k 字
         
       </span>
     
@@ -266,7 +267,7 @@
         
         
         
-          14 分钟
+          24 分钟
         
       </span>
     
@@ -360,6 +361,7 @@
         
         
           
+          
   <div class="category-post-list">
     
     
@@ -419,15 +421,6 @@
     
       
       
-        <a href="/blog/2023/08/26/Memory%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">Memory聚合搜索平台-开发文档</span>
-        </a>
-      
-    
-      
-      
         <a href="/blog/2023/09/10/MemoryChat-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemoryChat-开发文档"
            class="list-group-item list-group-item-action
            ">
@@ -437,6 +430,45 @@
     
   </div>
 
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Elasticsearch"
+        id="heading-45e23a169652aaf95ce80da844f3df0d" role="tab" data-toggle="collapse" href="#collapse-45e23a169652aaf95ce80da844f3df0d"
+        aria-expanded="true"
+      >
+        Elasticsearch
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-45e23a169652aaf95ce80da844f3df0d"
+           role="tabpanel" aria-labelledby="heading-45e23a169652aaf95ce80da844f3df0d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/08/26/Memory%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Memory聚合搜索平台-开发文档</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -562,7 +594,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：1 小时前
                   
                 
               </p>
@@ -648,7 +680,60 @@
 <h2 id="Day5"><a href="#Day5" class="headerlink" title="Day5"></a>Day5</h2><ul>
 <li>再成功地将ES 和 MySQL数据同步后，终于可以进行下一步了</li>
 </ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="搜索高亮"><a href="#搜索高亮" class="headerlink" title="搜索高亮"></a>搜索高亮</h3><ul>
+<li><h5 id="官方文档：-Highlighting-Elasticsearch-Guide-7-17-Elastic"><a href="#官方文档：-Highlighting-Elasticsearch-Guide-7-17-Elastic" class="headerlink" title="官方文档：[Highlighting | Elasticsearch Guide 7.17] | Elastic"></a>官方文档：[Highlighting | Elasticsearch Guide <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/highlighting.html">7.17] | Elastic</a></h5></li>
+<li><h5 id="如何使搜索词高亮？ES文档里有现成的demo："><a href="#如何使搜索词高亮？ES文档里有现成的demo：" class="headerlink" title="如何使搜索词高亮？ES文档里有现成的demo："></a>如何使搜索词高亮？ES文档里有现成的demo：</h5></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs css">GET /_search<br>&#123;<br>  &quot;query&quot;: &#123;<br>    &quot;match&quot;: &#123; &quot;<span class="hljs-attribute">content</span>&quot;: <span class="hljs-string">&quot;kimchy&quot;</span> &#125;<br>  &#125;,<br>  &quot;highlight&quot;: &#123;<br>    &quot;fields&quot;: &#123;<br>      &quot;<span class="hljs-attribute">content</span>&quot;: &#123;&#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>我们执行搜索，能得到如下标识出来的高亮词：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231001205230841.png" alt="image-20231001205230841"></p>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><ul>
+<li><h5 id="我们使用-Java客户端，这样编写："><a href="#我们使用-Java客户端，这样编写：" class="headerlink" title="我们使用 Java客户端，这样编写："></a>我们使用 Java客户端，这样编写：</h5></li>
+<li><h5 id="使所有字段内匹配的关键字高亮：-（2023-10-01晚）"><a href="#使所有字段内匹配的关键字高亮：-（2023-10-01晚）" class="headerlink" title="使所有字段内匹配的关键字高亮： （2023/10/01晚）"></a>使所有字段内匹配的关键字高亮： <strong>（2023/10/01晚）</strong></h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">搜索关键词高亮<br><span class="hljs-type">HighlightBuilder</span> <span class="hljs-variable">highlightBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HighlightBuilder</span>();<br>highlightBuilder.field(<span class="hljs-string">&quot;*&quot;</span>)<br>        .preTags(<span class="hljs-string">&quot;&lt;font color=&#x27;#eea6b7&#x27;&gt;&quot;</span>)<br>        .postTags(<span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>); <span class="hljs-comment">//所有的字段都高亮</span><br>highlightBuilder.requireFieldMatch(<span class="hljs-literal">false</span>);<span class="hljs-comment">//如果要多个字段高亮,这项要为false</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="或者指定固定字段内的关键词高亮："><a href="#或者指定固定字段内的关键词高亮：" class="headerlink" title="或者指定固定字段内的关键词高亮："></a>或者指定固定字段内的关键词高亮：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//查询带highlight，标题和内容都带上</span><br>      <span class="hljs-type">HighlightBuilder</span> <span class="hljs-variable">highlightBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HighlightBuilder</span>()<br>              .field(<span class="hljs-string">&quot;content&quot;</span>)<br>              .requireFieldMatch(<span class="hljs-literal">false</span>)<br>              .preTags(<span class="hljs-string">&quot;&lt;font color=&#x27;#eea6b7&#x27;&gt;&quot;</span>)<br>              .postTags(<span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>);<br>      highlightBuilder.field(<span class="hljs-string">&quot;title&quot;</span>)<br>              .requireFieldMa<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="在构造查询中，配置关键字高亮显示："><a href="#在构造查询中，配置关键字高亮显示：" class="headerlink" title="在构造查询中，配置关键字高亮显示："></a>在构造查询中，配置关键字高亮显示：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 构造查询</span><br>     <span class="hljs-type">NativeSearchQuery</span> <span class="hljs-variable">searchQuery</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeSearchQueryBuilder</span>()<br>             .withQuery(boolQueryBuilder)<br>             .withHighlightBuilder(highlightBuilder)<br>             .withPageable(pageRequest)<br>             .withSorts(sortBuilder).build();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="我们抽象出一个类，存放获取的高亮关键词："><a href="#我们抽象出一个类，存放获取的高亮关键词：" class="headerlink" title="我们抽象出一个类，存放获取的高亮关键词："></a>我们抽象出一个类，存放获取的高亮关键词：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;SearchHit&lt;PostEsDTO&gt;&gt; searchHitList = searchHits.getSearchHits();<br>         <span class="hljs-comment">// 搜索关键词高亮</span><br>         Map&lt;Long, PostEsHighlightData&gt; highlightDataMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>         <span class="hljs-keyword">for</span> (SearchHit hit : searchHits.getSearchHits()) &#123;<br>             <span class="hljs-type">PostEsHighlightData</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PostEsHighlightData</span>();<br>             data.setId(Long.valueOf(hit.getId()));<br>             <span class="hljs-keyword">if</span> (hit.getHighlightFields().get(<span class="hljs-string">&quot;title&quot;</span>) != <span class="hljs-literal">null</span>) &#123;<br>                 <span class="hljs-type">String</span> <span class="hljs-variable">highlightTitle</span> <span class="hljs-operator">=</span> String.valueOf(hit.getHighlightFields().get(<span class="hljs-string">&quot;title&quot;</span>));<br>                 data.setTitle(highlightTitle.substring(<span class="hljs-number">1</span>, highlightTitle.length() - <span class="hljs-number">1</span>));<br>                 System.out.println(data.getTitle());<br>             &#125;<br>             <span class="hljs-keyword">if</span> (hit.getHighlightFields().get(<span class="hljs-string">&quot;content&quot;</span>) != <span class="hljs-literal">null</span>) &#123;<br>                 <span class="hljs-type">String</span> <span class="hljs-variable">highlightContent</span> <span class="hljs-operator">=</span> String.valueOf(hit.getHighlightFields().get(<span class="hljs-string">&quot;content&quot;</span>));<br>                 data.setContent(highlightContent.substring(<span class="hljs-number">1</span>, highlightContent.length() - <span class="hljs-number">1</span>));<br>                 System.out.println(data.getContent());<br>             &#125;<br>             highlightDataMap.put(data.getId(), data);<br>         &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="根据-id-拿到每一个-Post对象，使用高亮关键词替换原文本，返回结果："><a href="#根据-id-拿到每一个-Post对象，使用高亮关键词替换原文本，返回结果：" class="headerlink" title="根据 id 拿到每一个 Post对象，使用高亮关键词替换原文本，返回结果："></a>根据 id 拿到每一个 Post对象，使用高亮关键词替换原文本，返回结果：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// id列表</span><br>            List&lt;Long&gt; postIdList = searchHitList.stream().map(searchHit -&gt; searchHit.getContent().getId())<br>                    .collect(Collectors.toList());<br>            <span class="hljs-comment">// 根据id查找数据集</span><br>            List&lt;Post&gt; postList = baseMapper.selectBatchIds(postIdList);<br>            <span class="hljs-keyword">if</span> (postList != <span class="hljs-literal">null</span>) &#123;<br>                Map&lt;Long, List&lt;Post&gt;&gt; idPostMap = postList.stream().collect(Collectors.groupingBy(Post::getId));<br>                postIdList.forEach(postId -&gt; &#123;<br>                    <span class="hljs-keyword">if</span> (idPostMap.containsKey(postId)) &#123;<br>                        <span class="hljs-comment">// 搜索关键词高亮替换</span><br>                        <span class="hljs-type">Post</span> <span class="hljs-variable">post</span> <span class="hljs-operator">=</span> idPostMap.get(postId).get(<span class="hljs-number">0</span>);<br>                        <span class="hljs-type">String</span> <span class="hljs-variable">hl_title</span> <span class="hljs-operator">=</span> highlightDataMap.get(postId).getTitle();<br>                        <span class="hljs-type">String</span> <span class="hljs-variable">hl_content</span> <span class="hljs-operator">=</span> highlightDataMap.get(postId).getContent();<br>                        <span class="hljs-keyword">if</span> (hl_title != <span class="hljs-literal">null</span> &amp;&amp; hl_title.trim() != <span class="hljs-string">&quot;&quot;</span>) &#123;<br>                            post.setTitle(hl_title);<br>                        &#125;<br>                        <span class="hljs-keyword">if</span> (hl_content != <span class="hljs-literal">null</span> &amp;&amp; hl_content.trim() != <span class="hljs-string">&quot;&quot;</span>) &#123;<br>                            post.setContent(hl_content);<br>                        &#125;<br>                        resourceList.add(post);<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-comment">// 从 es 清空 db 已物理删除的数据</span><br>                        <span class="hljs-type">String</span> <span class="hljs-variable">delete</span> <span class="hljs-operator">=</span> elasticsearchRestTemplate.delete(String.valueOf(postId), PostEsDTO.class);<br>                        log.info(<span class="hljs-string">&quot;delete post &#123;&#125;&quot;</span>, delete);<br>                    &#125;<br>                &#125;);<br>            &#125;<br>        &#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><ul>
+<li>后端已经将关键词高亮特殊处理了，前端应该做什么呢？</li>
+<li>将后端响应的文本信息，放入 <strong>v-html 属性</strong>中，即可<strong>解析出文本的 CSS 样式</strong>：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!--标题--&gt;<br>        &lt;template #title&gt;<br>          &lt;a href=&quot;https://www.antdv.com/&quot; v-html=&quot;item.title&quot;&gt;&lt;/a&gt;<br>        &lt;/template&gt;<br>        &lt;!--头像--&gt;<br>        &lt;template #avatar&gt;<br>          &lt;a-avatar src=&quot;https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png&quot;/&gt;<br>        &lt;/template&gt;<br>        &lt;template #description&gt;<br>          &lt;div v-html=&quot;item.content&quot; style=&quot;margin-bottom: 10px&quot;&gt;&lt;/div&gt;<br>        &lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这就是最终的的实现效果了：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231001210038270.png" alt="image-20231001210038270"></p>
+<ul>
+<li>这让我想起了前两天刚实现过的<strong>前端解析 Markdown 格式文件</strong>的方法： <strong>（2023/10/01晚）</strong></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MarkdownIt</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;markdown-it&#x27;</span>;<br><br><span class="hljs-comment">// Markdown语法</span><br><span class="hljs-keyword">const</span> parsedContent = <span class="hljs-title function_">ref</span>()<br><span class="hljs-keyword">const</span> md = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MarkdownIt</span>();<br><span class="hljs-comment">// 使用Markdown语法接收文章内容</span><br>parsedContent.<span class="hljs-property">value</span> = md.<span class="hljs-title function_">render</span>(articleInfo.<span class="hljs-property">value</span>.<span class="hljs-property">content</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;div v-html=&quot;parsedContent&quot;<br>      style=&quot;position: absolute; margin-left: 10px; margin-right: 10px; margin-top: 20px;&quot;&gt;<br> &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="搜索词建议"><a href="#搜索词建议" class="headerlink" title="搜索词建议"></a>搜索词建议</h3><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023-08-31午）"><a href="#Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023-08-31午）" class="headerlink" title="Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023/08/31午）"></a>Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023/08/31午）</h5></li>
@@ -694,6 +779,13 @@
   <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
   
   
+    <span>></span>
+    
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/" class="category-chain-item">Elasticsearch</a>
+  
+  
+
+  
 
   
 
@@ -711,6 +803,8 @@
         <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
         <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+      
+        <a href="/blog/tags/Elasticsearch/">#Elasticsearch</a>
       
     </div>
   
@@ -741,7 +835,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月26日</div>
+          <div>2023年10月1日</div>
         </div>
       
       

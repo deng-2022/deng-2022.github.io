@@ -25,11 +25,12 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/girl5.jpg">
 <meta property="article:published_time" content="2023-06-20T11:38:54.000Z">
-<meta property="article:modified_time" content="2023-07-31T11:08:57.000Z">
+<meta property="article:modified_time" content="2023-10-01T13:35:57.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="云服务器">
 <meta property="article:tag" content="域名备案">
+<meta property="article:tag" content="对象存储">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/girl5.jpg">
   
@@ -256,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          900 字
         
       </span>
     
@@ -267,7 +268,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -374,6 +375,33 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="对象存储"
+        id="heading-74cef1162781310e1503d2dc463a76fc" role="tab" data-toggle="collapse" href="#collapse-74cef1162781310e1503d2dc463a76fc"
+        aria-expanded="true"
+      >
+        对象存储
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-74cef1162781310e1503d2dc463a76fc"
+           role="tabpanel" aria-labelledby="heading-74cef1162781310e1503d2dc463a76fc">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
         id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
         aria-expanded="true"
@@ -402,6 +430,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -469,7 +501,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：10 分钟前
                   
                 
               </p>
@@ -492,6 +524,39 @@
 <h2 id="对象存储OSS"><a href="#对象存储OSS" class="headerlink" title="对象存储OSS"></a>对象存储OSS</h2><ul>
 <li><a target="_blank" rel="noopener" href="http://www.manongjc.com/detail/41-robmxiowrvcxgxg.html">阿里云对象存储OSS计费规则 - 码农教程 (manongjc.com)</a></li>
 </ul>
+<h3 id="接入阿里云对象存储服务"><a href="#接入阿里云对象存储服务" class="headerlink" title="接入阿里云对象存储服务"></a>接入阿里云对象存储服务</h3><ul>
+<li><h5 id="直接看官方文档，写的很全，傻子都会：（2023-08-09午）"><a href="#直接看官方文档，写的很全，傻子都会：（2023-08-09午）" class="headerlink" title="直接看官方文档，写的很全，傻子都会：（2023/08/09午）"></a>直接看官方文档，写的很全，傻子都会：（2023/08/09午）</h5></li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1227235">【案例实战】SpringBoot整合阿里云文件上传OSS-阿里云开发者社区 (aliyun.com)</a></p>
+</li>
+<li><h5 id="注意以下几点即可："><a href="#注意以下几点即可：" class="headerlink" title="注意以下几点即可："></a>注意以下几点即可：</h5><ul>
+<li>yaml配置信息保证无误：</li>
+</ul>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-comment"># 阿里云OSS配置</span><br><span class="hljs-attribute">aliyun</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">oss</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">end-point</span><span class="hljs-punctuation">:</span> <span class="hljs-string">oss-cn-beijing.aliyuncs.com</span><br>    <span class="hljs-attribute">access-key-id</span><span class="hljs-punctuation">:</span> <span class="hljs-string">LTAI5t9bAnh9zthSmzTPARM4</span><br>    <span class="hljs-attribute">access-key-secret</span><span class="hljs-punctuation">:</span> <span class="hljs-string">BwV3YKjHp4W2Hk6hYXx1FLbDMO3Qnz</span><br>    <span class="hljs-attribute">bucket-name</span><span class="hljs-punctuation">:</span> <span class="hljs-string">pic-memories</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>记得开启对应Bucket的公共读写权限：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230809182044631.png" alt="image-20230809182044631"></p>
+</li>
+</ul>
+<h3 id="自定义Banner"><a href="#自定义Banner" class="headerlink" title="自定义Banner"></a>自定义Banner</h3><h3 id="腾讯云对象存储"><a href="#腾讯云对象存储" class="headerlink" title="腾讯云对象存储"></a>腾讯云对象存储</h3><ul>
+<li>半个多月前，我领到了腾讯云免费的6个月的对象存储服务，具体下行流量等就不透露了</li>
+<li>这里记录一下如何使<strong>自己在对象存储服务的图片</strong>，<strong>公网下能被访问到</strong>：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231001213012319.png" alt="image-20231001213012319"></p>
+<ul>
+<li>如上，图片默认的访问权限是继承权限，直接访问公网地址是访问不到的，会出现以下乱码：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231001213005387.png" alt="image-20231001213005387"></p>
+<ul>
+<li><h5 id="不过可以使用临时链接对外提供访问权限，有效时间默认为一小时，可刷新该有效时间"><a href="#不过可以使用临时链接对外提供访问权限，有效时间默认为一小时，可刷新该有效时间" class="headerlink" title="不过可以使用临时链接对外提供访问权限，有效时间默认为一小时，可刷新该有效时间"></a>不过可以使用临时链接对外提供访问权限，有效时间默认为一小时，可刷新该有效时间</h5></li>
+<li><p>我们只需将该图片的访问权限修改为<strong>公网读私网写</strong>，就可以<strong>在公网直接访问该图片</strong>了 <strong>（2023/10/01）</strong></p>
+<ul>
+<li>当然这样做会产生相关费用</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231001213230945.png" alt="image-20231001213230945"></p>
 <h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><ul>
 <li><h5 id="域名购买的优惠力度更大，经常有一年一块钱的域名，用着玩玩："><a href="#域名购买的优惠力度更大，经常有一年一块钱的域名，用着玩玩：" class="headerlink" title="域名购买的优惠力度更大，经常有一年一块钱的域名，用着玩玩："></a>域名购买的优惠力度更大，经常有一年一块钱的域名，用着玩玩：</h5></li>
 </ul>
@@ -536,8 +601,15 @@
   
     <span>></span>
     
-  <a href="/blog/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  <a href="/blog/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/" class="category-chain-item">对象存储</a>
   
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
   
 
   
@@ -560,6 +632,8 @@
         <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">#云服务器</a>
       
         <a href="/blog/tags/%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/">#域名备案</a>
+      
+        <a href="/blog/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/">#对象存储</a>
       
     </div>
   
@@ -590,7 +664,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年7月31日</div>
+          <div>2023年10月1日</div>
         </div>
       
       
