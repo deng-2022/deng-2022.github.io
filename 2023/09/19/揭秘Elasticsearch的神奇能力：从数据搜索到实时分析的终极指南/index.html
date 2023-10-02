@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
-<meta property="article:modified_time" content="2023-10-01T13:01:50.000Z">
+<meta property="article:modified_time" content="2023-10-02T08:11:45.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Elasticsearch">
@@ -432,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：19 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -441,15 +441,15 @@
               <div class="markdown-body">
                 
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li>我很荣幸能够分享一篇关于 Elasticsearch 的博客笔记，内容转载自<strong>黑马程序员的优质笔记</strong></li>
+<li>我很荣幸能够分享一篇关于 Elasticsearch 的博客笔记，<strong>部分正文内容</strong>转载自<strong>黑马程序员的优质笔记</strong></li>
 <li>该笔记在该博文的<strong>正文</strong>栏目，在正文之前，是我在实<strong>际使用ES的过程</strong>中，所做的<strong>相关经验分享</strong></li>
 </ul>
-<h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><h3 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h3><ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><h3 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h3><ul>
 <li><h5 id="分词器是干啥用的？指定了分词的规则（2023-09-20午）"><a href="#分词器是干啥用的？指定了分词的规则（2023-09-20午）" class="headerlink" title="分词器是干啥用的？指定了分词的规则（2023/09/20午）"></a>分词器是干啥用的？指定了分词的规则（2023/09/20午）</h5></li>
 </ul>
 <h4 id="内置分词器"><a href="#内置分词器" class="headerlink" title="内置分词器"></a>内置分词器</h4><ul>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html</a></li>
-<li>了解一下，丰富的分词规则</li>
+<li><h5 id="https-www-elastic-co-guide-en-elasticsearch-reference-7-17-analysis-analyzers-html"><a href="#https-www-elastic-co-guide-en-elasticsearch-reference-7-17-analysis-analyzers-html" class="headerlink" title="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html"></a><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-analyzers.html</a></h5></li>
+<li><h5 id="了解一下，丰富的分词规则"><a href="#了解一下，丰富的分词规则" class="headerlink" title="了解一下，丰富的分词规则"></a>了解一下，丰富的分词规则</h5></li>
 </ul>
 <h4 id="空格分词器"><a href="#空格分词器" class="headerlink" title="空格分词器"></a>空格分词器</h4><ul>
 <li>whitespace，按空格分词</li>
@@ -457,7 +457,7 @@
 <figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs fsharp">POST <span class="hljs-keyword">_analyze</span><br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span><span class="hljs-operator">:</span> <span class="hljs-string">&quot;whitespace&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span><span class="hljs-operator">:</span>     <span class="hljs-string">&quot;The quick brown fox.&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="关键词分词器"><a href="#关键词分词器" class="headerlink" title="关键词分词器"></a>关键词分词器</h4><ul>
-<li>就是不分词，整句话当作一个专业术语</li>
+<li><h5 id="就是不分词，整句话当作一个专业术语"><a href="#就是不分词，整句话当作一个专业术语" class="headerlink" title="就是不分词，整句话当作一个专业术语"></a>就是不分词，整句话当作一个专业术语</h5></li>
 </ul>
 <h4 id="标准分词规则"><a href="#标准分词规则" class="headerlink" title="标准分词规则"></a>标准分词规则</h4><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs fsharp">POST <span class="hljs-keyword">_analyze</span><br>&#123;<br>  <span class="hljs-string">&quot;tokenizer&quot;</span><span class="hljs-operator">:</span> <span class="hljs-string">&quot;standard&quot;</span>,<br>  <span class="hljs-string">&quot;filter&quot;</span><span class="hljs-operator">:</span>  [ <span class="hljs-string">&quot;lowercase&quot;</span>, <span class="hljs-string">&quot;asciifolding&quot;</span> ],<br>  <span class="hljs-string">&quot;text&quot;</span><span class="hljs-operator">:</span>      <span class="hljs-string">&quot;Is this déja vu?&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -467,7 +467,7 @@
 <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs coq">在搜索引擎和文本分析领域中，分词器（Analyzer）和分词规则器（Tokenizer）是两个不同的概念。<br><br>分词器（Analyzer）是一种将文本转换为单词（<span class="hljs-keyword">Term</span>）序列的工具。它通常包含多个处理步骤，例如词法分析、去除停用词、小写转换、词干提取等。分词器的作用是将原始的文本输入转换为可供索引和搜索的标记流。例如，在Elasticsearch中，分词器被用于预处理文本数据并将其存储在倒排索引中，以支持全文搜索。<br><br>分词规则器（Tokenizer）是分词器的一个组成部分。它是文本分析的第一个处理步骤，将输入的文本按照指定的规则拆分为单词。常见的分词规则器有基于空格拆分的空格分词器、基于标点符号拆分的标点分词器等。分词规则器负责定义文本拆分的方式，决定了哪些字符会被视为词条的分隔。<br><br>总结来说，分词规则器（Tokenizer）是分词器（Analyzer）的组成部分，用于定义文本的拆分方式；而分词器（Analyzer）则包含多个处理步骤，用于将输入文本转换为标记流。<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><p>了解到这些分词器对中文不友好，我们需要下载 <strong>IK 分词器</strong> 插件，对<strong>中文分词更加友好</strong>，内置两种分词器</p>
+<li><p>了解到这些分词器<strong>对中文不友好</strong>，我们需要下载 <strong>IK 分词器</strong> 插件，对<strong>中文分词更加友好</strong>，内置两种分词器</p>
 <ul>
 <li><h5 id="ik-smart"><a href="#ik-smart" class="headerlink" title="ik_smart"></a>ik_smart</h5></li>
 <li><h5 id="ik-max-word"><a href="#ik-max-word" class="headerlink" title="ik_max_word"></a>ik_max_word</h5></li>
@@ -938,7 +938,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="1-初识elasticsearch"><a href="#1-初识elasticsearch" class="headerlink" title="1.初识elasticsearch"></a>1.初识elasticsearch</h1><h2 id="1-1-了解ES"><a href="#1-1-了解ES" class="headerlink" title="1.1.了解ES"></a>1.1.了解ES</h2><h3 id="1-1-1-elasticsearch的作用"><a href="#1-1-1-elasticsearch的作用" class="headerlink" title="1.1.1.elasticsearch的作用"></a>1.1.1.elasticsearch的作用</h3><p>elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容</p>
 <p>例如：</p>
 <ul>
 <li><p>在GitHub搜索代码</p>
@@ -1676,7 +1676,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月1日</div>
+          <div>2023年10月2日</div>
         </div>
       
       
