@@ -28,9 +28,9 @@
 <meta property="article:modified_time" content="2023-08-24T05:00:59.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
-<meta property="article:tag" content="项目">
 <meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="Maven">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/light.jpg">
   
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          156 字
+          27k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          1 分钟
+          67 分钟
         
       </span>
     
@@ -627,9 +627,503 @@
               <div class="markdown-body">
                 
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7238823745828405308?searchId=202309171400245B30EBA58533984EA484">四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)</a></li>
+<li><p>本篇博文是转载自掘金社区作者[@作者名]的原创文章，原文链接：</p>
+</li>
+<li><h5 id="四十五图，一万五千字！一文让你走出迷雾玩转Maven！-掘金-juejin-cn"><a href="#四十五图，一万五千字！一文让你走出迷雾玩转Maven！-掘金-juejin-cn" class="headerlink" title="四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7238823745828405308?searchId=202309171400245B30EBA58533984EA484">四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)</a></h5></li>
+<li><p>在本文中，作者详细介绍了<strong>如何使用Maven构建工具</strong>以及相关的<strong>使用技巧</strong>和<strong>最佳实践</strong>。我们认为，这篇博客对于那些想要深<strong>入了解Maven</strong>并且<strong>提升项目构建效率</strong>的开发者来说，具有很高的价值。</p>
+</li>
+<li><p>该博文主要涵盖了<strong>Maven构建工具的基本概念</strong>、<strong>配置方法</strong>、<strong>常用命令</strong>以及如何解决常见问题等内容。无论你是初学者还是有一定经验的开发者，通过阅读本文，你将能够更好地理解和应用Maven来管理项目的依赖和构建过程。</p>
+</li>
+<li><p>我们感谢 <strong><a target="_blank" rel="noopener" href="https://juejin.cn/user/862486453028888/posts">竹子爱熊猫 的个人主页 - 文章 - 掘金 (juejin.cn)</a></strong> 在掘金社区撰写了这篇优秀的指南，同时也感谢<strong>掘金社区</strong>提供了分享这些宝贵技术知识的平台。</p>
+</li>
+<li><h5 id="如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！"><a href="#如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！" class="headerlink" title="如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！"></a>如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！</h5></li>
 </ul>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Maven快速上手"><a href="#Maven快速上手" class="headerlink" title="Maven快速上手"></a>Maven快速上手</h2><h3 id="什么是Maven"><a href="#什么是Maven" class="headerlink" title="什么是Maven"></a>什么是Maven</h3><h3 id="安装指南"><a href="#安装指南" class="headerlink" title="安装指南"></a>安装指南</h3><h3 id="Maven入门指南"><a href="#Maven入门指南" class="headerlink" title="Maven入门指南"></a>Maven入门指南</h3><h4 id="IDEA创建Maven项目"><a href="#IDEA创建Maven项目" class="headerlink" title="IDEA创建Maven项目"></a>IDEA创建Maven项目</h4><h4 id="Maven依赖管理"><a href="#Maven依赖管理" class="headerlink" title="Maven依赖管理"></a>Maven依赖管理</h4><h4 id="依赖管理范围"><a href="#依赖管理范围" class="headerlink" title="依赖管理范围"></a>依赖管理范围</h4><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h2 id="Maven进阶操作"><a href="#Maven进阶操作" class="headerlink" title="Maven进阶操作"></a>Maven进阶操作</h2><h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3><h3 id="分模块开发"><a href="#分模块开发" class="headerlink" title="分模块开发"></a>分模块开发</h3><h3 id="聚合工程"><a href="#聚合工程" class="headerlink" title="聚合工程"></a>聚合工程</h3><h3 id="Maven属性"><a href="#Maven属性" class="headerlink" title="Maven属性"></a>Maven属性</h3><h3 id="多环境配置"><a href="#多环境配置" class="headerlink" title="多环境配置"></a>多环境配置</h3><h2 id="Maven私服搭建"><a href="#Maven私服搭建" class="headerlink" title="Maven私服搭建"></a>Maven私服搭建</h2><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+<p>[TOC]</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><code>Maven</code>应该是大家的老熟客了，身为<code>Java</code>程序员，几乎每天都会跟他打交道。</p>
+<p>不过有趣的是：<strong>很多伙伴对<code>Maven</code>，似乎很熟，但又好像不熟；在理解上，处于似懂非懂的“量子纠缠态”</strong>，为什么这么说呢？原因很简单，要说不熟吧，偏偏每天都有所接触；要说熟吧，可是对许多高级功能又仅是一知半解。</p>
+<p>正因如此，为了辅助大家从“量子纠缠态”中走出来，本文会从零开始，带着大家玩转<code>Maven</code>技术。当然，其实写这篇文章更大的目的，是为后续写<a target="_blank" rel="noopener" href="https://juejin.cn/column/7098219195371880484">《漫谈分布式》</a>专栏做准备，毕竟后续会频繁用到<code>Maven</code>构建多工程项目。</p>
+<blockquote>
+<p>PS：个人编写的<a target="_blank" rel="noopener" href="https://s.juejin.cn/ds/USoa2R3/">《技术人求职指南》</a>小册已完结，其中从技术总结开始，到制定期望、技术突击、简历优化、面试准备、面试技巧、谈薪技巧、面试复盘、选<code>Offer</code>方法、新人入职、进阶提升、职业规划、技术管理、涨薪跳槽、仲裁赔偿、副业兼职……，为大家打造了一套“从求职到跳槽”的一条龙服务，同时也为诸位准备了七折优惠码：<code>3DoleNaE</code>，感兴趣的小伙伴可以点击：<a target="_blank" rel="noopener" href="https://s.juejin.cn/ds/USoa2R3/">s.juejin.cn/ds/USoa2R3/</a>了解详情！</p>
+</blockquote>
+<h2 id="一、Maven快速上手-回顾"><a href="#一、Maven快速上手-回顾" class="headerlink" title="一、Maven快速上手/回顾"></a>一、Maven快速上手/回顾</h2><p><strong>声明：如果基础够扎实的小伙伴，可以跳到<code>1.3</code>阶段（快速刷一遍当复习也行）。</strong></p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aa4bf3b360da4115bd44f6f15b52a7b6~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="Maven"></p>
+<p><code>Maven</code>是专门用于构建、管理<code>Java</code>项目的工具，它为我们提供了标准化的项目结构，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">java复制代码├─ProjectName                              <span class="hljs-comment">// 项目名称</span><br>│  ├─src                      <span class="hljs-comment">// 根目录</span><br>│  │   ├─main                  <span class="hljs-comment">// 主目录</span><br>│  │   │  ├─java             <span class="hljs-comment">// Java源码目录</span><br>│  │   │  ├─resources      <span class="hljs-comment">//配置文件目录</span><br>│  │   │  └─webapp                            <span class="hljs-comment">// Web文件目录</span><br>│  │   ├─test                  <span class="hljs-comment">// 测试目录</span><br>│  │   │  ├─java             <span class="hljs-comment">// Java测试代码目录</span><br>│  │   │  └─resources                            <span class="hljs-comment">// 测试资源目录</span><br>│  └─pom.xml                      <span class="hljs-comment">// Maven项目核心配置文件</span><br></code></pre></td></tr></table></figure>
+
+<p>同时也提供了一套标准的构建流程：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/bd72296e06c74a6db2ae948b4a9181c0~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="构建流程"></p>
+<p>从编译，到测试、打包、发布……，涵盖整个项目开发的全流程。</p>
+<p>并且最重要的一点，它还提供了依赖（<code>Jar</code>包）管理功能，回想大家最初学<code>JavaEE</code>时，想要用到一个外部的工具包，必须先从网上找到对应的<code>Jar</code>文件，接着将其手动丢到项目的<code>lib</code>目录下，当项目需要依赖的外部包达到几十个、每个外部包还依赖其他包时，这个过程无疑很痛苦。</p>
+<p>而这一切的一切，随着<code>Maven</code>的出现，从此不复存在。</p>
+<h3 id="1-1、Maven安装指南"><a href="#1-1、Maven安装指南" class="headerlink" title="1.1、Maven安装指南"></a>1.1、Maven安装指南</h3><p>使用<code>Maven</code>前，必须先安装它，这时可以先去到<a href="https://link.juejin.cn/?target=https://maven.apache.org/download.cgi">Maven官网</a>下载自己所需的版本：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/9532fadd6fdb4b25a663fe851268e2cb~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="下载"></p>
+<p>下载进行解压后（不过解压的目录最好别带中文，否则后续会碰到一些问题），接着需要配置一下，总共分为四步。</p>
+<p>①在系统环境中，新建一个<code>MAVEN_HOME</code>或<code>M2_HOME</code>的环境变量，值写成解压路径。</p>
+<p>②找到<code>Path</code>变量并编辑，在其中新增一行，配置一下<code>bin</code>目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash<br>复制代码%M2_HOME%\bin<br></code></pre></td></tr></table></figure>
+
+<p>其实安装许多软件，都要配置这一步，到底是为啥呢？因为任何软件的<code>bin</code>目录，通常会存放一些可执行的脚本/工具，如<code>JDK</code>的<code>bin</code>目录中，就存放着<code>javac、javap、jstack……</code>一系列工具。如果不在<code>Path</code>中配置<code>bin</code>，那想要使用这些工具，只能去到<code>JDK</code>安装目录下的<code>bin</code>目录，然后才能使用。</p>
+<p>不过当大家在<code>Path</code>中配置了<code>bin</code>之后，这个配置就会对全局生效，任何位置执行<code>javac</code>这类指令，都可以从<code>Path</code>中，找到对应的<code>bin</code>目录位置，然后调用其中提供的工具。</p>
+<p>③找到<code>Maven</code>解压目录下的<code>conf/settings.xml</code>，然后点击编辑，找到<code>&lt;localRepository&gt;</code>标签，将其挪动到注释区域外，然后配置本地仓库位置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml<br>复制代码<span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>自己选择一个空的本地目录（最好别带中文）<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>④由于<code>Apache</code>的官方镜像位于国外，平时拉取依赖比较慢，所以还需配置<code>Maven</code>国内的镜像源，这时在<code>settings.xml</code>文件中，先搜索<code>&lt;mirrors&gt;</code>标签，接着在其中配置阿里云的镜像地址：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>alimaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>aliyun maven<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span>          <br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>到这里，整个<code>Maven</code>安装流程全部结束，最后也可以在终端工具，执行<code>mvn -v</code>命令检测一下。</p>
+<h3 id="1-2、Maven入门指南"><a href="#1-2、Maven入门指南" class="headerlink" title="1.2、Maven入门指南"></a>1.2、Maven入门指南</h3><p>安装好<code>Maven</code>后，接着可以通过<code>IDEA</code>工具来创建<code>Maven</code>项目，不过要记得配置一下本地<code>Maven</code>及仓库位置：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9db5edbc75304752a55c5c11cbed6926~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="IDEA"></p>
+<p>在这里配置，是对全局生效，后续创建的所有<code>Maven</code>项目，都会使用这组配置。</p>
+<h4 id="1-2-1、IDEA创建Maven项目"><a href="#1-2-1、IDEA创建Maven项目" class="headerlink" title="1.2.1、IDEA创建Maven项目"></a>1.2.1、IDEA创建Maven项目</h4><p>接着就可以创建<code>Maven</code>项目，这个过程特别简单，先选择<code>New Project</code>：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ff0dcabc84e6497d923d82cec8464b5d~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建项目-1"></p>
+<p>这里选创建<code>Maven</code>项目，接着指定一下<code>JDK</code>，还可以选择是否使用骨架，选好后直接<code>Next</code>下一步：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/847f6512dd9d46029fe5f462be319b7b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建项目-2"></p>
+<p>这里需要写一下<code>GAV</code>坐标，稍微解释一下三个选项的含义：</p>
+<ul>
+<li><code>GroupID</code>：组织<code>ID</code>，一般写公司的名称缩写；</li>
+<li><code>ArtifactID</code>：当前<code>Maven</code>工程的项目名字；</li>
+<li><code>Version</code>：当前<code>Maven</code>工程的版本。</li>
+</ul>
+<p>接着点下一步，然后选择一下项目的存储位置，最后点击<code>Finish</code>创建即可：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/423c8417c75040a0bcdace0a6f80fed8~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建项目-3"></p>
+<p>这一步结束后，就得到了一个纯净版的<code>Maven</code>项目，然后可以基于<code>Maven</code>实现依赖管理。</p>
+<h4 id="1-2-2、Maven依赖管理"><a href="#1-2-2、Maven依赖管理" class="headerlink" title="1.2.2、Maven依赖管理"></a>1.2.2、Maven依赖管理</h4><p>最简单的依赖管理，总共就只有三步，如下：</p>
+<ul>
+<li>①在<code>pom.xml</code>中，先写一个<code>&lt;dependencies&gt;</code>标签；</li>
+<li>②在<code>&lt;dependencies&gt;</code>标签中，使用<code>&lt;dependency&gt;</code>标签来导入依赖；</li>
+<li>③在<code>&lt;dependency&gt;</code>标签中，通过<code>GAV</code>坐标来导入依赖。</li>
+</ul>
+<p>如果你不知道一个依赖的<code>GAV</code>该怎么写，可以去<a href="https://link.juejin.cn/?target=https://mvnrepository.com/">仓库索引</a>中搜索，现在写个坐标来感受一下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>引入<code>GAV</code>坐标后，依赖不会立马生效，需要手动刷新一下项目：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/28f70ff9a96a47b9947f475bb9f79222~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="刷新依赖"></p>
+<p>可以借助<code>IDEA</code>自带的<code>Maven</code>项目工具来进行刷新；也可以安装<code>Maven-Helper</code>插件，在项目上右键，然后通过<code>Run Maven</code>里的指令刷新。至此，大家就掌握了<code>Maven</code>的基本使用。</p>
+<blockquote>
+<p>PS：如果你本地仓库中有依赖，但忘了<code>GAV</code>坐标怎么写，通过<code>IDEA</code>工具，在<code>pom.xml</code>文件中按下<code>alt+insert</code>快捷键，接着点击<code>Dependency</code>，可以做到可视化快捷导入。</p>
+</blockquote>
+<h4 id="1-2-3、依赖范围管理"><a href="#1-2-3、依赖范围管理" class="headerlink" title="1.2.3、依赖范围管理"></a>1.2.3、依赖范围管理</h4><p>有时候，有些依赖我们并不希望一直有效，比如典型的<code>JUnit</code>测试包，对于这类<code>jar</code>包而言，最好只针对测试环境有效，而编译环境、运行环境中，因为用不到单元测试，所以有没有办法移除呢？这时可以通过<code>&lt;scope&gt;</code>标签来控制生效范围：例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.1.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>该标签共有五种取值方式，每种取值对应着一种依赖范围，而不同的依赖范围，生效的环境（<code>classpath</code>）也并不同，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>依赖范围</th>
+<th>编译环境</th>
+<th>测试环境</th>
+<th>运行环境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>compile</code></td>
+<td>生效</td>
+<td>生效</td>
+<td>生效</td>
+</tr>
+<tr>
+<td><code>provided</code></td>
+<td>生效</td>
+<td>生效</td>
+<td>不生效</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>生效</td>
+<td>生效</td>
+<td>不生效</td>
+</tr>
+<tr>
+<td><code>runtime</code></td>
+<td>不生效</td>
+<td>生效</td>
+<td>生效</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>不生效</td>
+<td>生效</td>
+<td>不生效</td>
+</tr>
+</tbody></table>
+<p>项目引入的所有依赖，如果不显式指定依赖范围，默认是<code>compile</code>，意味着所有环境下都生效，而一般的依赖包也无需更改，只有某些特殊的依赖，才需要手动配置一下。如：</p>
+<ul>
+<li><code>JUnit、spring-test</code>这类包，只在测试环境使用，所以配成<code>test</code>；</li>
+<li><code>Tomcat</code>内置<code>servlet-api</code>包，为了避免在运行环境冲突，应该配成<code>provided</code>；</li>
+<li>……</li>
+</ul>
+<p>同时，<code>&lt;scope&gt;</code>标签还可以通过自定义的方式来添加其他的<code>scope</code>范围，例如<code>Maven</code>插件中使用的<code>scope</code>值：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>some.group<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>some-artifact<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>plugin<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里的<code>plugin</code>就是自定义的<code>scope</code>，表示该依赖只在<code>Maven</code>插件中生效。</p>
+<p>最后，<code>&lt;scope&gt;</code>标签还有一类特殊、但很常用的取值范围，即<code>import</code>，但这个放在后面去讲。</p>
+<h3 id="1-3、Maven工作原理剖析"><a href="#1-3、Maven工作原理剖析" class="headerlink" title="1.3、Maven工作原理剖析"></a>1.3、Maven工作原理剖析</h3><p>在<code>Maven</code>中，节点会分为工程、仓库两大类，工程是“依赖使用者”，仓库是“依赖提供者”，关系如下：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2acfb20e9e2a4bf0b96b28f3779f7abd~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="仓库/工程关系"></p>
+<p>看着或许有点头大，要讲明白得先弄清里面三种仓库：</p>
+<ul>
+<li>中央仓库：就是前面配置的镜像源，里面拥有海量的公共<code>jar</code>包资源；</li>
+<li>远程仓库：也叫私服仓库，主要存储公司内部的<code>jar</code>包资源，这个后续会细说；</li>
+<li>本地仓库：自己电脑本地的仓库，会在磁盘上存储<code>jar</code>包资源。</li>
+</ul>
+<p>大致了解三种仓库的含义后，接着来梳理<code>Maven</code>的工作流程：</p>
+<ul>
+<li>①项目通过<code>GAV</code>坐标引入依赖，首先会去本地仓库查找<code>jar</code>包；</li>
+<li>②如果在本地仓库中找到了，直接把依赖载入到当前工程的<code>External Libraries</code>中；</li>
+<li>③如果没找到，则去读取<code>settings.xml</code>文件，判断是否存在私服配置；</li>
+<li>④如果有私服配置，根据配置的地址找到远程仓库，接着拉取依赖到本地仓库；</li>
+<li>⑤如果远程仓库中没有依赖，根据私服配置去中央仓库拉取，然后放到私服、本地仓库；</li>
+<li>⑥从远程或中央仓库中，把依赖下载到本地后，再重复第二步，把依赖载入到项目中。</li>
+</ul>
+<p>上述六步便是<code>Maven</code>的完整工作流程，可能许多人没接触过私服，这个会放到后面聊。如果你的项目没配置<code>Maven</code>私服，那么第三步时，会直接从<code>settings.xml</code>读取镜像源配置，直接去到中央仓库拉取依赖。</p>
+<p>不过这里有个问题，拉取/引入依赖时，<code>Maven</code>是怎么知道要找谁呢？答案是依靠<code>GAV</code>坐标，大家可以去观察一下本地仓库，当你引入一个依赖后，本地仓库中的目录，会跟你的<code>GAV</code>坐标一一对应，如：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a419ddd28d6f427db3afd23af04f4452~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="仓库结构"></p>
+<p>无论是什么类型的仓库，都会遵循这个原则进行构建，所以，只要你书写了正确的<code>GAV</code>坐标，就一定能够找到所需的依赖，并将其载入到项目中。</p>
+<h3 id="1-4、Maven生命周期"><a href="#1-4、Maven生命周期" class="headerlink" title="1.4、Maven生命周期"></a>1.4、Maven生命周期</h3><p>通过<code>IDEA</code>工具的辅助，能很轻易看见<code>Maven</code>的九种<code>Lifecycle</code>命令，如下：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/bd72296e06c74a6db2ae948b4a9181c0~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="构建流程"></p>
+<p>双击其中任何一个，都会执行相应的<code>Maven</code>构建动作，为啥<code>IDEA</code>能实现这个功能呢？道理很简单，因为<code>IDEA</code>封装了<code>Maven</code>提供的命令，如：点击图中的<code>clean</code>，本质是在当前目录中，执行了<code>mvn clean</code>命令，下面解释一下每个命令的作用：</p>
+<ul>
+<li><code>clean</code>：清除当前工程编译后生成的文件（即删除<code>target</code>整个目录）；</li>
+<li><code>validate</code>：对工程进行基础验证，如工程结构、<code>pom</code>、资源文件等是否正确；</li>
+<li><code>compile</code>：对<code>src/main/java</code>目录下的源码进行编译（会生成<code>target</code>目录）；</li>
+<li><code>test</code>：编译并执行<code>src/test/java/</code>目录下的所有测试用例；</li>
+<li><code>package</code>：将当前项目打包，普通项目打<code>jar</code>包，<code>webapp</code>项目打<code>war</code>包；</li>
+<li><code>verify</code>：验证工程所有代码、配置进行是否正确，如类中代码的语法检测等；</li>
+<li><code>install</code>：将当前工程打包，然后安装到本地仓库，别人可通过<code>GAV</code>导入；</li>
+<li><code>site</code>：生成项目的概述、源码测试覆盖率、开发者列表等站点文档（需要额外配置）；</li>
+<li><code>deploy</code>：将当前工程对应的包，上传到远程仓库，提供给他人使用（私服会用）。</li>
+</ul>
+<p>上述便是九个周期阶段命令的释义，而<code>Maven</code>总共划分了三套生命周期：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ab47217e7a5436f8fce18317149b628~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="生命周期"></p>
+<p>主要看<code>default</code>这套，该生命周期涵盖了构建过程中的检测、编译、测试、打包、验证、安装、部署每个阶段。注意一点：<strong>同一生命周期内，执行后面的命令，前面的所有命令会自动执行</strong>！比如现在执行一条命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash<br>复制代码mvn <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure>
+
+<p><code>test</code>命令位于<code>default</code>这个生命周期内，所以它会先执行<code>validate、compile</code>这两个阶段，然后才会真正执行<code>test</code>阶段。同时，还可以一起执行多个命令，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash<br>复制代码mvn clean install<br></code></pre></td></tr></table></figure>
+
+<p>这两个命令隶属于不同的周期，所以会这样执行：先执行<code>clean</code>周期里的<code>pre-clean、clean</code>，再执行<code>default</code>周期中，<code>validate~install</code>这个闭区间内的所有阶段。</p>
+<p>从上面不难发现，<code>default</code>是<code>Maven</code>的核心周期，但其实上面并没有给完整，因为官方定义的<code>default</code>一共包含<code>23</code>个小阶段，上面的图只列出了七个核心周期，对详细阶段感兴趣的可以自行了解。</p>
+<blockquote>
+</blockquote>
+<p><code>Maven</code>中只定义了三套生命周期，以及每套周期会包含哪些阶段，而每个阶段具体执行的操作，这会交给插件去干，也就是说：**<code>Maven</code>插件会实现生命周期中的每个阶段**，这也是大家为什么看到<code>IDEA</code>的<code>Lifecycle</code>下面，还会有个<code>Plugins</code>的原因：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/26368d3e564c4a83b54f68e603de911d~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="Maven插件"></p>
+<p>当你双击<code>Lifecycle</code>中的某个生命周期阶段，实际会调用<code>Plugins</code>中对应的插件。在<code>Shell</code>窗口执行<code>mvn</code>命令时，亦是如此，因为插件对应的实现包，都会以<code>jar</code>包形式存储在本地仓库里。</p>
+<blockquote>
+<p>你有特殊的需求，也可以在<code>pom.xml</code>的<code>&lt;build&gt;</code>标签中，依靠<code>&lt;plugins&gt;</code>插件来导入。</p>
+</blockquote>
+<h2 id="二、Maven进阶操作"><a href="#二、Maven进阶操作" class="headerlink" title="二、Maven进阶操作"></a>二、Maven进阶操作</h2><p>上面所说到的一些知识，仅仅只是<code>Maven</code>的基本操作，而它作为<code>Java</code>项目管理占有率最高的工具，还提供了一系列高阶功能，例如属性管理、多模块开发、聚合工程等，不过这里先来说说依赖冲突。</p>
+<h3 id="2-1、依赖冲突"><a href="#2-1、依赖冲突" class="headerlink" title="2.1、依赖冲突"></a>2.1、依赖冲突</h3><p>依赖冲突是指：<strong>在<code>Maven</code>项目中，当多个依赖包，引入了同一份类库的不同版本时，可能会导致编译错误或运行时异常</strong>。这种情况下，想要解决依赖冲突，可以靠升级/降级某些依赖项的版本，从而让不同依赖引入的同一类库，保持一致的版本号。</p>
+<p>另外，还可以通过隐藏依赖、或者排除特定的依赖项来解决问题。但是想搞明白这些，首先得理解<code>Maven</code>中的依赖传递性，一起来看看。</p>
+<h4 id="2-1-1、依赖的传递性"><a href="#2-1-1、依赖的传递性" class="headerlink" title="2.1.1、依赖的传递性"></a>2.1.1、依赖的传递性</h4><p>先来看个例子：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/a531609364dd46468c377d4571e7c64e~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="依赖层级"></p>
+<p>目前的工程中，仅导入了一个<code>spring-web</code>依赖，可是从下面的依赖树来看，<code>web</code>还间接依赖于<code>beans、core</code>包，而<code>core</code>包又依赖于<code>jcl</code>包，此时就出现了依赖传递，所谓的依赖传递是指：<strong>当引入的一个包，如果依赖于其他包（类库），当前的工程就必须再把其他包引入进来</strong>。</p>
+<p>这相当于无限套娃，而这类“套娃”引入的包，被称为间接性依赖。与之对应的是直接性依赖，即：<strong>当前工程的<code>pom.xml</code>中，直接通过<code>GAV</code>坐标引入的包</strong>。既然如此，那么一个工程内的依赖包，就必然会出现层级，如：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/edcea17c927b4fb8b211bd2f32bd9488~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="boot-test依赖"></p>
+<p>在这里我们仅引入了一个<code>boot-test</code>坐标，但当打开依赖树时，会发现这一个包，依赖于其他许多包，而它所依赖的包又依赖于其他包……，如此不断套娃，最深套到了五层。而不同的包，根据自己所处的层级不同，会被划分为<code>1、2、3、4……</code>级。</p>
+<h4 id="2-1-2、自动解决冲突问题"><a href="#2-1-2、自动解决冲突问题" class="headerlink" title="2.1.2、自动解决冲突问题"></a>2.1.2、自动解决冲突问题</h4><p><code>Maven</code>作为<code>Apache</code>旗下的产品，而且还经过这么多个版本迭代，对于依赖冲突问题，难道官方想不到吗？必然想到了，所以在绝对大多数情况下，依赖冲突问题并不需要我们考虑，<code>Maven</code>工具会自动解决，怎么解决的呢？就是基于前面所说的依赖层级，下面来详细说说。</p>
+<p><strong>①层级优先原则</strong>，<code>Maven</code>会根据依赖树的层级，来自动剔除相同的包，层级越浅，优先级越高。这是啥意思呢？同样来看个例子：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a2b3c2445ff1477aa9b660f3ed3c513a~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="层级优先"></p>
+<p>我们又通过<code>GAV</code>坐标导入了<code>spring-web</code>包，根据前面所说，<code>web</code>依赖于<code>beans、core</code>包，而<code>beans</code>包又依赖于<code>core</code>包，此时注意，这里出现了两个<code>core</code>包，前者的层级为<code>2</code>，后者的层级为<code>3</code>，所以<code>Maven</code>会自动将后者剔除，这点从图中也可明显看出，层级为<code>3</code>的<code>core</code>直接变灰了。</p>
+<p><strong>②声明优先原则</strong>，上条原则是基于层级深度，来自动剔除冲突的依赖，那假设同级出现两个相同的依赖怎么办？来看例子：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/44010499fef94708b09ee7f16bd7b21a~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="声明优先"></p>
+<p>此时用<code>GAV</code>引入了<code>web、jdbc</code>两个包，来看右边的依赖树，<code>web</code>依赖于<code>beans、core</code>包，<code>jdbc</code>也依赖于这两个包，此时相同层级出现了依赖冲突，可从结果上来看，后面<code>jdbc</code>所依赖的两个包被剔除了，能明显看到一句：<code>omitted for duplicate</code>，这又是为啥呢？因为根据声明优先原则，<strong>同层级出现包冲突时，先声明的会覆盖后声明的，为此后者会被剔除</strong>。</p>
+<p><strong>③配置优先原则</strong>，此时问题又又来了，既然相同层级出现同版本的类库，前面的会覆盖后面的，可是当相同层级，出现不同版本的包呢？依旧来看例子：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0493ee7837594f51b5a59ce3a5b278ad~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="配置优先"></p>
+<p>此时<code>pom</code>引入了两个<code>web</code>包，前者版本为<code>5.1.8</code>，后者为<code>5.1.2</code>，这两个包的层级都是<code>1</code>，可是看右边的依赖树，此时会发现，<code>5.1.8</code>压根没引进来啊！为啥？这就是配置优先原则，<strong>同级出现不同版本的相同类库时，后配置的会覆盖先配置的</strong>。</p>
+<p>所以大家发现了嘛？在很多时候，并不需要我们考虑依赖冲突问题，<code>Maven</code>会依据上述三条原则，帮我们智能化自动剔除冲突的依赖，其他包都会共享留下来的类库，只有当出现无法解决的冲突时，这才需要咱们手动介入。</p>
+<p>通常来说，<code>Maven</code>如果无法自动解决冲突问题，会在构建过程中抛出异常并提供相关信息，这时大家可以根据给出的信息，手动排除指定依赖。</p>
+<h4 id="2-1-3、主动排除依赖"><a href="#2-1-3、主动排除依赖" class="headerlink" title="2.1.3、主动排除依赖"></a>2.1.3、主动排除依赖</h4><p>所谓的排除依赖，即是指从一个依赖包中，排除掉它依赖的其他包，如果出现了<code>Maven</code>无法自动解决的冲突，就可以基于这种手段进行处理，例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 排除web包依赖的beans包 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-beans<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3afc4d275ca94328be2997b9c02308a3~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="依赖排除"></p>
+<p>从图中结果可以明显看出，通过这种方式，可以手动移除包所依赖的其他包。当出现冲突时，通过这种方式将冲突的两个包，移除掉其中一个即可。</p>
+<p>其实还有种叫做“隐藏依赖”的手段，不过这种手段是用于多工程聚合项目，所以先讲清楚“多模块/工程”项目，接着再讲“隐藏依赖”。</p>
+<h3 id="2-2、Maven分模块开发"><a href="#2-2、Maven分模块开发" class="headerlink" title="2.2、Maven分模块开发"></a>2.2、Maven分模块开发</h3><p>现如今，一个稍具规模的完整项目，通常都要考虑接入多端，如<code>PC、WEB、APP</code>端等，那此时问题来了，每个端之间的逻辑，多少会存在细微差异，如果将所有代码融入在一个<code>Maven</code>工程里，这无疑会显得十分臃肿！为了解决这个问题，<code>Maven</code>推出了分模块开发技术。</p>
+<p>所谓的分模块开发，<strong>即是指创建多个<code>Maven</code>工程，组成一个完整项目</strong>。通常会先按某个维度划分出多个模块，接着为每个模块创建一个<code>Maven</code>工程，典型的拆分维度有三个：</p>
+<ul>
+<li>①接入维度：按不同的接入端，将项目划分为多个模块，如<code>APP、WEB</code>、小程序等；</li>
+<li>②业务维度：根据业务性质，将项目划分为一个个业务模块，如前台、后台、用户等；</li>
+<li>③功能维度：共用代码做成基础模块，业务做成一个模块、<code>API</code>做成一个模块……。</li>
+</ul>
+<p>当然，通常①、②会和③混合起来用，比如典型的“先根据代码功能拆分，再根据业务维度拆分”。</p>
+<p>相较于把所有代码揉在一起的“大锅饭”，多模块开发的好处特别明显：</p>
+<ul>
+<li>①简化项目管理，拆成多个模块/子系统后，每个模块可以独立编译、打包、发布等；</li>
+<li>②提高代码复用性，不同模块间可以相互引用，可以建立公共模块，减少代码冗余度；</li>
+<li>③方便团队协作，多人各司其职，负责不同的模块，<code>Git</code>管理时也能减少交叉冲突；</li>
+<li>④构建管理度更高，更方便做持续集成，可以根据需要灵活配置整个项目的构建流程；</li>
+<li>……</li>
+</ul>
+<p>不过<code>Maven2.0.9</code>才开始支持聚合工程，在最初的时期里，想要实现分模块开发，需要手动先建立一个空的<code>Java</code>项目（<code>Empty Project</code>）：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/08f71601d82845b7b5e60eb725c8cf55~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="空项目"></p>
+<p>接着再在其中建立多个<code>Maven Project</code>：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3acaed24061f40f49145bf87e3957007~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建子项目"></p>
+<p>然后再通过<code>mvn install</code>命令，将不同的<code>Maven</code>项目安装到本地仓库，其他工程才能通过<code>GAV</code>坐标引入。</p>
+<p>这种传统方式特别吃力，尤其是多人开发时，另一个模块的代码更新了，必须手动去更新本地仓库的<code>jar</code>包；而且多个模块之间相互依赖时，构建起来额外的麻烦！正因如此，官方在后面推出了“聚合工程”，下面聊聊这个。</p>
+<h3 id="2-3、Maven聚合工程"><a href="#2-3、Maven聚合工程" class="headerlink" title="2.3、Maven聚合工程"></a>2.3、Maven聚合工程</h3><p>所谓的聚合工程，即是指：<strong>一个项目允许创建多个子模块，多个子模块组成一个整体，可以统一进行项目的构建</strong>。不过想要弄明白聚合工程，得先清楚“父子工程”的概念：</p>
+<ul>
+<li>父工程：不具备任何代码、仅有<code>pom.xml</code>的空项目，用来定义公共依赖、插件和配置；</li>
+<li>子工程：编写具体代码的子项目，可以继承父工程的配置、依赖项，还可以独立拓展。</li>
+</ul>
+<p>而<code>Maven</code>聚合工程，就是基于父子工程结构，来将一个完整项目，划分出不同的层次，这种方式可以很好的管理多模块之间的依赖关系，以及构建顺序，大大提高了开发效率、维护性。并且当一个子工程更新时，聚合工程可以保障同步更新其他存在关联的子工程！</p>
+<h4 id="2-3-1、聚合工程入门指南"><a href="#2-3-1、聚合工程入门指南" class="headerlink" title="2.3.1、聚合工程入门指南"></a>2.3.1、聚合工程入门指南</h4><p>理解聚合工程是个什么东东之后，接着来聊聊如何创建聚合工程，首先要创建一个空的<code>Maven</code>项目，作为父工程，这时可以在<code>IDEA</code>创建<code>Maven</code>项目时，把打包方式选成<code>POM</code>，也可以创建一个普通的<code>Maven</code>项目，然后把<code>src</code>目录删掉，再修改一下<code>pom.xml</code>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-comment">&lt;!-- 写在当前项目GAV坐标下面 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样就得到了一个父工程，接着可以在此基础上，继续创建子工程：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e86bcf801ff742b0933f03096c056092~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建子工程-1"></p>
+<p>当点击<code>Next</code>后，大家会发现：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/118726dbe7484e21b0c98f6542125e89~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建子工程-2"></p>
+<p>这时无法手动指定<code>G、V</code>了，而是会从父工程中继承，最终效果如下：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dcdcb6510301400786b39142a7f359c7~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="聚合工程"></p>
+<p>这里我创建了两个子工程，所以父工程的<code>pom.xml</code>中，会用一个<code>&lt;modules&gt;</code>标签，来记录自己名下的子工程列表，而子工程的<code>pom</code>头，也多了一个<code>&lt;parent&gt;</code>标签包裹！大家看这个标签有没有眼熟感？大家可以去看一下<code>SpringBoot</code>项目，每个<code>pom.xml</code>文件的头，都是这样的。</p>
+<p>这里提个问题：<strong>子工程下面能不能继续创建子工程</strong>？答案<code>Yes</code>，你可以无限套娃下去，不过我的建议是：一个聚合项目，最多只能有三层，路径太深反而会出现稀奇古怪的问题。</p>
+<h4 id="2-3-2、聚合工程的依赖管理"><a href="#2-3-2、聚合工程的依赖管理" class="headerlink" title="2.3.2、聚合工程的依赖管理"></a>2.3.2、聚合工程的依赖管理</h4><p>前面搭建好了聚合工程，接着来看个问题：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ee2d60d7a45948f89e294752ebd192ab~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="依赖冗余"></p>
+<p><code>zhuzi_001、002</code>两个子工程中，各自引入了三个依赖，可观察上图会发现，两者引入的依赖仅有一个不同，其余全部一模一样！所以这时，就出现了“依赖冗余”问题，那有没有好的方式解决呢？答案是有的，前面说过：<strong>公共的依赖、配置、插件等，都可以配置在父工程里</strong>，如下：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1e5392b4d0264653819ef02c8ebb63bb~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="继承依赖"></p>
+<p>当把公共的依赖定义在父工程中，此时观察图中右侧的依赖树，会发现两个子工程都继承了父依赖。</p>
+<p>不过此时问题又来了！为了防止不同子工程引入不同版本的依赖，最好的做法是在父工程中，统一对依赖的版本进行控制，规定所有子工程都使用同一版本的依赖，怎么做到这点呢？可以使用<code>&lt;dependencyManagement&gt;</code>标签来管理，例如：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d867237f8f249c2af61462ac9761509~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="可选依赖"></p>
+<p>在父工程中，<code>&lt;dependencies&gt;</code>里只定义了一个<code>webmvc</code>依赖，而<code>&lt;dependencyManagement&gt;</code>中定义了<code>druid、test、jdbc</code>三个依赖，这两个标签有何区别呢？</p>
+<ul>
+<li><code>&lt;dependencies&gt;</code>：定义强制性依赖，写在该标签里的依赖项，子工程必须强制继承；</li>
+<li><code>&lt;dependencyManagement&gt;</code>：定义可选性依赖，该标签里的依赖项，子工程可选择使用。</li>
+</ul>
+<p>相信这样解释后，大家对于两个标签的区别，就能一清二楚了！同时注意，子工程在使用<code>&lt;dependencyManagement&gt;</code>中已有的依赖项时，不需要写<code>&lt;version&gt;</code>版本号，版本号在父工程中统一管理，这就满足了前面的需求。这样做的好处在于：<strong>以后为项目的技术栈升级版本时，不需要单独修改每个子工程的<code>POM</code>，只需要修改父<code>POM</code>文件即可，大大提高了维护性</strong>！</p>
+<h4 id="2-3-3、聚合工程解决依赖冲突"><a href="#2-3-3、聚合工程解决依赖冲突" class="headerlink" title="2.3.3、聚合工程解决依赖冲突"></a>2.3.3、聚合工程解决依赖冲突</h4><p>之前传统的<code>Maven</code>项目会存在依赖冲突问题，那聚合工程中存不存在呢？当然存在，比如<code>001</code>中引入了<code>jdbc、test</code>这两个包，而<code>002</code>中也引入了，这时假设把<code>001</code>工程打包到本地仓库，在<code>002</code>工程中引入时，此时依赖是不是又冲突了？<code>Yes</code>，怎么处理呢？先看例子：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dfe0259e17274030817d1ac963e18b7c~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="聚合依赖传递"></p>
+<p>在上图中，<code>001</code>引入了<code>aop</code>包，接着通过<code>install</code>操作，把<code>001</code>工程打到了本地仓库。于是，在<code>002</code>工程中，引入了<code>web、zhuzi_001</code>这两个包。根据前面所说的依赖传递原则，<code>002</code>在引入<code>001</code>时，由于<code>001</code>引用了别的包，所以<code>002</code>被迫也引入了其他包。</p>
+<p>还是那句话，大多数情况下，<code>Maven</code>会基于那三条原则，自动帮你剔除重复的依赖，如上图右边的依赖树所示，<code>Maven</code>自动剔除了重复依赖。这种结果显然是好现象，可是万一<code>Maven</code>不能自动剔除怎么办？这时就需要用到最开始所说的“隐藏依赖”技术了！</p>
+<p>修改<code>001</code>的<code>pom.xml</code>，如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-aop<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>眼尖的小伙应该能发现，此时多了一个<code>&lt;optional&gt;</code>标签，该标签即是“隐藏依赖”的开关：</p>
+<ul>
+<li><code>true</code>：开启隐藏，当前依赖不会向其他工程传递，只保留给自己用；</li>
+<li><code>false</code>：默认值，表示当前依赖会保持传递性，其他引入当前工程的项目会间接依赖。</li>
+</ul>
+<p>此时重新把<code>001</code>打到本地仓库，再来看看依赖树关系：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/c745f648a2be40e190f0b7e5963515f1~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="隐藏依赖"></p>
+<p>当开启隐藏后，其他工程引入当前工程时，就不会再间接引入当前工程的隐藏依赖，因此来手动排除聚合工程中的依赖冲突问题。其他许多资料里，讲这块时，多少讲的有点令人迷糊，而相信看到这里，大家就一定理解了<code>Maven</code>依赖管理。</p>
+<h4 id="2-3-4、父工程的依赖传递"><a href="#2-3-4、父工程的依赖传递" class="headerlink" title="2.3.4、父工程的依赖传递"></a>2.3.4、父工程的依赖传递</h4><p>来思考一个问题，现在项目需要用到<code>Spring-Cloud-Alibaba</code>的多个依赖项，如<code>Nacos、Sentinel……</code>等，根据前面所说的原则，由于这些依赖项可能会在多个子工程用到，最好的方式是定义在父<code>POM</code>的<code>&lt;dependencyManagement&gt;</code>标签里，可是<code>CloudAlibaba</code>依赖这么多，一个个写未免太繁杂、冗余了吧？</p>
+<p>面对上述问题时，该如何处理呢？如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;spring-cloud-alibaba.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>&lt;scope&gt;</code>标签取值为<code>import</code>的方式，通常会用在聚合工程的父工程中，不过必须配合<code>&lt;type&gt;pom&lt;/type&gt;</code>使用，这是啥意思呢？这代表着：<strong>把<code>spring-cloud-alibaba-dependencies</code>的所有子依赖，作为当前项目的可选依赖向下传递</strong>。</p>
+<p>而当前父工程下的所有子工程，在继承父<code>POM</code>时，也会将这些可选依赖继承过来，这时就可以直接选择使用某些依赖项啦，如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-sentinel<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-5、聚合工程的构建"><a href="#2-3-5、聚合工程的构建" class="headerlink" title="2.3.5、聚合工程的构建"></a>2.3.5、聚合工程的构建</h4><p>前面说到过，<code>Maven</code>聚合工程可以对所有子工程进行统一构建，这是啥意思呢？如果是传统的分模块项目，需要挨个进行打包、测试、安装……等工作，而聚合工程则不同，来看<code>IDEA</code>提供的<code>Maven</code>辅助工具：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0dfc45da8ccc48b691e03b1f9a01f5d0~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="项目构建"></p>
+<p>尾巴上带有<code>root</code>标识的工程，意味着这是一个父工程，在我们的案例中，有一个父、两个子，来看<code>IDEA</code>的工具，除开给两个子工程提供了<code>Lifecycle</code>命令外，还给父工程提供了一套<code>Lifecycle</code>命令，这两者的区别在哪儿呢？当你双击父工程的某个<code>Lifecycle</code>命令，它找到父<code>POM</code>的<code>&lt;modules&gt;</code>标签，再根据其中的子工程列表，完成对整个聚合工程的构建工作。</p>
+<p>大家可以去试一下，当你双击父工程<code>Lifecycle</code>下的<code>clean</code>，它会把你所有子工程的<code>target</code>目录删除。同理，执行其他命令时也一样，比如<code>install</code>命令，双击后它会把你所有的子工程，打包并安装到本地仓库，不过问题又又又来了！</p>
+<p>假设这里<code>001</code>引用了<code>002</code>，<code>002</code>又引用了<code>001</code>，两者相互引用，<code>Maven</code>会如何构建啊？到底该先打包<code>001</code>，还是该先打包<code>002</code>？我没去看过<code>Lifecycle</code>插件的源码，不过相信背后的逻辑，应该跟<code>Spring</code>解决依赖循环类似，感兴趣的小伙伴可以自行去研究。不过我这里声明一点：**<code>Maven</code>聚合工程的构建流程，跟<code>&lt;modules&gt;</code>标签里的书写顺序无关，它会自行去推断依赖关系，从而完成整个项目的构建**。</p>
+<h4 id="2-3-6、聚合打包跳过测试"><a href="#2-3-6、聚合打包跳过测试" class="headerlink" title="2.3.6、聚合打包跳过测试"></a>2.3.6、聚合打包跳过测试</h4><p>当大家要做项目发版时，就需要对整个聚合工程的每个工程打包（<code>jar</code>或<code>war</code>包），此时可以直接双击父工程里的<code>package</code>命令，但<code>test</code>命令在<code>package</code>之前，按照之前聊的生命周期原则，就会先执行<code>test</code>，再进行打包。</p>
+<p><code>test</code>阶段，会去找到所有子工程的<code>src/test/java</code>目录，并执行里面的测试用例，如果其中任何一个报错，就无法完成打包工作。而且就算不报错，执行所有测试用例也会特别耗时，这时该怎么办呢？可以选择跳过<code>test</code>阶段，在<code>IDEA</code>工具里的操作如下：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b9f624786eff4cd299aaee4c7d98add9~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="跳过测试"></p>
+<p>先选中<code>test</code>命令，接着点击上面的闪电图标，这时<code>test</code>就会画上横线，表示该阶段会跳过。如果你是在用<code>mvn</code>命令，那么打包跳过测试的命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash<br>复制代码mvn package –D skipTests<br></code></pre></td></tr></table></figure>
+
+<p>同时大家还可以在<code>pom.xml</code>里，配置插件来精准控制，比如跳过某个测试类不执行，配置规则如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.22.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">skipTests</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">skipTests</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- 指定要执行的测试用例 --&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/XXX*Test.java<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">excludes</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- 执行要跳过的测试用例 --&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span>&gt;</span>**/XXX*Test.java<span class="hljs-tag">&lt;/<span class="hljs-name">exclude</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">excludes</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>不过这个功能有点鸡肋，了解即可，通常不需要用到。</p>
+<h3 id="2-4、Maven属性"><a href="#2-4、Maven属性" class="headerlink" title="2.4、Maven属性"></a>2.4、Maven属性</h3><p>回到之前案例的父工程<code>POM</code>中，此时来思考一个问题：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/72299968ce3945ceafe21dc9bca75d27~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="版本冗余"></p>
+<p>虽然我们通过<code>&lt;dependencyManagement&gt;</code>标签，来控制了子工程中的依赖版本，可目前还有一个小问题：<strong>版本冗余</strong>！比如现在我想把<code>Spring</code>版本从<code>5.1.8</code>升级到<code>5.2.0</code>，虽然不需要去修改子工程的<code>POM</code>文件，可从上图中大家会发现，想升级<code>Spring</code>的版本，还需要修改多处地方！</p>
+<p>咋办？总不能只升级其中一个依赖的版本吧？可如果全部都改一遍，无疑就太累了……，所以，这里我们可以通过<code>Maven</code>属性来做管理，我们可以在<code>POM</code>的<code>&lt;properties&gt;</code>标签中，自定义属性，如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">spring.version</span>&gt;</span>5.2.0.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">spring.version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>而在<code>POM</code>的其他位置中，可以通过<code>$&#123;&#125;</code>来引用该属性，例如：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d31cf3a8a0c54d308a6d312ee5c8f010~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="属性管理"></p>
+<p>这样做的好处特别明显，现在我想升级<code>Spring</code>版本，只需要修改一处地方即可！</p>
+<p>除开可以自定义属性外，<code>Maven</code>也会有很多内置属性，大体可分为四类：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>使用方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Maven</code>内置属性</td>
+<td><code>$&#123;</code>属性名<code>&#125;</code>，如<code>$&#123;version&#125;</code></td>
+</tr>
+<tr>
+<td>项目环境属性</td>
+<td><code>$&#123;setting.</code>属性名<code>&#125;</code>，如<code>$&#123;settings.localRepository&#125;</code></td>
+</tr>
+<tr>
+<td><code>Java</code>环境变量</td>
+<td><code>$&#123;xxx.</code>属性名<code>&#125;</code>，如<code>$&#123;java.class.path&#125;</code></td>
+</tr>
+<tr>
+<td>系统环境变量</td>
+<td><code>$&#123;env.</code>属性名<code>&#125;</code>，如<code>$&#123;env.USERNAME&#125;</code></td>
+</tr>
+</tbody></table>
+<p>不过这些用的也不多，同时不需要记，要用的时候，<code>IDEA</code>工具会有提示：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fecb0588eecc46bf94df2b44c06a933d~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="提示"></p>
+<h3 id="2-5、Maven多环境配置"><a href="#2-5、Maven多环境配置" class="headerlink" title="2.5、Maven多环境配置"></a>2.5、Maven多环境配置</h3><p>实际工作会分为开发、测试、生产等环境，不同环境的配置信息也略有不同，而大家都知道，我们可以通过<code>spring.profiles.active</code>属性，来动态使用不同环境的配置，而<code>Maven</code>为何又整出一个多环境配置出来呢？想要搞清楚，得先搭建一个<code>SpringBoot</code>版的<code>Maven</code>聚合工程。</p>
+<p>首先创建一个只有<code>POM</code>的父工程，但要注意，这里是<code>SpringBoot</code>版聚合项目，需稍微改造：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-comment">&lt;!-- 先把Spring Boot Starter声明为父工程 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.1.5.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 当前父工程的GAV坐标 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.zhuzi<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven_zhuzi<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 配置JDK版本 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 引入SpringBootWeb的Starter依赖 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 引入SpringBoot整合Maven的插件 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>对比普通聚合工程的父<code>POM</code>来说，<code>SpringBoot</code>版的聚合工程，需要先把<code>spring-boot-starter</code>声明成自己的“爹”，同时需要引入<code>SpringBoot</code>相关的插件，并且我在这里还引入了一个<code>boot-web</code>依赖。</p>
+<p>接着来创建子工程，在创建时记得选<code>SpringBoot</code>模板来创建，不过创建后记得改造<code>POM</code>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-comment">&lt;!-- 声明父工程 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven_zhuzi<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.zhuzi<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 子工程的描述信息 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>boot_zhuzi_001<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>boot_zhuzi_001<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Demo project for Spring Boot<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>就只需要这么多，因为<code>SpringBoot</code>的插件、依赖包，在父工程中已经声明了，这里会继承过来。</p>
+<p>接着来做<code>Maven</code>多环境配置，找到父工程的<code>POM</code>进行修改，如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 开发环境 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>dev<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">profile.active</span>&gt;</span>dev<span class="hljs-tag">&lt;/<span class="hljs-name">profile.active</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br>    <br>    <span class="hljs-comment">&lt;!-- 生产环境 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>prod<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">profile.active</span>&gt;</span>prod<span class="hljs-tag">&lt;/<span class="hljs-name">profile.active</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- activeByDefault=true，表示打包时，默认使用这个环境 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br>    <br>    <span class="hljs-comment">&lt;!-- 测试环境 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">profile.active</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">profile.active</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>配置完这个后，刷新当前<code>Maven</code>工程，<code>IDEA</code>中就会出现这个：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b21177adfaea4f44939309514bb7e71f~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="多环境"></p>
+<p>默认停留在<code>prod</code>上，这是因为<code>POM</code>中用<code>&lt;activeByDefault&gt;</code>标签指定了，接着去到子工程的<code>application.yml</code>中，完成<code>Spring</code>的多环境配置，如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-string">yml复制代码#</span> <span class="hljs-string">设置启用的环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span><br>    <span class="hljs-attr">active:</span> <span class="hljs-string">$&#123;profile.active&#125;</span><br><br><span class="hljs-meta">---</span><br><span class="hljs-comment"># 开发环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">dev</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">80</span><br><span class="hljs-meta">---</span><br><span class="hljs-comment"># 生产环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">prod</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">81</span><br><span class="hljs-meta">---</span><br><span class="hljs-comment"># 测试环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">test</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">82</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+
+<p>这里可以通过文件来区分不同环境的配置信息，但我这里为了简单，就直接用<code>---</code>进行区分，这组配置大家应该很熟悉，也就是不同的环境中，使用不同的端口号，但唯一不同的是：**以前<code>spring.profiles.active</code>属性会写上固定的值，而现在写的是<code>$&#123;profile.active&#125;</code>**，这是为什么呢？</p>
+<p>这代表从<code>pom.xml</code>中，读取<code>profile.active</code>属性值的意思，而父<code>POM</code>中配了三组值：<code>dev、prod、test</code>，所以当前子工程的<code>POM</code>，也会继承这组配置，而目前默认勾选在<code>prod</code>上，所以最终<code>spring.profiles.active=prod</code>，不过想要在<code>application.yml</code>读到<code>pom.xml</code>的值，还需在父<code>POM</code>中，加一个依赖和插件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-comment">&lt;!-- 开启 yml 文件的 $&#123;&#125; 取值支持 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.1.5.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 添加插件，将项目的资源文件复制到输出目录中 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-resources-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">encoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">encoding</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">useDefaultDelimiters</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">useDefaultDelimiters</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>最后来尝试启动子工程，操作流程如下：</p>
+<ul>
+<li>①在<code>Maven</code>工具的<code>Profiles</code>中勾选<code>dev</code>，并刷新当前项目；</li>
+<li>②接着找到子工程的启动类，并右键选择<code>Run ……</code>启动子项目。</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa736df7199d457cabe3ae284ea36634~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="多环境整合"></p>
+<p>先仔细看执行的结果，我来解释一下执行流程：</p>
+<ul>
+<li>①启动时，<code>pom.xml</code>根据勾选的<code>Profiles</code>，使用相应的<code>dev</code>环境配置；</li>
+<li>②<code>yml</code>中<code>$&#123;profile.active&#125;</code>会读到<code>profile.active=dev</code>，使用<code>dev</code>配置组；</li>
+<li>③<code>application.yml</code>中的<code>dev</code>配置组，<code>server.port=80</code>，所以最终通过<code>80</code>端口启动。</li>
+</ul>
+<p>看完这个流程，大家明白最开始那个问题了吗？<code>Maven</code>为何还整了一个多环境配置？</p>
+<p>大家可能有种似懂非懂的感觉，这里来说明一下，先把环境换到微服务项目中，假设有<code>20</code>个微服务，此时项目要上线或测试，所以需要更改配置信息，比如把数据库地址换成测试、线上地址等，而不同环境的配置，相信大家一定用<code>application-dev.yml、application-prod.yml……</code>做好了区分。</p>
+<p>但就算提前准备了不同环境的配置，可到了切换环境时，还需要挨个服务修改<code>spring.profiles.active</code>这个值，从<code>dev</code>改成<code>prod、test</code>，然后才能使用对应的配置进行打包，可这里有<code>20</code>个微服务啊，难道要手动改<code>20</code>次吗？</p>
+<p>而在父<code>POM</code>中配置了<code>Maven</code>多环境后，这时<code>yml</code>会读取<code>pom.xml</code>中的值，来使用不同的配置文件，此时大家就只需要在<code>IDEA</code>工具的<code>Profiles</code>中，把钩子从<code>dev</code>换到<code>test、prod</code>，然后刷新一下<code>Maven</code>，<code>SpringBoot</code>就能动态的切换配置文件，这是不是妙极了？因此，这才是<code>Maven</code>多环境的正确使用姿势！</p>
+<h2 id="三、Maven私服搭建"><a href="#三、Maven私服搭建" class="headerlink" title="三、Maven私服搭建"></a>三、Maven私服搭建</h2><p>前面叨叨絮絮说了一大堆，最后就来聊聊<code>Maven</code>私服配置，为啥需要私服呢？</p>
+<p>大家来设想这么个场景，假设你身在基建团队，主要负责研发各个业务开发组的公用组件，那么当你写完一个组件后，为了能让别的业务开发组用上，难道是先把代码打包，接着用<code>U</code>盘拷出来，给别人送过去嘛？有人说不至于，难道我不会直接发过去啊……</p>
+<p>的确，用通讯软件发过去也行，但问题依旧在，假设你的组件升级了，又发一遍吗？所以，为了便于团队协作，搭建一个远程仓库很有必要，写完公用代码后，直接发布到远程仓库，别人需要用到时，直接从远程仓库拉取即可，而你升级组件后，只需要再发布一个新版本即可！</p>
+<p>那远程仓库该怎么搭建呀？这就得用到<code>Maven</code>私服技术，最常用的就是基于<code>Nexus</code>来搭建。</p>
+<h3 id="3-1、Nexus私服搭建指南"><a href="#3-1、Nexus私服搭建指南" class="headerlink" title="3.1、Nexus私服搭建指南"></a>3.1、Nexus私服搭建指南</h3><p><code>Nexus</code>是<code>Sonatype</code>公司开源的一款私服产品，大家可以先去到<a href="https://link.juejin.cn/?target=https://help.sonatype.com/repomanager3/download">Nexus官网</a>下载一下安装包，<code>Nexus</code>同样是一款解压即用的工具，不过也要注意：<strong>解压的目录中不能存在中文，否则后面启动不起来！</strong></p>
+<p>解压完成后，会看到两个目录：</p>
+<ul>
+<li><code>nexus-x.x.x-xx</code>：里面会放<code>Nexus</code>启动时所需要的依赖、环境配置；</li>
+<li><code>sonatype-work</code>：存放<code>Nexus</code>运行时的工作数据，如存储上传的<code>jar</code>包等。</li>
+</ul>
+<p>接着可以去到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash<br>复制代码解压目录/etc/nexus-default.properties<br></code></pre></td></tr></table></figure>
+
+<p>这个文件修改默认配置，默认端口号是<code>8081</code>，如果你这个端口已被使用，就可以修改一下，否则通常不需要更改。接着可以去到解压目录的<code>bin</code>文件夹中，打开<code>cmd</code>终端，执行启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash<br>复制代码nexus.exe /run nexus<br></code></pre></td></tr></table></figure>
+
+<p>初次启动的过程会额外的慢，因为它需要初始化环境，创建工作空间、内嵌数据库等，直到看见这句提示：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/f8aa26d910f6464ea2227395a8b225b9~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="启动成功"></p>
+<p>此时才算启动成功，<code>Nexus</code>初次启动后，会在<code>sonatype-work</code>目录中生成一个<code>/nexus3/admin.password</code>文件，这里面存放着你的初始密码，默认账号就是<code>admin</code>，在浏览器输入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">java<br>复制代码http:<span class="hljs-comment">//localhost:8081</span><br></code></pre></td></tr></table></figure>
+
+<p>访问<code>Nexus</code>界面，接着可以在网页上通过初始密码登录，登录后就会让你修改密码，改完后就代表<code>Nexus</code>搭建成功（不过要记住，改完密码记得重新登录一次，否则后面的操作会没有权限）。</p>
+<h3 id="3-2、Nexus私服仓库"><a href="#3-2、Nexus私服仓库" class="headerlink" title="3.2、Nexus私服仓库"></a>3.2、Nexus私服仓库</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/9e6c8bdc397e4a66a4d1662a488f8ec5~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="默认仓库"></p>
+<p>登录成功后，点击<code>Browse</code>会看到一些默认仓库，这里稍微解释一下每个字段的含义。</p>
+<ul>
+<li><code>Name</code>：仓库的名字；</li>
+<li><code>Type</code>：仓库的类型；</li>
+<li><code>Format</code>：仓库的格式；</li>
+<li><code>Status</code>：仓库的状态；</li>
+<li><code>URL</code>：仓库的网络地址。</li>
+</ul>
+<p>重点来说说仓库的分类，总共有四种类型：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>释义</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hosted</code></td>
+<td>宿主仓库</td>
+<td>保存中央仓库中没有的资源，如自研组件</td>
+</tr>
+<tr>
+<td><code>proxy</code></td>
+<td>代理仓库</td>
+<td>配置中央仓库，即镜像源，私服中没有时会去这个地址拉取</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>仓库组</td>
+<td>用来对宿主、代理仓库分组，将多个仓库组合成一个对外服务</td>
+</tr>
+<tr>
+<td><code>virtual</code></td>
+<td>虚拟仓库</td>
+<td>并非真实存在的仓库，类似于<code>MySQL</code>中的视图</td>
+</tr>
+</tbody></table>
+<p>仓库的关系如下：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24c14e21200946eeab0cc5619398e73a~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="仓库关系"></p>
+<p>本地的<code>Maven</code>需要配置私服地址，当项目需要的依赖，在本地仓库没有时，就会去到相应的宿主/远程仓库拉取；如果宿主仓库也没有，就会根据配置的代理仓库地址，去到中央仓库拉取，最后依次返回……。</p>
+<h3 id="3-3、Maven配置私服"><a href="#3-3、Maven配置私服" class="headerlink" title="3.3、Maven配置私服"></a>3.3、Maven配置私服</h3><p><code>Maven</code>想要使用私服，需要先修改<code>settings.xml</code>文件，我的建议是别直接改，先拷贝一份出来，接着来讲讲配置步骤。</p>
+<p>①修改<code>settings.xml</code>里的镜像源配置，之前配的阿里云镜像不能用了，改成：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-zhuzi<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>*<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/maven-public/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>②在私服中修改访问权限，允许匿名用户访问，如下：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/e2f2aea0240f45558e1066311bdc37e0~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="开启权限"></p>
+<p>③在<code>Nexus</code>私服中配置一下代理仓库地址，即配置镜像源：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/883db26755b64c5199e9d0fef41ceaf8~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="配置镜像"></p>
+<p>将这个默认的中央仓库地址，改为国内的阿里云镜像：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">java<br>复制代码http:<span class="hljs-comment">//maven.aliyun.com/nexus/content/groups/public/</span><br></code></pre></td></tr></table></figure>
+
+<p>改完后记得拖动到最下方，点击<code>Save</code>保存一下即可。</p>
+<p>④在<code>Maven</code>的<code>settings.xml</code>中，配置私服的账号密码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">server</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>zhuzi-release<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span>admin<span class="hljs-tag">&lt;/<span class="hljs-name">username</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">password</span>&gt;</span>你的私服账号密码<span class="hljs-tag">&lt;/<span class="hljs-name">password</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">server</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">server</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>zhuzi-snapshot<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span>admin<span class="hljs-tag">&lt;/<span class="hljs-name">username</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">password</span>&gt;</span>你的私服账号密码<span class="hljs-tag">&lt;/<span class="hljs-name">password</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">server</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这两组配置，放到<code>&lt;servers&gt;</code>标签中的任何一处即可，这里可以先这样配置，看不懂没关系。</p>
+<h3 id="3-4、项目配置私服"><a href="#3-4、项目配置私服" class="headerlink" title="3.4、项目配置私服"></a>3.4、项目配置私服</h3><p>前面配置好了本地<code>Maven</code>与私服的映射关系，接着要配置项目和私服的连接，说下流程。</p>
+<p>①为项目创建对应的私服仓库，如果已有仓库，可以直接复用，创建步骤如下：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f03507267582454a92d59cf294a9e1cc~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建仓库"></p>
+<p>其中唯一值得一提的就是仓库格式，这里有三个可选项：</p>
+<ul>
+<li><code>Release</code>：稳定版，表示存放可以稳定使用的版本仓库；</li>
+<li><code>Snapshot</code>：快照版，代表存储开发阶段的版本仓库；</li>
+<li><code>Mixed</code>：混合版，不区分格式，表示混合存储代码的仓库。</li>
+</ul>
+<p>为了规范性，我的建议是<code>Release、Snapshot</code>格式的仓库，各自都创建一个。</p>
+<p>②在<code>Maven</code>工程的<code>pom.xml</code>文件中，配置对应的私服仓库地址，如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-comment">&lt;!-- 配置当前工程，在私服中保存的具体位置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">distributionManagement</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 这里对应之前 settings.xml 里配置的server-id --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>zhuzi-release<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 这里代表私服仓库的地址，大家只需要把后面的名字换掉即可 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/zhuzi-release/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">snapshotRepository</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>zhuzi-snapshot<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/zhuzi-snapshot/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">snapshotRepository</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">distributionManagement</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>③将当前项目发布到私服仓库，这里可以执行<code>mvn clean deploy</code>命令，也可以通过<code>IDEA</code>工具完成：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/5c6b0f1c165b4d09bcf7e4ff60f0eb4e~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="发布"></p>
+<p>不过这里有一个细节要注意，由于配置了私服上的两个宿主仓库，一个为稳定仓库，另一个为快照仓库，所以发布时，默认会根据当前项目的<code>&lt;version&gt;</code>版本结尾，来选择上传到相应的仓库，例如上图中的结尾是<code>SNAPSHOT</code>，所以会被发布到快照仓库，如果结尾不是这个后缀时，就会被发布到<code>Release</code>仓库。</p>
+<p>当发布完成后，大家就可以登录<code>Nexus</code>界面，找到对应的宿主仓库，查看相应的<code>jar</code>包信息啦！不过还有一点要注意：你要发布的包不能带有上级，即不能有<code>parent</code>依赖，否则在其他人在拉取该项目时，会找不到其父项目而构建失败。要解决这个问题，可以先将<code>parent</code>项目打包并上传至远程仓库，然后再发布依赖于该<code>parent</code>项目的子模块。</p>
+<h3 id="3-5、Nexus配置仓库组"><a href="#3-5、Nexus配置仓库组" class="headerlink" title="3.5、Nexus配置仓库组"></a>3.5、Nexus配置仓库组</h3><p>前面在说仓库类型时，还提到过一个“仓库组”的概念，如果你目前所处的公司，是一个大型企业，不同团队都有着各自的宿主仓库，而你恰恰又需要用到其他团队的组件，这时难道需要在<code>pom.xml</code>中，将远程仓库地址先改为其他团队的地址吗？答案是不需要的，这时可以创建一个仓库组。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5d1eafada7c340979546506d0a404389~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="创建仓库组"></p>
+<p>大家可以看到，图中的<code>Members</code>区域代表当前仓库组的成员，而这些成员会按照你排列的顺序，具备不同的优先级，越靠前的优先级越高。创建好仓库组后，接着可以去配置一下仓库组，这里有两种方式。</p>
+<h4 id="3-5-1、配置单个工程与仓库组的映射"><a href="#3-5-1、配置单个工程与仓库组的映射" class="headerlink" title="3.5.1、配置单个工程与仓库组的映射"></a>3.5.1、配置单个工程与仓库组的映射</h4><p>这种方式只需修改<code>pom.xml</code>即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>zhuzi-group<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 配置仓库组的地址 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/zhuzi-group/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 允许从中拉取稳定版的依赖 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 也允许从中拉取快照版的依赖 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">pluginRepositories</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">pluginRepository</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>plugin-group<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/zhuzi-group/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepository</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepositories</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在上述这组配置中，配置了<code>&lt;repositories&gt;、&lt;pluginRepositories&gt;</code>两个标签，分别是啥意思呢？很简单，第一个是普通依赖的仓库组地址，第二个是插件依赖的仓库组地址，前者针对于<code>pom.xml</code>中的<code>&lt;dependency&gt;</code>标签生效，后者针对<code>&lt;plugin&gt;</code>标签生效。</p>
+<p>当你通过<code>GAV</code>坐标，引入一个依赖时，如果本地仓库中没找到，则会根据配置的仓库组地址，去到<code>Nexus</code>私服上拉取依赖。不过因为仓库组是由多个仓库组成的，所以拉取时，会根据仓库的优先级，依次搜索相应的依赖，第一个仓库将是最优先搜索的仓库。</p>
+<h4 id="3-5-2、配置本地Maven与仓库组的映射"><a href="#3-5-2、配置本地Maven与仓库组的映射" class="headerlink" title="3.5.2、配置本地Maven与仓库组的映射"></a>3.5.2、配置本地Maven与仓库组的映射</h4><p>上一种配置方式，只针对于单个<code>Maven</code>工程生效，如果你所有的<code>Maven</code>工程，都需要与<code>Nexus</code>私服上的仓库组绑定，这时就可以直接修改<code>settings.xml</code>文件，如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>zhuzi-group<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-maven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/zhuzi-group/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">updatePolicy</span>&gt;</span>always<span class="hljs-tag">&lt;/<span class="hljs-name">updatePolicy</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">updatePolicy</span>&gt;</span>always<span class="hljs-tag">&lt;/<span class="hljs-name">updatePolicy</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span><br> <br>	<span class="hljs-tag">&lt;<span class="hljs-name">pluginRepositories</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">pluginRepository</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-maven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://localhost:8081/repository/zhuzi-group/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">releases</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">updatePolicy</span>&gt;</span>always<span class="hljs-tag">&lt;/<span class="hljs-name">updatePolicy</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">releases</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">snapshots</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">enabled</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enabled</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">updatePolicy</span>&gt;</span>always<span class="hljs-tag">&lt;/<span class="hljs-name">updatePolicy</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">snapshots</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepository</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">pluginRepositories</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这组配置要写在<code>&lt;profiles&gt;</code>标签里面，其他的与前一种方式没太大区别，唯一不同的是多了一个<code>&lt;updatePolicy&gt;</code>标签，该标签的作用是指定仓库镜像的更新策略，可选项如下：</p>
+<ul>
+<li><code>always</code>：每次需要<code>Maven</code>依赖时，都先尝试从远程仓库下载最新的依赖项；</li>
+<li><code>daily</code>：每天首次使用某个依赖时，从远程仓库中下载一次依赖项；</li>
+<li><code>interval:X</code>：每隔<code>X</code>个小时，下载一次远程仓库的依赖，<code>X</code>只能是整数；</li>
+<li><code>never</code>：仅使用本地仓库中已经存在的依赖项，不尝试从远程仓库中拉取。</li>
+</ul>
+<p><code>Maven</code>工程使用依赖时，首先会从本地仓库中查找所需的依赖项，如果本地仓库没有，则从配置的远程仓库下载这时会根据<code>&lt;updatePolicy&gt;</code>策略来决定是否需要从远程仓库下载依赖。</p>
+<p>不过上述这样配置后，还无法让配置生效，如果想要生效，还得激活一下上述配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml">xml复制代码<span class="hljs-tag">&lt;<span class="hljs-name">activeProfiles</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 这里写前面配置的ID --&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">activeProfile</span>&gt;</span>zhuzi-group<span class="hljs-tag">&lt;/<span class="hljs-name">activeProfile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">activeProfiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>不过要记住，无论两种方式内的哪一种，都只允许从私服上拉取依赖，如果你的某个工程，想要打包发布到私服上，还是需要配置<code>3.4</code>阶段的<code>&lt;distributionManagement&gt;</code>标签。</p>
+<h2 id="四、Maven总结"><a href="#四、Maven总结" class="headerlink" title="四、Maven总结"></a>四、Maven总结</h2><p>最后，对于<code>Maven</code>项目的命名，不同单词最好用<code>-</code>减号分割，而不是<code>_</code>下划线，毕竟<code>Spring、Apache……</code>的开源项目，都采用这种命名方式。不过，如果你要问我：“你为啥用<code>_</code>不用<code>-</code>啊”？别问，问就是我控几不住我寄几啊……，更何况有句话说的好：知错不改，善莫大焉！</p>
+<p>到这里，对于<code>Maven</code>常用的功能已经讲完了，掌握这些知识后，玩转<code>Maven</code>的难度应该不大，不过<code>Maven</code>的功能远不仅如此，就光说<code>pom.xml</code>这个文件，可以配置的标签有几百个，本文仅讲到了几十个罢了。如果你对其他不常用的标签感兴趣，我整了一份<code>POM</code>帮助文档，和<code>Nexus</code>安装包一起放到了网盘里，有需要可以关注微信公众号：<strong>竹子爱熊猫</strong>，回复<code>POM</code>领取。</p>
+<p>作者：竹子爱熊猫<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7238823745828405308">https://juejin.cn/post/7238823745828405308</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
                 
               </div>
             
@@ -685,11 +1179,11 @@
       
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
-        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
-      
         <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
       
         <a href="/blog/tags/Maven/">#Maven</a>
+      
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
     </div>
   
@@ -751,7 +1245,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2023/08/26/Memory%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档">
+                      <a href="/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Memory聚合搜索平台-开发文档</span>
                         <span class="visible-mobile">上一篇</span>
