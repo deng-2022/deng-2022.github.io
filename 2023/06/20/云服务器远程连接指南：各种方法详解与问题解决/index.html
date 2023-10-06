@@ -499,7 +499,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：3 个月前
                   
                 
               </p>
@@ -607,13 +607,15 @@
 <li><h5 id="如上图所示，-etc-ssh-ssh-host-ed25519-key目录下保存的便是私钥，而给该文件设置的默认读写权限0777过于开放"><a href="#如上图所示，-etc-ssh-ssh-host-ed25519-key目录下保存的便是私钥，而给该文件设置的默认读写权限0777过于开放" class="headerlink" title="如上图所示， /etc/ssh/ssh_host_ed25519_key目录下保存的便是私钥，而给该文件设置的默认读写权限0777过于开放"></a>如上图所示， /etc/ssh/ssh_host_ed25519_key目录下保存的便是私钥，而给该文件设置的默认读写权限0777过于开放</h5></li>
 <li><h5 id="0777是一种非常宽松的权限设置，可能会带来安全风险，因为任何人都可以访问和修改该文件或目录，不符合相关要求，所以SSH服务连接失败"><a href="#0777是一种非常宽松的权限设置，可能会带来安全风险，因为任何人都可以访问和修改该文件或目录，不符合相关要求，所以SSH服务连接失败" class="headerlink" title="0777是一种非常宽松的权限设置，可能会带来安全风险，因为任何人都可以访问和修改该文件或目录，不符合相关要求，所以SSH服务连接失败"></a>0777是一种非常宽松的权限设置，可能会带来安全风险，因为任何人都可以访问和修改该文件或目录，不符合相关要求，所以SSH服务连接失败</h5></li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">权限设置为0777，意味着所有者、所有者所属组和其他用户都具有读取（第一个7）、写入（第二个7）和执行（第三个7）的权限。这是一种非常宽松的权限设置，可能会带来安全风险，因为任何人都可以访问和修改该文件或目录。<br></code></pre></td></tr></table></figure>
-
+<blockquote>
+<p>权限设置为0777，意味着所有者、所有者所属组和其他用户都具有读取（第一个7）、写入（第二个7）和执行（第三个7）的权限。这是一种非常宽松的权限设置，可能会带来安全风险，因为任何人都可以访问和修改该文件或目录。</p>
+</blockquote>
 <ul>
 <li><h5 id="所以要对该密钥文件的权限设置为600，这是一种相对严格的权限设置，限制对文件的访问权限"><a href="#所以要对该密钥文件的权限设置为600，这是一种相对严格的权限设置，限制对文件的访问权限" class="headerlink" title="所以要对该密钥文件的权限设置为600，这是一种相对严格的权限设置，限制对文件的访问权限"></a>所以要对该密钥文件的权限设置为600，这是一种相对严格的权限设置，限制对文件的访问权限</h5></li>
 </ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">600</span>权限是一种相对严格的权限设置，它可以用于限制对文件的访问权限。具体权限设置为<span class="hljs-number">600</span>表示只有文件的所有者拥有读取和写入的权限，而所有者所属组和其他用户没有任何权限。<br></code></pre></td></tr></table></figure>
-
+<blockquote>
+<p>600权限是一种相对严格的权限设置，它可以用于限制对文件的访问权限。具体权限设置为600表示只有文件的所有者拥有读取和写入的权限，而所有者所属组和其他用户没有任何权限。</p>
+</blockquote>
 <ul>
 <li><h5 id="有关Linux中基本权限的介绍，可以参考下这几篇博客："><a href="#有关Linux中基本权限的介绍，可以参考下这几篇博客：" class="headerlink" title="有关Linux中基本权限的介绍，可以参考下这几篇博客："></a>有关Linux中基本权限的介绍，可以参考下这几篇博客：</h5></li>
 <li><h5 id="70条消息-【Linux】基本权限-小赵还有头发的博客-CSDN博客"><a href="#70条消息-【Linux】基本权限-小赵还有头发的博客-CSDN博客" class="headerlink" title="(70条消息) 【Linux】基本权限_小赵还有头发的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_70411664/article/details/131014353">(70条消息) 【Linux】基本权限_小赵还有头发的博客-CSDN博客</a></h5></li>
