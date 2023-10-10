@@ -16,20 +16,20 @@
   <meta name="author" content="Memory">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Memory BI智能搜索平台开发基本流程">
+    <meta name="description" content="🥂 Memory BI智能搜索平台开发基本流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Memory BI智能搜索平台-开发文档">
 <meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/10/03/Memory%20BI%E6%99%BA%E8%83%BD%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
-<meta property="og:description" content="Memory BI智能搜索平台开发基本流程">
+<meta property="og:description" content="🥂 Memory BI智能搜索平台开发基本流程">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/winter.jpg">
 <meta property="article:published_time" content="2023-10-03T01:51:22.000Z">
 <meta property="article:modified_time" content="2023-10-08T15:00:25.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="RabbitMQ">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
+<meta property="article:tag" content="RabbitMQ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/winter.jpg">
   
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          6.4k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          15 分钟
+          17 分钟
         
       </span>
     
@@ -432,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：21 小时前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -581,7 +581,7 @@
 </li>
 </ul>
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231008213944416.png" alt="image-20231008213944416"></p>
-<h3 id="图标列表页面"><a href="#图标列表页面" class="headerlink" title="图标列表页面"></a>图标列表页面</h3><ul>
+<h3 id="图表列表页面"><a href="#图表列表页面" class="headerlink" title="图表列表页面"></a>图表列表页面</h3><ul>
 <li>快速编写请求，测试响应结果：</li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">loadData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;<br>   <span class="hljs-keyword">try</span> &#123;<br>     <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">listChartByPageUsingPOST</span>(searchParams);<br>     <span class="hljs-keyword">if</span> (res.<span class="hljs-property">data</span>) &#123;<br>       <span class="hljs-comment">// 获取图表列表</span><br>       <span class="hljs-title function_">setChartList</span>(res.<span class="hljs-property">data</span>?.<span class="hljs-property">records</span> ?? []);<br>       <span class="hljs-comment">// 获取总数</span><br>       <span class="hljs-title function_">setTotal</span>(res.<span class="hljs-property">data</span>?.<span class="hljs-property">total</span> ?? <span class="hljs-number">0</span>);<br>     &#125; <span class="hljs-keyword">else</span> &#123;<br>       message.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;获取我的图标失败&quot;</span>)<br>     &#125;<br>   &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-attr">e</span>: <span class="hljs-built_in">any</span>) &#123;<br>     message.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;获取我的图标失败&quot;</span> + e.<span class="hljs-property">message</span>)<br>   &#125;<br> &#125;<br></code></pre></td></tr></table></figure>
@@ -602,6 +602,29 @@
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231008222510291.png" alt="image-20231008222510291"></p>
 <ul>
 <li><h5 id="图表分页、添加搜索框、添加-loading-效果，根据-name-查询图表基本完成（2023-10-08晚）"><a href="#图表分页、添加搜索框、添加-loading-效果，根据-name-查询图表基本完成（2023-10-08晚）" class="headerlink" title="图表分页、添加搜索框、添加 loading 效果，根据 name 查询图表基本完成（2023/10/08晚）"></a>图表分页、添加搜索框、添加 loading 效果，根据 name 查询图表基本完成（2023/10/08晚）</h5></li>
+</ul>
+<h2 id="day5"><a href="#day5" class="headerlink" title="day5"></a>day5</h2><h3 id="系统优化"><a href="#系统优化" class="headerlink" title="系统优化"></a>系统优化</h3><h3 id="文件校验"><a href="#文件校验" class="headerlink" title="文件校验"></a>文件校验</h3><ul>
+<li><p>我智能分析支持用户上传文件，如果用户上传一个超大的文件怎么办？比如 1000 G</p>
+<ul>
+<li>只要涉及到<strong>用户自主上传</strong>操作，一定要校验文件<strong>（图像）</strong></li>
+<li>校验：<ul>
+<li><strong>文件大小</strong></li>
+<li><strong>文件后缀</strong></li>
+<li><strong>文件内容</strong>（成本略高）</li>
+<li><strong>文件合规</strong>（敏感内容）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="校验文件大小和文件后缀"><a href="#校验文件大小和文件后缀" class="headerlink" title="校验文件大小和文件后缀"></a>校验文件大小和文件后缀</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 允许上传的文件大小</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-type">long</span> <span class="hljs-variable">ONE_MB</span> <span class="hljs-operator">=</span> <span class="hljs-number">1024</span> * <span class="hljs-number">1024L</span>;<br><br><br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 合法的文件后缀</span><br><span class="hljs-comment">    */</span><br>   List&lt;String&gt; VALID_FILE_SUFFIX_LIST = Arrays.asList(<span class="hljs-string">&quot;xlsx&quot;</span>, <span class="hljs-string">&quot;xls&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 3.1.校验文件</span><br>        <span class="hljs-comment">// 3.1.1.校验文件大小</span><br>        <span class="hljs-type">long</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> multipartFile.getSize();<br>        ThrowUtils.throwIf(size &gt; ONE_MB, ErrorCode.PARAMS_ERROR, <span class="hljs-string">&quot;文件超过 1M&quot;</span>);<br><br>        <span class="hljs-comment">// 3.1.2.校验文件后缀</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">originalFilename</span> <span class="hljs-operator">=</span> multipartFile.getOriginalFilename();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">suffix</span> <span class="hljs-operator">=</span> FileUtil.getSuffix(originalFilename);<br>        ThrowUtils.throwIf(!VALID_FILE_SUFFIX_LIST.contains(suffix), ErrorCode.PARAMS_ERROR, <span class="hljs-string">&quot;文件后缀非法&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h3><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><ul>
+<li><h5 id="面试必备：4种经典限流算法讲解-掘金-juejin-cn"><a href="#面试必备：4种经典限流算法讲解-掘金-juejin-cn" class="headerlink" title="面试必备：4种经典限流算法讲解 - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6967742960540581918">面试必备：4种经典限流算法讲解 - 掘金 (juejin.cn)</a></h5></li>
+<li><h5 id="面试官：来，年轻人！请手撸5种常见限流算法！-Java填坑笔记-博客园-cnblogs-com"><a href="#面试官：来，年轻人！请手撸5种常见限流算法！-Java填坑笔记-博客园-cnblogs-com" class="headerlink" title="面试官：来，年轻人！请手撸5种常见限流算法！ - Java填坑笔记 - 博客园 (cnblogs.com)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liqiangchn/p/14253924.html">面试官：来，年轻人！请手撸5种常见限流算法！ - Java填坑笔记 - 博客园 (cnblogs.com)</a></h5></li>
 </ul>
 
                 
@@ -650,11 +673,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/RabbitMQ/">#RabbitMQ</a>
-      
         <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
         <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+      
+        <a href="/blog/tags/RabbitMQ/">#RabbitMQ</a>
       
     </div>
   
