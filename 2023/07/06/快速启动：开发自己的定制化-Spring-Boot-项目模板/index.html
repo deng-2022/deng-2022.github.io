@@ -28,8 +28,8 @@
 <meta property="article:modified_time" content="2023-10-05T08:27:34.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
-<meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="项目">
+<meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="Redis">
 <meta property="article:tag" content="Mybatis">
 <meta property="article:tag" content="阿里云OSS">
@@ -804,7 +804,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：6 天前
+                    本文最后更新于：8 天前
                   
                 
               </p>
@@ -1475,33 +1475,32 @@
 </li>
 <li><h5 id="面试必备：4种经典限流算法讲解-掘金-juejin-cn"><a href="#面试必备：4种经典限流算法讲解-掘金-juejin-cn" class="headerlink" title="面试必备：4种经典限流算法讲解 - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6967742960540581918">面试必备：4种经典限流算法讲解 - 掘金 (juejin.cn)</a></h5></li>
 <li><h5 id="面试官：来，年轻人！请手撸5种常见限流算法！-Java填坑笔记-博客园-cnblogs-com"><a href="#面试官：来，年轻人！请手撸5种常见限流算法！-Java填坑笔记-博客园-cnblogs-com" class="headerlink" title="面试官：来，年轻人！请手撸5种常见限流算法！ - Java填坑笔记 - 博客园 (cnblogs.com)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liqiangchn/p/14253924.html">面试官：来，年轻人！请手撸5种常见限流算法！ - Java填坑笔记 - 博客园 (cnblogs.com)</a></h5></li>
-<li><p>我们使用 <strong>Redisson</strong> 实现的<strong>令牌桶算法</strong>实现：<strong>调用智能分析接口时，限制单位时间内的调用次数</strong></p>
+<li><p>我们使用 <strong>Redisson</strong> 实现的<strong>令牌桶算法</strong>实现：<strong>调用智能分析接口时，限制用户在单位时间内的调用次数</strong></p>
 </li>
-<li><p>引入依赖：</p>
-</li>
+<li><h5 id="引入依赖："><a href="#引入依赖：" class="headerlink" title="引入依赖："></a>引入依赖：</h5></li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.redisson<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>redisson<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.21.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>做好相关配置：</li>
+<li><h5 id="做好相关配置："><a href="#做好相关配置：" class="headerlink" title="做好相关配置："></a>做好相关配置：</h5></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;spring.redis&quot;)</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RedissionConfig</span> &#123;<br>    <span class="hljs-keyword">private</span> String host;<br><br>    <span class="hljs-keyword">private</span> String port;<br><br>    <span class="hljs-keyword">private</span> String password;<br><br>    <span class="hljs-keyword">private</span> Integer database;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RedissonClient <span class="hljs-title function_">redissonClient</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 1. 创建配置</span><br>        <span class="hljs-type">Config</span> <span class="hljs-variable">config</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Config</span>();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">redisAddress</span> <span class="hljs-operator">=</span> String.format(<span class="hljs-string">&quot;redis://%s:%s&quot;</span>, host, port);<br>        <span class="hljs-comment">//  使用单个Redis，没有开集群 useClusterServers()  设置地址和使用库</span><br>        config.useSingleServer().setAddress(redisAddress).setDatabase(database).setPassword(password);<br>        <span class="hljs-comment">// 2. 创建实例</span><br>        <span class="hljs-keyword">return</span> Redisson.create(config);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">redis:</span><br>   <span class="hljs-attr">port:</span> <span class="hljs-number">6379</span><br>   <span class="hljs-attr">host:</span> <span class="hljs-string">localhost</span><br>   <span class="hljs-attr">database:</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>限流实现（区别不同的限流器，每个用户都分别拥有对应的限流器）</li>
+<li><h5 id="限流实现（区别不同的限流器，每个用户都分别拥有对应的限流器）"><a href="#限流实现（区别不同的限流器，每个用户都分别拥有对应的限流器）" class="headerlink" title="限流实现（区别不同的限流器，每个用户都分别拥有对应的限流器）"></a>限流实现（区别不同的限流器，每个用户都分别拥有对应的限流器）</h5></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 限流实现</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> key 识别用户的key</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doRateLimit</span><span class="hljs-params">(String key)</span> &#123;<br>       <span class="hljs-comment">// 创建限流器</span><br>       <span class="hljs-type">RRateLimiter</span> <span class="hljs-variable">rateLimiter</span> <span class="hljs-operator">=</span> redissonClient.getRateLimiter(key);<br>       rateLimiter.trySetRate(RateType.OVERALL, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, RateIntervalUnit.SECONDS);<br>       <span class="hljs-comment">// 每当一个操作来了之后，请求一个令牌</span><br>       <span class="hljs-type">boolean</span> <span class="hljs-variable">canOp</span> <span class="hljs-operator">=</span> rateLimiter.tryAcquire(<span class="hljs-number">1</span>);<br>       <span class="hljs-comment">// 超出发放令牌数目，请求过于频繁</span><br>       ThrowUtils.throwIf(!canOp, ErrorCode.TOO_MANY_REQUEST);<br>   &#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>简单测试，效果良好，测试结果如下：</li>
+<li><h5 id="简单测试，效果良好，测试结果如下："><a href="#简单测试，效果良好，测试结果如下：" class="headerlink" title="简单测试，效果良好，测试结果如下："></a>简单测试，效果良好，测试结果如下：</h5></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>   <span class="hljs-keyword">void</span> <span class="hljs-title function_">doRateLimit</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>       <span class="hljs-type">String</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;1&quot;</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>           redisLimiterManager.doRateLimit(userId);<br>           System.out.println(<span class="hljs-string">&quot;成功&quot;</span>);<br>       &#125;<br>       Thread.sleep(<span class="hljs-number">1000</span>);<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>           redisLimiterManager.doRateLimit(userId);<br>           System.out.println(<span class="hljs-string">&quot;成功&quot;</span>);<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
 
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231011180516219.png" alt="image-20231011180516219"></p>
 <ul>
-<li>业务中使用限流器，实现调用智能分析接口时，<strong>限制单位时间内的调用次数</strong></li>
+<li>业务中使用限流器，<strong>调用智能分析接口时，限制用户在单位时间内的调用次数</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 限流(限制用户的调用次数，以用户id为key，区分各个限流器)</span><br>redisLimiterManager.doRateLimit(<span class="hljs-string">&quot;genCharByAi_&quot;</span> + loginUser.getId());<br></code></pre></td></tr></table></figure>
 
@@ -1582,9 +1581,9 @@
       
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
-        <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
-      
         <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+      
+        <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
       
         <a href="/blog/tags/Redis/">#Redis</a>
       
