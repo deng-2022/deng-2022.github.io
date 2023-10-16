@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/winter.jpg">
 <meta property="article:published_time" content="2023-10-03T01:51:22.000Z">
-<meta property="article:modified_time" content="2023-10-08T15:00:25.000Z">
+<meta property="article:modified_time" content="2023-10-15T11:37:25.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="RabbitMQ">
 <meta property="article:tag" content="项目">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.2k 字
+          12k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          21 分钟
+          30 分钟
         
       </span>
     
@@ -432,7 +432,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：6 天前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -655,6 +655,136 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 限流(限制用户的调用次数，以用户id为key，区分各个限流器)</span><br>redisLimiterManager.doRateLimit(<span class="hljs-string">&quot;genCharByAi_&quot;</span> + loginUser.getId());<br></code></pre></td></tr></table></figure>
 
+<h2 id="day6"><a href="#day6" class="headerlink" title="day6"></a>day6</h2><h3 id="系统问题分析"><a href="#系统问题分析" class="headerlink" title="系统问题分析"></a>系统问题分析</h3><ul>
+<li>问题场景：调用的服务处理能力有限，或者接口的处理时间 / 返回时间较长，就应该考虑异步化了</li>
+</ul>
+<ol>
+<li>用户等待的时间比较长：等待 AI 生成图表，AI 处理过程比较长</li>
+<li>业务服务器的处理能力有限，短时间内只能处理一个请求，请求过多，资源紧张导致 AI 处理不过来，严重时会导致服务器宕机，无法处理新的请求</li>
+</ol>
+<ul>
+<li>所以我们要实现 AI <strong>生成图表异步化</strong> <strong>（2023/10/15晚）</strong></li>
+</ul>
+<h3 id="异步化"><a href="#异步化" class="headerlink" title="异步化"></a>异步化</h3><ul>
+<li>同步：一件事做完，再做另一件事</li>
+<li>异步：第一件事不用做完，就可以开始做第二件事，等第一件事完成后，通知这件事做好了，进行后续处理就行</li>
+</ul>
+<h3 id="异步化后的业务流程"><a href="#异步化后的业务流程" class="headerlink" title="异步化后的业务流程"></a>异步化后的业务流程</h3><ul>
+<li><h5 id="简单回顾异步化前的业务流程："><a href="#简单回顾异步化前的业务流程：" class="headerlink" title="简单回顾异步化前的业务流程："></a>简单回顾异步化前的业务流程：</h5><ul>
+<li>用户填写表单，提交生成图表请求，在此页面等待结果返回</li>
+<li>服务器校验请求信息，调用第三方 AI 服务处理图表生成请求并返回响应结果，实现图表智能分析</li>
+<li>可以发现，在用户提交图表分析请求后，需持续等待服务器处理，直到服务器返回处理结果</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231016211833171.png" alt="image-20231016211833171"></p>
+<ul>
+<li><h5 id="异步化后的业务流程："><a href="#异步化后的业务流程：" class="headerlink" title="异步化后的业务流程："></a>异步化后的业务流程：</h5><ul>
+<li>用户提交生成图表请求</li>
+<li>服务器接受请求，立刻把图表信息保存在数据库中（作为一个任务）</li>
+<li>用户可以在图表管理页面查看所有图表的信息和图表状态（已生成的、生成中的、生成失败的）</li>
+<li>用户可以修改生成失败的图表信息，点击<strong>重新生成</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231016211813595.png" alt="image-20231016211813595"></p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的实现"><a href="#线程池的实现" class="headerlink" title="线程池的实现"></a>线程池的实现</h4><h4 id="线程池的参数"><a href="#线程池的参数" class="headerlink" title="线程池的参数"></a>线程池的参数</h4><h4 id="线程池的工作机制"><a href="#线程池的工作机制" class="headerlink" title="线程池的工作机制"></a>线程池的工作机制</h4><ul>
+<li><p>这部分内容我计划在新的博文中介绍，可以看这篇文章学习：</p>
+</li>
+<li><h5 id="Java-线程池详解-JavaGuide-Java面试-学习指南"><a href="#Java-线程池详解-JavaGuide-Java面试-学习指南" class="headerlink" title="Java 线程池详解 | JavaGuide(Java面试 + 学习指南)"></a><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-thread-pool-summary.html">Java 线程池详解 | JavaGuide(Java面试 + 学习指南)</a></h5></li>
+</ul>
+<h3 id="简单测试，理解线程池工作流程"><a href="#简单测试，理解线程池工作流程" class="headerlink" title="简单测试，理解线程池工作流程"></a>简单测试，理解线程池工作流程</h3><h4 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h4><ul>
+<li>自定义线程池：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 自定义线程池</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadPoolExecutorConfig</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> ThreadPoolExecutor <span class="hljs-title function_">threadPoolExecutor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">ThreadFactory</span> <span class="hljs-variable">threadFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadFactory</span>() &#123;<br>            <span class="hljs-comment">// 记录线程数</span><br>            <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> Thread <span class="hljs-title function_">newThread</span><span class="hljs-params">(<span class="hljs-meta">@NotNull</span> Runnable r)</span> &#123;<br>                <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(r);<br>                thread.setName(<span class="hljs-string">&quot;线程&quot;</span> + count);<br>                count++;<br>                <span class="hljs-keyword">return</span> thread;<br>            &#125;<br>        &#125;;<br>        <span class="hljs-type">ThreadPoolExecutor</span> <span class="hljs-variable">threadPoolExecutor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span><br>                (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">100</span>,<br>                        TimeUnit.MINUTES, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="hljs-number">4</span>), threadFactory);<br>        <span class="hljs-keyword">return</span> threadPoolExecutor;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在代码中，首先定义了一个<strong>ThreadFactory接口的实现类</strong>，用于<strong>创建线程</strong>。<strong>（2023/10/15晚）</strong></li>
+<li>在<strong>newThread方法</strong>中，通过创建线程并设置名称的方式来<strong>实现线程的创建</strong>。每次创建线程时，都会使用一个计数器count，用于记录线程的数量，保证<strong>线程名称的唯一性</strong>。</li>
+<li>然后，使用ThreadPoolExecutor类创建一个<strong>线程池对象</strong>。括号内的参数依次为：<strong>核心线程数、最大线程数、线程空闲时间、时间单位、任务队列以及线程工厂</strong>。这些参数分别表示线程池的基本配置，如最小/最大线程数、线程空闲时间等。其中，任务队列使用了ArrayBlockingQueue，表示<strong>使用有界队列来存储线程任务</strong>。</li>
+<li>最后，<strong>将创建好的线程池对象返回</strong>，供其他地方进行调用和使用。</li>
+</ul>
+<h4 id="提交任务到线程池"><a href="#提交任务到线程池" class="headerlink" title="提交任务到线程池"></a>提交任务到线程池</h4><ul>
+<li>提交任务到线程池：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 任务队列测试 提交任务到线程池</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/queue&quot;)</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">QueueController</span> &#123;<br>    <span class="hljs-meta">@Resource</span><br>    <span class="hljs-keyword">private</span> ThreadPoolExecutor threadPoolExecutor;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/get&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">get</span><span class="hljs-params">()</span> &#123;<br>        HashMap&lt;String, Object&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> threadPoolExecutor.getQueue().size();<br>        map.put(<span class="hljs-string">&quot;队列长度&quot;</span>, size);<br>        <span class="hljs-type">long</span> <span class="hljs-variable">taskCount</span> <span class="hljs-operator">=</span> threadPoolExecutor.getTaskCount();<br>        map.put(<span class="hljs-string">&quot;任务总数&quot;</span>, taskCount);<br>        <span class="hljs-type">long</span> <span class="hljs-variable">completedTaskCount</span> <span class="hljs-operator">=</span> threadPoolExecutor.getCompletedTaskCount();<br>        map.put(<span class="hljs-string">&quot;已完成任务数&quot;</span>, completedTaskCount);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">activeCount</span> <span class="hljs-operator">=</span> threadPoolExecutor.getActiveCount();<br>        map.put(<span class="hljs-string">&quot;正在工作的线程数&quot;</span>, activeCount);<br>        <span class="hljs-keyword">return</span> JSONUtil.toJsonStr(map);<br>    &#125;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/add&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(String name)</span> &#123;<br>        CompletableFuture.runAsync(() -&gt; &#123;<br>            log.info(Thread.currentThread().getName() + <span class="hljs-string">&quot;正在执行中&quot;</span>);<br>            <span class="hljs-keyword">try</span> &#123;<br>                Thread.sleep(<span class="hljs-number">600000</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;, threadPoolExecutor);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>这段代码是一个简单的示例，在<strong>Spring Boot中使用自定义的线程池</strong>。首先通过@Resource注解将之前配置好的线程池对象threadPoolExecutor注入进来，然后定义了<strong>两个接口方法：get和add</strong>。</p>
+</li>
+<li><p>在get方法中，通过调用线程池对象的不同方法，<strong>获取了线程池的一些状态信息</strong>，如<strong>队列长度、任务总数、已完成任务数和正在工作的线程数</strong>，并将这些信息封装进一个<strong>HashMap</strong>中，最后<strong>使用 JSONUtil.toJsonStr 方法将其转换成JSON格式的字符串</strong>返回。</p>
+</li>
+<li><p>在add方法中，使用 <strong>CompletableFuture.runAsync 方法来在线程池中执行一个任务</strong>。这里的任务是一个简单的代码块，通过log输出当前线程的名称，并休眠10分钟。通过将线程池对象threadPoolExecutor作为参数传递给runAsync方法，使得任务在该线程池中执行。</p>
+</li>
+<li><p>通过这段代码，我们可以在Spring Boot项目中方便地<strong>使用自定义的线程池，并对其进行状态监控和管理</strong>。<strong>（2023/10/15晚）</strong></p>
+</li>
+<li><p>由 ThreadPoolExecutorConfig 配置可知，我们自定义的线程池参数设置如下：</p>
+<ul>
+<li><h5 id="核心线程数：2"><a href="#核心线程数：2" class="headerlink" title="核心线程数：2"></a>核心线程数：2</h5></li>
+<li><h5 id="最大线程数：4"><a href="#最大线程数：4" class="headerlink" title="最大线程数：4"></a>最大线程数：4</h5></li>
+<li><h5 id="任务队列数：4"><a href="#任务队列数：4" class="headerlink" title="任务队列数：4"></a>任务队列数：4</h5></li>
+<li><h5 id="超时等待时间：未设置，默认拒绝"><a href="#超时等待时间：未设置，默认拒绝" class="headerlink" title="超时等待时间：未设置，默认拒绝"></a>超时等待时间：未设置，默认拒绝</h5></li>
+<li><h5 id="时间单位：秒（SECEND）"><a href="#时间单位：秒（SECEND）" class="headerlink" title="时间单位：秒（SECEND）"></a>时间单位：秒（SECEND）</h5></li>
+</ul>
+</li>
+<li><p>我们开始测试，依次添加任务，观察执行的线程数和任务队列数，详情如下：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015192743819.png" alt="image-20231015192743819"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015192927650.png" alt="image-20231015192927650"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015193033848.png" alt="image-20231015193033848"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231015193106483.png" alt="image-20231015193106483"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015193134223.png" alt="image-20231015193134223"></p>
+<ul>
+<li><p>简单描述一下测试情况吧：</p>
+<ul>
+<li>当<strong>正在运行的线程数未达到核心线程数阈值</strong>时，优先添加线程处理新任务</li>
+<li>当<strong>正在运行的线程数达到核心线程数阈值，但任务队列未满</strong>时，优先将任务放入任务队列中</li>
+<li>当<strong>任务队列放满后，但正在运行的线程数未达到最大线程数阈值</strong>时，优先添加线程处理新任务</li>
+<li>当<strong>正在运行的线程数达到最大线程数阈值后</strong>，采用合适的拒绝策略（这里我们采用默认的拒绝策略：直接扔掉这个任务）</li>
+</ul>
+</li>
+<li><h5 id="测试完成（2023-10-15晚）"><a href="#测试完成（2023-10-15晚）" class="headerlink" title="测试完成（2023/10/15晚）"></a>测试完成（2023/10/15晚）</h5></li>
+</ul>
+<h3 id="开发实现"><a href="#开发实现" class="headerlink" title="开发实现"></a>开发实现</h3><h4 id="库表设计"><a href="#库表设计" class="headerlink" title="库表设计"></a>库表设计</h4><ul>
+<li><strong>给 chart 表新增字段</strong>：<ul>
+<li><strong>任务状态字段</strong>（排队中、执行中、已完成、执行失败）</li>
+<li><strong>任务执行字段</strong>（记录任务执行过程中的一些信息，比如为何失败）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">status  <span class="hljs-type">varchar</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;wait&#x27;</span> comment <span class="hljs-string">&#x27;wait,running,succeed,failed&#x27;</span>,<br>execMessage text <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;执行信息&#x27;</span>,<br></code></pre></td></tr></table></figure>
+
+<h4 id="流程梳理"><a href="#流程梳理" class="headerlink" title="流程梳理"></a>流程梳理</h4><ul>
+<li><p>用户发起智能分析请求后，先把生成的图表信息立刻保存到数据库中，然后<strong>提交该请求到任务队列</strong></p>
+</li>
+<li><p><strong>任务实现</strong>：先修改图表任务状态为“执行中”</p>
+<ul>
+<li>待执行完成后，修改为“已完成”、并保存执行结果</li>
+<li>若执行失败，状态修改为“失败”，记录任务失败信息</li>
+</ul>
+</li>
+<li><p>用户可以在图表管理界面<strong>查看所有图表</strong>（包括已生成的、生成中的、生成失败的）的信息和状态</p>
+</li>
+<li><h5 id="流程大致实现，明天再做优化，把该写的-todo-都完成了（2023-10-15晚）"><a href="#流程大致实现，明天再做优化，把该写的-todo-都完成了（2023-10-15晚）" class="headerlink" title="流程大致实现，明天再做优化，把该写的 todo 都完成了（2023/10/15晚）"></a>流程大致实现，明天再做优化，把该写的 todo 都完成了（2023/10/15晚）</h5></li>
+</ul>
+<h3 id="异步化实现"><a href="#异步化实现" class="headerlink" title="异步化实现"></a>异步化实现</h3><ul>
+<li>详细的业务代码在这里不作展示，可在代码仓库查看</li>
+<li>我们对照<strong>异步化后的业务流程图</strong>，简单梳理下代码逻辑：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231016211908520.png" alt="image-20231016211908520"></p>
+<h3 id="前端优化"><a href="#前端优化" class="headerlink" title="前端优化"></a>前端优化</h3><ul>
+<li><h5 id="图表列表可根据图表状态进行展示"><a href="#图表列表可根据图表状态进行展示" class="headerlink" title="图表列表可根据图表状态进行展示"></a>图表列表可根据图表状态进行展示</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231016211241966.png" alt="image-20231016211241966"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231016211150999.png" alt="image-20231016211150999"></p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li><p>美观的首页</p>
+</li>
+<li><p>图表生成后，提供友好的提示：提交请求后、图表生成后（成功、失败、忙碌中）</p>
+</li>
+<li><h5 id="枚举图表状态"><a href="#枚举图表状态" class="headerlink" title="枚举图表状态"></a>枚举图表状态</h5></li>
+</ul>
 
                 
               </div>
@@ -737,7 +867,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月8日</div>
+          <div>2023年10月15日</div>
         </div>
       
       
