@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky9.jpg">
 <meta property="article:published_time" content="2023-07-17T07:51:44.000Z">
-<meta property="article:modified_time" content="2023-09-30T03:02:44.000Z">
+<meta property="article:modified_time" content="2023-10-17T11:02:44.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="算法">
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：16 天前
+                    本文最后更新于：5 小时前
                   
                 
               </p>
@@ -1535,7 +1535,7 @@
 </li>
 <li><h5 id="具体代码如下：-16"><a href="#具体代码如下：-16" class="headerlink" title="具体代码如下："></a>具体代码如下：</h5></li>
 </ul>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (k &gt; nums.length) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        &#125;<br>        <span class="hljs-keyword">int</span> len = nums.length;<br>        <span class="hljs-comment">// 使用一个含有 k 个元素的最小堆</span><br>        PriorityQueue&lt;Integer&gt; minHeap = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(k, (a, b) -&gt; a - b);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;<br>            minHeap.add(nums[i]);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = k; i &lt; len; i++) &#123;<br>            <span class="hljs-comment">// 看一眼，不拿出，因为有可能没有必要替换</span><br>            Integer topEle = minHeap.peek();<br>            <span class="hljs-comment">// 只要当前遍历的元素比堆顶元素大，堆顶弹出，遍历的元素进去</span><br>            <span class="hljs-keyword">if</span> (nums[i] &gt; topEle) &#123;<br>                minHeap.poll();<br>                minHeap.offer(nums[i]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-keyword">return</span> minHeap.<span class="hljs-title">peek</span><span class="hljs-params">()</span></span>;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findKthLargest</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-keyword">if</span> (k &gt; nums.length) &#123;<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-comment">// 使用一个含有 k 个元素的最小堆</span><br>        PriorityQueue&lt;Integer&gt; minHeap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;(k, (a, b) -&gt; a - b);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; k; i++) &#123;<br>            minHeap.add(nums[i]);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> k; i &lt; len; i++) &#123;<br>            <span class="hljs-comment">// 看一眼，不拿出，因为有可能没有必要替换</span><br>            <span class="hljs-type">Integer</span> <span class="hljs-variable">topEle</span> <span class="hljs-operator">=</span> minHeap.peek();<br>            <span class="hljs-comment">// 只要当前遍历的元素比堆顶元素大，堆顶弹出，遍历的元素进去</span><br>            <span class="hljs-keyword">if</span> (nums[i] &gt; topEle) &#123;<br>                minHeap.poll();<br>                minHeap.offer(nums[i]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> minHeap.peek();<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><ul>
 <li><p>堆排序是什么原理呢？</p>
@@ -1557,6 +1557,8 @@
 </ul>
 <h3 id="实战训练（白银挑战）-10"><a href="#实战训练（白银挑战）-10" class="headerlink" title="实战训练（白银挑战）"></a>实战训练（白银挑战）</h3><h4 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h4><h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><h4 id="最小生成树问题"><a href="#最小生成树问题" class="headerlink" title="最小生成树问题"></a>最小生成树问题</h4><h4 id="最短路径问题"><a href="#最短路径问题" class="headerlink" title="最短路径问题"></a>最短路径问题</h4><h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><ul>
 <li><h5 id="推荐阅读：十大经典排序算法总结-JavaGuide-Java面试-学习指南"><a href="#推荐阅读：十大经典排序算法总结-JavaGuide-Java面试-学习指南" class="headerlink" title="推荐阅读：十大经典排序算法总结 | JavaGuide(Java面试 + 学习指南)"></a>推荐阅读：<a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/algorithms/10-classical-sorting-algorithms.html#%E5%9B%BE%E8%A7%A3%E7%AE%97%E6%B3%95-3">十大经典排序算法总结 | JavaGuide(Java面试 + 学习指南)</a></h5></li>
+<li><h5 id="各算法动态图演示：各算法动态图演示（2023-10-17完晚）"><a href="#各算法动态图演示：各算法动态图演示（2023-10-17完晚）" class="headerlink" title="各算法动态图演示：各算法动态图演示（2023/10/17完晚）"></a>各算法动态图演示：<a target="_blank" rel="noopener" href="https://www.yijiyong.com/algorithm/visual/01-commondy.html">各算法动态图演示</a>（2023/10/17完晚）</h5></li>
+<li><h5 id="数据结构与算法精讲：数据结构与算法精讲"><a href="#数据结构与算法精讲：数据结构与算法精讲" class="headerlink" title="数据结构与算法精讲：数据结构与算法精讲"></a>数据结构与算法精讲：<a target="_blank" rel="noopener" href="https://visualgo.net/en">数据结构与算法精讲</a></h5></li>
 </ul>
 <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 冒泡排序</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> arr</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> arr</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] bubbleSort(<span class="hljs-type">int</span>[] arr) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-comment">// Set a flag, if true, that means the loop has not been swapped,</span><br>        <span class="hljs-comment">// that is, the sequence has been ordered, the sorting has been completed.</span><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; arr.length - i; j++) &#123;<br>            <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> arr[j];<br>                arr[j] = arr[j + <span class="hljs-number">1</span>];<br>                arr[j + <span class="hljs-number">1</span>] = tmp;<br>       <span class="hljs-comment">// Change flag</span><br>                flag = <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (flag) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
@@ -1566,30 +1568,7 @@
 
 <h3 id="快速排序-1"><a href="#快速排序-1" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arr, <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high)</span> &#123;<br>        <span class="hljs-comment">// 判断递归结束的条件</span><br>        <span class="hljs-keyword">if</span> (low &gt;= high) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 定义快慢指针、基准值</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">point</span> <span class="hljs-operator">=</span> arr[low];<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> low;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> low + <span class="hljs-number">1</span>;<br><br>        <span class="hljs-comment">// 快指针检索大数</span><br>        <span class="hljs-keyword">while</span> (fast &lt;= high) &#123;<br>            <span class="hljs-comment">// 慢指针维护小数</span><br>            <span class="hljs-keyword">if</span> (arr[fast] &lt; point) &#123;<br>                <span class="hljs-comment">// todo 0</span><br>                slow++;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> arr[slow];<br>                arr[slow] = arr[fast];<br>                arr[fast] = temp;<br>            &#125;<br>            fast++;<br>        &#125;<br><br>        <span class="hljs-comment">// 返回基准值</span><br>        <span class="hljs-comment">// todo 1</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> arr[slow];<br>        arr[slow] = arr[low];<br>        arr[low] = temp;<br><br>        quickSort(arr, low, slow - <span class="hljs-number">1</span>);<br>        quickSort(arr, slow + <span class="hljs-number">1</span>, high);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h3 id="各排序算法比较"><a href="#各排序算法比较" class="headerlink" title="各排序算法比较"></a>各排序算法比较</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/20190917200246823.png" alt="各排序算法比较"></p>
 
                 
               </div>
@@ -1663,7 +1642,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年9月30日</div>
+          <div>2023年10月17日</div>
         </div>
       
       
