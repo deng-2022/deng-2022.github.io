@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
 <meta property="article:published_time" content="2023-05-21T12:35:01.000Z">
-<meta property="article:modified_time" content="2023-10-16T11:56:04.000Z">
+<meta property="article:modified_time" content="2023-10-18T04:59:04.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="开发经验">
 <meta property="article:tag" content="爬虫">
@@ -401,7 +401,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：10 小时前
                   
                 
               </p>
@@ -409,16 +409,19 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Python爬虫学习"><a href="#Python爬虫学习" class="headerlink" title="Python爬虫学习"></a>Python爬虫学习</h1><ul>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li></li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Python爬虫学习"><a href="#Python爬虫学习" class="headerlink" title="Python爬虫学习"></a>Python爬虫学习</h2><ul>
 <li><h5 id="一直以来都想学习爬虫技术-却一直下不了决心-不知道从何学起-也没有精力去学"><a href="#一直以来都想学习爬虫技术-却一直下不了决心-不知道从何学起-也没有精力去学" class="headerlink" title="一直以来都想学习爬虫技术, 却一直下不了决心, 不知道从何学起, 也没有精力去学"></a>一直以来都想学习爬虫技术, 却一直下不了决心, 不知道从何学起, 也没有精力去学</h5></li>
 <li><h5 id="过年前后-看过了黑马的Python基础课-掌握了基本的语法-现在伙伴匹配系统基础功能也完成了-可以拿时间来系统且快速地学习Python爬虫了-主要是我觉得一个Java程序猿怎么能不懂爬虫呢"><a href="#过年前后-看过了黑马的Python基础课-掌握了基本的语法-现在伙伴匹配系统基础功能也完成了-可以拿时间来系统且快速地学习Python爬虫了-主要是我觉得一个Java程序猿怎么能不懂爬虫呢" class="headerlink" title="过年前后, 看过了黑马的Python基础课, 掌握了基本的语法, 现在伙伴匹配系统基础功能也完成了, 可以拿时间来系统且快速地学习Python爬虫了, 主要是我觉得一个Java程序猿怎么能不懂爬虫呢"></a>过年前后, 看过了黑马的Python基础课, 掌握了基本的语法, 现在伙伴匹配系统基础功能也完成了, 可以拿时间来系统且快速地学习Python爬虫了, 主要是我觉得一个Java程序猿怎么能不懂爬虫呢</h5></li>
 </ul>
-<h2 id="爬虫的分类"><a href="#爬虫的分类" class="headerlink" title="爬虫的分类"></a>爬虫的分类</h2><ul>
+<h3 id="爬虫的分类"><a href="#爬虫的分类" class="headerlink" title="爬虫的分类"></a>爬虫的分类</h3><ul>
 <li><h5 id="API爬虫和网页爬虫（2023-08-29晚）"><a href="#API爬虫和网页爬虫（2023-08-29晚）" class="headerlink" title="API爬虫和网页爬虫（2023/08/29晚）"></a>API爬虫和网页爬虫（2023/08/29晚）</h5></li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css">当从更专业的角度讨论API爬虫和网页爬虫时，我们可以更详细地了解它们的定义、特点和用途。<br><br>API爬虫是指通过调用网络应用程序接口（API）来获取数据的爬虫。API是一种允许不同应用程序之间进行通信和交互的接口。API通常提供了固定的数据格式和结构，比如JSON或XML，这使得数据更易于获取和解析。API爬虫通过发送HTTP请求到API的URL路径，来获取数据。一旦数据返回，爬虫可以解析它，并对数据进行处理和分析。<br><br>API爬虫的优点在于，它可以更方便地获取和处理结构化的数据，因为API通常提供了规范化的数据格式。此外，由于API接口具有稳定性和可靠性，爬取数据的稳定性和准确性也相对较高。因此，API爬虫通常被用于从特定网站、应用程序或服务中获取数据。<br><br>网页爬虫则是通过发送HTTP请求到网页的URL路径，获取返回的<span class="hljs-selector-tag">HTML</span>页面源代码，并进行解析、提取和处理信息的工具。网页爬虫通常用于从网页中获取结构化和非结构化的数据。它们可以通过解析<span class="hljs-selector-tag">HTML</span>文档中的标签、属性和内容，来获取所需的数据。网页爬虫的输出可以是包含所提取数据的结构化文本文件或数据库。<br><br>网页爬虫的优点在于其灵活性和适用范围广泛。它们可以适应不同类型的网页，不仅限于特定的API接口。网页爬虫可以用于各种不同的应用，如搜索引擎索引、产品信息收集、舆情分析等。<br><br>总之，API爬虫和网页爬虫是两种不同的爬虫类型，它们在采集数据的方式、解析数据的方法和适用范围上存在差异。根据需求和情境，选择合适的爬虫类型可以提高爬取数据的效率和准确性。<br><br>希望这个更专业的解释对你有帮助！如果还有其他问题，请随时提问。<br></code></pre></td></tr></table></figure>
 
-<h2 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h2><ul>
+<h3 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h3><ul>
 <li><h5 id="今天是学习的第一天-学习爬虫过程中也了解到了不少计网的知识-这令我很惊喜了"><a href="#今天是学习的第一天-学习爬虫过程中也了解到了不少计网的知识-这令我很惊喜了" class="headerlink" title="今天是学习的第一天, 学习爬虫过程中也了解到了不少计网的知识, 这令我很惊喜了"></a>今天是学习的第一天, 学习爬虫过程中也了解到了不少计网的知识, 这令我很惊喜了</h5></li>
 <li><h5 id="简要总结一下学到些什么吧-详细的知识点可以拿到老师的-待会儿可以贴上来-我就记重点了"><a href="#简要总结一下学到些什么吧-详细的知识点可以拿到老师的-待会儿可以贴上来-我就记重点了" class="headerlink" title="简要总结一下学到些什么吧, 详细的知识点可以拿到老师的, 待会儿可以贴上来, 我就记重点了"></a>简要总结一下学到些什么吧, 详细的知识点可以拿到老师的, 待会儿可以贴上来, 我就记重点了</h5></li>
 <li><h5 id="requests-http-https协议-爬虫-XML-XHR-AJAX-axios-这是我今天了解到的概念"><a href="#requests-http-https协议-爬虫-XML-XHR-AJAX-axios-这是我今天了解到的概念" class="headerlink" title="requests, http/https协议, 爬虫, XML, XHR, AJAX, axios  这是我今天了解到的概念"></a>requests, http/https协议, 爬虫, XML, XHR, AJAX, axios  这是我今天了解到的概念</h5></li>
@@ -442,7 +445,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-comment"># url路径</span><br>    url = <span class="hljs-string">&quot;https://api.codelife.cc/api/getWeather&quot;</span><br>    <span class="hljs-comment"># UA伪装</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/113.0.0.0&#x27;</span><br>    &#125;<br>    <span class="hljs-comment"># 请求参数</span><br>    params = &#123;<br>        <span class="hljs-string">&#x27;lang&#x27;</span>: <span class="hljs-string">&#x27; cn&#x27;</span>,<br>        <span class="hljs-string">&#x27;location&#x27;</span>: <span class="hljs-string">&#x27;101101101&#x27;</span><br>    &#125;<br>    <span class="hljs-comment"># 发送请求</span><br>    response = requests.get(url, params=params, headers=headers)<br>    <span class="hljs-comment"># 获取响应</span><br>    dic_obj = response.json()<br>    <span class="hljs-comment"># 持久化存储</span><br>    fp = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;iTab标签页.json&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    json.dump(dic_obj, fp, ensure_ascii=<span class="hljs-literal">False</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;over!!!&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h2><ul>
+<h3 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h3><ul>
 <li><h5 id="距离上次学习都他妈过去5天了"><a href="#距离上次学习都他妈过去5天了" class="headerlink" title="距离上次学习都他妈过去5天了"></a>距离上次学习都他妈过去5天了</h5></li>
 <li><h5 id="交一下昨天的作业吧-比较复杂的爬取"><a href="#交一下昨天的作业吧-比较复杂的爬取" class="headerlink" title="交一下昨天的作业吧  比较复杂的爬取"></a>交一下昨天的作业吧  比较复杂的爬取</h5></li>
 <li><h5 id="化妆品生产许可信息"><a href="#化妆品生产许可信息" class="headerlink" title="化妆品生产许可信息"></a>化妆品生产许可信息</h5></li>
@@ -464,7 +467,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os.path<br><span class="hljs-keyword">import</span> re<br><br><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-comment"># 创建文件夹</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">&#x27;./imgs&#x27;</span>):<br>        os.mkdir(<span class="hljs-string">&#x27;./imgs&#x27;</span>)<br>    <span class="hljs-comment"># 请求路径</span><br>    url = <span class="hljs-string">&#x27;https://www.woyaogexing.com/tupian/index_%d.html&#x27;</span><br>    <span class="hljs-comment"># UA伪装</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, &#x27;</span><br>                      <span class="hljs-string">&#x27;like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/113.0.0.0&#x27;</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> page_num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>):<br>        new_url = <span class="hljs-built_in">format</span>(url % page_num)<br>        <span class="hljs-comment"># 爬取对应的网页内容</span><br>        page_text = requests.get(url=new_url, headers=headers).text<br>        <span class="hljs-comment"># print(page_text)</span><br>        <span class="hljs-comment"># 爬取对应网页上的图片(正则表达式)</span><br>        <span class="hljs-comment"># 编写正则表达式</span><br>        ex = <span class="hljs-string">&#x27;&lt;div class=&quot;txList &quot;&gt;.*?&lt;img.*?src=&quot;(.*?)&quot;.*?&gt;.*?&lt;/div&gt;&#x27;</span><br>        <span class="hljs-comment"># 获取所需字符串</span><br>        img_src_list = re.findall(ex, page_text, re.S)<br>        <span class="hljs-built_in">print</span>(img_src_list)<br>        <span class="hljs-keyword">for</span> img_src <span class="hljs-keyword">in</span> img_src_list:<br>            <span class="hljs-comment"># 拼接完整的图片路径</span><br>            img_src = <span class="hljs-string">&#x27;http:&#x27;</span> + img_src<br>            <span class="hljs-built_in">print</span>(img_src)<br>            <span class="hljs-comment"># 请求图片</span><br>            img = requests.get(url=img_src, headers=headers).content<br>            <span class="hljs-comment"># 图片名</span><br>            img_name = img_src.split(<span class="hljs-string">&#x27;/&#x27;</span>)[-<span class="hljs-number">1</span>]<br>            <span class="hljs-comment"># 图片保存路径</span><br>            img_path = <span class="hljs-string">&#x27;./imgs/&#x27;</span> + img_name<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;img_path = &#x27;</span> + img_path)<br>            <span class="hljs-comment"># 保存图片</span><br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(img_path, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> fp:<br>                fp.write(img)<br>            <span class="hljs-built_in">print</span>(img_name + <span class="hljs-string">&#x27;下载完成！&#x27;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;over!!!&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h2><ul>
+<h3 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h3><ul>
 <li><h5 id="数据分析，爬取页面中标签中的数据"><a href="#数据分析，爬取页面中标签中的数据" class="headerlink" title="数据分析，爬取页面中标签中的数据"></a>数据分析，爬取页面中标签中的数据</h5></li>
 <li><h5 id="这边做完几个课堂练习后，自行找了个网页，练习了下："><a href="#这边做完几个课堂练习后，自行找了个网页，练习了下：" class="headerlink" title="这边做完几个课堂练习后，自行找了个网页，练习了下："></a>这边做完几个课堂练习后，自行找了个网页，练习了下：</h5></li>
 </ul>
@@ -501,7 +504,7 @@
 <li>PyCharm</li>
 </ul>
 <h2 id="课题分析"><a href="#课题分析" class="headerlink" title="课题分析"></a>课题分析</h2><ul>
-<li><p>生成图表三步骤：</p>
+<li><p>生成图表三步骤：<strong>（2023/10/12早）</strong></p>
 <ul>
 <li>数据（构造数据，自行搜集资料构造数据）<ul>
 <li><strong>数据样式选择</strong>（方便接下来导入数据，作数据分析）<ul>
@@ -527,7 +530,16 @@
 <li><p>闲话</p>
 </li>
 </ul>
+<h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
+<li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
+</li>
+<li><h5 id="windows环境pip设置国内源-pip国内源-t梧桐树t的博客-CSDN博客"><a href="#windows环境pip设置国内源-pip国内源-t梧桐树t的博客-CSDN博客" class="headerlink" title="windows环境pip设置国内源_pip国内源_t梧桐树t的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/winerpro/article/details/131009816">windows环境pip设置国内源_pip国内源_t梧桐树t的博客-CSDN博客</a></h5></li>
+<li><p>有可能是网络原因，修改镜像源以保证 pip 得以正常引入包</p>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">pip install pygame -i https:<span class="hljs-regexp">//</span>pypi.tuna.tsinghua.edu.cn<span class="hljs-regexp">/simple/</span><br></code></pre></td></tr></table></figure>
 
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
             
@@ -602,7 +614,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月16日</div>
+          <div>2023年10月18日</div>
         </div>
       
       
