@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          63k 字
+          65k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          158 分钟
+          163 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -1569,6 +1569,69 @@
 <h3 id="快速排序-1"><a href="#快速排序-1" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arr, <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high)</span> &#123;<br>        <span class="hljs-comment">// 判断递归结束的条件</span><br>        <span class="hljs-keyword">if</span> (low &gt;= high) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 定义快慢指针、基准值</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">point</span> <span class="hljs-operator">=</span> arr[low];<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> low;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> low + <span class="hljs-number">1</span>;<br><br>        <span class="hljs-comment">// 快指针检索大数</span><br>        <span class="hljs-keyword">while</span> (fast &lt;= high) &#123;<br>            <span class="hljs-comment">// 慢指针维护小数</span><br>            <span class="hljs-keyword">if</span> (arr[fast] &lt; point) &#123;<br>                <span class="hljs-comment">// todo 0</span><br>                slow++;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> arr[slow];<br>                arr[slow] = arr[fast];<br>                arr[fast] = temp;<br>            &#125;<br>            fast++;<br>        &#125;<br><br>        <span class="hljs-comment">// 返回基准值</span><br>        <span class="hljs-comment">// todo 1</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> arr[slow];<br>        arr[slow] = arr[low];<br>        arr[low] = temp;<br><br>        quickSort(arr, low, slow - <span class="hljs-number">1</span>);<br>        quickSort(arr, slow + <span class="hljs-number">1</span>, high);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="各排序算法比较"><a href="#各排序算法比较" class="headerlink" title="各排序算法比较"></a>各排序算法比较</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/20190917200246823.png" alt="各排序算法比较"></p>
+<h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><ul>
+<li>每一步中寻找最优解，或者说相对最优解的算法思想</li>
+</ul>
+<h3 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h3><h4 id="分发饼干"><a href="#分发饼干" class="headerlink" title="分发饼干"></a>分发饼干</h4><ul>
+<li>你有几个孩子和几摞饼干，孩子有胃口，饼干有数量，尽可能分发饼干以满足胃口大的孩子</li>
+<li>解题思路：<ul>
+<li>要尽可能满足胃口大的孩子，我们不妨把孩子们按胃口排序，从胃口最大的孩子开始，分发饼干</li>
+<li>当然，与之对应的，每一摞饼干也要按照数量排好序</li>
+<li>从胃口大的孩子开始，从数量多的饼干开始，依次给孩子分配</li>
+<li>如果饼干不满足该孩子的胃口（此时饼干数量最多了），那就分配给下一个孩子（他的胃口更小），看能不能满足这个孩子的胃口</li>
+<li>以此类推，饼干不满足孩子胃口，就找下一个孩子；满足了，再拿下一摞饼干进行分配</li>
+<li>这样就能保证：<strong>能够合理分配这些饼干来尽可能满足胃口大的孩子</strong> <strong>（2023/10/19晚）</strong></li>
+</ul>
+</li>
+<li>具体代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 分发饼干</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> g 孩子数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> s 饼干数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 成功分配的孩子数</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findContentChildren</span><span class="hljs-params">(<span class="hljs-type">int</span>[] g, <span class="hljs-type">int</span>[] s)</span> &#123;<br>        <span class="hljs-comment">// 排列孩子、饼干</span><br>        Arrays.sort(g);<br>        Arrays.sort(s);<br>        <span class="hljs-comment">// 记录成功分配的孩子数、每摞饼干数</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> s.length - <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 遍历孩子的胃口</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> g.length - <span class="hljs-number">1</span>; index &gt;= <span class="hljs-number">0</span>; index--) &#123;<br>            <span class="hljs-keyword">if</span> (start &gt;= <span class="hljs-number">0</span> &amp;&amp; g[index] &lt;= s[start]) &#123;<br>                start--;<br>                count++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 返回成功分配的孩子数</span><br>        <span class="hljs-keyword">return</span> count;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="柠檬水找零"><a href="#柠檬水找零" class="headerlink" title="柠檬水找零"></a>柠檬水找零</h4><ul>
+<li><h5 id="情景："><a href="#情景：" class="headerlink" title="情景："></a>情景：</h5><ul>
+<li>你在卖柠檬水，一杯柠檬水 5 块钱，顾客排队购买你的柠檬水</li>
+<li>每位顾客只买一杯，他们给你的金额有5块、10块和20块</li>
+<li>最初你手头的余额为0，确保给每位顾客正确找零</li>
+</ul>
+</li>
+<li><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul>
+<li><p>顾客给你5块钱，你就照收不误</p>
+</li>
+<li><p>顾客给你10块钱，你得找他5块钱</p>
+</li>
+<li><p>顾客给你20块钱，你得找他5块钱和10块钱（优先），或者找他3张5块钱（其次）</p>
+</li>
+<li><p>也就是说，20块钱是不会用来找零钱的，我们就不关注手头20块钱的数目了</p>
+</li>
+<li><p>如果你找不了零钱，那一定是5块和10块其一不够找零钱了，我们只需关注这两种面值即可</p>
+</li>
+<li><h5 id="确保给每位顾客正确找零，就要保证每处理一个顾客（每次找完零钱）后，手头的5块和10块不能“欠费”（2023-10-19晚）"><a href="#确保给每位顾客正确找零，就要保证每处理一个顾客（每次找完零钱）后，手头的5块和10块不能“欠费”（2023-10-19晚）" class="headerlink" title="确保给每位顾客正确找零，就要保证每处理一个顾客（每次找完零钱）后，手头的5块和10块不能“欠费”（2023/10/19晚）"></a>确保给每位顾客正确找零，就要保证每处理一个顾客（每次找完零钱）后，手头的5块和10块不能“欠费”（2023/10/19晚）</h5></li>
+</ul>
+</li>
+<li><p>具体代码如下：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 柠檬水找零</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> bills 排队中的顾客</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span> 能否全部找零</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">lemonadeChange</span><span class="hljs-params">(<span class="hljs-type">int</span>[] bills)</span> &#123;<br>       <span class="hljs-comment">// 这里只表示5元和10元纸币的数量，而不是总金额</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">cash_5</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">cash_10</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; bills.length; i++) &#123;<br>           <span class="hljs-comment">// 收到5块钱</span><br>           <span class="hljs-keyword">if</span> (bills[i] == <span class="hljs-number">5</span>) &#123;<br>               cash_5++;<br>               <span class="hljs-comment">// 收到10块钱</span><br>           &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (bills[i] == <span class="hljs-number">10</span>) &#123;<br>               cash_5--;<br>               cash_10++;<br>               <span class="hljs-comment">// 收到20块钱</span><br>           &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (bills[i] == <span class="hljs-number">20</span>) &#123;<br>               <span class="hljs-keyword">if</span> (cash_10 &gt; <span class="hljs-number">0</span>) &#123;<br>                   cash_10--;<br>                   cash_5--;<br>               &#125; <span class="hljs-keyword">else</span> &#123;<br>                   cash_5 -= <span class="hljs-number">3</span>;<br>               &#125;<br>           &#125;<br>           <span class="hljs-keyword">if</span> (cash_5 &lt; <span class="hljs-number">0</span> || cash_10 &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>       &#125;<br>       <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="分发糖果"><a href="#分发糖果" class="headerlink" title="分发糖果"></a>分发糖果</h4><ul>
+<li><h5 id="情景：-1"><a href="#情景：-1" class="headerlink" title="情景："></a>情景：</h5><ul>
+<li>你有几个孩子，糖果是无限制的，每个孩子都有各自的评分</li>
+<li>要求<strong>根据他们的评分合理地给他们分发糖果</strong>，并要求用最少的糖果数完成</li>
+</ul>
+</li>
+<li><p>解题思路：</p>
+</li>
+<li><p>具体代码如下：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">candy</span><span class="hljs-params">(<span class="hljs-type">int</span>[] ratings)</span> &#123;<br>        <span class="hljs-type">int</span>[] candyVec = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[ratings.length];<br>        candyVec[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; ratings.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (ratings[i] &gt; ratings[i - <span class="hljs-number">1</span>]) &#123;<br>                candyVec[i] = candyVec[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                candyVec[i] = <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> ratings.length - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">if</span> (ratings[i] &gt; ratings[i + <span class="hljs-number">1</span>]) &#123;<br>                candyVec[i] = Math.max(candyVec[i], candyVec[i + <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> s : candyVec) &#123;<br>            ans += s;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 
                 
               </div>

@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          17k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          39 分钟
+          43 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：5 天前
+                    本文最后更新于：6 天前
                   
                 
               </p>
@@ -546,6 +546,28 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">timer5</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">ScheduledExecutorService</span> <span class="hljs-variable">scheduledExecutorService</span> <span class="hljs-operator">=</span> Executors.newSingleThreadScheduledExecutor();<br>        System.out.println(<span class="hljs-string">&quot;2秒后开始执行任务，此刻时间---&quot;</span> + LocalDateTime.now());<br>        <span class="hljs-comment">// 任务完成后间隔4秒开始执行下一次任务</span><br>        scheduledExecutorService.scheduleWithFixedDelay(() -&gt; &#123;<br>            System.out.println(<span class="hljs-string">&quot;任务开始---&quot;</span> + LocalDateTime.now());<br>            <span class="hljs-keyword">try</span> &#123;<br>                Thread.sleep(<span class="hljs-number">2000</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>            System.out.println(<span class="hljs-string">&quot;任务结束---&quot;</span> + LocalDateTime.now());<br>        &#125;, <span class="hljs-number">2000</span>, <span class="hljs-number">4000</span>, TimeUnit.MILLISECONDS);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
+<h4 id="DelayQueue-延迟任务"><a href="#DelayQueue-延迟任务" class="headerlink" title="DelayQueue 延迟任务"></a>DelayQueue 延迟任务</h4><ul>
+<li><h5 id="DelayQueue是JDK提供的api，是一个延迟队列"><a href="#DelayQueue是JDK提供的api，是一个延迟队列" class="headerlink" title="DelayQueue是JDK提供的api，是一个延迟队列"></a>DelayQueue是JDK提供的api，是一个延迟队列</h5></li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs livescript">@Slf4j<br>public <span class="hljs-keyword">class</span> <span class="hljs-title class_">DelayQueueDemo</span> &#123;<br><br>    public <span class="hljs-keyword">static</span> <span class="hljs-literal">void</span> main(<span class="hljs-built_in">String</span>[] args) &#123;<br>        DelayQueue&lt;SanYouTask&gt; sanYouTaskDelayQueue = <span class="hljs-keyword">new</span> DelayQueue&lt;&gt;();<br><br>        <span class="hljs-keyword">new</span> Thread<span class="hljs-function"><span class="hljs-params">(() -&gt; &#123;</span></span><br><span class="hljs-params"><span class="hljs-function">            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span></span><br><span class="hljs-params"><span class="hljs-function">                <span class="hljs-keyword">try</span> &#123;</span></span><br><span class="hljs-params"><span class="hljs-function">                    SanYouTask sanYouTask = sanYouTaskDelayQueue.take();</span></span><br><span class="hljs-params"><span class="hljs-function">                    log.info(<span class="hljs-string">&quot;获取到延迟任务:&#123;&#125;&quot;</span>, sanYouTask.getTaskContent());</span></span><br><span class="hljs-params"><span class="hljs-function">                &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;</span></span><br><span class="hljs-params"><span class="hljs-function">                &#125;</span></span><br><span class="hljs-params"><span class="hljs-function">            &#125;</span></span><br><span class="hljs-params"><span class="hljs-function">        &#125;)</span>.<span class="hljs-title">start</span><span class="hljs-params">()</span>;</span><br><span class="hljs-function"></span><br><span class="hljs-function">        <span class="hljs-title">log</span>.<span class="hljs-title">info</span><span class="hljs-params">(<span class="hljs-string">&quot;提交延迟任务&quot;</span>)</span>;</span><br><span class="hljs-function">        <span class="hljs-title">sanYouTaskDelayQueue</span>.<span class="hljs-title">offer</span><span class="hljs-params">(<span class="hljs-keyword">new</span> SanYouTask(<span class="hljs-string">&quot;三友的java日记5s&quot;</span>, <span class="hljs-number">5</span>L))</span>;</span><br><span class="hljs-function">        <span class="hljs-title">sanYouTaskDelayQueue</span>.<span class="hljs-title">offer</span><span class="hljs-params">(<span class="hljs-keyword">new</span> SanYouTask(<span class="hljs-string">&quot;三友的java日记3s&quot;</span>, <span class="hljs-number">3</span>L))</span>;</span><br><span class="hljs-function">        <span class="hljs-title">sanYouTaskDelayQueue</span>.<span class="hljs-title">offer</span><span class="hljs-params">(<span class="hljs-keyword">new</span> SanYouTask(<span class="hljs-string">&quot;三友的java日记8s&quot;</span>, <span class="hljs-number">8</span>L))</span>;</span><br><span class="hljs-function">    &#125;</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SanYouTask</span> <span class="hljs-title">implements</span> <span class="hljs-title">Delayed</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String taskContent;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-built_in">Long</span> triggerTime;<br><br>    <span class="hljs-keyword">public</span> SanYouTask(String taskContent, <span class="hljs-built_in">Long</span> delayTime) &#123;<br>        <span class="hljs-keyword">this</span>.taskContent = taskContent;<br>        <span class="hljs-keyword">this</span>.triggerTime = System.currentTimeMillis() + delayTime * <span class="hljs-number">1000</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> long getDelay(TimeUnit unit) &#123;<br>        <span class="hljs-keyword">return</span> unit.convert(triggerTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> int compareTo(Delayed o) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.triggerTime.compareTo(((SanYouTask) o).triggerTime);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>getDelay</code>方法返回<strong>这个任务还剩多久时间可以执行</strong>，小于0的时候说明可以这个延迟任务到了执行的时间了。</li>
+<li><code>compareTo</code>这个是<strong>对任务排序</strong>的，保证最先到延迟时间的任务排到队列的头。<ul>
+<li><strong>taskContent</strong>：延迟任务的具体的内容</li>
+<li><strong>delayTime</strong>：延迟时间，秒为单位</li>
+</ul>
+</li>
+</ul>
+<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><blockquote>
+<p><code>offer</code>方法在提交任务的时候，会通过根据<code>compareTo</code>的实现对任务进行排序，将最先需要被执行的任务放到队列头。</p>
+<p><code>take</code>方法获取任务的时候，会拿到队列头部的元素，也就是队列中最早需要被执行的任务，通过getDelay返回值判断任务是否需要被立刻执行，如果需要的话，就返回任务，如果不需要就会等待这个任务到延迟时间的剩余时间，当时间到了就会将任务返回。</p>
+</blockquote>
+<ul>
+<li>效果如下：</li>
+</ul>
 <h4 id="Spring提供定时任务"><a href="#Spring提供定时任务" class="headerlink" title="Spring提供定时任务"></a>Spring提供定时任务</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓哈哈</span><br><span class="hljs-comment"> * 2023/8/29 11:50</span><br><span class="hljs-comment"> * Function:</span><br><span class="hljs-comment"> * Version 1.0</span><br><span class="hljs-comment"> */</span><br> <br><span class="hljs-meta">@EnableScheduling</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Timer</span> &#123;<br>    <span class="hljs-meta">@Scheduled(cron = &quot;*/2 * * * * *&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">timer</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;哈哈哈哈&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -553,7 +575,7 @@
 </ul>
 <h4 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h4><ul>
 <li><h5 id="在线生成工具：在线Cron表达式生成器-qqe2-com"><a href="#在线生成工具：在线Cron表达式生成器-qqe2-com" class="headerlink" title="在线生成工具：在线Cron表达式生成器 (qqe2.com)"></a>在线生成工具：<a target="_blank" rel="noopener" href="https://cron.qqe2.com/">在线Cron表达式生成器 (qqe2.com)</a></h5></li>
-<li><h5 id="简单地介绍下如何使用吧："><a href="#简单地介绍下如何使用吧：" class="headerlink" title="简单地介绍下如何使用吧："></a>简单地介绍下如何使用吧：</h5></li>
+<li><h5 id="简单地介绍下如何使用吧：（2023-08-25早）"><a href="#简单地介绍下如何使用吧：（2023-08-25早）" class="headerlink" title="简单地介绍下如何使用吧：（2023/08/25早）"></a>简单地介绍下如何使用吧：（2023/08/25早）</h5></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230829122937976.png" alt="image-20230829122937976"></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230829123041111.png" alt="image-20230829123041111"></p>
