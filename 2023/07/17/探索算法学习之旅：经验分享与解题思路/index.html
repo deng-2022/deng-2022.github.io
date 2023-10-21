@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -1626,12 +1626,10 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">candy</span><span class="hljs-params">(<span class="hljs-type">int</span>[] ratings)</span> &#123;<br>        <span class="hljs-type">int</span>[] candyVec = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[ratings.length];<br>        candyVec[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; ratings.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (ratings[i] &gt; ratings[i - <span class="hljs-number">1</span>]) &#123;<br>                candyVec[i] = candyVec[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                candyVec[i] = <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> ratings.length - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">if</span> (ratings[i] &gt; ratings[i + <span class="hljs-number">1</span>]) &#123;<br>                candyVec[i] = Math.max(candyVec[i], candyVec[i + <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> s : candyVec) &#123;<br>            ans += s;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-
+<h3 id="实战训练"><a href="#实战训练" class="headerlink" title="实战训练"></a>实战训练</h3><h4 id="判断区间是否重叠"><a href="#判断区间是否重叠" class="headerlink" title="判断区间是否重叠"></a>判断区间是否重叠</h4><h4 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h4><ul>
+<li>合并：维护新的区间，一直比较新区间的尾部，直到不合并才开辟新区间（++idx）</li>
+<li>不合并：</li>
+</ul>
 
                 
               </div>
