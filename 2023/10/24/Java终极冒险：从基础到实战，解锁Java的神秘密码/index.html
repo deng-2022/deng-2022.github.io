@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🚄 Java狂热者的神秘宝藏之旅，一场酣畅淋漓的Java知识盛宴，让你的程序更强大、更快速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java终极冒险：从基础到实战，解锁Java的神秘密码">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/10/24/Java%E7%BB%88%E6%9E%81%E5%86%92%E9%99%A9%EF%BC%9A%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E8%A7%A3%E9%94%81Java%E7%9A%84%E7%A5%9E%E7%A7%98%E5%AF%86%E7%A0%81/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="🚄 Java狂热者的神秘宝藏之旅，一场酣畅淋漓的Java知识盛宴，让你的程序更强大、更快速">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea3.jpg">
+<meta property="article:published_time" content="2023-10-24T07:09:16.000Z">
+<meta property="article:modified_time" content="2023-10-24T08:49:59.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="线程池">
+<meta property="article:tag" content="并发编程">
+<meta property="article:tag" content="JUC">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/sea3.jpg">
+  
+  
+  
+  <title>Java终极冒险：从基础到实战，解锁Java的神秘密码 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java终极冒险：从基础到实战，解锁Java的神秘密码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-24 15:09" pubdate>
+          2023年10月24日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Java"
+        id="heading-d52387880e1ea22817a72d3759213819" role="tab" data-toggle="collapse" href="#collapse-d52387880e1ea22817a72d3759213819"
+        aria-expanded="true"
+      >
+        Java
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-d52387880e1ea22817a72d3759213819"
+           role="tabpanel" aria-labelledby="heading-d52387880e1ea22817a72d3759213819">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/10/24/Java%E7%BB%88%E6%9E%81%E5%86%92%E9%99%A9%EF%BC%9A%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E8%A7%A3%E9%94%81Java%E7%9A%84%E7%A5%9E%E7%A7%98%E5%AF%86%E7%A0%81/" title="Java终极冒险：从基础到实战，解锁Java的神秘密码"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Java终极冒险：从基础到实战，解锁Java的神秘密码</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础知识"
+        id="heading-8453e91e9011ab99dfbb3b16f56ac222" role="tab" data-toggle="collapse" href="#collapse-8453e91e9011ab99dfbb3b16f56ac222"
+        aria-expanded="false"
+      >
+        基础知识
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8453e91e9011ab99dfbb3b16f56ac222"
+           role="tabpanel" aria-labelledby="heading-8453e91e9011ab99dfbb3b16f56ac222">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/04/09/Java%E6%B3%9B%E5%9E%8B%E7%9A%84%E7%90%86%E8%A7%A3/" title="Java泛型：赋予灵活性的利器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java泛型：赋予灵活性的利器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/04/09/%E7%89%9B%E5%AE%A2-%E5%88%B7%E9%A2%98/" title="牛客-刷题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">牛客-刷题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="false"
+      >
+        算法
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/04/14/%E5%86%B2%E5%88%BA%E8%93%9D%E6%A1%A5%E6%9D%AF/" title="冲刺蓝桥杯"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">冲刺蓝桥杯</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="设计模式"
+        id="heading-301a19970448f8e4f27ddae7a7d415fe" role="tab" data-toggle="collapse" href="#collapse-301a19970448f8e4f27ddae7a7d415fe"
+        aria-expanded="false"
+      >
+        设计模式
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-301a19970448f8e4f27ddae7a7d415fe"
+           role="tabpanel" aria-labelledby="heading-301a19970448f8e4f27ddae7a7d415fe">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="false"
+      >
+        经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/09/17/%E6%94%B9%E5%8F%98%E7%BC%96%E7%A0%81%E6%B8%B8%E6%88%8F%E8%A7%84%E5%88%99%EF%BC%9A%E6%8F%AD%E7%A7%9823%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%AD%85%E5%8A%9B%E5%92%8C%E5%AE%9E%E7%94%A8%E6%80%A7/" title="改变编码游戏规则：揭秘23种设计模式的魅力和实用性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">改变编码游戏规则：揭秘23种设计模式的魅力和实用性</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java终极冒险：从基础到实战，解锁Java的神秘密码</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：5 小时前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><ul>
+<li><h5 id="🥇-推荐阅读："><a href="#🥇-推荐阅读：" class="headerlink" title="🥇 推荐阅读："></a>🥇 推荐阅读：</h5></li>
+</ul>
+<blockquote>
+<h5 id="java中的反射原理，为什么要使用反射以及反射使用场景（面试常问）-掘金-juejin-cn"><a href="#java中的反射原理，为什么要使用反射以及反射使用场景（面试常问）-掘金-juejin-cn" class="headerlink" title="java中的反射原理，为什么要使用反射以及反射使用场景（面试常问） - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7288988872829190204">java中的反射原理，为什么要使用反射以及反射使用场景（面试常问） - 掘金 (juejin.cn)</a></h5><h5 id="Java-反射机制详解-JavaGuide-Java面试-学习指南"><a href="#Java-反射机制详解-JavaGuide-Java面试-学习指南" class="headerlink" title="Java 反射机制详解 | JavaGuide(Java面试 + 学习指南)"></a><a target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/reflection.html">Java 反射机制详解 | JavaGuide(Java面试 + 学习指南)</a></h5><h5 id="Java-代理模式详解-JavaGuide-Java面试-学习指南"><a href="#Java-代理模式详解-JavaGuide-Java面试-学习指南" class="headerlink" title="Java 代理模式详解 | JavaGuide(Java面试 + 学习指南)"></a><a target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/proxy.html">Java 代理模式详解 | JavaGuide(Java面试 + 学习指南)</a></h5></blockquote>
+<h1 id="思想火花"><a href="#思想火花" class="headerlink" title="思想火花"></a>思想火花</h1><h2 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h2><h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><blockquote>
+<p>Java 中的反射机制是指：在运行状态中，对于任何一个类，我们都能获取到这个类的所有属性和方法，还可以调用这些属性和方法</p>
+<h5 id="🔥-推荐阅读：Java-反射机制详解-JavaGuide-Java面试-学习指南"><a href="#🔥-推荐阅读：Java-反射机制详解-JavaGuide-Java面试-学习指南" class="headerlink" title="🔥 推荐阅读：Java 反射机制详解 | JavaGuide(Java面试 + 学习指南)"></a>🔥 推荐阅读：<a target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/reflection.html">Java 反射机制详解 | JavaGuide(Java面试 + 学习指南)</a></h5></blockquote>
+<h3 id="反射的应用场景"><a href="#反射的应用场景" class="headerlink" title="反射的应用场景"></a>反射的应用场景</h3><blockquote>
+<p>Spring 中的依赖注入、RPC 调用、Java 中的动态代理实现</p>
+</blockquote>
+<h3 id="简单演示"><a href="#简单演示" class="headerlink" title="简单演示"></a>简单演示</h3><blockquote>
+<p>👏 有关反射内容的介绍，网上多了去了，<strong>详尽且细致</strong>，可以参考<strong>本文开头的推荐阅读篇目</strong>挑选阅读</p>
+</blockquote>
+<ul>
+<li>我们的特点就是<strong>不讲任何多余的废话</strong>，直接通过简单的代码演示，<strong>体会 Java 中的反射机制</strong>** <strong>（2023/10/24午）</strong></li>
+</ul>
+<h4 id="构造-Person-对象"><a href="#构造-Person-对象" class="headerlink" title="构造 Person 对象"></a>构造 Person 对象</h4><ul>
+<li><h5 id="成员属性"><a href="#成员属性" class="headerlink" title="成员属性"></a>成员属性</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 姓名</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> String name;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 分数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">protected</span> Double grade;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 学生id</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">long</span> id;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 年龄</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> age;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 无参构造器</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">()</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 带参构造器</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> name  姓名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> grade 分数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> id    学生id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> age   年龄</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, Double grade, <span class="hljs-type">long</span> id, <span class="hljs-type">int</span> age)</span> &#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.grade = grade;<br>    <span class="hljs-built_in">this</span>.id = id;<br>    <span class="hljs-built_in">this</span>.age = age;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 带参构造器 私有</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> name  姓名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> grade 分数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> id    学生id</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, Double grade, <span class="hljs-type">long</span> id)</span> &#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.grade = grade;<br>    <span class="hljs-built_in">this</span>.id = id;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sayHello</span><span class="hljs-params">()</span>&#123;<br>    System.out.println(<span class="hljs-string">&quot;Hello!&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sayHi</span><span class="hljs-params">()</span>&#123;<br>    System.out.println(<span class="hljs-string">&quot;Hi!&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sayName</span><span class="hljs-params">(String name)</span>&#123;<br>    System.out.println(name);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>当然了，每个成员属性都提供有 <strong>getter、setter 方法</strong>，这里省略不写</li>
+</ul>
+<h4 id="获取Class对象"><a href="#获取Class对象" class="headerlink" title="获取Class对象"></a>获取Class对象</h4><ul>
+<li><h5 id="代码详情："><a href="#代码详情：" class="headerlink" title="代码详情："></a>代码详情：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 1.1.通过具体的类的情况</span><br>Class&lt;Person&gt; personClass1 = Person.class;<br><span class="hljs-comment">// 1.2.通过现有的对象实例</span><br><span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Person</span>&gt; personClass2 = person.getClass();<br><span class="hljs-comment">// 1.3.通过读取类路径</span><br>Class&lt;?&gt; personClass3 = Class.forName(<span class="hljs-string">&quot;反射.Person&quot;</span>);<br><br>System.out.println(<span class="hljs-string">&quot;-----------获取Class对象-----------&quot;</span>);<br>System.out.println(personClass1);<br>System.out.println(personClass2);<br>System.out.println(personClass3);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231024154344266.png" alt="image-20231024154344266"></p>
+<h4 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h4><ul>
+<li><h5 id="代码详情：-1"><a href="#代码详情：-1" class="headerlink" title="代码详情："></a>代码详情：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 2.1.获取属性(非私有)</span><br>Field[] fields = personClass1.getFields();<br>System.out.println(<span class="hljs-string">&quot;-----------获取属性(Public)-----------&quot;</span>);<br><span class="hljs-keyword">for</span> (Field field : fields) &#123;<br>    System.out.println(<span class="hljs-string">&quot;属性名: &quot;</span> + field.getName() + <span class="hljs-string">&quot; | 类型: &quot;</span> + field.getType());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 2.2.获取属性(所有)</span><br><span class="hljs-type">Person</span> <span class="hljs-variable">person1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">&quot;邓哈哈&quot;</span>, <span class="hljs-number">99.0</span>, <span class="hljs-number">18889898988L</span>, <span class="hljs-number">18</span>);<br><br>Field[] fields2 = personClass1.getDeclaredFields();<br>System.out.println(<span class="hljs-string">&quot;-----------获取属性(所有)-----------&quot;</span>);<br><span class="hljs-keyword">for</span> (Field field : fields2) &#123;<br>    field.setAccessible(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 启用访问私有字段</span><br><br>    System.out.println(<span class="hljs-string">&quot;属性名: &quot;</span> + field.getName()<br>            + <span class="hljs-string">&quot; | 类型: &quot;</span> + field.getType()<br>            + <span class="hljs-string">&quot; | 访问修饰符: &quot;</span> + field.getModifiers()<br>            + <span class="hljs-string">&quot; | 属性值: &quot;</span> + field.get(person1));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行结果如下：-（2023-10-24午）"><a href="#执行结果如下：-（2023-10-24午）" class="headerlink" title="执行结果如下： （2023/10/24午）"></a>执行结果如下： <strong>（2023/10/24午）</strong></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231024154829028.png" alt="image-20231024154829028"></p>
+<h4 id="获取方法"><a href="#获取方法" class="headerlink" title="获取方法"></a>获取方法</h4><ul>
+<li><h5 id="代码详情：-2"><a href="#代码详情：-2" class="headerlink" title="代码详情："></a>代码详情：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 3.1.获取方法(所有)</span><br>System.out.println(<span class="hljs-string">&quot;-----------获取方法(所有)-----------&quot;</span>);<br>Method[] methods = personClass1.getMethods();<br><span class="hljs-keyword">for</span> (Method method : methods) &#123;<br>    System.out.println(<span class="hljs-string">&quot;方法名: &quot;</span> + method.getName());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 3.2.调用指定方法(指定方法名)</span><br>System.out.println(<span class="hljs-string">&quot;-----------调用指定方法(指定方法名)-----------&quot;</span>);<br><span class="hljs-type">Method</span> <span class="hljs-variable">sayHello</span> <span class="hljs-operator">=</span> personClass1.getMethod(<span class="hljs-string">&quot;sayHello&quot;</span>);<br>System.out.print(<span class="hljs-string">&quot;方法名: &quot;</span> + sayHello.getName() + <span class="hljs-string">&quot; | 调用结果: &quot;</span>);<br>sayHello.invoke(person);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 3.3.调用私有方法</span><br>System.out.println(<span class="hljs-string">&quot;-----------调用私有方法-----------&quot;</span>);<br><span class="hljs-type">Method</span> <span class="hljs-variable">sayHi</span> <span class="hljs-operator">=</span> personClass1.getDeclaredMethod(<span class="hljs-string">&quot;sayHi&quot;</span>);<br>sayHi.setAccessible(<span class="hljs-literal">true</span>);<br>System.out.print(<span class="hljs-string">&quot;方法名: &quot;</span> + sayHi.getName() + <span class="hljs-string">&quot; | 调用结果: &quot;</span>);<br>sayHi.invoke(person);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 3.4.调用带参方法</span><br>System.out.println(<span class="hljs-string">&quot;-----------调用带参方法-----------&quot;</span>);<br><span class="hljs-type">Method</span> <span class="hljs-variable">sayName</span> <span class="hljs-operator">=</span> personClass1.getDeclaredMethod(<span class="hljs-string">&quot;sayName&quot;</span>, String.class);<br>sayName.setAccessible(<span class="hljs-literal">true</span>);<br>System.out.print(<span class="hljs-string">&quot;方法名: &quot;</span> + sayName.getName() + <span class="hljs-string">&quot; | 调用结果: &quot;</span>);<br>sayName.invoke(person, <span class="hljs-string">&quot;邓哈哈&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行结果如下：-1"><a href="#执行结果如下：-1" class="headerlink" title="执行结果如下："></a>执行结果如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231024154741899.png" alt="image-20231024154741899"></p>
+<h4 id="获取构造器"><a href="#获取构造器" class="headerlink" title="获取构造器"></a>获取构造器</h4><ul>
+<li><h5 id="代码详情：-3"><a href="#代码详情：-3" class="headerlink" title="代码详情："></a>代码详情：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 4.获取构造器</span><br><span class="hljs-comment">// 4.1.获取构造器(Public)</span><br>System.out.println(<span class="hljs-string">&quot;-----------获取构造器(Public)-----------&quot;</span>);<br>Constructor&lt;?&gt;[] constructors = personClass1.getConstructors();<br><span class="hljs-keyword">for</span> (Constructor constructor1 : constructors) &#123;<br>    System.out.println(constructor1);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 4.2.获取构造器(所有)</span><br>System.out.println(<span class="hljs-string">&quot;-----------获取构造器(所有)-----------&quot;</span>);<br>Constructor[] constructors01 = personClass1.getDeclaredConstructors();<br><span class="hljs-keyword">for</span> (Constructor constructor1 : constructors01) &#123;<br>    System.out.println(constructor1);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行结果如下：-（2023-10-24午）-1"><a href="#执行结果如下：-（2023-10-24午）-1" class="headerlink" title="执行结果如下： （2023/10/24午）"></a>执行结果如下： <strong>（2023/10/24午）</strong></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231024155438415.png" alt="image-20231024155438415"></p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="什么是代理"><a href="#什么是代理" class="headerlink" title="什么是代理"></a>什么是代理</h3><blockquote>
+<p>Java 中的代理模式是指：使用代理对象来代替对真实对象的访问，这样可以在不修改原目标对象的前提下，提供额外的功能操作</p>
+<ul>
+<li>代理模式可<strong>隐藏客户端真正调用的对象</strong>，<strong>实现代码解耦</strong>，增强系统的可维护性和可扩展性</li>
+<li>代理模式常用于需要<strong>控制对对象的访问，并提供远程访问、安全检查和缓存</strong>等功能 <strong>（2023/10/20午）</strong></li>
+</ul>
+<h5 id="🔥-推荐阅读：Java-代理模式详解-JavaGuide-Java面试-学习指南"><a href="#🔥-推荐阅读：Java-代理模式详解-JavaGuide-Java面试-学习指南" class="headerlink" title="🔥 推荐阅读：Java 代理模式详解 | JavaGuide(Java面试 + 学习指南)"></a>🔥 推荐阅读：<a target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/proxy.html">Java 代理模式详解 | JavaGuide(Java面试 + 学习指南)</a></h5></blockquote>
+<h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
+<li>定义一个接口及其实现类（被代理类）</li>
+<li>创建一个代理类，同样实现这个接口</li>
+<li>将目标对象注入进代理类，在代理类的对应方法中调用目标类的对应方法，这样我们就可以通过代理类屏蔽对目标对象的访问，并且可以在目标方法执行前后做一些自己想做的事情</li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li><h5 id="短信发送接口（2023-10-24午）"><a href="#短信发送接口（2023-10-24午）" class="headerlink" title="短信发送接口（2023/10/24午）"></a>短信发送接口（2023/10/24午）</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 短信发送接口</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SmsService</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">(String message)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="短信发送实现类"><a href="#短信发送实现类" class="headerlink" title="短信发送实现类"></a>短信发送实现类</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 短信发送实现</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SmsServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">SmsService</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">(String message)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;send message:&quot;</span> + message);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="短信发送代理类"><a href="#短信发送代理类" class="headerlink" title="短信发送代理类"></a>短信发送代理类</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 短信发送代理类</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SmsProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">SmsService</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> SmsService smsService;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SmsProxy</span><span class="hljs-params">(SmsService smsService)</span> &#123;<br>        <span class="hljs-built_in">this</span>.smsService = smsService;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">send</span><span class="hljs-params">(String message)</span> &#123;<br>        <span class="hljs-comment">// 调用方法之前，我们可以添加自己的操作</span><br>        System.out.println(<span class="hljs-string">&quot;----------在send()方法之前执行的操作----------&quot;</span>);<br>        smsService.send(message);<br>        <span class="hljs-comment">// 调用方法之后，我们同样可以添加自己的操作</span><br>        System.out.println(<span class="hljs-string">&quot;----------在send()方法之后执行的操作----------&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">SmsService</span> <span class="hljs-variable">smsService</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SmsServiceImpl</span>();<br>        <span class="hljs-type">SmsProxy</span> <span class="hljs-variable">smsProxy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SmsProxy</span>(smsService);<br>        smsProxy.send(<span class="hljs-string">&quot;java&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行结果如下：-2"><a href="#执行结果如下：-2" class="headerlink" title="执行结果如下："></a>执行结果如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231024163414514.png" alt="image-20231024163414514"></p>
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><h4 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h4><h4 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h4><h1 id="锦绣收官"><a href="#锦绣收官" class="headerlink" title="锦绣收官"></a>锦绣收官</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Java/" class="category-chain-item">Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">#线程池</a>
+      
+        <a href="/blog/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">#并发编程</a>
+      
+        <a href="/blog/tags/JUC/">#JUC</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java终极冒险：从基础到实战，解锁Java的神秘密码</div>
+      <div>https://deng-2022.gitee.io/blog/2023/10/24/Java终极冒险：从基础到实战，解锁Java的神秘密码/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年10月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/10/24/Redis%E9%A3%8E%E6%9A%B4%EF%BC%9A%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%BA%94%E7%94%A8%EF%BC%8C%E4%B8%80%E6%8E%A2%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A5%A5%E7%A7%98/" title="Redis风暴：从原理到应用，一探内存中的数据奥秘">
+                        <span class="hidden-mobile">Redis风暴：从原理到应用，一探内存中的数据奥秘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
