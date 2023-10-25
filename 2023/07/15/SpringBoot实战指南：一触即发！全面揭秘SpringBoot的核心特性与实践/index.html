@@ -16,25 +16,27 @@
   <meta name="author" content="Memory">
   <meta name="keywords" content="">
   
-    <meta name="description" content="🍬 基于个人实践经验，探索Spring Boot配置的奇妙世界">
+    <meta name="description" content="🌮 破茧而出：步步为营，一网打尽SpringBoot核心特性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot配置：玩转自身实践">
-<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/07/15/SpringBoot%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/07/15/SpringBoot%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%EF%BC%9A%E4%B8%80%E8%A7%A6%E5%8D%B3%E5%8F%91%EF%BC%81%E5%85%A8%E9%9D%A2%E6%8F%AD%E7%A7%98SpringBoot%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7%E4%B8%8E%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
-<meta property="og:description" content="🍬 基于个人实践经验，探索Spring Boot配置的奇妙世界">
+<meta property="og:description" content="🌮 破茧而出：步步为营，一网打尽SpringBoot核心特性">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/night.jpg">
 <meta property="article:published_time" content="2023-07-15T09:33:16.000Z">
-<meta property="article:modified_time" content="2023-10-05T08:40:45.000Z">
+<meta property="article:modified_time" content="2023-10-25T13:23:45.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="AOP">
+<meta property="article:tag" content="SpringMVC">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/night.jpg">
   
   
   
-  <title>Spring Boot配置：玩转自身实践 - Memory&#39;s blog</title>
+  <title>SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践 - Memory&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Spring Boot配置：玩转自身实践"></span>
+            <span id="subtitle" data-typed-text="SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践"></span>
           
         </div>
 
@@ -255,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.2k 字
+          8.3k 字
         
       </span>
     
@@ -266,7 +268,7 @@
         
         
         
-          11 分钟
+          21 分钟
         
       </span>
     
@@ -319,12 +321,39 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="AOP"
+        id="heading-f424f4c1bf88d8ec1ac1a91a9d9d9320" role="tab" data-toggle="collapse" href="#collapse-f424f4c1bf88d8ec1ac1a91a9d9d9320"
+        aria-expanded="true"
+      >
+        AOP
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f424f4c1bf88d8ec1ac1a91a9d9d9320"
+           role="tabpanel" aria-labelledby="heading-f424f4c1bf88d8ec1ac1a91a9d9d9320">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringBoot"
         id="heading-c8428a45869e78fb361ed20b9c23b0a8" role="tab" data-toggle="collapse" href="#collapse-c8428a45869e78fb361ed20b9c23b0a8"
         aria-expanded="true"
       >
         SpringBoot
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -345,18 +374,18 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Maven"
-        id="heading-9115c10980645c41313f244ac1a377f7" role="tab" data-toggle="collapse" href="#collapse-9115c10980645c41313f244ac1a377f7"
-        aria-expanded="false"
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="SpringMVC"
+        id="heading-ebf85741b99c595fd8e371acde50121c" role="tab" data-toggle="collapse" href="#collapse-ebf85741b99c595fd8e371acde50121c"
+        aria-expanded="true"
       >
-        Maven
+        SpringMVC
         <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-9115c10980645c41313f244ac1a377f7"
-           role="tabpanel" aria-labelledby="heading-9115c10980645c41313f244ac1a377f7">
+      <div class="category-collapse collapse show" id="collapse-ebf85741b99c595fd8e371acde50121c"
+           role="tabpanel" aria-labelledby="heading-ebf85741b99c595fd8e371acde50121c">
         
         
           
@@ -367,270 +396,6 @@
   </div>
 
           
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
-        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
-        aria-expanded="false"
-      >
-        经验
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-32a8e000e928e6dc255876d9fc0178b3"
-           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
-        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-        aria-expanded="false"
-      >
-        项目
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/blog/2023/08/24/Maven%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7%EF%BC%9A%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/" title="Maven奇技淫巧：优化项目构建与性能调优"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Maven奇技淫巧：优化项目构建与性能调优</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Mybatis"
-        id="heading-dcfb60bf74123650041eacb77b10c116" role="tab" data-toggle="collapse" href="#collapse-dcfb60bf74123650041eacb77b10c116"
-        aria-expanded="false"
-      >
-        Mybatis
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-dcfb60bf74123650041eacb77b10c116"
-           role="tabpanel" aria-labelledby="heading-dcfb60bf74123650041eacb77b10c116">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Redis"
-        id="heading-e111446745a1825b862f8727ae63bce4" role="tab" data-toggle="collapse" href="#collapse-e111446745a1825b862f8727ae63bce4"
-        aria-expanded="false"
-      >
-        Redis
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-e111446745a1825b862f8727ae63bce4"
-           role="tabpanel" aria-labelledby="heading-e111446745a1825b862f8727ae63bce4">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="阿里云OSS"
-        id="heading-a4bd7c032dc05684f30d3c80c60cf16e" role="tab" data-toggle="collapse" href="#collapse-a4bd7c032dc05684f30d3c80c60cf16e"
-        aria-expanded="false"
-      >
-        阿里云OSS
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-a4bd7c032dc05684f30d3c80c60cf16e"
-           role="tabpanel" aria-labelledby="heading-a4bd7c032dc05684f30d3c80c60cf16e">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="接口文档"
-        id="heading-062d05a45d82ada305bd81b164f6df02" role="tab" data-toggle="collapse" href="#collapse-062d05a45d82ada305bd81b164f6df02"
-        aria-expanded="false"
-      >
-        接口文档
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-062d05a45d82ada305bd81b164f6df02"
-           role="tabpanel" aria-labelledby="heading-062d05a45d82ada305bd81b164f6df02">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
-        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
-        aria-expanded="false"
-      >
-        经验
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-32a8e000e928e6dc255876d9fc0178b3"
-           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
-        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-        aria-expanded="false"
-      >
-        项目
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/blog/2023/07/06/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%EF%BC%9A%E5%BC%80%E5%8F%91%E8%87%AA%E5%B7%B1%E7%9A%84%E5%AE%9A%E5%88%B6%E5%8C%96-Spring-Boot-%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF/" title="快速启动：开发自己的定制化 Spring Boot 项目模板"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">快速启动：开发自己的定制化 Spring Boot 项目模板</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
   
     
     
@@ -642,7 +407,7 @@
         aria-expanded="true"
       >
         经验
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -651,51 +416,15 @@
         
         
           
-          
   <div class="category-post-list">
     
     
       
       
-        <a href="/blog/2023/07/15/SpringBoot%E9%85%8D%E7%BD%AE/" title="Spring Boot配置：玩转自身实践"
+        <a href="/blog/2023/07/15/SpringBoot%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%EF%BC%9A%E4%B8%80%E8%A7%A6%E5%8D%B3%E5%8F%91%EF%BC%81%E5%85%A8%E9%9D%A2%E6%8F%AD%E7%A7%98SpringBoot%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">Spring Boot配置：玩转自身实践</span>
-        </a>
-      
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
-        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-        aria-expanded="false"
-      >
-        项目
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/blog/2023/08/23/SpringBoot%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%92%8C%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/" title="SpringBoot第三方服务开发实践：版本兼容性和依赖管理"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">SpringBoot第三方服务开发实践：版本兼容性和依赖管理</span>
+          <span class="category-post">SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践</span>
         </a>
       
     
@@ -705,70 +434,6 @@
       </div>
     </div>
   
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
-        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-        aria-expanded="false"
-      >
-        项目
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
-        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
-        aria-expanded="false"
-      >
-        经验
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-32a8e000e928e6dc255876d9fc0178b3"
-           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/blog/2023/08/05/%E6%9E%84%E5%BB%BA%E4%BE%BF%E6%8D%B7%E7%9A%84Spring-Boot-SDK%EF%BC%8C%E8%BD%BB%E6%9D%BE%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/" title="构建便捷的Spring Boot SDK，轻松调用接口"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">构建便捷的Spring Boot SDK，轻松调用接口</span>
-        </a>
-      
-    
-  </div>
-
         
       </div>
     </div>
@@ -794,12 +459,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Spring Boot配置：玩转自身实践</h1>
+            <h1 style="display: none">SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践</h1>
             
               <p class="note note-success">
                 
                   
-                    本文最后更新于：19 天前
+                    本文最后更新于：2 小时前
                   
                 
               </p>
@@ -807,10 +472,94 @@
             
               <div class="markdown-body">
                 
-                <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h1><ul>
-<li></li>
+                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><ul>
+<li><h5 id="🥇-推荐阅读："><a href="#🥇-推荐阅读：" class="headerlink" title="🥇 推荐阅读："></a>🥇 推荐阅读：</h5></li>
 </ul>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="配置属性映射成员变量-实体类"><a href="#配置属性映射成员变量-实体类" class="headerlink" title="配置属性映射成员变量/实体类"></a>配置属性映射成员变量/实体类</h3><ul>
+<blockquote>
+<h5 id="🔥-AOP："><a href="#🔥-AOP：" class="headerlink" title="🔥 AOP："></a>🔥 AOP：</h5><ul>
+<li><h5 id="AOP是什么？Spring-Boot-AOP-怎么使用？-掘金-juejin-cn"><a href="#AOP是什么？Spring-Boot-AOP-怎么使用？-掘金-juejin-cn" class="headerlink" title="AOP是什么？Spring Boot AOP 怎么使用？ - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7235167849428926521">AOP是什么？Spring Boot AOP 怎么使用？ - 掘金 (juejin.cn)</a></h5></li>
+<li><h5 id="一文读懂-AOP-你想要的最全面-AOP-方法探讨-掘金-juejin-cn"><a href="#一文读懂-AOP-你想要的最全面-AOP-方法探讨-掘金-juejin-cn" class="headerlink" title="一文读懂 AOP | 你想要的最全面 AOP 方法探讨 - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903728525361165">一文读懂 AOP | 你想要的最全面 AOP 方法探讨 - 掘金 (juejin.cn)</a></h5></li>
+</ul>
+<h5 id="🍖-JSON-与-Java-对象之间的转换："><a href="#🍖-JSON-与-Java-对象之间的转换：" class="headerlink" title="🍖 JSON 与 Java 对象之间的转换："></a>🍖 JSON 与 Java 对象之间的转换：</h5><ul>
+<li><h5 id="JSON-与-Java-对象之间的转化-掘金-juejin-cn"><a href="#JSON-与-Java-对象之间的转化-掘金-juejin-cn" class="headerlink" title="JSON 与 Java 对象之间的转化 - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7215207897520062501">JSON 与 Java 对象之间的转化 - 掘金 (juejin.cn)</a></h5></li>
+</ul>
+</blockquote>
+<h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><h2 id="SpringBoot-AOP"><a href="#SpringBoot-AOP" class="headerlink" title="SpringBoot AOP"></a>SpringBoot AOP</h2><h3 id="什么是-AOP？"><a href="#什么是-AOP？" class="headerlink" title="什么是 AOP？"></a>什么是 AOP？</h3><blockquote>
+<p>🍖 <strong>AOP</strong>（Aspect-Oriented Programming）：<strong>面向切面编程</strong>，是一种编程范式，允许开发者在<strong>不修改源代码</strong>的情况下，在方法调用前后添加代码，提高代码的<strong>可重用性</strong>和<strong>灵活性</strong>，实现 <strong>“无侵入式编程”</strong>。<strong>（2023/10/25晚）</strong></p>
+</blockquote>
+<h3 id="AOP-的组成"><a href="#AOP-的组成" class="headerlink" title="AOP 的组成"></a>AOP 的组成</h3><blockquote>
+<h4 id="切面（Aspect）"><a href="#切面（Aspect）" class="headerlink" title="切面（Aspect）"></a>切面（Aspect）</h4></blockquote>
+<blockquote>
+<h4 id="切点（Pointcut）"><a href="#切点（Pointcut）" class="headerlink" title="切点（Pointcut）"></a>切点（Pointcut）</h4></blockquote>
+<blockquote>
+<h4 id="通知（Advice）"><a href="#通知（Advice）" class="headerlink" title="通知（Advice）"></a>通知（Advice）</h4></blockquote>
+<blockquote>
+<h4 id="连接点（Join-Point）"><a href="#连接点（Join-Point）" class="headerlink" title="连接点（Join Point）"></a>连接点（Join Point）</h4></blockquote>
+<h3 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h3><ul>
+<li>简单介绍完相关概念后，如果还有疑惑，还是我们的风格：不说任何一句废话，通过代码直观体会 SpringBoot AOP 的使用方法</li>
+</ul>
+<blockquote>
+<h5 id="🔥-推荐阅读：AOP是什么？Spring-Boot-AOP-怎么使用？-掘金-juejin-cn"><a href="#🔥-推荐阅读：AOP是什么？Spring-Boot-AOP-怎么使用？-掘金-juejin-cn" class="headerlink" title="🔥 推荐阅读：AOP是什么？Spring Boot AOP 怎么使用？ - 掘金 (juejin.cn)"></a>🔥 推荐阅读：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7235167849428926521">AOP是什么？Spring Boot AOP 怎么使用？ - 掘金 (juejin.cn)</a></h5></blockquote>
+<ul>
+<li>首先<strong>新建一个 SpringBoot 项目</strong>，<strong>导入 SpringBoot AOP 依赖坐标</strong>：<strong>（2023/10/25晚）</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>编写 Controller 层</strong>，代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;/user&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserController</span> &#123;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;/hi&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">hi</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行 UserController 的 hi() 方法&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;do user&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;/hello&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行 UserController 的 hello() 方法&quot;</span>);<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">&quot;报错啦！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>我们在<strong>浏览器</strong>进行接口测试，如下图所示：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025211718879.png" alt="image-20231025211718879"></p>
+<h4 id="定义切面"><a href="#定义切面" class="headerlink" title="定义切面"></a>定义切面</h4><ul>
+<li><h5 id="前置通知-后置通知"><a href="#前置通知-后置通知" class="headerlink" title="前置通知 + 后置通知"></a>前置通知 + 后置通知</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 前置通知</span><br><span class="hljs-comment"> * 后置通知</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Aspect</span> <span class="hljs-comment">// 切面</span><br><span class="hljs-meta">@Component</span> <span class="hljs-comment">// 不能省略，要在项目启动的时候启动</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserAOP_1</span> &#123;<br><br>    <span class="hljs-comment">// 切点(配置拦截规则)</span><br>    <span class="hljs-meta">@Pointcut(&quot;execution(* com.example.demo3.controller.UserController.*(..))&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pointcut</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 前置通知</span><br>    <span class="hljs-meta">@Before(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doBefore</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行前置通知2&quot;</span> + LocalDateTime.now());<br>    &#125;<br><br>    <span class="hljs-comment">// 后置通知</span><br>    <span class="hljs-meta">@After(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doAfter</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行后置通知2&quot;</span> + LocalDateTime.now());<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行并访问</strong>：<code>http://localhost:8088/api/user/hi</code>，结果如下：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025211919873.png" alt="image-20231025211919873"></p>
+<ul>
+<li><h5 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 环绕通知</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Aspect</span> <span class="hljs-comment">// 切面</span><br><span class="hljs-meta">@Component</span> <span class="hljs-comment">// 不能省略，要在项目启动的时候启动</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserAOP_3</span> &#123;<br><br>    <span class="hljs-comment">// 切点(配置拦截规则)</span><br>    <span class="hljs-meta">@Pointcut(&quot;execution(* com.example.demo3.controller.UserController.*(..))&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pointcut</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 环绕通知</span><br>    <span class="hljs-meta">@Around(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">doAround</span><span class="hljs-params">(ProceedingJoinPoint joinPoint)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>        System.out.println(<span class="hljs-string">&quot;开始执行环绕通知：&quot;</span>);<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> joinPoint.proceed();<br>        System.out.println(<span class="hljs-string">&quot;结束环绕通知&quot;</span>);<br>        <span class="hljs-comment">// 这里的 obj 就是 连接点方法的返回值，可以对其进行修改</span><br>        obj = <span class="hljs-string">&quot;do Around &quot;</span> + obj;<br>        System.out.println(obj);<br>        <span class="hljs-keyword">return</span> obj;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行并访问</strong>：<code>http://localhost:8088/api/user/hi</code>，结果如下：<strong>（2023/10/25晚）</strong></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025211956902.png" alt="image-20231025211956902"></p>
+<ul>
+<li><h5 id="前置通知-后置通知-环绕通知"><a href="#前置通知-后置通知-环绕通知" class="headerlink" title="前置通知 + 后置通知 + 环绕通知"></a>前置通知 + 后置通知 + 环绕通知</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 前置通知</span><br><span class="hljs-comment"> * 后置通知</span><br><span class="hljs-comment"> * 环绕通知</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Aspect</span> <span class="hljs-comment">// 切面</span><br><span class="hljs-meta">@Component</span> <span class="hljs-comment">// 不能省略，要在项目启动的时候启动</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserAOP_4</span> &#123;<br><br>    <span class="hljs-comment">// 切点(配置拦截规则)</span><br>    <span class="hljs-meta">@Pointcut(&quot;execution(* com.example.demo3.controller.UserController.*(..))&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pointcut</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 前置通知</span><br>    <span class="hljs-meta">@Before(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doBefore</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行前置通知&quot;</span> + LocalDateTime.now());<br>    &#125;<br><br>    <span class="hljs-comment">// 后置通知</span><br>    <span class="hljs-meta">@After(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doAfter</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行后置通知&quot;</span> + LocalDateTime.now());<br>    &#125;<br><br>    <span class="hljs-comment">// 环绕通知</span><br>    <span class="hljs-meta">@Around(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">doAround</span><span class="hljs-params">(ProceedingJoinPoint joinPoint)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>        System.out.println(<span class="hljs-string">&quot;开始执行环绕通知：&quot;</span>);<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> joinPoint.proceed();<br>        System.out.println(<span class="hljs-string">&quot;结束环绕通知&quot;</span>);<br>        <span class="hljs-comment">// 这里的 obj 就是 连接点方法的返回值，可以对其进行修改</span><br>        obj = <span class="hljs-string">&quot;do Around &quot;</span> + obj;<br>        System.out.println(obj);<br>        <span class="hljs-keyword">return</span> obj;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行并访问</strong>：<code>http://localhost:8088/api/user/hi</code>，结果如下：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025212049409.png" alt="image-20231025212049409"></p>
+<ul>
+<li><h5 id="返回通知"><a href="#返回通知" class="headerlink" title="返回通知"></a>返回通知</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 返回通知</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Aspect</span> <span class="hljs-comment">// 切面</span><br><span class="hljs-meta">@Component</span> <span class="hljs-comment">// 不能省略，要在项目启动的时候启动</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserAOP_0</span> &#123;<br><br>    <span class="hljs-comment">// 切点(配置拦截规则)</span><br>    <span class="hljs-meta">@Pointcut(value = &quot;execution(* com.example.demo3.controller.UserController.*(..))&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pointcut</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 返回通知</span><br>    <span class="hljs-meta">@AfterReturning(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">AfterReturning</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行返回通知&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行并访问</strong>：<code>http://localhost:8088/api/user/hi</code>，结果如下：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025212133065.png" alt="image-20231025212133065"></p>
+<ul>
+<li><h5 id="异常通知"><a href="#异常通知" class="headerlink" title="异常通知"></a>异常通知</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 异常通知</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Aspect</span> <span class="hljs-comment">// 切面</span><br><span class="hljs-meta">@Component</span> <span class="hljs-comment">// 不能省略，要在项目启动的时候启动</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserAOP_5</span> &#123;<br><br>    <span class="hljs-comment">// 切点(配置拦截规则)</span><br>    <span class="hljs-meta">@Pointcut(value = &quot;execution(* com.example.demo3.controller.UserController.*(..))&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">pointcut</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 异常通知</span><br>    <span class="hljs-meta">@AfterThrowing(&quot;pointcut()&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">AfterThrowing</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行异常通知&quot;</span>);<br>        <span class="hljs-comment">// 可以在此处进行异常处理逻辑</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行并访问</strong>：<code>http://localhost:8088/api/user/hello</code>，结果如下：<strong>（2023/10/25晚）</strong></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025212235799.png" alt="image-20231025212235799"></p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="配置属性映射成员变量-实体类"><a href="#配置属性映射成员变量-实体类" class="headerlink" title="配置属性映射成员变量/实体类"></a>配置属性映射成员变量/实体类</h3><ul>
 <li><h5 id="我们在配置文件-application-yaml-中，填写如下配置："><a href="#我们在配置文件-application-yaml-中，填写如下配置：" class="headerlink" title="我们在配置文件 application.yaml 中，填写如下配置："></a>我们在配置文件 application.yaml 中，填写如下配置：</h5></li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">pattern:</span><br>    <span class="hljs-attr">dateformat:</span> <span class="hljs-string">yyyy-MM-dd</span> <span class="hljs-string">HH:mm:ss</span><br></code></pre></td></tr></table></figure>
@@ -870,7 +619,7 @@
 </ul>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-meta">@RequestBody</span> Employee employee<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+<h1 id="精髓所在"><a href="#精髓所在" class="headerlink" title="精髓所在"></a>精髓所在</h1>
                 
               </div>
             
@@ -888,13 +637,27 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/SpringBoot/" class="category-chain-item">SpringBoot</a>
+  <a href="/blog/categories/AOP/" class="category-chain-item">AOP</a>
   
   
     <span>></span>
     
-  <a href="/blog/categories/SpringBoot/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  <a href="/blog/categories/AOP/SpringBoot/" class="category-chain-item">SpringBoot</a>
   
+  
+    <span>></span>
+    
+  <a href="/blog/categories/AOP/SpringBoot/SpringMVC/" class="category-chain-item">SpringMVC</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/AOP/SpringBoot/SpringMVC/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
   
 
   
@@ -914,6 +677,10 @@
       
         <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
       
+        <a href="/blog/tags/AOP/">#AOP</a>
+      
+        <a href="/blog/tags/SpringMVC/">#SpringMVC</a>
+      
     </div>
   
 </div>
@@ -924,8 +691,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Spring Boot配置：玩转自身实践</div>
-      <div>https://deng-2022.gitee.io/blog/2023/07/15/SpringBoot配置/</div>
+      <div>SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践</div>
+      <div>https://deng-2022.gitee.io/blog/2023/07/15/SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践/</div>
     </div>
     <div class="license-meta">
       
@@ -943,7 +710,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月5日</div>
+          <div>2023年10月25日</div>
         </div>
       
       
