@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：12 天前
+                    本文最后更新于：14 天前
                   
                 
               </p>
@@ -588,7 +588,7 @@
 <ul>
 <li>当我们在这里打上注释：</li>
 </ul>
-<p> <img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231008090833683.png" alt="image-20231008090833683"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231008090833683.png" alt="image-20231008090833683"></p>
 <ul>
 <li>按 <strong>Ctrl + / 快捷键</strong>，就是这样的效果：<strong>（2023/10/08早）</strong></li>
 </ul>
@@ -781,8 +781,6 @@
 <li>我在开发项目的过程中，<strong>转换 entity 为 对应 VO 对象</strong>时，使用该插件居多：<strong>（2023/10/05晚）</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 转换 teamList为 teamVOList</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> teamList teamList</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> teamVOList</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> List&lt;TeamVO&gt; <span class="hljs-title function_">getTeamVOByTeam</span><span class="hljs-params">(List&lt;Team&gt; teamList)</span> &#123;<br>    <span class="hljs-keyword">return</span> teamList.stream().map(team -&gt; &#123;<br>        <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> team.getUserId();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">userName</span> <span class="hljs-operator">=</span> userService.getById(userId).getUsername();<br>        <span class="hljs-type">TeamVO</span> <span class="hljs-variable">teamVO</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TeamVO</span>();<br><br>        teamVO.setId(team.getId());<br>        teamVO.setName(team.getName());<br>        teamVO.setDescription(team.getDescription());<br>        teamVO.setMaxNum(team.getMaxNum());<br>        teamVO.setUserName(userName);<br>        teamVO.setImgUrl(team.getImgUrl());<br>        teamVO.setJoinNum(team.getJoinNum());<br>        teamVO.setStatus(team.getStatus());<br>        teamVO.setExpireTime(team.getExpireTime());<br>        teamVO.setCreateTime(team.getCreateTime());<br>        teamVO.setUpdateTime(team.getUpdateTime());<br>        teamVO.setIsDelete(team.getIsDelete());<br>        teamVO.setAnnouncement(team.getAnnouncement());<br><br>        <span class="hljs-keyword">return</span> teamVO;<br>    &#125;).collect(Collectors.toList());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 

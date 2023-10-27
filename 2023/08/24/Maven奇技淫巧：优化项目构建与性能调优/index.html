@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/light.jpg">
 <meta property="article:published_time" content="2023-08-24T04:22:05.000Z">
-<meta property="article:modified_time" content="2023-10-05T01:20:59.000Z">
+<meta property="article:modified_time" content="2023-10-22T13:04:59.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="SpringBoot">
@@ -792,7 +792,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：21 天前
+                    本文最后更新于：5 天前
                   
                 
               </p>
@@ -800,10 +800,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><ul>
 <li><p>本篇博文是转载自掘金社区作者[@作者名]的原创文章，原文链接：</p>
 </li>
-<li><h5 id="四十五图，一万五千字！一文让你走出迷雾玩转Maven！-掘金-juejin-cn"><a href="#四十五图，一万五千字！一文让你走出迷雾玩转Maven！-掘金-juejin-cn" class="headerlink" title="四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7238823745828405308?searchId=202309171400245B30EBA58533984EA484">四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)</a></h5></li>
+<li><h5 id="🥇-推荐阅读：（2023-10-05早）"><a href="#🥇-推荐阅读：（2023-10-05早）" class="headerlink" title="🥇 推荐阅读：（2023/10/05早）"></a>🥇 推荐阅读：（2023/10/05早）</h5></li>
+</ul>
+<blockquote>
+<h5 id="🍖-四十五图，一万五千字！一文让你走出迷雾玩转Maven！-掘金-juejin-cn"><a href="#🍖-四十五图，一万五千字！一文让你走出迷雾玩转Maven！-掘金-juejin-cn" class="headerlink" title="🍖 四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)"></a>🍖 <a target="_blank" rel="noopener" href="https://juejin.cn/post/7238823745828405308?searchId=202309171400245B30EBA58533984EA484">四十五图，一万五千字！一文让你走出迷雾玩转Maven！ - 掘金 (juejin.cn)</a></h5></blockquote>
+<ul>
 <li><p>在本文中，作者详细介绍了<strong>如何使用Maven构建工具</strong>以及相关的<strong>使用技巧</strong>和<strong>最佳实践</strong>。我们认为，这篇博客对于那些想要深<strong>入了解Maven</strong>并且<strong>提升项目构建效率</strong>的开发者来说，具有很高的价值。</p>
 </li>
 <li><p>该博文主要涵盖了<strong>Maven构建工具的基本概念</strong>、<strong>配置方法</strong>、<strong>常用命令</strong>以及如何解决常见问题等内容。无论你是初学者还是有一定经验的开发者，通过阅读本文，你将能够更好地理解和应用Maven来管理项目的依赖和构建过程。</p>
@@ -813,7 +817,7 @@
 <li><h5 id="如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！"><a href="#如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！" class="headerlink" title="如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！"></a>如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！</h5></li>
 </ul>
 <p>[TOC]</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><code>Maven</code>应该是大家的老熟客了，身为<code>Java</code>程序员，几乎每天都会跟他打交道。</p>
+<h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><p><code>Maven</code>应该是大家的老熟客了，身为<code>Java</code>程序员，几乎每天都会跟他打交道。</p>
 <p>不过有趣的是：<strong>很多伙伴对<code>Maven</code>，似乎很熟，但又好像不熟；在理解上，处于似懂非懂的“量子纠缠态”</strong>，为什么这么说呢？原因很简单，要说不熟吧，偏偏每天都有所接触；要说熟吧，可是对许多高级功能又仅是一知半解。</p>
 <p>正因如此，为了辅助大家从“量子纠缠态”中走出来，本文会从零开始，带着大家玩转<code>Maven</code>技术。当然，其实写这篇文章更大的目的，是为后续写<a target="_blank" rel="noopener" href="https://juejin.cn/column/7098219195371880484">《漫谈分布式》</a>专栏做准备，毕竟后续会频繁用到<code>Maven</code>构建多工程项目。</p>
 <blockquote>
@@ -1388,7 +1392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月5日</div>
+          <div>2023年10月22日</div>
         </div>
       
       
