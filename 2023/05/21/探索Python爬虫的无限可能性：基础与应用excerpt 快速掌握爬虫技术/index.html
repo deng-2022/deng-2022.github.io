@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k 字
+          15k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          35 分钟
+          37 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：6 小时前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -604,6 +604,18 @@
 <ul>
 <li>看来我<strong>主动在终端安装下载</strong>第三方库不管用啊，还得<strong>显示导入</strong> <strong>（2023/11/06晚）</strong></li>
 </ul>
+<h4 id="openpyxl-处理数据-demo"><a href="#openpyxl-处理数据-demo" class="headerlink" title="openpyxl 处理数据 demo"></a>openpyxl 处理数据 demo</h4><ul>
+<li>示例代码如下：</li>
+</ul>
+<blockquote>
+<p>实现了对 Excel 表格的读取、数据新增、删除、、修改等功能</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">openpyxl_demo</span>():<br>    <span class="hljs-comment"># 加载工作簿</span><br>    wb = load_workbook(filename=<span class="hljs-string">&#x27;职工表.xlsx&#x27;</span>)<br><br>    <span class="hljs-comment"># 获取工作表</span><br>    ws = wb.active<br><br>    <span class="hljs-comment"># 获取行和列的数量</span><br>    max_row = ws.max_row<br>    max_col = ws.max_column<br><br>    <span class="hljs-comment"># 遍历工作表中的每一个单元格，并打印其值</span><br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, max_row):<br>        <span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, max_col):<br>            cell = ws.cell(row=row, column=col)<br>            <span class="hljs-built_in">print</span>(cell.value, end=<span class="hljs-string">&#x27; &#x27;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br><br>    ws.append([<span class="hljs-number">8</span>, <span class="hljs-string">&quot;邓几把&quot;</span>, <span class="hljs-number">24</span>, <span class="hljs-string">&quot;流氓&quot;</span>])<br>    ws.append([<span class="hljs-number">8</span>, <span class="hljs-string">&quot;邓几把&quot;</span>, <span class="hljs-number">24</span>, <span class="hljs-string">&quot;流氓&quot;</span>])<br>    ws.append([<span class="hljs-number">8</span>, <span class="hljs-string">&quot;邓几把&quot;</span>, <span class="hljs-number">24</span>, <span class="hljs-string">&quot;流氓&quot;</span>])<br><br>    wb.save(<span class="hljs-string">&#x27;职工表.xlsx&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>注：操作对应 Excel 表时，确保文件未打开，否则会出现 <code>无权限修改该文件</code> 的报错：<strong>（2023/11/07午）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107134830545.png" alt="image-20231107134830545"></p>
 <h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
 <li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
 </li>

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
-<meta property="article:modified_time" content="2023-10-02T08:11:45.000Z">
+<meta property="article:modified_time" content="2023-11-07T15:00:45.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Elasticsearch">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          40k 字
+          46k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          100 分钟
+          115 分钟
         
       </span>
     
@@ -531,7 +531,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：7 分钟前
                   
                 
               </p>
@@ -947,6 +947,97 @@
 <ul>
 <li><h5 id="最后，Kibana-的数据面板也可以了解下"><a href="#最后，Kibana-的数据面板也可以了解下" class="headerlink" title="最后，Kibana 的数据面板也可以了解下"></a>最后，Kibana 的数据面板也可以了解下</h5></li>
 </ul>
+<h3 id="Logstash-配置多个输入-输出源"><a href="#Logstash-配置多个输入-输出源" class="headerlink" title="Logstash 配置多个输入 / 输出源"></a>Logstash 配置多个输入 / 输出源</h3><blockquote>
+<p>🔥 最近在优化 Memory 聚合搜索平台，尝试实现博文 article 的快速搜索和关键词高亮显示等功能</p>
+<h5 id="主要工作如下："><a href="#主要工作如下：" class="headerlink" title="主要工作如下："></a>主要工作如下：</h5><ul>
+<li>新增 article 实体，<strong>表结构</strong>已给出 👇</li>
+<li>新增博文的 <strong>ES 包装类</strong>（ArticleEsDao）、<strong>博文查询参数</strong>（ArticleQueryRequest）、<strong>博文高亮字段</strong>（ArticleEsHighlightData）</li>
+<li>使用 <strong>Spring Data Elasticsearch</strong> 的 <strong>QueryBuilder 组合条件查询</strong>，实现使用 ES <strong>快速搜索博文</strong>和<strong>关键词高亮显示</strong></li>
+<li>新增<strong>博文数据源接口</strong>（ArticleDataSource），供聚合搜索调用</li>
+<li>配置 Logstash 实现 MySQL 和 ES <strong>数据同步</strong></li>
+</ul>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 博文建表SQL语句</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> article<br>(<br>    id          <span class="hljs-type">bigint</span>                                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;文章id&#x27;</span>,<br>    title       <span class="hljs-type">varchar</span>(<span class="hljs-number">256</span>)                           <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;文章标题&#x27;</span>,<br>    description <span class="hljs-type">varchar</span>(<span class="hljs-number">256</span>)                           <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;文章摘要&#x27;</span>,<br>    content     <span class="hljs-type">varchar</span>(<span class="hljs-number">2048</span>)                          <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;文章内容&#x27;</span>,<br>    author_id   <span class="hljs-type">bigint</span>                                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;创作者&#x27;</span>,<br>    <span class="hljs-keyword">view</span>        <span class="hljs-type">int</span>          <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;浏览量&#x27;</span>,<br>    likes       <span class="hljs-type">int</span>          <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;点赞量&#x27;</span>,<br>    comments    <span class="hljs-type">varchar</span>(<span class="hljs-number">256</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;0&#x27;</span>               <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;评论量&#x27;</span>,<br>    create_time datetime     <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>    update_time datetime     <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">update</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> comment <span class="hljs-string">&#x27;更新时间&#x27;</span>,<br>    is_delete   tinyint      <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>                 <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;逻辑删除&#x27;</span>,<br>    collects    <span class="hljs-type">int</span>                                    <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;收藏量&#x27;</span>,<br>    article_url <span class="hljs-type">varchar</span>(<span class="hljs-number">2048</span>)                          <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;封面图片&#x27;</span>,<br>    tags        <span class="hljs-type">varchar</span>(<span class="hljs-number">256</span>)                           <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;文章标签&#x27;</span><br>)<br>    comment <span class="hljs-string">&#x27;博文&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="同步配置"><a href="#同步配置" class="headerlink" title="同步配置"></a>同步配置</h4><ul>
+<li>新增 article 相关实体的过程这里先<strong>不细讲</strong>，重点记录：如何实现 MySQL 和 ES <strong>数据同步</strong></li>
+<li>在 <strong>Logstash 的 config 目录</strong>下，我们作如下配置：<strong>（2023/11/07晚）</strong></li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs puppet"><span class="hljs-comment"># Sample Logstash configuration for receiving</span><br><span class="hljs-comment"># UDP syslog messages over port 514</span><br><br><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/******&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from article where update_time &gt; :sql_last_value and update_time &lt; now() order by update_time desc&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;update_time&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/******&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from post where updateTime &gt; :sql_last_value and updateTime &lt; now() order by updateTime desc&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;updatetime&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">filter</span> &#123;<br>  mutate &#123;<br>    <span class="hljs-attr">rename</span> =&gt; &#123;<br>      <span class="hljs-string">&quot;updatetime&quot;</span> =&gt; <span class="hljs-string">&quot;updateTime&quot;</span><br>      <span class="hljs-string">&quot;userid&quot;</span> =&gt; <span class="hljs-string">&quot;userId&quot;</span><br>      <span class="hljs-string">&quot;createtime&quot;</span> =&gt; <span class="hljs-string">&quot;createTime&quot;</span><br>      <span class="hljs-string">&quot;isdelete&quot;</span> =&gt; <span class="hljs-string">&quot;isDelete&quot;</span><br>    &#125;<br>    <span class="hljs-keyword">remove_field</span> =&gt; [<span class="hljs-string">&quot;thumbnum&quot;</span>, <span class="hljs-string">&quot;favournum&quot;</span>]<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">output</span> &#123;<br>  stdout &#123; <span class="hljs-attr">codec</span> =&gt; rubydebug &#125;<br><br>  <span class="hljs-keyword">elasticsearch</span> &#123;<br>    <span class="hljs-attr">hosts</span> =&gt; <span class="hljs-string">&quot;127.0.0.1:9200&quot;</span><br>    <span class="hljs-attr">index</span> =&gt; <span class="hljs-string">&quot;post_v1&quot;</span><br>    <span class="hljs-attr">document_id</span> =&gt; <span class="hljs-string">&quot;%&#123;id&#125;&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">output</span> &#123;<br>  stdout &#123; <span class="hljs-attr">codec</span> =&gt; rubydebug &#125;<br><br>  <span class="hljs-keyword">elasticsearch</span> &#123;  <br>    <span class="hljs-attr">hosts</span> =&gt; [<span class="hljs-string">&quot;localhost:9200&quot;</span>]  <br>    <span class="hljs-attr">index</span> =&gt; <span class="hljs-string">&quot;article_v1&quot;</span>  <br>    <span class="hljs-attr">document_id</span> =&gt; <span class="hljs-string">&quot;%&#123;id&#125;&quot;</span>  <br>  &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<h5 id="🥣-我们废话少说，看清楚如上配置-👆"><a href="#🥣-我们废话少说，看清楚如上配置-👆" class="headerlink" title="🥣 我们废话少说，看清楚如上配置 👆"></a>🥣 我们废话少说，看清楚如上配置 👆</h5><ul>
+<li><p>如果想要指定多个数据源，就<strong>编写多个 input 块</strong></p>
+</li>
+<li><p>同样的，如果想要指定多个输出，那么就<strong>编写多个 output 块</strong></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>比较有趣的是，新增的 <strong>article 实体</strong>的字段是<strong>下划线命名法</strong>，而 <strong>post 实体</strong>的字段却是<strong>驼峰命名法</strong>：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107223434622.png" alt="image-20231107223434622"></p>
+<ul>
+<li>这样的属性名肯定是<strong>不规范的</strong>（当然，是因为 <strong>article 是我从 Memory 缘忆交友社区下直接粘贴过来的</strong>）</li>
+<li>不过，正好可以比对下<strong>不同命名规范的属性</strong>，在 Logstash 配置中的写法区别了：<strong>（2023/11/07晚）</strong></li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs puppet">-- 下划线命名法<br><span class="hljs-keyword">input</span> &#123;  <br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/******&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from article where update_time &gt; :sql_last_value and update_time &lt; now() order by update_time desc&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;update_time&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs puppet">-- 驼峰命名法<br><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/******&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;******&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from post where updateTime &gt; :sql_last_value and updateTime &lt; now() order by updateTime desc&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;updatetime&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="ES-查询"><a href="#ES-查询" class="headerlink" title="ES 查询"></a>ES 查询</h4><ul>
+<li>Logstash 同步配置写完之后，当然要进行测试了，看看数据是否成功从 MySQL 成功同步到了 ES 中</li>
+<li>首先<strong>新增 ES 索引</strong>，在 <strong>Kibana 监控面板下</strong>，执行如下 DSL 语句：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">PUT /article_v1  <br>&#123;  <br>  <span class="hljs-string">&quot;settings&quot;</span>: &#123;  <br>    <span class="hljs-string">&quot;number_of_shards&quot;</span>: 3,  <br>    <span class="hljs-string">&quot;number_of_replicas&quot;</span>: 2  <br>  &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<h5 id="🔥-注意："><a href="#🔥-注意：" class="headerlink" title="🔥 注意："></a>🔥 注意：</h5><ul>
+<li><h5 id="索引名要跟-Logstash-配置中-output-块下的-index-属性对应："><a href="#索引名要跟-Logstash-配置中-output-块下的-index-属性对应：" class="headerlink" title="索引名要跟 Logstash 配置中 output 块下的 index 属性对应："></a>索引名要跟 Logstash 配置中 output 块下的 <code>index</code> 属性对应：</h5></li>
+</ul>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">index</span> <span class="hljs-operator">=</span>&gt; <span class="hljs-string">&quot;article_v1&quot;</span>  <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="跟-ArticleEsDao-的-Document-字段对应："><a href="#跟-ArticleEsDao-的-Document-字段对应：" class="headerlink" title="跟 ArticleEsDao 的 Document 字段对应："></a>跟 ArticleEsDao 的 <code>Document</code> 字段对应：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Document(indexName = &quot;article_v1&quot;)</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li>按官方文档的操作来，尝试<strong>加载这个配置文件</strong> 并 <strong>启动 Logstash</strong>：</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">.<span class="hljs-string">\bin\logstash.bat</span> -f .<span class="hljs-string">\config\myTask.conf</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>随便修改一条记录</strong>（下面的<code>实现 updateTime 字段自动更新</code>一栏中有提到，<strong>数据开始同步</strong> 👇：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107225828473.png" alt="image-20231107225828473"></p>
+<ul>
+<li>在 <strong>Kibana 监控面板</strong>下，使用 DSL 语句<strong>执行查询</strong>，效果如下：</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">GET</span> article_v1/_search<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107221155736.png" alt="image-20231107221155736"></p>
+<ul>
+<li>成功完成 <code>article</code> 实体的<strong>数据同步</strong> <strong>（2023/11/07晚）</strong></li>
+</ul>
+<h4 id="实现-updateTime-字段自动更新"><a href="#实现-updateTime-字段自动更新" class="headerlink" title="实现 updateTime 字段自动更新"></a>实现 updateTime 字段自动更新</h4><ul>
+<li>什么意思呢？我们希望在<strong>修改完数据库表中的记录</strong>后，该条记录<strong>对应的 uodateTime 字段</strong>实现<strong>自动更新</strong></li>
+<li>实现方法很简单，在 IDEA 中，直接修改表的 updateTime 字段属性，如下：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107224250849.png" alt="image-20231107224250849"></p>
+<ul>
+<li>对应的 <strong><code>DDL</code> 语句</strong>是这样的：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">updateTime datetime <span class="hljs-keyword">default</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">update</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> comment <span class="hljs-string">&#x27;更新时间&#x27;</span>,<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这样，我们<strong>更新记录</strong>后，该记录 updateTime 字段会<strong>自动更新为最近修改时间</strong>：<strong>（2023/11/07晚）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107224550821.png" alt="image-20231107224550821"></p>
+<blockquote>
+<p>SQL，多输入，多输出</p>
+</blockquote>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107213230435.png" alt="image-20231107213230435"></p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="搜索建议"><a href="#搜索建议" class="headerlink" title="搜索建议"></a>搜索建议</h3><ul>
 <li><h5 id="官方文档：-Suggesters-Elasticsearch-Guide-7-17-Elastic（2023-09-25晚）"><a href="#官方文档：-Suggesters-Elasticsearch-Guide-7-17-Elastic（2023-09-25晚）" class="headerlink" title="官方文档：[Suggesters | Elasticsearch Guide 7.17] | Elastic（2023/09/25晚）"></a>官方文档：[Suggesters | Elasticsearch Guide <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/search-suggesters.html">7.17] | Elastic</a>（2023/09/25晚）</h5></li>
 </ul>
@@ -1775,7 +1866,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月2日</div>
+          <div>2023年11月7日</div>
         </div>
       
       
