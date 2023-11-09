@@ -267,7 +267,7 @@
         
         
         
-          78 分钟
+          79 分钟
         
       </span>
     
@@ -567,7 +567,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：6 分钟前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -1253,7 +1253,23 @@
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231108230233426.png" alt="image-20231108230233426"></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231108230244201.png" alt="image-20231108230244201"></p>
-<h3 id="前端页面开发"><a href="#前端页面开发" class="headerlink" title="前端页面开发"></a>前端页面开发</h3><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="前端页面开发"><a href="#前端页面开发" class="headerlink" title="前端页面开发"></a>前端页面开发</h3><ul>
+<li><strong>核心代码</strong>展示：</li>
+</ul>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a-list-item-meta</span>&gt;</span></span><br><span class="language-xml">         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span></span><br><span class="language-xml">           <span class="hljs-comment">&lt;!--&lt;a @click=&quot;goToRead(item.id)&quot;&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item.title</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-comment">&lt;/a&gt;--&gt;</span></span><br><span class="language-xml">           <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;item.title&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 10px&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>&gt;</span></span><br><span class="language-xml">           <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;item.description&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">a-list-item-meta</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>博文页面默认展示<strong>文章详细信息</strong>：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109135611922.png" alt="image-20231109135611922"></p>
+<ul>
+<li>执行搜索后，根据 <code>博文标题（title）</code> 和 <code>文章摘要（description）</code> 快速检索，并实现<strong>关键词高亮</strong>：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109140530297.png" alt="image-20231109140530297"></p>
+<ul>
+<li>一个多月前，<strong>Memory 缘忆交友社区</strong>致力于实现的<strong>核心功能</strong>，今天基本实现了 <strong>（2023/11/09午）</strong></li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023-08-31午）"><a href="#Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023-08-31午）" class="headerlink" title="Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023/08/31午）"></a>Page对象的pageSize和currentPage写反了，拿取第1页、共10条数据，结果变成了第10页，共1条。（2023/08/31午）</h5></li>
