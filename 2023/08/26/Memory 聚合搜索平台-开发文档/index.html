@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
-<meta property="article:modified_time" content="2023-11-08T15:04:54.000Z">
+<meta property="article:modified_time" content="2023-11-09T15:52:54.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          31k 字
+          34k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          79 分钟
+          87 分钟
         
       </span>
     
@@ -1268,6 +1268,42 @@
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109140530297.png" alt="image-20231109140530297"></p>
 <ul>
 <li>一个多月前，<strong>Memory 缘忆交友社区</strong>致力于实现的<strong>核心功能</strong>，今天基本实现了 <strong>（2023/11/09午）</strong></li>
+<li>在  新增了博文摘要（description）,完成根据摘要的关键词高亮显示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArticleEsHighlightData</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * id</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Long id;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 标题</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String title;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 摘要</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String description;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 内容</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String content;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在执行查询前，指定高亮显示字段</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 查询带highlight，标题和摘要都带上</span><br>       <span class="hljs-type">HighlightBuilder</span> <span class="hljs-variable">highlightBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HighlightBuilder</span>()<br>               .field(<span class="hljs-string">&quot;description&quot;</span>)<br>               .requireFieldMatch(<span class="hljs-literal">false</span>)<br>               .preTags(<span class="hljs-string">&quot;&lt;font color=&#x27;#eea6b7&#x27;&gt;&quot;</span>)<br>               .postTags(<span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>);<br>       highlightBuilder.field(<span class="hljs-string">&quot;title&quot;</span>)<br>               .requireFieldMatch(<span class="hljs-literal">false</span>)<br>               .preTags(<span class="hljs-string">&quot;&lt;font color=&#x27;#eea6b7&#x27;&gt;&quot;</span>)<br>               .postTags(<span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>构造查询（过滤 + 排序 + 分页 + 关键字高亮字段）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 排序</span><br>       SortBuilder&lt;?&gt; sortBuilder = SortBuilders.scoreSort();<br>       <span class="hljs-keyword">if</span> (StringUtils.isNotBlank(sortField)) &#123;<br>           sortBuilder = SortBuilders.fieldSort(sortField);<br>           sortBuilder.order(CommonConstant.SORT_ORDER_ASC.equals(sortOrder) ? SortOrder.ASC : SortOrder.DESC);<br>       &#125;<br>       <span class="hljs-comment">// 分页</span><br>       <span class="hljs-type">PageRequest</span> <span class="hljs-variable">pageRequest</span> <span class="hljs-operator">=</span> PageRequest.of((<span class="hljs-type">int</span>) pageNum, (<span class="hljs-type">int</span>) pageSize);<br>       <span class="hljs-comment">// 构造查询</span><br>       <span class="hljs-type">NativeSearchQuery</span> <span class="hljs-variable">searchQuery</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeSearchQueryBuilder</span>()<br>               .withQuery(boolQueryBuilder)<br>               .withHighlightBuilder(highlightBuilder)<br>               .withPageable(pageRequest)<br>               .withSorts(sortBuilder).build();<br>       SearchHits&lt;ArticleEsDTO&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, ArticleEsDTO.class);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>从查询结果中，<strong>获取高亮字段</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 查出结果后，从 db 获取最新动态数据（比如点赞数）</span><br>      <span class="hljs-keyword">if</span> (searchHits.hasSearchHits()) &#123;<br>          List&lt;SearchHit&lt;ArticleEsDTO&gt;&gt; searchHitList = searchHits.getSearchHits();<br>          <span class="hljs-comment">// 搜索关键词高亮</span><br>          Map&lt;Long, ArticleEsHighlightData&gt; highlightDataMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>          <span class="hljs-keyword">for</span> (SearchHit hit : searchHits.getSearchHits()) &#123;<br>              <span class="hljs-type">ArticleEsHighlightData</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArticleEsHighlightData</span>();<br>              data.setId(Long.valueOf(hit.getId()));<br>              <span class="hljs-keyword">if</span> (hit.getHighlightFields().get(<span class="hljs-string">&quot;title&quot;</span>) != <span class="hljs-literal">null</span>) &#123;<br>                  <span class="hljs-type">String</span> <span class="hljs-variable">highlightTitle</span> <span class="hljs-operator">=</span> String.valueOf(hit.getHighlightFields().get(<span class="hljs-string">&quot;title&quot;</span>));<br>                  data.setTitle(highlightTitle.substring(<span class="hljs-number">1</span>, highlightTitle.length() - <span class="hljs-number">1</span>));<br>                  System.out.println(data.getTitle());<br>              &#125;<br>              <span class="hljs-keyword">if</span> (hit.getHighlightFields().get(<span class="hljs-string">&quot;description&quot;</span>) != <span class="hljs-literal">null</span>) &#123;<br>                  <span class="hljs-type">String</span> <span class="hljs-variable">highlightContent</span> <span class="hljs-operator">=</span> String.valueOf(hit.getHighlightFields().get(<span class="hljs-string">&quot;description&quot;</span>));<br>                  data.setDescription(highlightContent.substring(<span class="hljs-number">1</span>, highlightContent.length() - <span class="hljs-number">1</span>));<br>                  System.out.println(data.getContent());<br>              &#125;<br>              highlightDataMap.put(data.getId(), data);<br>          &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<strong>高亮字段替代原本</strong>的内容：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (idArticleMap.containsKey(articleId)) &#123;<br>                     <span class="hljs-comment">// 搜索关键词高亮替换</span><br>                     <span class="hljs-type">Article</span> <span class="hljs-variable">article</span> <span class="hljs-operator">=</span> idArticleMap.get(articleId).get(<span class="hljs-number">0</span>);<br>                     <span class="hljs-type">String</span> <span class="hljs-variable">hl_title</span> <span class="hljs-operator">=</span> highlightDataMap.get(articleId).getTitle();<br>                     <span class="hljs-type">String</span> <span class="hljs-variable">hl_des</span> <span class="hljs-operator">=</span> highlightDataMap.get(articleId).getDescription();<br>                     <span class="hljs-keyword">if</span> (hl_title != <span class="hljs-literal">null</span> &amp;&amp; hl_title.trim() != <span class="hljs-string">&quot;&quot;</span>) &#123;<br>                         article.setTitle(hl_title);<br>                     &#125;<br>                     <span class="hljs-keyword">if</span> (hl_des != <span class="hljs-literal">null</span> &amp;&amp; hl_des.trim() != <span class="hljs-string">&quot;&quot;</span>) &#123;<br>                         article.setDescription(hl_des);<br>                     &#125;<br>                     resourceList.add(article);<br>                 &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>怎么个替换法呢？看下图就能明白了：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109234625186.png" alt="image-20231109234625186"></p>
+<ul>
+<li>这个<strong>高亮字段</strong>是我们直接获取的，<strong>官方文档</strong>中也直接给了 demo 示例代码：<strong>（2023/11/09晚）</strong></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">hit.getHighlightFields().<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;title&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>官方文档</strong>：[Highlighting | Elasticsearch Guide <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/highlighting.html">7.17] | Elastic</a></li>
+<li>总算完整地过了一遍<strong>关键词高亮显示流程</strong>了</li>
 </ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -1371,7 +1407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月8日</div>
+          <div>2023年11月9日</div>
         </div>
       
       
