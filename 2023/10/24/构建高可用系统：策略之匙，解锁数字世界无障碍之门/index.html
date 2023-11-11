@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky8.jpg">
 <meta property="article:published_time" content="2023-10-24T15:02:16.000Z">
-<meta property="article:modified_time" content="2023-11-11T01:25:23.000Z">
+<meta property="article:modified_time" content="2023-11-11T07:13:23.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="高可用">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          826 字
+          1.1k 字
         
       </span>
     
@@ -464,7 +464,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：4 小时前
+                    本文最后更新于：9 小时前
                   
                 
               </p>
@@ -502,7 +502,13 @@
 <p>-&gt;👆 <strong>倒排索引</strong>思想：接入 ES，使用 canal 监听 MySQL binlog 日志变更，<strong>实时同步数据</strong>到 ES</p>
 <p>-&gt; <strong>tidb</strong>：分布式数据库，根据 id 范围分片、普通索引分片<strong>（2023/11/11早）</strong></p>
 </blockquote>
-<h1 id="亮点集锦"><a href="#亮点集锦" class="headerlink" title="亮点集锦"></a>亮点集锦</h1>
+<h2 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h2><blockquote>
+<p>🔥 什么是限流？ <strong>（2023/11/11午）</strong></p>
+<p><strong>限流</strong>，又称<strong>流量控制</strong>。限制到达系统的并发请求数，是的系统能够正常地处理部分用户的请求，用来保证系统的稳定性。限流会不可避免的造成用户请求变慢或者被拒的情况，从而影响用户体验</p>
+<p>所以说，限流是需要在<strong>用户体验</strong>和<strong>系统稳定性</strong>之间做平衡的</p>
+<p><strong>限流的本质</strong>是：因为后端处理能力有限，需要截掉超过处理能力之外的请求，亦或是为了均衡客户端对服务器端资源的公平调用，防止一些客户端饿死</p>
+</blockquote>
+<h3 id="限流算法"><a href="#限流算法" class="headerlink" title="限流算法"></a>限流算法</h3><h4 id="计数限流"><a href="#计数限流" class="headerlink" title="计数限流"></a>计数限流</h4><h4 id="固定窗口限流"><a href="#固定窗口限流" class="headerlink" title="固定窗口限流"></a>固定窗口限流</h4><h4 id="滑动窗口限流"><a href="#滑动窗口限流" class="headerlink" title="滑动窗口限流"></a>滑动窗口限流</h4><h4 id="漏桶算法"><a href="#漏桶算法" class="headerlink" title="漏桶算法"></a>漏桶算法</h4><h4 id="令牌桶算法"><a href="#令牌桶算法" class="headerlink" title="令牌桶算法"></a>令牌桶算法</h4><h1 id="亮点集锦"><a href="#亮点集锦" class="headerlink" title="亮点集锦"></a>亮点集锦</h1>
                 
               </div>
             
