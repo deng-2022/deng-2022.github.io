@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          57k 字
+          58k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          143 分钟
+          146 分钟
         
       </span>
     
@@ -472,7 +472,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -3794,6 +3794,83 @@
 </li>
 <li>太棒了，<strong>力扣热门 100 题</strong>和 <strong>150 题</strong> 可以同时打卡，这样进度就很可观了</li>
 </ul>
+<h2 id="2023-11-11"><a href="#2023-11-11" class="headerlink" title="2023/11/11"></a>2023/11/11</h2><ul>
+<li><strong>苏三说技术</strong>：分库分表带来了什么问题？</li>
+</ul>
+<blockquote>
+<p>单表数据量过大，查询性能变差 -&gt; <strong>水平分表</strong> -&gt; 分片键 -&gt; <strong>根据 id 范围</strong>（写热点问题）-&gt; <strong>根据 id 取模</strong>（数据迁移）</p>
+<p>-&gt; <strong>两者结合</strong>：在 id 范围分表中，引入取模分表（数据量增大，查询普通索引列 / 非分片字段，<strong>读扩散问题</strong>）</p>
+<p>-&gt; 建立新表，以该<strong>普通索引</strong>为分片键：查询该字段所在 ids，再拿 ids 查询原表（迅速定位，<strong>减少查询次数</strong>）</p>
+<p>-&gt;👆 <strong>倒排索引</strong>思想：接入 ES，使用 canal 监听 MySQL binlog 日志变更，<strong>实时同步数据</strong>到 ES</p>
+<p>-&gt; <strong>tidb</strong>：分布式数据库，根据 id 范围分片、普通索引分片</p>
+</blockquote>
+<ul>
+<li><p>上午：</p>
+<ul>
+<li>完成 Java 创建线程的十种方式</li>
+<li>随便看看星球和博文吧：Spring相关</li>
+<li><h5 id="Linux-命令在线速查手册：Linux-命令在线速查手册-✔"><a href="#Linux-命令在线速查手册：Linux-命令在线速查手册-✔" class="headerlink" title="Linux 命令在线速查手册：Linux 命令在线速查手册  ✔"></a>Linux 命令在线速查手册：<a target="_blank" rel="noopener" href="https://wangchujiang.com/linux-command/">Linux 命令在线速查手册</a>  ✔</h5></li>
+</ul>
+</li>
+<li><p>下午待完成：</p>
+<ul>
+<li><p>算法：</p>
+<ul>
+<li>同步力扣算法打卡题解到语雀</li>
+</ul>
+</li>
+<li><p>项目：</p>
+<ul>
+<li><strong>Memory 聚合搜索平台：</strong></li>
+<li>项目架构图完善（<strong>语雀竟然要联网才能用</strong>）</li>
+<li>视频聚合搜索实现<ul>
+<li>调用外部接口，获取视频资源</li>
+<li>使用线程池 + 异步编程，提升系统性能和请求响应速度，大幅优化用户搜索体验</li>
+<li>页面优化</li>
+</ul>
+</li>
+<li>整体页面优化：<ul>
+<li>整个网站的门面，考虑简单设计一下，看有没有好用的模板</li>
+<li>优化聚合搜索平台整体布局的表现张力，现在的页面还是太简陋了，尽力优化项目带给用户的感官体验</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>积累</p>
+<ul>
+<li>总结 <strong>Java 内部类</strong>相关知识</li>
+<li>Java 并发编程：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>加入星球九个月了，这里学习氛围真的很不错，个个说话都好听。今天来为鱼友们分享下<strong>我的个人博客</strong>：</p>
+<p><strong>个人博客地址</strong>：<a href="https://deng-2022.gitee.io/blog/">Memory’s blog</a></p>
+<p><strong>搭建个人博客</strong>有八个月了，从六月份开始，每天都会在个人博客打卡学习进度，很明显能感觉到自己在慢慢进步</p>
+<h3 id="博客简介"><a href="#博客简介" class="headerlink" title="博客简介"></a>博客简介</h3><p>博客搭建是 Gitee + hexo，部署在 Gitee 访问速度很快，hexo 的主题我也很喜欢。主题的个性化配置也花了挺大功夫，几个月以来抽时间慢慢优化了。<strong>个人博客</strong>的<strong>详细搭建流程</strong>也能在<strong>《大道至简：快速搭建博客与文档站点的终极指南1.0》</strong>中了解到</p>
+<p>目前有<strong>原创博文六十余篇</strong>，当然不是什么高深的技术文章，仅仅是我自学编程过程中的学习经验、踩坑经历总结</p>
+<p>详细的<strong>个人介绍</strong>和<strong>博文介绍</strong>都可以在<strong>《探索我的博客世界 - 个人导读》</strong>中了解到</p>
+<p>欢迎大家来访问我的博客呀！如果你也有个人博客，也可以在评论里贴上你的博客访问地址，交换友链~</p>
+<h3 id="交换友链"><a href="#交换友链" class="headerlink" title="交换友链"></a>交换友链</h3><ul>
+<li><p>提供：博客访问地址 + 博主昵称，即可交换友链成功</p>
+</li>
+<li><p>如果你有<strong>可访问的头像图片地址</strong>的话，也可以提供~</p>
+</li>
+<li><p>格式如下：</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>博客访问地址</strong>：<a href="https://deng-2022.gitee.io/blog/">https://deng-2022.gitee.io/blog/</a></p>
+<p><strong>博主昵称</strong>：Memory</p>
+<p><strong>头像</strong>（可选）：<a href="https://deng-2022.gitee.io/blog/img/memory.jpg">https://deng-2022.gitee.io/blog/img/memory.jpg</a></p>
+</blockquote>
+<h3 id="博客展示"><a href="#博客展示" class="headerlink" title="博客展示"></a>博客展示</h3><p>简单截几张个人博客图片吧：</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231111114346044.png" alt="image-20231111114346044"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231111114403503.png" alt="image-20231111114403503"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231111114419860.png" alt="image-20231111114419860"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231111114437428.png" alt="image-20231111114437428"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231111114448636.png" alt="image-20231111114448636"></p>
 
                 
               </div>
