@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
-<meta property="article:modified_time" content="2023-11-09T13:25:54.000Z">
+<meta property="article:modified_time" content="2023-11-13T14:39:54.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          39k 字
+          41k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          98 分钟
+          103 分钟
         
       </span>
     
@@ -631,7 +631,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：3 天前
+                    本文最后更新于：1 分钟前
                   
                 
               </p>
@@ -1404,11 +1404,11 @@
 <li>效果还可以，不过我设想的是这个搜索平台不需要登陆，用户就能享受所有服务</li>
 <li>之后会<strong>把用户相关业务全部优化掉</strong> <strong>（2023/11/11晚）</strong></li>
 </ul>
-<h3 id="图片聚合搜素"><a href="#图片聚合搜素" class="headerlink" title="图片聚合搜素"></a>图片聚合搜素</h3><ul>
+<h2 id="图片聚合搜素"><a href="#图片聚合搜素" class="headerlink" title="图片聚合搜素"></a>图片聚合搜素</h2><ul>
 <li>了解下 jsoup 工具如何实现<strong>网页抓取</strong>，并使用 HttpClient 实现<strong>解析网页内容</strong></li>
 <li>开发全新的聚合搜索：视频聚合搜索</li>
 </ul>
-<h3 id="诗词聚合搜索"><a href="#诗词聚合搜索" class="headerlink" title="诗词聚合搜索"></a>诗词聚合搜索</h3><ul>
+<h2 id="诗词聚合搜索"><a href="#诗词聚合搜索" class="headerlink" title="诗词聚合搜索"></a>诗词聚合搜索</h2><ul>
 <li>请求古诗词网，获取诗词（如下图 👇）<strong>（2023/11/12晚）</strong></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231112185151909.png" alt="image-20231112185151909"></p>
@@ -1425,7 +1425,7 @@
 <li>熟悉 <strong>CSS 选择器</strong>之后，<strong>解析 HTML 文档</strong>获取<strong>标题、诗人和内容</strong>就很轻松了：</li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231112202249521.png" alt="image-20231112202249521"></p>
-<h4 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h4><ul>
+<h3 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h3><ul>
 <li>基本实现了诗词聚合搜索，但有两个问题待解决：<ul>
 <li>logstash 数据数据同步，output 块和 input 块没有一一对应</li>
 <li>可能由于分词机制，我搜索“杜甫”关键词，为什么只匹配一条数据呢</li>
@@ -1433,6 +1433,52 @@
 </ul>
 </li>
 </ul>
+<h2 id="阶段性问题解决"><a href="#阶段性问题解决" class="headerlink" title="阶段性问题解决"></a>阶段性问题解决</h2><h3 id="搜索“杜甫”未匹配文档的问题"><a href="#搜索“杜甫”未匹配文档的问题" class="headerlink" title="搜索“杜甫”未匹配文档的问题"></a>搜索“杜甫”未匹配文档的问题</h3><ul>
+<li>找到了，<strong>使用搜索框输入关键词</strong>执行搜索时，没有匹配 <code>author</code> 字段，补充这段代码即可：<strong>（2023/11/13晚）</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 按关键词检索 满足其一√</span><br>     <span class="hljs-keyword">if</span> (StringUtils.isNotBlank(searchText)) &#123;<br>         boolQueryBuilder.should(QueryBuilders.matchQuery(<span class="hljs-string">&quot;title&quot;</span>, searchText));<br>         boolQueryBuilder.should(QueryBuilders.matchQuery(<span class="hljs-string">&quot;content&quot;</span>, searchText));<br>         boolQueryBuilder.should(QueryBuilders.matchQuery(<span class="hljs-string">&quot;author&quot;</span>, searchText));<br>         boolQueryBuilder.minimumShouldMatch(<span class="hljs-number">1</span>);<br>     &#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231113213844236.png" alt="image-20231113213844236"></p>
+<h3 id="无搜索关键词匹配文档过少"><a href="#无搜索关键词匹配文档过少" class="headerlink" title="无搜索关键词匹配文档过少"></a>无搜索关键词匹配文档过少</h3><ul>
+<li>在 kibana 面板中，执行这样的 DSL 查询语句：<strong>（2023/11/13晚）</strong></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">GET</span> post_v1/_search<br>&#123;<br> <span class="hljs-string">&quot;query&quot;</span> : &#123;<br>    <span class="hljs-string">&quot;match_all&quot;</span>: &#123;&#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下，显示 post_v1 索引下一共有 64 条文档：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231113214120819.png" alt="image-20231113214120819"></p>
+<ul>
+<li>也可以执行以下语句确认文档条数：</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">GET</span> post_v1/_count<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231113214149713.png" alt="image-20231113214149713"></p>
+<ul>
+<li><p>而在前端面板执行默认空关键词查询时，仅显示 15 条数据，这不是我们想看到的</p>
+</li>
+<li><p>妈的，查到原因了，这里搞了个<strong>分页查询</strong>：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 分页</span><br>       <span class="hljs-type">PageRequest</span> <span class="hljs-variable">pageRequest</span> <span class="hljs-operator">=</span> PageRequest.of((<span class="hljs-type">int</span>) current, (<span class="hljs-type">int</span>) pageSize);<br>       <span class="hljs-comment">// 构造查询</span><br>       <span class="hljs-type">NativeSearchQuery</span> <span class="hljs-variable">searchQuery</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeSearchQueryBuilder</span>()<br>               .withQuery(boolQueryBuilder)<br>               .withHighlightBuilder(highlightBuilder)<br>               .withPageable(pageRequest)<br>               .withSorts(sortBuilder).build();<br>       SearchHits&lt;PostEsDTO&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, PostEsDTO.class);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询这个 pageSize，发现来源于前端的传参：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> initSearchParams = &#123;<br>  <span class="hljs-attr">type</span>: activeKey,<br>  <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;&quot;</span>,<br>  <span class="hljs-attr">pageSize</span>: <span class="hljs-number">15</span>,<br>  <span class="hljs-attr">pageNum</span>: <span class="hljs-number">1</span>,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这个就应该保留，而前端应该加个分页插件</li>
+<li>奶奶的，分页插件不好做，换页后，要重新在 post 页面重新执行聚合查询，还得改动不少代码</li>
+<li>算了，不是什么核心功能，改天再完善</li>
+</ul>
+<h2 id="搜索建议"><a href="#搜索建议" class="headerlink" title="搜索建议"></a>搜索建议</h2><ul>
+<li>还需要<strong>安装 suggestion 插件</strong>，这里给出 demo 示例代码：</li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ada">POST post_v1/_search<br>&#123;<br>  <span class="hljs-string">&quot;query&quot;</span> : &#123;<br>     <span class="hljs-string">&quot;match&quot;</span>: &#123; <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;公孙&quot;</span> &#125;<br>  &#125;,<br>  <span class="hljs-string">&quot;suggest&quot;</span> : &#123;<br>    <span class="hljs-string">&quot;my-suggestion&quot;</span> : &#123;<br>      <span class="hljs-string">&quot;text&quot;</span> : &quot;公孙&quot;,<br>      <span class="hljs-string">&quot;term&quot;</span> : &#123;<br>        <span class="hljs-string">&quot;field&quot;</span> : &quot;<span class="hljs-type">content</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;</span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -1553,7 +1599,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月9日</div>
+          <div>2023年11月13日</div>
         </div>
       
       
