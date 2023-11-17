@@ -27,10 +27,10 @@
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20231106194059778.png">
 <meta property="og:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20231106193809524.png">
 <meta property="article:published_time" content="2023-04-14T07:38:56.000Z">
-<meta property="article:modified_time" content="2023-11-14T12:45:23.000Z">
+<meta property="article:modified_time" content="2023-11-17T14:31:23.000Z">
 <meta property="article:author" content="Memory">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="经验">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20231106191028733.png">
   
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          26k 字
+          28k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          66 分钟
+          69 分钟
         
       </span>
     
@@ -525,7 +525,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：2 小时前
                   
                 
               </p>
@@ -772,6 +772,33 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">romanToInt</span><span class="hljs-params">(String s)</span> &#123;<br>                 <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        Map&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        map.put(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-number">1</span>);<br>        map.put(<span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-number">5</span>);<br>        map.put(<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-number">10</span>);<br>        map.put(<span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-number">50</span>);<br>        map.put(<span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-number">100</span>);<br>        map.put(<span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-number">500</span>);<br>        map.put(<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">1000</span>);<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (i &lt; s.length() - <span class="hljs-number">1</span> &amp;&amp; map.get(s.charAt(i)) &lt; map.get(s.charAt(i + <span class="hljs-number">1</span>))) &#123;<br>                <span class="hljs-comment">// 当前字符比下一个字符小，则减去当前字符对应的数值</span><br>                result -= map.get(s.charAt(i));<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">// 当前字符比下一个字符大或相等，则加上当前字符对应的数值</span><br>                result += map.get(s.charAt(i));<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h2 id="力扣算法题打卡-Day-8"><a href="#力扣算法题打卡-Day-8" class="headerlink" title="力扣算法题打卡 Day 8"></a>力扣算法题打卡 Day 8</h2><blockquote>
+<p>2023年11月17日</p>
+</blockquote>
+<h3 id="快乐数"><a href="#快乐数" class="headerlink" title="快乐数"></a>快乐数</h3><ul>
+<li><h5 id="力扣链接：202-快乐数-力扣（LeetCode）"><a href="#力扣链接：202-快乐数-力扣（LeetCode）" class="headerlink" title="力扣链接：202. 快乐数 - 力扣（LeetCode）"></a>力扣链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/description/?envType=study-plan-v2&envId=top-interview-150">202. 快乐数 - 力扣（LeetCode）</a></h5></li>
+<li><h5 id="代码示例：-32"><a href="#代码示例：-32" class="headerlink" title="代码示例："></a>代码示例：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isHappy</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>                    <span class="hljs-type">int</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> n;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> n;<br><br>        <span class="hljs-keyword">do</span> &#123;<br>            slow = digitSquareSum(slow);  <span class="hljs-comment">// 慢指针计算平方和一次</span><br>            fast = digitSquareSum(fast);  <span class="hljs-comment">// 快指针计算平方和两次</span><br>            fast = digitSquareSum(fast);<br>        &#125; <span class="hljs-keyword">while</span> (slow != fast);  <span class="hljs-comment">// 直到两指针相遇</span><br><br>        <span class="hljs-keyword">return</span> slow == <span class="hljs-number">1</span>;  <span class="hljs-comment">// 最终平方和为1，该数为快乐数</span><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">digitSquareSum</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span> (n &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">digit</span> <span class="hljs-operator">=</span> n % <span class="hljs-number">10</span>;<br>            sum += digit * digit;<br>            n /= <span class="hljs-number">10</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="找出字符串中第一个匹配字符的下标"><a href="#找出字符串中第一个匹配字符的下标" class="headerlink" title="找出字符串中第一个匹配字符的下标"></a>找出字符串中第一个匹配字符的下标</h3><ul>
+<li><h5 id="力扣链接：28-找出字符串中第一个匹配项的下标-力扣（LeetCode）"><a href="#力扣链接：28-找出字符串中第一个匹配项的下标-力扣（LeetCode）" class="headerlink" title="力扣链接：28. 找出字符串中第一个匹配项的下标 - 力扣（LeetCode）"></a>力扣链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/?envType=study-plan-v2&envId=top-interview-150">28. 找出字符串中第一个匹配项的下标 - 力扣（LeetCode）</a></h5></li>
+<li><h5 id="代码示例：-33"><a href="#代码示例：-33" class="headerlink" title="代码示例："></a>代码示例：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">strStr</span><span class="hljs-params">(String haystack, String needle)</span> &#123;<br>           <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> haystack.length(), m = needle.length();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i + m &lt;= n; i++) &#123;<br>            <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; m; j++) &#123;<br>                <span class="hljs-keyword">if</span> (haystack.charAt(i + j) != needle.charAt(j)) &#123;<br>                    flag = <span class="hljs-literal">false</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (flag) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="最后一个单词的长度"><a href="#最后一个单词的长度" class="headerlink" title="最后一个单词的长度"></a>最后一个单词的长度</h3><ul>
+<li><h5 id="力扣链接：58-最后一个单词的长度-力扣（LeetCode）"><a href="#力扣链接：58-最后一个单词的长度-力扣（LeetCode）" class="headerlink" title="力扣链接：58. 最后一个单词的长度 - 力扣（LeetCode）"></a>力扣链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/length-of-last-word/description/?envType=study-plan-v2&envId=top-interview-150">58. 最后一个单词的长度 - 力扣（LeetCode）</a></h5></li>
+<li><h5 id="代码示例：-34"><a href="#代码示例：-34" class="headerlink" title="代码示例："></a>代码示例：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lengthOfLastWord</span><span class="hljs-params">(String s)</span> &#123;<br>           <span class="hljs-comment">// 去除首尾空格</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s_trim</span> <span class="hljs-operator">=</span> s.trim();<br>        <br>        <span class="hljs-comment">// 拆分成单词数组</span><br>        String[] words = s_trim.split(<span class="hljs-string">&quot; &quot;</span>);<br>        <br>        <span class="hljs-comment">// 判断是否存在单词</span><br>        <span class="hljs-keyword">if</span> (words.length == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <br>        <span class="hljs-comment">// 返回最后一个单词的长度</span><br>        <span class="hljs-keyword">return</span> words[words.length - <span class="hljs-number">1</span>].length();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h3><ul>
+<li><h5 id="力扣链接：121-买卖股票的最佳时机-力扣（LeetCode）"><a href="#力扣链接：121-买卖股票的最佳时机-力扣（LeetCode）" class="headerlink" title="力扣链接：121. 买卖股票的最佳时机 - 力扣（LeetCode）"></a>力扣链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150">121. 买卖股票的最佳时机 - 力扣（LeetCode）</a></h5></li>
+<li><h5 id="代码示例：-35"><a href="#代码示例：-35" class="headerlink" title="代码示例："></a>代码示例：</h5></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">minPrice</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">maxProfit</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> price : prices) &#123;<br>            <span class="hljs-keyword">if</span> (price &lt; minPrice) &#123;<br>                minPrice = price;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">profit</span> <span class="hljs-operator">=</span> price - minPrice;<br>                maxProfit = Math.max(maxProfit, profit);<br>            &#125;<br>        &#125;<br>    <br>        <span class="hljs-keyword">return</span> maxProfit;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h2 id="算法佛脚-120-题"><a href="#算法佛脚-120-题" class="headerlink" title="算法佛脚 120 题"></a>算法佛脚 120 题</h2><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><h3 id="栈、队列和-Hash"><a href="#栈、队列和-Hash" class="headerlink" title="栈、队列和 Hash"></a>栈、队列和 Hash</h3><h4 id="1、栈实现"><a href="#1、栈实现" class="headerlink" title="1、栈实现"></a>1、栈实现</h4><blockquote>
 <h5 id="实现一个简单的栈，支持入栈、出栈、弹出栈顶元素、判空操作"><a href="#实现一个简单的栈，支持入栈、出栈、弹出栈顶元素、判空操作" class="headerlink" title="实现一个简单的栈，支持入栈、出栈、弹出栈顶元素、判空操作"></a>实现一个简单的栈，支持入栈、出栈、弹出栈顶元素、判空操作</h5></blockquote>
 <ul>
@@ -882,9 +909,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/Java/">#Java</a>
-      
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/Java/">#Java</a>
       
     </div>
   
@@ -915,7 +942,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月14日</div>
+          <div>2023年11月17日</div>
         </div>
       
       
