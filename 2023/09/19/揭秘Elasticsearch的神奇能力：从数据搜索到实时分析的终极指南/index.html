@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
-<meta property="article:modified_time" content="2023-11-07T15:00:45.000Z">
+<meta property="article:modified_time" content="2023-11-18T13:50:45.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Elasticsearch">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          46k 字
+          49k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          115 分钟
+          122 分钟
         
       </span>
     
@@ -531,7 +531,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：10 天前
+                    本文最后更新于：3 小时前
                   
                 
               </p>
@@ -947,7 +947,7 @@
 <ul>
 <li><h5 id="最后，Kibana-的数据面板也可以了解下"><a href="#最后，Kibana-的数据面板也可以了解下" class="headerlink" title="最后，Kibana 的数据面板也可以了解下"></a>最后，Kibana 的数据面板也可以了解下</h5></li>
 </ul>
-<h3 id="Logstash-配置多个输入-输出源"><a href="#Logstash-配置多个输入-输出源" class="headerlink" title="Logstash 配置多个输入 / 输出源"></a>Logstash 配置多个输入 / 输出源</h3><blockquote>
+<h3 id="Logstash-配置多个输入-输出源（小丑的第一次尝试）"><a href="#Logstash-配置多个输入-输出源（小丑的第一次尝试）" class="headerlink" title="Logstash 配置多个输入 / 输出源（小丑的第一次尝试）"></a>Logstash 配置多个输入 / 输出源（小丑的第一次尝试）</h3><blockquote>
 <p>🔥 最近在优化 Memory 聚合搜索平台，尝试实现博文 article 的快速搜索和关键词高亮显示等功能</p>
 <h5 id="主要工作如下："><a href="#主要工作如下：" class="headerlink" title="主要工作如下："></a>主要工作如下：</h5><ul>
 <li>新增 article 实体，<strong>表结构</strong>已给出 👇</li>
@@ -1034,6 +1034,26 @@
 <li>这样，我们<strong>更新记录</strong>后，该记录 updateTime 字段会<strong>自动更新为最近修改时间</strong>：<strong>（2023/11/07晚）</strong></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231107224550821.png" alt="image-20231107224550821"></p>
+<h3 id="Logstash-配置多个输入输出源Ⅱ"><a href="#Logstash-配置多个输入输出源Ⅱ" class="headerlink" title="Logstash 配置多个输入输出源Ⅱ"></a>Logstash 配置多个输入输出源Ⅱ</h3><ul>
+<li><p>如何配置多个 input 块和 output 块？很简单的问题，多写几个配置文件就可以了：</p>
+</li>
+<li><h5 id="myTask-conf："><a href="#myTask-conf：" class="headerlink" title="myTask.conf："></a><code>myTask.conf</code>：</h5></li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs puppet"><span class="hljs-comment"># Sample Logstash configuration for receiving</span><br><span class="hljs-comment"># UDP syslog messages over port 514</span><br><br><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/memory_search&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;root&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;Dw990831&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from post where updateTime &gt; :sql_last_value and updateTime &lt; now() order by updateTime desc&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;updatetime&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">filter</span> &#123;<br>  mutate &#123;<br>    <span class="hljs-attr">rename</span> =&gt; &#123;<br>      <span class="hljs-string">&quot;updatetime&quot;</span> =&gt; <span class="hljs-string">&quot;updateTime&quot;</span><br>      <span class="hljs-string">&quot;userid&quot;</span> =&gt; <span class="hljs-string">&quot;userId&quot;</span><br>      <span class="hljs-string">&quot;createtime&quot;</span> =&gt; <span class="hljs-string">&quot;createTime&quot;</span><br>      <span class="hljs-string">&quot;isdelete&quot;</span> =&gt; <span class="hljs-string">&quot;isDelete&quot;</span><br>    &#125;<br>    <span class="hljs-keyword">remove_field</span> =&gt; [<span class="hljs-string">&quot;thumbnum&quot;</span>, <span class="hljs-string">&quot;favournum&quot;</span>]<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">output</span> &#123;<br>  stdout &#123; <span class="hljs-attr">codec</span> =&gt; rubydebug &#125;<br>    <span class="hljs-keyword">elasticsearch</span> &#123;<br>    <span class="hljs-attr">hosts</span> =&gt; <span class="hljs-string">&quot;127.0.0.1:9200&quot;</span><br>    <span class="hljs-attr">index</span> =&gt; <span class="hljs-string">&quot;post_v1&quot;</span><br>    <span class="hljs-attr">document_id</span> =&gt; <span class="hljs-string">&quot;%&#123;id&#125;&quot;</span><br>  &#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>myTask2.conf</code>：</li>
+</ul>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs puppet"><span class="hljs-keyword">input</span> &#123;<br>  jdbc &#123;<br>    <span class="hljs-attr">jdbc_driver_library</span> =&gt; <span class="hljs-string">&quot;D:\softWare\logstash\logstash-7.17.9\config\mysql-connector-java-8.0.29.jar&quot;</span><br>    <span class="hljs-attr">jdbc_driver_class</span> =&gt; <span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span><br>    <span class="hljs-attr">jdbc_connection_string</span> =&gt; <span class="hljs-string">&quot;jdbc:mysql://localhost:3306/memory_search&quot;</span><br>    <span class="hljs-attr">jdbc_user</span> =&gt; <span class="hljs-string">&quot;root&quot;</span><br>    <span class="hljs-attr">jdbc_password</span> =&gt; <span class="hljs-string">&quot;Dw990831&quot;</span><br>    <span class="hljs-attr">statement</span> =&gt; <span class="hljs-string">&quot;SELECT * from article where updateTime &gt; :sql_last_value and updateTime &lt; now() order by updateTime desc&quot;</span><br>    <span class="hljs-attr">use_column_value</span> =&gt; <span class="hljs-keyword">true</span><br>    <span class="hljs-attr">tracking_column_type</span> =&gt; <span class="hljs-string">&quot;timestamp&quot;</span><br>    <span class="hljs-attr">tracking_column</span> =&gt; <span class="hljs-string">&quot;updatetime&quot;</span><br>    <span class="hljs-attr">schedule</span> =&gt; <span class="hljs-string">&quot;*/5 * * * * *&quot;</span><br>    <span class="hljs-attr">jdbc_default_timezone</span> =&gt; <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">filter</span> &#123;<br>  mutate &#123;<br>    <span class="hljs-attr">rename</span> =&gt; &#123;<br>      <span class="hljs-string">&quot;updatetime&quot;</span> =&gt; <span class="hljs-string">&quot;updateTime&quot;</span><br>      <span class="hljs-string">&quot;userid&quot;</span> =&gt; <span class="hljs-string">&quot;userId&quot;</span><br>      <span class="hljs-string">&quot;createtime&quot;</span> =&gt; <span class="hljs-string">&quot;createTime&quot;</span><br>      <span class="hljs-string">&quot;isdelete&quot;</span> =&gt; <span class="hljs-string">&quot;isDelete&quot;</span><br>    &#125;<br>    <span class="hljs-keyword">remove_field</span> =&gt; [<span class="hljs-string">&quot;thumbnum&quot;</span>, <span class="hljs-string">&quot;favournum&quot;</span>]<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">output</span> &#123;<br>  stdout &#123; <span class="hljs-attr">codec</span> =&gt; rubydebug &#125;<br>    <span class="hljs-keyword">elasticsearch</span> &#123;  <br>    <span class="hljs-attr">hosts</span> =&gt; [<span class="hljs-string">&quot;127.0.0.1:9200&quot;</span>]  <br>    <span class="hljs-attr">index</span> =&gt; <span class="hljs-string">&quot;article_v1&quot;</span>  <br>    <span class="hljs-attr">document_id</span> =&gt; <span class="hljs-string">&quot;%&#123;id&#125;&quot;</span>  <br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>执行这条命令即可：</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">.<span class="hljs-string">\bin\logstash.bat</span> -f .<span class="hljs-string">\config\myTask.conf</span> -f .<span class="hljs-string">\config\myTask2.conf</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>有关 Logstash 的配置，还需要更多了解，目前知识掌握了 MSQL 向 ES 的映射配置<strong>（2023/11/16晚）</strong></li>
+</ul>
 <blockquote>
 <p>SQL，多输入，多输出</p>
 </blockquote>
@@ -1866,7 +1886,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月7日</div>
+          <div>2023年11月18日</div>
         </div>
       
       
