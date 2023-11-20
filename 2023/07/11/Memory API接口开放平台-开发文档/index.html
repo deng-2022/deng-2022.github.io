@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/spring.jpg">
 <meta property="article:published_time" content="2023-07-11T15:09:22.000Z">
-<meta property="article:modified_time" content="2023-11-19T15:44:25.000Z">
+<meta property="article:modified_time" content="2023-11-20T15:44:25.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          62k 字
+          63k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          154 分钟
+          157 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：27 分钟前
+                    本文最后更新于：13 分钟后
                   
                 
               </p>
@@ -1095,8 +1095,24 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PostMapping(&quot;/list/page/vo&quot;)</span><br><span class="hljs-keyword">public</span> BaseResponse&lt;Page&lt;Picture&gt;&gt; <span class="hljs-title function_">listPictureByPage</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> PictureQueryRequest pictureQueryRequest,</span><br><span class="hljs-params">                                                     HttpServletRequest request)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// controller层对参数的校验</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">currentPage</span> <span class="hljs-operator">=</span> pictureQueryRequest.getCurrentPage();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> pictureQueryRequest.getPageSize();<br>    <span class="hljs-type">String</span> <span class="hljs-variable">searchText</span> <span class="hljs-operator">=</span> pictureQueryRequest.getSearchText();<br><br>    Page&lt;Picture&gt; picturePage = pictureService.listPictureVOByPage(searchText, pageSize, currentPage);<br>    <span class="hljs-keyword">return</span> ResultUtils.success(picturePage);<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<ul>
+<li>接口改写成这样子了：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/wallpaper&quot;)</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WallpaperController</span> &#123;<br>    <span class="hljs-meta">@Resource</span><br>    <span class="hljs-keyword">private</span> PictureService pictureService;<br><br><br>    <span class="hljs-meta">@PostMapping(&quot;/list/page/vo&quot;)</span><br>    <span class="hljs-keyword">public</span> BaseResponse&lt;Page&lt;Picture&gt;&gt; <span class="hljs-title function_">listPictureByPage</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> Picture picture)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-comment">// controller层对参数的校验</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">category</span> <span class="hljs-operator">=</span> picture.getCategory();<br><br>        Page&lt;Picture&gt; picturePage = pictureService.listPictureVOByPage(category);<br>        <span class="hljs-keyword">return</span> ResultUtils.success(picturePage);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<ul>
+<li>妈的，出现了这样的报错：</li>
+</ul>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs smali">om.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct<span class="hljs-built_in"> instance </span>of `memory.cloud.memoryclient.model.domain.Picture` (no Creators, like default<span class="hljs-keyword"> constructor</span>, exist): cannot deserialize from Object value (no delegate-<span class="hljs-built_in"> or </span>property-based Creator)<br> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 2]<br></code></pre></td></tr></table></figure>
 
+<ul>
+<li>排了一个小时的错，可算发现了：Picture 不支持序列化</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Picture</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Picture</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 所属分类</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String category;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 图片名</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String title;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 图片路径</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String url;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>平时这种实体类都是使用 MybatisX-Generator 快速生成的，没注意到<strong>实体类要支持序列化</strong> <strong>（2023/11/20晚）</strong></li>
+</ul>
 <h3 id="根据不同url请求不同接口"><a href="#根据不同url请求不同接口" class="headerlink" title="根据不同url请求不同接口"></a>根据不同url请求不同接口</h3><ul>
 <li><h5 id="每条接口的信息有：接口名、接口url、请求参数等等"><a href="#每条接口的信息有：接口名、接口url、请求参数等等" class="headerlink" title="每条接口的信息有：接口名、接口url、请求参数等等"></a>每条接口的信息有：接口名、接口url、请求参数等等</h5></li>
 <li><p>当前情况是：用户调用接口时，前端传回了调用者的id，且<strong>仅实现了对后台一个接口的调用</strong></p>
@@ -1341,7 +1357,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月19日</div>
+          <div>2023年11月20日</div>
         </div>
       
       
