@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          17k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          40 分钟
+          44 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：9 天前
+                    本文最后更新于：10 天前
                   
                 
               </p>
@@ -568,7 +568,7 @@
 <li><p>闲话</p>
 </li>
 </ul>
-<h2 id="Python-期末小组作业（新）"><a href="#Python-期末小组作业（新）" class="headerlink" title="Python 期末小组作业（新）"></a>Python 期末小组作业（新）</h2><p>构思一下整个 <strong>Python 课设</strong>的实现思路：</p>
+<h2 id="Python-期末小组作业（新）"><a href="#Python-期末小组作业（新）" class="headerlink" title="Python 期末小组作业（新）"></a>Python 期末小组作业（新）</h2><h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>构思一下整个 <strong>Python 课设</strong>的实现思路：</p>
 <ul>
 <li><p><code>实验目的</code>：</p>
 <ul>
@@ -583,9 +583,37 @@
 <li><p><code>功能实现</code>：</p>
 <ul>
 <li><strong>数据存储</strong>：使用 <code>Python</code> 分析 <code>Excel</code> 表格中的数据，存储到数据库中</li>
+</ul>
+<blockquote>
+<ul>
+<li>连接本地数据库（如SQLite、MySQL等）。<strong>（2023/11/25早）</strong></li>
+<li>创建数据表，根据Excel表格的列名和数据类型定义表结构。</li>
+<li>读取Excel表格中的数据，可以使用pandas库进行操作。</li>
+<li>将读取到的数据插入到数据库中，可以使用pandas的to_sql方法。</li>
+</ul>
+</blockquote>
+<ul>
 <li><strong>数据更新</strong>：更新数据库中的数据记录</li>
+</ul>
+<blockquote>
+<ul>
+<li>模拟请求，生成需要更新的数据记录。</li>
+<li>使用Python连接到数据库，执行更新操作。</li>
+<li>更新数据库中的数据记录，可以使用SQL语句或ORM框架（如SQLAlchemy）进行操作。</li>
+</ul>
+</blockquote>
+<ul>
 <li><strong>数据写回</strong>：从数据库中查询记录，生成统计图表展示数据，生成 Excel 表格，适当优化表格样式后，保存表格到本地</li>
 </ul>
+<blockquote>
+<ul>
+<li>从数据库中查询记录，可以使用SQL语句或ORM框架进行查询。</li>
+<li>对查询结果进行处理，例如计算统计指标、生成图表等。</li>
+<li>将处理后的数据写入Excel表格，可以使用pandas的DataFrame对象进行操作。</li>
+<li>适当优化表格样式，可以使用pandas的样式函数进行设置。</li>
+<li>保存Excel表格到本地文件系统。</li>
+</ul>
+</blockquote>
 </li>
 <li><p><code>开发文档</code></p>
 <ul>
@@ -605,6 +633,35 @@
 <li>主要是给开发者练手用的，本来就不是一个完整的应用</li>
 </ul>
 </li>
+<li><p><code>学习价值和应用场景</code></p>
+<ul>
+<li><p>做这个大作业的好处有很多，以下是一些可能的学习价值和应用场景：</p>
+<ol>
+<li>学习价值方面：<ul>
+<li>提高编程能力：通过完成这个大作业，你可以锻炼自己的编程技巧和解决问题的能力。你将学习如何设计和实现一个完整的应用程序，并处理各种挑战和错误。</li>
+<li>加深对Python的理解：这个大作业将帮助你更深入地理解Python语言的各个方面，包括语法、数据类型、函数、类等。你将有机会应用这些知识来解决实际问题。</li>
+<li>掌握数据处理和分析技能：通过使用Excel表格和数据库进行数据处理和分析，你将学习如何处理大量的数据，并进行统计和可视化展示。这对于数据分析和决策支持方面的工作非常有用。</li>
+<li>培养团队合作能力：如果你选择与同学一起完成这个大作业，你将学会与他人合作、分工协作，共同解决问题。这有助于培养你的团队合作能力和沟通能力。</li>
+</ul>
+</li>
+<li>具体应用场景：<ul>
+<li>数据存储和管理：这个大作业可以帮助你学习如何使用Python连接数据库，并将数据存储到数据库中。这对于需要管理大量数据的应用程序非常有用，例如电子商务网站、社交媒体平台等。</li>
+<li>数据分析和报告生成：通过使用Excel表格和数据库进行数据分析，你可以生成各种报告和图表，用于业务分析和决策支持。这对于企业、研究机构和政府部门都非常有用。</li>
+<li>数据更新和维护：这个大作业可以帮助你学习如何使用Python更新数据库中的数据记录。这对于需要频繁更新和维护数据的应用程序非常重要，例如客户关系管理系统、库存管理系统等。</li>
+<li>自动化数据处理流程：通过编写Python脚本来自动执行数据处理任务，你可以节省时间和精力，并提高工作效率。这对于需要处理大量重复性任务的工作非常有帮助，例如数据清洗、数据转换等。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>总之，这个大作业不仅能够提升你的编程能力和数据处理技能，还能为你未来的学习和职业发展打下坚实的基础。无论是在学术研究、商业应用还是工程开发领域，掌握这些技能都将使你更具竞争力。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="开发日志"><a href="#开发日志" class="headerlink" title="开发日志"></a>开发日志</h3><ul>
+<li>今天开始着手开发这个大作业了，，祝我一切顺利</li>
+<li>简单回忆学习了下如何在不同包之间实现函数调用，感觉还是先实现功能吧，把框架搭好，按步骤一步一步慢慢实现<strong>（2023/11/25早）</strong></li>
 </ul>
 <h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="Python-处理-Excel-表格"><a href="#Python-处理-Excel-表格" class="headerlink" title="Python 处理 Excel 表格"></a>Python 处理 Excel 表格</h3><blockquote>
 <h5 id="🔥-推荐阅读："><a href="#🔥-推荐阅读：" class="headerlink" title="🔥 推荐阅读："></a>🔥 推荐阅读：</h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lm_love_hxl/article/details/130733070">Python操作Excel教程（全网最全，只看这一篇就够）_python excel-CSDN博客</a></p>
@@ -669,6 +726,12 @@
 <li>执行结果如下，<strong>成功执行 SQL</strong>，查询到数据库中的数据：<strong>（2023/11/15晚）</strong></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231115220719115.png" alt="image-20231115220719115"></p>
+<h2 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h2><ul>
+<li>这个挺有意思的，记录一下<strong>（2023/11/25午）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231125144542784.png" alt="image-20231125144542784"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 导入必要的包</span><br><span class="hljs-keyword">import</span> cv2<br><br><span class="hljs-comment"># 读入要检测的图像</span><br><span class="hljs-comment"># face_image = cv2.imread(&quot;pic1.JPG&quot;)</span><br>face_image = cv2.imread(<span class="hljs-string">&quot;pic2.JPG&quot;</span>)<br><br><span class="hljs-comment"># 加载人脸检测器</span><br>face_model = cv2.CascadeClassifier(<span class="hljs-string">&#x27;haarcascade_frontalface_default.xml&#x27;</span>)<br><br><span class="hljs-comment"># 人脸检测</span><br>faces = face_model.detectMultiScale(face_image, <span class="hljs-number">1.3</span>)<br><span class="hljs-built_in">print</span>(faces)<br><br><span class="hljs-comment"># 绘制矩形框</span><br><span class="hljs-keyword">for</span> (x, y, w, h) <span class="hljs-keyword">in</span> faces:<br>    cv2.rectangle(face_image, (x, y), (x + w, y + h), (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2</span>)<br><br><span class="hljs-comment"># 显示图像</span><br>cv2.imshow(<span class="hljs-string">&quot;detection result&quot;</span>, face_image)<br>cv2.waitKey(<span class="hljs-number">0</span>)<br>cv2.destroyAllWindows()<br></code></pre></td></tr></table></figure>
+
 <h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
 <li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
 </li>

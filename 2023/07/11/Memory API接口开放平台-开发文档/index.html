@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/spring.jpg">
 <meta property="article:published_time" content="2023-07-11T15:09:22.000Z">
-<meta property="article:modified_time" content="2023-11-22T12:48:25.000Z">
+<meta property="article:modified_time" content="2023-11-25T09:33:25.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="Redis">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          64k 字
+          66k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          160 分钟
+          166 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：6 小时前
                   
                 
               </p>
@@ -1248,6 +1248,44 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs react">&#123;<br>          label: &lt;&gt;&lt;FileTextFilled/&gt;API文档&lt;/&gt;,<br>          key: &#x27;1&#x27;,<br>          children: [<br>            &lt;CaretRightFilled style=&#123;&#123;color: &quot;green&quot;&#125;&#125;/&gt;,<br>            &lt;span style=&#123;&#123;fontSize: 16, fontWeight: &quot;bolder&quot;&#125;&#125;&gt;请求参数说明：&lt;/span&gt;,<br>            &lt;Table columns=&#123;requestParamsColumn&#125; dataSource=&#123;requestParamsInfo&#125;/&gt;,<br><br>            &lt;CaretRightFilled style=&#123;&#123;color: &quot;green&quot;&#125;&#125;/&gt;,<br>            &lt;span style=&#123;&#123;fontSize: 16, fontWeight: &quot;bolder&quot;&#125;&#125;&gt;响应参数说明：&lt;/span&gt;,<br>            &lt;Table columns=&#123;responseParamsColumn&#125; dataSource=&#123;responseParamsInfo&#125;/&gt;,<br><br>            &lt;CaretRightFilled style=&#123;&#123;color: &quot;green&quot;&#125;&#125;/&gt;,<br>            &lt;span style=&#123;&#123;fontSize: 16, fontWeight: &quot;bolder&quot;&#125;&#125;&gt;返回结果示例：&lt;/span&gt;,<br>          ]<br>        &#125;,<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231122204634581.png" alt="image-20231122204634581"></p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><ul>
+<li>如何实现代码块显示？</li>
+<li>这里简单演示一下使用 <code>ReactMonacoEditor</code> 组件实现代码块：</li>
+<li>安装 <code>ReactMonacoEditor</code>：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>导入组件：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑代码和简单的样式设置：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> [code, setCode] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#123;\n&#x27;</span> +<br>    <span class="hljs-string">&#x27;    &quot;code&quot;: 0,\n&#x27;</span> +<br>    <span class="hljs-string">&#x27;    &quot;data&quot;: &quot;&#123;\\&quot;code\\&quot;:0,&#x27;</span> +<br>    <span class="hljs-string">&#x27;\\&quot;data\\&quot;:&#x27;</span> +<br>    <span class="hljs-string">&#x27;&#123;\\&quot;records\\&quot;:&#x27;</span> +<br>    &#123;\\<span class="hljs-string">&quot;category\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;title\\&quot;</span>:\\<span class="hljs-string">&quot;Our Dynamic Sun\\&quot;</span>,\\<span class="hljs-string">&quot;url\\&quot;</span>:\\<span class="hljs-string">&quot;https://www-istp.gsfc.nasa.gov/exhibit/dyn5.gif\\&quot;</span>&#125;,&#123;\\<span class="hljs-string">&quot;category\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;title\\&quot;</span>:\\<span class="hljs-string">&quot;Southern Sun Waterfront\\&quot;</span>,\\<span class="hljs-string">&quot;url\\&quot;</span>:\\<span class="hljs-string">&quot;https://wetu.com/Resources/1198/img_9539.jpg\\&quot;</span>&#125;,&#123;\\<span class="hljs-string">&quot;category\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;title\\&quot;</span>:\\<span class="hljs-string">&quot;Clipart Panda - Free Clipart Images\\&quot;</span>,\\<span class="hljs-string">&quot;url\\&quot;</span>:\\<span class="hljs-string">&quot;http://images.clipartpanda.com/sun-clipart-4cbo5reoi.jpeg\\&quot;</span>&#125;,&#123;\\<span class="hljs-string">&quot;category\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;title\\&quot;</span>:\\<span class="hljs-string">&quot;Sun, Moon, and Stars: Tradition for the Saints - OnePeterFive\\&quot;</span>,\\<span class="hljs-string">&quot;url\\&quot;</span>:\\<span class="hljs-string">&quot;https://onepeterfive.com/wp-content/uploads/2021/02/sunmoonstars.jpg\\&quot;</span>&#125;,&#123;\\<span class="hljs-string">&quot;category\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;title\\&quot;</span>:\\<span class="hljs-string">&quot;53+ The Sun Clipart | ClipartLook\\&quot;</span>,\\<span class="hljs-string">&quot;url\\&quot;</span>:\\<span class="hljs-string">&quot;http://img.clipartlook.com/sun-clipart-png-clipart-panda-free-clipart-imagestop-30-png-the-sun-clip-art-illustrations-the-sun-clipart-1024_1024.jpg\\&quot;</span>&#125;],\\<span class="hljs-string">&quot;total\\&quot;</span>:<span class="hljs-number">0</span>,\\<span class="hljs-string">&quot;size\\&quot;</span>:<span class="hljs-number">1</span>,\\<span class="hljs-string">&quot;current\\&quot;</span>:<span class="hljs-number">5</span>,\\<span class="hljs-string">&quot;orders\\&quot;</span>:[],\\<span class="hljs-string">&quot;optimizeCountSql\\&quot;</span>:<span class="hljs-literal">true</span>,\\<span class="hljs-string">&quot;searchCount\\&quot;</span>:<span class="hljs-literal">true</span>,\\<span class="hljs-string">&quot;countId\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;maxLimit\\&quot;</span>:<span class="hljs-literal">null</span>,\\<span class="hljs-string">&quot;pages\\&quot;</span>:<span class="hljs-number">0</span>&#125;,\\<span class="hljs-string">&quot;message\\&quot;</span>:\\<span class="hljs-string">&quot;ok\\&quot;</span>&#125;<span class="hljs-string">&quot;,\n&#x27; +</span><br><span class="hljs-string">    &#x27;    &quot;</span>message<span class="hljs-string">&quot;: &quot;</span>ok<span class="hljs-string">&quot;\n&#x27; +</span><br><span class="hljs-string">    &#x27;&#125;&#x27;); // 初始代码内容</span><br><span class="hljs-string"></span><br><span class="hljs-string">  const options = &#123;</span><br><span class="hljs-string">    // 编辑器选项设置</span><br><span class="hljs-string">    selectOnLineNumbers: true,</span><br><span class="hljs-string">    roundedSelection: false,</span><br><span class="hljs-string">    scrollBeyondLastLine: false,</span><br><span class="hljs-string">    roundedEdges: false,</span><br><span class="hljs-string">    handleMouseWheel: true,</span><br><span class="hljs-string">  &#125;;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>ReactMonacoEditor</code> 组件：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;ReactMonacoEditor<br>           language=&quot;javascript&quot; // 指定代码语言<br>           theme=&quot;vs-dark&quot; // 指定主题风格<br>           options=&#123;options&#125;<br>           height=&quot;200&quot;<br>           value=&#123;code&#125; // 设置初始代码内容<br>         /&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注意：这里不指定 <code>height</code> 的话，我这里显示该组件高度为0，样式有点问题，还得显示指定高度（<strong>日后实现 height 自适应高度</strong>） </p>
+</li>
+<li><h5 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231125213957583.png" alt="image-20231125213957583"></p>
+<h3 id="开发者文档"><a href="#开发者文档" class="headerlink" title="开发者文档"></a>开发者文档</h3><ul>
+<li>拖欠很久的想法了，为我的项目做一个开发者文档：<strong>（2023/11/25晚）</strong></li>
+</ul>
+<blockquote>
+<p>参考实现：<a target="_blank" rel="noopener" href="https://api.qimuu.icu/">欢迎 - Qi-API 接口开放平台 (qimuu.icu)</a></p>
+</blockquote>
+<ul>
+<li>使用 Vuepress 快速建站，并配置第三方主题：，了解了整个 demo 文档的架构之后，着手修改，开启自定义配置：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231125173310088.png" alt="image-20231125173310088"></p>
 <h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="mapper-注入为-null"><a href="#mapper-注入为-null" class="headerlink" title="mapper 注入为 null"></a>mapper 注入为 null</h3><ul>
 <li>半个月前，我新增了一条接口：<strong>随机返回一条名言</strong></li>
 <li>当时是这样调用接口的：</li>
@@ -1365,7 +1403,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月22日</div>
+          <div>2023年11月25日</div>
         </div>
       
       
