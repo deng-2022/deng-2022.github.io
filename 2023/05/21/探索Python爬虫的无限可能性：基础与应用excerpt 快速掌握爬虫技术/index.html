@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
 <meta property="article:published_time" content="2023-05-21T12:35:01.000Z">
-<meta property="article:modified_time" content="2023-11-15T14:08:19.000Z">
+<meta property="article:modified_time" content="2023-11-26T13:19:23.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="开发经验">
 <meta property="article:tag" content="爬虫">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          19k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          44 分钟
+          47 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：10 天前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -659,10 +659,20 @@
 </ul>
 </li>
 </ul>
-<h3 id="开发日志"><a href="#开发日志" class="headerlink" title="开发日志"></a>开发日志</h3><ul>
+<h3 id="开发日志"><a href="#开发日志" class="headerlink" title="开发日志"></a>开发日志</h3><blockquote>
+<p>2023/11/25</p>
+</blockquote>
+<ul>
 <li>今天开始着手开发这个大作业了，，祝我一切顺利</li>
 <li>简单回忆学习了下如何在不同包之间实现函数调用，感觉还是先实现功能吧，把框架搭好，按步骤一步一步慢慢实现<strong>（2023/11/25早）</strong></li>
 </ul>
+<blockquote>
+<p>2023/11/26</p>
+</blockquote>
+<ul>
+<li>今早完成了数据库连接、查询数据库记录并用实体类接收、分析生成图表：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231126115535582.png" alt="image-20231126115535582"></p>
 <h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="Python-处理-Excel-表格"><a href="#Python-处理-Excel-表格" class="headerlink" title="Python 处理 Excel 表格"></a>Python 处理 Excel 表格</h3><blockquote>
 <h5 id="🔥-推荐阅读："><a href="#🔥-推荐阅读：" class="headerlink" title="🔥 推荐阅读："></a>🔥 推荐阅读：</h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lm_love_hxl/article/details/130733070">Python操作Excel教程（全网最全，只看这一篇就够）_python excel-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/634950523">如何使用python处理excel表格 - 知乎 (zhihu.com)</a></p>
@@ -732,6 +742,79 @@
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231125144542784.png" alt="image-20231125144542784"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 导入必要的包</span><br><span class="hljs-keyword">import</span> cv2<br><br><span class="hljs-comment"># 读入要检测的图像</span><br><span class="hljs-comment"># face_image = cv2.imread(&quot;pic1.JPG&quot;)</span><br>face_image = cv2.imread(<span class="hljs-string">&quot;pic2.JPG&quot;</span>)<br><br><span class="hljs-comment"># 加载人脸检测器</span><br>face_model = cv2.CascadeClassifier(<span class="hljs-string">&#x27;haarcascade_frontalface_default.xml&#x27;</span>)<br><br><span class="hljs-comment"># 人脸检测</span><br>faces = face_model.detectMultiScale(face_image, <span class="hljs-number">1.3</span>)<br><span class="hljs-built_in">print</span>(faces)<br><br><span class="hljs-comment"># 绘制矩形框</span><br><span class="hljs-keyword">for</span> (x, y, w, h) <span class="hljs-keyword">in</span> faces:<br>    cv2.rectangle(face_image, (x, y), (x + w, y + h), (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2</span>)<br><br><span class="hljs-comment"># 显示图像</span><br>cv2.imshow(<span class="hljs-string">&quot;detection result&quot;</span>, face_image)<br>cv2.waitKey(<span class="hljs-number">0</span>)<br>cv2.destroyAllWindows()<br></code></pre></td></tr></table></figure>
 
+<h2 id="开发个人工具包"><a href="#开发个人工具包" class="headerlink" title="开发个人工具包"></a>开发个人工具包</h2><ul>
+<li>上午突然冒出来的想法，原本打算随便操作数据库，作数据查询、插入、修改等，再使用第三方库做做可视化分析，生成个图表啥的</li>
+<li>但是突然觉着太 low 了，最主要的还是没啥实际用途，权当巩固复习 Python 基础语法了</li>
+<li>那我干脆一不做二不休，开发一个：个人工具包，包含日常学习办公常用的功能，目前的想法：<strong>（2023/11/27午）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231127131901683.png" alt="image-20231127131901683"></p>
+<ul>
+<li><p>功能还比较少，但是上述想法，目前基本都能实现，我快速了解了我需要学习的相关技术：</p>
+<ul>
+<li><p>Python 程序 打包为 .exe 可执行文件：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6943901290325868552">【5分钟搞定】如何将py打包成exe可执行文件 - 掘金 (juejin.cn)</a></p>
+</blockquote>
+</li>
+<li><p>使用 Python 进行简单界面开发：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7191537962985717819">Python 内置界面开发框架 Tkinter入门篇 甲 - 掘金 (juejin.cn)</a></p>
+</blockquote>
+</li>
+<li><p>有趣的小游戏：贪吃蛇、拥抱梅西、羊了个羊</p>
+</li>
+</ul>
+</li>
+<li><p>先写这些吧，想法很多，也算是完成了我一直以来的心愿了，另外，这让我回忆起了尝试使用 Java 开发 MC 模组：</p>
+</li>
+</ul>
+<blockquote>
+<p>基本了解到了如何开发一个 MC mod 了，有机会试试 <strong>（2023/11/13午）</strong></p>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/275212628/article">Alex3236博客-Alex3236专栏文章-文集-哔哩哔哩视频 (bilibili.com)</a></p>
+</blockquote>
+<h3 id="Python-程序打包为-exe"><a href="#Python-程序打包为-exe" class="headerlink" title="Python 程序打包为 .exe"></a>Python 程序打包为 .exe</h3><blockquote>
+<p>🔥 推荐阅读：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6943901290325868552">【5分钟搞定】如何将py打包成exe可执行文件 - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<ul>
+<li>安装 <code>pyinstaller</code>：<strong>（2023/11/27早）</strong></li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> pyinstaller<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>执行打包：</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">pyinstaller</span> **<span class="hljs-regexp">*.py</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>妈的，安装了半小时 <code>pyinstaller</code>，修改了 <code>python</code> 路径，咯噔了半天，又可以了：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231127125712770.png" alt="image-20231127125712770"></p>
+<ul>
+<li>打包成功！我们尝试执行一下：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231127130742344.png" alt="image-20231127130742344"></p>
+<ul>
+<li>在 dist 目录下找到可执行文件 <code>.exe</code>，<strong>双击执行</strong>：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231127130849980.png" alt="image-20231127130849980"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231127130933730.png" alt="image-20231127130933730"></p>
+<ul>
+<li>注意，我们只需要<strong>将 dist 目录下的文件压缩打包</strong>后，就可以发给好朋友使用了</li>
+</ul>
+<h3 id="Python-实现界面开发"><a href="#Python-实现界面开发" class="headerlink" title="Python 实现界面开发"></a>Python 实现界面开发</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7280837735614005287?searchId=202311272018327C19350FE1F6A9F74B8B">Python 程序员过中秋Python+pygame 制作拼图中秋赏月小游戏（附源码：5源码） - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<ul>
+<li>详细的练习代码已经上传至 Gitee 了，最后照着示例，实现了一个简单的笔记本案例：</li>
+<li>如下：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231127202157653.png" alt="image-20231127202157653"></p>
+<ul>
+<li>成功打包该笔记本软件，马上扔给好兄弟玩玩<strong>（2023/11/27晚）</strong></li>
+</ul>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">欢迎使用 notepad 笔记本软件<br>作者: <span class="hljs-meta">@Memory</span><br>  <br> <span class="hljs-symbol">*</span>  <br> (  `  <br> )\))(    (    )       (   (  <br>((_)()\  ))\  (     (  )(  )\ )  <br>(_()((_)/((_) )\  &#x27; )\(()\(()/(  <br>|<span class="hljs-string">  \/  (_)) _((_)) ((_)((_))(_))  </span><br><span class="hljs-string"></span>|<span class="hljs-string"> </span>|<span class="hljs-string">\/</span>|<span class="hljs-string"> / -_) &#x27;  \() _ \ &#x27;_</span>|<span class="hljs-string"> </span>||<span class="hljs-string"> </span>|<span class="hljs-string">  </span><br><span class="hljs-string"></span>|<span class="hljs-string">_</span>|<span class="hljs-string">  </span>|<span class="hljs-string">_\___</span>|<span class="hljs-string">_</span>|<span class="hljs-string">_</span>|<span class="hljs-string">_</span>|<span class="hljs-string">\___/_</span>|<span class="hljs-string">  \_, </span>|<span class="hljs-string">  </span><br><span class="hljs-string">                           </span>|<span class="hljs-string">__/  </span><br><span class="hljs-string"></span><br><span class="hljs-string">您可以用它来编辑文本文件，也可以快捷地统计文本字数</span><br><span class="hljs-string">新的功能还在逐步开发完善中，敬请期待~</span><br><span class="hljs-string">您不需要理会这个窗口，祝您使用愉快</span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231127211054419.png" alt="image-20231127211054419"></p>
 <h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
 <li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
 </li>
@@ -825,7 +908,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月15日</div>
+          <div>2023年11月26日</div>
         </div>
       
       

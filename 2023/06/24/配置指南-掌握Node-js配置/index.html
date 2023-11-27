@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky3.jpg">
 <meta property="article:published_time" content="2023-06-24T01:23:56.000Z">
-<meta property="article:modified_time" content="2023-08-08T11:48:24.000Z">
+<meta property="article:modified_time" content="2023-11-26T09:00:24.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="包管理器">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k 字
+          7.1k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          17 分钟
+          18 分钟
         
       </span>
     
@@ -469,7 +469,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：4 个月前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -724,6 +724,20 @@
 </ul>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">nvm/npm/<span class="hljs-keyword">node</span><span class="hljs-title">/hexo</span>不是内部或外部命令<br></code></pre></td></tr></table></figure>
 
+<h3 id="VuePress-搭建-Blog-启动失败"><a href="#VuePress-搭建-Blog-启动失败" class="headerlink" title="VuePress 搭建 Blog 启动失败"></a>VuePress 搭建 Blog 启动失败</h3><ul>
+<li><h5 id="最初还以为是-node-js-版本问题，结果是-modules-目录构建有问题（2023-11-25晚）"><a href="#最初还以为是-node-js-版本问题，结果是-modules-目录构建有问题（2023-11-25晚）" class="headerlink" title="最初还以为是 node.js 版本问题，结果是 modules 目录构建有问题（2023/11/25晚）"></a>最初还以为是 node.js 版本问题，结果是 modules 目录构建有问题（2023/11/25晚）</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231126003630708.png" alt="image-20231126003630708"></p>
+<ul>
+<li>解决了，<strong>方案如下</strong>：</li>
+<li>删除目录下的 modules 目录，执行以下命令重新构建 modules 目录：</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yarn <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>再次尝试启动 blog，<strong>启动成功</strong>：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231126004435021.png" alt="image-20231126004435021"></p>
 <h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><h3 id="pnpm全局安装无效"><a href="#pnpm全局安装无效" class="headerlink" title="pnpm全局安装无效"></a>pnpm全局安装无效</h3><ul>
 <li><h5 id="在配置vuepress文档站点的主题时，需要用到pnpm包管理器来安装执行命令，于是想了解npm、pnpm、yarn的区别和安装方法"><a href="#在配置vuepress文档站点的主题时，需要用到pnpm包管理器来安装执行命令，于是想了解npm、pnpm、yarn的区别和安装方法" class="headerlink" title="在配置vuepress文档站点的主题时，需要用到pnpm包管理器来安装执行命令，于是想了解npm、pnpm、yarn的区别和安装方法"></a>在配置vuepress文档站点的主题时，需要用到pnpm包管理器来安装执行命令，于是想了解npm、pnpm、yarn的区别和安装方法</h5></li>
 <li><h5 id="关于这块的详细内容，可以在《理解npm、pnpm和yarn：选出最适合你的包管理器》一文中了解"><a href="#关于这块的详细内容，可以在《理解npm、pnpm和yarn：选出最适合你的包管理器》一文中了解" class="headerlink" title="关于这块的详细内容，可以在《理解npm、pnpm和yarn：选出最适合你的包管理器》一文中了解"></a>关于这块的详细内容，可以在《理解npm、pnpm和yarn：选出最适合你的包管理器》一文中了解</h5></li>
@@ -781,6 +795,19 @@
 
 <ul>
 <li><h5 id="这就是修改node版本时，需要注意的要点及如何解决可能出现的相关问题"><a href="#这就是修改node版本时，需要注意的要点及如何解决可能出现的相关问题" class="headerlink" title="这就是修改node版本时，需要注意的要点及如何解决可能出现的相关问题"></a>这就是修改node版本时，需要注意的要点及如何解决可能出现的相关问题</h5></li>
+</ul>
+<h3 id="Linux-一键安装-Node-js-环境"><a href="#Linux-一键安装-Node-js-环境" class="headerlink" title="Linux 一键安装 Node.js 环境"></a>Linux 一键安装 Node.js 环境</h3><ul>
+<li>在 Linux 系统中，可以使用以下命令安装最新版本的 Node.js：<strong>（2023/11/26午）</strong></li>
+</ul>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">curl</span> -<span class="hljs-built_in">sL</span> https:<span class="hljs-comment">//deb.nodesource.com/setup_current_lts.x | sudo -E bash -</span><br><span class="hljs-symbol">sudo</span> apt-<span class="hljs-meta">get</span> install -y nodejs<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在 macOS 系统中，可以使用 Homebrew 安装最新版本的 Node.js：</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">bash复制代码<br>brew install <span class="hljs-keyword">node</span><span class="hljs-title">@latest</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xaiolele/article/details/124930382">Linux安装nodejs 命令方法_linux安装node18_xaiolele的博客-CSDN博客</a></li>
 </ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li><h5 id="Node-js的配置还是比较容易的，有机会的话，后续会持续更新进阶的Node-js的配置教学"><a href="#Node-js的配置还是比较容易的，有机会的话，后续会持续更新进阶的Node-js的配置教学" class="headerlink" title="Node.js的配置还是比较容易的，有机会的话，后续会持续更新进阶的Node.js的配置教学"></a>Node.js的配置还是比较容易的，有机会的话，后续会持续更新进阶的Node.js的配置教学</h5></li>
@@ -868,7 +895,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月8日</div>
+          <div>2023年11月26日</div>
         </div>
       
       
