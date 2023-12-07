@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky4.jpg">
 <meta property="article:published_time" content="2023-07-21T06:12:12.000Z">
-<meta property="article:modified_time" content="2023-11-11T14:02:24.000Z">
+<meta property="article:modified_time" content="2023-12-07T15:58:46.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          28k 字
+          29k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          71 分钟
+          73 分钟
         
       </span>
     
@@ -496,7 +496,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：25 天前
+                    本文最后更新于：3 分钟前
                   
                 
               </p>
@@ -849,12 +849,28 @@
 <li>这里添加了一个 loading 效果，在<strong>执行搜索过程</strong>中（即<strong>按下搜索后，到数据成功返回的时间段</strong>），搜索按钮的<strong>状态为转圈圈</strong></li>
 </ul>
 <h3 id="模拟低网速运行状态"><a href="#模拟低网速运行状态" class="headerlink" title="模拟低网速运行状态"></a>模拟低网速运行状态</h3><ul>
-<li><p>明白上面提到的搜索按钮的 loading 效果后，就应该明白：</p>
+<li><p>明白上面提到的搜索按钮的 loading 效果后，就应该明白： <strong>（2023/11/11晚）</strong></p>
 </li>
 <li><h5 id="只有执行搜索的时间越长，即响应的时间越长时，这个-loading-效果越明显"><a href="#只有执行搜索的时间越长，即响应的时间越长时，这个-loading-效果越明显" class="headerlink" title="只有执行搜索的时间越长，即响应的时间越长时，这个 loading 效果越明显"></a>只有执行搜索的时间越长，即响应的时间越长时，这个 loading 效果越明显</h5></li>
-<li><p>那我们就要模拟服务在<strong>低网速状态运行</strong>的状态了：</p>
+<li><p>那我们就要模拟服务在<strong>低网速状态运行</strong>的状态了，如下：</p>
 </li>
 </ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231207235631152.png" alt="image-20231207235631152"></p>
+<ul>
+<li>选中对应的网络状态，就可以<strong>模仿在该网络环境下发送请求</strong>了 <strong>（2023/12/07晚）</strong></li>
+</ul>
+<h3 id="引入外部页面组件"><a href="#引入外部页面组件" class="headerlink" title="引入外部页面组件"></a>引入外部页面组件</h3><ul>
+<li>如下，编写页面组件 <code>RandomPoem</code>：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 接口分析</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@constructor</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">PageContainer</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@ant-design/pro-components&quot;</span>;<br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">CaretRightFilled</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@ant-design/icons&quot;</span>;<br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">Button</span>, <span class="hljs-title class_">Form</span>, message, <span class="hljs-title class_">Input</span>, <span class="hljs-title class_">Tag</span>, <span class="hljs-title class_">Table</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;antd&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">ColumnsType</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;antd/es/table&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, &#123;useState&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> initialState <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@@/plugin-initialState/@@initialState&quot;</span>;<br><span class="hljs-keyword">import</span> &#123;invokeInterfaceInfoUsingPOST&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/services/memory-api/interfaceInfoController&quot;</span>;<br><span class="hljs-keyword">import</span> &#123;useParams&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@@/exports&quot;</span>;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">RandomPoem</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">FC</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>.....................<br><br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">PageContainer</span>&gt;</span></span><br><span class="language-xml">      .....................</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">PageContainer</span>&gt;</span></span><br>  );<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">RandomPoem</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231207235417783.png" alt="image-20231207235417783"></p>
+<ul>
+<li>在需要引入该组件的页面导入该组件，并引入：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> <span class="hljs-title class_">RandomPoem</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/pages/TableList/InterfaceInfo/RandomPoem&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231207235457463.png" alt="image-20231207235457463"></p>
 <h2 id="Ant-Design-Vue-1"><a href="#Ant-Design-Vue-1" class="headerlink" title="Ant Design Vue"></a>Ant Design Vue</h2><ul>
 <li><p>官网：<a target="_blank" rel="noopener" href="https://2x.antdv.com/docs/vue/getting-started-cn">Ant Design Vue (antdv.com)</a></p>
 </li>
@@ -1333,7 +1349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月11日</div>
+          <div>2023年12月7日</div>
         </div>
       
       
