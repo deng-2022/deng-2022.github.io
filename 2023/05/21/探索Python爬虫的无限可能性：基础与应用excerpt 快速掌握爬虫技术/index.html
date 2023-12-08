@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32k 字
+          34k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          80 分钟
+          85 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：6 天前
+                    本文最后更新于：7 天前
                   
                 
               </p>
@@ -956,8 +956,29 @@
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231204222014864.png" alt="image-20231204222014864"></p>
 <ul>
-<li>如上，在主函数引入 MemoryNotepad 类，点击 “开始使用”后，直接跳出 “记事本” 窗口，明天再研究吧</li>
+<li><p>如上，在主函数引入 MemoryNotepad 类，点击 “开始使用”后，直接跳出 “记事本” 窗口，明天再研究吧</p>
+</li>
+<li><p>继续<strong>（2023/12/08午）</strong></p>
+</li>
+<li><p>怪了，明明写了有参构造器，new 一个对象还报错：</p>
+</li>
 </ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231208165645504.png" alt="image-20231208165645504"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryTranslator</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__int__</span>(<span class="hljs-params">self, root</span>):<br>        self.root = root<br>        <span class="hljs-comment"># Create the main window with two text boxes and a button</span><br>        self.root.title(<span class="hljs-string">&quot;Translation App&quot;</span>)<br>        self.root.geometry(<span class="hljs-string">&quot;600x300&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>哦他奶奶的， <code>__init__ </code> 写成 <code> __int__</code> 了</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs routeros">self.window = tk.Tk()<br>      self.window.title(<span class="hljs-string">&quot;记事本&quot;</span>)<br><br>      # 创建操作区(左层）<br>      self.operate_frame = tk.Frame(self.window)<br>      # top_frame.grid()<br>      self.operate_frame.pack(<span class="hljs-attribute">side</span>=tk.LEFT, <span class="hljs-attribute">fill</span>=tk.BOTH, <span class="hljs-attribute">expand</span>=<span class="hljs-literal">True</span>)<br><br>      # 创建读写区(右层)<br>      self.io_frame = tk.Frame(self.window)<br>      self.io_frame.pack(<span class="hljs-attribute">side</span>=tk.LEFT, <span class="hljs-attribute">fill</span>=tk.BOTH, <span class="hljs-attribute">expand</span>=<span class="hljs-literal">True</span>)<br><br>      # 创建计数区(下层)<br>      self.count_frame = tk.Frame(self.window)<br>      self.count_frame.pack(<span class="hljs-attribute">side</span>=tk.BOTTOM, <span class="hljs-attribute">fill</span>=tk.BOTH, <span class="hljs-attribute">expand</span>=<span class="hljs-literal">True</span>)<br><br>      # 文字编辑<br>      self.txt_edit = tk.Text(<span class="hljs-attribute">master</span>=self.io_frame)<br>      self.txt_edit.pack(<span class="hljs-attribute">side</span>=tk.RIGHT)<br><br>      self.window.rowconfigure(0, <span class="hljs-attribute">minsize</span>=100, <span class="hljs-attribute">weight</span>=1)<br>      self.window.columnconfigure(1, <span class="hljs-attribute">minsize</span>=100, <span class="hljs-attribute">weight</span>=1)<br><br>      # 打开按钮<br>      btn_open = tk.Button(<span class="hljs-attribute">master</span>=self.operate_frame, <span class="hljs-attribute">text</span>=<span class="hljs-string">&quot;打开&quot;</span>, <span class="hljs-attribute">command</span>=self.open_file)<br>      btn_open.pack()<br><br>      # 另存为按钮<br>      btn_save_as = tk.Button(<span class="hljs-attribute">master</span>=self.operate_frame, <span class="hljs-attribute">text</span>=<span class="hljs-string">&quot;另存&quot;</span>, <span class="hljs-attribute">command</span>=self.save_as_file)<br>      btn_save_as.pack()<br><br>      # 统计字数按钮<br>      btn_count = tk.Button(<span class="hljs-attribute">master</span>=self.window, <span class="hljs-attribute">text</span>=<span class="hljs-string">&quot;统计字数&quot;</span>, <span class="hljs-attribute">command</span>=self.count_chars_in_text)<br>      btn_count.pack()<br><br>      # 字符数标签<br>      self.var_lbl = tk.StringVar()<br>      self.var_lbl.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;&quot;</span>)  # 初始化一个空字符串<br>      lbl = tk.Label(<span class="hljs-attribute">master</span>=btn_count, <span class="hljs-attribute">textvariable</span>=self.var_lbl)<br>      lbl.pack()<br><br>      # 当文本内容改变时，调用count_chars_in_text函数<br>      self.txt_edit.config(font=(<span class="hljs-string">&quot;Arial&quot;</span>, 12), <span class="hljs-attribute">undo</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">wrap</span>=<span class="hljs-string">&quot;word&quot;</span>)<br>      self.txt_edit.bind(<span class="hljs-string">&quot;&lt;&lt;Modified&gt;&gt;&quot;</span>, self.count_chars_in_text)  # 当文本内容改变时触发事件并调用count_chars_in_text函数<br></code></pre></td></tr></table></figure>
+
+<h3 id="一个折磨人的BUG"><a href="#一个折磨人的BUG" class="headerlink" title="一个折磨人的BUG"></a>一个折磨人的BUG</h3><ul>
+<li>就很简单的实现：按钮绑定函数，点击按钮，执行该函数<strong>（2023/12/08晚）</strong></li>
+<li>现在的问题很诡异，实例化一个对象，直接创建窗口；点击按钮，不触发生成窗口函数</li>
+<li>看看这段奇怪的代码：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryNotepad</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window1 = tk.Tk()<br>        self.window1.title(<span class="hljs-string">&quot;记事本&quot;</span>)<br>        <span class="hljs-comment"># self.window.mainloop()</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryTools</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window2 = tk.Tk()<br>        self.window2.title(<span class="hljs-string">&quot;MemoryTools&quot;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_window</span>(<span class="hljs-params">self</span>):<br>        mn = MemoryNotepad()<br>        self.window2.mainloop()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    mt = MemoryTools()<br>    mt.create_window()<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231208211539507.png" alt="image-20231208211539507"></p>
 <h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
 <li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
 </li>
