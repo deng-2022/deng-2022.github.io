@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
 <meta property="article:published_time" content="2023-05-21T12:35:01.000Z">
-<meta property="article:modified_time" content="2023-12-01T06:50:23.000Z">
+<meta property="article:modified_time" content="2023-12-10T13:36:23.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="开发经验">
 <meta property="article:tag" content="爬虫">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34k 字
+          36k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          85 分钟
+          91 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：8 天前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -979,6 +979,62 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryNotepad</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window1 = tk.Tk()<br>        self.window1.title(<span class="hljs-string">&quot;记事本&quot;</span>)<br>        <span class="hljs-comment"># self.window.mainloop()</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryTools</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window2 = tk.Tk()<br>        self.window2.title(<span class="hljs-string">&quot;MemoryTools&quot;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_window</span>(<span class="hljs-params">self</span>):<br>        mn = MemoryNotepad()<br>        self.window2.mainloop()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    mt = MemoryTools()<br>    mt.create_window()<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231208211539507.png" alt="image-20231208211539507"></p>
+<h3 id="BUG-解决"><a href="#BUG-解决" class="headerlink" title="BUG 解决"></a>BUG 解决</h3><ul>
+<li>整整一周过去了，这个烦人的 BUG 终于解决了</li>
+<li>这其实是 <code>tkinter</code> 的渲染问题，在类 <code>MemoryNotepad</code> 的 <code>__init__</code> 函数中写如下代码：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryNotepad</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window = tk.Tk()<br>          self.window.title(<span class="hljs-string">&quot;MemoryNotepad&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在类 <code>MemoryTools</code> 的 <code>__init__</code> 函数中写如下代码：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryTools</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window = tk.Tk()<br>        self.window.title(<span class="hljs-string">&quot;MemoryTools&quot;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_window</span>(<span class="hljs-params">self</span>):<br>        mn = MemoryNotepad()<br>        self.window.mainloop()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>接着实例化一个  <code>MemoryTools</code> 对象，并调用 <code>create_window</code> 方法：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    mt = MemoryTools()<br>    mt.create_window() <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>可以看到，在 <code>create_window</code> 方法中，实例化了一个 <code>MemoryNotepad</code> 对象，并执行生成了一个窗口</li>
+<li><code>title</code> 为 <code>MemoryTools</code> 的窗口被被执行生成是很正确的，但是 <code>title</code>  为 <code>MemoryNotepad</code> 的窗口也被执行生成了：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231210114439198.png" alt="image-20231210114439198"></p>
+<ul>
+<li>这就非常奇怪了，明明没有显示地执行生成<code>title</code>  为 <code>MemoryNotepad</code> 的窗口，它却自动生成窗口了，这个机制很奇怪</li>
+<li>引发了很棘手的问题：实现点击 <code>button</code> 按钮后，执行生成新窗口实现不了，因为实例化新窗口之后，就自动生成新窗口了</li>
+<li>几经折腾，总算找到了解决的办法：</li>
+<li>问题的根源在于我尝试在 <code>__init__</code> 函数中，初始化一个窗口对象 <code>window</code>，只要把 <code>window</code> 的初始化，推迟到初始化函数中就行了，无需在<code> __init__</code> 中初始化，因为这个机制只会影响到 <code> __init__</code> 内的 <code>window</code> 窗口对象的生成</li>
+<li>于是改写后的 <code>MemoryNotepad</code> 如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryNotepad</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.window = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 左侧操作区</span><br>        self.operate_frame = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 打开按钮</span><br>        self.btn_open = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 另存为按钮</span><br>        self.btn_save_as = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 统计字数按钮</span><br>        self.btn_count = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 文字编辑区</span><br>        self.txt_edit = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 初始化字符数</span><br>        self.var_lbl = <span class="hljs-literal">None</span><br>        <span class="hljs-comment"># 字符数标签</span><br>        self.lbl = <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">  <span class="hljs-keyword">def</span> <span class="hljs-title function_">init</span>(<span class="hljs-params">self</span>):<br>      self.window = tk.Tk()<br>      self.window.title(<span class="hljs-string">&quot;记事本&quot;</span>)<br>      <span class="hljs-comment"># 左侧操作区</span><br>      self.operate_frame = tk.Frame(master=self.window, bd=<span class="hljs-number">2</span>)<br>      self.operate_frame.grid(row=<span class="hljs-number">0</span>, column=<span class="hljs-number">0</span>, sticky=<span class="hljs-string">&quot;ns&quot;</span>)<br>      <span class="hljs-comment"># 窗口大小不可变</span><br>      self.window.rowconfigure(<span class="hljs-number">0</span>, minsize=<span class="hljs-number">100</span>, weight=<span class="hljs-number">1</span>)<br>      self.window.columnconfigure(<span class="hljs-number">1</span>, minsize=<span class="hljs-number">100</span>, weight=<span class="hljs-number">1</span>)<br>...............................<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>成功实现了点击 <code>简易笔记本</code> 按钮后，弹出窗口：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231210114706146.png" alt="image-20231210114706146"></p>
+<h3 id="整合所有功能"><a href="#整合所有功能" class="headerlink" title="整合所有功能"></a>整合所有功能</h3><ul>
+<li>整合 AI 对话模块时，出错了，由于 <code>python</code> 环境不同，同样的代码还运行不起来，改下 <code>MemoryTools</code> 的 <code>python</code> 环境变量即可：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231210205845871.png" alt="image-20231210205845871"></p>
+<ul>
+<li>改完记得要重启啊，不重启没效果的，运行成功：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231210205939054.png" alt="image-20231210205939054"></p>
+<ul>
+<li>终于把 AIChat 类改装好了，改装过程中，最需要注意的就是成员函数的参数形式了：</li>
+</ul>
+<blockquote>
+<p>如果成员函数内部需要引用到成员变量，就把该成员函数的第一个参数指定为 <code>self</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">self, appid, api_key, api_secret, Spark_url, domain, question</span>):<br>      <span class="hljs-comment"># print(&quot;星火:&quot;)</span><br>      wsParam = Ws_Param(appid, api_key, api_secret, Spark_url)<br>      <span class="hljs-comment"># websocket.enableTrace(False)</span><br>      wsUrl = wsParam.create_url()<br>      ws = websocket.WebSocketApp(wsUrl, on_message=self.on_message, on_error=self.on_error, on_close=self.on_close,<br>                                  on_open=self.on_open)<br>      ws.appid = appid<br>      ws.question = question<br>      ws.domain = domain<br>      ws.run_forever(sslopt=&#123;<span class="hljs-string">&quot;cert_reqs&quot;</span>: ssl.CERT_NONE&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>反之，就在成员函数定义上方添加这样的注解：<code>@staticmethod</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">getlength</span>(<span class="hljs-params">text</span>):<br>    length = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> content <span class="hljs-keyword">in</span> text:<br>        temp = content[<span class="hljs-string">&quot;content&quot;</span>]<br>        leng = <span class="hljs-built_in">len</span>(temp)<br>        length += leng<br>    <span class="hljs-keyword">return</span> length<br></code></pre></td></tr></table></figure>
+
+
+</blockquote>
 <h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
 <li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
 </li>
@@ -1072,7 +1128,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月1日</div>
+          <div>2023年12月10日</div>
         </div>
       
       
