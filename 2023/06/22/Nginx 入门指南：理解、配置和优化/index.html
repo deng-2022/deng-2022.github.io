@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/town2.jpg">
 <meta property="article:published_time" content="2023-06-22T02:04:32.000Z">
-<meta property="article:modified_time" content="2023-07-06T03:02:45.000Z">
+<meta property="article:modified_time" content="2023-12-15T04:56:34.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="Nginx">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          3.2k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：5 个月前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -408,7 +408,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h1><h2 id="Nginx是什么"><a href="#Nginx是什么" class="headerlink" title="Nginx是什么"></a>Nginx是什么</h2><ul>
+                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><blockquote>
+<p>🥣 推荐阅读：</p>
+<ul>
+<li><h5 id="67条消息-Nginx-目录结构与配置文件详解-nginx目录-不会调制解调的猫的博客-CSDN博客-（2023-12-15午）"><a href="#67条消息-Nginx-目录结构与配置文件详解-nginx目录-不会调制解调的猫的博客-CSDN博客-（2023-12-15午）" class="headerlink" title="(67条消息) Nginx - 目录结构与配置文件详解_nginx目录_不会调制解调的猫的博客-CSDN博客 （2023/12/15午）"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Trollz/article/details/126525238">(67条消息) Nginx - 目录结构与配置文件详解_nginx目录_不会调制解调的猫的博客-CSDN博客</a> （2023/12/15午）</h5></li>
+<li><h5 id="Nginx的配置文件详解-KuangStudy-文章"><a href="#Nginx的配置文件详解-KuangStudy-文章" class="headerlink" title="Nginx的配置文件详解-KuangStudy-文章"></a><a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1619965646882693121">Nginx的配置文件详解-KuangStudy-文章</a></h5></li>
+</ul>
+</blockquote>
+<h2 id="Nginx是什么"><a href="#Nginx是什么" class="headerlink" title="Nginx是什么"></a>Nginx是什么</h2><ul>
 <li><h5 id="官⽅解析-："><a href="#官⽅解析-：" class="headerlink" title="官⽅解析 ："></a>官⽅解析 ：</h5></li>
 </ul>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">Nginx（发⾳为“engine-<span class="hljs-keyword">x</span>”）是⼀个⾼性能的开源 Web 服务器和反向代理服务器，可以处理⼤ 量的并发连接和请求。它使⽤事件驱动的异步架构和多线程设计，可以⾼效地处理并发请求， 同时也⽀持反向代理、负载均衡、动态HTTP缓存、SSL/TLS终⽌、基于模块的扩展等功能。<br></code></pre></td></tr></table></figure>
@@ -426,7 +433,7 @@
 </li>
 <li><h5 id="总之，Nginx-具有⾼性能、可扩展性和可靠性等特点，被⼴泛应⽤于⼤型⽹站、互联⽹公司、-云计算、视频流媒体、游戏等领域"><a href="#总之，Nginx-具有⾼性能、可扩展性和可靠性等特点，被⼴泛应⽤于⼤型⽹站、互联⽹公司、-云计算、视频流媒体、游戏等领域" class="headerlink" title="总之，Nginx 具有⾼性能、可扩展性和可靠性等特点，被⼴泛应⽤于⼤型⽹站、互联⽹公司、 云计算、视频流媒体、游戏等领域"></a>总之，Nginx 具有⾼性能、可扩展性和可靠性等特点，被⼴泛应⽤于⼤型⽹站、互联⽹公司、 云计算、视频流媒体、游戏等领域</h5></li>
 </ul>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Nginx简介和安装"><a href="#Nginx简介和安装" class="headerlink" title="Nginx简介和安装"></a>Nginx简介和安装</h2><ul>
+<h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><h2 id="Nginx简介和安装"><a href="#Nginx简介和安装" class="headerlink" title="Nginx简介和安装"></a>Nginx简介和安装</h2><ul>
 <li><h5 id="了解-Nginx：功能、优势和应用场景"><a href="#了解-Nginx：功能、优势和应用场景" class="headerlink" title="了解 Nginx：功能、优势和应用场景"></a>了解 Nginx：功能、优势和应用场景</h5></li>
 </ul>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
@@ -475,11 +482,14 @@
 
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nginx</span> -s reopen 		<span class="hljs-comment"># 重新打开⽇志⽂件</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><blockquote>
+<p>🔥 推荐阅读：</p>
+</blockquote>
+<ul>
 <li><h5 id="深入理解-Nginx-配置文件：语法、块和常用指令"><a href="#深入理解-Nginx-配置文件：语法、块和常用指令" class="headerlink" title="深入理解 Nginx 配置文件：语法、块和常用指令"></a>深入理解 Nginx 配置文件：语法、块和常用指令</h5></li>
 <li><h5 id="介绍下Nginx目录结构和配置文件的内容："><a href="#介绍下Nginx目录结构和配置文件的内容：" class="headerlink" title="介绍下Nginx目录结构和配置文件的内容："></a>介绍下Nginx目录结构和配置文件的内容：</h5></li>
 <li><h5 id="67条消息-Nginx-目录结构与配置文件详解-nginx目录-不会调制解调的猫的博客-CSDN博客"><a href="#67条消息-Nginx-目录结构与配置文件详解-nginx目录-不会调制解调的猫的博客-CSDN博客" class="headerlink" title="(67条消息) Nginx - 目录结构与配置文件详解_nginx目录_不会调制解调的猫的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Trollz/article/details/126525238">(67条消息) Nginx - 目录结构与配置文件详解_nginx目录_不会调制解调的猫的博客-CSDN博客</a></h5></li>
-<li><h5 id="Nginx的配置文件详解-KuangStudy-文章"><a href="#Nginx的配置文件详解-KuangStudy-文章" class="headerlink" title="Nginx的配置文件详解-KuangStudy-文章"></a><a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1619965646882693121">Nginx的配置文件详解-KuangStudy-文章</a></h5></li>
+<li><h5 id="Nginx的配置文件详解-KuangStudy-文章-1"><a href="#Nginx的配置文件详解-KuangStudy-文章-1" class="headerlink" title="Nginx的配置文件详解-KuangStudy-文章"></a><a target="_blank" rel="noopener" href="https://www.kuangstudy.com/bbs/1619965646882693121">Nginx的配置文件详解-KuangStudy-文章</a></h5></li>
 </ul>
 <h2 id="反向代理和负载均衡"><a href="#反向代理和负载均衡" class="headerlink" title="反向代理和负载均衡"></a>反向代理和负载均衡</h2><ul>
 <li><h5 id="Nginx-反向代理和负载均衡：有效分发流量"><a href="#Nginx-反向代理和负载均衡：有效分发流量" class="headerlink" title="Nginx 反向代理和负载均衡：有效分发流量"></a>Nginx 反向代理和负载均衡：有效分发流量</h5></li>
@@ -512,7 +522,7 @@
 <li><h5 id="可以看到，我们开启了Nginx服务，只需访问Nginx给我们开放的端口，就能够访问到对应服务器，获取页面数据"><a href="#可以看到，我们开启了Nginx服务，只需访问Nginx给我们开放的端口，就能够访问到对应服务器，获取页面数据" class="headerlink" title="可以看到，我们开启了Nginx服务，只需访问Nginx给我们开放的端口，就能够访问到对应服务器，获取页面数据"></a>可以看到，我们开启了Nginx服务，只需访问Nginx给我们开放的端口，就能够访问到对应服务器，获取页面数据</h5></li>
 <li><h5 id="这是因为Nginx将我们的请求转发给了服务器，而用户是无感知的，这就是Nginx反向代理"><a href="#这是因为Nginx将我们的请求转发给了服务器，而用户是无感知的，这就是Nginx反向代理" class="headerlink" title="这是因为Nginx将我们的请求转发给了服务器，而用户是无感知的，这就是Nginx反向代理"></a>这是因为Nginx将我们的请求转发给了服务器，而用户是无感知的，这就是Nginx反向代理</h5></li>
 </ul>
-<h2 id="HTTPS配置"><a href="#HTTPS配置" class="headerlink" title="HTTPS配置"></a>HTTPS配置</h2><ul>
+<h2 id="静态网站部署"><a href="#静态网站部署" class="headerlink" title="静态网站部署"></a>静态网站部署</h2><h2 id="HTTPS配置"><a href="#HTTPS配置" class="headerlink" title="HTTPS配置"></a>HTTPS配置</h2><ul>
 <li><h5 id="使用-Nginx-配置-HTTPS：安全加密通信"><a href="#使用-Nginx-配置-HTTPS：安全加密通信" class="headerlink" title="使用 Nginx 配置 HTTPS：安全加密通信"></a>使用 Nginx 配置 HTTPS：安全加密通信</h5></li>
 </ul>
 <h2 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h2><ul>
@@ -621,7 +631,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年7月6日</div>
+          <div>2023年12月15日</div>
         </div>
       
       
