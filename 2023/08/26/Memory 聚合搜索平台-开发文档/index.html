@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
-<meta property="article:modified_time" content="2023-12-04T12:57:54.000Z">
+<meta property="article:modified_time" content="2023-12-20T16:06:54.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          55k 字
+          56k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          138 分钟
+          139 分钟
         
       </span>
     
@@ -631,7 +631,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：15 天前
+                    本文最后更新于：13 分钟前
                   
                 
               </p>
@@ -1684,6 +1684,23 @@
 <ul>
 <li>使用 <code>Kibana</code> 可视化监控看板的教程到这里就结束了<strong>（2023/12/03午）</strong></li>
 </ul>
+<h2 id="博文搜索优化"><a href="#博文搜索优化" class="headerlink" title="博文搜索优化"></a>博文搜索优化</h2><ul>
+<li>今天晚上，总算抽出时间，着手优化一下博文搜索这一大板块了：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231220234611498.png" alt="image-20231220234611498"></p>
+<h3 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h3><ul>
+<li>博文来源：爬取掘金文章榜<strong>（2023/12/20晚）</strong></li>
+<li>目前看来每个文章类别下有 20 篇文章，那就创建一张表吧<ul>
+<li>按照类别，可以将博文简单分类</li>
+<li>聚合搜索时，额外添加一个条件：根据文章类别查询到对应的博文，这就需要把对博文的全局搜索推迟到 <code>ArticleList</code> 实现了</li>
+<li>数据同步是这个项目的一大亮点，使用 <code>Logstash</code> 进行数据同步在本地测试已经很成熟了，可以考虑采用 <code>canal</code> 方法实现</li>
+<li>搜索建议和关键词高亮，这也该项目的一大亮点，如果能成功完成就好了</li>
+<li>限流，四种限流算法，就这么个小项目，虽然远不至于用到限流，但是学习限流还是很有必要的</li>
+</ul>
+</li>
+<li>写一个定时爬虫，定时爬取并更新博文数据</li>
+<li>开发者文档：Memory-Tools 开发者文档，这个文档的成功开发部署，使得这个工作变得稍微简单了一些</li>
+</ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -1820,7 +1837,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月4日</div>
+          <div>2023年12月21日</div>
         </div>
       
       

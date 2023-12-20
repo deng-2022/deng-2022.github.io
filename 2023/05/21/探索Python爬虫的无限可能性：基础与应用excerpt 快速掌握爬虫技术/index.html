@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/tree2.jpg">
 <meta property="article:published_time" content="2023-05-21T12:35:01.000Z">
-<meta property="article:modified_time" content="2023-12-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-20T11:26:44.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="开发经验">
 <meta property="article:tag" content="爬虫">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          39k 字
+          42k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          99 分钟
+          105 分钟
         
       </span>
     
@@ -433,7 +433,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：5 小时前
                   
                 
               </p>
@@ -1092,6 +1092,46 @@
 <li>上午我们实现了<strong>开始菜单页面</strong>的<strong>背景图填充</strong>，晚上我们继续完成<strong>工具栏页面</strong>的<strong>背景图填充</strong>：</li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231219000023787.png" alt="image-20231219000023787"></p>
+<h3 id="项目打包后图片路径丢失"><a href="#项目打包后图片路径丢失" class="headerlink" title="项目打包后图片路径丢失"></a>项目打包后图片路径丢失</h3><blockquote>
+<p>🍖 推荐阅读：</p>
+<ul>
+<li></li>
+</ul>
+</blockquote>
+<ul>
+<li>我在项目中引用了图片：<strong>（2023/12/20晚）</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 加载背景图片</span><br>self.image = Image.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;imgs/mountain2.jpg&quot;</span>)<br><span class="hljs-comment"># 调整图片尺寸</span><br>self.image = self.image.resize((<span class="hljs-number">620</span>, <span class="hljs-number">350</span>))  <span class="hljs-comment"># 这里的100是目标宽度和高度，你可以根据需要修改</span><br><span class="hljs-comment"># 转 JEPG 格式为 PPM/PGM 格式</span><br>self.bg_image = ImageTk.PhotoImage(self.image)<br><br><span class="hljs-comment"># 创建标签并设置背景图片</span><br>self.bg_label = tk.Label(self.window, image=self.bg_image)<br>self.bg_label.pack(fill=tk.BOTH, expand=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这里的图片路径很关键，如果是绝对路径，<code>pyinstaller</code> 打包后，直接双击.exe文件会直接报错</li>
+<li>我只好按图片路径，在打包完成后，手动添加图片资源路径：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231220135409789.png" alt="image-20231220135409789"></p>
+<h3 id="点击按钮改变标签内容"><a href="#点击按钮改变标签内容" class="headerlink" title="点击按钮改变标签内容"></a>点击按钮改变标签内容</h3><ul>
+<li>点击按钮，实现改变指定标签 <code>lable</code> 的内容</li>
+<li>这里实际的业务要求是标签根据文本框中的内容是否发生改变，记录此时的字符并绑定该值到标签 <code>lable</code> 上</li>
+<li>这是之前的实现方式：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 统计字符数量</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_chars_in_text</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-comment"># 获取 Text 组件中的所有文本</span><br>    text = self.txt_edit.get(<span class="hljs-string">&quot;1.0&quot;</span>, tk.END)<br>    <span class="hljs-comment"># 计算文本的长度</span><br>    char_count = <span class="hljs-built_in">len</span>(text) - <span class="hljs-number">1</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;字符数: <span class="hljs-subst">&#123;char_count&#125;</span>&quot;</span>)<br>    <span class="hljs-comment"># 显示文本</span><br>    self.var_lbl.<span class="hljs-built_in">set</span>(<span class="hljs-string">f&quot;字符数: <span class="hljs-subst">&#123;char_count&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 统计字数按钮</span><br>self.btn_count = tk.Button(master=self.window, text=<span class="hljs-string">&quot;统计字数&quot;</span>, command=self.count_chars_in_text)<br>self.btn_count.grid(row=<span class="hljs-number">1</span>, column=<span class="hljs-number">1</span>, sticky=<span class="hljs-string">&quot;ew&quot;</span>)<br><br><span class="hljs-comment"># 初始化字符数</span><br>self.var_lbl = tk.StringVar()<br> <span class="hljs-comment"># 初始化一个空字符串</span><br>self.var_lbl.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;&quot;</span>) <br><br><span class="hljs-comment"># 字符数标签</span><br>self.lbl = tk.Label(master=self.btn_count, textvariable=self.var_lbl)<br>self.lbl.grid(row=<span class="hljs-number">1</span>, column=<span class="hljs-number">1</span>, sticky=<span class="hljs-string">&quot;ew&quot;</span>)<br><br><span class="hljs-comment"># 监听文本内容改变</span><br>self.txt_edit.config(font=(<span class="hljs-string">&quot;Arial&quot;</span>, <span class="hljs-number">12</span>), undo=<span class="hljs-literal">True</span>, wrap=<span class="hljs-string">&quot;word&quot;</span>)<br><span class="hljs-comment"># 当文本内容改变时触发事件并调用count_chars_in_text函数</span><br>self.txt_edit.bind(<span class="hljs-string">&quot;&lt;&lt;Modified&gt;&gt;&quot;</span>, self.count_chars_in_text)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>但是这里有个奇怪的问题：<code>label</code> 标签加上 <code>textvariable</code> 属性，在外部调用该 <code>label</code> 所在函数，<code>label</code> 标签不显示</p>
+</li>
+<li><p>我使用了新的方案解决这个问题：不使用 <code>textvariable</code> 属性，使用简单的 <code>text</code> 属性解决这个问题：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 统计字符数量</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_chars_in_text</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-comment"># 获取 Text 组件中的所有文本</span><br>    text = self.txt_edit.get(<span class="hljs-string">&quot;1.0&quot;</span>, tk.END)<br>    <span class="hljs-comment"># 计算文本的长度</span><br>    char_count = <span class="hljs-built_in">len</span>(text) - <span class="hljs-number">1</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;字符数: <span class="hljs-subst">&#123;char_count&#125;</span>&quot;</span>)<br>    <span class="hljs-comment"># 修改字符串变量的值</span><br>    self.var_lbl = <span class="hljs-string">f&quot;字符数: <span class="hljs-subst">&#123;char_count&#125;</span>&quot;</span><br>    self.update_label()  <span class="hljs-comment"># 更新Label的文本为新的值</span><br>    <span class="hljs-comment"># self.var_lbl.set(f&quot;字符数: &#123;char_count&#125;&quot;)</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 更新 Label 的文本的值</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">update_label</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-comment"># 更新Label的文本为当前的字符串变量的值</span><br>    self.lbl.config(text=self.var_lbl)<br>    <span class="hljs-comment"># 更新显示</span><br>    self.lbl.update()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 字符数标签</span><br>self.lbl = tk.Label(master=self.btn_count)<br>self.lbl.grid(row=<span class="hljs-number">1</span>, column=<span class="hljs-number">1</span>, sticky=<span class="hljs-string">&quot;ew&quot;</span>)<br><br><span class="hljs-comment"># 创建一个可变的字符串变量</span><br>self.var_lbl = <span class="hljs-string">&quot;初始文本&quot;</span><br>self.update_label()<br><br><span class="hljs-comment"># 监听文本内容改变</span><br>self.txt_edit.config(font=(<span class="hljs-string">&quot;Arial&quot;</span>, <span class="hljs-number">12</span>), undo=<span class="hljs-literal">True</span>, wrap=<span class="hljs-string">&quot;word&quot;</span>)<br><span class="hljs-comment"># 当文本内容改变时触发事件并调用count_chars_in_text函数</span><br>self.txt_edit.bind(<span class="hljs-string">&quot;&lt;&lt;Modified&gt;&gt;&quot;</span>, self.count_chars_in_text)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>不同的实现方法，完全一样的效果<strong>（2023/12/20晚）</strong></li>
+</ul>
 <h2 id="日常报错"><a href="#日常报错" class="headerlink" title="日常报错"></a>日常报错</h2><h3 id="修改-pip-命令镜像源"><a href="#修改-pip-命令镜像源" class="headerlink" title="修改 pip 命令镜像源"></a>修改 pip 命令镜像源</h3><ul>
 <li><p>Python 下载 / 引入包失败，<strong>改变镜像源</strong>可能会解决这个问题：<strong>（2023/10/18午）</strong></p>
 </li>
@@ -1185,7 +1225,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月19日</div>
+          <div>2023年12月20日</div>
         </div>
       
       
