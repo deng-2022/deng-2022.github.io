@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          94k 字
+          95k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          236 分钟
+          239 分钟
         
       </span>
     
@@ -5728,6 +5728,49 @@
 <li>具体的代码展示，明天完成</li>
 <li>顺带记录一下，明天上午，着手记录年度总结，上午写一点，中午写一点，下午写一点，晚上写一点，写个十来天应该能完成</li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/bairo007/article/details/131609169">使用jsoup抓取和解析网页数据_jsoup爬取网页-CSDN博客</a></li>
+</ul>
+<h2 id="2023-12-22"><a href="#2023-12-22" class="headerlink" title="2023/12/22"></a>2023/12/22</h2><ul>
+<li><p>有个同学分享了 Java 线程池相关知识，才发现我的博文中有关 Java 线程池的实战介绍还没完善，算是给自己留了个大坑</p>
+</li>
+<li><p>正好这两天开始巩固复习 Java 并发编程相关八股文了，捎带巩固复习下 Java 线程池相关知识吧</p>
+</li>
+<li><p>今日任务：</p>
+<ul>
+<li><p>定时爬虫</p>
+<ul>
+<li>中午实现爬虫，仅仅修改了下请求参数中的 <code>userAgent</code>，就能正常爬取文章了：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> Jsoup.connect(url)<br>                    .userAgent(<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81&quot;</span>)<br>                    .get();<br></code></pre></td></tr></table></figure></li>
+<li><p>搜索建议</p>
+</li>
+<li><p>搜索热词统计</p>
+</li>
+<li><p>开发者文档初始化 ✔</p>
+</li>
+<li><p>API 新增接口：天气查询</p>
+</li>
+<li><p>规范调用 API 接口的返回值</p>
+</li>
+<li><p>算法：链表 + 二叉树</p>
+</li>
+<li><p>C++、操作系统进程同步（期末题库概览）、计网课后题巩固、UML 图 ✔</p>
+</li>
+<li><p>人工智能论文、Java 论文、十七周实习报告</p>
+</li>
+</ul>
+</li>
+<li><p>他爷爷的，本机爬虫被限制了</p>
+</li>
+<li><p>一晚上啥都没完成：</p>
+<ul>
+<li>本机爬虫被限制了</li>
+<li>搜索建议 Java API 实现未果</li>
+<li>热搜词建议</li>
+<li>搜索建议：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 搜索建议</span><br>     <span class="hljs-type">SuggestBuilder</span> <span class="hljs-variable">suggestBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SuggestBuilder</span>()<br>             .addSuggestion(<span class="hljs-string">&quot;suggestionTitle&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">CompletionSuggestionBuilder</span>(<span class="hljs-string">&quot;suggestion&quot;</span>).skipDuplicates(<span class="hljs-literal">true</span>).size(<span class="hljs-number">5</span>).prefix(searchText));<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 分页</span><br><span class="hljs-type">PageRequest</span> <span class="hljs-variable">pageRequest</span> <span class="hljs-operator">=</span> PageRequest.of((<span class="hljs-type">int</span>) pageNum, (<span class="hljs-type">int</span>) pageSize);<br><span class="hljs-comment">// 构造查询</span><br><span class="hljs-type">NativeSearchQuery</span> <span class="hljs-variable">searchQuery</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeSearchQueryBuilder</span>()<br>        .withQuery(boolQueryBuilder)<br>        .withHighlightBuilder(highlightBuilder)<br>        .withPageable(pageRequest)<br>        .withSorts(sortBuilder)<br>        <span class="hljs-comment">// 执行搜索建议</span><br>        .withSuggestBuilder(suggestBuilder)<br>        .build();<br>SearchHits&lt;ArticleEsDTO&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, ArticleEsDTO.class);<br></code></pre></td></tr></table></figure></li>
 </ul>
 
                 

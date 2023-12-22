@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          56k 字
+          58k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          139 分钟
+          147 分钟
         
       </span>
     
@@ -631,7 +631,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -1692,11 +1692,43 @@
 <li>页面优化完成：（2023/12/21晚）</li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222000308888.png" alt="image-20231222000308888"></p>
-<h2 id="爬取掘金热榜文章"><a href="#爬取掘金热榜文章" class="headerlink" title="爬取掘金热榜文章"></a>爬取掘金热榜文章</h2><ul>
-<li>基本完成文章爬取测试：</li>
+<h3 id="Vue-实现外部引入页面组件"><a href="#Vue-实现外部引入页面组件" class="headerlink" title="Vue 实现外部引入页面组件"></a>Vue 实现外部引入页面组件</h3><ul>
+<li>外部页面组件 <code>ArticleList</code> 携带参数，参数名为 <code>compreList</code>，参数值为 <code>articleList</code></li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;a-tabs v-model:activeKey=&quot;activeKey&quot; tab-position=&quot;left&quot;&gt;<br>        &lt;a-tab-pane key=&quot;1&quot; tab=&quot;综合&quot;&gt;<br>          &lt;CompreArticleList :compre-list=&quot;articleList&quot;/&gt;<br>        &lt;/a-tab-pane&gt;<br>        &lt;a-tab-pane key=&quot;2&quot; tab=&quot;后端&quot;&gt;<br>        ............................<br> &lt;/a-tabs&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>编写内部组件 <code>CompreArticleList</code>，接收参数 <code>compreList</code>，使用 <code>a-list</code>组件展示</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue"> &lt;a-list<br>          class=&quot;demo-loadmore-list&quot;<br>          item-layout=&quot;horizontal&quot;<br>          :data-source=&quot;props.compreList&quot;<br>          style=&quot;width: 400%&quot;<br>      &gt;<br>  ................................<br>&lt;/a-list&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>指明接收参数名</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs tsx">&lt;script setup lang=<span class="hljs-string">&quot;ts&quot;</span>&gt;<br><span class="hljs-keyword">import</span> &#123;defineProps, withDefaults&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue/dist/vue&quot;</span>;<br><br>..........................................<br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Props</span> &#123;<br>  <span class="hljs-attr">compreList</span>: <span class="hljs-built_in">any</span>[];<br>&#125;<br><br><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">withDefaults</span>(defineProps&lt;<span class="hljs-title class_">Props</span>&gt;(), &#123;<br>  <span class="hljs-attr">compreList</span>: <span class="hljs-function">() =&gt;</span> [],<br>&#125;);<br><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="爬取掘金热榜文章"><a href="#爬取掘金热榜文章" class="headerlink" title="爬取掘金热榜文章"></a>爬取掘金热榜文章</h2><ul>
+<li>基本完成文章爬取测试</li>
+</ul>
+<h3 id="分析掘金热榜博文"><a href="#分析掘金热榜博文" class="headerlink" title="分析掘金热榜博文"></a>分析掘金热榜博文</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222125049450.png" alt="image-20231222125049450"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222125059824.png" alt="image-20231222125059824"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222125104035.png" alt="image-20231222125104035"></p>
+<h3 id="编写爬虫"><a href="#编写爬虫" class="headerlink" title="编写爬虫"></a>编写爬虫</h3><ul>
+<li>使用 Hutool 工具库，实现 I/O 爬虫，获取掘金热榜中的所有文章 id：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">getArticles</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-comment">// 携带参数，发起请求，获得 json 数据</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https://api.juejin.cn/content_api/v1/content/article_rank?category_id=6809637769959178254&amp;type=hot&amp;aid=2608&amp;uuid=7202969973525005828&amp;spider=0&quot;</span>;<br>    <span class="hljs-type">HttpRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> HttpRequest.get(url);<br>    <span class="hljs-type">HttpResponse</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> request.execute();<br>    <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> response.body();<br>    System.out.println(json);<br><br>    System.out.println(<span class="hljs-string">&quot;------------------------&quot;</span>);<br>		<br> <span class="hljs-comment">// 使用 Jackson 的 objectMapper，解析 json 数据</span><br>    <span class="hljs-type">ObjectMapper</span> <span class="hljs-variable">objectMapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapper</span>();<br>    <span class="hljs-type">JsonNode</span> <span class="hljs-variable">rootNode</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        rootNode = objectMapper.readTree(json);<br>    &#125; <span class="hljs-keyword">catch</span> (JsonProcessingException e) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>    &#125;<br><br>    <span class="hljs-type">JsonNode</span> <span class="hljs-variable">dataNode</span> <span class="hljs-operator">=</span> rootNode.get(<span class="hljs-string">&quot;data&quot;</span>);<br>    <span class="hljs-comment">// 拿取所有文章 id</span><br>    <span class="hljs-keyword">for</span> (JsonNode jsonNode : dataNode) &#123;<br>        <span class="hljs-type">JsonNode</span> <span class="hljs-variable">contentNode</span> <span class="hljs-operator">=</span> jsonNode.get(<span class="hljs-string">&quot;content&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">contentId</span> <span class="hljs-operator">=</span> contentNode.get(<span class="hljs-string">&quot;content_id&quot;</span>).asText();<br>        System.out.println(<span class="hljs-string">&quot;content_id: &quot;</span> + contentId);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>拿到掘金文章 id 后，使用 <code>jsoup</code> 库发起请求，获取 HTML 文档，并解析获得文章数据：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">getContents</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 1. 获取数据, 获取 HTML 文档</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https://juejin.cn/post/7312376672665075722&quot;</span>;<br>        <span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            doc = Jsoup.connect(url)<br>                    .userAgent(<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81&quot;</span>)<br>                    .get();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        &#125;<br><br>        <span class="hljs-comment">// 输出整个 HTML 文档</span><br>        <span class="hljs-comment">// System.out.println(doc);</span><br><br>	    <span class="hljs-comment">// CSS 选择器获取数据</span><br>        <span class="hljs-type">Elements</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> doc.select(<span class="hljs-string">&quot;title&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;根据标签: &quot;</span> + title);<br><br>        <span class="hljs-type">Elements</span> <span class="hljs-variable">select</span> <span class="hljs-operator">=</span> doc.select(<span class="hljs-string">&quot;.article-area .article-title&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;根据 class: &quot;</span> + select);<br><br>        System.out.println(<span class="hljs-string">&quot;----------------------------------&quot;</span>);<br>        <span class="hljs-type">Element</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> doc.getElementById(<span class="hljs-string">&quot;article-root&quot;</span>);<br>        System.out.println(content);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222000216336.png" alt="image-20231222000216336"></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222000231956.png" alt="image-20231222000231956"></p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231222000216336.png" alt="image-20231222000216336"></p>
+<ul>
+<li>记录一下旧的数据：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231222215255379.png" alt="image-20231222215255379"></p>
 <h3 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h3><ul>
 <li>博文来源：爬取掘金文章榜<strong>（2023/12/20晚）</strong></li>
 <li>目前看来每个文章类别下有 20 篇文章，那就创建一张表吧<ul>

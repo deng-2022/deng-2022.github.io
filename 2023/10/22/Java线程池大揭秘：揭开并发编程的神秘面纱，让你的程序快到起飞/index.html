@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.5k 字
+          12k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          24 分钟
+          32 分钟
         
       </span>
     
@@ -588,7 +588,7 @@
 <h4 id="使用-ForkJoin-线程池或-Stream-并行流"><a href="#使用-ForkJoin-线程池或-Stream-并行流" class="headerlink" title="使用 ForkJoin 线程池或 Stream 并行流"></a>使用 ForkJoin 线程池或 Stream 并行流</h4><ul>
 <li><h5 id="代码示例：-8"><a href="#代码示例：-8" class="headerlink" title="代码示例："></a>代码示例：</h5></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓哈哈</span><br><span class="hljs-comment"> * 2023/11/11 10:10</span><br><span class="hljs-comment"> * Function: 使用 ForkJoin 线程池或 Stream 并行流</span><br><span class="hljs-comment"> * Version 1.0</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UseForkJoinPool</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">ForkJoinPool</span> <span class="hljs-variable">joinPool</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ForkJoinPool</span>();<br><br>        joinPool.execute(() -&gt; &#123;<br>            System.out.println(<span class="hljs-string">&quot;10....&quot;</span>);<br>        &#125;);<br>        List&lt;String&gt; list = Arrays.asList(<span class="hljs-string">&quot;10B......&quot;</span>);<br>        list.parallelStream().forEach(System.out::println);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 邓哈哈</span><br><span class="hljs-comment"> * 2023/11/11 10:10</span><br><span class="hljs-comment"> * Function: 使用 ForkJoin 线程池或 Stream 并行流</span><br><span class="hljs-comment"> * Version 1.0</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UseForkJoinPool</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">ForkJoinPool</span> <span class="hljs-variable">joinPool</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ForkJoinPool</span>();<br><br>        joinPool.execute(() -&gt; &#123;<br>            System.out.println(<span class="hljs-string">&quot;10....&quot;</span>);<br>        &#125;);<br>        <br>        List&lt;String&gt; list = Arrays.asList(<span class="hljs-string">&quot;10B......&quot;</span>);<br>        list.parallelStream().forEach(System.out::println);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="使用线程池的优势"><a href="#使用线程池的优势" class="headerlink" title="使用线程池的优势"></a>使用线程池的优势</h3><h3 id="构造线程池"><a href="#构造线程池" class="headerlink" title="构造线程池"></a>构造线程池</h3><h4 id="核心参数介绍"><a href="#核心参数介绍" class="headerlink" title="核心参数介绍"></a>核心参数介绍</h4><ul>
 <li><h5 id="corePoolSize（核心线程数）（2023-10-22晚）"><a href="#corePoolSize（核心线程数）（2023-10-22晚）" class="headerlink" title="corePoolSize（核心线程数）（2023/10/22晚）"></a>corePoolSize（核心线程数）（2023/10/22晚）</h5></li>
@@ -620,9 +620,76 @@
 
 <ul>
 <li><h5 id="开启测试（2023-10-22晚）"><a href="#开启测试（2023-10-22晚）" class="headerlink" title="开启测试（2023/10/22晚）"></a>开启测试（2023/10/22晚）</h5></li>
+<li><p>详细的流程介绍可以在《简单测试，理解线程池的工作流程》一栏中学习了解<strong>（2023/12/22早）</strong></p>
+</li>
 </ul>
-<h3 id="其他参数介绍"><a href="#其他参数介绍" class="headerlink" title="其他参数介绍"></a>其他参数介绍</h3><h4 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h4><h4 id="线程工厂与自定义工厂"><a href="#线程工厂与自定义工厂" class="headerlink" title="线程工厂与自定义工厂"></a>线程工厂与自定义工厂</h4><h4 id="拒绝策略与自定义策略"><a href="#拒绝策略与自定义策略" class="headerlink" title="拒绝策略与自定义策略"></a>拒绝策略与自定义策略</h4><h3 id="真实业务场景下的实战"><a href="#真实业务场景下的实战" class="headerlink" title="真实业务场景下的实战"></a>真实业务场景下的实战</h3><h4 id="批量插入用户记录"><a href="#批量插入用户记录" class="headerlink" title="批量插入用户记录"></a>批量插入用户记录</h4><ul>
+<h3 id="其他参数介绍"><a href="#其他参数介绍" class="headerlink" title="其他参数介绍"></a>其他参数介绍</h3><h4 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h4><h4 id="线程工厂与自定义工厂"><a href="#线程工厂与自定义工厂" class="headerlink" title="线程工厂与自定义工厂"></a>线程工厂与自定义工厂</h4><h4 id="拒绝策略与自定义策略"><a href="#拒绝策略与自定义策略" class="headerlink" title="拒绝策略与自定义策略"></a>拒绝策略与自定义策略</h4><h4 id="线程池的工作机制"><a href="#线程池的工作机制" class="headerlink" title="线程池的工作机制"></a>线程池的工作机制</h4><ul>
+<li>这部分内容我计划在新的博文中介绍，可以看这篇文章学习：</li>
+</ul>
+<blockquote>
+<p>🥣 推荐阅读：</p>
+<ul>
+<li><h5 id="Java-线程池详解-JavaGuide-Java面试-学习指南"><a href="#Java-线程池详解-JavaGuide-Java面试-学习指南" class="headerlink" title="Java 线程池详解 | JavaGuide(Java面试 + 学习指南)"></a><a target="_blank" rel="noopener" href="https://javaguide.cn/java/concurrent/java-thread-pool-summary.html">Java 线程池详解 | JavaGuide(Java面试 + 学习指南)</a></h5></li>
+</ul>
+</blockquote>
+<h3 id="简单测试，理解线程池工作流程"><a href="#简单测试，理解线程池工作流程" class="headerlink" title="简单测试，理解线程池工作流程"></a>简单测试，理解线程池工作流程</h3><h4 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h4><ul>
+<li>自定义线程池：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 自定义线程池</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadPoolExecutorConfig</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> ThreadPoolExecutor <span class="hljs-title function_">threadPoolExecutor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">ThreadFactory</span> <span class="hljs-variable">threadFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadFactory</span>() &#123;<br>            <span class="hljs-comment">// 记录线程数</span><br>            <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> Thread <span class="hljs-title function_">newThread</span><span class="hljs-params">(<span class="hljs-meta">@NotNull</span> Runnable r)</span> &#123;<br>                <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(r);<br>                thread.setName(<span class="hljs-string">&quot;线程&quot;</span> + count);<br>                count++;<br>                <span class="hljs-keyword">return</span> thread;<br>            &#125;<br>        &#125;;<br>        <span class="hljs-type">ThreadPoolExecutor</span> <span class="hljs-variable">threadPoolExecutor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span><br>                (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">100</span>,<br>                        TimeUnit.MINUTES, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="hljs-number">4</span>), threadFactory);<br>        <span class="hljs-keyword">return</span> threadPoolExecutor;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在代码中，首先定义了一个<strong>ThreadFactory接口的实现类</strong>，用于<strong>创建线程</strong>。<strong>（2023/10/15晚）</strong></li>
+<li>在<strong>newThread方法</strong>中，通过创建线程并设置名称的方式来<strong>实现线程的创建</strong>。每次创建线程时，都会使用一个计数器count，用于记录线程的数量，保证<strong>线程名称的唯一性</strong>。</li>
+<li>然后，使用ThreadPoolExecutor类创建一个<strong>线程池对象</strong>。括号内的参数依次为：<strong>核心线程数、最大线程数、线程空闲时间、时间单位、任务队列以及线程工厂</strong>。这些参数分别表示线程池的基本配置，如最小/最大线程数、线程空闲时间等。其中，任务队列使用了ArrayBlockingQueue，表示<strong>使用有界队列来存储线程任务</strong>。</li>
+<li>最后，<strong>将创建好的线程池对象返回</strong>，供其他地方进行调用和使用。</li>
+</ul>
+<h4 id="提交任务到线程池"><a href="#提交任务到线程池" class="headerlink" title="提交任务到线程池"></a>提交任务到线程池</h4><ul>
+<li>提交任务到线程池：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 任务队列测试 提交任务到线程池</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/queue&quot;)</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">QueueController</span> &#123;<br>    <span class="hljs-meta">@Resource</span><br>    <span class="hljs-keyword">private</span> ThreadPoolExecutor threadPoolExecutor;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/get&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">get</span><span class="hljs-params">()</span> &#123;<br>        HashMap&lt;String, Object&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> threadPoolExecutor.getQueue().size();<br>        map.put(<span class="hljs-string">&quot;队列长度&quot;</span>, size);<br>        <span class="hljs-type">long</span> <span class="hljs-variable">taskCount</span> <span class="hljs-operator">=</span> threadPoolExecutor.getTaskCount();<br>        map.put(<span class="hljs-string">&quot;任务总数&quot;</span>, taskCount);<br>        <span class="hljs-type">long</span> <span class="hljs-variable">completedTaskCount</span> <span class="hljs-operator">=</span> threadPoolExecutor.getCompletedTaskCount();<br>        map.put(<span class="hljs-string">&quot;已完成任务数&quot;</span>, completedTaskCount);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">activeCount</span> <span class="hljs-operator">=</span> threadPoolExecutor.getActiveCount();<br>        map.put(<span class="hljs-string">&quot;正在工作的线程数&quot;</span>, activeCount);<br>        <span class="hljs-keyword">return</span> JSONUtil.toJsonStr(map);<br>    &#125;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/add&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(String name)</span> &#123;<br>        CompletableFuture.runAsync(() -&gt; &#123;<br>            log.info(Thread.currentThread().getName() + <span class="hljs-string">&quot;正在执行中&quot;</span>);<br>            <span class="hljs-keyword">try</span> &#123;<br>                Thread.sleep(<span class="hljs-number">600000</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;, threadPoolExecutor);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>这段代码是一个简单的示例，在<strong>Spring Boot中使用自定义的线程池</strong>。首先通过@Resource注解将之前配置好的线程池对象threadPoolExecutor注入进来，然后定义了<strong>两个接口方法：get和add</strong>。</p>
+</li>
+<li><p>在get方法中，通过调用线程池对象的不同方法，<strong>获取了线程池的一些状态信息</strong>，如<strong>队列长度、任务总数、已完成任务数和正在工作的线程数</strong>，并将这些信息封装进一个<strong>HashMap</strong>中，最后<strong>使用 JSONUtil.toJsonStr 方法将其转换成JSON格式的字符串</strong>返回。</p>
+</li>
+<li><p>在add方法中，使用 <strong>CompletableFuture.runAsync 方法来在线程池中执行一个任务</strong>。这里的任务是一个简单的代码块，通过log输出当前线程的名称，并休眠10分钟。通过将线程池对象threadPoolExecutor作为参数传递给runAsync方法，使得任务在该线程池中执行。</p>
+</li>
+<li><p>通过这段代码，我们可以在Spring Boot项目中方便地<strong>使用自定义的线程池，并对其进行状态监控和管理</strong>。<strong>（2023/10/15晚）</strong></p>
+</li>
+<li><p>由 ThreadPoolExecutorConfig 配置可知，我们自定义的线程池参数设置如下：</p>
+<ul>
+<li><h5 id="核心线程数：2"><a href="#核心线程数：2" class="headerlink" title="核心线程数：2"></a>核心线程数：2</h5></li>
+<li><h5 id="最大线程数：4"><a href="#最大线程数：4" class="headerlink" title="最大线程数：4"></a>最大线程数：4</h5></li>
+<li><h5 id="任务队列数：4"><a href="#任务队列数：4" class="headerlink" title="任务队列数：4"></a>任务队列数：4</h5></li>
+<li><h5 id="超时等待时间：未设置，默认拒绝"><a href="#超时等待时间：未设置，默认拒绝" class="headerlink" title="超时等待时间：未设置，默认拒绝"></a>超时等待时间：未设置，默认拒绝</h5></li>
+<li><h5 id="时间单位：秒（SECEND）"><a href="#时间单位：秒（SECEND）" class="headerlink" title="时间单位：秒（SECEND）"></a>时间单位：秒（SECEND）</h5></li>
+</ul>
+</li>
+<li><p>我们开始测试，依次添加任务，观察执行的线程数和任务队列数，详情如下：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015192743819.png" alt="image-20231015192743819"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015192927650.png" alt="image-20231015192927650"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015193033848.png" alt="image-20231015193033848"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231015193106483.png" alt="image-20231015193106483"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231015193134223.png" alt="image-20231015193134223"></p>
+<ul>
+<li><p>简单描述一下测试情况吧：</p>
+<ul>
+<li>当<strong>正在运行的线程数未达到核心线程数阈值</strong>时，优先添加线程处理新任务</li>
+<li>当<strong>正在运行的线程数达到核心线程数阈值，但任务队列未满</strong>时，优先将任务放入任务队列中</li>
+<li>当<strong>任务队列放满后，但正在运行的线程数未达到最大线程数阈值</strong>时，优先添加线程处理新任务</li>
+<li>当<strong>正在运行的线程数达到最大线程数阈值后</strong>，采用合适的拒绝策略（这里我们采用默认的拒绝策略：直接扔掉这个任务）</li>
+</ul>
+</li>
+<li><h5 id="测试完成（2023-10-15晚）"><a href="#测试完成（2023-10-15晚）" class="headerlink" title="测试完成（2023/10/15晚）"></a>测试完成（2023/10/15晚）</h5></li>
+</ul>
+<h3 id="真实业务场景下的实战"><a href="#真实业务场景下的实战" class="headerlink" title="真实业务场景下的实战"></a>真实业务场景下的实战</h3><h4 id="批量插入用户记录"><a href="#批量插入用户记录" class="headerlink" title="批量插入用户记录"></a>批量插入用户记录</h4><ul>
 <li>这个需求场景是我在做 Memory 伙伴匹配系统 时遇到的：批量插入用户记录</li>
+</ul>
+<h4 id="异步查询图片数据"><a href="#异步查询图片数据" class="headerlink" title="异步查询图片数据"></a>异步查询图片数据</h4><ul>
+<li>这个需求场景是我在做 Memory 聚合搜索平台时遇到的：异步搜索图片数据并返回</li>
 </ul>
 <h4 id="AI服务处理请求任务"><a href="#AI服务处理请求任务" class="headerlink" title="AI服务处理请求任务"></a>AI服务处理请求任务</h4><ul>
 <li>这个需求场景是我在做 Memory BI智能分析平台 时遇到的：调用第三方AI服务处理用户请求</li>

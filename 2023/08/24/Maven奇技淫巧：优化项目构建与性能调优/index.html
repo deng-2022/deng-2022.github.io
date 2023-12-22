@@ -25,12 +25,12 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/light.jpg">
 <meta property="article:published_time" content="2023-08-24T04:22:05.000Z">
-<meta property="article:modified_time" content="2023-10-22T13:04:59.000Z">
+<meta property="article:modified_time" content="2023-12-22T02:10:59.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
+<meta property="article:tag" content="项目">
 <meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="Maven">
-<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/light.jpg">
   
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          27k 字
+          28k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          67 分钟
+          70 分钟
         
       </span>
     
@@ -801,7 +801,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：14 小时前
                   
                 
               </p>
@@ -826,6 +826,23 @@
 <li><h5 id="如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！"><a href="#如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！" class="headerlink" title="如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！"></a>如果你对该主题感兴趣，我们鼓励你继续阅读原文，并在下方留下你的评论和想法。希望这篇转载博文对你的学习和实践有所帮助！</h5></li>
 </ul>
 <p>[TOC]</p>
+<h2 id="你能讲一下什么是-Maven-吗"><a href="#你能讲一下什么是-Maven-吗" class="headerlink" title="你能讲一下什么是 Maven 吗"></a>你能讲一下什么是 <code>Maven</code> 吗</h2><p>Maven 是什么，Maven 是一个项目构建和管理工具，是 Apache 下的一个纯 Java 开发的开源项目，我们现在基本都在使用 Maven 来构建和管理 Java 项目，当然也有其他类似的的项目构建和管理工具，比如 Gradle。<strong>（2023/12/01晚）</strong></p>
+<p>那么我们为什么要使用 Maven 呢？使用它有什么好处？我们首先要认识到，在没有使用 Maven 工具之前，项目构建和管理存在很多问题：</p>
+<ul>
+<li><strong>依赖关系管理困难</strong>：在手动构建项目时，需要<strong>手动下载和添加项目所需的依赖库</strong>，这不仅耗时而且容易出错。此外，如果项目中有多个模块，需要确保每个模块都有正确的依赖版本，这需要花费大量时间和精力。</li>
+<li><strong>构建过程繁琐</strong>：在没有自动化构建工具的情况下，开发人员需要<strong>手动编译、测试和打包项目</strong>。这不仅耗时，而且容易出错。此外，如果项目中有多个模块，需要<strong>分别构建每个模块</strong>，这会进一步增加构建的复杂性。</li>
+<li><strong>项目结构五花八门</strong>：在<strong>没有统一的项目构建和管理规范</strong>的情况下，每个项目可能会有自己独特的项目结构，这使得项目之间的协作和交流变得困难。</li>
+<li><strong>版本控制和发布困难</strong>：在没有Maven之前，<strong>版本控制和发布需要手动完成</strong>，这不仅耗时而且容易出错。此外，如果项目中有多个模块，需要分别发布每个模块，这会进一步增加发布的复杂性。</li>
+<li><strong>团队协作效率低下</strong>：在没有Maven之前，团队成员之间需要<strong>手动共享项目文件和依赖库</strong>，这不仅效率低下，而且容易出错。此外，如果项目中有多个模块，需要分别管理每个模块的代码和依赖库，这会进一步<strong>降低团队协作的效率</strong>。</li>
+</ul>
+<p>总之，没有Maven之前，项目构建和管理可能会面临许多痛点，包括<strong>依赖关系管理困难</strong>、<strong>构建过程繁琐</strong>、<strong>项目结构五花八门</strong>、<strong>版本控制和发布困难</strong>以及<strong>团队协作效率低下</strong>等问题。而 Maven 等自动化构建工具的出现有效地解决了这些问题，提高了项目构建和管理的效率和准确性。</p>
+<p>那么Maven 项目的结构是怎样的呢？通常包括以下几个部分：</p>
+<ul>
+<li><code>src</code>：包含了项目所有的源代码和资源文件以及测试代码。其中src/main/java这个目录下储存java源代码，src/main/resources储存主要的资源文件，比如spring的xml配置文件和log4j的properties文件，src/test/java存放测试代码。</li>
+<li><code>target</code>：编译后内容放置的文件夹。</li>
+<li><code>pom.xml</code>：这是Maven的基础配置文件，也是 <strong>Maven 项目核心配置文件</strong>，相当关键，用于配置项目的基本信息、依赖范围管理、解决依赖冲突、实现分模块开发、多环境配置</li>
+</ul>
+<p>其他相关的还有：Maven 的私服搭建、配置 Maven 镜像源、Maven 的生命周期 </p>
 <h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><p><code>Maven</code>应该是大家的老熟客了，身为<code>Java</code>程序员，几乎每天都会跟他打交道。</p>
 <p>不过有趣的是：<strong>很多伙伴对<code>Maven</code>，似乎很熟，但又好像不熟；在理解上，处于似懂非懂的“量子纠缠态”</strong>，为什么这么说呢？原因很简单，要说不熟吧，偏偏每天都有所接触；要说熟吧，可是对许多高级功能又仅是一知半解。</p>
 <p>正因如此，为了辅助大家从“量子纠缠态”中走出来，本文会从零开始，带着大家玩转<code>Maven</code>技术。当然，其实写这篇文章更大的目的，是为后续写<a target="_blank" rel="noopener" href="https://juejin.cn/column/7098219195371880484">《漫谈分布式》</a>专栏做准备，毕竟后续会频繁用到<code>Maven</code>构建多工程项目。</p>
@@ -1366,11 +1383,11 @@
       
         <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+      
         <a href="/blog/tags/SpringBoot/">#SpringBoot</a>
       
         <a href="/blog/tags/Maven/">#Maven</a>
-      
-        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
     </div>
   
@@ -1401,7 +1418,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月22日</div>
+          <div>2023年12月22日</div>
         </div>
       
       
