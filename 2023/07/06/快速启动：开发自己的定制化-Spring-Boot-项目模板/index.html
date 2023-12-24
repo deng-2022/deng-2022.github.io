@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky.jpg">
 <meta property="article:published_time" content="2023-07-06T10:04:25.000Z">
-<meta property="article:modified_time" content="2023-11-20T15:30:34.000Z">
+<meta property="article:modified_time" content="2023-12-24T07:18:54.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
@@ -260,7 +260,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          41k 字
+          45k 字
         
       </span>
     
@@ -271,7 +271,7 @@
         
         
         
-          102 分钟
+          113 分钟
         
       </span>
     
@@ -804,7 +804,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：9 小时前
                   
                 
               </p>
@@ -1572,6 +1572,78 @@
 <ul>
 <li>平时这种实体类都是使用 MybatisX-Generator 快速生成的，没注意到<strong>实体类要支持序列化</strong> <strong>（2023/11/20晚）</strong></li>
 </ul>
+<h3 id="存储数据库编码错误"><a href="#存储数据库编码错误" class="headerlink" title="存储数据库编码错误"></a>存储数据库编码错误</h3><ul>
+<li>终于解决了如何正确保存含 <code>emoji</code> 表情数据到数据库中的问题了</li>
+<li>直接保存</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-comment">// 1. 获取数据</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https://juejin.cn/post/7313418992310976549&quot;</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> Jsoup.connect(url)<br>                    .userAgent(<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81&quot;</span>)<br>                    .get();<br><br><br>            <span class="hljs-type">Elements</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> doc.select(<span class="hljs-string">&quot;.article-area .article-title&quot;</span>);<br>            System.out.println(<span class="hljs-string">&quot;----------------博文标题----------------&quot;</span>);<br>            System.out.println(title.text());<br><br>            <span class="hljs-type">Elements</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> doc.select(<span class="hljs-string">&quot;.article-viewer p&quot;</span>);<br>            <span class="hljs-comment">// for (Element p : content) &#123;</span><br>            <span class="hljs-comment">//     p.select(&quot;img&quot;).remove();</span><br>            <span class="hljs-comment">//     p.select(&quot;a&quot;).remove();</span><br>            <span class="hljs-comment">// &#125;</span><br><br>            System.out.println(<span class="hljs-string">&quot;---------------博文正文------------------&quot;</span>);<br>            <span class="hljs-comment">// System.out.println(content);</span><br><br>            <span class="hljs-type">byte</span>[] contentBytes = content.toString().getBytes(StandardCharsets.UTF_8);<br><br>            System.out.println(contentBytes);<br>            <span class="hljs-comment">// 获取博文</span><br>            <span class="hljs-type">Article</span> <span class="hljs-variable">article</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Article</span>();<br>            article.setId(Long.valueOf(<span class="hljs-string">&quot;7313418992310976549&quot;</span>));<br>            article.setTitle(title.text());<br>            <br>            <span class="hljs-comment">// 直接保存</span><br>            article.setContent(content.toString());<br><br>            <span class="hljs-comment">// article.setContent(Arrays.toString(contentBytes));</span><br>            <span class="hljs-comment">// article.setContent(content.toString());</span><br>            article.setAuthorId(<span class="hljs-number">0L</span>);<br>            article.setView(<span class="hljs-number">0</span>);<br>            article.setLikes(<span class="hljs-number">0</span>);<br>            article.setComments(<span class="hljs-string">&quot;&quot;</span>);<br>            article.setCollects(<span class="hljs-number">0</span>);<br>            article.setTags(<span class="hljs-string">&quot;&quot;</span>);<br><br>            <span class="hljs-comment">// articleService.save(article);</span><br><br>            <span class="hljs-type">String</span> <span class="hljs-variable">decodedContent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(contentBytes, StandardCharsets.UTF_8);<br>            System.out.println(<span class="hljs-string">&quot;-------------解码后--------------&quot;</span>);<br>            System.out.println(decodedContent);<br><br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        &#125;<br>    &#125;<br>article.setContent(contentBytes);<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这里直接保存，会出现字符编码无法识别而转换错误，就是因为保存的数据记录中有 emoji 这样的小图标</li>
+<li>这里我也查询了相关文章，解决这个问题，虽然最后没有解决，但仍可做参考：</li>
+</ul>
+<blockquote>
+<p>🔥 推荐阅读：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32684617/article/details/93495460">用户昵称含emoji表情保存到数据库中报错SQLException: Incorrect string value: ‘\xF0\x9F\x91\xA7’ for colum n …-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/392268222">java后台接收获取微信昵称，昵称包含小图标保存到数据库报错-CSDN社区</a></li>
+</ul>
+</blockquote>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">Error </span>updating database.  Cause: java.sql.SQLException: Incorrect string value: &#x27;\xF0\x9F\x8D\x84 \xE5...&#x27; for column &#x27;content&#x27; at row 1<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>经过测试，转码保存解决报错：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> Jsoup.connect(url)<br>                    .userAgent(<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81&quot;</span>)<br>                    .get();<br><br><br><span class="hljs-type">Elements</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> doc.select(<span class="hljs-string">&quot;.article-area .article-title&quot;</span>);<br>System.out.println(<span class="hljs-string">&quot;----------------博文标题----------------&quot;</span>);<br>System.out.println(title.text());<br><br><span class="hljs-type">Elements</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> doc.select(<span class="hljs-string">&quot;.article-viewer p&quot;</span>);<br><span class="hljs-comment">// for (Element p : content) &#123;</span><br><span class="hljs-comment">//     p.select(&quot;img&quot;).remove();</span><br><span class="hljs-comment">//     p.select(&quot;a&quot;).remove();</span><br><span class="hljs-comment">// &#125;</span><br><br>System.out.println(<span class="hljs-string">&quot;---------------博文正文------------------&quot;</span>);<br><span class="hljs-comment">// System.out.println(content);</span><br><br><span class="hljs-type">byte</span>[] contentBytes = content.toString().getBytes(StandardCharsets.UTF_8);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">decodedContent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(contentBytes, StandardCharsets.UTF_8);<br>            System.out.println(<span class="hljs-string">&quot;-------------解码后--------------&quot;</span>);<br>            System.out.println(decodedContent);<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231224104703715.png" alt="image-20231224104703715"></p>
+<ul>
+<li>保存到数据库中的问题解决了，接下来就是保证正确从数据库中拿到数据并解码出原数据：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">contentStr</span> <span class="hljs-operator">=</span> article.getContent();<br><span class="hljs-type">byte</span>[] contentBytes = contentStr.getBytes(StandardCharsets.UTF_8);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 移除两端的方括号  </span><br><span class="hljs-type">String</span> <span class="hljs-variable">contentStrWithoutBrackets</span> <span class="hljs-operator">=</span> contentStr.substring(<span class="hljs-number">1</span>, contentStr.length() - <span class="hljs-number">1</span>);  <br><span class="hljs-comment">// 使用逗号作为分隔符分割字符串  </span><br>String[] byteStrs = contentStrWithoutBrackets.split(<span class="hljs-string">&quot;,&quot;</span>);  <br><span class="hljs-comment">// 将字符串数组转换为字节数组  </span><br><span class="hljs-type">byte</span>[] contentBytes = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[byteStrs.length];  <br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; byteStrs.length; i++) &#123;  <br>    contentBytes[i] = Byte.parseByte(byteStrs[i]);  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>经过诸多尝试，仍无法正确解码</li>
+<li>经过前面的测试发现，转码后保存 byte [] 可以解决编码错误，问题是出在保存数据库时</li>
+<li>由于字段 content 为 text（varchar 也可以，可能会出现要保存的数据记录过长而导致溢出，就选择 text 了），所以我们在保存 byte [] 到数据库中时，是先转换成字符串再保存的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">article.setContent(Arrays.toString(contentBytes));<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>而后才引发了解码失败的问题，因为对 byte [] 直接解码是可以获取原文内容 content 的，但是先转字符串存入，取出时就不好处理了</li>
+<li>那就干脆直接保存 byte [] 到数据库中了，改变字段 content 属性为 blob：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231224104321929.png" alt="image-20231224104321929"></p>
+<ul>
+<li>改变对应实体类的字段数据类型为 byte []：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文章内容</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">byte</span>[] content;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>接下来，我们选择直接保存 byte [] 到数据库中即可：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">article.setContent(contentBytes);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这里也可以看出，将 byte [] 转字符串数组后保存和直接保存 byte [] 到数据库中的形式是很不一样的（如下图所示）：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231224104532681.png" alt="image-20231224104532681"></p>
+<ul>
+<li>接下来，就可以直接从数据库中取出数据并解码了：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Article</span> <span class="hljs-variable">article</span> <span class="hljs-operator">=</span> articleService.getById(<span class="hljs-number">7313418992310976549L</span>);<br><br><span class="hljs-type">Long</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> article.getId();<br><span class="hljs-type">String</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> article.getTitle();<br><span class="hljs-type">byte</span>[] content = article.getContent();<br><br><span class="hljs-type">String</span> <span class="hljs-variable">decodedContent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(content, StandardCharsets.UTF_8);<br><span class="hljs-type">Integer</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> article.getType();<br><br>System.out.println(id);<br>System.out.println(title);<br>System.out.println(decodedContent);<br>System.out.println(type);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>解码结果如下：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231224104725599.png" alt="image-20231224104725599"></p>
+<ul>
+<li>至此，我们成功解决了如何正确保存数据记录到数据库中的问题，并成功解决了编码问题</li>
+</ul>
 <h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1>
                 
               </div>
@@ -1690,7 +1762,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月20日</div>
+          <div>2023年12月24日</div>
         </div>
       
       
