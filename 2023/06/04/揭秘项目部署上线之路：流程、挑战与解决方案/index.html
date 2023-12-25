@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.7k 字
+          9k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          22 分钟
+          23 分钟
         
       </span>
     
@@ -649,7 +649,7 @@
 <li><h5 id="在使用-vite-构建工具构建的前端框架中，项目的启动环境是由启动命令来区分的"><a href="#在使用-vite-构建工具构建的前端框架中，项目的启动环境是由启动命令来区分的" class="headerlink" title="在使用 vite 构建工具构建的前端框架中，项目的启动环境是由启动命令来区分的"></a>在使用 vite 构建工具构建的前端框架中，项目的启动环境是由启动命令来区分的</h5></li>
 <li><h5 id="我们在全局请求拦截器下，输出打印变量：import-meta-env-MODE，如下："><a href="#我们在全局请求拦截器下，输出打印变量：import-meta-env-MODE，如下：" class="headerlink" title="我们在全局请求拦截器下，输出打印变量：import.meta.env.MODE，如下："></a>我们在全局请求拦截器下，输出打印变量：import.meta.env.MODE，如下：</h5></li>
 </ul>
-<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs arcade">myAxios.interceptors.request.use(<br>  <span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) &#123;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(import.meta.env.MODE);<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`我他妈发请求了<span class="hljs-subst">$&#123;config&#125;</span>`</span>);<br>    <span class="hljs-comment">// 在发送请求之前做些什么</span><br>    <span class="hljs-keyword">return</span> config;<br>  &#125;,<br>  <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>    <span class="hljs-comment">// 对请求错误做些什么</span><br>    <span class="hljs-keyword">return</span> Promise.reject(error);<br>  &#125;<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs tsx">myAxios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<br>  <span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">env</span>.<span class="hljs-property">MODE</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`我他妈发请求了<span class="hljs-subst">$&#123;config&#125;</span>`</span>);<br>    <span class="hljs-comment">// 在发送请求之前做些什么</span><br>    <span class="hljs-keyword">return</span> config;<br>  &#125;,<br>  <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>    <span class="hljs-comment">// 对请求错误做些什么</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);<br>  &#125;<br>);<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="使用如下命令启动项目（本地启动）："><a href="#使用如下命令启动项目（本地启动）：" class="headerlink" title="使用如下命令启动项目（本地启动）："></a>使用如下命令启动项目（本地启动）：</h5></li>
@@ -685,11 +685,16 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> myAxios = axios.<span class="hljs-title function_">create</span>(&#123;<br>  <span class="hljs-comment">// baseURL: &quot;http://localhost:8082/api&quot;,</span><br>  <span class="hljs-attr">baseURL</span>:<br>    <span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">env</span>.<span class="hljs-property">MODE</span> === <span class="hljs-string">&quot;production&quot;</span><br>      ? <span class="hljs-string">&quot;http://120.55.62.195:8081/api&quot;</span><br>      : <span class="hljs-string">&quot;http://localhost:8081/api&quot;</span>,<br>  <span class="hljs-attr">withCredentials</span>: <span class="hljs-literal">true</span>,<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><h5 id="这就是前端项目的多环境配置了（2023-07-29午）"><a href="#这就是前端项目的多环境配置了（2023-07-29午）" class="headerlink" title="这就是前端项目的多环境配置了（2023/07/29午）"></a>这就是前端项目的多环境配置了（2023/07/29午）</h5></li>
+<li><h5 id="这就是前端项目的多环境配置了（2023-07-29午）"><a href="#这就是前端项目的多环境配置了（2023-07-29午）" class="headerlink" title="这就是前端项目的多环境配置了（2023/07/29午）"></a>这就是前端项目的多环境配置了<strong>（2023/07/29午）</strong></h5></li>
 <li><h5 id="补充：Ant-Design-Pro也是我们常用的前端react框架，其多环境配置与vite构建的vue框架十分相似"><a href="#补充：Ant-Design-Pro也是我们常用的前端react框架，其多环境配置与vite构建的vue框架十分相似" class="headerlink" title="补充：Ant Design Pro也是我们常用的前端react框架，其多环境配置与vite构建的vue框架十分相似"></a>补充：Ant Design Pro也是我们常用的前端react框架，其多环境配置与vite构建的vue框架十分相似</h5></li>
 <li><h5 id="二者的区别仅在于存储项目启动环境的变量名称不同："><a href="#二者的区别仅在于存储项目启动环境的变量名称不同：" class="headerlink" title="二者的区别仅在于存储项目启动环境的变量名称不同："></a>二者的区别仅在于存储项目启动环境的变量名称不同：</h5></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs react">export const errorConfig: RequestConfig = &#123;<br>  baseURL:<br>    process.env.NODE_ENV === &#x27;production&#x27; ? &#x27;http://120.55.62.195:8101&#x27; : &#x27;http://localhost:8101&#x27;,<br>  withCredentials: true,<br>    ..............<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这里再附上 <code>Ant Design Vue</code> 的多环境配置：<strong>（2023/12/25早）</strong></li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">const</span> instance = axios.<span class="hljs-title function_">create</span>(&#123;<br>    <span class="hljs-comment">// baseURL: &quot;http://localhost:8081/api&quot;,</span><br>    <span class="hljs-attr">baseURL</span>:<br>        process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> === <span class="hljs-string">&#x27;production&#x27;</span> ? <span class="hljs-string">&#x27;http://120.55.62.195:8101&#x27;</span> : <span class="hljs-string">&#x27;http://localhost:8101&#x27;</span>,<br>    <span class="hljs-attr">withCredentials</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">timeout</span>: <span class="hljs-number">10000</span>,<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><ul>
 <li><h5 id="我这个项目是基于SpringBoot开发的，后端多环境配置十分方便"><a href="#我这个项目是基于SpringBoot开发的，后端多环境配置十分方便" class="headerlink" title="我这个项目是基于SpringBoot开发的，后端多环境配置十分方便"></a>我这个项目是基于SpringBoot开发的，后端多环境配置十分方便</h5></li>
