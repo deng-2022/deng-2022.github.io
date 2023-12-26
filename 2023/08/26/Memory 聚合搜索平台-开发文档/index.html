@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
-<meta property="article:modified_time" content="2023-12-20T16:06:54.000Z">
+<meta property="article:modified_time" content="2023-12-26T03:22:54.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
@@ -269,7 +269,7 @@
         
         
         
-          187 分钟
+          188 分钟
         
       </span>
     
@@ -631,7 +631,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：5 天前
+                    本文最后更新于：21 小时前
                   
                 
               </p>
@@ -1638,6 +1638,23 @@
 <ul>
 <li>有关 Logstash 的配置，还需要更多了解，目前知识掌握了 MSQL 向 ES 的映射配置<strong>（2023/11/16晚）</strong></li>
 </ul>
+<h3 id="Logstash-配置多个输入输出源Ⅲ"><a href="#Logstash-配置多个输入输出源Ⅲ" class="headerlink" title="Logstash 配置多个输入输出源Ⅲ"></a>Logstash 配置多个输入输出源Ⅲ</h3><blockquote>
+<p>🍖 推荐阅读：<a target="_blank" rel="noopener" href="http://www.51niux.com/?id=205">柴少的官方网站-Logstash多配置文件启动（五） (51niux.com)</a></p>
+</blockquote>
+<ul>
+<li>今天上午，发现之前的命令并不能够同时加载多个配置文件，经过两个小时的努力，终于找到了解决之道：</li>
+<li>我把本地的两个配置文件 <code>myTask.conf</code> 和 <code>myTask.conf2</code> 放在同一个文件夹下 <code>conf</code>：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231226111957531.png" alt="image-20231226111957531"></p>
+<ul>
+<li>执行以下命令：</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">.<span class="hljs-string">\bin\logstash.bat</span> -f .<span class="hljs-string">\config\conf</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>很显然，两个配置文件都被成功加载到了：<strong>（2023/12/26早）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231226112125543.png" alt="image-20231226112125543"></p>
 <h2 id="搜索建议"><a href="#搜索建议" class="headerlink" title="搜索建议"></a>搜索建议</h2><ul>
 <li>还需要<strong>安装 suggestion 插件</strong>，这里给出 demo 示例代码：</li>
 </ul>
@@ -2122,7 +2139,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月21日</div>
+          <div>2023年12月26日</div>
         </div>
       
       
