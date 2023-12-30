@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          102k 字
+          106k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          255 分钟
+          266 分钟
         
       </span>
     
@@ -5930,6 +5930,134 @@
 </li>
 <li>今晚元梦之星玩多了，任务还没完成，明天继续（明天早上作简历完善）</li>
 </ul>
+<h2 id="2023-12-27"><a href="#2023-12-27" class="headerlink" title="2023/12/27"></a>2023/12/27</h2><ul>
+<li><p>完善简历，API 接口开放平台项目</p>
+<ul>
+<li>简历就是求职敲门砖，我还需要对应<code>专业技能</code>中的每一条，总结下需要学习了解的知识：</li>
+</ul>
+<blockquote>
+<p>你可以在简历中这样描述：</p>
+<ol>
+<li><strong>Spring Boot 启动流程</strong>：我熟悉 Spring Boot 的启动流程，包括加载配置文件、初始化应用上下文、注册Bean等。我了解如何在 Spring Boot 中自定义启动流程，以及如何使用 Spring Boot 的特性来简化应用的开发和部署。</li>
+<li><strong>Bean 的生命周期</strong>：我熟悉 Spring 中 Bean 的生命周期，包括 Bean 的实例化、属性赋值、依赖注入、初始化以及销毁等过程。我了解如何使用 Bean 的生命周期来管理应用的状态，以及如何使用 Spring 的回调方法来自定义 Bean 的行为。</li>
+<li><strong>IOC（控制反转）</strong>：我了解 IOC 原理，以及如何在 Spring 中使用 IOC 来实现依赖注入和管理对象。我明白 IOC 容器在 Bean 生命周期中的角色，以及如何利用 IOC 来提高代码的可测试性和可维护性。</li>
+<li><strong>AOP（面向切面编程）</strong>：我熟悉 AOP 的基本概念，包括切面、通知、连接点等。我了解如何在 Spring 中使用 AOP 来实现跨切面的编程，例如日志记录、事务管理等。我明白 AOP 在提高代码复用性和解耦方面的优势。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>使用Hutool的HttpRequest来请求外部网站的热榜博文列表。通过Jackson的ObjectMapper工具，准确解析json数据并提取文章id。</p>
+<p>根据热榜博文 id，使用 jsoup 实时请求搜索接口获取文章，并使用 CSS Selector 语法解析和预处理 HTML 文档，入库文章内容。</p>
+</blockquote>
+<blockquote>
+<p>Java 基础：反射、异常处理、内部类、泛型</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7251786209340407868?searchId=20231227101202F1FEFD74FDD9AB3A4BC2#heading-15">一文搞懂 ThreadLocal，是时候反问面试官了 - 掘金 (juejin.cn)</a></p>
+<p>Java 并发编程：数据共享、ThreadLocal</p>
+</blockquote>
+<blockquote>
+<p>我精通 Git 版本控制工具，能够在 IDEA、WebStorm 和 VS Code 等集成开发环境（IDE）中高效工作。同时，我也熟练使用 ChatGPT 进行自然语言处理，Swagger 进行 API 文档生成，SQLyog 进行 MySQL 数据库管理，Jmeter 进行性能测试，Typora 进行 Markdown 文档编写，以及 VMware 虚拟机进行虚拟化操作。除此之外，我掌握了 C++ 和 Python 的基础语法，能够编写简单的程序。这些技能不仅提高了我的工作效率，还增强了团队协作能力。</p>
+</blockquote>
+</li>
+<li><p>看了别人的接口统计计费功能，很复杂呵：</p>
+<ul>
+<li>限制接口调用次数，支持购买接口调用次数</li>
+<li>设计虚拟货币，比如说积分，开设相应的积分购买活动，用户发起支付即可获取对应积分，积分可用来换取接口调用次数</li>
+<li>这就需要在用户管理中，增加积分管理功能</li>
+<li> 开设了相应的积分购买活动，还需要在管理员功能中，增加积分购买活动的管理功能，可支持活动的发布和下线</li>
+<li>用户购买积分，生成一份订单，需要设计对应的订单管理功能</li>
+<li>我时间精力有限，暂时不做这些复杂的功能，不过接口调用次数限制是很有必要的，可以简单实现每日获取50次接口调用的功能</li>
+<li>暂时就这些想法</li>
+</ul>
+</li>
+<li><p>接口开放平台优化：</p>
+<ul>
+<li>个人中心：个人信息设置、我的积分、签到免费领取、提供开发者 SDK 下载，快速接入 API 接口</li>
+<li>接口调用：限制接口调用次数，做好提示</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7251786209340407868?searchId=20231227101202F1FEFD74FDD9AB3A4BC2">一文搞懂 ThreadLocal，是时候反问面试官了 - 掘金 (juejin.cn)</a></p>
+</li>
+<li><p>C++、计网、操作系统复习</p>
+</li>
+<li><p>今晚继续搞开发者文档，最好能把聚合搜索的核心功能完成，页面优化先放一边，把代码优化完毕，写好文档</p>
+</li>
+</ul>
+<h2 id="2023-12-28"><a href="#2023-12-28" class="headerlink" title="2023/12/28"></a>2023/12/28</h2><ul>
+<li>今日任务：<ul>
+<li>完成请求限流功能 ✔</li>
+<li>API 简历初始化 ✔</li>
+<li>个人页面、接口调用次数限制、接口增加</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7212960463730556983?searchId=202312281156258E406001B3FA58E81746#heading-4">详解Spring的SPI机制和自定义Springboot的Starter包 - 掘金 (juejin.cn)</a></li>
+<li>计网重点问答题：</li>
+</ul>
+<blockquote>
+<p>什么是 DHCP ？</p>
+<p>介绍下 URL 格式吧</p>
+</blockquote>
+<blockquote>
+<p>IPV6 首部与 IPV4 首部的比较，做了什么改变，有什么保留了，有什么去除了</p>
+<p>UDP 和 TCP 的特点和比较</p>
+<p>TCP 的三次握手和四次挥手全流程，为什么要三次握手，两次不行吗？</p>
+<p>TCP 传输过程中发送方如何知道传输失败？如何实现可靠传输的？</p>
+</blockquote>
+<blockquote>
+<p>RIP 和 OSPF 的各种特点和比较</p>
+<p>IP 地址和 MAC 地址的区别？为什么同时使用两种地址，只用 MAC 地址不行吗？</p>
+<p>说一下 ICMP 协议</p>
+<p>比较下以太网交换机和路由器的功能</p>
+</blockquote>
+<blockquote>
+<p>网络协议三要素？各个含义是什么？</p>
+<p>网络适配器是什么？它工作在哪一层？</p>
+</blockquote>
+<ul>
+<li>计网、C++体系基本形成，明天巩固复习操作系统及计网课后题</li>
+</ul>
+<h2 id="2023-12-29"><a href="#2023-12-29" class="headerlink" title="2023/12/29"></a>2023/12/29</h2><ul>
+<li>简历优化，八股记忆</li>
+<li>判断两个set是否相等的操作符重载：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;set&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span>  </span><br>  <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-keyword">typename</span> Compare1, <span class="hljs-keyword">typename</span> Compare2&gt;  <br><span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>==(<span class="hljs-type">const</span> std::set&lt;T, Compare1&gt;&amp; s1, <span class="hljs-type">const</span> std::set&lt;T, Compare2&gt;&amp; s2) &#123;  <br>    <span class="hljs-keyword">if</span> (s1.<span class="hljs-built_in">size</span>() != s2.<span class="hljs-built_in">size</span>()) &#123;  <br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br>    &#125;  <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; elem : s1) &#123;  <br>        <span class="hljs-keyword">if</span> (s2.<span class="hljs-built_in">find</span>(elem) == s2.<span class="hljs-built_in">end</span>()) &#123;  <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br>        &#125;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>判断两个map是否相等的操作符重载：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;map&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span>  </span><br>  <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Key1, <span class="hljs-keyword">typename</span> Value1, <span class="hljs-keyword">typename</span> Key2, <span class="hljs-keyword">typename</span> Value2&gt;  <br><span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>==(<span class="hljs-type">const</span> std::map&lt;Key1, Value1&gt;&amp; m1, <span class="hljs-type">const</span> std::map&lt;Key2, Value2&gt;&amp; m2) &#123;  <br>    <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">size</span>() != m2.<span class="hljs-built_in">size</span>()) &#123;  <br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br>    &#125;  <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; kv : m1) &#123;  <br>        <span class="hljs-keyword">auto</span> it = m2.<span class="hljs-built_in">find</span>(kv.first);  <br>        <span class="hljs-keyword">if</span> (it == m2.<span class="hljs-built_in">end</span>() || it-&gt;second != kv.second) &#123;  <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br>        &#125;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>把两个map的value连接起来的操作符重载：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;map&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sstream&gt;</span>  </span><br>  <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-keyword">typename</span> V&gt;  <br>std::map&lt;T, std::string&gt; <span class="hljs-keyword">operator</span>+(<span class="hljs-type">const</span> std::map&lt;T, V&gt;&amp; m1, <span class="hljs-type">const</span> std::map&lt;T, V&gt;&amp; m2) &#123;  <br>    std::map&lt;T, std::string&gt; result;  <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; kv : m1) &#123;  <br>        <span class="hljs-keyword">auto</span> it = m2.<span class="hljs-built_in">find</span>(kv.first);  <br>        <span class="hljs-keyword">if</span> (it != m2.<span class="hljs-built_in">end</span>()) &#123;  <br>            std::stringstream ss;  <br>            ss &lt;&lt; kv.second &lt;&lt; <span class="hljs-string">&quot;-&quot;</span> &lt;&lt; it-&gt;second;  <br>            result[kv.first] = ss.<span class="hljs-built_in">str</span>();  <br>        &#125; <span class="hljs-keyword">else</span> &#123;  <br>            result[kv.first] = std::<span class="hljs-built_in">to_string</span>(kv.second); <span class="hljs-comment">// If key is not found in m2, keep the value from m1 as it is.  </span><br>        &#125;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> result;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>把一个map输出到标准输出的操作符重载：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;map&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sstream&gt;</span>  </span><br>  <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Key, <span class="hljs-keyword">typename</span> Value&gt;  <br>std::ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(std::ostream&amp; os, <span class="hljs-type">const</span> std::map&lt;Key, Value&gt;&amp; m) &#123;  <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; kv : m) &#123;  <br>        os &lt;&lt; kv.first &lt;&lt; <span class="hljs-string">&quot;: &quot;</span> &lt;&lt; kv.second &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>; <span class="hljs-comment">// You can modify the format as per your requirement.  </span><br>    &#125;  <br>    <span class="hljs-keyword">return</span> os;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>今天总复习基本结束了（有点心虚），计网还需要过过课后题，操作系统看看课本，C++ 已经拿捏了，UML 不用管（）</li>
+<li>看个好玩的：</li>
+</ul>
+<ul>
+<li><p>唔，软件设计师证书</p>
+</li>
+<li><p>遗留 AI 问题记录：</p>
+</li>
+</ul>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gauss">简单解释一下什么是 Ant <span class="hljs-built_in">Design</span> Vue<br>以下仅为开发过程中的个人经验总结，不具备教学价值，本人主 Java 后端，前端框架使用很不熟练。请用专业的话语润色这句话<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">接下来，我们将实现最简单的 <span class="hljs-built_in">demo</span> ，实际演示如何使用 Logstash 数据同步管道保证 MySQL 和 Elasticsearch 的数据一致性<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">有关 <span class="hljs-keyword">Java </span>基础、Spring、MySQL、Redis的专业技能还需优化<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>今晚结束 Memory-Search 开发者文档的编写，实现 Memory API 接口开放平台的个人信息页面，新增接口，优化页面</li>
+</ul>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-symbol">https:</span>//learn.lianglianglee.com/<span class="hljs-variable">%E4</span><span class="hljs-variable">%B8</span><span class="hljs-variable">%93</span><span class="hljs-variable">%E6</span><span class="hljs-variable">%A0</span><span class="hljs-variable">%8</span>F/ElasticSearch<span class="hljs-variable">%E7</span><span class="hljs-variable">%9</span>F<span class="hljs-variable">%A5</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%86</span><span class="hljs-variable">%E4</span><span class="hljs-variable">%BD</span><span class="hljs-variable">%93</span><span class="hljs-variable">%E7</span><span class="hljs-variable">%B3</span><span class="hljs-variable">%BB</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%A6</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%A7</span><span class="hljs-variable">%A3</span>/<span class="hljs-number">07</span><span class="hljs-variable">%20</span><span class="hljs-variable">%E6</span><span class="hljs-variable">%9</span>F<span class="hljs-variable">%A5</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%A2</span><span class="hljs-variable">%EF</span><span class="hljs-variable">%BC</span><span class="hljs-variable">%9</span>ADSL<span class="hljs-variable">%E6</span><span class="hljs-variable">%9</span>F<span class="hljs-variable">%A5</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%A2</span><span class="hljs-variable">%E4</span><span class="hljs-variable">%B9</span><span class="hljs-variable">%8</span>B<span class="hljs-variable">%E5</span><span class="hljs-variable">%A4</span><span class="hljs-variable">%8</span>D<span class="hljs-variable">%E5</span><span class="hljs-variable">%90</span><span class="hljs-variable">%88</span><span class="hljs-variable">%E6</span><span class="hljs-variable">%9</span>F<span class="hljs-variable">%A5</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%A2</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%A6</span><span class="hljs-variable">%E8</span><span class="hljs-variable">%A7</span><span class="hljs-variable">%A3.md</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>

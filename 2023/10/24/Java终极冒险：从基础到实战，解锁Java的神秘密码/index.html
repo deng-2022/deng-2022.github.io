@@ -792,7 +792,7 @@
 <li><p>在 Java 8 中引入了全新的日期时间处理类库，使得处理日期时间变得更加方便和易于理解</p>
 </li>
 <li><h5 id="以下是-java-time-包中最重要的一些类：（2023-08-18午）"><a href="#以下是-java-time-包中最重要的一些类：（2023-08-18午）" class="headerlink" title="以下是 java.time 包中最重要的一些类：（2023/08/18午）"></a>以下是 <code>java.time</code> 包中最重要的一些类：（2023/08/18午）</h5><ul>
-<li>LocalDate：表示日期，如 2022 年 5 月 15 日。</li>
+<li><code>LocalDate</code>：表示日期，如 2022 年 5 月 15 日。</li>
 <li><code>LocalTime</code>：表示时间，如 13:45:30。</li>
 <li><code>LocalDateTime</code>：代表日期和时间，比如 2022 年 5 月 15 日 13:45:30。</li>
 <li><code>ZonedDateTime</code>：代表带有时区的日期时间，在上述所有日期时间类型的基础上，还提供了时区信息。</li>
@@ -817,9 +817,12 @@
 </ul>
 </blockquote>
 <ul>
-<li><h5 id="ofNullable-方法：创建一个可能包含-null-值的-Optional-对象（2023-08-18午）"><a href="#ofNullable-方法：创建一个可能包含-null-值的-Optional-对象（2023-08-18午）" class="headerlink" title="ofNullable() 方法：创建一个可能包含 null 值的 Optional 对象（2023/08/18午）"></a>ofNullable() 方法：创建一个可能包含 null 值的 Optional 对象（2023/08/18午）</h5></li>
-<li><h5 id="isPresent-方法：判断-Optional-中是否存在值。返回ture表示存在值-返回false表示为null"><a href="#isPresent-方法：判断-Optional-中是否存在值。返回ture表示存在值-返回false表示为null" class="headerlink" title="isPresent() 方法：判断 Optional 中是否存在值。返回ture表示存在值 返回false表示为null"></a>isPresent() 方法：判断 Optional 中是否存在值。返回ture表示存在值 返回false表示为null</h5></li>
-<li><h5 id="get-方法：如果-Optional-的值存在则返回该值，否则抛出-NoSuchElementException-异常。"><a href="#get-方法：如果-Optional-的值存在则返回该值，否则抛出-NoSuchElementException-异常。" class="headerlink" title="get() 方法：如果 Optional 的值存在则返回该值，否则抛出 NoSuchElementException 异常。"></a>get() 方法：如果 Optional 的值存在则返回该值，否则抛出 NoSuchElementException 异常。</h5></li>
+<li><p><code>ofNullable()</code> 方法：创建一个可能包含 null 值的 Optional 对象（2023/08/18午）</p>
+</li>
+<li><p><code>isPresent()</code> 方法：判断 Optional 中是否存在值。返回 ture 表示存在值 返回 false 表示为null</p>
+</li>
+<li><p><code>get()</code> 方法：如果 Optional 的值存在则返回该值，否则抛出 NoSuchElementException 异常。</p>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test3</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 判断值是否为空</span><br>    Optional&lt;String&gt; optional = Optional.of(<span class="hljs-string">&quot;hhh&quot;</span>);<br>    <span class="hljs-keyword">if</span> (optional.isPresent()) &#123;<br>        System.out.println(optional.get());<br>    &#125;<br><br>    Optional.of(<span class="hljs-string">&quot;hhh&quot;</span>).ifPresent(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
 
