@@ -495,7 +495,16 @@
 <li>推荐看公众号：<strong>分库分表带来了什么问题？</strong>（苏三说技术）<strong>（2023/11/11早）</strong></li>
 </ul>
 </blockquote>
-<h1 id="精髓所在"><a href="#精髓所在" class="headerlink" title="精髓所在"></a>精髓所在</h1><h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><h3 id="分库分表带来什么问题？"><a href="#分库分表带来什么问题？" class="headerlink" title="分库分表带来什么问题？"></a>分库分表带来什么问题？</h3><blockquote>
+<h1 id="精髓所在"><a href="#精髓所在" class="headerlink" title="精髓所在"></a>精髓所在</h1><h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ul>
+<li>今天是 2024 年元旦，记录一下我对高并发系统的理解吧</li>
+</ul>
+<h3 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h3><ul>
+<li>高性能、高可用、可扩展</li>
+</ul>
+<h3 id="设计方法"><a href="#设计方法" class="headerlink" title="设计方法"></a>设计方法</h3><ul>
+<li>缓存、异步、横向扩展</li>
+</ul>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h3 id="CDN-内容分发网络"><a href="#CDN-内容分发网络" class="headerlink" title="CDN 内容分发网络"></a>CDN 内容分发网络</h3><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="横向扩展"><a href="#横向扩展" class="headerlink" title="横向扩展"></a>横向扩展</h2><h3 id="一体化服务架构"><a href="#一体化服务架构" class="headerlink" title="一体化服务架构"></a>一体化服务架构</h3><h3 id="分布式服务架构"><a href="#分布式服务架构" class="headerlink" title="分布式服务架构"></a>分布式服务架构</h3><h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><h3 id="分库分表带来什么问题？"><a href="#分库分表带来什么问题？" class="headerlink" title="分库分表带来什么问题？"></a>分库分表带来什么问题？</h3><blockquote>
 <p>单表数据量过大，查询性能变差 -&gt; <strong>水平分表</strong> -&gt; 分片键 -&gt; <strong>根据 id 范围</strong>（写热点问题）-&gt; <strong>根据 id 取模</strong>（数据迁移）</p>
 <p>-&gt; <strong>两者结合</strong>：在 id 范围分表中，引入取模分表（数据量增大，查询普通索引列 / 非分片字段，<strong>读扩散问题</strong>）</p>
 <p>-&gt; 建立新表，以该<strong>普通索引</strong>为分片键：查询该字段所在 ids，再拿 ids 查询原表（迅速定位，<strong>减少查询次数</strong>）</p>
