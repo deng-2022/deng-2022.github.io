@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          112k 字
+          113k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          280 分钟
+          284 分钟
         
       </span>
     
@@ -6186,6 +6186,7 @@
 <li>BI 智能平台项目持续完成、开发者文档持续完成</li>
 <li>简历优化、星球求职经验、万物皆虚，万事皆允</li>
 <li>使用对象存储实现文件上传下载</li>
+<li>Spring Boot 的启动流程、Bean 的生命周期</li>
 </ul>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.yijiyong.com/algorithm/sort/06-bubblesort.html">交换排序—冒泡排序 | 智能后端和架构 (yijiyong.com)</a></p>
@@ -6221,6 +6222,77 @@
 </li>
 <li><p>代码校验和格式化检查，构建本地和远程仓库的 CI 流程，持续部署</p>
 </li>
+</ul>
+<h2 id="2024-01-07"><a href="#2024-01-07" class="headerlink" title="2024/01/07"></a>2024/01/07</h2><ul>
+<li><p>寒假学习计划，启动！</p>
+</li>
+<li><p>上午计划：</p>
+<ul>
+<li>AI 机器人 ✔</li>
+<li>快速排序 ✔</li>
+<li>API 签名认证算法 ✔</li>
+</ul>
+</li>
+<li><p>下午：</p>
+<ul>
+<li>gateway 网关</li>
+<li>Nacos 注册中心</li>
+<li>Dubbo 远程调用</li>
+<li>统计分析</li>
+<li>全局业务逻辑梳理</li>
+<li>Spring Boot 初始化模板</li>
+<li>新增接口</li>
+</ul>
+</li>
+<li><p>晚上</p>
+<ul>
+<li>智能 BI 业务流程梳理</li>
+</ul>
+</li>
+<li><h5 id="🍖-推荐阅读：-24-固若金汤的根本（上）：对称加密与非对称加密-lianglianglee-com-https-learn-lianglianglee-com-专栏-透视HTTP协议-24-固若金汤的根本（上）：对称加密与非对称加密-md"><a href="#🍖-推荐阅读：-24-固若金汤的根本（上）：对称加密与非对称加密-lianglianglee-com-https-learn-lianglianglee-com-专栏-透视HTTP协议-24-固若金汤的根本（上）：对称加密与非对称加密-md" class="headerlink" title="🍖 推荐阅读：[24 固若金汤的根本（上）：对称加密与非对称加密 (lianglianglee.com)](https://learn.lianglianglee.com/专栏/透视HTTP协议/24  固若金汤的根本（上）：对称加密与非对称加密.md)"></a>🍖 推荐阅读：[24 固若金汤的根本（上）：对称加密与非对称加密 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE/24">https://learn.lianglianglee.com/专栏/透视HTTP协议/24</a>  固若金汤的根本（上）：对称加密与非对称加密.md)</h5></li>
+</ul>
+<h3 id="防止窃听，机密性"><a href="#防止窃听，机密性" class="headerlink" title="防止窃听，机密性"></a>防止窃听，机密性</h3><ul>
+<li>对称加密算法：通信双方使用唯一的密钥来加密通信数据。</li>
+</ul>
+<blockquote>
+<p>问题：通信之前，如何把用来加密数据的密钥安全地传输给对方？无法保证。</p>
+</blockquote>
+<ul>
+<li>非对称加密算法：通信双方各持有一个密钥对，公钥是公开的，私钥自己持有。使用对方的公钥加密数据，只有对方才能用私钥解密</li>
+</ul>
+<blockquote>
+<p>问题：非对称算法的运算速度很慢、性能很差，如果传输过程中频繁使用非对称加密算法加密数据，网络的传输效率是很低的</p>
+</blockquote>
+<ul>
+<li>混合加密：将对称加密算法和非对称加密算法结合，通信开始前使用双方使用非对称加密方式传输密钥，保证了密钥的安全传输，此后通信双方可以使用该密钥来加密通信数据，保证了通信数据的保密性。</li>
+</ul>
+<h3 id="防止篡改，完整性"><a href="#防止篡改，完整性" class="headerlink" title="防止篡改，完整性"></a>防止篡改，完整性</h3><ul>
+<li>摘要算法：一种特殊的单向加密的压缩算法，它能够把任意长度的数据“压缩”成固定长度、而且独一无二的“摘要”字符串，就好像是给这段数据生成了一个数字“指纹”。摘要和原数据是完全等价的，加密后的数据无法解密，不能从摘要逆推出原文。发送方把加密后的数据，使用摘要算法生成摘要，把加密数据和该摘要一同发往接收方。接收方使用同样的摘要算法对加密数据进行计算，比照生成的摘要和接受的摘要是否一致，保证了通信数据的完整性。</li>
+</ul>
+<h3 id="身份认证，真实性"><a href="#身份认证，真实性" class="headerlink" title="身份认证，真实性"></a>身份认证，真实性</h3><ul>
+<li>数字签名：发送方要保证通信数据是真实可信的，不是别人伪造的。使用自己的私钥对摘要加密，生成数字签名。数字签名和加密数据被一同发往接收方。接收方使用发送方的公钥解密，验证签名，拿到摘要，再比对原数据验证完整性。这样就可以像签署文件一样，证明消息确实是发送方发的。</li>
+<li>数字证书：接收方能够使用公钥验签，但是公钥是公开的。我们还缺少防止黑客伪造公钥的手段，也就是说，怎么来判断这个公钥就是发送方的公钥呢？CA（证书认证机构）具有极高的可信度，由它来为各个公钥签名，这样的公钥就是可信的。CA 对公钥的签名认证也是有格式的，不是简单地把公钥绑定在持有者身份上就完事了，还要包含序列号、用途、颁发者、有效时间等等，把这些打成一个包再签名，完整地证明公钥关联的各种信息，形成数字证书。</li>
+<li>通信双方的数据是加密传输的，保证了数据是保密的，没有被窃听；使用摘要保证了数据的完整性，没有被篡改；使用数字签名，保证了发送方的身份是可靠的，没有被伪造；使用数字证书，保证了接收方的身份是可信的。</li>
+<li>还是要明确最近的努力方向呵：<ul>
+<li>算法通关村二刷开始</li>
+<li>蓝桥杯真题，跃跃欲试 ✔</li>
+<li>《我的人生回忆录》前言待完成，整体结构框架和写作方向正在思考中。。。✔</li>
+<li>Memory 缘忆交友社区上线计划</li>
+<li>微信自动回复智能 AI，时隔半年，想要增加 AI 调用功能</li>
+<li>MC 中开发自制 mod 尝试 </li>
+<li>BI 智能平台项目持续完成、开发者文档持续完成</li>
+<li>简历优化、星球求职经验、万物皆虚，万事皆允</li>
+<li>使用对象存储实现文件上传下载</li>
+<li>Spring Boot 的启动流程、Bean 的生命周期</li>
+<li>Spring AOP 实战，注解</li>
+<li>Docker 部署，Nginx 限流</li>
+<li>自定义 Starter，SPI 机制：Java 的 ServiceLoader 扩展机制，Spring Boot 的 spring.factories 扩展机制，Dubbo 的 ExtensionLoader 扩展机制</li>
+<li>Completable 并发编程实战</li>
+<li>Websocket 深入学习</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7172580526589476878">Spring Boot 自定义注解 - 掘金 (juejin.cn)</a></li>
+<li>简单巩固复习一下 Starter 的设计方案，运行一下项目，再研究下 Gateway 网关的实现流程，今晚多看一些博文</li>
 </ul>
 
                 
