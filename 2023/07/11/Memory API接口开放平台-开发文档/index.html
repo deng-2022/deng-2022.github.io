@@ -28,8 +28,8 @@
 <meta property="article:modified_time" content="2023-12-27T01:07:25.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="项目">
-<meta property="article:tag" content="Redis">
 <meta property="article:tag" content="开发经验">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/spring.jpg">
   
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          69k 字
+          74k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          173 分钟
+          186 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：12 天前
+                    本文最后更新于：13 天前
                   
                 
               </p>
@@ -1326,6 +1326,98 @@
 <ul>
 <li>基本完成了各个接口的调用页面区分：<strong>（2023/12/09晚）</strong></li>
 </ul>
+<h3 id="自定义-Starter"><a href="#自定义-Starter" class="headerlink" title="自定义 Starter"></a>自定义 Starter</h3><ul>
+<li>之前我们开发过 memory-client-sdk 接口调用 SDK，但是不够完善，今天在保持原有功能不变的情况下，重构该 SDK：<strong>（2024/01/08晚）</strong></li>
+</ul>
+<h4 id="新建-Spring-Boot-项目"><a href="#新建-Spring-Boot-项目" class="headerlink" title="新建 Spring Boot 项目"></a>新建 Spring Boot 项目</h4><ul>
+<li>新建 Spring Boot 项目 <code>memory-client-spring-boot-starter</code>:</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.memory<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>memory-client-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="依赖配置"><a href="#依赖配置" class="headerlink" title="依赖配置"></a>依赖配置</h4><ul>
+<li>在 <code>pom.xml</code> 文件下，新增如下依赖：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>s<br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>spring-boot-configuration-processor</code> 在自定义 Spring Boot Starter 时的作用主要是生成配置元数据、提供代码提示和自动补全，以及确保配置属性的正确解析：<ul>
+<li><strong>生成配置元数据</strong>：该依赖会根据在项目中定义的带有 <code>@ConfigurationProperties</code> 注解的类，在 <code>META-INF</code> 文件夹下生成 <code>spring-configuration-metadata.json</code> 文件。这个文件是一种元数据文件，其中包含了关于配置属性的信息，如属性名称、类型、默认值等。这些信息可以用于在IDE中编辑配置文件时提供代码提示和自动补全等功能。</li>
+<li><strong>提供代码提示和自动补全</strong>：当你在IDE中编辑配置文件时，由于 <code>spring-boot-configuration-processor</code> 生成的元数据，IDE 会提供代码提示和自动补全功能。这使得在编写配置文件时更加方便，降低了因拼写错误或配置项不正确而导致的错误。</li>
+<li><strong>确保配置属性的正确解析</strong>：<code>spring-boot-configuration-processor</code> 在编译时会对带有 <code>@ConfigurationProperties</code> 注解的类进行处理，确保配置属性能够被正确地解析和绑定。这对于自定义的 Starter 来说非常重要，因为正确的解析和绑定配置属性是保证 Starter 功能正常的前提。</li>
+</ul>
+</li>
+<li>注意，新建的 Spring Boot 项目的<code>pom.xml</code>文件下，都会有<code>build标签</code>，记得移除 👇：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 移除该内容 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">excludes</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">exclude</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">excludes</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="新增配置文件类"><a href="#新增配置文件类" class="headerlink" title="新增配置文件类"></a>新增配置文件类</h4><ul>
+<li>在 properties 目录下，新增配置文件类 MemoryClientProperties：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;memory.client&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryClientProperties</span> &#123;<br>    <span class="hljs-keyword">private</span> String accessKey;<br>    <span class="hljs-keyword">private</span> String secretKey;<br><br>    <span class="hljs-comment">// 省略 Getter()、Setter() 方法</span><br>    ..............................<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>@ConfigurationProperties</code>注解能够自动获取 application.properties 配置文件中前缀为 <code>spring.girlfriend</code> 节点下 <code>message</code>属性的内容</li>
+</ul>
+<h4 id="新增功能接口"><a href="#新增功能接口" class="headerlink" title="新增功能接口"></a>新增功能接口</h4><ul>
+<li>在 service 目录下，新增功能接口 MemoryClientService，用来实现对各个接口发起调用：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MemoryClientService</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取随机名言</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> words 名言类型</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 随机名言</span><br><span class="hljs-comment">     */</span><br>    String <span class="hljs-title function_">getRandomWord</span><span class="hljs-params">(Words words)</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取随机壁纸</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> picture 壁纸类型</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 壁纸名言</span><br><span class="hljs-comment">     */</span><br>    String <span class="hljs-title function_">getPictureListByType</span><span class="hljs-params">(Picture picture)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="新增功能接口实现类"><a href="#新增功能接口实现类" class="headerlink" title="新增功能接口实现类"></a>新增功能接口实现类</h4><ul>
+<li>在 service/impl 目录下，新增功能接口实现类 MemoryClientServiceImpl，用来实现对各个接口发起调用：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 获取随机名言</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> words 名言类型</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> 随机名言</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getRandomWord</span><span class="hljs-params">(Words words)</span> &#123;<br>      <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> JSONUtil.toJsonStr(words);<br>      <span class="hljs-keyword">return</span> HttpRequest.post(GATEWAY_HOST + <span class="hljs-string">&quot;/api/words/one/random&quot;</span>)<br>              .addHeaders(getHeaderMap(json))<br>              .body(json)<br>              .execute()<br>              .body();<br>  &#125;<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 获取随机壁纸</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> picture 壁纸类型</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> 壁纸名言</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPictureListByType</span><span class="hljs-params">(Picture picture)</span> &#123;<br>      <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> JSONUtil.toJsonStr(picture);<br>      <span class="hljs-keyword">return</span> HttpRequest.post(GATEWAY_HOST + <span class="hljs-string">&quot;/api/wallpaper/list/page/vo&quot;</span>)<br>              .addHeaders(getHeaderMap(json))<br>              .body(json)<br>              .execute()<br>              .body();<br>  &#125;<br>  <br>  <span class="hljs-comment">// 省略其他接口调用方法</span><br>  .................................<br></code></pre></td></tr></table></figure>
+
+<h4 id="新增自动配置类"><a href="#新增自动配置类" class="headerlink" title="新增自动配置类"></a>新增自动配置类</h4><ul>
+<li>新增自动配置类 MemoryClientAutoConfiguration，实现自动化配置功能：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ConditionalOnClass(MemoryClientService.class)</span><br><span class="hljs-meta">@EnableConfigurationProperties(MemoryClientProperties.class)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryClientAutoConfiguration</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-meta">@ConditionalOnMissingBean</span><br>    <span class="hljs-keyword">public</span> MemoryClientService <span class="hljs-title function_">memoryClientService</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MemoryClientServiceImpl</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>简单介绍下这几个注解的作用：<ul>
+<li><code>@Configuration</code>: 标注类为一个配置类，让 spring 去扫描它；</li>
+<li>@ConditionalOnClass<code>：条件注解，只有在 </code>classpath<code> 路径下存在指定 class 文件时，才会实例化 Bean</code> </li>
+<li>@EnableConfigurationProperties<code>：使指定配置类生效；</code></li>
+<li>@Bean<code>: 创建一个实例类注入到 Spring Ioc 容器中；</code></li>
+<li>@ConditionalOnMissingBean`：条件注解，意思是，仅当 Ioc 容器不存在指定类型的 Bean 时，才会创建 Bean。</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置自动装配类路径"><a href="#配置自动装配类路径" class="headerlink" title="配置自动装配类路径"></a>配置自动装配类路径</h4><ul>
+<li><p>配置自动装配的类的路径，这样 Spring Boot 会在启动时，自动会去查找指定文件 <code>/META-INF/spring.factories</code>，若有，就会根据配置的类的全路径去自动化配置：</p>
+</li>
+<li><p>在 Spring Boot 2.x 中，在 resource/META-INF/spring.factories 文件下，添加如下配置来标记自动配置类：</p>
+</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">org<span class="hljs-selector-class">.springframework</span><span class="hljs-selector-class">.boot</span><span class="hljs-selector-class">.autoconfigure</span>.EnableAutoConfiguration=com<span class="hljs-selector-class">.example</span><span class="hljs-selector-class">.starter3</span>.NameAutoConfiguration<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>而在 Spring Boot 3.x 中，在 resource/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports 文件下，添加如下配置：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">com<span class="hljs-selector-class">.example</span><span class="hljs-selector-class">.starter3</span>.NameAutoConfiguration<br></code></pre></td></tr></table></figure>
+
+<h4 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h4><ul>
+<li>是将 <code>girl-friend-spring-boot-starter</code> 打成 <code>jar</code> 包，放到本地的 <code>maven</code> 仓库中去在项目根路径下执行 maven 命令：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mvn clean install<br></code></pre></td></tr></table></figure>
+
+<h4 id="引用自定义-Starter"><a href="#引用自定义-Starter" class="headerlink" title="引用自定义 Starter"></a>引用自定义 Starter</h4><ul>
+<li>在需要引入 <code>memory-client-spring-boot-starter</code> 接口调用功能的 <code>Spring Boot 项目</code>中的 <code>pom.xml</code>文件中，导入依赖：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.memory<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>memory-client-sdk<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在<code>resouce</code>目录下的<code>application.yaml</code>配置文件下，添加如下配置：</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">memory-api:</span><br>  <span class="hljs-attr">client:</span><br>    <span class="hljs-attr">access-key:</span> <span class="hljs-string">memory</span><br>    <span class="hljs-attr">secret-key:</span> <span class="hljs-number">12345678</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>注入 <code>MemoryClientService</code>，可以对任一接口服务发起调用：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Resource</span><br><span class="hljs-keyword">private</span> MemoryClientService memoryClientService;<br><br> <span class="hljs-comment">// 随机名言</span><br>com.memory.client.model.<span class="hljs-type">Words</span> <span class="hljs-variable">words</span> <span class="hljs-operator">=</span> gson.fromJson(userRequestParams, com.memory.client.model.Words.class);<br>result = memoryClientService.getRandomWord(words);<br><br><span class="hljs-comment">// 随机壁纸</span><br>com.memory.client.model.<span class="hljs-type">Picture</span> <span class="hljs-variable">picture</span> <span class="hljs-operator">=</span> gson.fromJson(userRequestParams, com.memory.client.model.Picture.class);<br>result = memoryClientService.getPictureListByType(picture);<br><br>............................<br></code></pre></td></tr></table></figure>
+
+
+
 <h4 id="优化方向"><a href="#优化方向" class="headerlink" title="优化方向"></a>优化方向</h4><ul>
 <li>看了别人的接口统计计费功能，很复杂呵：<strong>（2023/12/27早）</strong><ul>
 <li>限制接口调用次数，支持购买接口调用次数</li>
@@ -1427,9 +1519,9 @@
       
         <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
-        <a href="/blog/tags/Redis/">#Redis</a>
-      
         <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+      
+        <a href="/blog/tags/Redis/">#Redis</a>
       
     </div>
   

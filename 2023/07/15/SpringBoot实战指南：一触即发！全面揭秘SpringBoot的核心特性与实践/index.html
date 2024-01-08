@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/night.jpg">
 <meta property="article:published_time" content="2023-07-15T09:33:16.000Z">
-<meta property="article:modified_time" content="2023-11-26T14:53:45.000Z">
+<meta property="article:modified_time" content="2024-01-08T15:14:45.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="SpringBoot">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          21k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          44 分钟
+          54 分钟
         
       </span>
     
@@ -464,7 +464,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：1 小时前
                   
                 
               </p>
@@ -642,6 +642,8 @@
 </ul>
 <h2 id="Spring-成神之路"><a href="#Spring-成神之路" class="headerlink" title="Spring 成神之路"></a>Spring 成神之路</h2><h3 id="依赖查找与依赖注入"><a href="#依赖查找与依赖注入" class="headerlink" title="依赖查找与依赖注入"></a>依赖查找与依赖注入</h3><blockquote>
 <p>🔥 <a target="_blank" rel="noopener" href="https://liuchenyang0515.blog.csdn.net/article/details/130801647?spm=1001.2014.3001.5502">Spring高手之路1——深入理解与实现IOC依赖查找与依赖注入-CSDN博客</a></p>
+<p>🍖 <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63722685/article/details/125885197">Spring系列一：Spring基础篇_spring 基础-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7145084738775023646">聊聊Spring中最常用的11个扩展点 - 掘金 (juejin.cn)</a></p>
 </blockquote>
 <ul>
 <li><h5 id="在-IOC-（控制反转）的背景下，解决对象间依赖关系：（2023-11-16午）"><a href="#在-IOC-（控制反转）的背景下，解决对象间依赖关系：（2023-11-16午）" class="headerlink" title="在 IOC （控制反转）的背景下，解决对象间依赖关系：（2023/11/16午）"></a>在 IOC （控制反转）的背景下，解决对象间依赖关系：（2023/11/16午）</h5><ul>
@@ -691,7 +693,10 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Value(&quot;$&#123;appTest.name&#125;&quot;)</span><br><span class="hljs-keyword">private</span> String name;<br><br><span class="hljs-meta">@Value(&quot;$&#123;appTest.version&#125;&quot;)</span><br><span class="hljs-keyword">private</span> String version;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="Bean-的生命周期"><a href="#Bean-的生命周期" class="headerlink" title="Bean 的生命周期"></a>Bean 的生命周期</h3><ul>
+<h3 id="Bean-的生命周期"><a href="#Bean-的生命周期" class="headerlink" title="Bean 的生命周期"></a>Bean 的生命周期</h3><blockquote>
+<p>🍖 推荐阅读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63722685/article/details/125887122">Spring系列三：Spring Bean生命周期_springbean 属性赋值和初始化区别-CSDN博客</a></p>
+</blockquote>
+<ul>
 <li><p>在 Spring 框架中，控制 Bean 生命周期的三种方式是：<strong>（2023/11/20晚）</strong></p>
 <p>1、使用 Spring 的 init-method 和 destory-method （在 XML 配置或者 java 配置中自定义的初始化和销毁方法）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.example.demo.bean.Lion&quot;</span></span><br><span class="hljs-tag">              <span class="hljs-attr">init-method</span>=<span class="hljs-string">&quot;init&quot;</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">&quot;destroy&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;simba&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -719,10 +724,53 @@
 </ol>
 </li>
 </ul>
-<h4 id="一个例子，带你了解-Bean-的一生"><a href="#一个例子，带你了解-Bean-的一生" class="headerlink" title="一个例子，带你了解 Bean 的一生"></a>一个例子，带你了解 Bean 的一生</h4><ul>
+<blockquote>
+<p>一个例子，带你了解 Bean 的一生</p>
+</blockquote>
+<ul>
 <li>尝试编写一段代码，直观体现一个 Bean 从创建到销毁的整个过程<strong>（2023/11/26晚）</strong></li>
 </ul>
-<h3 id="动手实现一个简易版-Spring"><a href="#动手实现一个简易版-Spring" class="headerlink" title="动手实现一个简易版 Spring"></a>动手实现一个简易版 Spring</h3><ul>
+<h4 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h4><ul>
+<li>实例化：启动 Spring 应用，IOC 容器为所有已声明的 Bean 创建一个实例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">PersonBean</span><span class="hljs-params">()</span> &#123;<br>	System.out.println(<span class="hljs-string">&quot;调用构造方法，创建实例&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="设置属性"><a href="#设置属性" class="headerlink" title="设置属性"></a>设置属性</h4><ul>
+<li>属性赋值：实例化后，Spring 通过反射机制给 Bean 的属性赋值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 姓名</span><br><span class="hljs-comment"> */</span><br> <span class="hljs-keyword">private</span> String name;  <br> <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br> 	<span class="hljs-built_in">this</span>.name = name;<br>    System.out.println(<span class="hljs-string">&quot;设置 Bean 属性);</span><br><span class="hljs-string"> &#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><h5 id="设置相关依赖"><a href="#设置相关依赖" class="headerlink" title="设置相关依赖"></a>设置相关依赖</h5><p>检查 Aware 相关接口并设置相关依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PersonBean</span> BeanFactoryAware, BeanNameAware &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setBeanName</span><span class="hljs-params">(String s)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;设置 Bean Name&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setBeanFactory</span><span class="hljs-params">(BeanFactory beanFactory)</span> <span class="hljs-keyword">throws</span> BeansException &#123;<br>        System.out.println(<span class="hljs-string">&quot;设置 Bean Factory&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="前置处理"><a href="#前置处理" class="headerlink" title="前置处理"></a>前置处理</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBeanPostProcessor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">BeanPostProcessor</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">postProcessBeforeInitialization</span><span class="hljs-params">(Object bean, String beanName)</span> <span class="hljs-keyword">throws</span> BeansException &#123;<br>        System.out.println(<span class="hljs-string">&quot;前置处理&quot;</span>);<br>        <span class="hljs-keyword">return</span> bean;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h5><p>真正的初始化，这里的初始化便是自定义 <code>init-method</code> 和 <code>destory-method</code> 方法，常见的有三种方式：</p>
+<p>1、使用 Spring 的 init-method 和 destory-method （在 XML 配置或者 java 配置中自定义的初始化和销毁方法）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.example.demo.bean.Lion&quot;</span></span><br><span class="hljs-tag">              <span class="hljs-attr">init-method</span>=<span class="hljs-string">&quot;init&quot;</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">&quot;destroy&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;simba&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ImportResource(&quot;classpath:applicationContext.xml&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AnimalConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span><br>    <span class="hljs-keyword">public</span> Elephant <span class="hljs-title function_">elephant</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Elephant</span> <span class="hljs-variable">elephant</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Elephant</span>();<br>        elephant.setName(<span class="hljs-string">&quot;Dumbo&quot;</span>);<br>        <span class="hljs-keyword">return</span> elephant;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2、使用 JSR-250 规范的 @PostConstruct 和 @PreDestory 注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@PostConstruct</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;Lion is going through init.&quot;</span>);<br>&#125;<br><br><span class="hljs-meta">@PreDestroy</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;Lion is going through destroy.&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3、实现 Spring 的 InitializingBean 和 @DisposableBean 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Lion</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">InitializingBean</span>, DisposableBean &#123;<br><br>    <span class="hljs-keyword">private</span> Integer energy;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">afterPropertiesSet</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;狮子已经充满能量。。。&quot;</span>);<br>        <span class="hljs-built_in">this</span>.energy = <span class="hljs-number">100</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.out.println(<span class="hljs-string">&quot;狮子已经消耗完所有能量。。。&quot;</span>);<br>        <span class="hljs-built_in">this</span>.energy = <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Lion&#123;&quot;</span> + <span class="hljs-string">&quot;energy=&quot;</span> + energy + <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>三种生命周期并存时，在 Spring 框架中单例 Bean 的初始化和销毁过程有这样的执行顺序：</p>
+<ul>
+<li>初始化顺序：@PostConstruct -&gt; InitializingBean -&gt; init-method </li>
+<li>销毁顺序：@PreDestory -&gt; DisposableBean -&gt; destroy-method</li>
+</ul>
+<h5 id="后置处理"><a href="#后置处理" class="headerlink" title="后置处理"></a>后置处理</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBeanPostProcessor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">BeanPostProcessor</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">postProcessAfterInitialization</span><span class="hljs-params">(Object bean, String beanName)</span> <span class="hljs-keyword">throws</span> BeansException &#123;<br>        System.out.println(<span class="hljs-string">&quot;后置处理&quot;</span>);<br>        <span class="hljs-keyword">return</span> bean;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p>Bean 运行期：Bean 已经准备好被程序使用了，它已经被初始化并赋值完成</p>
+<h4 id="销毁"><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h4><p>Bean 销毁：当容器关闭时，调用<code>Bean</code>的销毁方法，这里的销毁方法，在前面真正的初始化中已涉及到，这里不再赘述</p>
+<h3 id="Spring-Boot-启动流程"><a href="#Spring-Boot-启动流程" class="headerlink" title="Spring Boot 启动流程"></a>Spring Boot 启动流程</h3><blockquote>
+<p>🍖 推荐阅读：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7212901252014440504">面试官：SpringBoot的启动流程清楚吗？ - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<p>动手实现一个简易版 Spring</p>
+<ul>
 <li>项目结构：</li>
 </ul>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">-EasySpring<br>  -ApiTest.<span class="hljs-keyword">java</span><br><span class="hljs-keyword"></span>  -<span class="hljs-keyword">BeanDefinition.java</span><br><span class="hljs-keyword"></span>  -<span class="hljs-keyword">BeanFactory.java</span><br><span class="hljs-keyword"></span>  -<span class="hljs-keyword">BeanRegister.java</span><br><span class="hljs-keyword"></span>  -ResourceLoader.<span class="hljs-keyword">java</span><br><span class="hljs-keyword"></span>  -UserDao.<span class="hljs-keyword">java</span><br><span class="hljs-keyword"></span>  -<span class="hljs-keyword">beans.properties</span><br></code></pre></td></tr></table></figure>
@@ -744,8 +792,14 @@
 
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">userDao</span>=<span class="hljs-string">EasySpring.UserDao</span><br></code></pre></td></tr></table></figure>
 
+<h3 id="Spring-Boot-的扩展点"><a href="#Spring-Boot-的扩展点" class="headerlink" title="Spring Boot 的扩展点"></a>Spring Boot 的扩展点</h3><h4 id="项目启动时"><a href="#项目启动时" class="headerlink" title="项目启动时"></a>项目启动时</h4><p>有时候我们需要在项目启动时定制化一些附加功能，比如：加载一些系统参数、完成初始化、预热本地缓存等，该怎么办呢？<strong>（2024/01/08晚）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestRunner</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ApplicationRunner</span> &#123;<br><br>    <span class="hljs-meta">@Resource</span><br>    <span class="hljs-keyword">public</span> NameService nameService;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">(ApplicationArguments args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        nameService.say();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-
+<ul>
+<li>实现<code>ApplicationRunner</code>接口，重写<code>run</code>方法，在该方法中实现自己定制化需求。</li>
+<li>如果项目中有多个类实现了ApplicationRunner接口，他们的执行顺序要怎么指定呢？</li>
+<li>答案是使用<code>@Order(n)</code>注解，n的值越小越先执行。当然也可以通过<code>@Priority</code>注解指定顺序。</li>
+</ul>
 <h1 id="精髓所在"><a href="#精髓所在" class="headerlink" title="精髓所在"></a>精髓所在</h1>
                 
               </div>
@@ -837,7 +891,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年11月26日</div>
+          <div>2024年1月8日</div>
         </div>
       
       
