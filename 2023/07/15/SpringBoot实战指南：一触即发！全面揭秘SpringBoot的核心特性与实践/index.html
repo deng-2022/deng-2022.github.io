@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/night.jpg">
 <meta property="article:published_time" content="2023-07-15T09:33:16.000Z">
-<meta property="article:modified_time" content="2024-01-08T15:14:45.000Z">
+<meta property="article:modified_time" content="2024-01-10T00:31:45.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="SpringBoot">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k 字
+          23k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          54 分钟
+          57 分钟
         
       </span>
     
@@ -464,7 +464,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：16 小时前
                   
                 
               </p>
@@ -565,6 +565,28 @@
 <li><strong>运行并访问</strong>：<code>http://localhost:8088/api/user/hello</code>，结果如下：<strong>（2023/10/25晚）</strong></li>
 </ul>
 <p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231025212235799.png" alt="image-20231025212235799"></p>
+<h3 id="AOP-自定义注解"><a href="#AOP-自定义注解" class="headerlink" title="AOP + 自定义注解"></a>AOP + 自定义注解</h3><ul>
+<li><p>常见的</p>
+</li>
+<li><p>自定义注解 <code>WebLog</code>：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Target(&#123;ElementType.METHOD&#125;)</span><br><span class="hljs-meta">@Documented</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> WebLog &#123;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 日志描述信息</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 日志描述</span><br><span class="hljs-comment">     */</span><br>    String <span class="hljs-title function_">description</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&quot;&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li> 新增切面 <code>WebLogAspect</code>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@Aspect</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WebLogAspect</span> &#123;<br>    <span class="hljs-meta">@Pointcut(&quot;@annotation(com.example.demo3.aspect.WebLog)&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">WebLog</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 环绕</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> proceedingJoinPoint</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> Throwable</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Around(&quot;WebLog()&quot;)</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">doAround</span><span class="hljs-params">(ProceedingJoinPoint proceedingJoinPoint)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>        <span class="hljs-type">long</span> <span class="hljs-variable">startTime</span> <span class="hljs-operator">=</span> System.currentTimeMillis();<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> proceedingJoinPoint.proceed();<br><br>        log.info(<span class="hljs-string">&quot;res: &#123;&#125;&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>().toJson(result));<br>        log.info(<span class="hljs-string">&quot;耗时: &#123;&#125; ms&quot;</span>, System.currentTimeMillis() - startTime);<br><br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>新增控制类 <code>UserController</code>，在需要打印执行日志的方法上，添加 <code> @WebLog</code> 注解：<strong>（2024/01/10早）</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;/user&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserController</span> &#123;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/hi&quot;)</span><br>    <span class="hljs-meta">@WebLog(description = &quot;你好&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">hi</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行 UserController 的 hi() 方法&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;do user&quot;</span>;<br>    &#125;<br>    <br>    <span class="hljs-meta">@GetMapping(&quot;/hello&quot;)</span><br>    <span class="hljs-meta">@WebLog(description = &quot;你好&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;执行 UserController 的 hello() 方法&quot;</span>);<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">&quot;报错啦！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>当启动项目并访问这两个接口时，均可以观察到成功的<code>输出日志</code>，这表明项目运行正常，且接口功能得到了正确的实现：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240110082938034.png" alt="image-20240110082938034"></p>
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="配置属性映射成员变量-实体类"><a href="#配置属性映射成员变量-实体类" class="headerlink" title="配置属性映射成员变量/实体类"></a>配置属性映射成员变量/实体类</h3><ul>
 <li><h5 id="我们在配置文件-application-yaml-中，填写如下配置："><a href="#我们在配置文件-application-yaml-中，填写如下配置：" class="headerlink" title="我们在配置文件 application.yaml 中，填写如下配置："></a>我们在配置文件 application.yaml 中，填写如下配置：</h5></li>
 </ul>
@@ -891,7 +913,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年1月8日</div>
+          <div>2024年1月10日</div>
         </div>
       
       
