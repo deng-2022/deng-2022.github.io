@@ -1,0 +1,1309 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🍝 分享我对人工智能应用的见解与体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI实践中的洞见：我的AI之旅">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/06/22/AI%20%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84%E6%B4%9E%E8%A7%81%EF%BC%9A%E6%88%91%E7%9A%84%20AI%20%E4%B9%8B%E6%97%85/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="🍝 分享我对人工智能应用的见解与体验">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sleep.jpg">
+<meta property="article:published_time" content="2023-06-22T02:52:12.000Z">
+<meta property="article:modified_time" content="2024-01-09T12:46:23.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/sleep.jpg">
+  
+  
+  
+  <title>AI实践中的洞见：我的AI之旅 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI实践中的洞见：我的AI之旅"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-22 10:52" pubdate>
+          2023年6月22日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="AI"
+        id="heading-0a40e3c91a3a55c9a37428c6d194d0e5" role="tab" data-toggle="collapse" href="#collapse-0a40e3c91a3a55c9a37428c6d194d0e5"
+        aria-expanded="true"
+      >
+        AI
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0a40e3c91a3a55c9a37428c6d194d0e5"
+           role="tabpanel" aria-labelledby="heading-0a40e3c91a3a55c9a37428c6d194d0e5">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="true"
+      >
+        经验
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/06/22/AI%20%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84%E6%B4%9E%E8%A7%81%EF%BC%9A%E6%88%91%E7%9A%84%20AI%20%E4%B9%8B%E6%97%85/" title="AI实践中的洞见：我的AI之旅"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">AI实践中的洞见：我的AI之旅</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AI实践中的洞见：我的AI之旅</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：8 天前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><ul>
+<li><p>该文章用来记录并分享我本人在<strong>使用AI过程中的体验</strong>，不会是<strong>专业性很强</strong>的技术类教程，就看个乐吧！</p>
+</li>
+<li><p>AI（人工智能）是当今科技领域的一大热门话题。我在AI领域的实践中积累了许多宝贵的洞见和体验，现在我将与大家分享我的AI之旅。</p>
+</li>
+</ul>
+<blockquote>
+<p>🍖 洞见：在AI应用中获得的见解</p>
+<p>通过实践，我得以深入了解人工智能的应用。我将分享我在实践中获得的见解，希望能给读者带来启发和思考。</p>
+<p>🥣 AI之旅：我的实践经历和探索</p>
+<p>我将带领大家回顾我的AI之旅，分享我在这个领域中的实践经历和探索。无论你是对AI感兴趣的新手还是经验丰富的专家，这段旅程都将给你带来新的收获和启示。</p>
+<p>🍛 应用见解：了解人工智能技术在实际应用中的洞见</p>
+<p>我将分享我在实际应用中获得的见解，这些见解将让你更好地了解人工智能技术在不同领域的应用，为你开阔思路和拓宽视野。</p>
+<p>🍚 开启对AI的探索：一起探讨人工智能的未来与可能性</p>
+</blockquote>
+<ul>
+<li>让我们共同开启<strong>对 AI 的探索之旅</strong>，一起探讨<strong>人工智能</strong>在不同领域中的未来和潜力。无论你是否有相关背景，这个旅程都将为你展示<strong>人工智能技术的发展方向</strong>以及它对我们生活的影响。</li>
+</ul>
+<ul>
+<li>让我们一同探索AI实践中的洞见，<strong>分享我的AI之旅</strong>，带你领略人工智能的魅力与无限可能！</li>
+</ul>
+<h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><h2 id="微信自动回复AI"><a href="#微信自动回复AI" class="headerlink" title="微信自动回复AI"></a>微信自动回复AI</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><h5 id="动手做个-AI-机器人，帮我回消息！动手做个-AI-机器人，帮我回消息！-牛客网-nowcoder-com"><a href="#动手做个-AI-机器人，帮我回消息！动手做个-AI-机器人，帮我回消息！-牛客网-nowcoder-com" class="headerlink" title="动手做个 AI 机器人，帮我回消息！动手做个 AI 机器人，帮我回消息！_牛客网 (nowcoder.com)"></a>动手做个 AI 机器人，帮我回消息！<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/353159057999601664">动手做个 AI 机器人，帮我回消息！_牛客网 (nowcoder.com)</a></h5></li>
+<li><h5 id="微信对话开放平台：微信对话开放平台-qq-com"><a href="#微信对话开放平台：微信对话开放平台-qq-com" class="headerlink" title="微信对话开放平台：微信对话开放平台 (qq.com)"></a>微信对话开放平台：<a target="_blank" rel="noopener" href="https://chatbot.weixin.qq.com/">微信对话开放平台 (qq.com)</a></h5></li>
+<li><h5 id="开源项目-wechaty-地址：微信-微信：面向聊天机器人制造商的对话式-RPA-SDK-github-com"><a href="#开源项目-wechaty-地址：微信-微信：面向聊天机器人制造商的对话式-RPA-SDK-github-com" class="headerlink" title="开源项目 wechaty 地址：微信/微信：面向聊天机器人制造商的对话式 RPA SDK (github.com)"></a>开源项目 wechaty 地址：<a target="_blank" rel="noopener" href="https://github.com/wechaty/wechaty">微信/微信：面向聊天机器人制造商的对话式 RPA SDK (github.com)</a></h5></li>
+</ul>
+<h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><ul>
+<li><h5 id="为什么要先吐槽呢？因为如果是一条龙正确执行命令的话，不到三分钟就能搞定了！真的很简单，但我就踩了一早上的坑"><a href="#为什么要先吐槽呢？因为如果是一条龙正确执行命令的话，不到三分钟就能搞定了！真的很简单，但我就踩了一早上的坑" class="headerlink" title="为什么要先吐槽呢？因为如果是一条龙正确执行命令的话，不到三分钟就能搞定了！真的很简单，但我就踩了一早上的坑"></a>为什么要先吐槽呢？因为如果是一条龙正确执行命令的话，不到三分钟就能搞定了！真的很简单，但我就踩了一早上的坑</h5></li>
+<li><h5 id="搞了一早上了，操作过程中是各种报错，百度了太多问题，查看了太多博客，不过没什么大用：（2023-06-22早）"><a href="#搞了一早上了，操作过程中是各种报错，百度了太多问题，查看了太多博客，不过没什么大用：（2023-06-22早）" class="headerlink" title="搞了一早上了，操作过程中是各种报错，百度了太多问题，查看了太多博客，不过没什么大用：（2023/06/22早）"></a>搞了一早上了，操作过程中是各种报错，百度了太多问题，查看了太多博客，不过没什么大用：（2023/06/22早）</h5></li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wjh1840226173/article/details/124779279">(67条消息) internal/modules/cjs/loader.js:883 throw err； ^Error: Cannot find module ‘typescript‘_怕浪小乌龟的博客-CSDN博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/inthat/article/details/120564807">(67条消息) 前端-工作中 npm install 安装依赖报错常见总结_npm install 报错_西京刀客的博客-CSDN博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/question/detail-2630375.html">安装opencv4nodejs时出现错误“无法删除某些目录” _大数据知识库 (saoniuhuo.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4c5375895298">nvm常用命令 切换node版本 - 简书 (jianshu.com)</a></p>
+</li>
+<li><p>[(67条消息) ErrorCaptureStackTrace(err)； Error <a target="_blank" rel="noopener" href="https://blog.csdn.net/kokool/article/details/127481496">ERR_MODULE_NOT_FOUND]: Cannot find module_克里姆颂的博客-CSDN博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/264713.htm">npm安装windows-build-tools卡在Successfully installed Python2.7_node.js_脚本之家 (jb51.net)</a></p>
+</li>
+<li><p>[(67条消息) <a target="_blank" rel="noopener" href="https://blog.csdn.net/aerchi/article/details/105086193">乐意黎原创]npm run dev 时抛’cross-env’ is not recognized as an internal or external command的解决方法_打杂人的博客-CSDN博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.haomeiwen.com/subject/ujfuottx.html">如何用6行代码写出微信聊天机器人 (haomeiwen.com)</a></p>
+</li>
+<li><p>[(67条消息) Js(一)Error <a target="_blank" rel="noopener" href="https://blog.csdn.net/Makasa/article/details/120679122">ERR_MODULE_NOT_FOUND]: Cannot find package ‘uuid‘ imported_M1kasal的博客-CSDN博客</a></p>
+</li>
+<li><h5 id="功夫不负有心人，最后总归是成功了，下面我分享下实操过程吧："><a href="#功夫不负有心人，最后总归是成功了，下面我分享下实操过程吧：" class="headerlink" title="功夫不负有心人，最后总归是成功了，下面我分享下实操过程吧："></a>功夫不负有心人，最后总归是成功了，下面我分享下实操过程吧：</h5></li>
+</ul>
+<h3 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h3><ul>
+<li><h5 id="看开源项目-wechaty-的-教程，其实就能够快速地构建一个聊天机器人了"><a href="#看开源项目-wechaty-的-教程，其实就能够快速地构建一个聊天机器人了" class="headerlink" title="看开源项目 wechaty 的 教程，其实就能够快速地构建一个聊天机器人了"></a>看开源项目 wechaty 的 教程，其实就能够快速地构建一个聊天机器人了</h5></li>
+<li><h5 id="首先将-世界上最短的聊天机器人代码：6行JavaScript-保存到本地，我放在了D-Project-AI-WeChat-bot-js下："><a href="#首先将-世界上最短的聊天机器人代码：6行JavaScript-保存到本地，我放在了D-Project-AI-WeChat-bot-js下：" class="headerlink" title="首先将 世界上最短的聊天机器人代码：6行JavaScript 保存到本地，我放在了D:\Project\AI\WeChat\bot.js下："></a>首先将 世界上最短的聊天机器人代码：6行JavaScript 保存到本地，我放在了D:\Project\AI\WeChat\bot.js下：</h5></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">WechatyBuilder</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;wechaty&#x27;</span><br><br><span class="hljs-keyword">const</span> wechaty = <span class="hljs-title class_">WechatyBuilder</span>.<span class="hljs-title function_">build</span>() <span class="hljs-comment">// get a Wechaty instance</span><br>wechaty<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;scan&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">qrcode, status</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Scan QR Code to login: <span class="hljs-subst">$&#123;status&#125;</span>\nhttps://wechaty.js.org/qrcode/<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(qrcode)&#125;</span>`</span>))<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;login&#x27;</span>,            <span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`User <span class="hljs-subst">$&#123;user&#125;</span> logged in`</span>))<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;message&#x27;</span>,       <span class="hljs-function"><span class="hljs-params">message</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Message: <span class="hljs-subst">$&#123;message&#125;</span>`</span>))<br>wechaty.<span class="hljs-title function_">start</span>()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="依次执行以下三条命令："><a href="#依次执行以下三条命令：" class="headerlink" title="依次执行以下三条命令："></a>依次执行以下三条命令：</h5></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">npm init<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">npm install wechaty<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">node bot.js<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="按照官方教程，此刻就应该大功告成了，但很显然，我没有"><a href="#按照官方教程，此刻就应该大功告成了，但很显然，我没有" class="headerlink" title="按照官方教程，此刻就应该大功告成了，但很显然，我没有"></a>按照官方教程，此刻就应该大功告成了，但很显然，我没有</h5></li>
+<li><h5 id="在执行命令的过程中，报了大量错误，我只能逐条上百度寻找答案，过程极为繁琐"><a href="#在执行命令的过程中，报了大量错误，我只能逐条上百度寻找答案，过程极为繁琐" class="headerlink" title="在执行命令的过程中，报了大量错误，我只能逐条上百度寻找答案，过程极为繁琐"></a>在执行命令的过程中，报了大量错误，我只能逐条上百度寻找答案，过程极为繁琐</h5></li>
+<li><h5 id="npm包管理工具配置依赖总是会有莫名地错误，这让我很是头疼，我一度安装了node-js的最新版，还是无济于事"><a href="#npm包管理工具配置依赖总是会有莫名地错误，这让我很是头疼，我一度安装了node-js的最新版，还是无济于事" class="headerlink" title="npm包管理工具配置依赖总是会有莫名地错误，这让我很是头疼，我一度安装了node.js的最新版，还是无济于事"></a>npm包管理工具配置依赖总是会有莫名地错误，这让我很是头疼，我一度安装了node.js的最新版，还是无济于事</h5></li>
+<li><h5 id="后来我受到启发，将npm的安装命令，替换为yarn，果不其然，安装极其迅速且无报错"><a href="#后来我受到启发，将npm的安装命令，替换为yarn，果不其然，安装极其迅速且无报错" class="headerlink" title="后来我受到启发，将npm的安装命令，替换为yarn，果不其然，安装极其迅速且无报错"></a>后来我受到启发，将npm的安装命令，替换为yarn，果不其然，安装极其迅速且无报错</h5></li>
+<li><h5 id="那接下来，才是正确的实操过程，我会放上我的操作记录："><a href="#那接下来，才是正确的实操过程，我会放上我的操作记录：" class="headerlink" title="那接下来，才是正确的实操过程，我会放上我的操作记录："></a>那接下来，才是正确的实操过程，我会放上我的操作记录：</h5></li>
+<li><h5 id="第一步，执行以下命令：（2023-06-22晚）"><a href="#第一步，执行以下命令：（2023-06-22晚）" class="headerlink" title="第一步，执行以下命令：（2023/06/22晚）"></a>第一步，执行以下命令：（2023/06/22晚）</h5></li>
+</ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623121021613.png" alt="image-20230623121021613"></p>
+<ul>
+<li><h5 id="这一步就是生成了一个json配置文件，如上图所示"><a href="#这一步就是生成了一个json配置文件，如上图所示" class="headerlink" title="这一步就是生成了一个json配置文件，如上图所示"></a>这一步就是生成了一个json配置文件，如上图所示</h5></li>
+<li><h5 id="第二步，执行以下命令："><a href="#第二步，执行以下命令：" class="headerlink" title="第二步，执行以下命令："></a>第二步，执行以下命令：</h5></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">yarn <span class="hljs-built_in">add</span> wechaty<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623121328320.png" alt="image-20230623121328320"></p>
+<ul>
+<li><h5 id="这一步就是安装了wechaty的相关依赖，我只截取了部分操作图，等待执行完毕"><a href="#这一步就是安装了wechaty的相关依赖，我只截取了部分操作图，等待执行完毕" class="headerlink" title="这一步就是安装了wechaty的相关依赖，我只截取了部分操作图，等待执行完毕"></a>这一步就是安装了wechaty的相关依赖，我只截取了部分操作图，等待执行完毕</h5></li>
+<li><h5 id="yarn安装完成后，如果此刻直接执行-node-bot-js，会出现以下错误："><a href="#yarn安装完成后，如果此刻直接执行-node-bot-js，会出现以下错误：" class="headerlink" title="yarn安装完成后，如果此刻直接执行 node bot.js，会出现以下错误："></a>yarn安装完成后，如果此刻直接执行 node bot.js，会出现以下错误：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623121646702.png" alt="image-20230623121646702"></p>
+<ul>
+<li><h5 id="这个问题很好解决，详情可以看这篇博客：-67条消息-SyntaxError-Cannot-use-import-statement-outside-a-module-花花花菜的博客-CSDN博客"><a href="#这个问题很好解决，详情可以看这篇博客：-67条消息-SyntaxError-Cannot-use-import-statement-outside-a-module-花花花菜的博客-CSDN博客" class="headerlink" title="这个问题很好解决，详情可以看这篇博客：(67条消息) SyntaxError: Cannot use import statement outside a module_花花花菜的博客-CSDN博客"></a>这个问题很好解决，详情可以看这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59075169/article/details/124345250">(67条消息) SyntaxError: Cannot use import statement outside a module_花花花菜的博客-CSDN博客</a></h5></li>
+<li><h5 id="我们在package-json中添加如下配置即可："><a href="#我们在package-json中添加如下配置即可：" class="headerlink" title="我们在package.json中添加如下配置即可："></a>我们在package.json中添加如下配置即可：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623121818226.png" alt="image-20230623121818226"></p>
+<ul>
+<li><h5 id="第三步，执行以下命令："><a href="#第三步，执行以下命令：" class="headerlink" title="第三步，执行以下命令："></a>第三步，执行以下命令：</h5></li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">bot</span>.js<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623122004687.png" alt="image-20230623122004687"></p>
+<ul>
+<li><h5 id="执行结果如上，生成一个网址，在这个网址使用微信下扫码登录，即可登录到网页版微信，此时控制台显示如下："><a href="#执行结果如上，生成一个网址，在这个网址使用微信下扫码登录，即可登录到网页版微信，此时控制台显示如下：" class="headerlink" title="执行结果如上，生成一个网址，在这个网址使用微信下扫码登录，即可登录到网页版微信，此时控制台显示如下："></a>执行结果如上，生成一个网址，在这个网址使用微信下扫码登录，即可登录到网页版微信，此时控制台显示如下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623122226249.png" alt="image-20230623122226249"></p>
+<ul>
+<li><h5 id="这个脚本已经成功绑定到我的网页版微信了，它可以监控到我的聊天记录了"><a href="#这个脚本已经成功绑定到我的网页版微信了，它可以监控到我的聊天记录了" class="headerlink" title="这个脚本已经成功绑定到我的网页版微信了，它可以监控到我的聊天记录了"></a>这个脚本已经成功绑定到我的网页版微信了，它可以监控到我的聊天记录了</h5></li>
+<li><h5 id="我的脚本bot-js内容如下："><a href="#我的脚本bot-js内容如下：" class="headerlink" title="我的脚本bot.js内容如下："></a>我的脚本bot.js内容如下：</h5></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">WechatyBuilder</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;wechaty&quot;</span>;<br><br><span class="hljs-keyword">const</span> wechaty = <span class="hljs-title class_">WechatyBuilder</span>.<span class="hljs-title function_">build</span>(); <span class="hljs-comment">// get a Wechaty instance</span><br>wechaty<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;scan&quot;</span>, <span class="hljs-function">(<span class="hljs-params">qrcode, status</span>) =&gt;</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>      <span class="hljs-string">`Scan QR Code to login: <span class="hljs-subst">$&#123;status&#125;</span>\nhttps://wechaty.js.org/qrcode/<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(</span></span><br><span class="hljs-subst"><span class="hljs-string">        qrcode</span></span><br><span class="hljs-subst"><span class="hljs-string">      )&#125;</span>`</span><br>    )<br>  )<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;login&quot;</span>, <span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`User <span class="hljs-subst">$&#123;user&#125;</span> logged in`</span>))<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;message&quot;</span>, <span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Message: <span class="hljs-subst">$&#123;message&#125;</span>`</span>))<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;message&quot;</span>, <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>    <span class="hljs-comment">// 获取消息发送人</span><br>    <span class="hljs-keyword">const</span> contact = msg.<span class="hljs-title function_">talker</span>();<br>    <span class="hljs-comment">// 获取消息内容</span><br>    <span class="hljs-keyword">const</span> text = msg.<span class="hljs-title function_">text</span>();<br>    <span class="hljs-comment">// 获取群聊信息</span><br>    <span class="hljs-keyword">const</span> room = msg.<span class="hljs-title function_">room</span>();<br>    <span class="hljs-comment">// 是私聊</span><br>    <span class="hljs-keyword">if</span> (contact &amp;&amp; text) &#123;<br>      <span class="hljs-comment">// 回复相同内容</span><br>      <span class="hljs-comment">//   msg.say(text, contact);</span><br>      msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;叫你妈妈&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">// 不处理自己的消息</span><br>    <span class="hljs-keyword">if</span> (msg.<span class="hljs-title function_">self</span>()) &#123;<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">// 群聊还是私聊</span><br>    <span class="hljs-keyword">if</span> (room) &#123;<br>      <span class="hljs-keyword">if</span> (room.<span class="hljs-title function_">topic</span>() === <span class="hljs-string">&quot;全家幸福&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(contact + text);<br>        <span class="hljs-comment">// 回复</span><br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">if</span> (contact.<span class="hljs-title function_">name</span>() === <span class="hljs-string">&quot;经&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(contact + text);<br>        <span class="hljs-comment">// 回复</span><br>        <span class="hljs-comment">// msg.say(text, contact);</span><br>        msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;叫你妈妈&quot;</span>);<br>      &#125;<br>    &#125;<br>  &#125;);<br>wechaty.<span class="hljs-title function_">start</span>();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="然后我就找我的好兄弟测验这个自动回复机器人，起初设定是回复对方相同的信息，后来是直接骂一句脏话"><a href="#然后我就找我的好兄弟测验这个自动回复机器人，起初设定是回复对方相同的信息，后来是直接骂一句脏话" class="headerlink" title="然后我就找我的好兄弟测验这个自动回复机器人，起初设定是回复对方相同的信息，后来是直接骂一句脏话"></a>然后我就找我的好兄弟测验这个自动回复机器人，起初设定是回复对方相同的信息，后来是直接骂一句脏话</h5></li>
+<li><h5 id="这家伙还给自动回复脏话到自家群里了，妈的，还好我及时叫停了"><a href="#这家伙还给自动回复脏话到自家群里了，妈的，还好我及时叫停了" class="headerlink" title="这家伙还给自动回复脏话到自家群里了，妈的，还好我及时叫停了"></a>这家伙还给自动回复脏话到自家群里了，妈的，还好我及时叫停了</h5></li>
+<li><h5 id="微信自动回复AI基础教学就到此为止了，日后我再研究一番，了解到如何根据对应联系人，回答对应问题"><a href="#微信自动回复AI基础教学就到此为止了，日后我再研究一番，了解到如何根据对应联系人，回答对应问题" class="headerlink" title="微信自动回复AI基础教学就到此为止了，日后我再研究一番，了解到如何根据对应联系人，回答对应问题"></a>微信自动回复AI基础教学就到此为止了，日后我再研究一番，了解到如何根据对应联系人，回答对应问题</h5></li>
+<li><h5 id="有机会的话，我会分享这个AI的进阶使用心得（2023-06-22晚）"><a href="#有机会的话，我会分享这个AI的进阶使用心得（2023-06-22晚）" class="headerlink" title="有机会的话，我会分享这个AI的进阶使用心得（2023/06/22晚）"></a>有机会的话，我会分享这个AI的进阶使用心得（2023/06/22晚）</h5></li>
+</ul>
+<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><ul>
+<li><h5 id="当天晚上，我又优化了下bot-js脚本，再次启动服务，开启怼好友模式！"><a href="#当天晚上，我又优化了下bot-js脚本，再次启动服务，开启怼好友模式！" class="headerlink" title="当天晚上，我又优化了下bot.js脚本，再次启动服务，开启怼好友模式！"></a>当天晚上，我又优化了下bot.js脚本，再次启动服务，开启怼好友模式！</h5></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">WechatyBuilder</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;wechaty&quot;</span>;<br><br><span class="hljs-comment">// 聊天次数</span><br><span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br><br><span class="hljs-keyword">const</span> wechaty = <span class="hljs-title class_">WechatyBuilder</span>.<span class="hljs-title function_">build</span>(); <span class="hljs-comment">// get a Wechaty instance</span><br>wechaty<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;scan&quot;</span>, <span class="hljs-function">(<span class="hljs-params">qrcode, status</span>) =&gt;</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>      <span class="hljs-string">`Scan QR Code to login: <span class="hljs-subst">$&#123;status&#125;</span>\nhttps://wechaty.js.org/qrcode/<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(</span></span><br><span class="hljs-subst"><span class="hljs-string">        qrcode</span></span><br><span class="hljs-subst"><span class="hljs-string">      )&#125;</span>`</span><br>    )<br>  )<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;login&quot;</span>, <span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`User <span class="hljs-subst">$&#123;user&#125;</span> logged in`</span>))<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;message&quot;</span>, <span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Message: <span class="hljs-subst">$&#123;message&#125;</span>`</span>))<br>  .<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;message&quot;</span>, <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>    <span class="hljs-comment">// 获取消息发送人</span><br>    <span class="hljs-keyword">const</span> contact = msg.<span class="hljs-title function_">talker</span>();<br>    <span class="hljs-comment">// 获取消息内容</span><br>    <span class="hljs-keyword">const</span> text = msg.<span class="hljs-title function_">text</span>();<br>    <span class="hljs-comment">// 获取群聊信息</span><br>    <span class="hljs-keyword">const</span> room = msg.<span class="hljs-title function_">room</span>();<br>    <span class="hljs-comment">// 不处理自己的消息</span><br>    <span class="hljs-keyword">if</span> (msg.<span class="hljs-title function_">self</span>()) &#123;<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">// 是私聊</span><br>    <span class="hljs-keyword">if</span> (contact &amp;&amp; text) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;说话人: &quot;</span> + contact.<span class="hljs-title function_">name</span>());<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;对话次数: &quot;</span> + num);<br>      <span class="hljs-comment">//   // 回复相同内容</span><br>      <span class="hljs-comment">//   //   msg.say(text, contact);</span><br>      <span class="hljs-comment">//   msg.say(&quot;你有什么问题吗？&quot;);</span><br>      num++;<br>      <span class="hljs-keyword">if</span> (num % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>        msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;你在狗叫什么？&quot;</span>);<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num % <span class="hljs-number">5</span> === <span class="hljs-number">0</span>) &#123;<br>        msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;你叫你大爷呢！&quot;</span>);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;你说:&quot;</span> + text + <span class="hljs-string">&quot;你有什么毛病吗？&quot;</span>);<br>      &#125;<br><br>      <span class="hljs-keyword">if</span> (contact.<span class="hljs-title function_">name</span>() === <span class="hljs-string">&quot;经&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(contact + text);<br>        <span class="hljs-comment">// 回复</span><br>        <span class="hljs-comment">// msg.say(text, contact);</span><br>        num++;<br>        <span class="hljs-keyword">if</span> (num % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>          msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;你在狗叫什么？&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num % <span class="hljs-number">5</span> === <span class="hljs-number">0</span>) &#123;<br>          msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;你叫你大爷呢！&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>          msg.<span class="hljs-title function_">say</span>(<span class="hljs-string">&quot;你说:&quot;</span> + text + <span class="hljs-string">&quot;你有什么毛病吗？&quot;</span>);<br>        &#125;<br>      &#125;<br><br>      <span class="hljs-keyword">if</span> (contact.<span class="hljs-title function_">name</span>() === <span class="hljs-string">&quot;江疯心&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(contact + text);<br>        <span class="hljs-comment">// 回复</span><br>        <span class="hljs-comment">// msg.say(text, contact);</span><br>      &#125;<br>    &#125;<br>    <span class="hljs-comment">// 群聊</span><br>    <span class="hljs-keyword">if</span> (room) &#123;<br>      <span class="hljs-keyword">if</span> (room.<span class="hljs-title function_">topic</span>() === <span class="hljs-string">&quot;全家幸福&quot;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(contact + text);<br>        <span class="hljs-comment">// 回复</span><br>      &#125;<br>    &#125;<br>  &#125;);<br>wechaty.<span class="hljs-title function_">start</span>();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这次脚本优化，多亏了我的好兄弟，在我俩坚持不懈的测试下，又一个可行的脚本写好了"><a href="#这次脚本优化，多亏了我的好兄弟，在我俩坚持不懈的测试下，又一个可行的脚本写好了" class="headerlink" title="这次脚本优化，多亏了我的好兄弟，在我俩坚持不懈的测试下，又一个可行的脚本写好了"></a>这次脚本优化，多亏了我的好兄弟，在我俩坚持不懈的测试下，又一个可行的脚本写好了</h5></li>
+<li><h5 id="由于下面的问题出现（心得👇），我脚本中把回复消息的代码逻辑，给直接抬升到所有私聊用户了，结果就是："><a href="#由于下面的问题出现（心得👇），我脚本中把回复消息的代码逻辑，给直接抬升到所有私聊用户了，结果就是：" class="headerlink" title="由于下面的问题出现（心得👇），我脚本中把回复消息的代码逻辑，给直接抬升到所有私聊用户了，结果就是："></a>由于下面的问题出现（心得👇），我脚本中把回复消息的代码逻辑，给直接抬升到所有私聊用户了，结果就是：</h5></li>
+<li><h5 id="我在同一时间，怼了三个私聊好友："><a href="#我在同一时间，怼了三个私聊好友：" class="headerlink" title="我在同一时间，怼了三个私聊好友："></a>我在同一时间，怼了三个私聊好友：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230624130533200.png" alt="image-20230624130533200"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623224019818.png" alt="image-20230623224019818"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623224157242.png" alt="image-20230623224157242"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623224300564.png" alt="image-20230623224300564"></p>
+<ul>
+<li><h5 id="另外有两个推文公众号也未能幸免："><a href="#另外有两个推文公众号也未能幸免：" class="headerlink" title="另外有两个推文公众号也未能幸免："></a>另外有两个推文公众号也未能幸免：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623224501176.png" alt="image-20230623224501176"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230623224519407.png" alt="image-20230623224519407"></p>
+<ul>
+<li><h5 id="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈，好玩"><a href="#哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈，好玩" class="headerlink" title="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈，好玩"></a>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈，好玩</h5></li>
+</ul>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ul>
+<li><h5 id="连接wechaty服务、登录网页版微信可能会受到网络影响而连接失败，或者连接后网络非常不稳定"><a href="#连接wechaty服务、登录网页版微信可能会受到网络影响而连接失败，或者连接后网络非常不稳定" class="headerlink" title="连接wechaty服务、登录网页版微信可能会受到网络影响而连接失败，或者连接后网络非常不稳定"></a>连接wechaty服务、登录网页版微信可能会受到网络影响而连接失败，或者连接后网络非常不稳定</h5></li>
+<li><h5 id="关于这个问题，我建议是多换几个网络环境就好了，我用我自己的手机热点流畅的一批"><a href="#关于这个问题，我建议是多换几个网络环境就好了，我用我自己的手机热点流畅的一批" class="headerlink" title="关于这个问题，我建议是多换几个网络环境就好了，我用我自己的手机热点流畅的一批"></a>关于这个问题，我建议是多换几个网络环境就好了，我用我自己的手机热点流畅的一批</h5></li>
+<li><h5 id="起初一直没接收到好兄弟的消息，原来是因为-contact-name-没匹配上，就是好友昵称和备注的区别，这个注意一下"><a href="#起初一直没接收到好兄弟的消息，原来是因为-contact-name-没匹配上，就是好友昵称和备注的区别，这个注意一下" class="headerlink" title="起初一直没接收到好兄弟的消息，原来是因为 contact.name() 没匹配上，就是好友昵称和备注的区别，这个注意一下"></a>起初一直没接收到好兄弟的消息，原来是因为 contact.name() 没匹配上，就是好友昵称和备注的区别，这个注意一下</h5></li>
+<li><h5 id="于是就出现了上面的问题，还好我早有预判到，没有监测群聊消息，哈哈哈"><a href="#于是就出现了上面的问题，还好我早有预判到，没有监测群聊消息，哈哈哈" class="headerlink" title="于是就出现了上面的问题，还好我早有预判到，没有监测群聊消息，哈哈哈"></a>于是就出现了上面的问题，还好我早有预判到，没有监测群聊消息，哈哈哈</h5></li>
+</ul>
+<h2 id="微信智能-AI-机器人"><a href="#微信智能-AI-机器人" class="headerlink" title="微信智能 AI 机器人"></a>微信智能 AI 机器人</h2><h3 id="开发过程"><a href="#开发过程" class="headerlink" title="开发过程"></a>开发过程</h3><ul>
+<li>简单展示一下一早上的成果，可算跑通 demo 代码了：<strong>（2024/01/07早）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240107085819793.png" alt="image-20240107085819793"></p>
+<ul>
+<li>再次调试成功，能够辨认群聊消息并回复固定文字，且屏蔽 AI 自己的消息：</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// 群聊消息</span><br><span class="hljs-keyword">if</span> (message.<span class="hljs-title function_">room</span>()) &#123;<br>  <span class="hljs-comment">// 不处理自己的消息</span><br>  <span class="hljs-keyword">if</span> (message.<span class="hljs-title function_">self</span>()) &#123;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 如果 content 以 &quot;@初心&quot; 开头，那么这里的代码将被执行</span><br>  <span class="hljs-keyword">if</span> (content.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;@初心&quot;</span>)) &#123;<br>      <span class="hljs-keyword">const</span> reply = <span class="hljs-string">`你好，<span class="hljs-subst">$&#123;sender&#125;</span>！这是来自群聊<span class="hljs-subst">$&#123;roomName&#125;</span>的消息：<span class="hljs-subst">$&#123;content&#125;</span>`</span>;<br><br>      <span class="hljs-comment">// 回复消息</span><br>      <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">say</span>(reply);<br>    &#125;<br><br>    <span class="hljs-comment">// 如果 content 不以 &quot;@初心&quot; 开头，那么这里的代码将被执行</span><br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// ...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>AI 智能有两个很关键的函数：<strong>（2024/01/09晚）</strong></p>
+</li>
+<li><h5 id="判断消息类型-附件、音频、视频、表情、图片、URL或小程序"><a href="#判断消息类型-附件、音频、视频、表情、图片、URL或小程序" class="headerlink" title="判断消息类型(附件、音频、视频、表情、图片、URL或小程序)"></a>判断消息类型(附件、音频、视频、表情、图片、URL或小程序)</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getMessagePayload</span>(<span class="hljs-params">message: Message</span>) &#123;<br>  <span class="hljs-keyword">switch</span> (message.<span class="hljs-title function_">type</span>()) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-variable constant_">PUPPET</span>.<span class="hljs-property">types</span>.<span class="hljs-property">Message</span>.<span class="hljs-property">Text</span>:<br>      log.<span class="hljs-title function_">silly</span>(<span class="hljs-variable constant_">LOGPRE</span>, <span class="hljs-string">`get message text: <span class="hljs-subst">$&#123;message.text()&#125;</span>`</span>);<br>      <span class="hljs-keyword">break</span>;<br><br>    <span class="hljs-keyword">case</span> <span class="hljs-variable constant_">PUPPET</span>.<span class="hljs-property">types</span>.<span class="hljs-property">Message</span>.<span class="hljs-property">Attachment</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-variable constant_">PUPPET</span>.<span class="hljs-property">types</span>.<span class="hljs-property">Message</span>.<span class="hljs-property">Audio</span>: &#123;<br>      <span class="hljs-keyword">const</span> attachFile = <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">toFileBox</span>();<br><br>      <span class="hljs-keyword">const</span> dataBuffer = <span class="hljs-keyword">await</span> attachFile.<span class="hljs-title function_">toBuffer</span>();<br><br>      log.<span class="hljs-title function_">info</span>(<span class="hljs-variable constant_">LOGPRE</span>, <span class="hljs-string">`get message audio or attach: <span class="hljs-subst">$&#123;dataBuffer.length&#125;</span>`</span>);<br><br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">case</span> <span class="hljs-variable constant_">PUPPET</span>.<span class="hljs-property">types</span>.<span class="hljs-property">Message</span>.<span class="hljs-property">Video</span>: &#123;<br>      <span class="hljs-keyword">const</span> videoFile = <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">toFileBox</span>();<br><br>      <span class="hljs-keyword">const</span> videoData = <span class="hljs-keyword">await</span> videoFile.<span class="hljs-title function_">toBuffer</span>();<br><br>      log.<span class="hljs-title function_">info</span>(<span class="hljs-variable constant_">LOGPRE</span>, <span class="hljs-string">`get message video: <span class="hljs-subst">$&#123;videoData.length&#125;</span>`</span>);<br><br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <br>    .................................<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="执行消息发送"><a href="#执行消息发送" class="headerlink" title="执行消息发送"></a>执行消息发送</h5></li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">dingDongBot</span>(<span class="hljs-params">message: Message</span>) &#123;<br>  <span class="hljs-keyword">if</span> (message.<span class="hljs-title function_">to</span>()?.<span class="hljs-title function_">self</span>() &amp;&amp; message.<span class="hljs-title function_">type</span>() == <span class="hljs-variable constant_">PUPPET</span>.<span class="hljs-property">types</span>.<span class="hljs-property">Message</span>.<span class="hljs-property">Text</span>) &#123;<br>    <span class="hljs-keyword">await</span> <span class="hljs-title function_">sendMsg</span>(message.<span class="hljs-title function_">text</span>(), <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> &#123;<br>      message.<span class="hljs-title function_">talker</span>().<span class="hljs-title function_">say</span>(data);<br>    &#125;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="基本完善"><a href="#基本完善" class="headerlink" title="基本完善"></a>基本完善</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240109204229935.png" alt="image-20240109204229935"></p>
+<ul>
+<li>单线对话：</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">export</span> async <span class="hljs-keyword">function</span> dingDongBot(<span class="hljs-keyword">message</span>: <span class="hljs-keyword">Message</span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">message</span>.to()?.self() &amp;&amp; <span class="hljs-keyword">message</span>.type() == PUPPET.types.<span class="hljs-keyword">Message</span>.Text) &#123;<br>    await sendMsg(<span class="hljs-keyword">message</span>.text(), (data: <span class="hljs-keyword">string</span>) =&gt; &#123;<br>      <span class="hljs-keyword">message</span>.talker().say(data);<br>    &#125;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在上面这段代码中，<code>message.to()?.self()</code> 这行代码的作用是<code>判断是否为用户单线发起聊天</code>；<code>message.talker().say(data)</code> 这行代码的作用是<code>返回响应消息给该单线聊天用户    </code></li>
+<li>实现群聊助手功能</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// 群聊消息</span><br>   <span class="hljs-keyword">if</span> (message.<span class="hljs-title function_">room</span>()) &#123;<br>     <span class="hljs-comment">// 不处理自己的消息</span><br>     <span class="hljs-keyword">if</span> (message.<span class="hljs-title function_">self</span>()) &#123;<br>       <span class="hljs-keyword">return</span>;<br>     &#125;<br><br>     <span class="hljs-keyword">const</span> mesTime = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>     <span class="hljs-keyword">if</span> (mesTime &gt;= startTime) &#123;<br>       <span class="hljs-comment">// 如果 content 以 &quot;@初心&quot; 开头，那么这里的代码将被执行</span><br>       <span class="hljs-keyword">if</span> (content.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;@初心&quot;</span>)) &#123;<br>         <span class="hljs-comment">// const reply = `你好，$&#123;sender&#125;！这是来自群聊$&#123;roomName&#125;的消息：$&#123;content&#125;`;</span><br>         <span class="hljs-comment">// await message.say(reply);</span><br><br>         <span class="hljs-keyword">await</span> <span class="hljs-title function_">getMessagePayload</span>(message);<br><br>         <span class="hljs-keyword">if</span> (message.<span class="hljs-title function_">type</span>() == <span class="hljs-variable constant_">PUPPET</span>.<span class="hljs-property">types</span>.<span class="hljs-property">Message</span>.<span class="hljs-property">Text</span>) &#123;<br>           <span class="hljs-keyword">await</span> <span class="hljs-title function_">sendMsg</span>(message.<span class="hljs-title function_">text</span>(), <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> &#123;<br>             message.<span class="hljs-title function_">say</span>(data);<br>           &#125;);<br>         &#125;<br><br>         <span class="hljs-comment">// 如果 content 不以 &quot;@初心&quot; 开头，那么这里的代码将被执行</span><br>       &#125; <span class="hljs-keyword">else</span> &#123;<br>         <span class="hljs-comment">// ...</span><br>       &#125;<br>     &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>以上就是实现群聊 AI 助手的主要逻辑代码了<strong>（2024/01/09晚）</strong></p>
+</li>
+<li><p>再附上几张实验成果图留念一下：</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240109204128728.png" alt="image-20240109204128728"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240109204353998.png" alt="image-20240109204353998"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240109204427101.png" alt="image-20240109204427101"></p>
+<ul>
+<li>时隔半年，终于再次完善了微信智能 AI 机器人，使用了讯飞星火 AI 大模型。目前还不太完善，还需要对该 AI 的功能做进一步调试。<strong>（2024/01/09晚）</strong></li>
+<li>之后继续尝试优化，这个服务的健壮性还有待提高，只要问题稍有违规就会停止掉整个服务。解决了这个问题，就可以尝试部署在云服务器上了。</li>
+</ul>
+<h2 id="鱼聪明AI-做您强大的AI助手"><a href="#鱼聪明AI-做您强大的AI助手" class="headerlink" title="鱼聪明AI-做您强大的AI助手"></a>鱼聪明AI-做您强大的AI助手</h2><h3 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><h5 id="这个网站是我认识的一位大佬开发的，一个非常好用的AI网站，包含功能繁多，值得一试"><a href="#这个网站是我认识的一位大佬开发的，一个非常好用的AI网站，包含功能繁多，值得一试" class="headerlink" title="这个网站是我认识的一位大佬开发的，一个非常好用的AI网站，包含功能繁多，值得一试"></a>这个网站是我认识的一位大佬开发的，一个非常好用的AI网站，包含功能繁多，值得一试</h5></li>
+<li><h5 id="具体有哪些功能，在这里就不细说了，下面给出访问地址和相关功能介绍："><a href="#具体有哪些功能，在这里就不细说了，下面给出访问地址和相关功能介绍：" class="headerlink" title="具体有哪些功能，在这里就不细说了，下面给出访问地址和相关功能介绍："></a>具体有哪些功能，在这里就不细说了，下面给出访问地址和相关功能介绍：</h5></li>
+<li><h5 id="访问地址：鱼聪明AI-做您强大的AI助手-yucongming-com"><a href="#访问地址：鱼聪明AI-做您强大的AI助手-yucongming-com" class="headerlink" title="访问地址：鱼聪明AI - 做您强大的AI助手 (yucongming.com)"></a>访问地址：<a target="_blank" rel="noopener" href="https://www.yucongming.com/">鱼聪明AI - 做您强大的AI助手 (yucongming.com)</a></h5></li>
+<li><h5 id="网站介绍：上线啦！-编程导航-code-nav-cn"><a href="#网站介绍：上线啦！-编程导航-code-nav-cn" class="headerlink" title="网站介绍：上线啦！ - 编程导航 (code-nav.cn)"></a>网站介绍：<a target="_blank" rel="noopener" href="https://www.code-nav.cn/post/1671131561837211650#heading-10">上线啦！ - 编程导航 (code-nav.cn)</a></h5></li>
+</ul>
+<h3 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h3><ul>
+<li><h5 id="接下来简单介绍下我的使用心得："><a href="#接下来简单介绍下我的使用心得：" class="headerlink" title="接下来简单介绍下我的使用心得："></a>接下来简单介绍下我的使用心得：</h5></li>
+<li><h5 id="这个鱼聪明AI还挺先进的，几轮对话下来，能感受到其应该能达到-ChatGPT-3-5的水准"><a href="#这个鱼聪明AI还挺先进的，几轮对话下来，能感受到其应该能达到-ChatGPT-3-5的水准" class="headerlink" title="这个鱼聪明AI还挺先进的，几轮对话下来，能感受到其应该能达到 ChatGPT 3.5的水准"></a>这个鱼聪明AI还挺先进的，几轮对话下来，能感受到其应该能达到 ChatGPT 3.5的水准</h5></li>
+<li><h5 id="我已经通过对话鱼聪明AI，生成了许多博客文章的标题、副标题以及文章的整体架构了，包括但不限于："><a href="#我已经通过对话鱼聪明AI，生成了许多博客文章的标题、副标题以及文章的整体架构了，包括但不限于：" class="headerlink" title="我已经通过对话鱼聪明AI，生成了许多博客文章的标题、副标题以及文章的整体架构了，包括但不限于："></a>我已经通过对话鱼聪明AI，生成了许多博客文章的标题、副标题以及文章的整体架构了，包括但不限于：</h5></li>
+<li><h5 id="《配置指南-掌握Node-js配置》，《使用JSP构建JavaWeb项目-以数据库大作业为例》，《大道至简：快速搭建博客与文档站点的终极指南》等"><a href="#《配置指南-掌握Node-js配置》，《使用JSP构建JavaWeb项目-以数据库大作业为例》，《大道至简：快速搭建博客与文档站点的终极指南》等" class="headerlink" title="《配置指南-掌握Node-js配置》，《使用JSP构建JavaWeb项目-以数据库大作业为例》，《大道至简：快速搭建博客与文档站点的终极指南》等"></a>《配置指南-掌握Node-js配置》，《使用JSP构建JavaWeb项目-以数据库大作业为例》，《大道至简：快速搭建博客与文档站点的终极指南》等</h5></li>
+<li><h5 id="随便截几张图来感受一下："><a href="#随便截几张图来感受一下：" class="headerlink" title="随便截几张图来感受一下："></a>随便截几张图来感受一下：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230626130029726.png" alt="image-20230626130029726"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230626130057504.png" alt="image-20230626130057504"></p>
+<hr>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230626130115207.png" alt="image-20230626130115207"></p>
+<ul>
+<li><h5 id="以上就是我的使用心得，期待鱼聪明接下来的表现（2023-07-03晚）"><a href="#以上就是我的使用心得，期待鱼聪明接下来的表现（2023-07-03晚）" class="headerlink" title="以上就是我的使用心得，期待鱼聪明接下来的表现（2023/07/03晚）"></a>以上就是我的使用心得，期待鱼聪明接下来的表现（2023/07/03晚）</h5></li>
+<li><h5 id="鱼聪明又帮了我大忙，使用宝塔面板部署项目后端时，帮我解决了很多问题："><a href="#鱼聪明又帮了我大忙，使用宝塔面板部署项目后端时，帮我解决了很多问题：" class="headerlink" title="鱼聪明又帮了我大忙，使用宝塔面板部署项目后端时，帮我解决了很多问题："></a>鱼聪明又帮了我大忙，使用宝塔面板部署项目后端时，帮我解决了很多问题：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230725224215340.png" alt="image-20230725224215340"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230725234512582.png" alt="image-20230725234512582"></p>
+<h2 id="AI使用技巧"><a href="#AI使用技巧" class="headerlink" title="AI使用技巧"></a>AI使用技巧</h2><h3 id="提词技巧"><a href="#提词技巧" class="headerlink" title="提词技巧"></a>提词技巧</h3><ul>
+<li>持续输入，持续优化<strong>（2023/10/05早）</strong></li>
+<li>考虑到输入限制，进行数据压缩，把很长的内容提取关键词（也可以让AI完成）</li>
+<li>做预设：在系统层面做预设，一般要比在提问关键词中做预设效果要好</li>
+<li>除系统预设外，额外添加两条一问一答形式，相当于给AI提示</li>
+</ul>
+<h3 id="自定义预设"><a href="#自定义预设" class="headerlink" title="自定义预设"></a>自定义预设</h3><ul>
+<li><p>做好预设，能让生成结果更加准确、符合预期</p>
+</li>
+<li><h5 id="我在鱼聪明平台上，自定义了第一个-AI-助手，能够专门回答固定领域的问题："><a href="#我在鱼聪明平台上，自定义了第一个-AI-助手，能够专门回答固定领域的问题：" class="headerlink" title="我在鱼聪明平台上，自定义了第一个 AI 助手，能够专门回答固定领域的问题："></a>我在鱼聪明平台上，自定义了第一个 AI 助手，能够专门回答固定领域的问题：</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231005210049491.png" alt="image-20231005210049491"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231005210056261.png" alt="image-20231005210056261"></p>
+<ul>
+<li><h5 id="实测结果令我非常满意：（2023-10-05晚）"><a href="#实测结果令我非常满意：（2023-10-05晚）" class="headerlink" title="实测结果令我非常满意：（2023/10/05晚）"></a>实测结果令我非常满意：（2023/10/05晚）</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231005210141145.png" alt="image-20231005210141145"></p>
+<ul>
+<li><p>总之，<strong>提问 AI 的要点</strong>有三：</p>
+<ul>
+<li><strong>做好预设</strong></li>
+<li><strong>限制输出格式</strong></li>
+<li><strong>指定示例问答</strong></li>
+</ul>
+</li>
+<li><h5 id="BI-智能分析平台：https-bcdh-yuque-com-staff-wpxfif-resource-vhux26yxmqez00co"><a href="#BI-智能分析平台：https-bcdh-yuque-com-staff-wpxfif-resource-vhux26yxmqez00co" class="headerlink" title="BI 智能分析平台：https://bcdh.yuque.com/staff-wpxfif/resource/vhux26yxmqez00co"></a>BI 智能分析平台：<a target="_blank" rel="noopener" href="https://bcdh.yuque.com/staff-wpxfif/resource/vhux26yxmqez00co">https://bcdh.yuque.com/staff-wpxfif/resource/vhux26yxmqez00co</a></h5></li>
+</ul>
+<h2 id="讯飞星火大模型"><a href="#讯飞星火大模型" class="headerlink" title="讯飞星火大模型"></a>讯飞星火大模型</h2><h3 id="API-免费试用"><a href="#API-免费试用" class="headerlink" title="API 免费试用"></a>API 免费试用</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.iotword.com/15849.html">使用讯飞星火API，轻松打造个性化AI聊天机器人程序-物联沃-IOTWORD物联网</a></p>
+</blockquote>
+<ul>
+<li><p>最近，讯飞星火免费开放模型 API 供开发者调用，详情我在这里不多说了，放上<strong>官网首页地址</strong>和<strong>官方文档地址</strong>： <strong>（2023/10/20晚）</strong></p>
+</li>
+<li><h5 id="官网首页：讯飞星火认知大模型-AI大语言模型-星火大模型-科大讯飞-xfyun-cn"><a href="#官网首页：讯飞星火认知大模型-AI大语言模型-星火大模型-科大讯飞-xfyun-cn" class="headerlink" title="官网首页：讯飞星火认知大模型-AI大语言模型-星火大模型-科大讯飞 (xfyun.cn)"></a>官网首页：<a target="_blank" rel="noopener" href="https://xinghuo.xfyun.cn/">讯飞星火认知大模型-AI大语言模型-星火大模型-科大讯飞 (xfyun.cn)</a></h5></li>
+<li><h5 id="官方文档地址：星火认知大模型Web文档-讯飞开放平台文档中心-xfyun-cn"><a href="#官方文档地址：星火认知大模型Web文档-讯飞开放平台文档中心-xfyun-cn" class="headerlink" title="官方文档地址：星火认知大模型Web文档 | 讯飞开放平台文档中心 (xfyun.cn)"></a>官方文档地址：<a target="_blank" rel="noopener" href="https://www.xfyun.cn/doc/spark/Web.html#_1-%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E">星火认知大模型Web文档 | 讯飞开放平台文档中心 (xfyun.cn)</a></h5></li>
+<li><p>这里简单提一下如何<strong>下载官方提供的 SDK</strong> ，快速体验如何在代码中<strong>调用 API 接口</strong>：</p>
+</li>
+</ul>
+<h4 id="SDK-下载安装"><a href="#SDK-下载安装" class="headerlink" title="SDK 下载安装"></a>SDK 下载安装</h4><ul>
+<li>如下图所示：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231020174043145.png" alt="image-20231020174043145"></p>
+<ul>
+<li><h5 id="点击下载所需要的-SDK-即可，我这边下载了-Python-和-Java-的"><a href="#点击下载所需要的-SDK-即可，我这边下载了-Python-和-Java-的" class="headerlink" title="点击下载所需要的 SDK 即可，我这边下载了 Python 和 Java 的"></a>点击下载所需要的 SDK 即可，我这边下载了 Python 和 Java 的</h5></li>
+</ul>
+<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>在官网注册账号，查询自己的 <strong>APPID</strong>、<strong>APISecret</strong>和<strong>APIKey</strong>：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231020175205468.png" alt="image-20231020175205468"></p>
+<ul>
+<li><p>剩下就没什么好准备的了，<strong>把下载好的官方 SDK demo直接运行即可</strong>，如果缺少什么依赖，选择导入即可</p>
+</li>
+<li><p>这里还遇到了个小坑：</p>
+<ul>
+<li>刚拉取下官方 Java SDK demo 代码时，<strong>所有的依赖全部爆红</strong></li>
+<li>经检查，发现 IDEA 的 maven 仓库配置 变为默认的了，<strong>改为自己的 maven 仓库</strong>即可</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231020174516226.png" alt="image-20231020174516226"></p>
+</li>
+</ul>
+<h4 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h4><ul>
+<li><h5 id="Python："><a href="#Python：" class="headerlink" title="Python："></a>Python：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231020174849961.png" alt="image-20231020174849961"></p>
+<ul>
+<li><h5 id="Java：（2023-10-20晚）"><a href="#Java：（2023-10-20晚）" class="headerlink" title="Java：（2023/10/20晚）"></a>Java：<strong>（2023/10/20晚）</strong></h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231020174710344.png" alt="image-20231020174710344"></p>
+<ul>
+<li>使用 <code>pyinstaller</code> 打包成功，效果还不错：<strong>（2023/11/29午）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231128235619438.png" alt="image-20231128235619438"></p>
+<h3 id="PPT插件"><a href="#PPT插件" class="headerlink" title="PPT插件"></a>PPT插件</h3><ul>
+<li>我用<strong>讯飞星火大模型</strong>给我做了4份<strong>大学生职业生涯规划的 PPT</strong> <strong>（2023/11/09晚）</strong></li>
+<li>前段时间参加了<strong>职业生涯规划大赛</strong>，<strong>参赛材料为</strong>：一份<code>生涯发展报告</code>（.pdf 文件） + 一份<code>生涯发展展示</code>（PPT）</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109223542900.png" alt="image-20231109223542900"></p>
+<ul>
+<li>生成的 PPT 还挺不错的，<strong>4份 PPT 拼凑出了最终 PPT</strong> 👇</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109222950474.png" alt="image-20231109222950474"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231109222955254.png" alt="image-20231109222955254"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231109222959726.png" alt="image-20231109222959726"></p>
+<ul>
+<li>我只能说，<strong>相当好用</strong>，今晚就<strong>推给好兄弟试试</strong> <strong>（2023/11/09晚）</strong></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/399af7a72f11642138f10c1ad4d2f0a.png" alt="399af7a72f11642138f10c1ad4d2f0a"></p>
+<h2 id="人工智能的发展历程"><a href="#人工智能的发展历程" class="headerlink" title="人工智能的发展历程"></a>人工智能的发展历程</h2><ul>
+<li><p>这学期的人工智能期末课程设计，在这里同步更新下吧 <strong>（2023/11/29午）</strong></p>
+</li>
+<li><p>人工智能的基本原理和发展历程：</p>
+</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1760802305346707040&wfr=spider&for=pc">科普：何为人工智能，人工智能的发展历程、意义和未来 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1777427828633585298&wfr=spider&for=pc">揭秘人工智能：从基础定义到未来发展，一篇掌握！ (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/375549477">一文概览人工智能(AI)发展历程 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.rconcon.com/gongzuogongwen/230294/">人工智能总结(通用14篇) (rconcon.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yiyihuazi/article/details/124592817">人工智能知识点汇总_人工智能知识点总结_量子物理学的博客-CSDN博客</a></p>
+</blockquote>
+<ul>
+<li><p>人工智能简介<strong>（什么是人工智能）</strong></p>
+<ul>
+<li>什么是人工智能？（造福人类）</li>
+</ul>
+</li>
+<li><p>人工智能涉及内容：</p>
+<ul>
+<li><p><strong>日常生活中的例子</strong>（短视频喜好推荐、语音助手、自动驾驶/导航、智能客服、人脸识别）</p>
+</li>
+<li><p>应用领域</p>
+<ul>
+<li><p>人工智能的应用：</p>
+<ul>
+<li><p>短视频按喜好推荐</p>
+<blockquote>
+<p>短视频按喜好推荐给用户是一种人工智能的体现，因为这种推荐系统依赖于机器学习和数据分析，以了解用户的兴趣和偏好，并据此推荐相关的视频内容。</p>
+<p>除了短视频推荐，还有许多其他的应用场景也涉及到人工智能，例如：</p>
+<ol>
+<li>语音助手：像Siri、Google Assistant和Alexa等语音助手，它们能够理解和回答用户的问题，或者执行用户的指令，这都依赖于自然语言处理和机器学习等技术。</li>
+<li>自动驾驶：自动驾驶汽车利用计算机视觉、传感器融合、路径规划等技术，能够在复杂的道路环境中自主驾驶，甚至在某些场景下替代人类驾驶。</li>
+<li>人脸识别：人脸识别技术可以用于手机解锁、身份验证、门禁系统等场景，它依赖于图像处理和模式识别等技术。</li>
+<li>智能客服：智能客服能够根据用户的提问和历史记录，提供自动回复和解决方案，这涉及到自然语言处理、知识图谱等技术。</li>
+</ol>
+<p>从更广泛的意义上来说，人工智能是一种模拟人类智能的技术，包括机器学习、深度学习、自然语言处理、计算机视觉等多个领域。通过这些技术，计算机可以像人类一样处理和分析信息，甚至在某些方面超越人类。</p>
+</blockquote>
+</li>
+<li><p>人工智能渗入到日常生活中，其应用非常广泛，包括自动驾驶、机器人、语音识别、图像识别、智能客服、智能家居、医疗诊断等等领域，正在改变我们的生活和工作方式，带来了诸多便利和创新。</p>
+</li>
+</ul>
+</li>
+<li><p>研究领域</p>
+<ul>
+<li><p>人工智能涉及到多个领域和技术，包括机器学习、深度学习、自然语言处理、计算机视觉等，它们相互交叉融合，形成了强大的智能算法和技术体系。</p>
+<blockquote>
+<p>当然可以。以下是一些日常生活中接触到的例子，分别说明人工智能的不同领域：</p>
+<ol>
+<li>机器学习：机器学习是一种模拟人类学习能力的技术，通过分析大量数据来学习规律和模式，从而实现自动分类、预测、决策等功能。例如，电商平台上的推荐系统可以通过分析用户的购买历史和浏览行为，向用户推荐相关的商品和优惠活动，从而提高销售额。此外，机器学习还可以应用于垃圾邮件识别、信用卡欺诈检测等领域。</li>
+<li>深度学习：深度学习是一种模拟人类神经网络工作的技术，通过构建多层神经网络来学习和模拟数据特征。深度学习在语音识别、图像识别、自然语言处理等领域有着广泛应用。例如，语音助手可以通过深度学习技术识别用户的语音指令，并将其转化为文字或执行相应的操作。</li>
+<li>自然语言处理：自然语言处理是一种模拟人类语言处理能力的技术，包括文本分析、文本生成、语言翻译、情感分析等多个方面。例如，智能客服可以通过自然语言处理技术理解用户的问题和需求，提供相应的解决方案和帮助。此外，自然语言处理还可以应用于智能家居设备的语音控制、智能客服的自动回复等领域。</li>
+<li>计算机视觉：计算机视觉是一种模拟人类视觉处理能力的技术，包括图像识别、物体检测、人脸识别、手势识别等多个方面。例如，人脸识别技术可以应用于手机解锁、门禁系统等领域，实现快速的身份验证和识别。此外，计算机视觉还可以应用于自动驾驶汽车的物体检测和避障、智能安防的监控识别等领域。</li>
+</ol>
+<p>总之，人工智能的不同领域可以相互结合和应用，实现更加智能化的应用和服务。随着技术的不断发展和应用场景的不断扩大，人工智能将会越来越深入到人们的日常生活中。</p>
+</blockquote>
+</li>
+<li><p>AI 模型（）</p>
+<blockquote>
+<p>ChatGPT属于生成式人工智能，它是一种无监督或半监督的机器学习。与之相关的还有区分式模型，其中大多数属于监督式学习。生成性人工智能目前有两种主要的框架：GAN（Generative Adversarial Network ）和GPT（Generative Pre-trained Transformer ）。</p>
+<p>ChatGPT是美国人工智能研究实验室OpenAI开发的一种全新聊天机器人模型，它能够通过学习和理解人类的语言来进行对话，并可以根据聊天的上下文进行互动，协助人类完成一系列任务。ChatGPT实现了语言智能技术的突破，在与用户的会话中，它通常能准确捕获用户的真实意图，完成各种任务，刷新了普通大众对AI会话水平的认识。</p>
+<p>是的，你的理解是正确的。人工智能领域的划分并不是非常严格的，不同的技术之间存在交叉和融合。ChatGPT同时属于机器学习和自然语言处理领域，因为它利用了机器学习技术来学习和生成自然语言文本。机器学习是一种模拟人类学习能力的技术，通过分析大量数据来学习规律和模式，从而实现自动分类、预测、决策等功能。自然语言处理则是一种模拟人类语言处理能力的技术，包括文本分析、文本生成、语言翻译、情感分析等多个方面。ChatGPT通过结合机器学习和自然语言处理技术，实现了与人类进行自然对话和交互的功能。因此，ChatGPT同时属于机器学习和自然语言处理领域。</p>
+</blockquote>
+</li>
+<li><p>深入学习</p>
+<blockquote>
+<p>K近邻算法和线性回归属于机器学习领域。</p>
+<p>K近邻算法是一种基于实例的学习方法，它根据与其最接近的训练样本进行预测。它常被用于分类和回归问题，并且在图像识别、推荐系统等领域有广泛的应用。</p>
+<p>线性回归是一种基于数据之间线性关系的预测方法，它通过拟合一个线性模型来预测目标值，常被用于回归问题。</p>
+<p>机器学习是人工智能的一个子领域，它通过构建和训练模型来让计算机自动从数据中学习和提取规律和模式，从而实现对新数据的预测和分析。机器学习包括多种算法和技术，如分类算法、聚类算法、回归算法等，它们被广泛应用于各个领域，如自然语言处理、图像处理、推荐系统等。</p>
+</blockquote>
+<blockquote>
+<p>是的，推荐系统是机器学习和数据分析的重要应用之一。推荐系统通过分析用户的行为和偏好，以及他们对物品或内容的评价和反馈，来生成个性化的推荐列表。</p>
+<p>机器学习在推荐系统中扮演了关键角色，它可以帮助系统学习和理解用户的行为模式和偏好。常用的机器学习算法包括协同过滤、矩阵分解、深度学习等，它们可以分析用户的历史行为、商品属性、用户画像等信息，从而预测用户的兴趣和需求，生成精准的推荐结果。</p>
+<p>同时，数据分析在推荐系统中也起着重要作用。通过对用户行为数据的收集和分析，可以提取出用户的兴趣和偏好，以及他们与物品或内容之间的关联关系。这些数据可以为机器学习算法提供训练数据和优化目标，从而提升推荐系统的准确性和效果。</p>
+<p>因此，推荐系统是机器学习和数据分析的典型应用之一。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>学派划分</p>
+<blockquote>
+<p>在人工智能的发展过程中，不同时代、学科背景的人对于智慧的理解及其实现方法有着不同的思想主张，并由此衍生了不同的学派，影响较大的学派及其代表方法如下：</p>
+</blockquote>
+</li>
+<li><p>岗位划分</p>
+<blockquote>
+<ul>
+<li><strong>AI架构师</strong>。AI架构师是负责设计AI系统的结构、算法和实现细节的专业人员。他们需要深入了解机器学习和人工智能领域的知识，能够将复杂的AI概念和算法转化为实际的系统设计。</li>
+<li><strong>机器学习工程师</strong>。机器学习工程师是负责开发和优化机器学习模型的专业人员。他们需要掌握各种机器学习算法，了解如何从数据中提取特征，以及如何调整模型参数以提高性能。</li>
+<li><strong>数据科学家</strong>。数据科学家是负责从数据中提取洞察和见解的专业人员。他们需要掌握数据分析和机器学习的技能，能够使用高级算法从大量数据中提取有用的信息。</li>
+<li><strong>商业智能(BI)开发人员</strong>。商业智能(BI)开发人员是负责创建和实现商业智能解决方案的专业人员。他们需要了解如何将数据转化为商业洞察和决策的依据，能够使用各种工具和技术来开发数据报告、数据可视化图表和数据分析工具。</li>
+<li><strong>AI伦理学家</strong>。AI伦理学家是负责研究和发展AI伦理准则和规范的专业人员。他们需要关注人工智能发展所带来的社会影响和道德问题，并与其他领域的专家合作，以确保人工智能的发展符合伦理标准和社会价值。</li>
+<li><strong>算法工程师</strong>。算法工程师是负责设计和实现计算机程序中算法的专业人员。他们需要精通各种编程语言和开发工具，同时需要深入了解各种算法的原理和应用场景。</li>
+<li><strong>商务拓展专家（人工智能方向）</strong>。商务拓展专家是负责拓展和维护公司业务关系的专业人员。他们需要了解人工智能领域的市场趋势和发展动态，能够与潜在客户和合作伙伴建立联系，并推动业务合作和增长。</li>
+<li><strong>人工智能运维工程师</strong>。人工智能运维工程师是负责维护和管理人工智能系统的专业人员。他们需要具备大数据和AI产品的运营、运维经验，能够提供相关组件的运维工具系统的开发与建设服务，并提供大数据与AI云产品的客户支持。</li>
+<li><strong>智能机器人研发工程师</strong>。智能机器人研发工程师是负责研发智能机器人的专业人员。他们需要关注机器人控制系统的开发以及高精度器件的设计研发等，并能在工业机器人系统集成方向上开展工作，如工作站设计、电气设计、器件选型、机器人调试、编程及维护等。</li>
+<li><strong>AI硬件专家</strong>。AI硬件专家是负责创建AI硬件（如GPU芯片）的工业操作工作的专业人员。在AI领域内，另一种日益增长的工作方向是创建AI硬件（如GPU芯片）的工业操作工作，这是AI领域的另一种重要岗位。</li>
+<li><strong>人工智能产品经理</strong>。人工智能产品经理负责公司内人工智能产品的竞品分析、用户研究、产品方案策划及落地工作，他们需要关注产品的整个生命周期，从概念到发布，并需要与开发团队紧密合作来实现产品目标。</li>
+<li><strong>测试工程师</strong>。测试工程师负责公司内人工智能产品的测试工作，包括功能测试、性能测试、兼容性测试等，以确保产品的质量和性能达到预期标准。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>人工智能的发展历程（里程碑事件）</p>
+<ul>
+<li>五个阶段</li>
+</ul>
+</li>
+<li><p>人工智能的意义：</p>
+<ul>
+<li>人工智能的意义在于，它能够让机器具有智能，通过模拟人类思维和学习能力，完成许多复杂的任务和决策，从而使人类生活更加便捷、高效、安全。</li>
+<li>同时，人工智能还能够解放人类的生产力，提高生产效率和经济效益，为人类社会带来巨大的发展和进步。但同时，人工智能也带来一些风险和挑战，例如数据隐私、道德伦理等问题，需要我们注意并妥善解决。</li>
+</ul>
+</li>
+<li><p>人工智能（AI）未来趋势</p>
+<ul>
+<li><p>智能制造：人工智能将会在工业生产和制造领域发挥重要作用，可以实现自动化、智能化的生产过程，提高效率、降低成本，实现个性化定制生产。</p>
+</li>
+<li><p>智能交通：人工智能将会帮助我们实现更加智能化的交通管理，包括交通流量控制、交通预测、自动驾驶等领域，提高交通效率和安全性。</p>
+</li>
+<li><p>医疗保健：人工智能在医疗领域的应用将会使诊断和治疗更加精准、高效，例如通过图像识别技术帮助医生更好地进行肿瘤筛查和诊断。</p>
+</li>
+<li><p>教育：人工智能可以为学生提供更加个性化和定制化的学习体验，能够根据学生的兴趣和能力自主设计和推荐学习内容。</p>
+</li>
+<li><p>社会服务：人工智能将会在公共服务领域产生深远的影响，例如智能城市、智能环保、智慧政务等方面，可以帮助政府更加高效地提供服务。</p>
+</li>
+</ul>
+</li>
+<li><p>谈一谈我对人工智能的理解</p>
+<ul>
+<li>雨后春笋：CSDN、腾讯会议</li>
+</ul>
+</li>
+</ul>
+<h2 id="估值一个亿的-AI-核心代码"><a href="#估值一个亿的-AI-核心代码" class="headerlink" title="估值一个亿的 AI 核心代码"></a>估值一个亿的 <code>AI</code> 核心代码</h2><ul>
+<li>一段有趣的代码：<strong>（2023/12/10晚）</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AIMain</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        String str;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            str = sc.next();<br>            str = str.replace(<span class="hljs-string">&quot;吗&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br>            str = str.replace(<span class="hljs-string">&quot;？&quot;</span>, <span class="hljs-string">&quot;！&quot;</span>);<br>            str = str.replace(<span class="hljs-string">&quot;？&quot;</span>, <span class="hljs-string">&quot;！&quot;</span>);<br>            System.out.println(str);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231210220801017.png" alt="image-20231210220801017"></p>
+<h2 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h2><ul>
+<li>我决定要<strong>使用 AI</strong> 将所有文章的<strong>前言美化</strong>一遍了，这可是个纯苦力活：</li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20231013224815689.png" alt="image-20231013224815689"></p>
+<ul>
+<li><h5 id="但是这样的前言很精简又很吸睛，我可太喜欢了（2023-10-13晚）"><a href="#但是这样的前言很精简又很吸睛，我可太喜欢了（2023-10-13晚）" class="headerlink" title="但是这样的前言很精简又很吸睛，我可太喜欢了（2023/10/13晚）"></a>但是这样的前言很精简又很吸睛，我可太喜欢了（2023/10/13晚）</h5></li>
+<li><p>还喜欢，喜欢个几把，这有啥好看的，华而不实，全给它优化掉了🤡 <strong>（2023/11/29午）</strong></p>
+</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/AI/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/AI/">#AI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AI实践中的洞见：我的AI之旅</div>
+      <div>https://deng-2022.gitee.io/blog/2023/06/22/AI 实践中的洞见：我的 AI 之旅/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月22日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年1月9日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/06/24/%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97-%E6%8E%8C%E6%8F%A1Node-js%E9%85%8D%E7%BD%AE/" title="配置指南-掌握Node.js配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">配置指南-掌握Node.js配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/06/22/Nginx%20%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E7%90%86%E8%A7%A3%E3%80%81%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BC%98%E5%8C%96/" title="Nginx 入门指南：理解、配置和优化">
+                        <span class="hidden-mobile">Nginx 入门指南：理解、配置和优化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1068 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Memory">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🍟 解决Git远程推送过程中的常见错误，保障顺利推送代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决 Git 远程推送报错的终极指南">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/07/15/%E8%A7%A3%E5%86%B3%20Git%20%E8%BF%9C%E7%A8%8B%E6%8E%A8%E9%80%81%E6%8A%A5%E9%94%99%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Memory&#39;s blog">
+<meta property="og:description" content="🍟 解决Git远程推送过程中的常见错误，保障顺利推送代码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/mountain2.jpg">
+<meta property="article:published_time" content="2023-07-15T15:27:06.000Z">
+<meta property="article:modified_time" content="2023-11-13T00:47:35.000Z">
+<meta property="article:author" content="Memory">
+<meta property="article:tag" content="经验">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/mountain2.jpg">
+  
+  
+  
+  <title>解决 Git 远程推送报错的终极指南 - Memory&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 75vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Memory&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="解决 Git 远程推送报错的终极指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Memory
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-15 23:27" pubdate>
+          2023年7月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Git"
+        id="heading-0bcc70105ad279503e31fe7b3f47b665" role="tab" data-toggle="collapse" href="#collapse-0bcc70105ad279503e31fe7b3f47b665"
+        aria-expanded="true"
+      >
+        Git
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0bcc70105ad279503e31fe7b3f47b665"
+           role="tabpanel" aria-labelledby="heading-0bcc70105ad279503e31fe7b3f47b665">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="经验"
+        id="heading-32a8e000e928e6dc255876d9fc0178b3" role="tab" data-toggle="collapse" href="#collapse-32a8e000e928e6dc255876d9fc0178b3"
+        aria-expanded="true"
+      >
+        经验
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-32a8e000e928e6dc255876d9fc0178b3"
+           role="tabpanel" aria-labelledby="heading-32a8e000e928e6dc255876d9fc0178b3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/blog/2023/03/17/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%EF%BC%9A%E6%8E%8C%E6%8F%A1Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%8F%8A%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0/" title="入门指南：掌握Git的基本操作及进阶学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">入门指南：掌握Git的基本操作及进阶学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/blog/2023/07/15/%E8%A7%A3%E5%86%B3%20Git%20%E8%BF%9C%E7%A8%8B%E6%8E%A8%E9%80%81%E6%8A%A5%E9%94%99%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="解决 Git 远程推送报错的终极指南"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">解决 Git 远程推送报错的终极指南</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">解决 Git 远程推送报错的终极指南</h1>
+            
+              <p class="note note-success">
+                
+                  
+                    本文最后更新于：2 个月前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>Git是开发人员日常工作中<strong>不可或缺的版本控制工具</strong>。</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7296801242793033754">git 大厂代码提交原则（适用新手，细节拉满） - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<ul>
+<li><h5 id="然而，在推送代码到远程仓库时，我们经常会遇到各种报错和问题。"><a href="#然而，在推送代码到远程仓库时，我们经常会遇到各种报错和问题。" class="headerlink" title="然而，在推送代码到远程仓库时，我们经常会遇到各种报错和问题。"></a>然而，在推送代码到远程仓库时，我们经常会遇到各种报错和问题。</h5></li>
+<li><p>在这篇终极指南中，我将为你详细介绍<strong>常见的Git远程推送错误</strong>，并<strong>提供解决方案</strong>，帮助你顺利推送代码。</p>
+</li>
+</ul>
+<blockquote>
+<p>🔍 探索常见错误：解析Git远程推送中的问题</p>
+<p>通过深入研究Git远程推送过程中的常见错误，我将为你揭示它们的原因，并给出解决方案。无论是推送冲突、权限问题还是网络连接错误，本指南将一一为你解决。</p>
+<p>✅ 解决方案：提供针对每个错误的有效解决方案</p>
+<p>我将为每个常见错误提供一系列有效的解决方案，帮助你克服障碍。这些解决方案经过测试和验证，可以保证你的代码顺利推送到远程仓库。</p>
+<p>💻 保障推送顺利进行：确保你的代码能够成功推送</p>
+<p>通过遵循指南中的解决方案，你将能够解决常见的Git推送错误，并确保你的代码能够顺利推送到远程仓库。这将大大提高你的工作效率和团队协作的顺畅度。</p>
+<p>🥇 掌握Git远程推送技巧：加强对Git操作的掌握</p>
+<p>通过解决Git远程推送错误的终极指南，你将更深入地了解Git操作，并掌握解决各类问题的技巧。这不仅对个人的开发工作有帮助，也对团队的合作和代码质量有积极影响。</p>
+<p>让我们一起解决Git远程推送报错，保障顺利推送代码，提升我们的开发效率和代码管理能力！</p>
+</blockquote>
+<ul>
+<li><h5 id="日常-git-远程推送代码时，总会遇到莫名其妙的问题，深有感触，决定写下这篇文档，供日后参考使用"><a href="#日常-git-远程推送代码时，总会遇到莫名其妙的问题，深有感触，决定写下这篇文档，供日后参考使用" class="headerlink" title="日常 git 远程推送代码时，总会遇到莫名其妙的问题，深有感触，决定写下这篇文档，供日后参考使用"></a>日常 git 远程推送代码时，总会遇到莫名其妙的问题，深有感触，决定写下这篇文档，供日后参考使用</h5></li>
+<li><h5 id="77条消息-git推送代码到远程仓库失败的问题-git-推送失败-反方向的针的博客-CSDN博客"><a href="#77条消息-git推送代码到远程仓库失败的问题-git-推送失败-反方向的针的博客-CSDN博客" class="headerlink" title="(77条消息) git推送代码到远程仓库失败的问题_git 推送失败_反方向的针的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/ljkfcs/article/details/127685863">(77条消息) git推送代码到远程仓库失败的问题_git 推送失败_反方向的针的博客-CSDN博客</a></h5></li>
+<li><h5 id="77条消息-git撤销推送-git-取消推送-wxz470960225的博客-CSDN博客"><a href="#77条消息-git撤销推送-git-取消推送-wxz470960225的博客-CSDN博客" class="headerlink" title="(77条消息) git撤销推送_git 取消推送_wxz470960225的博客-CSDN博客"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010784833/article/details/131305689">(77条消息) git撤销推送_git 取消推送_wxz470960225的博客-CSDN博客</a></h5></li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="什么是版本控制"><a href="#什么是版本控制" class="headerlink" title="什么是版本控制"></a>什么是版本控制</h3><ul>
+<li><h5 id="版本控制最主要的功能就是追踪文件的变更。（2023-07-15晚）"><a href="#版本控制最主要的功能就是追踪文件的变更。（2023-07-15晚）" class="headerlink" title="版本控制最主要的功能就是追踪文件的变更。（2023/07/15晚）"></a>版本控制最主要的功能就是追踪文件的变更。（2023/07/15晚）</h5></li>
+<li><h5 id="它将什么时候、什么人更改了文件的什么内容等信息忠实地了记录下来。"><a href="#它将什么时候、什么人更改了文件的什么内容等信息忠实地了记录下来。" class="headerlink" title="它将什么时候、什么人更改了文件的什么内容等信息忠实地了记录下来。"></a>它将什么时候、什么人更改了文件的什么内容等信息忠实地了记录下来。</h5></li>
+<li><h5 id="每一次文件的改变，文件的版本号都将增加。"><a href="#每一次文件的改变，文件的版本号都将增加。" class="headerlink" title="每一次文件的改变，文件的版本号都将增加。"></a>每一次文件的改变，文件的版本号都将增加。</h5></li>
+<li><h5 id="除了记录版本变更外，版本控制的另一个重要功能是并行开发。"><a href="#除了记录版本变更外，版本控制的另一个重要功能是并行开发。" class="headerlink" title="除了记录版本变更外，版本控制的另一个重要功能是并行开发。"></a>除了记录版本变更外，版本控制的另一个重要功能是并行开发。</h5></li>
+<li><h5 id="软件开发往往是多人协同作业，版本控制可以有效地解决版本的同步以及不同开发者之间的开发通信问题，提高协同开发的效率。"><a href="#软件开发往往是多人协同作业，版本控制可以有效地解决版本的同步以及不同开发者之间的开发通信问题，提高协同开发的效率。" class="headerlink" title="软件开发往往是多人协同作业，版本控制可以有效地解决版本的同步以及不同开发者之间的开发通信问题，提高协同开发的效率。"></a>软件开发往往是多人协同作业，版本控制可以有效地解决版本的同步以及不同开发者之间的开发通信问题，提高协同开发的效率。</h5></li>
+<li><h5 id="并行开发中最常见的不同版本软件的错误-Bug-修正问题也可以通过版本控制中分支与合并的方法有效地解决。"><a href="#并行开发中最常见的不同版本软件的错误-Bug-修正问题也可以通过版本控制中分支与合并的方法有效地解决。" class="headerlink" title="并行开发中最常见的不同版本软件的错误(Bug)修正问题也可以通过版本控制中分支与合并的方法有效地解决。"></a>并行开发中最常见的不同版本软件的错误(Bug)修正问题也可以通过版本控制中分支与合并的方法有效地解决。</h5></li>
+</ul>
+<h3 id="Git是干什么的"><a href="#Git是干什么的" class="headerlink" title="Git是干什么的"></a>Git是干什么的</h3><h2 id="远程推送报错"><a href="#远程推送报错" class="headerlink" title="远程推送报错"></a>远程推送报错</h2><ul>
+<li><h5 id="我们在本地向远程仓库推送代码时，总会不可避免地出现报错"><a href="#我们在本地向远程仓库推送代码时，总会不可避免地出现报错" class="headerlink" title="我们在本地向远程仓库推送代码时，总会不可避免地出现报错"></a>我们在本地向远程仓库推送代码时，总会不可避免地出现报错</h5></li>
+<li><h5 id="我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程"><a href="#我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程" class="headerlink" title="我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程"></a>我们必须要明确的一点是：远程推送代码，其实是创建一个本地分支，再将本地分支的代码，推送到指定的远程仓库分支的过程</h5></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">大白话讲，就是允许本地代码比远程代码多一部分，<br>即远程仓库有的代码，本地仓库必须有；远程仓库没有的，本地仓库也可以有<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="了解了这个，理解远程推送报错原因就比较轻松了（2023-07-15晚）"><a href="#了解了这个，理解远程推送报错原因就比较轻松了（2023-07-15晚）" class="headerlink" title="了解了这个，理解远程推送报错原因就比较轻松了（2023/07/15晚）"></a>了解了这个，理解远程推送报错原因就比较轻松了（2023/07/15晚）</h5></li>
+<li><h5 id="引起远程推送错误的原因有很多，接下来我们会一一罗列出引起报错的各种情况，再逐个给出解决方法"><a href="#引起远程推送错误的原因有很多，接下来我们会一一罗列出引起报错的各种情况，再逐个给出解决方法" class="headerlink" title="引起远程推送错误的原因有很多，接下来我们会一一罗列出引起报错的各种情况，再逐个给出解决方法"></a>引起远程推送错误的原因有很多，接下来我们会一一罗列出引起报错的各种情况，再逐个给出解决方法</h5></li>
+</ul>
+<h3 id="远程仓库未同步"><a href="#远程仓库未同步" class="headerlink" title="远程仓库未同步"></a>远程仓库未同步</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><ul>
+<li><h5 id="情景："><a href="#情景：" class="headerlink" title="情景："></a>情景：</h5></li>
+<li><h5 id="如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错"><a href="#如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错" class="headerlink" title="如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错"></a>如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库中拉取文件的时候会报错</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">（fatal：refusing to merge unrelated histories）<br></code></pre></td></tr></table></figure>
+
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ul>
+<li><h5 id="如此拉取："><a href="#如此拉取：" class="headerlink" title="如此拉取："></a>如此拉取：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull origin master --allow-unrelated-histories<br></code></pre></td></tr></table></figure>
+
+<h3 id="本地仓库未同步"><a href="#本地仓库未同步" class="headerlink" title="本地仓库未同步"></a>本地仓库未同步</h3><h4 id="原因-1"><a href="#原因-1" class="headerlink" title="原因"></a>原因</h4><ul>
+<li><h5 id="情景：我们希望将本地已经写好的代码，推送到远程仓库托管"><a href="#情景：我们希望将本地已经写好的代码，推送到远程仓库托管" class="headerlink" title="情景：我们希望将本地已经写好的代码，推送到远程仓库托管"></a>情景：我们希望将本地已经写好的代码，推送到远程仓库托管</h5></li>
+<li><h5 id="那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加-README-md文件"><a href="#那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加-README-md文件" class="headerlink" title="那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加 README.md文件"></a>那我们就需要在新建仓库，而新增的仓库，我们一般都勾选添加 README.md文件</h5></li>
+<li><h5 id="这时，我们在本地当然是这样操作了：（2023-07-15晚）"><a href="#这时，我们在本地当然是这样操作了：（2023-07-15晚）" class="headerlink" title="这时，我们在本地当然是这样操作了：（2023/07/15晚）"></a>这时，我们在本地当然是这样操作了：（2023/07/15晚）</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin 【远程仓库地址】<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs babashsh">git push origin master<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="但这时，会报错："><a href="#但这时，会报错：" class="headerlink" title="但这时，会报错："></a>但这时，会报错：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">! [rejected] master -&gt; master (fetch first) error: fail to push some refs<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="导致问题出现的原因是因为：远程代码里存在README-md文件"><a href="#导致问题出现的原因是因为：远程代码里存在README-md文件" class="headerlink" title="导致问题出现的原因是因为：远程代码里存在README.md文件"></a>导致问题出现的原因是因为：远程代码里存在README.md文件</h5></li>
+<li><h5 id="什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README-md文件，但本地没有"><a href="#什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README-md文件，但本地没有" class="headerlink" title="什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README.md文件，但本地没有"></a>什么意思呢？我们在前面提到过，仅允许本地代码比远程代码多一部分，而现在，远程代码存在README.md文件，但本地没有</h5></li>
+<li><h5 id="此时，我们把远程仓库的README-md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步"><a href="#此时，我们把远程仓库的README-md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步" class="headerlink" title="此时，我们把远程仓库的README.md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步"></a>此时，我们把远程仓库的README.md文件理解为多余文件，这种远程推送报错原因归类为本地仓库未同步</h5></li>
+<li><h5 id="我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库"><a href="#我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库" class="headerlink" title="我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库"></a>我们的解决方法是：在远程推送之前，先将远程仓库的多余文件拉取至本地，同步两个仓库</h5></li>
+</ul>
+<h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h4><ul>
+<li><h5 id="在执行-push-之前，执行以下代码即可："><a href="#在执行-push-之前，执行以下代码即可：" class="headerlink" title="在执行 push 之前，执行以下代码即可："></a>在执行 push 之前，执行以下代码即可：</h5></li>
+<li><h5 id="在-push-之前执行下面的代码：（2023-07-15午）"><a href="#在-push-之前执行下面的代码：（2023-07-15午）" class="headerlink" title="在 push 之前执行下面的代码：（2023/07/15午）"></a>在 push 之前执行下面的代码：（2023/07/15午）</h5></li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git pull <span class="hljs-comment">--rebase origin master</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230723160919462.png" alt="image-20230723160919462"></p>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
+<li><h5 id="这两天在推送-Memory-API-项目代码到-Gitee-仓库的过程中，遇到了很多问题（2023-07-23晚）"><a href="#这两天在推送-Memory-API-项目代码到-Gitee-仓库的过程中，遇到了很多问题（2023-07-23晚）" class="headerlink" title="这两天在推送 Memory API 项目代码到 Gitee 仓库的过程中，遇到了很多问题（2023/07/23晚）"></a>这两天在推送 Memory API 项目代码到 Gitee 仓库的过程中，遇到了很多问题（2023/07/23晚）</h5></li>
+<li><h5 id="花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法"><a href="#花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法" class="headerlink" title="花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法"></a>花了整整两天时间，才成功地推送代码成功，下面我将介绍推送代码时的常见报错和解决办法</h5></li>
+<li><h5 id="将文件的修改加入暂存区："><a href="#将文件的修改加入暂存区：" class="headerlink" title="将文件的修改加入暂存区："></a>将文件的修改加入暂存区：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这一步操作，是将该本地分支内的所有文件都添加至暂存区"><a href="#这一步操作，是将该本地分支内的所有文件都添加至暂存区" class="headerlink" title="这一步操作，是将该本地分支内的所有文件都添加至暂存区"></a>这一步操作，是将该本地分支内的所有文件都添加至暂存区</h5></li>
+<li><h5 id="将暂存区的文件提交修改到版本库："><a href="#将暂存区的文件提交修改到版本库：" class="headerlink" title="将暂存区的文件提交修改到版本库："></a>将暂存区的文件提交修改到版本库：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&quot;提交信息&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="注意这里的提交信息不能为空，否则该提交操作会被驳回："><a href="#注意这里的提交信息不能为空，否则该提交操作会被驳回：" class="headerlink" title="注意这里的提交信息不能为空，否则该提交操作会被驳回："></a>注意这里的提交信息不能为空，否则该提交操作会被驳回：</h5></li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230728143850131.png" alt="image-20230728143850131"></p>
+<ul>
+<li><h5 id="推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交："><a href="#推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交：" class="headerlink" title="推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交："></a>推送代码之前，应该拉取远程分支的代码到本地，同步过后再提交：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull origin master<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull origin master<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这时，推送代码可能会报这种错误："><a href="#这时，推送代码可能会报这种错误：" class="headerlink" title="这时，推送代码可能会报这种错误："></a>这时，推送代码可能会报这种错误：</h5></li>
+</ul>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">! [rejected] master -&gt; master (fetch <span class="hljs-built_in">first</span>) <span class="hljs-built_in">error</span>: fail to <span class="hljs-built_in">push</span> <span class="hljs-built_in">some</span> refs<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取："><a href="#说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取：" class="headerlink" title="说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取："></a>说明本地分支的代码与远程分支代码部分文件有冲突，需要将有冲突的文件，一一合并，如此拉取：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull --rebase origin master<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="发生冲突意味着-Git-无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突"><a href="#发生冲突意味着-Git-无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突" class="headerlink" title="发生冲突意味着 Git 无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突"></a>发生冲突意味着 Git 无法自动决定如何合并代码，这需要我们手动合并文件，解决冲突</h5></li>
+<li><h5 id="如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果：（2023-07-23晚）"><a href="#如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果：（2023-07-23晚）" class="headerlink" title="如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果：（2023/07/23晚）"></a>如果你不知道要合并哪些文件，可以执行以下命令，提交合并结果：（2023/07/23晚）</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase --<span class="hljs-built_in">continue</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="这时，如果还有未合并的冲突文件，就执行以下命令，手动合并："><a href="#这时，如果还有未合并的冲突文件，就执行以下命令，手动合并：" class="headerlink" title="这时，如果还有未合并的冲突文件，就执行以下命令，手动合并："></a>这时，如果还有未合并的冲突文件，就执行以下命令，手动合并：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add 冲突文件名<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="完成这步操作，就可以推送代码了（2023-08-25晚）"><a href="#完成这步操作，就可以推送代码了（2023-08-25晚）" class="headerlink" title="完成这步操作，就可以推送代码了（2023/08/25晚）"></a>完成这步操作，就可以推送代码了（2023/08/25晚）</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230825210401291.png" alt="image-20230825210401291"></p>
+<ul>
+<li>在推送API接口开放平台的代码时，注意到：执行查看需要手动合并的文件后，无需依次合并提交：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase --<span class="hljs-built_in">continue</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果确保无误，没有别的要求的话，只需<strong>一次性全部提交合并冲突</strong>即可：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="效果如下：（2023-08-25晚）"><a href="#效果如下：（2023-08-25晚）" class="headerlink" title="效果如下：（2023/08/25晚）"></a>效果如下：（2023/08/25晚）</h5></li>
+</ul>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230825211923074.png" alt="image-20230825211923074"></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><h5 id="在执行这段代码时："><a href="#在执行这段代码时：" class="headerlink" title="在执行这段代码时："></a>在执行这段代码时：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull --rebase origin master<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="网上有的教程可能会跟你讲，执行以下代码来退出-rebase-过程："><a href="#网上有的教程可能会跟你讲，执行以下代码来退出-rebase-过程：" class="headerlink" title="网上有的教程可能会跟你讲，执行以下代码来退出 rebase 过程："></a>网上有的教程可能会跟你讲，执行以下代码来退出 rebase 过程：</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash / git reset --hard HEAD<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖"><a href="#千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖" class="headerlink" title="千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖"></a>千万不要这样做，这样会放弃提交本地的所有改动，回退到最近的一次提交状态，本地分支也会被远程分支覆盖</h5></li>
+<li><h5 id="正确的做法就是上面提到的，正常合并冲突文件，最后提交"><a href="#正确的做法就是上面提到的，正常合并冲突文件，最后提交" class="headerlink" title="正确的做法就是上面提到的，正常合并冲突文件，最后提交"></a>正确的做法就是上面提到的，正常合并冲突文件，最后提交</h5></li>
+<li><h5 id="或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码：（2023-07-23晚）"><a href="#或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码：（2023-07-23晚）" class="headerlink" title="或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码：（2023/07/23晚）"></a>或者如果不想提交本次修改，可以选择退出合并冲突文件，执行以下代码：（2023/07/23晚）</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase --abort<br></code></pre></td></tr></table></figure>
+
+<h3 id="Eslint-优化导致git代码推送失败"><a href="#Eslint-优化导致git代码推送失败" class="headerlink" title="Eslint 优化导致git代码推送失败"></a>Eslint 优化导致git代码推送失败</h3><ul>
+<li><h5 id="思来想去，决定在这个栏目的目录下也记录下这次报错吧"><a href="#思来想去，决定在这个栏目的目录下也记录下这次报错吧" class="headerlink" title="思来想去，决定在这个栏目的目录下也记录下这次报错吧"></a>思来想去，决定在这个栏目的目录下也记录下这次报错吧</h5></li>
+<li><p>这是我在今晚<strong>推送 Memory API接口开放平台时</strong>遇到的报错。详情看下图： <strong>（2023/10/18晚）</strong></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231018214512698.png" alt="image-20231018214512698"></p>
+<ul>
+<li>如上图所示，使用 git 推送代码竟然报错了，这是什么原因呢？</li>
+<li>我们简单罗列出以上的报错信息：</li>
+</ul>
+<blockquote>
+<p>这些错误和警告是由静态代码分析工具 ESLint 提供的。根据报错信息，您遇到了一些问题：</p>
+<ol>
+<li><code>File ignored because of a matching ignore pattern. Use &quot;--no-ignore&quot; to override</code>：这是一个警告，意味着某些文件被忽略了，因为它们匹配了 <code>.eslintignore</code> 文件中设定的忽略模式。您可以使用 <code>--no-ignore</code> 参数来覆盖这个忽略，让这些文件被检查。</li>
+<li><code>&#39;loading&#39; is assigned a value but never used @typescript-eslint/no-unused-vars</code>：这是一个错误，提示您在 <code>InterfaceInfo/index.tsx</code> 文件中定义了 <code>loading</code> 变量，但是从未使用过。您可以删除没被使用的变量，或者使用变量来解决您需要的逻辑。</li>
+<li><code>Missing &quot;key&quot; prop for element in array react/jsx-key</code>：这是两个错误，它们指出在您的组件 <code>InterfaceInfo</code> 的 <code>renderDataSource</code> 方法中，两个元素没有提供 <code>key</code> 属性。React 要求在渲染组件数组时，每个元素都要提供一个唯一的 <code>key</code> 属性，以便在更新列表时进行准确的 diff 操作。您需要为这两个元素添加一个适当的 <code>key</code> 属性。</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>所以，这样的报错信息是由<strong>静态代码分析工具 ESLint</strong> 导致的<strong>（2023/10/18晚）</strong></p>
+<ul>
+<li>我们使用该工具暴露出编码过程中的代码不规范的问题</li>
+<li>但是，在推送代码时，这个工具却仍在校验代码的完整性和规范性，</li>
+</ul>
+</li>
+<li><h5 id="在这些代码报错不影响项目运行的前提下，影响了正常的代码提交流程"><a href="#在这些代码报错不影响项目运行的前提下，影响了正常的代码提交流程" class="headerlink" title="在这些代码报错不影响项目运行的前提下，影响了正常的代码提交流程"></a>在这些代码报错不影响项目运行的前提下，影响了正常的代码提交流程</h5></li>
+<li><p>解决方法很简单，只需要在 git commit 命令后添加 –no-version ，<strong>绕过 ESLint 工具的代码校验功能</strong>即可（如下）：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&quot;接口调用页面优化 接口参数信息 接口文档预开发&quot;</span> --no-verify<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231018221051988.png" alt="image-20231018221051988"></p>
+<ul>
+<li>这里其实还有很多<strong>有关 ESLint 的配置管理</strong>，我就暂时不深究了，日后有机会再展开聊聊</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Git/" class="category-chain-item">Git</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/Git/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+      
+        <a href="/blog/tags/Git/">#Git</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>解决 Git 远程推送报错的终极指南</div>
+      <div>https://deng-2022.gitee.io/blog/2023/07/15/解决 Git 远程推送报错的终极指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Memory</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月15日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年11月13日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/07/17/%E6%8E%A2%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%EF%BC%9A%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/" title="探索算法学习之旅：经验分享与解题思路">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">探索算法学习之旅：经验分享与解题思路</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/07/15/SpringBoot%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97%EF%BC%9A%E4%B8%80%E8%A7%A6%E5%8D%B3%E5%8F%91%EF%BC%81%E5%85%A8%E9%9D%A2%E6%8F%AD%E7%A7%98SpringBoot%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践">
+                        <span class="hidden-mobile">SpringBoot实战指南：一触即发！全面揭秘SpringBoot的核心特性与实践</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>Memory | 个人文档站点</span> </a>
+<i class="iconfont icon-love"></i> <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="nofollow noopener"> <span>配置指南 | Hexo Fluid 用户手册</span> </a>   
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+  <script defer src="/blog/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

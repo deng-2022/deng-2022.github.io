@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          74k 字
+          75k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          186 分钟
+          188 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：20 天前
+                    本文最后更新于：22 天前
                   
                 
               </p>
@@ -1416,7 +1416,19 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Resource</span><br><span class="hljs-keyword">private</span> MemoryClientService memoryClientService;<br><br> <span class="hljs-comment">// 随机名言</span><br>com.memory.client.model.<span class="hljs-type">Words</span> <span class="hljs-variable">words</span> <span class="hljs-operator">=</span> gson.fromJson(userRequestParams, com.memory.client.model.Words.class);<br>result = memoryClientService.getRandomWord(words);<br><br><span class="hljs-comment">// 随机壁纸</span><br>com.memory.client.model.<span class="hljs-type">Picture</span> <span class="hljs-variable">picture</span> <span class="hljs-operator">=</span> gson.fromJson(userRequestParams, com.memory.client.model.Picture.class);<br>result = memoryClientService.getPictureListByType(picture);<br><br>............................<br></code></pre></td></tr></table></figure>
 
+<h3 id="随机壁纸优化"><a href="#随机壁纸优化" class="headerlink" title="随机壁纸优化"></a>随机壁纸优化</h3><ul>
+<li>推荐该网站：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240116181424321.png" alt="image-20240116181424321"></p>
+<ul>
+<li>使用 Jsoup 库爬取该网页：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-comment">// 非空条件，转码</span><br><span class="hljs-keyword">if</span> (StringUtils.isNotBlank(category)) &#123;<br>    category = URLEncoder.encode(category, <span class="hljs-string">&quot;UTF-8&quot;</span>);<br>&#125;<br><br><span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br><span class="hljs-type">int</span> <span class="hljs-variable">randomPage</span> <span class="hljs-operator">=</span> random.nextInt(<span class="hljs-number">5</span>) + <span class="hljs-number">1</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> String.format(<span class="hljs-string">&quot;https://www.vcg.com/creative-image/%s/?page=%d&quot;</span>, category, randomPage);<br><br><span class="hljs-type">Connection</span> <span class="hljs-variable">connect</span> <span class="hljs-operator">=</span> Jsoup.connect(url);<br><span class="hljs-type">Document</span> <span class="hljs-variable">doc</span> <span class="hljs-operator">=</span> connect.get();<br><span class="hljs-type">Elements</span> <span class="hljs-variable">galleryItem</span>  <span class="hljs-operator">=</span> Objects.requireNonNull(doc.getElementById(<span class="hljs-string">&quot;imageContent&quot;</span>))<br>    .select(<span class="hljs-string">&quot;.gallery_inner&quot;</span>)<br>    .select(<span class="hljs-string">&quot;.galleryItem&quot;</span>);<br></code></pre></td></tr></table></figure>
 
+<ul>
+<li>从结果中随机选取五条结果：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 随机选择五个标签</span><br>    List&lt;Element&gt; selectedItems = galleryItem.subList(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>);<br>    <span class="hljs-comment">// 打印选中的标签</span><br>    <span class="hljs-keyword">for</span> (Element item : selectedItems) &#123;<br>     	<span class="hljs-type">Elements</span> <span class="hljs-variable">img</span> <span class="hljs-operator">=</span> item.select(<span class="hljs-string">&quot;&gt; a &gt; img&quot;</span>);<br>  <span class="hljs-type">String</span> <span class="hljs-variable">src</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https:&quot;</span> + img.attr(<span class="hljs-string">&quot;data-src&quot;</span>);<br> <span class="hljs-type">String</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> img.attr(<span class="hljs-string">&quot;title&quot;</span>);<br><br> <span class="hljs-type">Picture</span> <span class="hljs-variable">picture</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Picture</span>();<br> picture.setCategory(category);<br> picture.setTitle(title);<br> picture.setUrl(src);<br><br> pictureList.add(picture);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="优化方向"><a href="#优化方向" class="headerlink" title="优化方向"></a>优化方向</h4><ul>
 <li><p>看了别人的接口统计计费功能，很复杂呵：<strong>（2023/12/27早）</strong></p>
@@ -1606,7 +1618,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2023/07/11/Docker%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="Docker入门与实践：快速打造高效网站部署环境">
+                      <a href="/blog/2023/07/11/Docker%20%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="Docker入门与实践：快速打造高效网站部署环境">
                         <span class="hidden-mobile">Docker入门与实践：快速打造高效网站部署环境</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

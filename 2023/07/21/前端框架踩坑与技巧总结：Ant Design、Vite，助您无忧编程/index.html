@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky4.jpg">
 <meta property="article:published_time" content="2023-07-21T06:12:12.000Z">
-<meta property="article:modified_time" content="2024-01-14T13:12:34.000Z">
+<meta property="article:modified_time" content="2024-01-16T13:12:34.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32k 字
+          33k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          82 分钟
+          84 分钟
         
       </span>
     
@@ -1324,7 +1324,22 @@
 
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">const</span> result = ref&lt;<span class="hljs-title class_">ResultState</span>&gt;(&#123;<br>  <span class="hljs-attr">beforeDis</span>: <span class="hljs-number">0</span>,<br>  <span class="hljs-attr">afterDis</span>: <span class="hljs-number">0</span>,<br>  <span class="hljs-attr">procedure</span>: <span class="hljs-string">&quot;&quot;</span>,<br>  <span class="hljs-attr">height</span>: <span class="hljs-number">5</span><br>&#125;);<br></code></pre></td></tr></table></figure>
 
+<h3 id="CSS-选择器巩固"><a href="#CSS-选择器巩固" class="headerlink" title="CSS 选择器巩固"></a>CSS 选择器巩固</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 捕获 id = &quot;leftZhankai&quot;</span><br>       <span class="hljs-type">Element</span> <span class="hljs-variable">leftZhankai</span> <span class="hljs-operator">=</span> doc.getElementById(<span class="hljs-string">&quot;leftZhankai&quot;</span>);<br>       <span class="hljs-type">Elements</span> <span class="hljs-variable">heads</span> <span class="hljs-operator">=</span> leftZhankai.select(<span class="hljs-string">&quot;.sons .cont div:nth-of-type(2)&quot;</span>);<br>       <span class="hljs-keyword">for</span> (Element head : heads) &#123;<br>           <span class="hljs-type">Elements</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> head.select(<span class="hljs-string">&quot;&gt;p:nth-of-type(2)&quot;</span>);<br>           <span class="hljs-comment">// Elements author = head.select(&quot;p:nth-of-type(2)&quot;);</span><br>           <span class="hljs-comment">// System.out.println(title.text() + &quot; &quot; + author.text());</span><br>           System.out.println(<span class="hljs-string">&quot;hhh&quot;</span> + title.text());<br>       &#125;<br></code></pre></td></tr></table></figure>
 
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231112200526767.png" alt="image-20231112200526767"></p>
+<ul>
+<li>熟悉 <strong>CSS 选择器</strong>之后，<strong>解析 HTML 文档</strong>获取<strong>标题、诗人和内容</strong>就很轻松了：</li>
+</ul>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231112202249521.png" alt="image-20231112202249521"></p>
+<ul>
+<li>存在多个标签，随机选择五个：<strong>（2024/01/16晚）</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 随机选择五个标签</span><br>List&lt;Element&gt; selectedItems = galleryItem.subList(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>获取 <code>img</code> 标签的属性：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 打印选中的标签</span><br><span class="hljs-keyword">for</span> (Element item : selectedItems) &#123;<br>	<span class="hljs-type">Elements</span> <span class="hljs-variable">img</span> <span class="hljs-operator">=</span> item.select(<span class="hljs-string">&quot;&gt; a &gt; img&quot;</span>);<br>	<span class="hljs-type">String</span> <span class="hljs-variable">src</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https:&quot;</span> + img.attr(<span class="hljs-string">&quot;data-src&quot;</span>);<br>	<span class="hljs-type">String</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> img.attr(<span class="hljs-string">&quot;title&quot;</span>);<br><br>	<span class="hljs-type">Picture</span> <span class="hljs-variable">picture</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Picture</span>();<br>	picture.setCategory(category);<br>	picture.setTitle(title);<br>	picture.setUrl(src);<br><br>	pictureList.add(picture);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
                 
@@ -1426,7 +1441,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年1月14日</div>
+          <div>2024年1月16日</div>
         </div>
       
       
