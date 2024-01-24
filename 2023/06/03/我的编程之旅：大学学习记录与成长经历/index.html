@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          123k 字
+          126k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          308 分钟
+          315 分钟
         
       </span>
     
@@ -6616,6 +6616,58 @@
 <li>简历优化方向</li>
 </ul>
 <p>重构了下 API 开放平台项目，网关跑不通了</p>
+<h2 id="2024-01-19"><a href="#2024-01-19" class="headerlink" title="2024/01/19"></a>2024/01/19</h2><p>今天很没精神呵，应该说这几天都挺没精神的</p>
+<p>打开电脑刷B站，拿起平板打游戏，就是不想动脑筋</p>
+<p>立个 Flag，今天完成所有链表常见题目：<a target="_blank" rel="noopener" href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-8f30d/shuang-zhi-0f7cc/#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8">双指针技巧秒杀七道链表题目 | labuladong 的算法笔记</a></p>
+<h2 id="2024-01-20"><a href="#2024-01-20" class="headerlink" title="2024/01/20"></a>2024/01/20</h2><p>昨天没有wan成任务呵，好兄弟回来了，这下不得不好好玩两天了</p>
+<p>寒假编程学习计划，启动</p>
+<ul>
+<li>每日力扣两道题，今日算法巩固练习：链表常见题目</li>
+<li>每日技术巩固：Mybatis、Redis、MySQL、Java 并发、Spring</li>
+<li>每日项目开发经验</li>
+<li>每日简历优化，巩固复习</li>
+</ul>
+<h2 id="2024-01-21"><a href="#2024-01-21" class="headerlink" title="2024/01/21"></a>2024/01/21</h2><p>玩好了，再明确下最近学习目标：</p>
+<p>Maven 分模块开发、力扣、简历、Mybatis、Redis、MySQL、Java 并发、Spring</p>
+<p>总算再次跑通了 API 接口开放平台</p>
+<p>Java 并发编程：</p>
+<ul>
+<li>原子类：基本类型原子类 Atomic *、数组类型 Atomic * Array 等，CAS，乐观锁</li>
+<li>原子类和 volatile 关键字，保证组合操作的原子性，线程同步，保证线程安全（原子类）；每次线程修改变量，其余线程立刻能看到</li>
+<li>原子类和 synchronized 关键字对比：前者利用 CAS，后者 monitor 锁；锁粒度不同，悲观锁和乐观锁的区别，synchronized 的性能分析</li>
+<li>ThreadLocal 使用场景：为每个线程创建一个副本，保存各个线程独享的对象；独立保存信息，避免传参，类似全局变量</li>
+<li>ThreadLocal  解决多线程访问共享资源问题？不能。解决多线程下的线程安全问题，通过把共享资源变成每个线程内部独享的资源，避免了线程同步操作，解决并发问题。ThreaLocal 通过让每个线程独享自己的副本，避免资源竞争和线程同步；synchronized 用于合理分配临界资源，通过加锁，限制同一时刻只能有一个线程访问共享资源</li>
+<li>Thread、ThreadLocalMap 和 ThreadLocal 的关系。ThreadLocal 的 get()、set() 方法，Thread 的 getMap() 方法，threadLocals 开放寻址法扩容。HashMap 的 set、get、rehash、resize 方法</li>
+<li>什么是内存泄漏，OOM 内存溢出。Key 的泄露、Vlue 的泄露，remove 方法</li>
+<li>Callable 接口和 Runnable 接口，执行方法是 call()，有返回值，可抛出异常，与 Future 配合，了解任务执行情况。方法重写相关概念</li>
+<li>Future 类的作用：遇到运算耗时的工作（查询数据库、繁重的加密、压缩计算等），分配子线程异步执行，通过 Future 管理子线程，获取执行结果，提高整个程序的运行效率。核心方法：cancel、isCancelled、isDone、get</li>
+<li>FutureTask 实现 RunnableFuture 接口，可以获取线程池执行结果。通过 Calllable 实例构造 FutureTask 实例，作为 Runnable 对象执行线程，获取任务执行结果。</li>
+<li>Future 的 get 方法应该携带超时参数，限制在固定时间内返回结果，否则抛出异常，不阻塞线程池内其他线程。Future 也不会产生新的线程，把 Callable 实例提交到线程池，仅提交了任务而非线程。回顾线程池的执行原理、线程的创建过程。</li>
+</ul>
+<blockquote>
+<p>我明白你的问题，你希望了解<code>CountDownLatch</code>的工作原理，特别是为什么线程内部的<code>countDownLatch.countDown()</code>会影响到外部的等待。</p>
+<p><code>CountDownLatch</code>是一个同步辅助类，允许一个或多个线程等待，直到其他线程完成一系列的操作。其工作原理是通过一个内部计数器来实现的。这个计数器在初始化时设置一个初始值，每次调用<code>countDown()</code>方法时，计数器减少1。当计数器达到0时，所有在<code>await()</code>方法上等待的线程都可以继续执行。</p>
+<p>在<code>getPrices()</code>方法中，你初始化了<code>CountDownLatch</code>并将其计数设置为3，因为你有3个任务提交到了线程池。然后，你提交了3个任务到线程池，每个任务都使用同一个<code>CountDownLatch</code>实例。</p>
+<p>当每个任务在其内部执行<code>countDownLatch.countDown()</code>时，这个计数器就会减少1。这意味着，无论任务是在哪个线程中执行的，只要有一个任务调用了<code>countDown()</code>，计数器就会减少。</p>
+<p>然后，在主线程中，你调用了<code>countDownLatch.await(3, TimeUnit.SECONDS);</code>。这会导致主线程等待，直到计数器达到0。但是，主线程并不直接与具体的任务线程交互。它只是等待<code>CountDownLatch</code>的计数器达到0。这意味着，只要有一个任务调用了<code>countDown()</code>，主线程就会继续执行。</p>
+<p>因此，虽然<code>countDown()</code>是在线程内部执行的，但外部（即主线程或其他使用同一个<code>CountDownLatch</code>的线程）会受到它的影响，因为计数器的值在多个线程之间是共享的。这就是为什么当一个任务调用了<code>countDown()</code>后，主线程会继续执行的原因。</p>
+</blockquote>
+<h2 id="2024-01-22"><a href="#2024-01-22" class="headerlink" title="2024/01/22"></a>2024/01/22</h2><p>什么时候要加索引？从业务的角度出发去考虑，从字段枚举值的区分度、字段类型考虑。能不用索引就不用索引，占用空间，更新数据库还需要同步维护索引。能用单列索引就不用联合索引</p>
+<ul>
+<li>synchronized 不仅保证原子性，还保证可见性。它会设立一个临界区，保证临界区内最多同时只能有一个线程执行操作，同时还保证了在前一个线程释放锁之后，之前所做的所有修改，都能被获得同一把锁得线程看到，也就是该线程能读取到最新的值。这很好地解决了线程安全问题。</li>
+<li>CPU 多级缓存，JMM 的主内存和工作内存，深刻理解可见性s</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.taodudu.cc/news/show-5337010.html?action=onClick">荒野行动教程_如何在PC上用模拟器玩（而且匹配的是手机服） (taodudu.cc)</a></p>
+<p><a target="_blank" rel="noopener" href="https://hy.163.com/index.html">网易《荒野行动》官方网站-纯正国产战术竞技手游 (163.com)</a></p>
+<p>volatile 保证可见性、禁止指令重排序，是轻量级的 synchronized ，没有提供原子性和互斥性，是高性能的，没有获取锁和释放锁的过程</p>
+<p>单例模式：双重检查锁 + volatile</p>
+<p>什么是 CAS？当预期值和当前内存值相同时，修改内存值。既能保证安全性，又不需要互斥锁，在并发容器 CurrentHashMap、数据库和原子类中广泛使用</p>
+<p>CAS 的问题：ABA（版本号机制）；CAS 往往配合着死循环，高并发场景下，自旋时间过长；不能灵活控制线程安全的范围</p>
+<p>最近没有写学习计划了，三点：项目优化、算法刷题、简历优化</p>
+<p>今晚完成了链表常见算法：合并链表、分割链表、寻找倒数第K节点、寻找链表中点、判断链表相交、反转链表</p>
+<h2 id="2024-01-23-24"><a href="#2024-01-23-24" class="headerlink" title="2024/01/23 - 24"></a>2024/01/23 - 24</h2><p>这两天去离石串门去了，Java 并发编程完结 ✔</p>
+<p>前天的反转链表，拖到今天还没完成呢</p>
+<p>很好，反转单链表、反转前 n 个节点，反转区间节点的递归写法明确了</p>
 
                 
               </div>
