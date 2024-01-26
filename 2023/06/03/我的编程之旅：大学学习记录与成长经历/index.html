@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          126k 字
+          128k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          315 分钟
+          320 分钟
         
       </span>
     
@@ -6668,6 +6668,50 @@
 <h2 id="2024-01-23-24"><a href="#2024-01-23-24" class="headerlink" title="2024/01/23 - 24"></a>2024/01/23 - 24</h2><p>这两天去离石串门去了，Java 并发编程完结 ✔</p>
 <p>前天的反转链表，拖到今天还没完成呢</p>
 <p>很好，反转单链表、反转前 n 个节点，反转区间节点的递归写法明确了</p>
+<h2 id="2024-01-25"><a href="#2024-01-25" class="headerlink" title="2024/01/25"></a>2024/01/25</h2><p>今天开始着手总结：如何理解 XXX 技术？</p>
+<p>你如何理解 Spring？</p>
+<p>谈谈你知道的设计模式</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63722685/category_11925750.html">Spring系列_叶秋学长的博客-CSDN博客</a></p>
+<h2 id="2024-01-26"><a href="#2024-01-26" class="headerlink" title="2024/01/26"></a>2024/01/26</h2><p>寻找回文字符串：从中间向两端</p>
+<p>判断回文字符串：从两端向中间，均利用了双指针技巧</p>
+<p>判断回文链表呢？很显然不能这么干</p>
+<ul>
+<li>模仿双指针，递归，后序遍历：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 左侧指针</span><br>ListNode left;<br><br><span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    left = head;<br>    <span class="hljs-keyword">return</span> traverse(head);<br>&#125;<br><br><span class="hljs-type">boolean</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(ListNode right)</span> &#123;<br>    <span class="hljs-keyword">if</span> (right == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> traverse(right.next);<br>    <span class="hljs-comment">// 后序遍历代码</span><br>    res = res &amp;&amp; (right.val == left.val);<br>    left = left.next;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>优化空间复杂度，反转链表：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    ListNode slow, fast;<br>    slow = fast = head;<br>    <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>) &#123;<br>        slow = slow.next;<br>        fast = fast.next.next;<br>    &#125;<br>    <br>    <span class="hljs-keyword">if</span> (fast != <span class="hljs-literal">null</span>)<br>        slow = slow.next;<br>    <br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> reverse(slow);<br>    <span class="hljs-keyword">while</span> (right != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">if</span> (left.val != right.val)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        left = left.next;<br>        right = right.next;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br>ListNode <span class="hljs-title function_">reverse</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">pre</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>, cur = head;<br>    <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">next</span> <span class="hljs-operator">=</span> cur.next;<br>        cur.next = pre;<br>        pre = cur;<br>        cur = next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> pre;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>链表：</p>
+<ul>
+<li>双指针：合并链表、分割链表、合并K个有序链表、单链表中点、单链表倒数第K个节点判断链表是否包含环、判断链表相交</li>
+<li>链表反转：反转链表、反转前n个节点、反转区间、K个一组反转链表</li>
+<li>判断回文链表：压栈，反转，双指针</li>
+</ul>
+<p>滑动窗口：最小覆盖字串、字符串排列、找所有字母异位词、最长无重复子串、子数组最大平均数、最长连续递增序列、盛水最多的容器</p>
+<p>贪心：分发饼干、柠檬水找零、判断区间重叠、合并区间、插入区间、字符串分割、加油站</p>
+<p>动态规划：</p>
+<p>回溯：</p>
+<p>二叉树：</p>
+<p>近日技术文章摘抄：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%AE%9E%E6%88%98-%E5%AE%8C">Dubbo源码解读与实战-完 (lianglianglee.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/ElasticSearch%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E8%AF%A6%E8%A7%A3">ElasticSearch知识体系详解 (lianglianglee.com)</a></li>
+<li>[Java 并发编程 78 讲-完 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Java">https://learn.lianglianglee.com/专栏/Java</a> 并发编程 78 讲-完)</li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/MySQL%E5%AE%9E%E6%88%9845%E8%AE%B2">MySQL实战45讲 (lianglianglee.com)</a></li>
+<li>[Netty 核心原理剖析与 RPC 实践-完 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Netty">https://learn.lianglianglee.com/专栏/Netty</a> 核心原理剖析与 RPC 实践-完)</li>
+<li>[Redis 核心技术与实战 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Redis">https://learn.lianglianglee.com/专栏/Redis</a> 核心技术与实战)</li>
+<li>[Spring Boot 实战开发 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Spring">https://learn.lianglianglee.com/专栏/Spring</a> Boot 实战开发)</li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E5%AE%8C%EF%BC%89">SpringCloud微服务实战（完） (lianglianglee.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Spring%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B">Spring编程常见错误50例 (lianglianglee.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E5%AD%A6%E5%BE%AE%E6%9C%8D%E5%8A%A1">从0开始学微服务 (lianglianglee.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%AB%98%E6%89%8B%E8%AF%BE">消息队列高手课 (lianglianglee.com)</a></li>
+<li>[深入剖析 MyBatis 核心原理-完 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90">https://learn.lianglianglee.com/专栏/深入剖析</a> MyBatis 核心原理-完)</li>
+<li><a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90Java%E6%96%B0%E7%89%B9%E6%80%A7">深入剖析Java新特性 (lianglianglee.com)</a></li>
+</ul>
+<p>一个完善的微服务案例：</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240126230650544.png" alt="image-20240126230650544"></p>
 
                 
               </div>
