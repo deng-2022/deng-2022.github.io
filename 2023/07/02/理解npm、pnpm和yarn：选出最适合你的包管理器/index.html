@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          474 字
+          666 字
         
       </span>
     
@@ -485,6 +485,17 @@
 <p>3️⃣ yarn：由Facebook开发的包管理器，专注于提供更快的安装速度、可靠的依赖管理和版本控制。</p>
 <p>选择适合自己的包管理器需要考虑具体项目需求和个人偏好。对于大多数项目，npm是常用的选择；pnpm则在空间和速度方面做了优化并兼容npm生态系统；yarn则着重于提供更快的安装速度和可靠的依赖管理。</p>
 <p>在选择之前，建议了解每个包管理器的特点和功能，根据项目需求和个人喜好做出最适合你的选择。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36728518/article/details/128528754">npm和yarn设置淘宝源,与切换官方源_yarn 源-CSDN博客</a></p>
+<p>今天尝试构建 Ant Design Pro 开发框架时，出现了这样的报错：</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240130205828338.png" alt="image-20240130205828338"></p>
+<p>为此我听取了 AI 的意见，未果：</p>
+<p>确保本机 yarn 配置无误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs base">yarn -v  // 查看yarn 版本<br></code></pre></td></tr></table></figure>
+
+<p>切换了 yarn 源之后，就执行成功了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs base">yarn config set registry https://registry.yarnpkg.com     // 修改yarn源为官方源<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240130210155871.png" alt="image-20240130210155871"></p>
 
                 
               </div>
