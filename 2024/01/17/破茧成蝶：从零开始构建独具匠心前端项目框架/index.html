@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          377 字
         
       </span>
     
@@ -432,10 +432,23 @@
             
               <div class="markdown-body">
                 
-                <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240117215206638.png" alt="image-20240117215206638"></p>
+                <h2 id="根据后端生成接口"><a href="#根据后端生成接口" class="headerlink" title="根据后端生成接口"></a>根据后端生成接口</h2><p>后端接口文档：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240201113411843.png" alt="image-20240201113411843"></p>
+<p>我们根据后端接口文档，一键生成前端 HTTP 请求接口：</p>
+<p>官方文档：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ferdikoomen/openapi-typescript-codegen">ferdikoomen/openapi-typescript-codegen: NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification (github.com)</a></p>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install openapi-typescript-codegen --save-dev<br></code></pre></td></tr></table></figure>
+
+<p>执行命令生成代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openapi --input http://localhost:8121/api/v2/api-docs?group=memory-oj --output ./generated --client axios<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240201112520652.png" alt="image-20240201112520652"></p>
+<p>如上，执行成功，成功生成 HTTP 请求接口</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240117215206638.png" alt="image-20240117215206638"></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240117215050598.png" alt="image-20240117215050598"></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240117215227942.png" alt="image-20240117215227942"></p>
-
+<h2 id="MarkDown-编辑器"><a href="#MarkDown-编辑器" class="headerlink" title="MarkDown 编辑器"></a>MarkDown 编辑器</h2><h2 id="代码编辑器"><a href="#代码编辑器" class="headerlink" title="代码编辑器"></a>代码编辑器</h2>
                 
               </div>
             

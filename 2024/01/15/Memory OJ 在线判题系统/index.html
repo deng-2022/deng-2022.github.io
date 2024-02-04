@@ -24,8 +24,10 @@
 <meta property="og:description" content="技术选型架构设计编码开发很好啊，前后端项目模板跑起来了：  库表设计题目表 1234567891011121314151617181920-- 题目表create table if not exists question(    id          bigint auto_increment comment &amp;#x27;id&amp;#x27; primary key,    title">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240117230852510.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240201115405878.png">
+<meta property="og:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240201115824731.png">
 <meta property="article:published_time" content="2024-01-15T14:18:01.000Z">
-<meta property="article:modified_time" content="2024-01-30T14:32:45.141Z">
+<meta property="article:modified_time" content="2024-02-03T14:39:09.182Z">
 <meta property="article:author" content="Memory">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240117230852510.png">
@@ -264,7 +266,7 @@
         
         
         
-          27 分钟
+          29 分钟
         
       </span>
     
@@ -315,7 +317,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：18 小时前
+                    本文最后更新于：1 天前
                   
                 
               </p>
@@ -415,6 +417,16 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 封装用户相关信息</span><br>       List&lt;QuestionSubmitVO&gt; questionSubmitVOList = questionSubmitList.stream()<br>               .map(questionSubmit -&gt; getQuestionSubmitVO(questionSubmit, loginUser))<br>               .collect(Collectors.toList());<br></code></pre></td></tr></table></figure>
 
 
+
+<h2 id="报错解决指南"><a href="#报错解决指南" class="headerlink" title="报错解决指南"></a>报错解决指南</h2><h3 id="前端生成请求接口后报错"><a href="#前端生成请求接口后报错" class="headerlink" title="前端生成请求接口后报错"></a>前端生成请求接口后报错</h3><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240201115405878.png" alt="image-20240201115405878"></p>
+<p>这是因为 OpenAPI 生成的请求接口是这样的：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * getLoginUser</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span> BaseResponse_LoginUserVO_ OK</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@throws</span> <span class="hljs-variable">ApiError</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title function_">getLoginUserUsingGet</span>(): <span class="hljs-title class_">CancelablePromise</span>&lt;<span class="hljs-title class_">BaseResponse</span>_LoginUserVO_&gt; &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">__request</span>(<span class="hljs-title class_">OpenAPI</span>, &#123;<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/api/user/get/login&#x27;</span>,<br>        <span class="hljs-attr">errors</span>: &#123;<br>            <span class="hljs-number">401</span>: <span class="hljs-string">`Unauthorized`</span>,<br>            <span class="hljs-number">403</span>: <span class="hljs-string">`Forbidden`</span>,<br>            <span class="hljs-number">404</span>: <span class="hljs-string">`Not Found`</span>,<br>        &#125;,<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>修改 OpenAPIConfig 即可：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240201115824731.png" alt="image-20240201115824731"></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">OpenAPI</span>: <span class="hljs-title class_">OpenAPIConfig</span> = &#123;<br>    <span class="hljs-attr">BASE</span>: <span class="hljs-string">&#x27;http://localhost:8101/&#x27;</span>,<br>    <span class="hljs-attr">VERSION</span>: <span class="hljs-string">&#x27;1.0&#x27;</span>,<br>    <span class="hljs-attr">WITH_CREDENTIALS</span>: <span class="hljs-literal">false</span>,<br>    <span class="hljs-attr">CREDENTIALS</span>: <span class="hljs-string">&#x27;include&#x27;</span>,<br>    <span class="hljs-attr">TOKEN</span>: <span class="hljs-literal">undefined</span>,<br>    <span class="hljs-attr">USERNAME</span>: <span class="hljs-literal">undefined</span>,<br>    <span class="hljs-attr">PASSWORD</span>: <span class="hljs-literal">undefined</span>,<br>    <span class="hljs-attr">HEADERS</span>: <span class="hljs-literal">undefined</span>,<br>    <span class="hljs-attr">ENCODE_PATH</span>: <span class="hljs-literal">undefined</span>,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
@@ -450,7 +462,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年1月30日</div>
+          <div>2024年2月3日</div>
         </div>
       
       

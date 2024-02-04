@@ -16,12 +16,12 @@
   <meta name="author" content="Memory">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Memory聚合搜索平台开发基本流程">
+    <meta name="description" content="MemorySearch 忆搜阁开发基本流程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Memory聚合搜索平台-开发文档">
-<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:title" content="MemorySearch 忆搜阁-开发文档">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/08/26/MemorySearch%20%E5%BF%86%E6%90%9C%E9%98%81-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
-<meta property="og:description" content="Memory聚合搜索平台开发基本流程">
+<meta property="og:description" content="MemorySearch 忆搜阁开发基本流程">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
@@ -37,7 +37,7 @@
   
   
   
-  <title>Memory聚合搜索平台-开发文档 - Memory&#39;s blog</title>
+  <title>MemorySearch 忆搜阁-开发文档 - Memory&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Memory聚合搜索平台-开发文档"></span>
+            <span id="subtitle" data-typed-text="MemorySearch 忆搜阁-开发文档"></span>
           
         </div>
 
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          76k 字
+          80k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          189 分钟
+          202 分钟
         
       </span>
     
@@ -485,10 +485,10 @@
     
       
       
-        <a href="/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory聚合搜索平台-开发文档"
+        <a href="/blog/2023/08/26/MemorySearch%20%E5%BF%86%E6%90%9C%E9%98%81-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemorySearch 忆搜阁-开发文档"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">Memory聚合搜索平台-开发文档</span>
+          <span class="category-post">MemorySearch 忆搜阁-开发文档</span>
         </a>
       
     
@@ -626,7 +626,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Memory聚合搜索平台-开发文档</h1>
+            <h1 style="display: none">MemorySearch 忆搜阁-开发文档</h1>
             
               <p class="note note-success">
                 
@@ -1413,9 +1413,12 @@
 <li>如下，我们<strong>修改本地数据库中的一条记录</strong>，发现这次数据变更已经被捕捉到并打印出来了</li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20231204204957589.png" alt="image-20231204204957589"></p>
-<ul>
-<li>至此，使用 <strong>Canal 实现实时监控数据变更</strong>就完成了，当然这只是简单测试了一下，日后会着手实现基于该方法<strong>同步 MySQL 中的变更数据到 ES 中</strong> <strong>（2023/12/04晚）</strong></li>
-</ul>
+<p>至此，使用 <strong>Canal 实现实时监控数据变更</strong>就完成了，当然这只是简单测试了一下，日后会着手实现基于该方法<strong>同步 MySQL 中的变更数据到 ES 中</strong> <strong>（2023/12/04晚）</strong></p>
+<p>数据处理失败，告诉 Canal 服务器，指定的批次 <code>batchId</code> 的数据没有被成功处理，服务器应该重新传递这批数据。这是一个重试机制，确保数据的完整性和一致性：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">maxRetries</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>; <span class="hljs-comment">// 设置最大重试次数</span><br><span class="hljs-keyword">while</span> (maxRetries &gt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 获取数据并进行处理</span><br>        List&lt;Entry&gt; entries = connector.getWithoutAck(batchSize);<br>        processEntries(entries); <span class="hljs-comment">// 假设这是一个处理数据的方法</span><br><br>        <span class="hljs-comment">// 如果数据处理成功，提交确认</span><br>        connector.ack(batchId);<br>        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 跳出循环，继续下一次批处理</span><br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        maxRetries--; <span class="hljs-comment">// 减少剩余重试次数</span><br>        <span class="hljs-keyword">if</span> (maxRetries == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">// 如果达到最大重试次数，回滚数据</span><br>            connector.rollback(batchId);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="实现-ES-博文搜索"><a href="#实现-ES-博文搜索" class="headerlink" title="实现 ES 博文搜索"></a>实现 ES 博文搜索</h2><h3 id="严重的问题"><a href="#严重的问题" class="headerlink" title="严重的问题"></a>严重的问题</h3><ul>
 <li>着手使用 ES 实现博文快速搜索 + 关键词高亮显示，那<strong>执行步骤很简单</strong>： <strong>（2023/11/08晚）</strong><ul>
 <li>后端正确返回博文数据</li>
@@ -2010,6 +2013,73 @@
 <li>显而易见，<code>onSearch</code> 函数并没有传递参数，这就导致了 ·onSearch· 函数一直不会被正确执行</li>
 <li>还好我比较聪明，发现了这个问题<strong>（2023/12/25晚）</strong></li>
 </ul>
+<h2 id="热搜词统计"><a href="#热搜词统计" class="headerlink" title="热搜词统计"></a>热搜词统计</h2><p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240204002441626.png" alt="image-20240204002441626"></p>
+<p>应该按空格分割每个搜索词条并保存</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> List&lt;Message&gt; <span class="hljs-title function_">setHotWords</span><span class="hljs-params">(String suggestTextStr, HttpServletRequest request)</span> &#123;<br>       <span class="hljs-comment">// 获取当前登录用户</span><br>       <span class="hljs-comment">// User loginUser = (User) request.getSession().getAttribute(USER_LOGIN_STATE);</span><br>       <span class="hljs-comment">//</span><br>       <span class="hljs-comment">// Long userId = loginUser.getId();</span><br><br>       <span class="hljs-keyword">if</span> (com.qcloud.cos.utils.StringUtils.isNullOrEmpty(suggestTextStr)) &#123;<br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>       &#125;<br><br>       <span class="hljs-comment">// 按空格，获取每个搜索词</span><br>       String[] suggestTexts = suggestTextStr.split(<span class="hljs-string">&quot; &quot;</span>);<br><br>       ArrayList&lt;Message&gt; messageList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>       <span class="hljs-keyword">for</span> (String suggestText : suggestTexts) &#123;<br>           <span class="hljs-comment">// 从 Redis 中获取原始消息</span><br>           <span class="hljs-type">String</span> <span class="hljs-variable">messageStr</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().get(String.format(REDIS_KEY_TEMPLATE, suggestText));<br><br>           <span class="hljs-type">Message</span> <span class="hljs-variable">message</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>           <span class="hljs-type">Gson</span> <span class="hljs-variable">gson</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br>           <span class="hljs-comment">// 检查原始消息是否为空</span><br>           <span class="hljs-keyword">if</span> (ObjectUtils.isNotEmpty(messageStr)) &#123;<br>               <span class="hljs-comment">// 获取原始消息中的 searchNum 字段并增加 1</span><br>               <span class="hljs-type">Message</span> <span class="hljs-variable">mes</span> <span class="hljs-operator">=</span> gson.fromJson(messageStr, Message.class);<br>               <span class="hljs-type">Integer</span> <span class="hljs-variable">searchNum</span> <span class="hljs-operator">=</span> mes.getSearchNum();<br>               <span class="hljs-type">Integer</span> <span class="hljs-variable">newSearchNum</span> <span class="hljs-operator">=</span> searchNum + <span class="hljs-number">1</span>;<br><br>               <span class="hljs-comment">// 创建新的 Message 对象</span><br>               message = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Message</span>(MESSAGE_ID, suggestText, newSearchNum);<br>           &#125; <span class="hljs-keyword">else</span> &#123;<br>               <span class="hljs-comment">// 创建新的 Message 对象</span><br>               message = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Message</span>(MESSAGE_ID, suggestText, SEARCH_NUM);<br>           &#125;<br>           <span class="hljs-type">boolean</span> <span class="hljs-variable">add</span> <span class="hljs-operator">=</span> messageList.add(message);<br>           ThrowUtils.throwIf(!add, ErrorCode.OPERATION_ERROR, <span class="hljs-string">&quot;记录热搜词失败&quot;</span>);<br><br>           <span class="hljs-comment">// 将新的 Message 对象存回 Redis 中，设置过期时间为 30 天</span><br>           redisTemplate.opsForValue()<br>                    .set(String.format(REDIS_KEY_TEMPLATE, suggestText), gson.toJson(message), <span class="hljs-number">30</span>, TimeUnit.DAYS);<br>       &#125;<br><br>       <span class="hljs-keyword">return</span> messageList;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sas">@Override<br>public <span class="hljs-keyword">List</span>&lt;<span class="hljs-keyword">Message</span>&gt; getHotWords() &#123;<br>    <span class="hljs-keyword">Set</span>&lt;String&gt; keys = redisTemplate.keys(<span class="hljs-string">&quot;search:hot*&quot;</span>);<br><br>    ArrayList&lt;<span class="hljs-keyword">Message</span>&gt; hotWordList = new ArrayList&lt;&gt;();<br>    Gson gson = new Gso<span class="hljs-meta">n</span>();<br>    for (String <span class="hljs-keyword">key</span> : Objects.requireNonNull(keys)) &#123;<br>        String messageStr = redisTemplate.opsForValue().get(<span class="hljs-keyword">key</span>);<br>        <span class="hljs-keyword">Message</span> <span class="hljs-keyword">message</span> = gson.fromJso<span class="hljs-meta">n</span>(messageStr, <span class="hljs-keyword">Message</span>.class);<br>        hotWordList.<span class="hljs-keyword">add</span>(<span class="hljs-keyword">message</span>);<br>    &#125;<br><br>    System.<span class="hljs-keyword">out</span>.printl<span class="hljs-meta">n</span>(keys);<br>    <span class="hljs-keyword">return</span> hotWordList;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Message</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 搜索词条</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Long userId;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 搜索词条</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> String searchText;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 搜索词条</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> Integer searchNum;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Message</span><span class="hljs-params">(Long userId, String searchText, Integer searchNum)</span> &#123;<br>        <span class="hljs-built_in">this</span>.userId = userId;<br>        <span class="hljs-built_in">this</span>.searchText = searchText;<br>        <span class="hljs-built_in">this</span>.searchNum = searchNum;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Message</span><span class="hljs-params">(Long userId, Integer searchNum)</span> &#123;<br>        <span class="hljs-built_in">this</span>.userId = userId;<br>        <span class="hljs-built_in">this</span>.searchNum = searchNum;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> List&lt;Message&gt; <span class="hljs-title function_">setHotWords</span><span class="hljs-params">(String searchTextStr, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-comment">// 获取当前登录用户</span><br>    <span class="hljs-comment">// User loginUser = (User) request.getSession().getAttribute(USER_LOGIN_STATE);</span><br>    <span class="hljs-comment">//</span><br>    <span class="hljs-comment">// Long userId = loginUser.getId();</span><br><br>    <span class="hljs-keyword">if</span> (com.qcloud.cos.utils.StringUtils.isNullOrEmpty(searchTextStr)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 按空格，获取每个搜索词</span><br>    String[] searchTexts = searchTextStr.split(<span class="hljs-string">&quot; &quot;</span>);<br><br>    ArrayList&lt;Message&gt; messageList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">for</span> (String searchText : searchTexts) &#123;<br>        <span class="hljs-comment">// 从 Redis 中获取原始消息</span><br>        <span class="hljs-type">Long</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> redisTemplate.opsForZSet()<br>                .zCard(String.format(REDIS_KEY_TEMPLATE, SEARCH_TIME));<br><br>        <span class="hljs-type">Message</span> <span class="hljs-variable">message</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">Gson</span> <span class="hljs-variable">gson</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Gson</span>();<br>        <span class="hljs-comment">// 原始消息不为空</span><br>        <span class="hljs-keyword">if</span> (size &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">// 获取原始消息中的 searchNum 字段并增加 1</span><br>            <span class="hljs-type">Message</span> <span class="hljs-variable">mes</span> <span class="hljs-operator">=</span> gson.fromJson(SEARCH_TIME, Message.class);<br>            <span class="hljs-type">Double</span> <span class="hljs-variable">searchNum</span> <span class="hljs-operator">=</span> mes.getSearchNum();<br><br>            <span class="hljs-comment">// 创建新的 Message 对象</span><br>            message = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Message</span>(MESSAGE_ID, searchText, ++searchNum);<br>            <span class="hljs-comment">// 存入 Redis，更新 score</span><br>            redisTemplate.opsForZSet()<br>                    .incrementScore(String.format(REDIS_KEY_TEMPLATE, SEARCH_TIME), gson.toJson(message), <span class="hljs-number">1</span>);<br><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 创建新的 Message 对象</span><br>            message = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Message</span>(MESSAGE_ID, searchText, SEARCH_NUM);<br><br>            <span class="hljs-comment">// 将新的 Message 对象存回 Redis 中</span><br>            redisTemplate.opsForZSet()<br>                    .add(String.format(REDIS_KEY_TEMPLATE, SEARCH_TIME), gson.toJson(message), SEARCH_NUM);<br>        &#125;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">add</span> <span class="hljs-operator">=</span> messageList.add(message);<br>        ThrowUtils.throwIf(!add, ErrorCode.OPERATION_ERROR, <span class="hljs-string">&quot;记录热搜词失败&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> messageList;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240204213220142.png" alt="image-20240204213220142"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240204213224414.png" alt="image-20240204213224414"></p>
+<p>亮点：</p>
+<p>设计模式：适配器模式，注册器模式，门面模式</p>
+<p>数据抓取：</p>
+<ul>
+<li>爬虫获取外部资源，爬取图片、视频，<strong>异步处理</strong>耗时请求</li>
+<li>定时任务：<strong>定时</strong>同步（爬取）外部文章资源</li>
+</ul>
+<p>Elastic Stack 技术栈：</p>
+<ul>
+<li>ES 和 MySQL 的比较，ES 的概念，要解决的问题</li>
+<li>DSL 语法：简单索引的增删改，文档的增删改，复合查询、全文搜索、term 查询、聚合查询、布尔查询，搜索建议词、关键词</li>
+<li>分词器：内置分词器、IK 分词器</li>
+<li>Java 操作 ES：ES 官方提供 API、Spring Data Elasticsearch</li>
+<li>Logstash 数据同步管道：配置输入输出源，同步 MySQL -&gt; ES 的数据</li>
+<li>Kibana 数据看板：搭建数据看板，数据分析</li>
+<li>ES 实现搜索建议词、关键词高亮、聚合查询分析热门文章中的热门词汇</li>
+</ul>
+<p>数据同步方式：</p>
+<ul>
+<li>自主编码实现 MySQL -&gt; ES 数据同步；现成中间件：</li>
+<li>Logstash 数据同步管道，配置输入输出源；</li>
+<li>Canal + MQ 实现监听数据库流水（设想）</li>
+</ul>
+<p>Redis：</p>
+<ul>
+<li><p>Redis 基本的数据结构类型</p>
+</li>
+<li><p>使用 Zset 实现热门搜索词（排行榜）</p>
+</li>
+</ul>
+<p>用户：</p>
+<ul>
+<li>sessionId / ThreadLocal 保存登录用户信息，</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">用户会话管理：在Web应用中，为了跟踪用户的会话信息，通常会将用户会话数据存储在HttpSession对象中。然而，由于每个请求可能由不同的线程处理，直接使用HttpSession会导致线程安全问题。使用ThreadLocal可以将用户会话数据存储在每个线程中，确保每个线程都能独立地访问用户会话数据。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 Markdown 编辑器发布文章，<strong>交由审核</strong></li>
+</ul>
+<p>高流量：如何抵御大量搜索请求，保证数据记录正确</p>
+<ul>
+<li>缓存：保留近期内的搜索数据（图片，视频），保存 24 小时</li>
+<li>限流：四大限流算法，简单限流、滑动窗口限流、漏桶限流、令牌桶限流</li>
+<li>降级：</li>
+</ul>
+<p>并发编程：对于耗时请求，异步处理：从外源搜索图片、视频</p>
+<p>Spring：</p>
+<ul>
+<li>Spring AOP + 自定义注解，实现全局请求响应拦截和权限校验</li>
+<li>多环境配置：配置 开发环境、生产环境，方便项目开发、测试、部署上线</li>
+</ul>
+<p>思考：</p>
+<p>如何分析文章热度？</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Page&lt;User&gt; <span class="hljs-title function_">listUserVOByPage</span><span class="hljs-params">(UserQueryRequest userQueryRequest, HttpServletRequest request)</span> &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> userQueryRequest.getPageSize();<br>    <span class="hljs-type">long</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span> userQueryRequest.getCurrent();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.page(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(pageSize, current),<br>            <span class="hljs-built_in">this</span>.getQueryWrapper(userQueryRequest));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -2127,8 +2197,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Memory聚合搜索平台-开发文档</div>
-      <div>https://deng-2022.gitee.io/blog/2023/08/26/Memory 聚合搜索平台-开发文档/</div>
+      <div>MemorySearch 忆搜阁-开发文档</div>
+      <div>https://deng-2022.gitee.io/blog/2023/08/26/MemorySearch 忆搜阁-开发文档/</div>
     </div>
     <div class="license-meta">
       
