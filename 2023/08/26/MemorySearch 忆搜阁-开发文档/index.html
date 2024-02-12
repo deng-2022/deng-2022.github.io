@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          83k 字
+          85k 字
         
       </span>
     
@@ -269,7 +269,7 @@
         
         
         
-          209 分钟
+          213 分钟
         
       </span>
     
@@ -631,7 +631,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：2 个月前
                   
                 
               </p>
@@ -2063,8 +2063,20 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ts">&lt;a-table<br>          :columns=<span class="hljs-string">&quot;userColumns&quot;</span><br>          :data=<span class="hljs-string">&quot;userList ? userList : []&quot;</span><br>          :bordered=<span class="hljs-string">&quot;true&quot;</span><br>          :hoverable=<span class="hljs-string">&quot;true&quot;</span><br>          :stripe=<span class="hljs-string">&quot;true&quot;</span><br>          :show-header=<span class="hljs-string">&quot;true&quot;</span><br>          :pagination=<span class="hljs-string">&quot;pagination&quot;</span><br>      /&gt;<br></code></pre></td></tr></table></figure>
 
 <p>千万不能写成： :data=”:data=”userList ? [] : userList”，完全低级错误，不好发现</p>
-<p>亮点：</p>
-<p>设计模式：适配器模式，注册器模式，门面模式</p>
+<h2 id="图片缓存实现"><a href="#图片缓存实现" class="headerlink" title="图片缓存实现"></a>图片缓存实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Redis 保存搜索图片 两小时</span><br>  redisTemplate.opsForValue()<br>          .set(String.format(SEARCH_TEXT_KEY, String.valueOf(currentId)),<br>                  GSON.toJson(pictureList), <span class="hljs-number">2</span>, TimeUnit.HOURS);<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240207191513830.png" alt="image-20240207191513830"></p>
+<p>Open API 生成请求接口，还经过 Spring 过滤器：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">openapi --input http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8104</span><span class="hljs-regexp">/api/</span>v2<span class="hljs-regexp">/api-docs?group=memory-search --output ./g</span>enerated --client axios<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240207195455834.png" alt="image-20240207195455834"></p>
+<h2 id="热门词分析"><a href="#热门词分析" class="headerlink" title="热门词分析"></a>热门词分析</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, Aggregation&gt; asMap = aggregations1.getAsMap();<br>       System.out.println(asMap);<br>       Aggregation terms = asMap.<span class="hljs-keyword">get</span>(<span class="hljs-string">&quot;search_terms&quot;</span>);<br>       <span class="hljs-built_in">String</span> name = terms.getName();<br>       <span class="hljs-built_in">String</span> type = terms.getType();<br>       <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">Object</span>&gt; metadata = terms.getMetadata();<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 添加聚合条件</span><br><span class="hljs-type">TermsAggregationBuilder</span> <span class="hljs-variable">search_terms</span> <span class="hljs-operator">=</span> AggregationBuilders.terms(<span class="hljs-string">&quot;search_terms&quot;</span>).field(<span class="hljs-string">&quot;message&quot;</span>).size(<span class="hljs-number">10</span>);<br><br><span class="hljs-comment">// 创建查询</span><br><span class="hljs-type">NativeSearchQuery</span> <span class="hljs-variable">searchQuery</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeSearchQueryBuilder</span>()<br>        .withAggregations(search_terms)   <span class="hljs-comment">// 添加聚合条件</span><br>        .build();<br><br><span class="hljs-comment">// 执行搜索，获取搜索结果</span><br>SearchHits&lt;MessageTest&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, MessageTest.class);<br><br><span class="hljs-comment">// 获取Spring Data Elasticsearch的聚合结果</span><br><span class="hljs-type">ElasticsearchAggregations</span> <span class="hljs-variable">searchHitsAggregations</span> <span class="hljs-operator">=</span> (ElasticsearchAggregations) searchHits.getAggregations();<br><span class="hljs-type">Aggregations</span> <span class="hljs-variable">aggregations</span> <span class="hljs-operator">=</span> Objects.requireNonNull(searchHitsAggregations).aggregations();<br>List&lt;Aggregation&gt; aggregationList = aggregations.asList();<br><span class="hljs-keyword">for</span> (Aggregation aggregation : aggregationList) &#123;<br>    System.out.println(aggregation);<br>    aggregation.getName();<br>    <span class="hljs-comment">// 检查聚合类型并转换为相应的聚合对象</span><br>    <span class="hljs-keyword">if</span> (aggregation <span class="hljs-keyword">instanceof</span> Terms) &#123;<br>        <span class="hljs-type">Terms</span> <span class="hljs-variable">termsAggregation</span> <span class="hljs-operator">=</span> (Terms) aggregation;<br><br>        <span class="hljs-comment">// 获取buckets</span><br>        List&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Terms</span>.Bucket&gt; buckets = termsAggregation.getBuckets();<br><br>        <span class="hljs-comment">// 遍历buckets</span><br>        <span class="hljs-keyword">for</span> (Terms.Bucket bucket : buckets) &#123;<br>            System.out.println(<span class="hljs-string">&quot;Bucket Key: &quot;</span> + bucket.getKeyAsString());<br>            System.out.println(<span class="hljs-string">&quot;Bucket Doc Count: &quot;</span> + bucket.getDocCount());<br>            <span class="hljs-comment">// 如果需要，还可以获取其他bucket信息，如聚合的子聚合等</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240211233736902.png" alt="image-20240211233736902"></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240211233800313.png" alt="image-20240211233800313"></p>
+<h2 id="亮点"><a href="#亮点" class="headerlink" title="亮点"></a>亮点</h2><p>设计模式：适配器模式，注册器模式，门面模式</p>
 <p>数据抓取：</p>
 <ul>
 <li>爬虫获取外部资源，爬取图片、视频，<strong>异步处理</strong>耗时请求</li>
@@ -2078,7 +2090,7 @@
 <li>Java 操作 ES：ES 官方提供 API、Spring Data Elasticsearch</li>
 <li>Logstash 数据同步管道：配置输入输出源，同步 MySQL -&gt; ES 的数据</li>
 <li>Kibana 数据看板：搭建数据看板，数据分析</li>
-<li>ES 实现搜索建议词、关键词高亮、聚合查询分析热门文章中的热门词汇</li>
+<li>ES 实现搜索建议词、关键词高亮、热搜词统计、热门词分析，聚合查询分析热门文章中的热门词汇</li>
 </ul>
 <p>数据同步方式：</p>
 <ul>
