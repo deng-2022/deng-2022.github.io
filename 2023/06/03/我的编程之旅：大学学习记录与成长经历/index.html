@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          134k 字
+          137k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          335 分钟
+          343 分钟
         
       </span>
     
@@ -6883,6 +6883,97 @@
 <p>用户未登录，前端如何限制用户访问页面</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/su_su_su_su/article/details/119214933">Java中通过ElasticsearchRestTemplate进行聚合操作_elasticsearchresttemplate中按照数组进行聚合-CSDN博客</a></p>
 <p>[Aggregations | Elasticsearch Reference <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/search-aggregations.html">6.0] | Elastic</a></p>
+<h2 id="2024-02-12"><a href="#2024-02-12" class="headerlink" title="2024/02/12"></a>2024/02/12</h2><p>热门话题分析：本地文章，根据文章内容，获取热门话题</p>
+<p>JDK 动态代理的实现原理是：<strong>动态创建代理类，然后通过指定类加载器进行加载</strong>。在创建代理对象时，需要将 InvocationHandler 对象作为构造参数传入；当调用代理对象时，会调用 InvocationHandler.invoke() 方法，从而执行代理逻辑，最终调用真正业务对象的相应方法。</p>
+<p>[04 Dubbo SPI 精析，接口实现两极反转（下） (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%AE%9E%E6%88%98-%E5%AE%8C/04">https://learn.lianglianglee.com/专栏/Dubbo源码解读与实战-完/04</a>  Dubbo SPI 精析，接口实现两极反转（下）.md)</p>
+<p>功能介绍、Gitee 源码、学习收获、文档优化、代码调整优化、页面优化</p>
+<h2 id="2024-02-13"><a href="#2024-02-13" class="headerlink" title="2024/02/13"></a>2024/02/13</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建一个异步任务集合</span><br>ArrayList&lt;CompletableFuture&lt;Void&gt;&gt; futureList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><span class="hljs-comment">// 开10条线程</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; i &lt; maxSize; i++) &#123;<br>    <span class="hljs-comment">// 每条线程下new一个userList</span><br>    ArrayList&lt;Post&gt; userList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>        j++;<br>        <span class="hljs-type">Post</span> <span class="hljs-variable">post</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Post</span>();<br><br><br>        <span class="hljs-comment">// 当该线程插满1000条数据，便退出该线程循环</span><br>        <span class="hljs-keyword">if</span> (j % batchSize == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 异步条件下, 执行批量插入</span><br>    CompletableFuture&lt;Void&gt; future = CompletableFuture.runAsync(() -&gt; &#123;<br>        System.out.println(<span class="hljs-string">&quot;threadName: &quot;</span> + Thread.currentThread().getName());<br>        <span class="hljs-comment">// userService.saveBatch(userList, batchSize);</span><br>    &#125;);<br>    <span class="hljs-comment">// 将该任务存储到异步任务集合当中</span><br>    futureList.add(future);<br>&#125;<br><br><span class="hljs-comment">// 结束所有异步任务</span><br>CompletableFuture&lt;Void&gt; future = CompletableFuture.allOf(futureList.toArray(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CompletableFuture</span>[]&#123;&#125;));<br>future.join();<br></code></pre></td></tr></table></figure>
+
+<p>异步编程更快的原因主要有以下几点：</p>
+<ol>
+<li>非阻塞性：异步编程允许程序在等待某个操作完成时继续执行其他任务，而不是阻塞在那里等待。这样可以避免因等待某个耗时操作而导致整个程序的阻塞，提高了程序的执行效率。</li>
+<li>并行处理：异步编程可以充分利用多核处理器的优势，将多个任务分配给不同的处理器核心同时执行，从而提高程序的执行速度。</li>
+<li>减少资源占用：异步编程可以减少程序在等待I/O操作（如网络请求、文件读写等）完成时的资源占用，例如内存和CPU。这样可以让程序在等待这些操作时执行其他任务，提高资源利用率。</li>
+<li>简化代码逻辑：异步编程可以将复杂的同步代码逻辑转换为更简单、易于理解的异步代码，降低了代码的复杂度和维护成本。</li>
+</ol>
+<p>总之，异步编程通过提高程序的执行效率、充分利用多核处理器和减少资源占用等方面的优势，使得程序在处理耗时操作时能够更快地完成任务。</p>
+<p>好用的录屏软件：Bandicam</p>
+<p>今日完成 MemorySearch 忆搜阁 全部内容，同步博客学习笔记到语雀</p>
+<p>搜索建议优化：存储搜索词到 Redis，同步搜索词到 ES，在 ES 内查找所有搜索词，返回前十条搜索建议</p>
+<p>基本学习了解了 DSL 语法：</p>
+<ul>
+<li><p>新增索引，添加 suggest 属性使该字段支持搜索建议</p>
+</li>
+<li><p>实现搜索建议，根据前缀查找指定索引，获取搜索建议文档</p>
+</li>
+<li><p>删除索引</p>
+</li>
+</ul>
+<p>妈的，标题还有带表情的：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240213232409333.png" alt="image-20240213232409333"></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">@Test<br>void get<span class="hljs-constructor">ArticleContentById()</span> &#123;<br>    Article article = articleService.get<span class="hljs-constructor">ById(7313418992310976549L)</span>;<br><br>    Long id = article.get<span class="hljs-constructor">Id()</span>;<br>    String title = article.get<span class="hljs-constructor">Title()</span>;<br>    byte<span class="hljs-literal">[]</span> content = article.get<span class="hljs-constructor">Content()</span>;<br><br>    String decodedContent = <span class="hljs-keyword">new</span> <span class="hljs-constructor">String(<span class="hljs-params">content</span>, StandardCharsets.UTF_8)</span>;<br>    Integer <span class="hljs-keyword">type</span> = article.get<span class="hljs-constructor">Type()</span>;<br><br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(id);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(title);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(decodedContent);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(<span class="hljs-keyword">type</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2024-02-14"><a href="#2024-02-14" class="headerlink" title="2024/02/14"></a>2024/02/14</h2><p>优化系统性能：</p>
+<p>当然，除了异步编程优化数据插入性能外，还可以考虑以下几种技术上的优化策略来进一步提升系统性能：</p>
+<ol>
+<li>内存缓存<ul>
+<li><strong>使用缓存库</strong>：如Redis或Memcached，将频繁访问的数据（如热门作者或诗词）缓存在内存中，减少对数据库的访问次数。</li>
+<li><strong>本地缓存</strong>：对于单个应用实例，可以使用如Google的Guava Cache或EhCache等本地缓存库，缓存部分数据以减少数据库访问。</li>
+</ul>
+</li>
+<li>数据库优化<ul>
+<li><strong>索引优化</strong>：确保数据库表的关键字段（如作者、标题等）有适当的索引，以加速查询速度。</li>
+<li><strong>批量操作</strong>：继续利用批量插入操作来减少数据库交互次数，提高数据写入效率。</li>
+<li><strong>数据库连接池</strong>：使用连接池来管理数据库连接，避免频繁地创建和销毁连接，减少资源消耗。</li>
+</ul>
+</li>
+<li>HTTP请求优化<ul>
+<li><strong>请求合并</strong>：对于多个小的HTTP请求，可以考虑合并成一个大的请求，以减少网络延迟和服务器处理时间。</li>
+<li><strong>请求缓存</strong>：对于不经常变动的数据，可以在客户端或代理服务器上缓存HTTP响应，避免重复请求。</li>
+</ul>
+</li>
+<li>并发控制<ul>
+<li><strong>限流与降级</strong>：在并发量过高时，通过限流策略保护核心资源，同时可以采用降级策略，暂时关闭部分功能以保证整体系统的稳定性。</li>
+</ul>
+</li>
+<li>解析优化<ul>
+<li><strong>流式解析</strong>：使用如Jsoup的流式解析功能，避免一次性加载整个HTML文档到内存中，减少内存消耗。</li>
+</ul>
+</li>
+<li>日志与监控<ul>
+<li><strong>性能监控</strong>：通过日志记录和性能监控工具（如Prometheus, Grafana等）持续跟踪系统性能，发现瓶颈并进行针对性优化。</li>
+</ul>
+</li>
+<li>系统架构优化<ul>
+<li><strong>微服务化</strong>：将系统拆分为多个微服务，每个服务负责处理特定的功能，以提高系统的可扩展性和可维护性。</li>
+<li><strong>负载均衡</strong>：使用负载均衡器分发请求到多个应用实例，避免单点故障，提高系统可用性。</li>
+</ul>
+</li>
+<li>代码层面优化<ul>
+<li><strong>避免N+1查询问题</strong>：在数据访问层优化查询逻辑，避免因为不恰当的查询策略导致的过多数据库访问。</li>
+<li><strong>使用合适的数据结构和算法</strong>：确保代码中使用高效的数据结构和算法，减少不必要的计算和资源消耗。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，通过结合多种优化策略，可以进一步提升系统的整体性能和响应速度。</p>
+<h2 id="2024-02-15"><a href="#2024-02-15" class="headerlink" title="2024/02/15"></a>2024/02/15</h2><p>数据同步：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7248118049583841336?searchId=20240215212104E33B0293D952F7EFEFAE">4 种 MySQL 同步 ES 方案，yyds！ - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6891435372824395784?searchId=20240215212104E33B0293D952F7EFEFAE">MySQL如何实时同步数据到ES？试试这款阿里开源的神器！ - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7155004642458337317?searchId=20240215212104E33B0293D952F7EFEFAE">✨基于Spring-Data-Elasticsearch 优雅的实现 多字段搜索 + 高亮 + 分页 + 数据同步✨ - 掘金 (juejin.cn)</a></p>
+<p>聚合搜索相关概念，现有系统调研，核心功能，核心业务流程，技术选型，架构设计</p>
+<p>权限校验：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7013325675129995272?searchId=2024021521523367587A669C5639E5C78C">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>
+<p>限流算法：</p>
+<p>四种限流算法</p>
+<h2 id="2024-02-16"><a href="#2024-02-16" class="headerlink" title="2024/02/16"></a>2024/02/16</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7327863960008392738">大厂真实 Git 开发工作流程 - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ho4y1r7DN/?spm_id_from=333.337.search-card.all.click&vd_source=4314e5bd742ea904c9675af8a6b4b07e">没想到RTS游戏竟然有战术攻楼动作！（英雄连）〖游戏不止〗_单机游戏热门视频 (bilibili.com)</a></p>
+<p>帝国时代，英雄连，全面战争</p>
+<h2 id="2024-02-17"><a href="#2024-02-17" class="headerlink" title="2024/02/17"></a>2024/02/17</h2><p>好久没有总结现阶段的学习计划了</p>
+<p>今天到明天，尽快完成 MemorySearch 忆搜阁开发</p>
+<p>上午做算法题，看英文报刊和书籍，完善简历</p>
+<p>中午整理八股，记忆八股</p>
+<p>下午优化项目，思考扩展点</p>
+<p>晚上整理学习思路</p>
 
                 
               </div>
