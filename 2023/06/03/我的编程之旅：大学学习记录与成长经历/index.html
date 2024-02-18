@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          137k 字
+          139k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          343 分钟
+          349 分钟
         
       </span>
     
@@ -6911,7 +6911,7 @@
 </ul>
 <p>妈的，标题还有带表情的：</p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240213232409333.png" alt="image-20240213232409333"></p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">@Test<br>void get<span class="hljs-constructor">ArticleContentById()</span> &#123;<br>    Article article = articleService.get<span class="hljs-constructor">ById(7313418992310976549L)</span>;<br><br>    Long id = article.get<span class="hljs-constructor">Id()</span>;<br>    String title = article.get<span class="hljs-constructor">Title()</span>;<br>    byte<span class="hljs-literal">[]</span> content = article.get<span class="hljs-constructor">Content()</span>;<br><br>    String decodedContent = <span class="hljs-keyword">new</span> <span class="hljs-constructor">String(<span class="hljs-params">content</span>, StandardCharsets.UTF_8)</span>;<br>    Integer <span class="hljs-keyword">type</span> = article.get<span class="hljs-constructor">Type()</span>;<br><br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(id);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(title);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(decodedContent);<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(<span class="hljs-keyword">type</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">getArticleContentById</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Article</span> <span class="hljs-variable">article</span> <span class="hljs-operator">=</span> articleService.getById(<span class="hljs-number">7313418992310976549L</span>);<br><br>    <span class="hljs-type">Long</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> article.getId();<br>    <span class="hljs-type">String</span> <span class="hljs-variable">title</span> <span class="hljs-operator">=</span> article.getTitle();<br>    <span class="hljs-type">byte</span>[] content = article.getContent();<br><br>    <span class="hljs-type">String</span> <span class="hljs-variable">decodedContent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(content, StandardCharsets.UTF_8);<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> article.getType();<br><br>    System.out.println(id);<br>    System.out.println(title);<br>    System.out.println(decodedContent);<br>    System.out.println(type);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="2024-02-14"><a href="#2024-02-14" class="headerlink" title="2024/02/14"></a>2024/02/14</h2><p>优化系统性能：</p>
 <p>当然，除了异步编程优化数据插入性能外，还可以考虑以下几种技术上的优化策略来进一步提升系统性能：</p>
@@ -6974,6 +6974,87 @@
 <p>中午整理八股，记忆八股</p>
 <p>下午优化项目，思考扩展点</p>
 <p>晚上整理学习思路</p>
+<p>从单体架构升级到分布式架构，需要注意以下几个方面：</p>
+<ol>
+<li><strong>系统拆分</strong>：需要对原有的单体系统进行合理的拆分，将其分解为多个可以独立部署和运行的子系统或服务。这一过程中要考虑服务的边界划分，确保每个服务的职责单一，便于管理和维护。</li>
+<li><strong>数据一致性</strong>：在分布式系统中，数据可能会分布在不同的服务或数据库中，因此需要确保数据的一致性。这可能涉及到分布式事务的处理，以及选择合适的一致性模型（如强一致性、最终一致性等）。</li>
+<li><strong>通信机制</strong>：服务之间需要进行通信，需要选择合适的通信机制，如同步调用、异步消息队列等。同时，要考虑到网络延迟、服务可用性等因素，设计容错和重试机制。</li>
+<li><strong>服务发现与注册</strong>：在分布式环境中，服务的位置可能会动态变化，需要实现服务发现和注册机制，以便服务之间能够相互找到并通信。</li>
+<li><strong>负载均衡</strong>：为了提高系统的伸缩性和可用性，需要实现负载均衡机制，使得请求能够均匀地分发到不同的服务实例上。</li>
+<li><strong>监控与日志</strong>：分布式系统的监控和日志记录比单体系统更加复杂。需要有一套完善的监控体系来跟踪系统的性能和健康状况，同时要有集中的日志管理系统，以便于问题的定位和分析。</li>
+<li><strong>安全性</strong>：分布式系统的安全性也是一个重要考虑点。需要确保各个服务之间的通信是安全的，同时还要考虑到服务对外的API安全，防止未授权的访问。</li>
+<li><strong>部署与运维</strong>：分布式系统的部署和运维比单体系统更加复杂。需要考虑如何快速部署新版本的服务，以及如何处理服务间的依赖关系。</li>
+<li><strong>容灾备份</strong>：为了保证系统的高可用性，需要设计容灾备份方案，包括数据备份、服务冗余等，确保在出现故障时能够快速恢复。</li>
+<li><strong>业务改造</strong>：从单体架构向分布式架构迁移时，可能需要对现有业务逻辑进行改造，以适应新的架构模式。这可能涉及到代码重构和业务流程的调整。</li>
+<li><strong>组织文化</strong>：分布式架构的引入不仅仅是技术层面的改变，还可能影响到团队的组织文化和工作方式。团队成员需要适应新的开发、部署和运维流程。</li>
+<li><strong>技术选型</strong>：在选择分布式架构的具体实现技术时，需要考虑技术的成熟度、社区支持、学习曲线等因素，选择适合自己团队和业务需求的技术栈。</li>
+<li><strong>渐进式迁移</strong>：如果条件允许，可以考虑采用渐进式迁移的策略，逐步将单体架构中的模块转化为分布式服务，而不是一次性全面转型，这样可以减少风险和压力。</li>
+</ol>
+<p>总的来说，从单体架构升级到分布式架构是一个复杂的过程，涉及到系统架构、技术选型、团队协作等多个方面。需要仔细规划和逐步实施，以确保迁移过程的平稳和系统的稳定运行。</p>
+<h2 id="2024-02-18"><a href="#2024-02-18" class="headerlink" title="2024/02/18"></a>2024/02/18</h2><p>开学咯</p>
+<p>稀里糊涂就开学了，感觉还有很多的事情没做，家人、朋友、同学、学习……</p>
+<p>想法很多，做的很少，这是当代大多数人的通病了</p>
+<p>那还愣着干啥，2024，启动！</p>
+<p><code>CompletableFuture</code> 是 Java 8 引入的一个功能强大的类，用于异步编程和函数式编程。它提供了一种简单而灵活的方式来处理并发编程中的异步操作和结果。介绍 <code>CompletableFuture</code> 时，可以从以下几个方面入手：</p>
+<ol>
+<li><strong>基础概念</strong>:<ul>
+<li>解释什么是异步编程，为什么在现代应用中需要它。</li>
+<li>引入 <code>CompletableFuture</code> 的概念，并解释其与传统的 <code>Future</code> 和 <code>Callable</code> 的区别。</li>
+</ul>
+</li>
+<li><strong>创建 CompletableFuture</strong>:<ul>
+<li>展示如何使用 <code>CompletableFuture.supplyAsync</code> 和 <code>CompletableFuture.runAsync</code> 创建异步任务。</li>
+<li>解释这两种方法的参数，如 <code>Supplier</code> 和 <code>Runnable</code>，并讨论它们的用途。</li>
+</ul>
+</li>
+<li><strong>链式编程</strong>:<ul>
+<li>展示如何使用 <code>thenApply</code>, <code>thenAccept</code>, <code>thenCompose</code> 等方法链接多个异步操作。</li>
+<li>解释这些方法的返回值类型和作用。</li>
+</ul>
+</li>
+<li><strong>异常处理</strong>:<ul>
+<li>讨论如何处理 <code>CompletableFuture</code> 中的异常。</li>
+<li>展示如何使用 <code>exceptionally</code> 方法处理异常。</li>
+</ul>
+</li>
+<li><strong>组合和合并操作</strong>:<ul>
+<li>介绍 <code>allOf</code>, <code>anyOf</code> 和 <code>completedFuture</code> 等方法，用于组合和等待多个 <code>CompletableFuture</code> 实例。</li>
+<li>讨论这些方法的使用场景。</li>
+</ul>
+</li>
+<li><strong>等待结果</strong>:<ul>
+<li>展示如何使用 <code>get</code> 和 <code>join</code> 方法等待异步操作的结果。</li>
+<li>讨论这两种方法的区别和适用场景。</li>
+</ul>
+</li>
+<li><strong>取消操作</strong>:<ul>
+<li>解释如何使用 <code>cancel</code> 方法取消一个异步操作。</li>
+<li>讨论取消操作的限制和可能的后果。</li>
+</ul>
+</li>
+<li><strong>与其他并发工具的比较</strong>:<ul>
+<li>比较 <code>CompletableFuture</code> 与其他并发工具（如 <code>Future</code>, <code>ExecutorService</code>, <code>RxJava</code> 等）的优缺点。</li>
+</ul>
+</li>
+<li><strong>最佳实践和注意事项</strong>:<ul>
+<li>强调避免阻塞等待异步结果的重要性。</li>
+<li>讨论如何避免创建过多的线程，以及如何优雅地处理异常和取消操作。</li>
+</ul>
+</li>
+<li><strong>实际案例</strong>:<ul>
+<li>提供一个或多个实际使用 <code>CompletableFuture</code> 的案例，以展示其在实际项目中的应用。</li>
+</ul>
+</li>
+</ol>
+<p>最后，确保在介绍过程中结合示例代码，以便读者更好地理解和实践所学内容。</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6970558076642394142?searchId=20240218224235F309AF9B5B96CE0E1326">异步编程利器：CompletableFuture详解 ｜Java 开发实战 - 掘金 (juejin.cn)</a></p>
+<p>CompletableFuture 异步编程：创建异步任务、任务异步回调、多个任务组合处理</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7318446286491238450">探秘前端状态管理 — 深入浅出Vuex - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904013532495885">状态管理之 Flux、Redux、Vuex、MobX（概念篇） - 掘金 (juejin.cn)</a></p>
+<p>基本上完成文档编写了，明天完成目录优化和文档部署，在慢慢优化该项目的过程中，记忆相关八股、深入学习相关知识</p>
+<p>完善 MemoryAPI 忆汇廊 的相关功能实现文档，扩展实现思路</p>
+<p>明天开始持续学习算法，蓝桥杯，上午加背八股和简历优化</p>
 
                 
               </div>
