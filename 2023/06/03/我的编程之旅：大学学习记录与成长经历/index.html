@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          145k 字
+          147k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          363 分钟
+          367 分钟
         
       </span>
     
@@ -7111,6 +7111,43 @@
 </ul>
 <p>简单的核心功能就是这样，剩下的就是明天完成了</p>
 <p>明天继续算法学习</p>
+<h2 id="2024-02-21"><a href="#2024-02-21" class="headerlink" title="2024/02/21"></a>2024/02/21</h2><p>好想家啊，想家了</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">Spring</span> 基础：<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">IOC</span>：对 <span class="hljs-selector-tag">IOC</span> 的理解，什么是 <span class="hljs-selector-tag">Bean</span> ，<span class="hljs-selector-tag">Bean</span> 的声明 / 定义方式（<span class="hljs-selector-tag">XML</span> 配置文件，注解：@<span class="hljs-selector-tag">Bean</span>、@<span class="hljs-selector-tag">Component</span>），<span class="hljs-selector-tag">Bean</span> 注入（@<span class="hljs-selector-tag">Autowired</span>、@<span class="hljs-selector-tag">Resource</span>），<span class="hljs-selector-tag">Bean</span> 的作用域，<span class="hljs-selector-tag">Bean</span> 的生命周期，<span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">Boot</span> 启动流程<br>	<span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">Bean</span> 的生命周期中，实践过：聚合搜索中，初始化关联搜索类型和数据源<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">AOP</span>：对 <span class="hljs-selector-tag">AOP</span> 的理解，<span class="hljs-selector-tag">AOP</span> 的应用场景(处理公共行为，如日志记录、事务管理、权限控制、接口限流、接口幂等等)，理解专用术语(切点、连接点、通知、切面)，<span class="hljs-selector-tag">AOP</span> 的实现方式(Spring AOP 和 AspectJ AOP 的比较)，<span class="hljs-selector-tag">AOP</span> 通知类型有哪些？如何控制多切面的执行顺序<br>	<span class="hljs-selector-tag">-</span> 使用 <span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">AOP</span>，实践过：权限校验和全局请求拦截<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">MVC</span>：对 <span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">MVC</span> 的理解(MVC 是一种设计模式，Spring MVC 是一款很优秀的 MVC 框架)，<span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">MVC</span> 的核心组件有哪些，其工作原理是怎样的，如何实现统一异常处理(<span class="hljs-variable">@RestControllerAdvice</span>，<span class="hljs-variable">@ExceptionHandler</span>)<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">Spring</span> 框架中用到了哪些设计模式？(详见设计模式👇)<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">Spring</span> 事务：<span class="hljs-selector-tag">Spring</span> 管理事务的方式，<span class="hljs-selector-tag">Spring</span> 事务的传播行为，<span class="hljs-selector-tag">Spring</span> 事务的隔离级别<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">Spring</span> 常用注解总结：启动类注解，<span class="hljs-selector-tag">Bean</span> 相关，处理 <span class="hljs-selector-tag">HTTP</span> 请求类型，前后端传值，读取配置信息，参数校验，全局异常处理，<span class="hljs-selector-tag">JPA</span> 相关，事务，<span class="hljs-selector-tag">json</span> 数据处理，测试相关<br><br>设计模式：<br><span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">Spring</span> 框架中用到了哪些设计模式？<br>    <span class="hljs-selector-tag">-</span> 工厂模式：创建 <span class="hljs-selector-tag">Bean</span> 对象<br>	<span class="hljs-selector-tag">-</span> 代理模式：<span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">AOP</span> (动态代理)<br>	<span class="hljs-selector-tag">-</span> 单例模式：<span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">Bean</span> 默认是单例的(singleton 作用域)<br>	<span class="hljs-selector-tag">-</span> 模板方法模式：对数据库操作的类,<span class="hljs-selector-tag">jdbcTemplate</span>、<span class="hljs-selector-tag">redisTemplate</span><br>	<span class="hljs-selector-tag">-</span> 装饰器模式：动态切换不同的数据源<br>	<span class="hljs-selector-tag">-</span> 观察者模式：<span class="hljs-selector-tag">Spring</span> 事件驱动模型<br>	<span class="hljs-selector-tag">-</span> 适配器模式：<span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">AOP</span> 增强、<span class="hljs-selector-tag">Spring</span> <span class="hljs-selector-tag">MVC</span> 适配<br></code></pre></td></tr></table></figure>
+
+<p>上午简单过了一遍 Java 面试八股合集，很多都是记忆过的，这东西还是得短时间内突击才有效</p>
+<p>那么重点就是两个项目的完善 + 算法练习了</p>
+<p>今天梳理 Memory API 忆汇廊核心功能，简单罗列：</p>
+<ul>
+<li>分布式服务架构：使用 Maven 实现多模块依赖管理打包</li>
+<li>丰富的接口实现</li>
+<li>API 签名认证</li>
+<li>自定义 Starter</li>
+<li>Gaateway 网关</li>
+<li>Dubbo 远程调用</li>
+<li>Nacos 注册中心</li>
+<li>统计分析功能</li>
+<li>定制 Spring 初始模板</li>
+</ul>
+<p>外面还在一直下雪啊</p>
+<p>等到过完年返校了才发现，能呆在家里自由自在地学习玩耍，真的很幸福。</p>
+<p>谢谢你了，今年除夕夜里唯一一个在微信里送我祝福的人</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/xmjgt.png" alt="image-20240221214221496"></p>
+<h2 id="2024-02-22"><a href="#2024-02-22" class="headerlink" title="2024/02/22"></a>2024/02/22</h2><p>配置 Canal 监听 MySQL 数据库流水，并同步数据至 Elasticsearch，失败，有时间再看看</p>
+<p>上午了解了下<strong>牛客网算法面试题库 TOP100</strong>，在巩固复习蓝桥杯的同时，兼顾这部分内容</p>
+<p>要想在这个糟糕的社会中立足，只需要关注两件事：事业和家庭</p>
+<p>事业包括赚钱、交朋友，家庭包括亲情和友情 20020826</p>
+<ul>
+<li>了解蓝桥杯算法</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://lx.lanqiao.cn/">“蓝桥杯”练习系统 (lanqiao.cn)</a></p>
+<p>找到一个好的刷题网站：<a target="_blank" rel="noopener" href="https://www.dotcpp.com/run/">码曰 - 让代码在云端多飞一会 (dotcpp.com)</a></p>
+<p>🍖 推荐阅读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53138397/article/details/123022131">蓝桥杯免费刷题网站_蓝桥杯刷题网站-CSDN博客</a></p>
+</blockquote>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240222202351543.png" alt="image-20240222202351543"></p>
+<p>![image-20240222203543310](D:\blog\vdoing\Memory-Search 开发者文档\docs.vuepress\public\img\article\jhss.png)</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240222203451920.png" alt="image-20240222203451920"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240222213338497.png" alt="image-20240222213338497"></p>
 
                 
               </div>
