@@ -852,7 +852,7 @@
 <ul>
 <li><code>src</code>：包含了项目所有的源代码和资源文件以及测试代码。其中src/main/java这个目录下储存java源代码，src/main/resources储存主要的资源文件，比如spring的xml配置文件和log4j的properties文件，src/test/java存放测试代码。</li>
 <li><code>target</code>：编译后内容放置的文件夹。</li>
-<li><code>pom.xml</code>：这是Maven的基础配置文件，也是 <strong>Maven 项目核心配置文件</strong>，相当关键，用于配置项目的基本信息、依赖范围管理、解决依赖冲突、实现分模块开发、多环境配置</li>
+<li><code>pom.xml</code>：这是Maven的基础配置文件，也是 <strong>Maven 项目核心配置文件</strong>，相当关键，用于配置项目的基本信息、依赖范围管理、解决依赖冲突，实现分模块开发、多环境配置</li>
 </ul>
 <p>其他相关的还有：Maven 的私服搭建、配置 Maven 镜像源、Maven 的生命周期 </p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss">Maven的生命周期是对所有的构建过程进行抽象和统一，它包含了项目的清理(clean)、初始化(validate)、编译(compile)、测试(test)、打包(package)、安装(install)、验证(verify)、部署(deploy)和站点生成(site)等几乎所有的构建步骤。在Maven中有三套相互独立的生命周期，分别是Clean Lifecycle、Default Lifecycle和Site Lifecycle。<br></code></pre></td></tr></table></figure>
