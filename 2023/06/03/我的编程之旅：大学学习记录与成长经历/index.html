@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          151k 字
+          156k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          378 分钟
+          391 分钟
         
       </span>
     
@@ -7273,7 +7273,104 @@
 <li>完善《探索我的博客世界 - 个人导读》一栏，添加新的生活感悟，凸显一技之长</li>
 <li>今天开始刷刷算法吧，好久不做题又生疏了，抓好力扣的热门题 100 道</li>
 </ul>
-<h5 id="截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字"><a href="#截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字" class="headerlink" title="截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字"></a>截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字</h5>
+<h5 id="截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字"><a href="#截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字" class="headerlink" title="截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字"></a>截至今天下午，即二零二四年二月二十七日，下午四时四十五分，我的个人博客共有七十余篇博文，总计九百余张图片、五十余万文字</h5><p><a target="_blank" rel="noopener" href="https://www.photophoto.cn/sucai/36380162.html">山西大学校徽新版图片素材-编号36380162-图行天下 (photophoto.cn)</a></p>
+<p>晚上，开始着手过牛客 TOP 100 算法题</p>
+<p>再次完善了简历，并同步完善 BOSS 简历，预备明天（最晚后天开始投简历），优先投递 BOSS 本地实习</p>
+<p>明天着手巩固项目流程，在第一波投递之前，抓紧完善开发者文档和简历</p>
+<p>在第一封简历投递出去之后，我的大学生涯就宣告结束了</p>
+<p>明天开始，打点校园内的一些面试环境，目前想法是教学楼底下以及操场后的公园中的长椅旁，挺安静的，搬个马扎或者便携式座椅都可以，连便携式方桌都不需要的。</p>
+<p>明天开始疯狂刷八股文，在第一波面试结束之后，开始针对性地优化项目，学习新技术，准备迎接持久战</p>
+<p>又看到一段好文了：</p>
+<p><strong>因为人生原本灰暗，若抱怨，便是自熄炬火；</strong></p>
+<p><strong>因为命运原本不公，若不读书，便是自甘平庸。</strong></p>
+<p>这个世界上，永远存在一条不成文的规则，叫：知识改变年薪，文化改变命运。</p>
+<h2 id="2024-02-28"><a href="#2024-02-28" class="headerlink" title="2024/02/28"></a>2024/02/28</h2><p>安全教育课上快速记忆了 Java 基础、Spring 常考面试题，完善了实习僧平台个人信息</p>
+<p>基本完成 MemoryAPI 忆汇廊 - 开发文档和 MemorySearch 忆搜阁 - 开发文档，中午务必部署成功</p>
+<p>按计划，今天下午到今晚可以投递第一波简历</p>
+<p>这个业务逻辑主要是通过Elasticsearch进行搜索，并对搜索结果中的关键词进行高亮显示。具体实现如下：</p>
+<ol>
+<li>使用<code>NativeSearchQueryBuilder</code>构建一个<code>NativeSearchQuery</code>对象，设置查询条件、分页、排序等参数。</li>
+<li>使用<code>elasticsearchRestTemplate.search()</code>方法执行搜索，返回<code>SearchHits&lt;PostEsDTO&gt;</code>对象。</li>
+<li>遍历<code>SearchHits</code>中的每个<code>SearchHit</code>对象，获取高亮字段（如”title”、”author”、”content”）的高亮内容。</li>
+<li>将高亮内容存储在<code>highlightDataMap</code>中，以便后续替换原始数据。</li>
+<li>根据<code>SearchHit</code>中的ID列表，从数据库中查询对应的数据。</li>
+<li>遍历查询到的数据，根据ID从<code>highlightDataMap</code>中获取对应的高亮内容，替换原始数据的相应字段。</li>
+<li>将处理后的数据添加到<code>resourceList</code>中。</li>
+<li>将<code>resourceList</code>设置为分页对象的记录，并返回分页对象。</li>
+</ol>
+<p>今晚投递了第一波简历，日后看结果吧，继续</p>
+<h2 id="2024-02-29"><a href="#2024-02-29" class="headerlink" title="2024/02/29"></a>2024/02/29</h2><p>上午学习计划：</p>
+<p>MySQL、Redis 八股，并发编程、集合，熟悉项目，再投投简历试试水</p>
+<p>不给自己画饼了，就今天早上，完结所有 MySQL 和 Redis 的知识，中午到下午完成集合、并发编程，晚上的话就可以看看项目了</p>
+<p><a target="_blank" rel="noopener" href="https://articles.zsxq.com/id_h2ng9q11rras.html">手写 RPC 框架教程（简易版） (zsxq.com)</a></p>
+<p>最新目标是投递日常实习，等暑期实习开始之后，逐步投递暑期实习</p>
+<p>下午到晚上，再次熟悉项目流程，集合八股，并发编程八股</p>
+<p>今天，是近段时间最难的一天</p>
+<p>跟舍友不和解、沟通几十个、简历十几份，到目前为止还没有回应</p>
+<p>今晚就学习 RPC、网关和注册中心，更新一波简历，添加：掌握微服务，中间件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">首先服务提供者 Provider 启动然后向注册中心注册自己所能提供的服务。<br>服务消费者 Consumer 启动向注册中心订阅自己所需的服务。然后注册中心将提供者元信息通知给 Consumer， 之后 Consumer 因为已经从注册中心获取提供者的地址，因此可以通过负载均衡选择一个 Provider 直接调用 。<br>之后服务提供方元数据变更的话注册中心会把变更推送给服务消费者。<br>服务提供者和消费者都会在内存中记录着调用的次数和时间，然后定时的发送统计数据到监控中心。<br><br>作者：京东云开发者<br>链接：https:<span class="hljs-regexp">//</span>juejin.cn<span class="hljs-regexp">/post/</span><span class="hljs-number">7283398020996415544</span><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">包括一些关键组件：<br><br>Sentinel：把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。与 Netflix 的 Hystrix 组件类似，但实现方式上更为轻量。<br>Nacos：一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台，同时具备了之前 Netflix Eureka 和 Spring <span class="hljs-keyword">Cloud </span><span class="hljs-built_in">Config</span> 的功能，而且 UI 操作上更加人性化。<br>RocketMQ：一款开源的分布式消息系统，基于高可用分布式集群技术，提供低延时的、高可靠的消息发布与订阅服务，目前已交由 Apache 组织维护。<br>Dubbo：Apache Dubbo™ 是一款高性能 <span class="hljs-keyword">Java </span>RPC 框架，自交由 Apache 组织孵化后，目前社区生态很活跃，产生形态越来越丰富。<br>Seata：阿里巴巴开源产品，一个易于使用的高性能微服务分布式事务解决方案，由早期内部产品 Fescar 演变而来。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">项目发展简介</span><br><span class="hljs-string">我们还是先来看看</span> <span class="hljs-string">Dubbo</span> <span class="hljs-string">的发展历史：</span><br><br><span class="hljs-number">2012</span> <span class="hljs-string">年由阿里开源，在很短时间内，被许多互联网公司所采用。</span><br><span class="hljs-string">由于公司策略发生变更，2014</span> <span class="hljs-string">年</span> <span class="hljs-number">10</span> <span class="hljs-string">月项目停止维护，版本静止于</span> <span class="hljs-string">dubbo-2.4.11。处于非维护期间，当当网基于分支重新开源了</span> <span class="hljs-string">DubboX</span> <span class="hljs-string">框架。</span><br><span class="hljs-number">2017</span> <span class="hljs-string">年</span> <span class="hljs-number">9</span> <span class="hljs-string">月，阿里宣布重启</span> <span class="hljs-string">Dubbo</span> <span class="hljs-string">项目，重新发布新版本</span> <span class="hljs-string">dubbo-2.5.4，并将其作为社区开源产品长期推进下去，此后版本迭代开始重新发力。</span><br><span class="hljs-number">2018</span> <span class="hljs-string">年</span> <span class="hljs-number">2</span> <span class="hljs-string">月，阿里将</span> <span class="hljs-string">Dubbo</span> <span class="hljs-string">捐献给</span> <span class="hljs-string">Apache</span> <span class="hljs-string">基金会孵化。</span><br><span class="hljs-number">2019</span> <span class="hljs-string">年</span> <span class="hljs-number">5</span> <span class="hljs-string">月，Apache</span> <span class="hljs-string">Dubbo</span> <span class="hljs-string">正式升级为顶级项目。</span><br><span class="hljs-string">Dubbo</span> <span class="hljs-string">定位于高性能、轻量级的开源</span> <span class="hljs-string">Java</span> <span class="hljs-string">RPC</span> <span class="hljs-string">框架，随着社区的不断丰富，Dubbo</span> <span class="hljs-string">生态越来越繁荣。</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">区对 <span class="hljs-keyword">Java </span>的发展有着极大的影响力，而 Spring <span class="hljs-keyword">Cloud </span>则是基于 Spring、 Spring <span class="hljs-keyword">Boot </span>生态提供了一整套开箱即用的全家桶式的解决方案，极大的方便了开发者快速上手微服务开发，背后的商业公司更是为其提供了强大的支撑，同时不少核心项目组件能看到 Netflix OSS 的身影，如 Eureka 等，均在 Netflix 线上的分布式生产环境中已经得到很好的技术验证，无形中增强了信用背书。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">近两年来 Spring <span class="hljs-keyword">Cloud </span>Alibaba 的出现，这种二选一的局面得到了极大的改善。一方面，可以替代原项目中一些不再维护的项目功能。另一方面，可以将阿里技术生态与 Spring <span class="hljs-keyword">Cloud </span>生态融合起来。二者都可以采用 Nacos 作为服务注册中心，同时也完美替代 Spring <span class="hljs-keyword">Cloud </span><span class="hljs-built_in">Config</span> 提供了更简洁直观的配置管理，降低了复杂度。另外，也为 Spring <span class="hljs-keyword">Cloud </span>生态中也引入了 RPC 解决方案——Dubbo，与 REST 方式形成互补<br></code></pre></td></tr></table></figure>
+
+<p>Spring 基础：</p>
+<ul>
+<li>IOC：对 IOC 的理解，什么是 Bean ，Bean 的声明 / 定义方式（XML 配置文件，注解：@Bean、@Component），Bean 注入（@Autowired、@Resource），Bean 的作用域，Bean 的生命周期，Spring Boot 启动流程<ul>
+<li>Bean 的生命周期中，实践过：聚合搜索中，初始化关联搜索类型和数据源</li>
+</ul>
+</li>
+<li>AOP：对 AOP 的理解，AOP 的应用场景(处理公共行为，如日志记录、事务管理、权限控制、接口限流、接口幂等等)，理解专用术语(切点、连接点、通知、切面)，AOP 的实现方式(Spring AOP 和 AspectJ AOP 的比较)，AOP 通知类型有哪些？如何控制多切面的执行顺序<ul>
+<li>使用 Spring AOP，实践过：权限校验和全局请求拦截</li>
+</ul>
+</li>
+<li>Spring MVC：对 Spring MVC 的理解(MVC 是一种设计模式，Spring MVC 是一款很优秀的 MVC 框架)，Spring MVC 的核心组件有哪些，其工作原理是怎样的，如何实现统一异常处理(@RestControllerAdvice，@ExceptionHandler)</li>
+<li>Spring 框架中用到了哪些设计模式？(详见设计模式👇)</li>
+<li>Spring 事务：Spring 管理事务的方式，Spring 事务的传播行为，Spring 事务的隔离级别</li>
+<li>Spring 常用注解总结：启动类注解，Bean 相关，处理 HTTP 请求类型，前后端传值，读取配置信息，参数校验，全局异常处理，JPA 相关，事务，json 数据处理，测试相关</li>
+</ul>
+<p>[14 Spring Cloud 与 Dubbo 冲突吗——强强联合 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E5%AE%8C%EF%BC%89/14">https://learn.lianglianglee.com/专栏/SpringCloud微服务实战（完）/14</a> Spring Cloud 与 Dubbo 冲突吗——强强联合.md)</p>
+<p>[00 开篇导读 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E5%AE%8C%EF%BC%89/00">https://learn.lianglianglee.com/专栏/SpringCloud微服务实战（完）/00</a> 开篇导读.md)</p>
+<p>Spring Cloud 生态：</p>
+<ul>
+<li>分布式/版本化配置：Spring Cloud Config，（Spring Cloud Alibaba）Nacos</li>
+<li>路由：（Spring Cloud Netflix）Zuul，Spring Cloud Gateway</li>
+<li>服务注册和发现：Eureka，Spring Cloud Consul，（Spring Cloud Alibaba）Nacos，Spring Cloud Zookeeper</li>
+<li>服务调用和负载均衡：Spring Cloud OpenFeign，（Spring Cloud Netflix）Ribbon，（Spring Cloud Alibaba）Dubbo</li>
+<li>断路器/分布式限流/降级熔断：（Spring Cloud Netflix）Hystrix，（Spring Cloud Alibaba）Sentinel</li>
+<li>分布式事务：（Spring Cloud Alibaba）Seata，链路跟踪：Spring Cloud Sleuth，事件驱动：Spring Cloud Stream</li>
+<li>分布式消息传递：Spring Cloud Bus，（Spring Cloud Alibaba）RocketMQ</li>
+</ul>
+<p>设计模式：</p>
+<ul>
+<li>Spring 框架中用到了哪些设计模式？<ul>
+<li>工厂模式：创建 Bean 对象</li>
+<li>代理模式：Spring AOP (动态代理)</li>
+<li>单例模式：Spring Bean 默认是单例的(singleton 作用域)</li>
+<li>模板方法模式：对数据库操作的类,jdbcTemplate、redisTemplate</li>
+<li>装饰器模式：动态切换不同的数据源</li>
+<li>观察者模式：Spring 事件驱动模型</li>
+<li>适配器模式：Spring AOP 增强、Spring MVC 适配</li>
+</ul>
+</li>
+</ul>
+<p>🍿 推荐阅读：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7145084738775023646#heading-13">聊聊Spring中最常用的11个扩展点 - 掘金 (juejin.cn)</a></p>
+<p>Spring Boot 项目框架模板，本质上就是对 Spring 扩展点的实现。</p>
+<p>[22 如何确定一次完整的请求过程——服务链路跟踪 (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E5%AE%8C%EF%BC%89/22">https://learn.lianglianglee.com/专栏/SpringCloud微服务实战（完）/22</a> 如何确定一次完整的请求过程——服务链路跟踪.md)</p>
+<h2 id="2024-03-01"><a href="#2024-03-01" class="headerlink" title="2024/03/01"></a>2024/03/01</h2><p>虽然不知道应该说什么，但还是得列一下计划清单</p>
+<p>前天晚上星球内的一位小伙加我好友，叫唤着要我帮他搞 API 接口开放平台项目，人家都这样说了，还稍微打点了些，怎么有不帮的道理？今天远程连接一下，试着看能不能解决他的问题</p>
+<p>前天做过的算法题，今天也该完结了</p>
+<p>今天继续学习微服务架构，八股文记忆</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs delphi">RPC（Remote <span class="hljs-function"><span class="hljs-keyword">Procedure</span> <span class="hljs-title">Call</span>，远程过程调用）和<span class="hljs-title">SDK</span>（<span class="hljs-title">Software</span> <span class="hljs-title">Development</span> <span class="hljs-title">Kit</span>，软件开发工具包）在软件开发中各自扮演着不同的角色，但它们可以在某些场景中协同工作。</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">RPC</span> 是一种允许在一个应用程序中执行的代码调用另一个应用程序中的代码的技术。它使得不同应用程序或服务之间能够通过网络进行通信和交互，就像调用本地函数一样简单。在分布式系统中，<span class="hljs-title">RPC</span> 被广泛用于服务间调用，因为它可以透明地处理网络通信、序列化/反序列化、错误处理等细节。</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">SDK</span> 则是为了简化某个特定平台、框架或技术的使用而提供的一组工具和库。<span class="hljs-title">SDK</span> 通常包括文档、代码示例、库文件、工具等，旨在帮助开发者更快速、更高效地开发应用程序。<span class="hljs-title">SDK</span> 可以简化复杂任务的实现，比如网络通信、数据库访问、图形渲染等。</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">RPC</span> 和 <span class="hljs-title">SDK</span> 的关联在于，<span class="hljs-title">SDK</span> 可能包含了 <span class="hljs-title">RPC</span> 客户端和/或服务端的实现。例如，当开发者使用某个云服务提供商的 <span class="hljs-title">SDK</span> 时，这个 <span class="hljs-title">SDK</span> 可能会提供一组 <span class="hljs-title">RPC</span> 客户端接口，允许开发者轻松地调用云服务提供商提供的远程服务。这些 <span class="hljs-title">RPC</span> 客户端接口背后可能使用了某种 <span class="hljs-title">RPC</span> 协议（如 <span class="hljs-title">HTTP</span>/<span class="hljs-title">REST</span>、<span class="hljs-title">Thrift</span>、<span class="hljs-title">gRPC</span> 等）来实现与服务提供方的通信。</span><br><span class="hljs-function"></span><br><span class="hljs-function">简单来说，<span class="hljs-title">RPC</span> 是实现服务间调用的技术，而 <span class="hljs-title">SDK</span> 提供了使用这种技术所需的工具和库。<span class="hljs-title">SDK</span> 可能包含了 <span class="hljs-title">RPC</span> 客户端和服务端的实现，使得开发者能够更方便地使用 <span class="hljs-title">RPC</span> 进行服务间调用。</span><br></code></pre></td></tr></table></figure>
+
+<p>防人之心不可无啊，充电宝就放桌洞里，隔了一个早八就没了</p>
+<p>桌子，椅子，超大容量充电宝都回来了，只可惜我的充电宝了。上大学以来就没用过，用了一次就没了，小心眼的人真多呵</p>
+<p>写了一个小时的故事了，歇一会儿。</p>
+
                 
               </div>
             
