@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          156k 字
+          159k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          391 分钟
+          398 分钟
         
       </span>
     
@@ -7370,6 +7370,47 @@
 <p>防人之心不可无啊，充电宝就放桌洞里，隔了一个早八就没了</p>
 <p>桌子，椅子，超大容量充电宝都回来了，只可惜我的充电宝了。上大学以来就没用过，用了一次就没了，小心眼的人真多呵</p>
 <p>写了一个小时的故事了，歇一会儿。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">例如，我在写《Redis 如何持久化数据》这篇文章的时候，就已经知道了 RDB+AOF 两种方式，但在写的过程中，我发现自己并不清楚具体的细节，比如，为什么生成的 RDB 文件这么小，这是如何做到的？RDB 和 AOF 分别适合用在什么场景中呢？<br><br>翻阅源码之后，我才发现，RDB 文件之所以很小，一方面是因为它存储的是二进制数据，另一方面，Redis 针对不同的数据类型做了进一步的压缩处理（例如数字采用 <span class="hljs-built_in">int</span> 编码存储），这就进一步节省了存储空间。所以，RDB 更适合做定时的快照备份和主从全量数据同步，而 AOF 是实时记录的每个变更操作，更适合用在对数据完整性和安全性要求更高的业务场景中。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">今天我给你讲解了服务调用需要解决的几个问题，其中你需要掌握：<br><br>通信框架。它主要解决客户端和服务端如何建立连接、管理连接以及服务端如何处理请求的问题。<br><br>通信协议。它主要解决客户端和服务端采用哪种数据传输协议的问题。<br><br>序列化和反序列化。它主要解决客户端和服务端采用哪种数据编解码的问题。<br><br>这三个部分就组成了一个完整的RPC调用框架，通信框架提供了基础的通信能力，通信协议描述了通信契约，而序列化和反序列化则用于数据的编/解码。一个通信框架可以适配多种通信协议，也可以采用多种序列化和反序列化的格式，比如服务化框架Dubbo不仅支持Dubbo协议，还支持RMI协议、HTTP协议等，而且还支持多种序列化和反序列化格式，比如<span class="hljs-built_in">JSON</span>、Hession <span class="hljs-number">2.0</span>以及Java序列化等。<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/">Spring Cloud Gateway</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/435806498">实战 Spring Cloud Gateway 之限流篇 - 知乎 (zhihu.com)</a></p>
+<p>今晚的学习任务：</p>
+<p>Gateway 限流、Dubbo 远程调用，并发编程，微服务架构，Redis 总结，RabbitMQ 巩固</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RouteLocator <span class="hljs-title function_">myRoutes</span><span class="hljs-params">(RouteLocatorBuilder builder)</span> &#123;<br>        <span class="hljs-keyword">return</span> builder.routes()<br>                .route(p -&gt; p<br>                        .path(<span class="hljs-string">&quot;/get&quot;</span>)<br>                        .filters(filter -&gt; filter.requestRateLimiter()<br>                                .rateLimiter(RedisRateLimiter.class, rl -&gt; rl.setBurstCapacity(<span class="hljs-number">3</span>).setReplenishRate(<span class="hljs-number">1</span>)).and())<br>                        .uri(<span class="hljs-string">&quot;https://httpbin.org:80&quot;</span>))<br>                .build();<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2024-03-02"><a href="#2024-03-02" class="headerlink" title="2024/03/02"></a>2024/03/02</h2><p>跑步半小时</p>
+<p>连续三天，每天都在 BOSS 上打打招呼，想着找个本地实习机会，才投出了一份简历</p>
+<p>早上把把京东的笔试题做了吧，再完结链表算法题</p>
+<p>生活哪有那么难，无非就是选择 + 体验</p>
+<p>头疼，午觉之后玩了俩小时还是撑不住了，又睡了半个多小时，可算清醒了</p>
+<p>玩，好</p>
+<p>下载了植物大战僵尸汉化版，跟小时候玩过的有点出入，翻译啥的，不过无伤大雅，一下午就打到后院了</p>
+<h2 id="2024-03-03"><a href="#2024-03-03" class="headerlink" title="2024/03/03"></a>2024/03/03</h2><p>这么快就三号了，BOSS 求职回复寥寥无几，继续学习优化吧</p>
+<p>这两天气温高，心情也浮躁起来了，啥都不想干，也没有什么输出，需要尽快调整过来才行</p>
+<p>看了我的简历，写的技术倒挺厉害，赶紧针对性地学学</p>
+<p>最近的学习任务：</p>
+<p>Gateway 限流、Dubbo 远程调用，并发编程，微服务架构，Redis 总结，RabbitMQ 巩固</p>
+<p>跑通了简易 RPC 框架，理解了整个 RPC 调用流程，但看会了不等于学会了，还得进一步学习</p>
+<p>又刷了半个多小时视频，实在是集中不了注意力，先吃饭去吧，顺便给电脑充个电</p>
+<p>晚上就不看视频了，多读两本书，背一背八股文，完善一下简历（微服务），准备明天开始投第四波简历</p>
+<h2 id="2024-03-04"><a href="#2024-03-04" class="headerlink" title="2024/03/04"></a>2024/03/04</h2><p>这时间过的是真几把快，先学完 Java 并发编程吧</p>
+<p><strong>类的加载过程</strong>：首先要了解执行 Java 程序之后，由编译器将 Java代码编译转换为字节码，再由 JVM 逐条解释执行字节码。</p>
+<p>在方法区，存放着加载完成的类信息、字段信息、常量和静态变量等内容。在加载阶段，通过类的全限定名获取指定类的字节流，将字节流代表的静态存储结构转换为方法区的动态运行时结构，同时在内存中生成 Class 对象，作为将来在方法区访问数据的入口。这里需要了解下 <strong>JVM 内存结构</strong>和<strong>类加载器</strong>、<strong>双亲委派模型</strong>等。</p>
+<p>在连接阶段，首先进行 Class 文件格式检查、字节码语义检查、程序语义检查等工作，确保字节流中的信息符合规范。还要进行符号引用验证，确保该类所使用的其他类、方法、字段是否存在。完成类相关信息验证之后，开始为类变量分配内存并赋初值。最后，针对类、接口、类方法和接口方法，JVM 会将常量池内的符号引用替换为直接引用，也就是得到类或字段在内存中的指针或者偏移量，确保了在程序执行方法时，系统能够明确该方法所在位置。</p>
+<p>在初始化阶段，作为类加载的最后一个阶段，JVM 开始真正执行指定类的 Java 程序代码，即字节码文件，对类进行初始化，创建类的对象实例。这个阶段我们了解到如果要初始化一个类，首先保证其父类完成初始化。整个初始化过程就是实例化对象并投入使用，过程也简单：在堆中分配内存空间 + 初始化对象 + 将该对象指向堆中分配的内存空间地址。</p>
+<p>至此，一个类的加载就已经完成了，并且可以创建实例对象投入使用了。</p>
+<p>使用阶段不必多言，使用完毕之后进入卸载阶段。由于所有的对象实例都存放在堆中，当一个类的所有实例对象都已被 GC，在堆中已经不存在该类的实例对象了、该类没有在任何地方被引用，且该类的类加载器的示例也已被 GC 后，这个类就可以被卸载，即该类的 Class 对象被 GC。这里需要了解一下<strong>垃圾回收器</strong>、<strong>垃圾回收算法</strong>等。</p>
+<p>[03 线程是如何在 6 种状态之间转换的？ (lianglianglee.com)](<a target="_blank" rel="noopener" href="https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/Java">https://learn.lianglianglee.com/专栏/Java</a> 并发编程 78 讲-完/03 线程是如何在 6 种状态之间转换的？.md)</p>
+<p>有一定的微服务实战经验，掌握 Spring Cloud 微服务体系，掌握相关中间件 Elasticsearch 等</p>
+<p><a target="_blank" rel="noopener" href="https://yuyuanweb.feishu.cn/wiki/AqfawFUT0iD69kkiRKoci6Nqnqc">编程导航知识碎片 - 飞书云文档 (feishu.cn)</a></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">具有丰富的微服务实战经验，熟悉微服务治理原则，对 Spring <span class="hljs-keyword">Cloud </span>生态有深入了解，包括 Nacos 注册中心和配置中心、Ribbon 负载均衡、Feign 声明式服务调用等核心组件，能够熟练运用Spring <span class="hljs-keyword">Cloud </span>OpenFeign 或 Dobbo 进行服务间的声明式调用，<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">微服务实战经验：具备丰富的微服务实战部署经验，能够针对复杂业务需求，设计和实施稳定、高效的微服务架构。<br>微服务治理原则：深入理解微服务治理原则，包括服务注册与发现、负载均衡、容错处理、服务调用等，确保服务的可靠性与可扩展性。<br>Spring <span class="hljs-keyword">Cloud </span>生态：对 Spring <span class="hljs-keyword">Cloud </span>生态系统有深入了解，熟练运用 Nacos 作为注册中心和配置中心，实现服务的自动注册与配置管理。<br>核心组件掌握：精通 Ribbon 负载均衡策略，确保服务调用的高效性与均衡分布；熟练运用 Feign 或 Dubbo 进行声明式服务调用，简化服务间通信，提高开发效率。<br></code></pre></td></tr></table></figure>
+
+<p>具备丰富的微服务实战经验，熟悉微服务治理原则，对 Spring Cloud 生态有深入了解，包括 Nacos 注册与配置中心、Ribbon 负载均衡、Dubbo 服务间调用以及 Spring Cloud Gateway 网关，能够针对复杂需求，设计安全可靠的微服务架构。</p>
+<p>时隔四天，再次优化最新一版简历，新增具备丰富的微服务实战经验，熟悉微服务治理原则，对 Spring Cloud 生态有深入理解等内容。</p>
 
                 
               </div>
