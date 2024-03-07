@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/house.jpg">
 <meta property="article:published_time" content="2023-11-18T03:04:24.000Z">
-<meta property="article:modified_time" content="2023-12-01T15:04:35.000Z">
+<meta property="article:modified_time" content="2023-03-03T15:04:35.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="表达">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.9k 字
+          9.8k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          20 分钟
+          25 分钟
         
       </span>
     
@@ -749,7 +749,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：3 个月前
+                    本文最后更新于：1 年前
                   
                 
               </p>
@@ -869,6 +869,47 @@
 <li><strong>使用线程安全的集合类</strong>：如ConcurrentHashMap、CopyOnWriteArrayList等，这些集合类内部实现了线程安全机制，可以在多线程环境下安全地进行操作。</li>
 <li><strong>使用ThreadLocal变量</strong>：ThreadLocal可以实现每个线程拥有自己独立的变量副本，从而避免多线程之间的共享变量带来的线程安全问题。</li>
 </ul>
+<h3 id="谈谈我对微服务架构的理解"><a href="#谈谈我对微服务架构的理解" class="headerlink" title="谈谈我对微服务架构的理解"></a>谈谈我对微服务架构的理解</h3><p><strong>从单体应用迁移到微服务架构：</strong></p>
+<p>单体应用线上发布和部署效率低下、团队协作开发成本高、系统可用性差。</p>
+<p>相较于单体应用，微服务实现了更细粒度的服务拆分、更高效的服务部署和独立维护、提供了更清晰的服务治理方案。</p>
+<p>要实现从单体应用迁移到微服务架构，就要做好服务化拆分，设计服务间调用。明确微服务架构的基本组件：服务描述、注册中心、服务框架、服务监控、服务追踪、服务治理。</p>
+<p><strong>服务发布和引用</strong></p>
+<p><strong>注册中心（服务注册和发现）</strong></p>
+<p>在微服务架构下，主要有三种角色：服务提供者（RPC Server）、服务消费者（RPC Client）和服务注册中心（Registry），三者的交互关系请看下面这张图，我来简单解释一下。</p>
+<p>RPC Server提供服务，在启动时，根据服务发布文件server.xml中的配置的信息，向Registry注册自身服务，并向Registry定期发送心跳汇报存活状态。</p>
+<p>RPC Client调用服务，在启动时，根据服务引用文件client.xml中配置的信息，向Registry订阅服务，把Registry返回的服务节点列表缓存在本地内存中，并与RPC Sever建立连接。</p>
+<p>当RPC Server节点发生变更时，Registry会同步变更，RPC Client感知后会刷新本地内存中缓存的服务节点列表。</p>
+<p>RPC Client从本地缓存的服务节点列表中，基于负载均衡算法选择一台RPC Sever发起调用。</p>
+<p><strong>RPC 调用</strong></p>
+<p>想要完成 RPC 调用，你需要解决四个问题：</p>
+<ul>
+<li>客户端和服务端如何建立网络连接？</li>
+<li>服务端如何处理请求？（选择合适的通信框架比如 Netty，解决客户端与服务端如何建立连接、管理连接以及服务端如何处理请求的问题）</li>
+<li>数据传输采用什么协议？（选择合适的通信协议比如 HTTP，解决客户端和服务端采用哪种数据传输协议的问题）</li>
+<li>数据该如何序列化和反序列化？(多种序列化格式比如 Java 原生序列化、JSON、XML、Thrift，解决客户端和服务端采用哪种数据编解码的问题)</li>
+</ul>
+<p>Socket通信</p>
+<p>Socket通信是基于TCP/IP协议的封装，建立一次Socket连接至少需要一对套接字，其中一个运行于客户端，称为ClientSocket ；另一个运行于服务器端，称为ServerSocket 。就像下图所描述的，Socket通信的过程分为四个步骤：服务器监听、客户端请求、连接确认、数据传输。</p>
+<ul>
+<li>服务器监听：ServerSocket通过调用bind()函数绑定某个具体端口，然后调用listen()函数实时监控网络状态，等待客户端的连接请求。</li>
+<li>客户端请求：ClientSocket调用connect()函数向ServerSocket绑定的地址和端口发起连接请求。</li>
+<li>服务端连接确认：当ServerSocket监听到或者接收到ClientSocket的连接请求时，调用accept()函数响应ClientSocket的请求，同客户端建立连接。</li>
+<li>数据传输：当ClientSocket和ServerSocket建立连接后，ClientSocket调用send()函数，ServerSocket调用receive()函数，ServerSocket处理完请求后，调用send()函数，ClientSocket调用receive()函数，就可以得到得到返回结果。</li>
+</ul>
+<p><strong>服务监控</strong></p>
+<p>服务监控主要包括四个流程：数据采集、数据传输、数据处理和数据展示</p>
+<p>监控对象有用户端监控、接口监控、资源监控、基础监控，监控指标有请求量、响应时间和错误率</p>
+<p><strong>服务追踪</strong></p>
+<p>在微服务架构下，由于进行了服务拆分，一次请求往往需要涉及多个服务，每个服务可能是由不同的团队开发，使用了不同的编程语言，还有可能部署在不同的机器上，分布在不同的数据中心。</p>
+<p>如果有一个系统，可以跟踪记录一次用户请求都发起了哪些调用，经过哪些服务处理，并且记录每一次调用所涉及的服务的详细信息，这时候如果发生调用失败，你就可以通过这个日志快速定位是在哪个环节出了问题，这个系统就是今天我要讲解的服务追踪系统。</p>
+<p><strong>服务治理</strong></p>
+<p>在一次服务调用过程中，服务提供者、服务消费者、注册中心、网络都有可能出问题。我们要尽可能保证服务调用成功，这就是服务治理。</p>
+<p>服务治理可以从很多方面考虑：</p>
+<ul>
+<li>从服务健康状态考虑。要做到服务节点管理，比如使用心跳检测机制，这种机制要求服务提供者定时的主动向注册中心汇报心跳</li>
+<li>从服务节点访问优先级考虑。一般情况下，服务提供者节点不是唯一的，多是以集群的方式存在。要选择合适的负载均衡策略，充分利用机器的性能。</li>
+<li>从调用的健康状态考虑。服务调用并不总是一定成功的，对于服务调用失败的情况，需要有手段自动恢复，来保证调用成功。</li>
+</ul>
 <h1 id="点睛之笔"><a href="#点睛之笔" class="headerlink" title="点睛之笔"></a>点睛之笔</h1>
                 
               </div>
@@ -942,7 +983,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月1日</div>
+          <div>2023年3月3日</div>
         </div>
       
       
