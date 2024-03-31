@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/water.jpg">
 <meta property="article:published_time" content="2023-07-01T14:20:43.000Z">
-<meta property="article:modified_time" content="2023-07-28T03:33:12.000Z">
+<meta property="article:modified_time" content="2024-03-26T03:33:12.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="JavaWeb">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          5.7k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          1 分钟
+          15 分钟
         
       </span>
     
@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：8 个月前
+                    本文最后更新于：5 天前
                   
                 
               </p>
@@ -408,7 +408,96 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h2><p>使用 maven 打个 war 包，报了一连串的错误：</p>
+<ol>
+<li>IDEA maven 未配置好，配置一下就行</li>
+<li>有依赖下载失败，换了新的版本解决了</li>
+<li>测试用例有错误，打包时直接忽略掉测试用例就行</li>
+<li>Cannot access defaults field of Properties问题，看下面</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mzp520lf/article/details/126247543">Cannot access defaults field of Properties问题的解决-CSDN博客</a></p>
+<pre><code class="hljs">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.3.1&lt;/version&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+<p>有必要图文总结下这方面的经验了。</p>
+<p>maven 打包、本地起 tomcat 服务器</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240326104155627.png" alt="image-20240326104155627"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240326104311608.png" alt="image-20240326104311608"></p>
+<p>像这样的报错，十有八九是项目使用的 Java 版本过低，提高到 JDK8 即可：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240326104422888.png" alt="image-20240326104422888"></p>
+<p>最不想看到的就是 tomcat 服务起来之后，出现这样的情况：</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240326111338744.png" alt="image-20240326111338744"></p>
+<p>真是没有任何可以下手的地方</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有必要图文总结下这方面的经验了。</p>
+<p>maven 打包、本地起 tomcat 服务器</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240327101230706.png" alt="image-20240327101230706"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240327101621140.png" alt="image-20240327101621140"></p>
+<p><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/1520846022165534460.html">程序包javax.annotation不存在？_百度知道 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213393/7183529">错误: 程序包javax.annotation不存在_mob64ca12e732bb的技术博客_51CTO博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AdminGuan/article/details/102637397">报错 java: 程序包javax.servlet.http不存在-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zwl1584671413/article/details/79571249">程序包 javax.servlet 不存在 解决办法_helloservlet.java:4: 错误: 程序包javax.servlet.http不存在 -CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62314761/article/details/130968674">java: 程序包javax.servlet不存在、 java: 程序包javax.servlet.http不存在 java: 程序包javax.servlet.annotation不存在-CSDN博客</a></p>
+<p>跟着一通操作，还真打包成功了。</p>
+<h2 id="朔州市检察院可视化"><a href="#朔州市检察院可视化" class="headerlink" title="朔州市检察院可视化"></a>朔州市检察院可视化</h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>后端安装子模块出现问题：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_53623945/article/details/122660254">关于pom.xml一直提示Could not transfer artifact（无法搬运）+无法解析maven依赖的问题，我在学习springboot的过程中遇到的一些问题-CSDN博客</a></p>
+<p>这个问题我直接执行一键安装全部模块，然后单独安装每个子模块就可以</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240327113245582.png" alt="image-20240327113245582"></p>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p><strong>若依前端出现报错，解决方法：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_68226879/article/details/131043610">若依报错解决_&gt; ruoyi@3.8.6 dev &gt; vue-cli-service serve info sta-CSDN博客</a></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$env</span><span class="hljs-symbol">:NODE_OPTIONS=<span class="hljs-string">&quot;--openssl-legacy-provider&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>执行这条命令，确实百分百永久解决问题</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240327140712627.png" alt="image-20240327140712627"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240327105609337.png" alt="image-20240327105609337"></p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240327105629244.png" alt="image-20240327105629244"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44259720/article/details/130385797">Java spring 注解 @PostConstruct 实战讲解-CSDN博客</a></p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>很好，问题已解决：</p>
+<p>这个错误日志显示了一个<code>java.lang.NoClassDefFoundError</code>异常，具体是找不到<code>javax.xml.bind.DatatypeConverter</code>类。<code>DatatypeConverter</code>是Java平台的一个类，用于在不同类型的Java数据类型和字符串之间进行转换，它属于Java的JAXB（Java Architecture for XML Binding）API的一部分。</p>
+<p>这个异常通常发生在Java 9及以上版本的环境中，因为从Java 9开始，JAXB不再作为Java SE的一部分，而是被标记为模块化的JDK中的可选部分。如果你的应用是基于Java 9或更高版本，并且你没有显式地将JAXB添加到你的项目依赖中，就可能会遇到这个问题。</p>
+<p>要解决这个问题，你有以下几个选项：</p>
+<ol>
+<li><p><strong>添加JAXB依赖</strong>：<br>在你的项目构建文件（如Maven的<code>pom.xml</code>或Gradle的<code>build.gradle</code>）中，添加JAXB的依赖。例如，如果你使用Maven，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.xml.bind<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jaxb-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>  <br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.glassfish.jaxb<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jaxb-runtime<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>确保使用与你项目兼容的JAXB版本。</p>
+</li>
+<li><p><strong>使用Java 8</strong>：<br>如果你的项目没有特定的理由必须使用Java 9或更高版本，你可以考虑切换回Java 8，因为JAXB在Java 8中是内置的。</p>
+</li>
+<li><p><strong>添加JVM参数</strong>：<br>如果你使用的是Java 9或更高版本，并且不想修改项目依赖，你可以尝试通过添加JVM参数来启用JAXB模块。例如，你可以添加如下JVM参数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">shell复制代码<br><br>--add-modules java.se.ee<br></code></pre></td></tr></table></figure>
+
+<p>然而，请注意，这种方法并不是官方推荐的，并且可能在未来的Java版本中不再有效。</p>
+</li>
+<li><p><strong>检查代码库</strong>：<br>如果<code>DatatypeConverter</code>是由某个库间接使用的，那么你可能需要更新这个库到支持Java 9及以上版本的版本，或者寻找一个替代库。</p>
+</li>
+</ol>
+<p>请根据你的具体情况选择最合适的解决方案。如果你正在使用Spring Boot，确保你的Spring Boot版本与你的Java版本兼容，因为Spring Boot通常会处理这类依赖问题。如果问题依然存在，可能需要进一步检查你的项目配置和依赖关系。</p>
+<p>入参：部门id（belongDeptId），排名（sortNum），日期（time），指标等级（indexLevel）</p>
+<p>根据时间（time）获取 newTime；根据部门id（belongDeptId）获取父单位id（parentId）；根据（newTime + parentId）更新指标等级（indexLevel）；根据指标等级（indexLevel）拿到字典类型（dictType）</p>
+<p>联表查询指标库（bus_index_library）、指标数据（bus_index_value）、部门表（bus_dept）</p>
+<p>朔州市查询，部门就为朔州市院；各县市查询，部门为对应县市院。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;select id=<span class="hljs-string">&quot;selectRankingDetails&quot;</span> resultType=<span class="hljs-string">&quot;com.zw.business.domain.vo.ResultVo&quot;</span>&gt;<br>    select d.index_value_id id, d.index_id indexId, belong_dept_id belongDeptId, sort_num sortNum, index_name indexName, index_until indexUntil,<br>        index_type indexType, index_value indexValue, index_parent_value indexParentValue,d.group_sort as groupSort,<br>        e.notification as notification ,e.index_order as indexOrder, e.index_logo as indexLogo<br>        from bus_index_value d left join bus_index_library e on d.index_id=e.index_id left join sys_dept f <span class="hljs-type">on</span> <span class="hljs-variable">belong_dept_id</span> <span class="hljs-operator">=</span> dept_id<br>        <span class="hljs-type">where</span> <span class="hljs-variable">belong_dept_id</span> <span class="hljs-operator">=</span> #&#123;belongDeptId&#125;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;indexIds != null and indexIds != &#x27;&#x27;&quot;</span>&gt; and d.index_id <span class="hljs-title function_">in</span> <span class="hljs-params">($&#123;indexIds&#125;)</span>&lt;/<span class="hljs-keyword">if</span>&gt;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;sortNum != null and sortNum != &#x27;&#x27;&quot;</span>&gt; and d.sort_num = #&#123;sortNum&#125; &lt;/<span class="hljs-keyword">if</span>&gt;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;newTime != null and newTime != &#x27;&#x27;&quot;</span>&gt; and d.index_time like <span class="hljs-title function_">concat</span><span class="hljs-params">(#&#123;newTime&#125;,<span class="hljs-string">&#x27;%&#x27;</span>)</span> &lt;/<span class="hljs-keyword">if</span>&gt;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;valueLevel != null and valueLevel != &#x27;&#x27;&quot;</span>&gt; and d.value_level = #&#123;valueLevel&#125; &lt;/<span class="hljs-keyword">if</span>&gt;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;indexLevel != null and indexLevel != &#x27;&#x27;&quot;</span>&gt; and e.index_level = #&#123;indexLevel&#125; &lt;/<span class="hljs-keyword">if</span>&gt;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;isCore != null and isCore != &#x27;&#x27;&quot;</span>&gt; and e.is_core = #&#123;isCore&#125; &lt;/<span class="hljs-keyword">if</span>&gt;<br>        &lt;<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;isSort != null and isSort != &#x27;&#x27;&quot;</span>&gt; and e.is_sort = #&#123;isSort&#125; &lt;/<span class="hljs-keyword">if</span>&gt;<br>  &lt;/select&gt;<br></code></pre></td></tr></table></figure>
+
+<p>根据字典类型（dictType）查询获取字典标签（dictLabel），给所有记录设置字典标签 / 业务类型。</p>
+<p>默认指标等级（index_level）是2，该指标等级对应的指标类型为：DICT_TYPE_INDEX_56，即字典类型。根据字典类型查询字典库（dict_library）获取到的字典标签列表，并按字典数据（dictValue）升序排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 根据dict_type查询指标类型集合</span><br>    <span class="hljs-meta">@Select(&quot;select dict_value as dictValue, dict_label dictLabel, remark as remark from sys_dict_data where dict_type = #&#123;dictType&#125; ORDER BY dict_value&quot;)</span><br>    <span class="hljs-keyword">public</span> List&lt;SysDictData&gt; <span class="hljs-title function_">getIndexTypeList</span><span class="hljs-params">(String dictType)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>根据字典数据（dictValue）升序排序获取的字典标签（dictLabel）。每个指标名称都有所属指标类型（即字典标签 dictLabel），用指标类型（index_type）关联（dictValue）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;String, String&gt; indexTypeMap = indexUtils.getIndexTypeMap(dictType);<br>list.forEach(data -&gt; data.setDictLabel(indexTypeMap.get(data.getIndexType())));<br></code></pre></td></tr></table></figure>
+
+<p>一次三表联查 + 单表查询，我们查询到了完整的数据：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;27777&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexParentValue&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.07</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sortNum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;belongDeptId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">140600</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2023-09-02T00:00:00.000+0800&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;277&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;刑事“案-件比”&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexUntil&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;≤1.33&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexShort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;刑事“案-件比”&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexType&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexTypeSecond&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexTypeThird&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;dictLabel&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;刑事检察&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;deptId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">140600</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;deptName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;朔州市院&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sortNumStr&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;≤1.33&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;notification&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.33</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexOrder&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;isCore&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;isSort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;indexLogo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;groupSort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;---&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;showId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>删除了认证授权校验，方便接口测试</p>
+<p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240329152252713.png"></p>
+
                 
               </div>
             
@@ -481,7 +570,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年7月28日</div>
+          <div>2024年3月26日</div>
         </div>
       
       
