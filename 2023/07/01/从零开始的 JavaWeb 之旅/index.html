@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：16 天前
+                    本文最后更新于：17 天前
                   
                 
               </p>
@@ -548,6 +548,12 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011628993/article/details/121751557">部署项目 Failure obtaining db row lock: Table ‘XXX.qrtz_LOCKS‘ doesn‘t exist-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_61916154/article/details/134822207">org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name ‘his-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011628993/article/details/121751557">部署项目 Failure obtaining db row lock: Table ‘XXX.qrtz_LOCKS‘ doesn‘t exist-CSDN博客</a></p>
+<h2 id="3-解决方法："><a href="#3-解决方法：" class="headerlink" title="3.解决方法："></a>3.解决方法：</h2><ul>
+<li>(1)win+R，打开命令提示符框，输入cmd，进入命令提示符</li>
+<li>(2)输入netstat -aon | findstr 1099，找到占用1099端口的进程ID：PID</li>
+<li>(3)输入taskkill -f -pid PID</li>
+<li>(4)重启Tomcat</li>
+</ul>
 
                 
               </div>

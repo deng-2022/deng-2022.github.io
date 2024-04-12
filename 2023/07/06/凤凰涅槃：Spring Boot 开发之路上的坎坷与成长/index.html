@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sky.jpg">
 <meta property="article:published_time" content="2023-07-06T10:04:25.000Z">
-<meta property="article:modified_time" content="2024-02-13T10:18:54.000Z">
+<meta property="article:modified_time" content="2024-04-11T10:18:54.000Z">
 <meta property="article:author" content="Memory">
 <meta property="article:tag" content="经验">
 <meta property="article:tag" content="项目">
@@ -795,7 +795,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：19 小时前
                   
                 
               </p>
@@ -803,28 +803,28 @@
             
               <div class="markdown-body">
                 
-                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><ul>
-<li></li>
-</ul>
-<h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><h2 id="写作目标"><a href="#写作目标" class="headerlink" title="写作目标"></a>写作目标</h2><ul>
-<li><h5 id="今天是开发壁纸网站-memory-icon-的第一天，本来没打算写什么开发文档的，太耗时间，整体实现思路也简单，就不写了"><a href="#今天是开发壁纸网站-memory-icon-的第一天，本来没打算写什么开发文档的，太耗时间，整体实现思路也简单，就不写了" class="headerlink" title="今天是开发壁纸网站 memory-icon 的第一天，本来没打算写什么开发文档的，太耗时间，整体实现思路也简单，就不写了"></a>今天是开发壁纸网站 memory-icon 的第一天，本来没打算写什么开发文档的，太耗时间，整体实现思路也简单，就不写了</h5></li>
-<li><h5 id="但是有必要记录一下：从零开发一个SpringBoot项目，至少应该要做些什么"><a href="#但是有必要记录一下：从零开发一个SpringBoot项目，至少应该要做些什么" class="headerlink" title="但是有必要记录一下：从零开发一个SpringBoot项目，至少应该要做些什么"></a>但是有必要记录一下：从零开发一个SpringBoot项目，至少应该要做些什么</h5></li>
-<li><h5 id="这就算给定制自己的-SpringBoot-模板开个好头了（2023-08-01午）"><a href="#这就算给定制自己的-SpringBoot-模板开个好头了（2023-08-01午）" class="headerlink" title="这就算给定制自己的 SpringBoot 模板开个好头了（2023/08/01午）"></a>这就算给定制自己的 SpringBoot 模板开个好头了（2023/08/01午）</h5></li>
-</ul>
-<h2 id="开发思路"><a href="#开发思路" class="headerlink" title="开发思路"></a>开发思路</h2><ul>
-<li><h5 id="从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023-08-01午）"><a href="#从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023-08-01午）" class="headerlink" title="从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023/08/01午）"></a>从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023/08/01午）</h5><ul>
-<li><h5 id="新建模块"><a href="#新建模块" class="headerlink" title="新建模块"></a>新建模块</h5></li>
-<li><h5 id="导入必要的依赖：MySQL、Mybatis、MybatisPlus、commons-lang3、lombok、Gson等"><a href="#导入必要的依赖：MySQL、Mybatis、MybatisPlus、commons-lang3、lombok、Gson等" class="headerlink" title="导入必要的依赖：MySQL、Mybatis、MybatisPlus、commons-lang3、lombok、Gson等"></a>导入必要的依赖：MySQL、Mybatis、MybatisPlus、commons-lang3、lombok、Gson等</h5></li>
-<li><h5 id="新增必要yaml配置：项目名、启动端口、上下文路径、数据库地址"><a href="#新增必要yaml配置：项目名、启动端口、上下文路径、数据库地址" class="headerlink" title="新增必要yaml配置：项目名、启动端口、上下文路径、数据库地址"></a>新增必要yaml配置：项目名、启动端口、上下文路径、数据库地址</h5></li>
-<li><h5 id="新增banner-txt"><a href="#新增banner-txt" class="headerlink" title="新增banner.txt"></a>新增banner.txt</h5></li>
-<li><h5 id="新增数据库表，连接数据库，保存建表语句"><a href="#新增数据库表，连接数据库，保存建表语句" class="headerlink" title="新增数据库表，连接数据库，保存建表语句"></a>新增数据库表，连接数据库，保存建表语句</h5></li>
-<li><h5 id="新增controller层、service层"><a href="#新增controller层、service层" class="headerlink" title="新增controller层、service层"></a>新增controller层、service层</h5></li>
-<li><h5 id="利用MybatisX-Generator插件，快速生成domain、mapper、service、XXXMaper-xml"><a href="#利用MybatisX-Generator插件，快速生成domain、mapper、service、XXXMaper-xml" class="headerlink" title="利用MybatisX-Generator插件，快速生成domain、mapper、service、XXXMaper.xml"></a>利用MybatisX-Generator插件，快速生成domain、mapper、service、XXXMaper.xml</h5></li>
-<li><h5 id="新增config层：CorsConfig、MybatisPlusConfig、Knife4jConfig、JsonConfig等"><a href="#新增config层：CorsConfig、MybatisPlusConfig、Knife4jConfig、JsonConfig等" class="headerlink" title="新增config层：CorsConfig、MybatisPlusConfig、Knife4jConfig、JsonConfig等"></a>新增config层：CorsConfig、MybatisPlusConfig、Knife4jConfig、JsonConfig等</h5></li>
-</ul>
+                <h1 id="破冰"><a href="#破冰" class="headerlink" title="破冰"></a>破冰</h1><h2 id="写作目标"><a href="#写作目标" class="headerlink" title="写作目标"></a>写作目标</h2><p>今天是开发壁纸网站 memory-icon 的第一天，本来没打算写什么开发文档的，太耗时间，整体实现思路也简单，就不写了</p>
+<p>但是有必要记录一下：从零开发一个SpringBoot项目，至少应该要做些什么</p>
+<p>这就算给定制自己的 SpringBoot 模板开个好头了（2023/08/01午）</p>
+<h2 id="开发思路"><a href="#开发思路" class="headerlink" title="开发思路"></a>开发思路</h2><h5 id="从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023-08-01午）"><a href="#从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023-08-01午）" class="headerlink" title="从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023/08/01午）"></a>从零开发一个SpringBoot要做什么？一定是做到以下几点：（2023/08/01午）</h5><ul>
+<li><p>新建模块</p>
+</li>
+<li><p>导入必要的依赖：MySQL、Mybatis、MybatisPlus、commons-lang3、lombok、Gson等</p>
+</li>
+<li><p>新增必要yaml配置：项目名、启动端口、上下文路径、数据库地址</p>
+</li>
+<li><p>新增banner.txt</p>
+</li>
+<li><p>新增数据库表，连接数据库，保存建表语句</p>
+</li>
+<li><p>新增controller层、service层</p>
+</li>
+<li><p>利用MybatisX-Generator插件，快速生成domain、mapper、service、XXXMaper.xml</p>
+</li>
+<li><p>新增config层：CorsConfig、MybatisPlusConfig、Knife4jConfig、JsonConfig等</p>
 </li>
 </ul>
-<h2 id="着手开发"><a href="#着手开发" class="headerlink" title="着手开发"></a>着手开发</h2><h3 id="快速编写Controller层"><a href="#快速编写Controller层" class="headerlink" title="快速编写Controller层"></a>快速编写Controller层</h3><ul>
+<h1 id="思维碰撞"><a href="#思维碰撞" class="headerlink" title="思维碰撞"></a>思维碰撞</h1><h2 id="着手开发"><a href="#着手开发" class="headerlink" title="着手开发"></a>着手开发</h2><h3 id="快速编写Controller层"><a href="#快速编写Controller层" class="headerlink" title="快速编写Controller层"></a>快速编写Controller层</h3><ul>
 <li><h5 id="什么是Controller层？（2023-08-14早）"><a href="#什么是Controller层？（2023-08-14早）" class="headerlink" title="什么是Controller层？（2023/08/14早）"></a>什么是Controller层？（2023/08/14早）</h5></li>
 </ul>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">在Web开发中，Controller层是MVC（模型-视图-控制器）架构的一部分，用于接收并处理前端请求。<br>具体来说，Controller层负责以下几个任务：<br>	<span class="hljs-number">1.</span>接收HTTP请求：Controller通过定义特定的路由（<span class="hljs-built_in">URL</span>映射）来接收前端发送的HTTP请求。<br>	<span class="hljs-number">2.</span>处理请求：Controller中的方法将根据请求的类型、路径以及请求参数等信息，执行相应的逻辑操作。<br>	<span class="hljs-number">3.</span>调用服务层：在Controller中，可以调用服务层（Service层、业务层）的方法来实现相关业务逻辑。<br>	<span class="hljs-number">4.</span>返回响应：在完成对请求的处理后，Controller负责将数据或者视图响应返回给前端。<br>Controller层的目标是实现请求-响应的流程控制，将请求按照业务逻辑分配给对应的服务层处理，并将执行结果返回给前端。同时，Controller层还可以处理一些与业务逻辑相关的验证或者数据转换等操作。<br></code></pre></td></tr></table></figure>
@@ -1787,7 +1787,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年2月13日</div>
+          <div>2024年4月11日</div>
         </div>
       
       
