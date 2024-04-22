@@ -400,7 +400,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：20 天前
+                    本文最后更新于：1 个月前
                   
                 
               </p>
@@ -416,16 +416,8 @@
 <li>Cannot access defaults field of Properties问题，看下面</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mzp520lf/article/details/126247543">Cannot access defaults field of Properties问题的解决-CSDN博客</a></p>
-<pre><code class="hljs">&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
-            &lt;version&gt;3.3.1&lt;/version&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;build&gt;<br>    &lt;plugins&gt;<br>        &lt;plugin&gt;<br>            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;<br>            &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;<br>            &lt;version&gt;<span class="hljs-number">3.3</span><span class="hljs-number">.1</span>&lt;/version&gt;<br>        &lt;/plugin&gt;<br>    &lt;/plugins&gt;<br>&lt;/build&gt;<br></code></pre></td></tr></table></figure>
+
 <p>有必要图文总结下这方面的经验了。</p>
 <p>maven 打包、本地起 tomcat 服务器</p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240326104155627.png" alt="image-20240326104155627"></p>
