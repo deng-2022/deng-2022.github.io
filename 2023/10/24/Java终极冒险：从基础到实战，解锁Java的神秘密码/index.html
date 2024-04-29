@@ -525,7 +525,7 @@
               <p class="note note-success">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：3 个月前
                   
                 
               </p>
@@ -667,6 +667,7 @@
 <p>👏 <strong>实现方式</strong>：就 Java 来说，动态代理的实现方式有很多种，比如 <strong>JDK 动态代理</strong>、<strong>CGLIB 动态代理</strong></p>
 <p>动态代理在我们日常开发中几乎用不到，或者说使用相对较少，但在框架中，几乎是必用的一门技术。学会了动态代理之后，对于我们理解和学习各种框架的原理也非常有帮助</p>
 <p>🧯 <strong>使用场景</strong>：<strong>Spring AOP</strong>、<strong>RPC 框架</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_61761695/article/details/134633078">7000字详解 动态代理(JDK动态代理 CGLIB动态代理)与静态代理_jdk17代理-CSDN博客</a></p>
 </blockquote>
 <h4 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h4><p>JDK 动态代理的实现原理是：<strong>动态创建代理类，然后通过指定类加载器进行加载</strong>。在创建代理对象时，需要将 InvocationHandler 对象作为构造参数传入；当调用代理对象时，会调用 InvocationHandler.invoke() 方法，从而执行代理逻辑，最终调用真正业务对象的相应方法。</p>
 <blockquote>
