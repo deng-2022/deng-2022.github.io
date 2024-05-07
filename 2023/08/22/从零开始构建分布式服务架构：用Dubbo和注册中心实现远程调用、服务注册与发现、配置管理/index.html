@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/deng-2022/blog/img/fluid.png">
-  <link rel="icon" href="/deng-2022/blog/img/icon/dw.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="🌭 分布式协作：探索服务注册与发现的最佳实践">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始构建分布式服务架构：用 &#96;Dubbo&#96; 和注册中心实现远程调用、服务注册与发现、配置管理">
-<meta property="og:url" content="https://github.com/deng-2022/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="🌭 分布式协作：探索服务注册与发现的最佳实践">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/deng-2022/blog/img/artical/farm.jpg">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/farm.jpg">
 <meta property="article:published_time" content="2023-08-22T03:45:17.000Z">
 <meta property="article:modified_time" content="2024-04-26T08:50:17.000Z">
 <meta property="article:author" content="Memory">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="微服务">
 <meta property="article:tag" content="SpringCloud">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/deng-2022/blog/img/artical/farm.jpg">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/farm.jpg">
   
   
   
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/deng-2022/blog/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/deng-2022/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/deng-2022/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/deng-2022/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/deng-2022/blog/local-search.xml"};
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/deng-2022/blog/js/utils.js" ></script>
-  <script  src="/deng-2022/blog/js/color-schema.js" ></script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
   
 
   
@@ -113,7 +113,7 @@
 <div class="header-inner" style="height: 75vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/deng-2022/blog/">
+    <a class="navbar-brand" href="/blog/">
       <strong>Memory&#39;s blog</strong>
     </a>
 
@@ -132,7 +132,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/">
+              <a class="nav-link" href="/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -144,7 +144,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/archives/">
+              <a class="nav-link" href="/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -156,7 +156,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/categories/">
+              <a class="nav-link" href="/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -168,7 +168,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/tags/">
+              <a class="nav-link" href="/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -180,7 +180,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/about/">
+              <a class="nav-link" href="/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -192,7 +192,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/links/">
+              <a class="nav-link" href="/blog/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -222,7 +222,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/deng-2022/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -393,7 +393,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20API%20%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解 API 网关：原理、功能和用途"
+        <a href="/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20API%20%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解 API 网关：原理、功能和用途"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">深入理解 API 网关：原理、功能和用途</span>
@@ -461,7 +461,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="从零开始构建分布式服务架构：用 `Dubbo` 和注册中心实现远程调用、服务注册与发现、配置管理"
+        <a href="/blog/2023/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%9A%E7%94%A8Dubbo%E5%92%8C%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E3%80%81%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E3%80%81%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="从零开始构建分布式服务架构：用 `Dubbo` 和注册中心实现远程调用、服务注册与发现、配置管理"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">从零开始构建分布式服务架构：用 `Dubbo` 和注册中心实现远程调用、服务注册与发现、配置管理</span>
@@ -535,7 +535,7 @@
 </ul>
 <h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><ul>
 <li><h5 id="ZooKeeper：Apache-ZooKeeper"><a href="#ZooKeeper：Apache-ZooKeeper" class="headerlink" title="ZooKeeper：Apache ZooKeeper"></a>ZooKeeper：<a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">Apache ZooKeeper</a></h5></li>
-<li><h5 id="Nacos：github-com"><a href="#Nacos：github-com" class="headerlink" title="Nacos：github.com"></a>Nacos：<a href="https://github.com/alibaba/nacos/tags">github.com</a></h5></li>
+<li><h5 id="Nacos：github-com"><a href="#Nacos：github-com" class="headerlink" title="Nacos：github.com"></a>Nacos：<a target="_blank" rel="noopener" href="https://github.com/alibaba/nacos/tags">github.com</a></h5></li>
 <li><p>这里我们提供了ZeeKeeper和Nacos的下载方式，还有其他的下载方式，这里就不展示了</p>
 </li>
 <li><h5 id="ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇："><a href="#ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇：" class="headerlink" title="ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇："></a>ZooKeeper的安压缩包下载后，直接解压就行，详细过程可以参考这篇博客👇：</h5></li>
@@ -664,17 +664,17 @@
     
       <span class="category-chain">
         
-  <a href="/deng-2022/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="category-chain-item">微服务</a>
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="category-chain-item">微服务</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud/" class="category-chain-item">SpringCloud</a>
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud/" class="category-chain-item">SpringCloud</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  <a href="/blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/SpringCloud/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
   
   
 
@@ -693,11 +693,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/deng-2022/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
-        <a href="/deng-2022/blog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">#微服务</a>
+        <a href="/blog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">#微服务</a>
       
-        <a href="/deng-2022/blog/tags/SpringCloud/">#SpringCloud</a>
+        <a href="/blog/tags/SpringCloud/">#SpringCloud</a>
       
     </div>
   
@@ -710,7 +710,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>从零开始构建分布式服务架构：用 `Dubbo` 和注册中心实现远程调用、服务注册与发现、配置管理</div>
-      <div>https://github.com/deng-2022/blog/2023/08/22/从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理/</div>
+      <div>https://deng-2022.gitee.io/blog/2023/08/22/从零开始构建分布式服务架构：用Dubbo和注册中心实现远程调用、服务注册与发现、配置管理/</div>
     </div>
     <div class="license-meta">
       
@@ -759,7 +759,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/08/23/SpringBoot%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%92%8C%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/" title="SpringBoot第三方服务开发实践：版本兼容性和依赖管理">
+                      <a href="/blog/2023/08/23/SpringBoot%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%92%8C%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/" title="SpringBoot第三方服务开发实践：版本兼容性和依赖管理">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">SpringBoot第三方服务开发实践：版本兼容性和依赖管理</span>
                         <span class="visible-mobile">上一篇</span>
@@ -769,7 +769,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20API%20%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解 API 网关：原理、功能和用途">
+                      <a href="/blog/2023/08/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20API%20%E7%BD%91%E5%85%B3%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E9%80%94/" title="深入理解 API 网关：原理、功能和用途">
                         <span class="hidden-mobile">深入理解 API 网关：原理、功能和用途</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -931,7 +931,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/deng-2022/blog/img/police_beian.png" alt="police-icon"/>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -962,8 +962,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/deng-2022/blog/js/events.js" ></script>
-<script  src="/deng-2022/blog/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -1080,9 +1080,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/deng-2022/blog/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
-  <script defer src="/deng-2022/blog/js/leancloud.js" ></script>
+  <script defer src="/blog/js/leancloud.js" ></script>
 
 
 
@@ -1090,7 +1090,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/deng-2022/blog/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
   

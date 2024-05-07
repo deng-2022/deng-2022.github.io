@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/deng-2022/blog/img/fluid.png">
-  <link rel="icon" href="/deng-2022/blog/img/icon/dw.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="🎨 构建强大的搜索引擎,Elasticsearch入门到精通的完整学习指南">
 <meta property="og:type" content="article">
 <meta property="og:title" content="揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南">
-<meta property="og:url" content="https://github.com/deng-2022/blog/2023/09/19/%E6%8F%AD%E7%A7%98%20Elasticsearch%20%E7%9A%84%E7%A5%9E%E5%A5%87%E8%83%BD%E5%8A%9B%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%90%9C%E7%B4%A2%E5%88%B0%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/09/19/%E6%8F%AD%E7%A7%98%20Elasticsearch%20%E7%9A%84%E7%A5%9E%E5%A5%87%E8%83%BD%E5%8A%9B%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%90%9C%E7%B4%A2%E5%88%B0%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="🎨 构建强大的搜索引擎,Elasticsearch入门到精通的完整学习指南">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/deng-2022/blog/img/artical/sea.jpg">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
 <meta property="article:published_time" content="2023-09-19T13:42:50.000Z">
 <meta property="article:modified_time" content="2023-11-18T13:50:45.000Z">
 <meta property="article:author" content="Memory">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="Elasticsearch">
 <meta property="article:tag" content="Kibana">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/deng-2022/blog/img/artical/sea.jpg">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/sea.jpg">
   
   
   
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/deng-2022/blog/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/deng-2022/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/deng-2022/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/deng-2022/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/deng-2022/blog/local-search.xml"};
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/deng-2022/blog/js/utils.js" ></script>
-  <script  src="/deng-2022/blog/js/color-schema.js" ></script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
   
 
   
@@ -113,7 +113,7 @@
 <div class="header-inner" style="height: 75vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/deng-2022/blog/">
+    <a class="navbar-brand" href="/blog/">
       <strong>Memory&#39;s blog</strong>
     </a>
 
@@ -132,7 +132,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/">
+              <a class="nav-link" href="/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -144,7 +144,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/archives/">
+              <a class="nav-link" href="/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -156,7 +156,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/categories/">
+              <a class="nav-link" href="/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -168,7 +168,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/tags/">
+              <a class="nav-link" href="/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -180,7 +180,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/about/">
+              <a class="nav-link" href="/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -192,7 +192,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/links/">
+              <a class="nav-link" href="/blog/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -222,7 +222,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/deng-2022/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -393,7 +393,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/09/19/%E6%8F%AD%E7%A7%98%20Elasticsearch%20%E7%9A%84%E7%A5%9E%E5%A5%87%E8%83%BD%E5%8A%9B%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%90%9C%E7%B4%A2%E5%88%B0%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南"
+        <a href="/blog/2023/09/19/%E6%8F%AD%E7%A7%98%20Elasticsearch%20%E7%9A%84%E7%A5%9E%E5%A5%87%E8%83%BD%E5%8A%9B%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%90%9C%E7%B4%A2%E5%88%B0%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南</span>
@@ -488,7 +488,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/09/10/Memory%20%E7%BC%98%E5%BF%86%E4%BA%A4%E5%8F%8B%E7%A4%BE%E5%8C%BA-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 缘忆交友社区-开发文档"
+        <a href="/blog/2023/09/10/Memory%20%E7%BC%98%E5%BF%86%E4%BA%A4%E5%8F%8B%E7%A4%BE%E5%8C%BA-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 缘忆交友社区-开发文档"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Memory 缘忆交友社区-开发文档</span>
@@ -574,7 +574,7 @@
 </li>
 </ul>
 <h3 id="IK分词器（ES内置插件）"><a href="#IK分词器（ES内置插件）" class="headerlink" title="IK分词器（ES内置插件）"></a>IK分词器（ES内置插件）</h3><h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><ul>
-<li><h5 id="7-·-Releases-·-medcl-elasticsearch-analysis-ik-github-com"><a href="#7-·-Releases-·-medcl-elasticsearch-analysis-ik-github-com" class="headerlink" title="7. · Releases · medcl/elasticsearch-analysis-ik (github.com)"></a><a href="https://github.com/medcl/elasticsearch-analysis-ik/releases/tag/v7.17.7">7. · Releases · medcl/elasticsearch-analysis-ik (github.com)</a></h5></li>
+<li><h5 id="7-·-Releases-·-medcl-elasticsearch-analysis-ik-github-com"><a href="#7-·-Releases-·-medcl-elasticsearch-analysis-ik-github-com" class="headerlink" title="7. · Releases · medcl/elasticsearch-analysis-ik (github.com)"></a><a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik/releases/tag/v7.17.7">7. · Releases · medcl/elasticsearch-analysis-ik (github.com)</a></h5></li>
 </ul>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20230920115244986.png" alt="image-20230920115244986"></p>
 <ul>
@@ -1860,17 +1860,17 @@
     
       <span class="category-chain">
         
-  <a href="/deng-2022/blog/categories/Elasticsearch/" class="category-chain-item">Elasticsearch</a>
+  <a href="/blog/categories/Elasticsearch/" class="category-chain-item">Elasticsearch</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/Elasticsearch/Kibana/" class="category-chain-item">Kibana</a>
+  <a href="/blog/categories/Elasticsearch/Kibana/" class="category-chain-item">Kibana</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/Elasticsearch/Kibana/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  <a href="/blog/categories/Elasticsearch/Kibana/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
   
   
 
@@ -1889,11 +1889,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/deng-2022/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+        <a href="/blog/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
       
-        <a href="/deng-2022/blog/tags/Elasticsearch/">#Elasticsearch</a>
+        <a href="/blog/tags/Elasticsearch/">#Elasticsearch</a>
       
-        <a href="/deng-2022/blog/tags/Kibana/">#Kibana</a>
+        <a href="/blog/tags/Kibana/">#Kibana</a>
       
     </div>
   
@@ -1906,7 +1906,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南</div>
-      <div>https://github.com/deng-2022/blog/2023/09/19/揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南/</div>
+      <div>https://deng-2022.gitee.io/blog/2023/09/19/揭秘 Elasticsearch 的神奇能力：从数据搜索到实时分析的终极指南/</div>
     </div>
     <div class="license-meta">
       
@@ -1955,7 +1955,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/09/22/%E6%8E%A2%E7%B4%A2%20GitHub%EF%BC%9A%E5%8F%82%E4%B8%8E%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A5%E9%AA%A4%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="探索GitHub：参与开源项目的步骤与技巧">
+                      <a href="/blog/2023/09/22/%E6%8E%A2%E7%B4%A2%20GitHub%EF%BC%9A%E5%8F%82%E4%B8%8E%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A5%E9%AA%A4%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="探索GitHub：参与开源项目的步骤与技巧">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">探索GitHub：参与开源项目的步骤与技巧</span>
                         <span class="visible-mobile">上一篇</span>
@@ -1965,7 +1965,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/09/17/%E6%94%B9%E5%8F%98%E7%BC%96%E7%A0%81%E6%B8%B8%E6%88%8F%E8%A7%84%E5%88%99%EF%BC%9A%E6%8F%AD%E7%A7%9823%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%AD%85%E5%8A%9B%E5%92%8C%E5%AE%9E%E7%94%A8%E6%80%A7/" title="改变编码游戏规则：揭秘23种设计模式的魅力和实用性">
+                      <a href="/blog/2023/09/17/%E6%94%B9%E5%8F%98%E7%BC%96%E7%A0%81%E6%B8%B8%E6%88%8F%E8%A7%84%E5%88%99%EF%BC%9A%E6%8F%AD%E7%A7%9823%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%AD%85%E5%8A%9B%E5%92%8C%E5%AE%9E%E7%94%A8%E6%80%A7/" title="改变编码游戏规则：揭秘23种设计模式的魅力和实用性">
                         <span class="hidden-mobile">改变编码游戏规则：揭秘23种设计模式的魅力和实用性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -2127,7 +2127,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/deng-2022/blog/img/police_beian.png" alt="police-icon"/>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -2158,8 +2158,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/deng-2022/blog/js/events.js" ></script>
-<script  src="/deng-2022/blog/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -2276,9 +2276,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/deng-2022/blog/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
-  <script defer src="/deng-2022/blog/js/leancloud.js" ></script>
+  <script defer src="/blog/js/leancloud.js" ></script>
 
 
 
@@ -2286,7 +2286,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/deng-2022/blog/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
   

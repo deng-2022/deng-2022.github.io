@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/deng-2022/blog/img/fluid.png">
-  <link rel="icon" href="/deng-2022/blog/img/icon/dw.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="🥂 Memory BI智能搜索平台开发基本流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Memory BI 智能分析平台-开发文档">
-<meta property="og:url" content="https://github.com/deng-2022/blog/2023/10/03/Memory%20BI%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/10/03/Memory%20BI%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="🥂 Memory BI智能搜索平台开发基本流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/deng-2022/blog/img/artical/winter2.jpg">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/winter2.jpg">
 <meta property="article:published_time" content="2023-10-03T01:51:22.000Z">
 <meta property="article:modified_time" content="2023-10-15T11:37:25.000Z">
 <meta property="article:author" content="Memory">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="项目">
 <meta property="article:tag" content="开发经验">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/deng-2022/blog/img/artical/winter2.jpg">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/winter2.jpg">
   
   
   
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/deng-2022/blog/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/deng-2022/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/deng-2022/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/deng-2022/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/deng-2022/blog/local-search.xml"};
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/deng-2022/blog/js/utils.js" ></script>
-  <script  src="/deng-2022/blog/js/color-schema.js" ></script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
   
 
   
@@ -113,7 +113,7 @@
 <div class="header-inner" style="height: 75vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/deng-2022/blog/">
+    <a class="navbar-brand" href="/blog/">
       <strong>Memory&#39;s blog</strong>
     </a>
 
@@ -132,7 +132,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/">
+              <a class="nav-link" href="/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -144,7 +144,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/archives/">
+              <a class="nav-link" href="/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -156,7 +156,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/categories/">
+              <a class="nav-link" href="/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -168,7 +168,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/tags/">
+              <a class="nav-link" href="/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -180,7 +180,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/about/">
+              <a class="nav-link" href="/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -192,7 +192,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/links/">
+              <a class="nav-link" href="/blog/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -222,7 +222,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/deng-2022/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -393,7 +393,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/10/03/Memory%20BI%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory BI 智能分析平台-开发文档"
+        <a href="/blog/2023/10/03/Memory%20BI%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory BI 智能分析平台-开发文档"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">Memory BI 智能分析平台-开发文档</span>
@@ -402,7 +402,7 @@
     
       
       
-        <a href="/deng-2022/blog/2024/01/15/Memory%20OJ%20%E5%9C%A8%E7%BA%BF%E5%88%A4%E9%A2%98%E7%B3%BB%E7%BB%9F/" title="Memory OJ 在线判题系统"
+        <a href="/blog/2024/01/15/Memory%20OJ%20%E5%9C%A8%E7%BA%BF%E5%88%A4%E9%A2%98%E7%B3%BB%E7%BB%9F/" title="Memory OJ 在线判题系统"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Memory OJ 在线判题系统</span>
@@ -540,7 +540,7 @@
 <h5 id="直接调用官方接口"><a href="#直接调用官方接口" class="headerlink" title="直接调用官方接口"></a>直接调用官方接口</h5><h5 id="使用云服务商提供的封装接口"><a href="#使用云服务商提供的封装接口" class="headerlink" title="使用云服务商提供的封装接口"></a>使用云服务商提供的封装接口</h5><h5 id="鱼聪明-AI-接口开放平台"><a href="#鱼聪明-AI-接口开放平台" class="headerlink" title="鱼聪明 AI 接口开放平台"></a>鱼聪明 AI 接口开放平台</h5></blockquote>
 <ul>
 <li><h5 id="我们使用-鱼聪明-的-开放接口调用-sdk，快速调用AI-接口"><a href="#我们使用-鱼聪明-的-开放接口调用-sdk，快速调用AI-接口" class="headerlink" title="我们使用 鱼聪明 的 开放接口调用 sdk，快速调用AI 接口"></a>我们使用 鱼聪明 的 开放接口调用 sdk，快速调用AI 接口</h5></li>
-<li><h5 id="sdk-下载地址：liyupi-yucongming-java-sdk-鱼聪明-AI-的-Java-SDK，几行代码使用-AI-助手能力！-github-com"><a href="#sdk-下载地址：liyupi-yucongming-java-sdk-鱼聪明-AI-的-Java-SDK，几行代码使用-AI-助手能力！-github-com" class="headerlink" title="sdk 下载地址：liyupi/yucongming-java-sdk: 鱼聪明 AI 的 Java SDK，几行代码使用 AI 助手能力！ (github.com)"></a>sdk 下载地址：<a href="https://github.com/liyupi/yucongming-java-sdk">liyupi/yucongming-java-sdk: 鱼聪明 AI 的 Java SDK，几行代码使用 AI 助手能力！ (github.com)</a></h5></li>
+<li><h5 id="sdk-下载地址：liyupi-yucongming-java-sdk-鱼聪明-AI-的-Java-SDK，几行代码使用-AI-助手能力！-github-com"><a href="#sdk-下载地址：liyupi-yucongming-java-sdk-鱼聪明-AI-的-Java-SDK，几行代码使用-AI-助手能力！-github-com" class="headerlink" title="sdk 下载地址：liyupi/yucongming-java-sdk: 鱼聪明 AI 的 Java SDK，几行代码使用 AI 助手能力！ (github.com)"></a>sdk 下载地址：<a target="_blank" rel="noopener" href="https://github.com/liyupi/yucongming-java-sdk">liyupi/yucongming-java-sdk: 鱼聪明 AI 的 Java SDK，几行代码使用 AI 助手能力！ (github.com)</a></h5></li>
 <li><h5 id="这个-sdk-的使用方式，在项目描述中描述的非常清晰，一行代码就能轻松调用鱼聪明-AI-服务！"><a href="#这个-sdk-的使用方式，在项目描述中描述的非常清晰，一行代码就能轻松调用鱼聪明-AI-服务！" class="headerlink" title="这个 sdk 的使用方式，在项目描述中描述的非常清晰，一行代码就能轻松调用鱼聪明 AI 服务！"></a>这个 sdk 的使用方式，在项目描述中描述的非常清晰，一行代码就能轻松调用鱼聪明 AI 服务！</h5></li>
 </ul>
 <h3 id="调用-AI-尝试"><a href="#调用-AI-尝试" class="headerlink" title="调用 AI 尝试"></a>调用 AI 尝试</h3><ul>
@@ -816,17 +816,17 @@
     
       <span class="category-chain">
         
-  <a href="/deng-2022/blog/categories/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
+  <a href="/blog/categories/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/RabbitMQ/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  <a href="/blog/categories/RabbitMQ/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/RabbitMQ/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
+  <a href="/blog/categories/RabbitMQ/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
   
   
 
@@ -845,11 +845,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/deng-2022/blog/tags/RabbitMQ/">#RabbitMQ</a>
+        <a href="/blog/tags/RabbitMQ/">#RabbitMQ</a>
       
-        <a href="/deng-2022/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
-        <a href="/deng-2022/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+        <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
       
     </div>
   
@@ -862,7 +862,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Memory BI 智能分析平台-开发文档</div>
-      <div>https://github.com/deng-2022/blog/2023/10/03/Memory BI智能分析平台-开发文档/</div>
+      <div>https://deng-2022.gitee.io/blog/2023/10/03/Memory BI智能分析平台-开发文档/</div>
     </div>
     <div class="license-meta">
       
@@ -911,7 +911,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/10/09/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%9A%E8%AE%A1%E5%88%92%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%80%9D%E6%83%B3%E8%9C%95%E5%8F%98%E7%9A%84%E8%A7%81%E8%AF%81/" title="个人成长之路：计划演进与思想蜕变的见证">
+                      <a href="/blog/2023/10/09/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%9A%E8%AE%A1%E5%88%92%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%80%9D%E6%83%B3%E8%9C%95%E5%8F%98%E7%9A%84%E8%A7%81%E8%AF%81/" title="个人成长之路：计划演进与思想蜕变的见证">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">个人成长之路：计划演进与思想蜕变的见证</span>
                         <span class="visible-mobile">上一篇</span>
@@ -921,7 +921,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/09/22/%E6%8E%A2%E7%B4%A2%20GitHub%EF%BC%9A%E5%8F%82%E4%B8%8E%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A5%E9%AA%A4%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="探索GitHub：参与开源项目的步骤与技巧">
+                      <a href="/blog/2023/09/22/%E6%8E%A2%E7%B4%A2%20GitHub%EF%BC%9A%E5%8F%82%E4%B8%8E%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A5%E9%AA%A4%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="探索GitHub：参与开源项目的步骤与技巧">
                         <span class="hidden-mobile">探索GitHub：参与开源项目的步骤与技巧</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1083,7 +1083,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/deng-2022/blog/img/police_beian.png" alt="police-icon"/>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -1114,8 +1114,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/deng-2022/blog/js/events.js" ></script>
-<script  src="/deng-2022/blog/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -1232,9 +1232,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/deng-2022/blog/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
-  <script defer src="/deng-2022/blog/js/leancloud.js" ></script>
+  <script defer src="/blog/js/leancloud.js" ></script>
 
 
 
@@ -1242,7 +1242,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/deng-2022/blog/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
   

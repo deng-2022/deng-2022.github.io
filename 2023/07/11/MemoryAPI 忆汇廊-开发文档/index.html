@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/deng-2022/blog/img/fluid.png">
-  <link rel="icon" href="/deng-2022/blog/img/icon/dw.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="🍱 Memory API接口开放平台的开发基本流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MemoryAPI 忆汇廊-开发文档">
-<meta property="og:url" content="https://github.com/deng-2022/blog/2023/07/11/MemoryAPI%20%E5%BF%86%E6%B1%87%E5%BB%8A-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/07/11/MemoryAPI%20%E5%BF%86%E6%B1%87%E5%BB%8A-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="🍱 Memory API接口开放平台的开发基本流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/deng-2022/blog/img/artical/spring.jpg">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/spring.jpg">
 <meta property="article:published_time" content="2023-07-11T15:09:22.000Z">
 <meta property="article:modified_time" content="2024-02-27T01:07:25.000Z">
 <meta property="article:author" content="Memory">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="开发经验">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/deng-2022/blog/img/artical/spring.jpg">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/spring.jpg">
   
   
   
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/deng-2022/blog/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/deng-2022/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/deng-2022/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/deng-2022/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/deng-2022/blog/local-search.xml"};
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/deng-2022/blog/js/utils.js" ></script>
-  <script  src="/deng-2022/blog/js/color-schema.js" ></script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
   
 
   
@@ -113,7 +113,7 @@
 <div class="header-inner" style="height: 75vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/deng-2022/blog/">
+    <a class="navbar-brand" href="/blog/">
       <strong>Memory&#39;s blog</strong>
     </a>
 
@@ -132,7 +132,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/">
+              <a class="nav-link" href="/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -144,7 +144,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/archives/">
+              <a class="nav-link" href="/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -156,7 +156,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/categories/">
+              <a class="nav-link" href="/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -168,7 +168,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/tags/">
+              <a class="nav-link" href="/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -180,7 +180,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/about/">
+              <a class="nav-link" href="/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -192,7 +192,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/deng-2022/blog/links/">
+              <a class="nav-link" href="/blog/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -222,7 +222,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/deng-2022/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -366,7 +366,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/10/24/Redis%20%E9%A3%8E%E6%9A%B4%EF%BC%9A%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%BA%94%E7%94%A8%EF%BC%8C%E4%B8%80%E6%8E%A2%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A5%A5%E7%A7%98/" title="Redis 风暴：从原理到应用，一探内存中的数据奥秘"
+        <a href="/blog/2023/10/24/Redis%20%E9%A3%8E%E6%9A%B4%EF%BC%9A%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%BA%94%E7%94%A8%EF%BC%8C%E4%B8%80%E6%8E%A2%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A5%A5%E7%A7%98/" title="Redis 风暴：从原理到应用，一探内存中的数据奥秘"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Redis 风暴：从原理到应用，一探内存中的数据奥秘</span>
@@ -430,7 +430,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/03/24/Memory%20%E4%BC%99%E4%BC%B4%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 伙伴匹配系统-开发文档"
+        <a href="/blog/2023/03/24/Memory%20%E4%BC%99%E4%BC%B4%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 伙伴匹配系统-开发文档"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Memory 伙伴匹配系统-开发文档</span>
@@ -439,7 +439,7 @@
     
       
       
-        <a href="/deng-2022/blog/2023/07/11/MemoryAPI%20%E5%BF%86%E6%B1%87%E5%BB%8A-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemoryAPI 忆汇廊-开发文档"
+        <a href="/blog/2023/07/11/MemoryAPI%20%E5%BF%86%E6%B1%87%E5%BB%8A-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemoryAPI 忆汇廊-开发文档"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">MemoryAPI 忆汇廊-开发文档</span>
@@ -518,7 +518,7 @@
 <li><p><strong>个人信息管理</strong>：用户可以注册并登录平台，管理自己的个人信息，包括账户设置、密码修改等。平台保障用户信息的安全性和隐私性，遵守相关法律法规。</p>
 </li>
 </ul>
-<h2 id="🍜-访问地址"><a href="#🍜-访问地址" class="headerlink" title="🍜 访问地址"></a>🍜 访问地址</h2><p>暂未部署上线，点击跳转至：<a target="_blank" rel="noopener" href="https://deng-2022.gitee.io/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/">个人博客 MemorySearch 开发文档</a></p>
+<h2 id="🍜-访问地址"><a href="#🍜-访问地址" class="headerlink" title="🍜 访问地址"></a>🍜 访问地址</h2><p>暂未部署上线，点击跳转至：<a href="https://deng-2022.gitee.io/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/">个人博客 MemorySearch 开发文档</a></p>
 <h2 id="🍝-架构设计"><a href="#🍝-架构设计" class="headerlink" title="🍝 架构设计"></a>🍝 架构设计</h2><p>原图链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/huiyiruchu-7jxo6/azga9e/zonr9byctomyqz4t?singleDoc#">项目架构图</a></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240224105144169.png" alt="image-20240224105144169"></p>
 <h2 id="🍺-技术选型"><a href="#🍺-技术选型" class="headerlink" title="🍺 技术选型"></a>🍺 技术选型</h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
@@ -625,11 +625,11 @@
 <ul>
 <li><h5 id="如上所示，这是因为项目启动时，会使用到yarn包管理工具"><a href="#如上所示，这是因为项目启动时，会使用到yarn包管理工具" class="headerlink" title="如上所示，这是因为项目启动时，会使用到yarn包管理工具"></a>如上所示，这是因为项目启动时，会使用到yarn包管理工具</h5></li>
 <li><h5 id="当我使用如下start-dev启动项目时，项目启动无误但登录不成功，这里先不深究，放一篇解决方法作为参照："><a href="#当我使用如下start-dev启动项目时，项目启动无误但登录不成功，这里先不深究，放一篇解决方法作为参照：" class="headerlink" title="当我使用如下start:dev启动项目时，项目启动无误但登录不成功，这里先不深究，放一篇解决方法作为参照："></a>当我使用如下start:dev启动项目时，项目启动无误但登录不成功，这里先不深究，放一篇解决方法作为参照：</h5></li>
-<li><h5 id="🧐问题-【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳-login页面-·-Issue-5573-·-ant-design-ant-design-pro-·-GitHub"><a href="#🧐问题-【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳-login页面-·-Issue-5573-·-ant-design-ant-design-pro-·-GitHub" class="headerlink" title="[🧐问题]【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳/login页面 · Issue #5573 · ant-design/ant-design-pro · GitHub"></a>[🧐<a href="https://github.com/ant-design/ant-design-pro/issues/5573">问题]【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳/login页面 · Issue #5573 · ant-design/ant-design-pro · GitHub</a></h5></li>
+<li><h5 id="🧐问题-【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳-login页面-·-Issue-5573-·-ant-design-ant-design-pro-·-GitHub"><a href="#🧐问题-【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳-login页面-·-Issue-5573-·-ant-design-ant-design-pro-·-GitHub" class="headerlink" title="[🧐问题]【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳/login页面 · Issue #5573 · ant-design/ant-design-pro · GitHub"></a>[🧐<a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design-pro/issues/5573">问题]【关于登录】本地新项目，使用隐身模式打开无法登录，一直跳/login页面 · Issue #5573 · ant-design/ant-design-pro · GitHub</a></h5></li>
 </ul>
 <h2 id="后端框架搭建"><a href="#后端框架搭建" class="headerlink" title="后端框架搭建"></a>后端框架搭建</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li><h5 id="后端框架直接拉取-springboot-init-项目模板，完成了后端框架的快速搭建"><a href="#后端框架直接拉取-springboot-init-项目模板，完成了后端框架的快速搭建" class="headerlink" title="后端框架直接拉取 springboot-init 项目模板，完成了后端框架的快速搭建"></a>后端框架直接拉取 springboot-init 项目模板，完成了后端框架的快速搭建</h5></li>
-<li><h5 id="有关具体的模板功能介绍，请移步至：SQL之父：sql-father-backend-public"><a href="#有关具体的模板功能介绍，请移步至：SQL之父：sql-father-backend-public" class="headerlink" title="有关具体的模板功能介绍，请移步至：SQL之父：sql-father-backend-public"></a>有关具体的模板功能介绍，请移步至：<a href="https://github.com/liyupi/sql-father-backend-public">SQL之父：sql-father-backend-public</a></h5></li>
+<li><h5 id="有关具体的模板功能介绍，请移步至：SQL之父：sql-father-backend-public"><a href="#有关具体的模板功能介绍，请移步至：SQL之父：sql-father-backend-public" class="headerlink" title="有关具体的模板功能介绍，请移步至：SQL之父：sql-father-backend-public"></a>有关具体的模板功能介绍，请移步至：<a target="_blank" rel="noopener" href="https://github.com/liyupi/sql-father-backend-public">SQL之父：sql-father-backend-public</a></h5></li>
 </ul>
 <h3 id="建库建表"><a href="#建库建表" class="headerlink" title="建库建表"></a>建库建表</h3><ul>
 <li><h5 id="新建接口信息表，建表信息如下：（2023-07-15晚）"><a href="#新建接口信息表，建表信息如下：（2023-07-15晚）" class="headerlink" title="新建接口信息表，建表信息如下：（2023/07/15晚）"></a>新建接口信息表，建表信息如下：（2023/07/15晚）</h5></li>
@@ -1612,17 +1612,17 @@
     
       <span class="category-chain">
         
-  <a href="/deng-2022/blog/categories/Redis/" class="category-chain-item">Redis</a>
+  <a href="/blog/categories/Redis/" class="category-chain-item">Redis</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/Redis/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  <a href="/blog/categories/Redis/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
   
   
     <span>></span>
     
-  <a href="/deng-2022/blog/categories/Redis/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
+  <a href="/blog/categories/Redis/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
   
   
 
@@ -1641,11 +1641,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/deng-2022/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
-        <a href="/deng-2022/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+        <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
       
-        <a href="/deng-2022/blog/tags/Redis/">#Redis</a>
+        <a href="/blog/tags/Redis/">#Redis</a>
       
     </div>
   
@@ -1658,7 +1658,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>MemoryAPI 忆汇廊-开发文档</div>
-      <div>https://github.com/deng-2022/blog/2023/07/11/MemoryAPI 忆汇廊-开发文档/</div>
+      <div>https://deng-2022.gitee.io/blog/2023/07/11/MemoryAPI 忆汇廊-开发文档/</div>
     </div>
     <div class="license-meta">
       
@@ -1707,7 +1707,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/07/15/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90Web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" title="深度解析Web开发中的跨域问题">
+                      <a href="/blog/2023/07/15/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90Web%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" title="深度解析Web开发中的跨域问题">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">深度解析Web开发中的跨域问题</span>
                         <span class="visible-mobile">上一篇</span>
@@ -1717,7 +1717,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/deng-2022/blog/2023/07/11/Docker%20%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="Docker入门与实践：快速打造高效网站部署环境">
+                      <a href="/blog/2023/07/11/Docker%20%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="Docker入门与实践：快速打造高效网站部署环境">
                         <span class="hidden-mobile">Docker入门与实践：快速打造高效网站部署环境</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1879,7 +1879,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/deng-2022/blog/img/police_beian.png" alt="police-icon"/>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -1910,8 +1910,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/deng-2022/blog/js/events.js" ></script>
-<script  src="/deng-2022/blog/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -2028,9 +2028,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/deng-2022/blog/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
-  <script defer src="/deng-2022/blog/js/leancloud.js" ></script>
+  <script defer src="/blog/js/leancloud.js" ></script>
 
 
 
@@ -2038,7 +2038,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/deng-2022/blog/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
   
