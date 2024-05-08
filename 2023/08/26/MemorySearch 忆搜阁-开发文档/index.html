@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/icon/dw.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/icon/dw.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="MemorySearch 忆搜阁开发基本流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MemorySearch 忆搜阁-开发文档">
-<meta property="og:url" content="http://example.com/2023/08/26/MemorySearch%20%E5%BF%86%E6%90%9C%E9%98%81-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:url" content="https://deng-2022.gitee.io/blog/2023/08/26/MemorySearch%20%E5%BF%86%E6%90%9C%E9%98%81-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="Memory&#39;s blog">
 <meta property="og:description" content="MemorySearch 忆搜阁开发基本流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/artical/ren.jpg">
+<meta property="og:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
 <meta property="article:published_time" content="2023-08-26T14:09:22.000Z">
 <meta property="article:modified_time" content="2024-02-19T12:22:54.000Z">
 <meta property="article:author" content="Memory">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="Logstash">
 <meta property="article:tag" content="Kibana">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/artical/ren.jpg">
+<meta name="twitter:image" content="https://deng-2022.gitee.io/blog/img/artical/ren.jpg">
   
   
   
@@ -61,12 +61,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/blog/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
   
 
 
@@ -75,15 +75,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"deng-2022.gitee.io","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
   
 
   
@@ -115,7 +115,7 @@
 <div class="header-inner" style="height: 75vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/blog/">
       <strong>Memory&#39;s blog</strong>
     </a>
 
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/blog/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/blog/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/blog/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -170,7 +170,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/blog/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -182,7 +182,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/blog/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -194,7 +194,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/blog/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -224,7 +224,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/newBG/girl.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -369,7 +369,7 @@
     
       
       
-        <a href="/2023/03/17/Memory%20%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 用户中心中心-开发文档"
+        <a href="/blog/2023/03/17/Memory%20%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 用户中心中心-开发文档"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Memory 用户中心中心-开发文档</span>
@@ -378,7 +378,7 @@
     
       
       
-        <a href="/2023/06/20/Typora%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="美轮美奂的文档艺术：Typora的使用技巧和实践"
+        <a href="/blog/2023/06/20/Typora%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="美轮美奂的文档艺术：Typora的使用技巧和实践"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">美轮美奂的文档艺术：Typora的使用技巧和实践</span>
@@ -387,7 +387,7 @@
     
       
       
-        <a href="/2023/08/02/PicMemories%20%E5%A3%81%E7%BA%B8%E5%88%86%E4%BA%AB%E5%B0%8F%E7%A8%8B%E5%BA%8F%20-%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="PicMemories-开发文档"
+        <a href="/blog/2023/08/02/PicMemories%20%E5%A3%81%E7%BA%B8%E5%88%86%E4%BA%AB%E5%B0%8F%E7%A8%8B%E5%BA%8F%20-%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="PicMemories-开发文档"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">PicMemories-开发文档</span>
@@ -396,7 +396,7 @@
     
       
       
-        <a href="/2023/08/07/TaskMemories%20-%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="TaskMemories-开发文档"
+        <a href="/blog/2023/08/07/TaskMemories%20-%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="TaskMemories-开发文档"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">TaskMemories-开发文档</span>
@@ -485,7 +485,7 @@
     
       
       
-        <a href="/2023/08/26/MemorySearch%20%E5%BF%86%E6%90%9C%E9%98%81-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemorySearch 忆搜阁-开发文档"
+        <a href="/blog/2023/08/26/MemorySearch%20%E5%BF%86%E6%90%9C%E9%98%81-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="MemorySearch 忆搜阁-开发文档"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">MemorySearch 忆搜阁-开发文档</span>
@@ -588,7 +588,7 @@
     
       
       
-        <a href="/2023/06/04/%E6%8F%AD%E7%A7%98%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8A%E7%BA%BF%E4%B9%8B%E8%B7%AF%EF%BC%9A%E6%B5%81%E7%A8%8B%E3%80%81%E6%8C%91%E6%88%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="揭秘项目部署上线之路：流程、挑战与解决方案"
+        <a href="/blog/2023/06/04/%E6%8F%AD%E7%A7%98%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8A%E7%BA%BF%E4%B9%8B%E8%B7%AF%EF%BC%9A%E6%B5%81%E7%A8%8B%E3%80%81%E6%8C%91%E6%88%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="揭秘项目部署上线之路：流程、挑战与解决方案"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">揭秘项目部署上线之路：流程、挑战与解决方案</span>
@@ -666,7 +666,7 @@
 <li><p> <strong>图片预览分享</strong> ：通过集成的图片预览功能，用户可以像浏览相册一样查看页面中的图片，并支持缩放和分享到社交媒体平台。</p>
 </li>
 </ul>
-<h2 id="🍜-访问地址"><a href="#🍜-访问地址" class="headerlink" title="🍜 访问地址"></a>🍜 访问地址</h2><p>暂未部署上线，点击跳转至：<a target="_blank" rel="noopener" href="https://deng-2022.gitee.io/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/">个人博客 MemorySearch 开发文档</a></p>
+<h2 id="🍜-访问地址"><a href="#🍜-访问地址" class="headerlink" title="🍜 访问地址"></a>🍜 访问地址</h2><p>暂未部署上线，点击跳转至：<a href="https://deng-2022.gitee.io/blog/2023/08/26/Memory%20%E8%81%9A%E5%90%88%E6%90%9C%E7%B4%A2%E5%B9%B3%E5%8F%B0-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/">个人博客 MemorySearch 开发文档</a></p>
 <h2 id="🍝-架构设计"><a href="#🍝-架构设计" class="headerlink" title="🍝 架构设计"></a>🍝 架构设计</h2><p>原图链接：<a target="_blank" rel="noopener" href="https://www.yuque.com/huiyiruchu-7jxo6/ckx99i/lxw5okzip8hktuln?singleDoc#">项目架构图</a></p>
 <p><img src="https://gitee.com/deng-2022/pictures/raw/master/images/image-20240221231907060.png" alt="image-20240221231907060"></p>
 <h2 id="🍺-技术选型"><a href="#🍺-技术选型" class="headerlink" title="🍺 技术选型"></a>🍺 技术选型</h2><h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><ul>
@@ -2380,27 +2380,27 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" class="category-chain-item">开发经验</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/" class="category-chain-item">Elasticsearch</a>
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/" class="category-chain-item">Elasticsearch</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/Logstash/" class="category-chain-item">Logstash</a>
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/Logstash/" class="category-chain-item">Logstash</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/Logstash/Kibana/" class="category-chain-item">Kibana</a>
+  <a href="/blog/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/Elasticsearch/Logstash/Kibana/" class="category-chain-item">Kibana</a>
   
   
 
@@ -2423,15 +2423,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+        <a href="/blog/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
-        <a href="/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
+        <a href="/blog/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/">#开发经验</a>
       
-        <a href="/tags/Elasticsearch/">#Elasticsearch</a>
+        <a href="/blog/tags/Elasticsearch/">#Elasticsearch</a>
       
-        <a href="/tags/Logstash/">#Logstash</a>
+        <a href="/blog/tags/Logstash/">#Logstash</a>
       
-        <a href="/tags/Kibana/">#Kibana</a>
+        <a href="/blog/tags/Kibana/">#Kibana</a>
       
     </div>
   
@@ -2444,7 +2444,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>MemorySearch 忆搜阁-开发文档</div>
-      <div>http://example.com/2023/08/26/MemorySearch 忆搜阁-开发文档/</div>
+      <div>https://deng-2022.gitee.io/blog/2023/08/26/MemorySearch 忆搜阁-开发文档/</div>
     </div>
     <div class="license-meta">
       
@@ -2493,7 +2493,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/10/Memory%20%E7%BC%98%E5%BF%86%E4%BA%A4%E5%8F%8B%E7%A4%BE%E5%8C%BA-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 缘忆交友社区-开发文档">
+                      <a href="/blog/2023/09/10/Memory%20%E7%BC%98%E5%BF%86%E4%BA%A4%E5%8F%8B%E7%A4%BE%E5%8C%BA-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="Memory 缘忆交友社区-开发文档">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Memory 缘忆交友社区-开发文档</span>
                         <span class="visible-mobile">上一篇</span>
@@ -2503,7 +2503,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/24/Maven%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7%EF%BC%9A%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/" title="Maven奇技淫巧：优化项目构建与性能调优">
+                      <a href="/blog/2023/08/24/Maven%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7%EF%BC%9A%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/" title="Maven奇技淫巧：优化项目构建与性能调优">
                         <span class="hidden-mobile">Maven奇技淫巧：优化项目构建与性能调优</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -2665,7 +2665,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" alt="police-icon"/>
+            <img src="/blog/img/police_beian.png" alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -2696,8 +2696,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -2814,9 +2814,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/blog/js/local-search.js" ></script>
 
-  <script defer src="/js/leancloud.js" ></script>
+  <script defer src="/blog/js/leancloud.js" ></script>
 
 
 
@@ -2824,7 +2824,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/blog/js/boot.js" ></script>
 
 
   
